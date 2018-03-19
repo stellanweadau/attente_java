@@ -3,6 +3,15 @@ package Pricewise;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
+
+/**
+ * 
+ * The public class PricewiseLinearValueFunction enables the creation of an object with a criteria 
+ * which represents a property of an apartment, and two numbers which represent first the value 
+ * of the criteria ( for example the number of rooms ) and the utility associated to this
+ * criteria.
+ * The class enables the user to know for any value of the criteria, the utility associated.
+ */
 public class PricewiseLinearValueFunction implements IPricewiseLinearValueFunction {
 	
 	private String criteria;
