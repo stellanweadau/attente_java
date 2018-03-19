@@ -2,8 +2,11 @@ package Pricewise;
 
 public interface IPricewiseLinearValueFunction {
 
-		public double getLinearValue(double critere);
+		public String ToString();
 
-		double getUtility(int value);
+		double getLinearValue(int d1, int d2);
+
+		double getUtility(int i, utilityMode u);
 		
 }
+
