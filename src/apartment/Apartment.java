@@ -230,7 +230,7 @@ public class Apartment {
 	/**
 	 * @param nbSleepings is an integer superior or equal to zero
 	 */
-	public void SetNbSleeping(int nbSleeping) {
+	public void setNbSleeping(int nbSleeping) {
 		if (nbSleeping < 0)
 			throw new IllegalArgumentException ("The accomodation capcity can not be negative");
 		this.nbSleeping = nbSleeping ;
