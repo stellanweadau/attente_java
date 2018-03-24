@@ -24,7 +24,7 @@ public class Apartment {
 	protected int nbSleeping; 
 
 	/**
-	 * @nbBR an integer superior or equal to zero which corresponds to the number of bathroom
+	 * @nbBR an integer superior or equal to zero which corresponds to the number of bathrooms
 	 */
 	protected int nbBR;
 
@@ -47,17 +47,17 @@ public class Apartment {
 	 */
 	protected String title; 
 	/**
-	 * @wifi is a boolean (true/false) which indicates which indicates if there's a WiFi or not
+	 * @wifi is a boolean (true/false) which indicates if there's wireless connection to internet or not
 	 */
 	protected boolean wifi; 
 
 	/**
-	 * @priceN is a real number superior or equal to zero with two decimals, how much it cost (before any fees) to stay over night in euros
+	 * @priceN is a real number superior or equal to zero with two decimals, how much it cost (before any fees) to stay per night in euros
 	 */
 	protected double priceN; 
 
 	/**
-	 * @nbMinNight is an integer superior or equal to zero, indicate how long in nights the customer will stays
+	 * @nbMinNight is an integer superior or equal to zero, indicates how long in nights the customer will stays
 	 */
 	protected int nbMinNight; 
 
@@ -66,28 +66,23 @@ public class Apartment {
 	 */
 	protected boolean tele; 
 
-
-
+	
 	/**
-	 * This constructor without parameters gives default values to each characteristics of the Apartment class
+	 * This constructor without parameters gives default values to each mandatory characteristics of the class Apartment
 	 */
-
 	public Apartment() {
 		floorArea = 0;
 		address = "";
-		
-		
+		title = ""; 	
 	}
-
 	/**
 	 * @param floorArea is a real number superior or equal to zero with two decimals, it represents the floor area of the Apartment in square meters
 	 * @param address is a string of characters that gives the full location of the Apartment
 	 * @param title a string of characters that represents the title of the announcement
 	 */
-
-	public Apartment (double floorArea, String adress, String title) {
-
-		
+	
+	
+	public Apartment (double floorArea, String adress, String title) {	
 		this.floorArea = floorArea;
 		this.address = adress;
 		this.nbSleeping = 0 ;
@@ -100,8 +95,6 @@ public class Apartment {
 		this.priceN = 0;
 		this.nbMinNight = 0 ;
 		this.tele = false ;
-		
-
 	}
 
 	/**
@@ -169,7 +162,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the title of the announce 
+	 * get the title of the announcement 
 	 * @return a string of characters
 	 */
 	public String getTitle() {
@@ -208,6 +201,7 @@ public class Apartment {
 		return tele;
 	}
 
+	
 	/**
 	 * @param floorArea is a real number superior or equal to zero with two decimals
 	 */
