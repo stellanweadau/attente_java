@@ -1,4 +1,4 @@
-package piecewise;
+package io.github.oliviercailloux.y2018.teach_spreadsheets.piecewise;
 
 
 import org.junit.Assert;
