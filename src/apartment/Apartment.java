@@ -68,20 +68,10 @@ public class Apartment {
 
 	
 	/**
-	 * This constructor without parameters gives default values to each mandatory characteristics of the class Apartment
-	 */
-	public Apartment() {
-		floorArea = 0;
-		address = "";
-		title = ""; 	
-	}
-	/**
 	 * @param floorArea is a real number superior or equal to zero with two decimals, it represents the floor area of the Apartment in square meters
 	 * @param address is a string of characters that gives the full location of the Apartment
 	 * @param title a string of characters that represents the title of the announcement
 	 */
-	
-	
 	public Apartment (double floorArea, String adress, String title) {	
 		this.floorArea = floorArea;
 		this.address = adress;
