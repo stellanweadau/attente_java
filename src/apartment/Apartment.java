@@ -87,6 +87,7 @@ public class Apartment {
 		this.tele = false ;
 	}
 
+
 	/**
 	 * get the value of the floor area
 	 * @return a double positive or equal to zero
