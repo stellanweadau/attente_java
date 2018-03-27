@@ -247,7 +247,7 @@ public class Apartment {
 	 * @param floorAreaTerrace is a real number superior or equal to zero with two decimals, it only works if terrace = true (use setTerrace)
 	 */
 	public void setFloorAreaTerrace(double floorAreaTerrace) {
-		if (this.terrace = false & floorAreaTerrace > 0)
+		if (terrace == false && floorAreaTerrace > 0)
 			throw new IllegalArgumentException ("The terrace can not have a floor area if it doesn't exists");
 		if (floorAreaTerrace < 0)
 			throw new IllegalArgumentException ("The floor area of the terrace can not be negative");

@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.piecewise;
 
 import java.util.Map;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -106,7 +107,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	
 	/**
 	 * This method looks for the minimum of the keys and returns it.
-	 * @return min the minimum of all keys
+	 * @return the minimum of all keys
 	 */
 	@Override
 	public int getMinKey() {
@@ -129,9 +130,10 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 * @return a table of integers with the two keys.
 	 * If the key in parameter is above the maximum of the key, the table returned is [0,0].
 	 * If the key in parameter is below the minimum of the key, the table returned is [-1,-1].
+	 * @throws IOException 
 	 */
 	@Override
-	public int[] getInterval(int key) {
+	public int[] getInterval(int key) throws IOException {
 		int[] tab = new int[2];
 		
 		Iterator<Integer> k = utility.keySet().iterator();
@@ -142,15 +144,11 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		int tmp = 0; // temporary variable used for stocking the value of the current key
 		
 		if (key>getMaxKey()) {
-			tab[0]= 0;
-			tab[1]= 0;
-			return tab;
+			throw new IOException("Aucune valeur cohérente à renvoyer pour l'intervalle");
 		}
 		
 		if (key<getMinKey()) {
-			tab[0]= -1;
-			tab[1]= -1;
-			return tab;
+			throw new IOException("Aucune valeur cohérente à renvoyer pour l'intervalle");
 		}
 		
 		while (k.hasNext()) {		
@@ -190,9 +188,10 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 * in parameter.
 	 * @param value of the key
 	 * @return the value (double) of the utility associated with the key in parameter
+	 * @throws IOException 
 	 */
 	@Override
-	public double getUtility(int key) {
+	public double getUtility(int key) throws IOException {
 		double value = -1;
 		
 		if (utility.containsKey(key))
@@ -214,12 +213,12 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		return key*getLinearValue(tabKey[0], tabKey[1],utility.get(tabKey[0]), utility.get(tabKey[1])) + value;
 	} 
 		
-	public static void main (String args[]) {
+	public static void main (String args[]) throws IOException {
 		PiecewiseLinearValueFunction f = new PiecewiseLinearValueFunction("Superficie");
 		f.setUtility(60, 0.6);
 		f.setUtility(30, 0.3);
 		f.setUtility(50, 0.5);
-		System.out.println(f.getUtility(20));
+		System.out.println(f.getUtility(40));
 		System.out.println(f.getMinKey());
 	}
 

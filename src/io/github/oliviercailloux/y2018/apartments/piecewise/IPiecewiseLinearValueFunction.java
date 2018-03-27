@@ -1,12 +1,14 @@
 package io.github.oliviercailloux.y2018.apartments.piecewise;
 
+import java.io.IOException;
+
 public interface IPiecewiseLinearValueFunction {
 	
 	public String toString();
 	
-	double getUtility(int key);
+	double getUtility(int key) throws IOException;
 
-	int[] getInterval(int key);
+	int[] getInterval(int key) throws IOException;
 
 	int getMinKey();
 
