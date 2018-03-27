@@ -24,8 +24,8 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 */
 	public PiecewiseLinearValueFunction(String crit)
 	{
-		this.utility = new HashMap<Integer, Double>();
-		this.criteria = crit;
+		utility = new HashMap<>();
+		criteria = crit;
 	}
 	
 	/**
