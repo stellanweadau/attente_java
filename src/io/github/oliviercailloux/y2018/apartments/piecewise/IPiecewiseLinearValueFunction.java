@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.teach_spreadsheets.piecewise;
+package io.github.oliviercailloux.y2018.apartments.piecewise;
 
 public interface IPiecewiseLinearValueFunction {
 	

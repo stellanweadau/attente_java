@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.teach_spreadsheets.apartments;
+package io.github.oliviercailloux.y2018.apartments.apartment;
 
 
 public class Apartment {
