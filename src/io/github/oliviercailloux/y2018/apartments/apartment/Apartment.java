@@ -4,79 +4,81 @@ package io.github.oliviercailloux.y2018.apartments.apartment;
 public class Apartment {
 
 	/**
-	 * @floorArea a real number with two decimals it represents the floor area of the Apartment in square meters
+	 * @param floorArea a real number with two decimals it represents the floor area of the Apartment in square meters
 	 */
-	protected double floorArea; 
+	private double floorArea; 
 
 	/**
-	 * @address a String of characters that gives the full location of the Apartment (number, street name, ZIP code, city, country)
+	 * @param adress a String of characters that gives the full location of the Apartment (number, street name, ZIP code, city, country)
 	 */
-	protected String address; 
+	private String adress; 
 
 	/**
-	 * @nbChambers is an integer superior or equal to zero, it is the number of chamber available of use in the Apartment
+	 * @param nbBedrooms is an integer superior or equal to zero, it is the number of bedrooms available of use in the Apartment
 	 */
-	protected int nbChambers;
+	private int nbBedrooms;
 
 	/**
-	 * @nbSleepings is an integer superior or equal to zero corresponding of the accommodation capacity of the Apartment (nb of people that can sleep in the Apartment)
+	 * @param nbSleepings is an integer superior or equal to zero corresponding of the accommodation capacity of the Apartment (nb of people that can sleep in the Apartment)
 	 */
-	protected int nbSleeping; 
+	private int nbSleeping; 
 
 	/**
-	 * @nbBR an integer superior or equal to zero which corresponds to the number of bathrooms
+	 * @param nbBathrooms an integer superior or equal to zero which corresponds to the number of bathrooms
 	 */
-	protected int nbBR;
+	private int nbBathrooms;
 
 	/**
-	 * @terrace a boolean (true/false) which indicates if there's a terrace or not 
+	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not 
 	 */
-	protected boolean terrace;
+	private boolean terrace;
 
 	/**
-	 * @floorAreaTerrace is a real number superior or equal to zero with two decimals it represents the floor area of the terrace of the Apartment if there's any
+	 * @param floorAreaTerrace is a real number superior or equal to zero with two decimals it represents the floor area of the terrace of the Apartment if there's any
 	 */
-	protected double floorAreaTerrace; 
+	private double floorAreaTerrace; 
 
 	/**
-	 * @description is a string of characters that describe the Apartment and the offer (its accommodations)
+	 * @param description is a string of characters that describe the Apartment and the offer (its accommodations)
 	 */
-	protected String description; 
-	/**
-	 * @title is a string of characters that represents the title of the announcement
-	 */
-	protected String title; 
-	/**
-	 * @wifi is a boolean (true/false) which indicates if there's wireless connection to internet or not
-	 */
-	protected boolean wifi; 
+	private String description; 
 
 	/**
-	 * @priceN is a real number superior or equal to zero with two decimals, how much it cost (before any fees) to stay per night in euros
+	 * @param title is a string of characters that represents the title of the announcement
 	 */
-	protected double priceN; 
+	private String title;
+ 
+	/**
+	 * @param wifi is a boolean (true/false) which indicates if there's wireless connection to internet or not
+	 */
+	private boolean wifi; 
 
 	/**
-	 * @nbMinNight is an integer superior or equal to zero, indicates how long in nights the customer will stays
+	 * @param priceN is a real number superior or equal to zero with two decimals, how much it cost (before any fees) to stay per night in euros
 	 */
-	protected int nbMinNight; 
+	private double priceN; 
 
 	/**
-	 * @tele is a boolean (true/false) which indicates which indicates if there's a television or not
+	 * @param nbMinNight is an integer superior or equal to zero, indicates how long in nights the customer will stays
 	 */
-	protected boolean tele; 
+	private int nbMinNight; 
+
+	/**
+	 * @param tele is a boolean (true/false) which indicates which indicates if there's a television or not
+	 */
+	private boolean tele; 
 
 	
 	/**
 	 * @param floorArea is a real number superior or equal to zero with two decimals, it represents the floor area of the Apartment in square meters
-	 * @param address is a string of characters that gives the full location of the Apartment
+	 * @param adress is a string of characters that gives the full location of the Apartment
 	 * @param title a string of characters that represents the title of the announcement
 	 */
 	public Apartment (double floorArea, String adress, String title) {	
 		this.floorArea = floorArea;
-		this.address = adress;
+		this.adress = adress;
 		this.nbSleeping = 0 ;
-		this.nbBR = 0;
+		this.nbBathrooms = 0;
 		this.terrace = false ;
 		this.floorAreaTerrace = 0 ;
 		this.description = "";
@@ -97,19 +99,19 @@ public class Apartment {
 	}
 
 	/**
-	 * get the value of the address
+	 * get the value of the adress
 	 * @return a String of characters
 	 */
 	public String getAdress() {
-		return address;
+		return adress;
 	}
 	
 	/**
-	 * get the number of chambers
+	 * get the number of bedrooms
 	 * @return an integer positive or equal to zero
 	 */
-	public int getNbChambers() {
-		return nbChambers;
+	public int getNbBedrooms() {
+		return nbBedrooms;
 	}
 
 	/**
@@ -124,8 +126,8 @@ public class Apartment {
 	 * get the number of bathrooms
 	 * @return an integer positive or equal to zero
 	 */
-	public int getNbBR() {
-		return nbBR;
+	public int getNbBathrooms() {
+		return nbBathrooms;
 	}
 
 	/**
@@ -203,19 +205,19 @@ public class Apartment {
 	}
 
 	/**
-	 * @param address is a string of characters 
+	 * @param adress is a string of characters 
 	 */
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAdress(String adress) {
+		this.adress = adress;
 	}
 	
 	/**
-	 * @param nbChambers is an integer superior or equal to zero
+	 * @param nbBedrooms is an integer superior or equal to zero
 	 */
-	public void setNbChambers(int nbChambers) {
-		if (nbChambers < 0)
-			throw new IllegalArgumentException ("The number of chambers can not be negative");
-		this.nbChambers = nbChambers;
+	public void setNbBedrooms(int nbBedrooms) {
+		if (nbBedrooms < 0)
+			throw new IllegalArgumentException ("The number of Bedrooms can not be negative");
+		this.nbBedrooms = nbBedrooms;
 	}
 
 	/**
@@ -228,12 +230,12 @@ public class Apartment {
 	}
 	
 	/**
-	 * @param nbBR is an integer superior or equal to zero 
+	 * @param nbBathrooms is an integer superior or equal to zero 
 	 */
-	public void setNbBR(int nbBR) {
-		if (nbBR < 0)
+	public void setNbBathrooms(int nbBathrooms) {
+		if (nbBathrooms < 0)
 			throw new IllegalArgumentException ("The number of bathroom can not be negative");
-		this.nbBR = nbBR ;
+		this.nbBathrooms = nbBathrooms ;
 	}
 	
 	/**
@@ -247,7 +249,7 @@ public class Apartment {
 	 * @param floorAreaTerrace is a real number superior or equal to zero with two decimals, it only works if terrace = true (use setTerrace)
 	 */
 	public void setFloorAreaTerrace(double floorAreaTerrace) {
-		if (terrace == false && floorAreaTerrace > 0)
+		if (this.terrace == false && floorAreaTerrace > 0)
 			throw new IllegalArgumentException ("The terrace can not have a floor area if it doesn't exists");
 		if (floorAreaTerrace < 0)
 			throw new IllegalArgumentException ("The floor area of the terrace can not be negative");
