@@ -30,7 +30,18 @@ public class ReadApartmentsXMLFormat {
 			apartment.setFloorAreaTerrace(Double.parseDouble(prop.getProperty("floorAreaTerrace")));
 		if (prop.containsKey("wifi"))
 			apartment.setWifi(Boolean.valueOf(prop.getProperty("floorAreaTerrace")));
-		
+		if (prop.containsKey("tele"))
+			apartment.setTele(Boolean.valueOf(prop.getProperty("tele")));
+		if (prop.containsKey("terrace"))
+			apartment.setTerrace(Boolean.valueOf(prop.getProperty("terrace")));
+		if (prop.containsKey("nbSleeping"))
+			apartment.setNbSleeping(Integer.parseInt(prop.getProperty("nbSleeping")));
+		if (prop.containsKey("nbBedrooms"))
+			apartment.setNbBedrooms(Integer.parseInt(prop.getProperty("nbBedrooms")));
+		if (prop.containsKey("priceN"))
+			apartment.setPriceN(Double.parseDouble(prop.getProperty("priceN")));
+		if (prop.containsKey("nbMinNight"))
+			apartment.setNbMinNight(Integer.parseInt(prop.getProperty("nbMinNight")));
 		
 		return apartment;
 	}
@@ -49,12 +60,6 @@ public class ReadApartmentsXMLFormat {
 		System.out.println(a.getDescription());
 		System.out.println(a.getNbBathrooms());
 		System.out.println(a.getWifi());
-		
-		
-		
-		
-		
-		
 
 	}
 
