@@ -44,7 +44,7 @@ public class ReadApartmentsXMLFormat {
 			apartment.setNbSleeping(Integer.parseInt(prop.getProperty("nbSleeping")));
 		if (prop.containsKey("nbBedrooms"))
 			apartment.setNbBedrooms(Integer.parseInt(prop.getProperty("nbBedrooms")));
-		if (prop.containsKey("priceN"))
+		if (prop.containsKey("pricePerNight"))
 			apartment.setPricePerNight(Double.parseDouble(prop.getProperty("pricePerNight")));
 		if (prop.containsKey("nbMinNight"))
 			apartment.setNbMinNight(Integer.parseInt(prop.getProperty("nbMinNight")));
