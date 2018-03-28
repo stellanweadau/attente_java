@@ -180,7 +180,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the minimum number of nights 
+	 * get the minimum number of nights  
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbMinNight() {
