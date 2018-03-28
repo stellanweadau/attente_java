@@ -54,9 +54,9 @@ public class Apartment {
 	private boolean wifi; 
 
 	/**
-	 * @param priceN is a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros
+	 * @param pricePerNight is a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros
 	 */
-	private double priceN; 
+	private double pricePerNight; 
 
 	/**
 	 * @param nbMinNight is an integer superior or equal to zero, indicates how long in nights the customer will stays
@@ -85,7 +85,7 @@ public class Apartment {
 		this.description = "";
 		this.title = title;
 		this.wifi = false ;
-		this.priceN = 0;
+		this.pricePerNight = 0;
 		this.nbMinNight = 0 ;
 		this.tele = false ;
 	}
@@ -175,8 +175,8 @@ public class Apartment {
 	 * get the price for one night 
 	 * @return a double positive or equal to zero
 	 */
-	public double getPriceN() {
-		return priceN;
+	public double getPricePerNight() {
+		return pricePerNight;
 	}
 
 	/**
@@ -279,12 +279,12 @@ public class Apartment {
 	}
 	
 	/**
-	 * @param priceN is a real number superior or equal to zero
+	 * @param pricePerNight is a real number superior or equal to zero
 	 */
-	public void setPriceN(double priceN) {
-		if (priceN < 0)
+	public void setPricePerNight(double pricePerNight) {
+		if (pricePerNight < 0)
 			throw new IllegalArgumentException ("The price per night can not be negative");
-		this.priceN = priceN ;
+		this.pricePerNight = pricePerNight ;
 	}
 	
 	/**
