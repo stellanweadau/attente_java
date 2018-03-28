@@ -49,7 +49,7 @@ public class Apartment {
 	private String title;
  
 	/**
-	 * @param wifi is a boolean (true/false) which indicates if there's wireless connection to internet or not
+	 * @param wifi is a boolean (true/false) which indicates if there is wireless connection to internet or not
 	 */
 	private boolean wifi; 
 
