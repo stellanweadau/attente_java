@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public interface IPiecewiseLinearValueFunction {
 	
+	@Override
 	public String toString();
 	
 	double getUtility(int key) throws IOException;

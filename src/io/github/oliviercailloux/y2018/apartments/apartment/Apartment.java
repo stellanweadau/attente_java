@@ -103,7 +103,7 @@ public class Apartment {
 	 * get the value of the address
 	 * @return a String of characters
 	 */
-	public String getaddress() {
+	public String getAddress() {
 		return address;
 	}
 	
