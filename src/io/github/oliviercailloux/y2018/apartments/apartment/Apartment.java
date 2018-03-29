@@ -4,14 +4,14 @@ package io.github.oliviercailloux.y2018.apartments.apartment;
 public class Apartment {
 
 	/**
-	 * @param floorArea a real number with two decimals it represents the floor area of the Apartment in square meters
+	 * @param floorArea a real number it represents the floor area of the Apartment in square meters
 	 */
 	private double floorArea; 
 
 	/**
-	 * @param adress a String of characters that gives the full location of the Apartment (number, street name, ZIP code, city, country)
+	 * @param address a String of characters that gives the full location of the Apartment (number, street name, ZIP code, city, country)
 	 */
-	private String adress; 
+	private String address; 
 
 	/**
 	 * @param nbBedrooms is an integer superior or equal to zero, it is the number of bedrooms available of use in the Apartment
@@ -34,7 +34,7 @@ public class Apartment {
 	private boolean terrace;
 
 	/**
-	 * @param floorAreaTerrace is a real number superior or equal to zero with two decimals it represents the floor area of the terrace of the Apartment if there's any
+	 * @param floorAreaTerrace is a real number superior or equal to zero it represents the floor area of the terrace of the Apartment if there's any
 	 */
 	private double floorAreaTerrace; 
 
@@ -49,14 +49,14 @@ public class Apartment {
 	private String title;
  
 	/**
-	 * @param wifi is a boolean (true/false) which indicates if there's wireless connection to internet or not
+	 * @param wifi is a boolean (true/false) which indicates if there is wireless connection to internet or not
 	 */
 	private boolean wifi; 
 
 	/**
-	 * @param priceN is a real number superior or equal to zero with two decimals, how much it cost (before any fees) to stay per night in euros
+	 * @param pricePerNight is a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros
 	 */
-	private double priceN; 
+	private double pricePerNight; 
 
 	/**
 	 * @param nbMinNight is an integer superior or equal to zero, indicates how long in nights the customer will stays
@@ -70,13 +70,14 @@ public class Apartment {
 
 	
 	/**
-	 * @param floorArea is a real number superior or equal to zero with two decimals, it represents the floor area of the Apartment in square meters
-	 * @param adress is a string of characters that gives the full location of the Apartment
+	 * @param floorArea is a real number superior or equal to zero, it represents the floor area of the Apartment in square meters
+	 * @param address is a string of characters that gives the full location of the Apartment
 	 * @param title a string of characters that represents the title of the announcement
 	 */
-	public Apartment (double floorArea, String adress, String title) {	
+	public Apartment (double floorArea, String address, String title) {	
 		this.floorArea = floorArea;
-		this.adress = adress;
+		this.address = address;
+		this.nbBedrooms = 0 ;
 		this.nbSleeping = 0 ;
 		this.nbBathrooms = 0;
 		this.terrace = false ;
@@ -84,7 +85,7 @@ public class Apartment {
 		this.description = "";
 		this.title = title;
 		this.wifi = false ;
-		this.priceN = 0;
+		this.pricePerNight = 0;
 		this.nbMinNight = 0 ;
 		this.tele = false ;
 	}
@@ -99,11 +100,11 @@ public class Apartment {
 	}
 
 	/**
-	 * get the value of the adress
+	 * get the value of the address
 	 * @return a String of characters
 	 */
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 	
 	/**
@@ -174,12 +175,12 @@ public class Apartment {
 	 * get the price for one night 
 	 * @return a double positive or equal to zero
 	 */
-	public double getPriceN() {
-		return priceN;
+	public double getPricePerNight() {
+		return pricePerNight;
 	}
 
 	/**
-	 * get the minimum number of nights 
+	 * get the minimum number of nights  
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbMinNight() {
@@ -196,7 +197,7 @@ public class Apartment {
 
 	
 	/**
-	 * @param floorArea is a real number superior or equal to zero with two decimals
+	 * @param floorArea is a real number superior or equal to zero
 	 */
 	public void setFloorArea(double floorArea) {
 		if (floorArea < 0)
@@ -205,10 +206,10 @@ public class Apartment {
 	}
 
 	/**
-	 * @param adress is a string of characters 
+	 * @param address is a string of characters 
 	 */
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setaddress(String address) {
+		this.address = address;
 	}
 	
 	/**
@@ -246,7 +247,7 @@ public class Apartment {
 	}
 
 	/**
-	 * @param floorAreaTerrace is a real number superior or equal to zero with two decimals, it only works if terrace = true (use setTerrace)
+	 * @param floorAreaTerrace is a real number superior or equal to zero, it only works if terrace = true (use setTerrace)
 	 */
 	public void setFloorAreaTerrace(double floorAreaTerrace) {
 		if (this.terrace == false && floorAreaTerrace > 0)
@@ -278,12 +279,12 @@ public class Apartment {
 	}
 	
 	/**
-	 * @param priceN is a real number superior or equal to zero with two decimals
+	 * @param pricePerNight is a real number superior or equal to zero
 	 */
-	public void setPriceN(double priceN) {
-		if (priceN < 0)
+	public void setPricePerNight(double pricePerNight) {
+		if (pricePerNight < 0)
 			throw new IllegalArgumentException ("The price per night can not be negative");
-		this.priceN = priceN ;
+		this.pricePerNight = pricePerNight ;
 	}
 	
 	/**
