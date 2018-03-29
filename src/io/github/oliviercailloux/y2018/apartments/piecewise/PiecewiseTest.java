@@ -1,6 +1,8 @@
 package io.github.oliviercailloux.y2018.apartments.piecewise;
 
 
+import java.io.IOException;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,7 +13,7 @@ class PiecewiseTest {
 
 	
 	@Test
-	void getUtilityNormalTest() {
+	void getUtilityNormalTest() throws IOException {
 		PiecewiseLinearValueFunction p = new PiecewiseLinearValueFunction("Surface");
 		p.setUtility(30, 0.2);
 		p.setUtility(40, 0.4);
@@ -22,7 +24,7 @@ class PiecewiseTest {
 	
 	}
 	@Test
-	void getUtilityWithParamAboveMax() {
+	void getUtilityWithParamAboveMax() throws IOException {
 		PiecewiseLinearValueFunction p = new PiecewiseLinearValueFunction("Surface");
 		p.setUtility(30, 0.2);
 		p.setUtility(40, 0.4);
@@ -32,7 +34,7 @@ class PiecewiseTest {
 	}
 	
 	@Test
-	void getUtilityWithParamBelowMin() {
+	void getUtilityWithParamBelowMin() throws IOException {
 		PiecewiseLinearValueFunction p = new PiecewiseLinearValueFunction("Surface");
 		p.setUtility(30, 0.2);
 		p.setUtility(40, 0.4);

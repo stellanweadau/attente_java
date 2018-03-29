@@ -57,17 +57,25 @@ public class ReadApartmentsXMLFormat {
 		
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 		
-		File f = new File("doc\\testXMLApartment.xml");
+		File f = new File("resources\\testXMLApartment.xml");
 		
-		InputStream input = new FileInputStream(f);
-		Apartment a = r.readApartment(input);
+		try (InputStream input = new FileInputStream(f)){
+			
+			Apartment a = r.readApartment(input);
+			
+			System.out.println(a.getTitle());
+			System.out.println(a.getAddress());
+			System.out.println(a.getFloorArea());
+			System.out.println(a.getDescription());
+			System.out.println(a.getNbBathrooms());
+			System.out.println(a.getWifi());
+			
+		}
 		
-		System.out.println(a.getTitle());
-		System.out.println(a.getAddress());
-		System.out.println(a.getFloorArea());
-		System.out.println(a.getDescription());
-		System.out.println(a.getNbBathrooms());
-		System.out.println(a.getWifi());
+		
+		
+		
+		
 
 	}
 
