@@ -2,6 +2,8 @@ package io.github.oliviercailloux.y2018.apartments.piecewise;
 
 import java.io.IOException;
 
+import com.google.common.collect.Range;
+
 public interface IPiecewiseLinearValueFunction {
 	
 	@Override
@@ -9,7 +11,7 @@ public interface IPiecewiseLinearValueFunction {
 	
 	public double getUtility(int key) throws IOException;
 
-	public int[] getInterval(int key) throws IOException;
+	public Range<Integer> getInterval(int key) throws IOException;
 
 	public int getMinKey();
 
