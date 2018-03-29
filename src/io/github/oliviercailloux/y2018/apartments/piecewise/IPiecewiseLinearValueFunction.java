@@ -7,18 +7,14 @@ public interface IPiecewiseLinearValueFunction {
 	@Override
 	public String toString();
 	
-	double getUtility(int key) throws IOException;
+	public double getUtility(int key) throws IOException;
 
-	int[] getInterval(int key) throws IOException;
+	public int[] getInterval(int key) throws IOException;
 
-	int getMinKey();
+	public int getMinKey();
 
-	int getMaxKey();
+	public int getMaxKey();
 
-	double getOrdinateValue(int absA, int absB, double ordA, double ordB);
-
-	double getLinearValue(int absA, int absB, double ordA, double ordB);
-
-	void setUtility(int key, double value);
+	public void setUtility(int key, double value);
 
 }
