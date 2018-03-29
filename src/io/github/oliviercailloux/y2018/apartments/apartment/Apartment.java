@@ -64,7 +64,7 @@ public class Apartment {
 	private int nbMinNight; 
 
 	/**
-	 * @param tele is a boolean (true/false) which indicates which indicates if there's a television or not
+	 * @param tele is a boolean (true/false) which indicates if there's a television or not
 	 */
 	private boolean tele; 
 
@@ -108,7 +108,7 @@ public class Apartment {
 	}
 	
 	/**
-	 * get the number of bedrooms
+	 * get the number of bedrooms, 0 if missing
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbBedrooms() {
@@ -116,7 +116,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the number of sleeping
+	 * get the number of sleeping, 0 if missing
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbSleeping() {
@@ -124,7 +124,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the number of bathrooms
+	 * get the number of bathrooms, 0 if missing
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbBathrooms() {
@@ -148,7 +148,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the description of the apartment
+	 * get the description of the apartment, "" if missing
 	 * @return a string of characters
 	 */
 	public String getDescription() {
@@ -172,7 +172,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the price for one night 
+	 * get the price for one night, 0 if missing
 	 * @return a double positive or equal to zero
 	 */
 	public double getPricePerNight() {
@@ -180,7 +180,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the minimum number of nights  
+	 * get the minimum number of nights, 0 if missing
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbMinNight() {
@@ -235,7 +235,7 @@ public class Apartment {
 	 */
 	public void setNbBathrooms(int nbBathrooms) {
 		if (nbBathrooms < 0)
-			throw new IllegalArgumentException ("The number of bathroom can not be negative");
+			throw new IllegalArgumentException ("The number of bathrooms can not be negative");
 		this.nbBathrooms = nbBathrooms ;
 	}
 	
