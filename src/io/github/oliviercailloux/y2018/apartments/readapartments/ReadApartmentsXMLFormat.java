@@ -1,5 +1,6 @@
 package io.github.oliviercailloux.y2018.apartments.readapartments;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -56,8 +57,9 @@ public class ReadApartmentsXMLFormat {
 		
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 		
-		InputStream input = new FileInputStream("C:\\Users\\Guillaume\\Documents\\Dauphine\\L3 MIAGE\\Semestre 6\\Java\\test.xml");
+		File f = new File("doc\\testXMLApartment.xml");
 		
+		InputStream input = new FileInputStream(f);
 		Apartment a = r.readApartment(input);
 		
 		System.out.println(a.getTitle());
