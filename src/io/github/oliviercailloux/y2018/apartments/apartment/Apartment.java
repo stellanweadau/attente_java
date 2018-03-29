@@ -335,10 +335,4 @@ public class Apartment {
 		this.tele = tele ;
 	}
 
-	public static void main(String[] args) {
-		Apartment p = new Apartment(0,"ff","title");
-		p.setTele(true);
-		p.setTerrace(false);
-		System.out.println(p);
-	}
 }
