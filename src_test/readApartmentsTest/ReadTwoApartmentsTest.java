@@ -22,7 +22,7 @@ public class ReadTwoApartmentsTest {
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 		ReadApartmentsXMLFormat r1 = new ReadApartmentsXMLFormat();
 
-		File f = new File("resources\\start-apartment-classpath.xml");
+		File f = new File("start-apartment-classpath.xml");
 		String f1 = new File("start-apartment.xml").getAbsolutePath();
 
 		try (InputStream input = new FileInputStream(f)){
