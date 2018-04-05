@@ -19,43 +19,9 @@ import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsX
 
 class ReadApartmentsXMLFormatTest {
 
-	@Test
-	void readApartmentAddressTest() throws IOException{
-
-		ReadApartmentsXMLFormat r = initializeReadApartmentsXMLFormat();
-
-		File f = new File("resources\\start-apartment-classpath.xml");
-
-		try (InputStream input = new FileInputStream(f)){
-
-			Apartment a = r.readApartment(input);
-
-			String s = "5 avenue Roger Salengro 92370 Chaville France";
-
-			Assert.assertEquals(s,a.getAddress(),"Address doesn't match with the address in the XML file");
-		}
-	}
-		
-	@Test
-	void readApartmentFloorAreaTest() throws IOException{
-
-		ReadApartmentsXMLFormat r = initializeReadApartmentsXMLFormat();
-
-		File f = new File("resources\\start-apartment-classpath.xml");
-
-		try (InputStream input = new FileInputStream(f)){
-
-			Apartment a = r.readApartment(input);
-
-			Assert.assertEquals(a.getFloorArea(),150.0,0);
-
-		}
-
-
-	}
 	
 	@Test
-	void readApartmentNbSleepingTest() throws IOException{
+	void readApartmentTest() throws IOException{
 
 		ReadApartmentsXMLFormat r = initializeReadApartmentsXMLFormat();
 
@@ -65,43 +31,20 @@ class ReadApartmentsXMLFormatTest {
 
 			Apartment a = r.readApartment(input);
 
-			Assert.assertEquals(a.getNbSleeping(),5,0);
-
-		}
-
-
-	}
-	
-	@Test
-	void readApartmentFloorAreaTerraceTest() throws IOException{
-
-		ReadApartmentsXMLFormat r = initializeReadApartmentsXMLFormat();
-
-		File f = new File("resources\\start-apartment-classpath.xml");
-
-		try (InputStream input = new FileInputStream(f)){
-
-			Apartment a = r.readApartment(input);
-
-			Assert.assertEquals(a.getFloorAreaTerrace(),160,0);
-
-		}
-
-
-	}
-	
-	@Test
-	void readApartmentPricePerNightTest() throws IOException{
-
-		ReadApartmentsXMLFormat r = initializeReadApartmentsXMLFormat();
-
-		File f = new File("resources\\start-apartment-classpath.xml");
-
-		try (InputStream input = new FileInputStream(f)){
-
-			Apartment a = r.readApartment(input);
-
-			Assert.assertEquals(a.getPricePerNight(),3,0);
+			Assert.assertEquals("Address doesn't match with the address in the XML file","5 avenue Roger Salengro 92370 Chaville France",a.getAddress());
+			Assert.assertEquals("Title doesn't match with the title in the XML file","Villa à louer",a.getTitle());
+			Assert.assertEquals("Description doesn't match with the description in the XML file","",a.getDescription());
+			Assert.assertEquals("Number of sleepings doesn't match with the number of sleepings in the XML file",5,a.getNbSleeping());
+			Assert.assertEquals("Number of bathrooms doesn't match with the number of bathrooms in the XML file",0,a.getNbBathrooms());
+			Assert.assertEquals("Number of bedrooms doesn't match with the number of bedrooms in the XML file",0,a.getNbBedrooms());
+			Assert.assertEquals("Floor area doesn't match with the floor area in the XML file",150.0,a.getFloorArea(),0);
+			Assert.assertEquals("Floor area terrace doesn't match with the floor area terrace in the XML file",160.0,a.getFloorAreaTerrace(),0);
+			Assert.assertEquals("Price per night doesn't match with the price per night in the XML file",3,a.getPricePerNight(),0);
+			Assert.assertEquals("Minimum number of nights doesn't match with the minimum number of nights in the XML file",0,a.getNbMinNight());
+			Assert.assertTrue("The value of boolean tele doesn't match with the value of tele in the XML File",a.getTele());
+			Assert.assertTrue("The value of boolean terrace doesn't match with the value of terrace in the XML File",a.getTerrace());
+			Assert.assertTrue("The value of boolean wifi doesn't match with the value of wifi in the XML File",a.getWifi());
+			
 
 		}
 

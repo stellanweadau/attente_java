@@ -41,7 +41,7 @@ public class ReadApartmentsXMLFormat {
 		if (prop.containsKey("floorAreaTerrace"))
 			apartment.setFloorAreaTerrace(Double.parseDouble(prop.getProperty("floorAreaTerrace")));
 		if (prop.containsKey("wifi"))
-			apartment.setWifi(Boolean.valueOf(prop.getProperty("floorAreaTerrace")));
+			apartment.setWifi(Boolean.valueOf(prop.getProperty("wifi")));
 		if (prop.containsKey("tele"))
 			apartment.setTele(Boolean.valueOf(prop.getProperty("tele")));
 		if (prop.containsKey("nbSleeping"))
