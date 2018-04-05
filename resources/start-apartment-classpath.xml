@@ -3,7 +3,7 @@
 <properties>
 	<comment>Second apartment</comment>
 	<entry key="title">Villa à louer</entry>
-	<entry key="address">5 avenue Roger Salengro 92370 Chaville France</entry>
+	<entry key="address">5 avenue Roger Salengro 92370 Chaville France </entry>
 	<entry key="floorArea">150</entry>
 	<entry key="nbSleeping">5</entry>
 	<entry key="tele">true</entry>
