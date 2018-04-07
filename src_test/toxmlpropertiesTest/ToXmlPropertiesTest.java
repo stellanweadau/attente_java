@@ -22,9 +22,9 @@ class ToXmlPropertiesTest {
 		
 		try (InputStream input = new FileInputStream(f)){
 			Apartment b = r1.readApartment(input);
-			Assert.assertEquals("Poubelle", b.getTitle());
-			Assert.assertEquals("888 rue du jackpot", b.getAddress());
-			Assert.assertEquals(77.0, b.getFloorArea(), 1);
+			Assert.assertEquals("Petit Manoir de campagne", b.getTitle());
+			Assert.assertEquals("6 rue des paquerette 74000 Annecy", b.getAddress());
+			Assert.assertEquals(80.5, b.getFloorArea(), 1);
 		}
 		
 		

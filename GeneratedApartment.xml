@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties PUBLIC "" "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Apartments written with java</comment>
+<entry key="private double io.github.oliviercailloux.y2018.apartments.apartment.Apartment.floorArea">80.5</entry>
+<entry key="private java.lang.String io.github.oliviercailloux.y2018.apartments.apartment.Apartment.address">6 rue des paquerette 74000 Annecy</entry>
+<entry key="private int io.github.oliviercailloux.y2018.apartments.apartment.Apartment.nbBedrooms">0</entry>
+<entry key="private int io.github.oliviercailloux.y2018.apartments.apartment.Apartment.nbSleeping">0</entry>
+<entry key="private int io.github.oliviercailloux.y2018.apartments.apartment.Apartment.nbBathrooms">0</entry>
+<entry key="private boolean io.github.oliviercailloux.y2018.apartments.apartment.Apartment.terrace">false</entry>
+<entry key="private double io.github.oliviercailloux.y2018.apartments.apartment.Apartment.floorAreaTerrace">0.0</entry>
+<entry key="private java.lang.String io.github.oliviercailloux.y2018.apartments.apartment.Apartment.description"/>
+<entry key="private java.lang.String io.github.oliviercailloux.y2018.apartments.apartment.Apartment.title">Petit Manoir de campagne</entry>
+<entry key="private boolean io.github.oliviercailloux.y2018.apartments.apartment.Apartment.wifi">false</entry>
+<entry key="private double io.github.oliviercailloux.y2018.apartments.apartment.Apartment.pricePerNight">0.0</entry>
+<entry key="private int io.github.oliviercailloux.y2018.apartments.apartment.Apartment.nbMinNight">0</entry>
+<entry key="private boolean io.github.oliviercailloux.y2018.apartments.apartment.Apartment.tele">false</entry>
+</properties>

@@ -2,7 +2,17 @@
 <!DOCTYPE properties PUBLIC "" "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>Apartments written with java</comment>
-<entry key="title">Poubelle</entry>
-<entry key="address">888 rue du jackpot</entry>
-<entry key="floorArea">77</entry>
+<entry key="floorArea">80.5</entry>
+<entry key="address">6 rue des paquerette 74000 Annecy</entry>
+<entry key="nbBedrooms">0</entry>
+<entry key="nbSleeping">0</entry>
+<entry key="nbBathrooms">0</entry>
+<entry key="terrace">false</entry>
+<entry key="floorAreaTerrace">0.0</entry>
+<entry key="description"/>
+<entry key="title">Petit Manoir de campagne</entry>
+<entry key="wifi">false</entry>
+<entry key="pricePerNight">0.0</entry>
+<entry key="nbMinNight">0</entry>
+<entry key="tele">false</entry>
 </properties>
