@@ -58,9 +58,7 @@ public class XMLProperties extends JPanel{
 				Document doc = docBuilder.newDocument();
 				Element rootElement = doc.createElement("properties");
 				doc.appendChild(rootElement);
-				
-				//Doctype
-				
+					
 			
 				
 				//Comment
