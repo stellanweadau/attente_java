@@ -6,15 +6,17 @@ import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-
+import org.w3c.dom.DOMImplementation;
 //source of the XML writer http://www.mkyong.com/java/how-to-create-xml-file-in-java-dom/
 import org.w3c.dom.Document;
+import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
@@ -57,6 +59,10 @@ public class XMLProperties extends JPanel{
 				Element rootElement = doc.createElement("properties");
 				doc.appendChild(rootElement);
 				
+				//Doctype
+				
+			
+				
 				//Comment
 				Element comment = doc.createElement("comment");
 				rootElement.appendChild(comment);
@@ -84,6 +90,15 @@ public class XMLProperties extends JPanel{
 				// write the content into xml file
 				TransformerFactory transformerFactory = TransformerFactory.newInstance();
 				Transformer transformer = transformerFactory.newTransformer();
+				transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+				transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+				transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+				DOMImplementation domImpl = doc.getImplementation();
+				DocumentType doctype = domImpl.createDocumentType("doctype",
+				    "",
+				    "http://java.sun.com/dtd/properties.dtd");
+				transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, doctype.getPublicId());
+				transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, doctype.getSystemId());
 				DOMSource source = new DOMSource(doc);
 				StreamResult result = new StreamResult(new File(dirpicker.getSelectedFile(), "GeneratedApartment.xml"));
 

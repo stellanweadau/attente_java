@@ -1,12 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.readapartments;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.util.Properties;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 

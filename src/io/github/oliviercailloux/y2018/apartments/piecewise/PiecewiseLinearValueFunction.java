@@ -71,7 +71,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 * @param ordB ordinate of the point B
 	 * @return a double number which corresponds to the linear value.
 	 */
-	private double getLinearValue(int absA, int absB, double ordA, double ordB) {
+	public double getLinearValue(int absA, int absB, double ordA, double ordB) {
 		if ( absA == absB)
 			throw new IllegalArgumentException("The points are the same");
 		return ( ordB - ordA) / (absB - absA);
