@@ -10,6 +10,11 @@ import java.nio.file.Path;
 import java.util.Properties;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
+/**
+ * 
+ * This class enables the user to load an XML file for an apartment and transform it to an apartment object.
+ *
+ */
 public class ReadApartmentsXMLFormat {
 	
 	private Properties prop;

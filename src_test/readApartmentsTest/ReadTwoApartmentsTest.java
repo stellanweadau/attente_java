@@ -8,6 +8,11 @@ import java.io.InputStream;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
+/**
+ * This class corresponds to the Resource2 of the project.
+ * It displays two apartments from XML file, one included in the classpath or one not included in the classpath.
+ *
+ */
 public class ReadTwoApartmentsTest {
 
 	/**
