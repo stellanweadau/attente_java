@@ -1,15 +1,28 @@
 package io.github.oliviercailloux.y2018.apartments.toxmlproperties;
 
-
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+
+//source of the XML writer http://www.mkyong.com/java/how-to-create-xml-file-in-java-dom/
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
 public class XMLProperties extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
-	private JFileChooser dirpicker;
+	private static JFileChooser dirpicker;
 	
 	public void toXMLProperties(Apartment a)
 	{
@@ -34,5 +47,59 @@ public class XMLProperties extends JPanel{
 		XMLProperties j = new XMLProperties();
 		Apartment a = new Apartment(80.5, "6 rue des paquerette 74000 Annecy", "Petit Manoir de campagne");
 		j.toXMLProperties(a);
+		  try {
+
+				DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+				// root elements
+				Document doc = docBuilder.newDocument();
+				Element rootElement = doc.createElement("properties");
+				doc.appendChild(rootElement);
+				
+				//Comment
+				Element comment = doc.createElement("comment");
+				rootElement.appendChild(comment);
+				comment.appendChild(doc.createTextNode("Apartments written with java"));
+
+
+				// staff elements
+				Element entry = doc.createElement("entry");
+				rootElement.appendChild(entry);
+
+				// set attribute to staff element
+				entry.setAttribute("key", "title");	
+				entry.appendChild(doc.createTextNode("Poubelle"));
+				
+				Element entry1 = doc.createElement("entry");
+				rootElement.appendChild(entry1);
+				entry1.setAttribute("key", "address");	
+				entry1.appendChild(doc.createTextNode("888 rue du jackpot"));
+				
+				Element entry11 = doc.createElement("entry");
+				rootElement.appendChild(entry11);
+				entry11.setAttribute("key", "floorArea");	
+				entry11.appendChild(doc.createTextNode("77"));
+
+				// write the content into xml file
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource source = new DOMSource(doc);
+				StreamResult result = new StreamResult(new File(dirpicker.getSelectedFile(), "GeneratedApartment.xml"));
+
+				// Output to console for testing
+				// StreamResult result = new StreamResult(System.out);
+
+				transformer.transform(source, result);
+
+				System.out.println("File saved!");
+
+			  } catch (ParserConfigurationException pce) {
+				pce.printStackTrace();
+			  } catch (TransformerException tfe) {
+				tfe.printStackTrace();
+			  }
 	}
 }
+
+
