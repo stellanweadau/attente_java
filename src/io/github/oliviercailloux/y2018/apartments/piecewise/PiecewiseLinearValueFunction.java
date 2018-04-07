@@ -1,6 +1,9 @@
 package io.github.oliviercailloux.y2018.apartments.piecewise;
 
 import java.util.Map;
+
+import com.google.common.collect.Range;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -36,14 +39,16 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 */
 	@Override
 	public void setUtility(int key, double value) {
-		if (utility.containsKey(key) == false) {
-			if (key>=0 && value>=0 && value<=1)
-				utility.put(key, value);
-			else
-				throw new IllegalArgumentException("The key or the utility in parameter is not in keeping with the rules.");
-		}	
-		else
+		
+		if (utility.containsKey(key) == true)
 			throw new IllegalArgumentException("The key is already in the Map");
+		
+		if (key<0 && value<0 && value>1)
+			throw new IllegalArgumentException("The key or the utility in parameter is not in keeping with the rules.");
+		
+		utility.put(key, value);
+			
+	
 	}
 
 	/**
@@ -66,12 +71,11 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 * @param ordB ordinate of the point B
 	 * @return a double number which corresponds to the linear value.
 	 */
-	@Override
-	public double getLinearValue(int absA, int absB, double ordA, double ordB) {
-		if ( absA != absB) {
-			return ( ordB - ordA) / (absB - absA);
-		}
-		throw new IllegalArgumentException("The points are the same");
+	private double getLinearValue(int absA, int absB, double ordA, double ordB) {
+		if ( absA == absB)
+			throw new IllegalArgumentException("The points are the same");
+		return ( ordB - ordA) / (absB - absA);
+		
 	}
 	
 	/**
@@ -82,8 +86,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 * @param ordB ordinate of the point B
 	 * @return a double number which corresponds to the ordinate value.
 	 */
-	@Override
-	public double getOrdinateValue(int absA, int absB, double ordA, double ordB) {
+	private double getOrdinateValue(int absA, int absB, double ordA, double ordB) {
 		double linearValue = getLinearValue(absA, absB, ordA, ordB);
 		return ordA - (absA* linearValue);
 	}
@@ -123,32 +126,30 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	}
 	
 	/**
-	 * The method returns a couple of keys that are the closer to the key in parameter.
+	 * The method returns an interval that is the closest to the key in parameter.
 	 * The first one is calculated less than the key in parameter.
 	 * The second one is calculated more than the key in parameter.
 	 * @param key integer which corresponds to a key value
-	 * @return a table of integers with the two keys.
-	 * If the key in parameter is above the maximum of the key, the table returned is [0,0].
-	 * If the key in parameter is below the minimum of the key, the table returned is [-1,-1].
-	 * @throws IOException 
+	 * @return an interval of integers with the two keys as bounds.
+	 * @throws IllegalArgumentException
 	 */
 	@Override
-	public int[] getInterval(int key) throws IOException {
-		int[] tab = new int[2];
+	public Range<Integer> getInterval(int key) throws IOException {
+		
 		
 		Iterator<Integer> k = utility.keySet().iterator();
-		int delta1= -1; // difference between the parameter key and the current key of the set, 
+		int delta1= -1;
 		int delta2 = -1;
 		int key1 = 0;
 		int key2 = 0;
-		int tmp = 0; // temporary variable used for stocking the value of the current key
+		int tmp = 0;
 		
 		if (key>getMaxKey()) {
-			throw new IOException("Aucune valeur cohérente à renvoyer pour l'intervalle");
+			throw new IllegalArgumentException("No coherent value to return for the range");
 		}
 		
 		if (key<getMinKey()) {
-			throw new IOException("Aucune valeur cohérente à renvoyer pour l'intervalle");
+			throw new IllegalArgumentException("No coherent value to return for the range");
 		}
 		
 		while (k.hasNext()) {		
@@ -175,10 +176,9 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 			}
 		}
 		
-		tab[0] = key1;
-		tab[1] = key2;
+		Range<Integer> interval = Range.closed(key1, key2);
 		
-		return tab;
+		return interval;
 		
 		
 	}
@@ -192,25 +192,23 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 */
 	@Override
 	public double getUtility(int key) throws IOException {
-		double value = -1;
+		
+		Range<Integer> intervalKey = getInterval(key);
+		int lowerBound = intervalKey.lowerEndpoint();
+		int upperBound = intervalKey.upperEndpoint();
+		
 		
 		if (utility.containsKey(key))
 			return utility.get(key);
 		
 		if (utility.size()<2)
-			throw new IllegalArgumentException("Need more couples (minimum of 2) to identify the linear value");
+			throw new IllegalStateException("Need more couples (minimum of 2) to identify the linear value");
 		
-		int[] tabKey = getInterval(key);
 		
-		if (tabKey[0]==0 && tabKey[1]==0)
-			return 1;
 		
-		if (tabKey[0]==-1 && tabKey[1]==-1)
-			return 0;
+		double value = getOrdinateValue(lowerBound, upperBound,utility.get(lowerBound), utility.get(upperBound));
 		
-		value = getOrdinateValue(tabKey[0], tabKey[1],utility.get(tabKey[0]), utility.get(tabKey[1]));
-		
-		return key*getLinearValue(tabKey[0], tabKey[1],utility.get(tabKey[0]), utility.get(tabKey[1])) + value;
+		return key*getLinearValue(lowerBound, upperBound,utility.get(lowerBound), utility.get(upperBound)) + value;
 	} 
 		
 	public static void main (String args[]) throws IOException {
@@ -220,6 +218,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		f.setUtility(50, 0.5);
 		System.out.println(f.getUtility(40));
 		System.out.println(f.getMinKey());
+		
 	}
 
 }

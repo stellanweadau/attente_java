@@ -47,7 +47,7 @@ public class Apartment {
 	 * @param title is a string of characters that represents the title of the announcement
 	 */
 	private String title;
- 
+
 	/**
 	 * @param wifi is a boolean (true/false) which indicates if there is wireless connection to internet or not
 	 */
@@ -64,11 +64,11 @@ public class Apartment {
 	private int nbMinNight; 
 
 	/**
-	 * @param tele is a boolean (true/false) which indicates which indicates if there's a television or not
+	 * @param tele is a boolean (true/false) which indicates if there's a television or not
 	 */
 	private boolean tele; 
 
-	
+
 	/**
 	 * @param floorArea is a real number superior or equal to zero, it represents the floor area of the Apartment in square meters
 	 * @param address is a string of characters that gives the full location of the Apartment
@@ -90,6 +90,38 @@ public class Apartment {
 		this.tele = false ;
 	}
 
+	@Override
+	public String toString() {
+		String dispTitle ;
+		String dispAddress ;
+		String dispFloorArea ;
+		String dispNbBedrooms ;
+		String dispNbSleeping ;
+		String dispNbBathrooms ;
+		String dispTerrace ;
+		String dispFloorAreaTerrace ;
+		String dispDescription ;
+		String dispWifi ;
+		String dispPricePerNight ;
+		String dispNbMinNight ;
+		String dispTele ;
+
+		dispTitle = "\nTitle : " + title ;
+		dispAddress = "\nAddress : " + address ;
+		dispFloorArea = "\nFloor area : " + Double.toString(floorArea) + " square meters";
+		dispNbBedrooms = "\nNumber of bedrooms : " + ((nbBedrooms == 0) ? "N/A" : Integer.toString(nbBedrooms)+" bedroom(s)") ;
+		dispNbSleeping = "\nNumber of sleeping (capacity) : " + ((nbSleeping == 0) ? "N/A" : Integer.toString(nbSleeping)+" person(s)") ;
+		dispNbBathrooms = "\nNumber of bathrooms : " + ((nbBathrooms == 0) ? "N/A" : Integer.toString(nbBathrooms)+" bathroom(s)") ;
+		dispTerrace = "\nTerrace : " + ((terrace == true) ? "Yes" : "No") ;
+		dispFloorAreaTerrace = ((terrace == false) ? "" : "\nTerrace floor area : " + ((floorAreaTerrace == 0) ? "N/A" : Double.toString(floorAreaTerrace)+" square meters")) ;
+		dispDescription = "\nDescription : " + ((description == "") ? "N/A" : description) ;
+		dispWifi = "\nWifi : " + ((wifi == true) ? "Yes" : "No") ;
+		dispTele = "\nTelevision : " + ((tele == true) ? "Yes" : "No") ;
+		dispPricePerNight = "\nPrice per night : " + ((pricePerNight == 0) ? "N/A" : Double.toString(pricePerNight)+"$") ;
+		dispNbMinNight = "\nNumber of night minimum to rent this apartment : " + ((nbMinNight == 0) ? "N/A" : Integer.toString(nbMinNight)+" night(s)") ;
+		
+		return dispTitle + dispAddress + dispFloorArea  +dispNbBedrooms + dispNbSleeping + dispNbBathrooms + dispTerrace + dispFloorAreaTerrace + dispDescription  +dispWifi + dispPricePerNight + dispNbMinNight + dispTele ; 
+	}
 
 	/**
 	 * get the value of the floor area
@@ -106,9 +138,9 @@ public class Apartment {
 	public String getAddress() {
 		return address;
 	}
-	
+
 	/**
-	 * get the number of bedrooms
+	 * get the number of bedrooms, 0 if missing
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbBedrooms() {
@@ -116,7 +148,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the number of sleeping
+	 * get the number of sleeping, 0 if missing
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbSleeping() {
@@ -124,7 +156,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the number of bathrooms
+	 * get the number of bathrooms, 0 if missing
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbBathrooms() {
@@ -148,7 +180,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the description of the apartment
+	 * get the description of the apartment, "" if missing
 	 * @return a string of characters
 	 */
 	public String getDescription() {
@@ -172,7 +204,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the price for one night 
+	 * get the price for one night, 0 if missing
 	 * @return a double positive or equal to zero
 	 */
 	public double getPricePerNight() {
@@ -180,7 +212,7 @@ public class Apartment {
 	}
 
 	/**
-	 * get the minimum number of nights  
+	 * get the minimum number of nights, 0 if missing
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbMinNight() {
@@ -195,7 +227,7 @@ public class Apartment {
 		return tele;
 	}
 
-	
+
 	/**
 	 * @param floorArea is a real number superior or equal to zero
 	 */
@@ -211,7 +243,7 @@ public class Apartment {
 	public void setaddress(String address) {
 		this.address = address;
 	}
-	
+
 	/**
 	 * @param nbBedrooms is an integer superior or equal to zero
 	 */
@@ -229,16 +261,16 @@ public class Apartment {
 			throw new IllegalArgumentException ("The accomodation capcity can not be negative");
 		this.nbSleeping = nbSleeping ;
 	}
-	
+
 	/**
 	 * @param nbBathrooms is an integer superior or equal to zero 
 	 */
 	public void setNbBathrooms(int nbBathrooms) {
 		if (nbBathrooms < 0)
-			throw new IllegalArgumentException ("The number of bathroom can not be negative");
+			throw new IllegalArgumentException ("The number of bathrooms can not be negative");
 		this.nbBathrooms = nbBathrooms ;
 	}
-	
+
 	/**
 	 * @param terrace is a boolean (true/false)
 	 */
@@ -256,28 +288,28 @@ public class Apartment {
 			throw new IllegalArgumentException ("The floor area of the terrace can not be negative");
 		this.floorAreaTerrace = floorAreaTerrace ;
 	}
-	
+
 	/**
 	 * @param description is a string of characters
 	 */
 	public void setDescription(String description) {
 		this.description = description ;
 	}
-	
+
 	/**
 	 * @param title is a string of characters 
 	 */
 	public void setTitle(String title) {
 		this.title = title ;
 	}
-	
+
 	/**
 	 * @param wifi is a boolean (true/false)
 	 */
 	public void setWifi(boolean wifi) {
 		this.wifi = wifi ;
 	}
-	
+
 	/**
 	 * @param pricePerNight is a real number superior or equal to zero
 	 */
@@ -286,7 +318,7 @@ public class Apartment {
 			throw new IllegalArgumentException ("The price per night can not be negative");
 		this.pricePerNight = pricePerNight ;
 	}
-	
+
 	/**
 	 * @param nbMinNight is an integer superior or equal to zero
 	 */
@@ -295,12 +327,12 @@ public class Apartment {
 			throw new IllegalArgumentException ("The minimum number of nights can not be negative");
 		this.nbMinNight = nbMinNight ;
 	}
-	
+
 	/**
 	 * @param tele is a boolean (true/false)
 	 */
 	public void setTele(boolean tele) {
 		this.tele = tele ;
 	}
-	
+
 }
