@@ -13,7 +13,10 @@ import java.io.InputStream;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
-
+/**
+ * Test class for ReadApartmentsXMLFormat class.
+ *
+ */
 class ReadApartmentsXMLFormatTest {
 
 	
