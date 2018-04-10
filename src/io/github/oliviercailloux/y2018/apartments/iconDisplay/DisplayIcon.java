@@ -17,7 +17,7 @@ public class DisplayIcon {
 				d.sleep( );
 		}
 		d.dispose( );
-
+		s.dispose();
 	}
 
 }
