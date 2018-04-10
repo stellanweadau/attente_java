@@ -34,7 +34,7 @@ public class ReadTwoApartmentsTest {
 		
 		String f1 = new File("start-apartment.xml").getAbsolutePath();
 
-		try (InputStream f = ReadTwoApartmentsTest.class.getResourceAsStream("start-apartment-classpath.xml")){
+		try (InputStream f = ReadTwoApartmentsTest.class.getClassLoader().getResourceAsStream("start-apartment-classpath.xml")){
 			Apartment a = r.readApartment(f);
 			System.out.println(a);
 		}
