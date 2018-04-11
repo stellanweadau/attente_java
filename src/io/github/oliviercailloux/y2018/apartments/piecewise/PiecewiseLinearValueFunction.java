@@ -43,7 +43,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		if (utility.containsKey(key) == true)
 			throw new IllegalArgumentException("The key is already in the Map");
 		
-		if (key<0 && value<0 && value>1)
+		if (key<0 || value<0 || value>1)
 			throw new IllegalArgumentException("The key or the utility in parameter is not in keeping with the rules.");
 		
 		utility.put(key, value);
