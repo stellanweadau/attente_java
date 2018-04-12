@@ -27,10 +27,7 @@ public class ReadTwoApartmentsTest {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
-		ReadApartmentsXMLFormat r1 = new ReadApartmentsXMLFormat();
-
-		//File f = new File("resources\\start-apartment-classpath.xml"); 
-		
+		ReadApartmentsXMLFormat r1 = new ReadApartmentsXMLFormat();	
 		
 		String f1 = new File("start-apartment.xml").getAbsolutePath();
 

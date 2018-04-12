@@ -25,11 +25,11 @@ class ReadApartmentsXMLFormatTest {
 
 		ReadApartmentsXMLFormat r = initializeReadApartmentsXMLFormat();
 
-		File f = new File("resources\\start-apartment-classpath.xml");
+		
 
-		try (InputStream input = new FileInputStream(f)){
+		try (InputStream f = ReadTwoApartmentsTest.class.getClassLoader().getResourceAsStream("start-apartment-classpath.xml")){
 
-			Apartment a = r.readApartment(input);
+			Apartment a = r.readApartment(f);
 
 			Assert.assertEquals("Address doesn't match with the address in the XML file","5 avenue Roger Salengro 92370 Chaville France",a.getAddress());
 			Assert.assertEquals("Title doesn't match with the title in the XML file","Villa à louer",a.getTitle());
