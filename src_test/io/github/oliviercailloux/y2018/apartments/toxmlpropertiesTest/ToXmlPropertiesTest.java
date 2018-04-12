@@ -1,4 +1,4 @@
-package toxmlpropertiesTest;
+package io.github.oliviercailloux.y2018.apartments.toxmlpropertiesTest;
 
 import java.io.File;
 import java.io.FileInputStream;
