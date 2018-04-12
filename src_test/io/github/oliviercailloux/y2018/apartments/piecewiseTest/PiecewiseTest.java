@@ -1,4 +1,4 @@
-package piecewiseTest;
+package io.github.oliviercailloux.y2018.apartments.piecewiseTest;
 
 import java.io.IOException;
 
