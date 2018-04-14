@@ -18,7 +18,7 @@ import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsX
 public class ReadTwoApartmentsTest {
 
 	/**
-	 * Retrieve the apartment in XML format inside the ressources folder 
+	 * Retrieve the apartment in XML format inside the resources folder 
 	 * and another apartment at the root of the project using the ReadApartmentsXMLFormat method,
 	 * then print the apartment objects which contains specifications of these 2 differents apartments.
 	 * @throws FileNotFoundException
@@ -31,7 +31,7 @@ public class ReadTwoApartmentsTest {
 		
 		String f1 = new File("start-apartment.xml").getAbsolutePath();
 
-		try (InputStream f = ReadTwoApartmentsTest.class.getClassLoader().getResourceAsStream("start-apartment-classpath.xml")){
+		try (InputStream f = ReadTwoApartmentsTest.class.getResourceAsStream("start-apartment-classpath.xml")){
 			Apartment a = r.readApartment(f);
 			System.out.println(a);
 		}
