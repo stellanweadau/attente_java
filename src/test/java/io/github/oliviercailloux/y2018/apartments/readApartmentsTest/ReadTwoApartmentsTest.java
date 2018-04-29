@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
@@ -28,6 +31,9 @@ public class ReadTwoApartmentsTest {
 
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 		ReadApartmentsXMLFormat r1 = new ReadApartmentsXMLFormat();	
+		
+		Logger Logger = LoggerFactory.getLogger(ReadTwoApartmentsTest.class);
+		Logger.debug("coucou");
 		
 		String f1 = new File("start-apartment.xml").getAbsolutePath();
 
