@@ -2,6 +2,7 @@ package io.github.oliviercailloux.y2018.apartments.readapartments;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -40,6 +41,9 @@ public class ReadApartmentsXMLFormat {
 		prop.loadFromXML(input);
 		
 		logger.debug("XML Files loaded with success");
+		
+		if (prop.containsKey("floorArea")==false || prop.containsKey("address")==false || prop.containsKey("title")==false)
+			throw new InvalidPropertiesFormatException("Capital information left");
 		
 		Apartment apartment = new Apartment(Double.parseDouble(prop.getProperty("floorArea")),prop.getProperty("address"),prop.getProperty("title"));
 		
