@@ -3,7 +3,7 @@
 <properties>
 	<comment>First apartment</comment>
 	<entry key="title">hotel</entry>
-	<entry key="address">35 rue de la Ronce 92410 Ville d'Avray France</entry>
+	<entry key="address">5 rue de la Ronce 92410 Ville d'Avray France</entry>
 	<entry key="floorArea">15</entry>
 	<entry key="nbBathrooms">16</entry>
 	<entry key="wifi">false</entry>
