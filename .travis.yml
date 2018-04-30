@@ -1,4 +1,7 @@
 language: java
+install: true
+script:
+        - mvn install
 git:
         depth: 1
 jdk:
