@@ -26,7 +26,9 @@ import org.w3c.dom.Element;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
 public class XMLProperties extends JPanel {
-
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	private static JFileChooser dirpicker;
 
