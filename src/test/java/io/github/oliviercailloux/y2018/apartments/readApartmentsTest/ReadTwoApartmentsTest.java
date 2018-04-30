@@ -32,9 +32,6 @@ public class ReadTwoApartmentsTest {
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 		ReadApartmentsXMLFormat r1 = new ReadApartmentsXMLFormat();	
 		
-		Logger Logger = LoggerFactory.getLogger(ReadTwoApartmentsTest.class);
-		Logger.debug("coucou");
-		
 		String f1 = new File("start-apartment.xml").getAbsolutePath();
 
 		try (InputStream f = ReadTwoApartmentsTest.class.getResourceAsStream("start-apartment-classpath.xml")){

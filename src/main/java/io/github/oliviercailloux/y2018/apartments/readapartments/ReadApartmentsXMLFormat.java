@@ -3,7 +3,12 @@ package io.github.oliviercailloux.y2018.apartments.readapartments;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.readApartmentsTest.ReadTwoApartmentsTest;
 
 /**
  * 
@@ -13,6 +18,8 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 public class ReadApartmentsXMLFormat {
 	
 	private Properties prop;
+	
+	static Logger logger = LoggerFactory.getLogger(ReadTwoApartmentsTest.class);
 
 	public ReadApartmentsXMLFormat() {
 		
@@ -28,9 +35,15 @@ public class ReadApartmentsXMLFormat {
 	 */
 	public Apartment readApartment(InputStream input) throws IOException{
 		
+		logger.info("Entering readApartment method");
+		
 		prop.loadFromXML(input);
 		
+		logger.debug("XML Files loaded with success");
+		
 		Apartment apartment = new Apartment(Double.parseDouble(prop.getProperty("floorArea")),prop.getProperty("address"),prop.getProperty("title"));
+		
+		logger.debug("New Apartment object created with success");
 		
 		if (prop.containsKey("description"))
 			apartment.setDescription(prop.getProperty("description"));
@@ -52,6 +65,8 @@ public class ReadApartmentsXMLFormat {
 			apartment.setPricePerNight(Double.parseDouble(prop.getProperty("pricePerNight")));
 		if (prop.containsKey("nbMinNight"))
 			apartment.setNbMinNight(Integer.parseInt(prop.getProperty("nbMinNight")));
+		
+		logger.debug("Parameters inserted with success in the Apartment Object");
 		
 		return apartment;
 	}
