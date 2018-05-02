@@ -54,6 +54,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 			throw new IllegalArgumentException("The key or the utility in parameter is not in keeping with the rules.");
 		
 		utility.put(key, value);
+		piecewiseLinearValueFunction.debug("Utility "+key+" with the value "+value+" set with sucess");
 			
 	
 	}
@@ -77,8 +78,11 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 * @return a double number which corresponds to the linear value.
 	 */
 	private double getLinearValue(Point2D a, Point2D b) {
-		if ( a.getX() == b.getX())
+		
+		if ( a.getX() == b.getX()) {
+			piecewiseLinearValueFunction.error("The linear value cannot be calculated");
 			throw new IllegalArgumentException("The points are the same");
+		}
 
 		return ( b.getY() - a.getY()) / (b.getX() - a.getX());
 		

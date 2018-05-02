@@ -49,8 +49,6 @@ public class ReadApartmentsXMLFormat {
 		
 		Apartment apartment = new Apartment(Double.parseDouble(prop.getProperty("floorArea")),prop.getProperty("address"),prop.getProperty("title"));
 		
-		readApartmentsXMLFormat.debug("New Apartment object created with success"); // a mettre dans le constructeur
-		
 		if (prop.containsKey("description"))
 			apartment.setDescription(prop.getProperty("description"));
 		if (prop.containsKey("nbBathrooms"))
