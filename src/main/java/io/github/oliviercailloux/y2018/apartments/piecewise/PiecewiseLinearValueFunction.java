@@ -2,7 +2,12 @@ package io.github.oliviercailloux.y2018.apartments.piecewise;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.collect.Range;
+
+import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
 import java.awt.geom.Point2D;
 import java.io.IOException;
@@ -21,6 +26,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 
 	private String criteria;
 	private Map<Integer, Double> utility;
+	static Logger piecewiseLinearValueFunction = LoggerFactory.getLogger(PiecewiseLinearValueFunction.class);
 
 	/**
 	 * Constructor of the object {@link PricewiseLinearValueFunction}
@@ -66,28 +72,22 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 * This method calculates the linear value of a function. 
 	 * If the point A and the point B are not different, the method returns
 	 * an IllegalArgumentException.
-	 * @param absA abscissa of the point A
-	 * @param absB abscissa of the point B
-	 * @param ordA ordinate of the point A
-	 * @param ordB ordinate of the point B
+	 * @param a the Point2D A
+	 * @param b the Point2D B
 	 * @return a double number which corresponds to the linear value.
 	 */
 	private double getLinearValue(Point2D a, Point2D b) {
-		if ( a.getX() == b.getX()) {
-			System.out.println(a.getX());
-			System.out.println(b.getX());
+		if ( a.getX() == b.getX())
 			throw new IllegalArgumentException("The points are the same");
-		}
+
 		return ( b.getY() - a.getY()) / (b.getX() - a.getX());
 		
 	}
 	
 	/**
 	 * This method calculates the ordinate value of a function.
-	 * @param absA abscissa of the point A
-	 * @param absB abscissa of the point B
-	 * @param ordA ordinate of the point A
-	 * @param ordB ordinate of the point B
+	 * @param a the Point2D A
+	 * @param b the Point2D B
 	 * @return a double number which corresponds to the ordinate value.
 	 */
 	private double getOrdinateValue(Point2D a, Point2D b) {
@@ -134,19 +134,11 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 * The first one is calculated less than the key in parameter.
 	 * The second one is calculated more than the key in parameter.
 	 * @param key integer which corresponds to a key value
-	 * @return an interval of integers with the two keys as bounds.
+	 * @return an closed interval of integers with the two keys as bounds.
 	 * @throws IllegalArgumentException
 	 */
 	@Override
 	public Range<Integer> getInterval(int key) throws IOException {
-		
-		
-		Iterator<Integer> k = utility.keySet().iterator();
-		int delta1= -1;
-		int delta2 = -1;
-		int key1 = 0;
-		int key2 = 0;
-		int tmp = 0;
 		
 		if (key>getMaxKey()) {
 			throw new IllegalArgumentException("No coherent value to return for the range");
@@ -155,6 +147,13 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		if (key<getMinKey()) {
 			throw new IllegalArgumentException("No coherent value to return for the range");
 		}
+		
+		Iterator<Integer> k = utility.keySet().iterator();
+		int delta1= -1;
+		int delta2 = -1;
+		int key1 = 0;
+		int key2 = 0;
+		int tmp = 0;
 		
 		while (k.hasNext()) {		
 			tmp = k.next();
@@ -190,16 +189,12 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	/**
 	 * This method calculates and returns the value of the utility associated with the key
 	 * in parameter.
-	 * @param value of the key
+	 * @param value of the key (int) which has to be more or equal than the min and strictly less or equal than the max 
 	 * @return the value (double) of the utility associated with the key in parameter
 	 * @throws IOException 
 	 */
 	@Override
 	public double getUtility(int key) throws IOException {
-		
-		Range<Integer> intervalKey = getInterval(key);
-		int lowerBound = intervalKey.lowerEndpoint();
-		int upperBound = intervalKey.upperEndpoint();
 		
 		if (utility.containsKey(key))
 			return utility.get(key);
@@ -207,9 +202,13 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		if (utility.size()<2)
 			throw new IllegalStateException("Need more couples (minimum of 2) to identify the linear value");
 		
+		
+		Range<Integer> intervalKey = getInterval(key);
+		int lowerBound = intervalKey.lowerEndpoint();
+		int upperBound = intervalKey.upperEndpoint();
+		
 		Point2D lowerBoundPoint = new Point2D.Double(lowerBound,utility.get(lowerBound));
 		Point2D upperBoundPoint = new Point2D.Double(upperBound,utility.get(upperBound));
-
 		
 		double value = getOrdinateValue(lowerBoundPoint,upperBoundPoint);
 		

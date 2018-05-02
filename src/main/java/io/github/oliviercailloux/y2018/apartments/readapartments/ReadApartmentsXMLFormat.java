@@ -20,7 +20,7 @@ public class ReadApartmentsXMLFormat {
 	
 	private Properties prop;
 	
-	static Logger readApartmentsXMLFormat = LoggerFactory.getLogger(ReadTwoApartmentsTest.class);
+	static Logger readApartmentsXMLFormat = LoggerFactory.getLogger(ReadApartmentsXMLFormat.class);
 
 	public ReadApartmentsXMLFormat() {
 		
@@ -44,12 +44,12 @@ public class ReadApartmentsXMLFormat {
 		
 		if (prop.containsKey("floorArea")==false || prop.containsKey("address")==false || prop.containsKey("title")==false) {
 			readApartmentsXMLFormat.error("Impossible to create an apartment if a floor Area, a title or an address is missing.");
-			throw new InvalidPropertiesFormatException("Capital information left");
+			throw new InvalidPropertiesFormatException("Capital information left for the creation of an Apartment Object");
 		}
 		
 		Apartment apartment = new Apartment(Double.parseDouble(prop.getProperty("floorArea")),prop.getProperty("address"),prop.getProperty("title"));
 		
-		readApartmentsXMLFormat.debug("New Apartment object created with success");
+		readApartmentsXMLFormat.debug("New Apartment object created with success"); // a mettre dans le constructeur
 		
 		if (prop.containsKey("description"))
 			apartment.setDescription(prop.getProperty("description"));
