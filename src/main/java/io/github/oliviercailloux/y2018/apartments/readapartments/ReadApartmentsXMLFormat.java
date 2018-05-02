@@ -32,9 +32,9 @@ public class ReadApartmentsXMLFormat {
 	 * This method enables to read a XML file and store the informations into an apartment object. The XML file must contain at list a value for floorArea address and title. The key of each parameters in the XML file is respectively the name of the parameter. 
 	 * @param input is the path of XML file
 	 * @return an apartment object with values for each parameters found in the XML files and default values for the other parameters.
-	 * @throws IOException
+	 * @throws IOException, NumberFormatException, InvalidPropertiesFormatException
 	 */
-	public Apartment readApartment(InputStream input) throws IOException{
+	public Apartment readApartment(InputStream input) throws IOException, NumberFormatException, InvalidPropertiesFormatException{
 		
 		logger.info("Entering readApartment method");
 		
