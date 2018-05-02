@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.google.common.collect.Range;
 
+import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -71,10 +72,13 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 * @param ordB ordinate of the point B
 	 * @return a double number which corresponds to the linear value.
 	 */
-	public double getLinearValue(int absA, int absB, double ordA, double ordB) {
-		if ( absA == absB)
+	private double getLinearValue(Point2D a, Point2D b) {
+		if ( a.getX() == b.getX()) {
+			System.out.println(a.getX());
+			System.out.println(b.getX());
 			throw new IllegalArgumentException("The points are the same");
-		return ( ordB - ordA) / (absB - absA);
+		}
+		return ( b.getY() - a.getY()) / (b.getX() - a.getX());
 		
 	}
 	
@@ -86,9 +90,9 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 * @param ordB ordinate of the point B
 	 * @return a double number which corresponds to the ordinate value.
 	 */
-	private double getOrdinateValue(int absA, int absB, double ordA, double ordB) {
-		double linearValue = getLinearValue(absA, absB, ordA, ordB);
-		return ordA - (absA* linearValue);
+	private double getOrdinateValue(Point2D a, Point2D b) {
+		double linearValue = getLinearValue(a,b);
+		return a.getY() - (a.getX()* linearValue);
 	}
 	
 	/**
@@ -197,28 +201,20 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		int lowerBound = intervalKey.lowerEndpoint();
 		int upperBound = intervalKey.upperEndpoint();
 		
-		
 		if (utility.containsKey(key))
 			return utility.get(key);
 		
 		if (utility.size()<2)
 			throw new IllegalStateException("Need more couples (minimum of 2) to identify the linear value");
 		
+		Point2D lowerBoundPoint = new Point2D.Double(lowerBound,utility.get(lowerBound));
+		Point2D upperBoundPoint = new Point2D.Double(upperBound,utility.get(upperBound));
+
 		
+		double value = getOrdinateValue(lowerBoundPoint,upperBoundPoint);
 		
-		double value = getOrdinateValue(lowerBound, upperBound,utility.get(lowerBound), utility.get(upperBound));
-		
-		return key*getLinearValue(lowerBound, upperBound,utility.get(lowerBound), utility.get(upperBound)) + value;
+		return key*getLinearValue(lowerBoundPoint,upperBoundPoint) + value;
 	} 
 		
-	public static void main (String args[]) throws IOException {
-		PiecewiseLinearValueFunction f = new PiecewiseLinearValueFunction("Superficie");
-		f.setUtility(60, 0.6);
-		f.setUtility(30, 0.3);
-		f.setUtility(50, 0.5);
-		System.out.println(f.getUtility(40));
-		System.out.println(f.getMinKey());
-		
-	}
 
 }
