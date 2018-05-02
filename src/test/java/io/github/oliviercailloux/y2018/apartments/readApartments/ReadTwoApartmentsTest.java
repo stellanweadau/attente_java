@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.apartments.readApartmentsTest;
+package io.github.oliviercailloux.y2018.apartments.readApartments;
 
 import java.io.File;
 import java.io.FileInputStream;
