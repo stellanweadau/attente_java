@@ -1,16 +1,16 @@
-16:06:23.742 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Entering readApartment method
-16:06:23.763 [main] DEBUG i.g.o.y.a.r.ReadApartmentsXMLFormat - XML Files loaded with success
-16:06:23.765 [main] INFO  i.g.o.y.a.apartment.Apartment - The Apartment has been created with success
-16:06:23.765 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set totrue
-16:06:23.766 [main] INFO  i.g.o.y.a.apartment.Apartment - The floor area of the terrace has been set to160.0
-16:06:23.767 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set totrue
-16:06:23.767 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set totrue
-16:06:23.767 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of sleepings has been set to5
-16:06:23.768 [main] INFO  i.g.o.y.a.apartment.Apartment - The price per night has been set to3.0
-16:06:23.768 [main] DEBUG i.g.o.y.a.r.ReadApartmentsXMLFormat - Parameters inserted with success in the Apartment Object
-16:06:23.769 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Entering readApartment method
-16:06:23.773 [main] DEBUG i.g.o.y.a.r.ReadApartmentsXMLFormat - XML Files loaded with success
-16:06:23.773 [main] INFO  i.g.o.y.a.apartment.Apartment - The Apartment has been created with success
-16:06:23.773 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to16
-16:06:23.773 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set tofalse
-16:06:23.773 [main] DEBUG i.g.o.y.a.r.ReadApartmentsXMLFormat - Parameters inserted with success in the Apartment Object
+16:10:41.184 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Entering readApartment method
+16:10:41.206 [main] DEBUG i.g.o.y.a.r.ReadApartmentsXMLFormat - XML Files loaded with success
+16:10:41.208 [main] INFO  i.g.o.y.a.apartment.Apartment - The Apartment has been created with success
+16:10:41.208 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set to true
+16:10:41.209 [main] INFO  i.g.o.y.a.apartment.Apartment - The floor area of the terrace has been set to 160.0
+16:10:41.209 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to true
+16:10:41.210 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set to true
+16:10:41.210 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of sleepings has been set to5
+16:10:41.210 [main] INFO  i.g.o.y.a.apartment.Apartment - The price per night has been set to 3.0
+16:10:41.210 [main] DEBUG i.g.o.y.a.r.ReadApartmentsXMLFormat - Parameters inserted with success in the Apartment Object
+16:10:41.211 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Entering readApartment method
+16:10:41.214 [main] DEBUG i.g.o.y.a.r.ReadApartmentsXMLFormat - XML Files loaded with success
+16:10:41.215 [main] INFO  i.g.o.y.a.apartment.Apartment - The Apartment has been created with success
+16:10:41.215 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to 16
+16:10:41.215 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to false
+16:10:41.215 [main] DEBUG i.g.o.y.a.r.ReadApartmentsXMLFormat - Parameters inserted with success in the Apartment Object
