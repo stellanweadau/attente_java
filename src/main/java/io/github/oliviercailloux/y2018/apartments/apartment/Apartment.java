@@ -276,7 +276,7 @@ public class Apartment {
 			throw new IllegalArgumentException ("The accomodation capacity can not be negative");
 		}
 		this.nbSleeping = nbSleeping ;
-		apartment.info("The number of sleepings has been set to"+ nbSleeping);
+		apartment.info("The number of sleepings has been set to "+ nbSleeping);
 	}
 
 	/**
