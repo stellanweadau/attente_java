@@ -244,7 +244,7 @@ public class Apartment {
 			throw new IllegalArgumentException ("The floor area can not be negative");
 		}
 		this.floorArea = floorArea;
-		apartment.info("The floor area has been set to"+ floorArea);
+		apartment.info("The floor area has been set to "+ floorArea);
 	}
 
 	/**
@@ -252,7 +252,7 @@ public class Apartment {
 	 */
 	public void setaddress(String address) {
 		this.address = address;
-		apartment.info("The address has been set to"+ address);
+		apartment.info("The address has been set to "+ address);
 	}
 
 	/**
@@ -264,7 +264,7 @@ public class Apartment {
 			throw new IllegalArgumentException ("The number of Bedrooms can not be negative");
 		}
 		this.nbBedrooms = nbBedrooms;
-		apartment.info("The number of bathrooms has been set to"+ nbBedrooms);
+		apartment.info("The number of bathrooms has been set to "+ nbBedrooms);
 	}
 
 	/**
@@ -288,7 +288,7 @@ public class Apartment {
 			throw new IllegalArgumentException ("The number of bathrooms can not be negative");
 		}
 		this.nbBathrooms = nbBathrooms ;
-		apartment.info("The number of bathrooms has been set to"+ nbBathrooms);
+		apartment.info("The number of bathrooms has been set to "+ nbBathrooms);
 	}
 
 	/**
@@ -296,7 +296,7 @@ public class Apartment {
 	 */
 	public void setTerrace(boolean terrace) {
 		this.terrace = terrace ;
-		apartment.info("terrace has been set to"+ terrace);
+		apartment.info("terrace has been set to "+ terrace);
 	}
 
 	/**
@@ -312,7 +312,7 @@ public class Apartment {
 			throw new IllegalArgumentException ("The floor area of the terrace can not be negative");
 		}
 		this.floorAreaTerrace = floorAreaTerrace ;
-		apartment.info("The floor area of the terrace has been set to"+ floorAreaTerrace);
+		apartment.info("The floor area of the terrace has been set to "+ floorAreaTerrace);
 	}
 
 	/**
@@ -320,7 +320,7 @@ public class Apartment {
 	 */
 	public void setDescription(String description) {
 		this.description = description ;
-		apartment.info("The description has been set to" + description);
+		apartment.info("The description has been set to " + description);
 	}
 
 	/**
@@ -328,7 +328,7 @@ public class Apartment {
 	 */
 	public void setTitle(String title) {
 		this.title = title ;
-		apartment.info("The title has been set to"+ floorArea);
+		apartment.info("The title has been set to "+ floorArea);
 	}
 
 	/**
@@ -336,7 +336,7 @@ public class Apartment {
 	 */
 	public void setWifi(boolean wifi) {
 		this.wifi = wifi ;
-		apartment.info("The wifi has been set to"+ wifi);
+		apartment.info("The wifi has been set to "+ wifi);
 	}
 
 	/**
@@ -346,7 +346,7 @@ public class Apartment {
 		if (pricePerNight < 0)
 			throw new IllegalArgumentException ("The price per night can not be negative");
 		this.pricePerNight = pricePerNight ;
-		apartment.info("The price per night has been set to"+ pricePerNight);
+		apartment.info("The price per night has been set to "+ pricePerNight);
 	}
 
 	/**
@@ -356,7 +356,7 @@ public class Apartment {
 		if (nbMinNight < 0)
 			throw new IllegalArgumentException ("The minimum number of nights can not be negative");
 		this.nbMinNight = nbMinNight ;
-		apartment.info("The number minimum of night has been set to"+ nbMinNight);
+		apartment.info("The number minimum of night has been set to "+ nbMinNight);
 	}
 
 	/**
@@ -364,7 +364,7 @@ public class Apartment {
 	 */
 	public void setTele(boolean tele) {
 		this.tele = tele ;
-		apartment.info("The tele has been set to"+ tele);
+		apartment.info("The tele has been set to "+ tele);
 	}
 
 }
