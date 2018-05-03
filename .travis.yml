@@ -1,13 +1,9 @@
---- 
 cache: 
   directories: 
     - $HOME/.m2
 dist: trusty
 git: 
   depth: 1
-install: true
 jdk: 
   - openjdk8
 language: java
-script: 
-  - "mvn install"
