@@ -1,1 +1,1 @@
-https://travis-ci.org/Deeplygends/Apartments.svg?branch=master
+image:https://travis-ci.org/Deeplygends/Apartments.svg?branch=master["Build Status", link="https://travis-ci.org/Deeplygends/Apartments"]
