@@ -1,7 +1,13 @@
 package io.github.oliviercailloux.y2018.apartments.apartment;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
 public class Apartment {
+	
+	static Logger apartment = LoggerFactory.getLogger(Apartment.class);
 
 	/**
 	 * @param floorArea a real number it represents the floor area of the Apartment in square meters
@@ -88,6 +94,7 @@ public class Apartment {
 		this.pricePerNight = 0;
 		this.nbMinNight = 0 ;
 		this.tele = false ;
+		apartment.info("The Apartment has been created with success");
 	}
 
 	@Override
@@ -232,9 +239,12 @@ public class Apartment {
 	 * @param floorArea is a real number superior or equal to zero
 	 */
 	public void setFloorArea(double floorArea) {
-		if (floorArea < 0)
+		if (floorArea < 0) {
+			apartment.debug("The floor area should not be negative");
 			throw new IllegalArgumentException ("The floor area can not be negative");
+		}
 		this.floorArea = floorArea;
+		apartment.info("The floor area has been set to"+ floorArea);
 	}
 
 	/**
@@ -242,33 +252,43 @@ public class Apartment {
 	 */
 	public void setaddress(String address) {
 		this.address = address;
+		apartment.info("The address has been set to"+ address);
 	}
 
 	/**
 	 * @param nbBedrooms is an integer superior or equal to zero
 	 */
 	public void setNbBedrooms(int nbBedrooms) {
-		if (nbBedrooms < 0)
+		if (nbBedrooms < 0) {
+			apartment.debug("The number of bedrooms should not be negative");
 			throw new IllegalArgumentException ("The number of Bedrooms can not be negative");
+		}
 		this.nbBedrooms = nbBedrooms;
+		apartment.info("The number of bathrooms has been set to"+ nbBedrooms);
 	}
 
 	/**
 	 * @param nbSleepings is an integer superior or equal to zero
 	 */
 	public void setNbSleeping(int nbSleeping) {
-		if (nbSleeping < 0)
-			throw new IllegalArgumentException ("The accomodation capcity can not be negative");
+		if (nbSleeping < 0) {
+			apartment.debug("The accomodation capacity should not be negative");
+			throw new IllegalArgumentException ("The accomodation capacity can not be negative");
+		}
 		this.nbSleeping = nbSleeping ;
+		apartment.info("The number of sleepings has been set to"+ nbSleeping);
 	}
 
 	/**
 	 * @param nbBathrooms is an integer superior or equal to zero 
 	 */
 	public void setNbBathrooms(int nbBathrooms) {
-		if (nbBathrooms < 0)
+		if (nbBathrooms < 0) {
+			apartment.debug("The number of bathrooms should not be negative");
 			throw new IllegalArgumentException ("The number of bathrooms can not be negative");
+		}
 		this.nbBathrooms = nbBathrooms ;
+		apartment.info("The number of bathrooms has been set to"+ nbBathrooms);
 	}
 
 	/**
@@ -276,17 +296,23 @@ public class Apartment {
 	 */
 	public void setTerrace(boolean terrace) {
 		this.terrace = terrace ;
+		apartment.info("terrace has been set to"+ terrace);
 	}
 
 	/**
 	 * @param floorAreaTerrace is a real number superior or equal to zero, it only works if terrace = true (use setTerrace)
 	 */
 	public void setFloorAreaTerrace(double floorAreaTerrace) {
-		if (this.terrace == false && floorAreaTerrace > 0)
+		if (this.terrace == false && floorAreaTerrace > 0) {
+			apartment.debug("The floor area terrace can't be set if the the terace is set to 'false'");
 			throw new IllegalArgumentException ("The terrace can not have a floor area if it doesn't exists");
-		if (floorAreaTerrace < 0)
+		}
+		if (floorAreaTerrace < 0) {
+			apartment.debug("The floor area of the terrace should not be negative");
 			throw new IllegalArgumentException ("The floor area of the terrace can not be negative");
+		}
 		this.floorAreaTerrace = floorAreaTerrace ;
+		apartment.info("The floor area of the terrace has been set to"+ floorAreaTerrace);
 	}
 
 	/**
@@ -294,6 +320,7 @@ public class Apartment {
 	 */
 	public void setDescription(String description) {
 		this.description = description ;
+		apartment.info("The description has been set to" + description);
 	}
 
 	/**
@@ -301,6 +328,7 @@ public class Apartment {
 	 */
 	public void setTitle(String title) {
 		this.title = title ;
+		apartment.info("The title has been set to"+ floorArea);
 	}
 
 	/**
@@ -308,6 +336,7 @@ public class Apartment {
 	 */
 	public void setWifi(boolean wifi) {
 		this.wifi = wifi ;
+		apartment.info("The wifi has been set to"+ wifi);
 	}
 
 	/**
@@ -317,6 +346,7 @@ public class Apartment {
 		if (pricePerNight < 0)
 			throw new IllegalArgumentException ("The price per night can not be negative");
 		this.pricePerNight = pricePerNight ;
+		apartment.info("The price per night has been set to"+ pricePerNight);
 	}
 
 	/**
@@ -326,6 +356,7 @@ public class Apartment {
 		if (nbMinNight < 0)
 			throw new IllegalArgumentException ("The minimum number of nights can not be negative");
 		this.nbMinNight = nbMinNight ;
+		apartment.info("The number minimum of night has been set to"+ nbMinNight);
 	}
 
 	/**
@@ -333,6 +364,7 @@ public class Apartment {
 	 */
 	public void setTele(boolean tele) {
 		this.tele = tele ;
+		apartment.info("The tele has been set to"+ tele);
 	}
 
 }
