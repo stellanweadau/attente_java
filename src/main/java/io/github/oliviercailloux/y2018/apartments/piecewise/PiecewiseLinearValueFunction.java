@@ -47,14 +47,21 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	@Override
 	public void setUtility(int key, double value) {
 		
-		if (utility.containsKey(key) == true)
-			throw new IllegalArgumentException("The key is already in the Map");
+		if (utility.containsKey(key) == true) {
+			piecewiseLinearValueFunction.error("The key "+key+" is already in the map.");
+			throw new IllegalArgumentException("The key is already in the Map.");
+		}
 		
-		if (key<0 || value<0 || value>1)
+		if (key<0 || value<0 || value>1) {
+			if (key<0)
+				piecewiseLinearValueFunction.error("The key has not been set because the value of the key is strictly negative.");
+			if (value<0 || value>1)
+				piecewiseLinearValueFunction.error("The key has not been set because the value of the utility doesn't respect the constraints.");
 			throw new IllegalArgumentException("The key or the utility in parameter is not in keeping with the rules.");
+		}
 		
 		utility.put(key, value);
-		piecewiseLinearValueFunction.debug("Utility "+key+" with the value "+value+" set with sucess");
+		piecewiseLinearValueFunction.info("Utility "+key+" with the value "+value+" set with sucess.");
 			
 	
 	}
@@ -80,7 +87,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	private double getLinearValue(Point2D a, Point2D b) {
 		
 		if ( a.getX() == b.getX()) {
-			piecewiseLinearValueFunction.error("The linear value cannot be calculated");
+			piecewiseLinearValueFunction.error("The linear value cannot be calculated.The abscisse of the point A "+a.getX()+" can't be the same than the abscisse of the point B "+b.getX());
 			throw new IllegalArgumentException("The points are the same");
 		}
 

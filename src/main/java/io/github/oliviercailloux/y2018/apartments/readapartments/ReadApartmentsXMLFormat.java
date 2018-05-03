@@ -35,11 +35,11 @@ public class ReadApartmentsXMLFormat {
 	 */
 	public Apartment readApartment(InputStream input) throws IOException, NumberFormatException, InvalidPropertiesFormatException{
 		
-		readApartmentsXMLFormat.info("Entering readApartment method");
+		readApartmentsXMLFormat.info("Enter readApartment method");
 		
 		prop.loadFromXML(input);
 		
-		readApartmentsXMLFormat.debug("XML Files loaded with success");
+		readApartmentsXMLFormat.info("XML Files loaded with success");
 		
 		if (prop.containsKey("floorArea")==false || prop.containsKey("address")==false || prop.containsKey("title")==false) {
 			readApartmentsXMLFormat.error("Impossible to create an apartment if a floor Area, a title or an address is missing.");
@@ -69,7 +69,8 @@ public class ReadApartmentsXMLFormat {
 		if (prop.containsKey("nbMinNight"))
 			apartment.setNbMinNight(Integer.parseInt(prop.getProperty("nbMinNight")));
 		
-		readApartmentsXMLFormat.debug("Parameters inserted with success in the Apartment Object");
+		readApartmentsXMLFormat.info("Parameters inserted with success in the Apartment Object");
+		readApartmentsXMLFormat.info("Leave readApartment method");
 		
 		return apartment;
 	}
