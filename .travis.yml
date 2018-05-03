@@ -1,12 +1,13 @@
-language: java
-install: true
-script:
-        - mvn install
-git:
-        depth: 1
-jdk:
-        - openjdk8
+--- 
+cache: 
+  directories: 
+    - $HOME/.m2
 dist: trusty
-cache:
-        directories:
-                - $HOME/.m2
+git: 
+  depth: 1
+install: true
+jdk: 
+  - openjdk8
+language: java
+script: 
+  - "mvn install"
