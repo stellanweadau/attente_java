@@ -152,10 +152,12 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	public Range<Integer> getInterval(int key) throws IOException {
 		
 		if (key>getMaxKey()) {
+			piecewiseLinearValueFunction.error("The key value "+key+" is more than "+getMaxKey()+ ". No coherent value to return for the range.");
 			throw new IllegalArgumentException("No coherent value to return for the range");
 		}
 		
 		if (key<getMinKey()) {
+			piecewiseLinearValueFunction.error("The key value "+key+" is less than "+getMinKey()+ ". No coherent value to return for the range.");
 			throw new IllegalArgumentException("No coherent value to return for the range");
 		}
 		
@@ -191,6 +193,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		}
 		
 		Range<Integer> interval = Range.closed(key1, key2);
+		piecewiseLinearValueFunction.info("The range for the utility has been set with success.");
 		
 		return interval;
 		
@@ -210,8 +213,10 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		if (utility.containsKey(key))
 			return utility.get(key);
 		
-		if (utility.size()<2)
+		if (utility.size()<2) {
+			piecewiseLinearValueFunction.error("The utility map needs more couples.");
 			throw new IllegalStateException("Need more couples (minimum of 2) to identify the linear value");
+		}
 		
 		
 		Range<Integer> intervalKey = getInterval(key);
@@ -222,6 +227,8 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		Point2D upperBoundPoint = new Point2D.Double(upperBound,utility.get(upperBound));
 		
 		double value = getOrdinateValue(lowerBoundPoint,upperBoundPoint);
+		
+		piecewiseLinearValueFunction.info("The utility has been returned with success.");
 		
 		return key*getLinearValue(lowerBoundPoint,upperBoundPoint) + value;
 	} 
