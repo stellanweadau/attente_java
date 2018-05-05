@@ -1,0 +1,5 @@
+Apartments
+
+Build status : image:https://travis-ci.org/Deeplygends/Apartments.svg?branch=master["Build Status", link="https://travis-ci.org/Deeplygends/Apartments"]
+
+Apartments is a school project. Its purpose is to develop a decisionnal tool that show different kind of appartments corresponding to the users' criteria.

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>Second apartment</comment>
+	<entry key="title">Villa à louer</entry>
+	<entry key="address">5 avenue Roger Salengro 92370 Chaville France</entry>
+	<entry key="floorArea">150</entry>
+	<entry key="nbSleeping">5</entry>
+	<entry key="tele">true</entry>
+	<entry key="wifi">true</entry>
+	<entry key="terrace">true</entry>
+	<entry key="floorAreaTerrace">160</entry>
+	<entry key="pricePerNight">3</entry>
+</properties>
