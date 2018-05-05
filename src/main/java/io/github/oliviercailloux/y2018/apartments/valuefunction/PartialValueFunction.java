@@ -7,5 +7,9 @@ public interface PartialValueFunction<T> extends Function<T, Double> {
 	
 	@Override
 	public String toString();
+	
+	public double getValue(T objdata);
+	 
+	
 
 }
