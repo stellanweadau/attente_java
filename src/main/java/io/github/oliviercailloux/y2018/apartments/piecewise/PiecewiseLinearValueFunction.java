@@ -47,14 +47,21 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	@Override
 	public void setUtility(int key, double value) {
 		
-		if (utility.containsKey(key) == true)
-			throw new IllegalArgumentException("The key is already in the Map");
+		if (utility.containsKey(key) == true) {
+			piecewiseLinearValueFunction.error("The key "+key+" is already in the map.");
+			throw new IllegalArgumentException("The key is already in the Map.");
+		}
 		
-		if (key<0 || value<0 || value>1)
+		if (key<0 || value<0 || value>1) {
+			if (key<0)
+				piecewiseLinearValueFunction.error("The key has not been set because the value of the key is strictly negative.");
+			if (value<0 || value>1)
+				piecewiseLinearValueFunction.error("The key has not been set because the value of the utility doesn't respect the constraints.");
 			throw new IllegalArgumentException("The key or the utility in parameter is not in keeping with the rules.");
+		}
 		
 		utility.put(key, value);
-		piecewiseLinearValueFunction.debug("Utility "+key+" with the value "+value+" set with sucess");
+		piecewiseLinearValueFunction.info("Utility "+key+" with the value "+value+" set with sucess.");
 			
 	
 	}
@@ -80,7 +87,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	private double getLinearValue(Point2D a, Point2D b) {
 		
 		if ( a.getX() == b.getX()) {
-			piecewiseLinearValueFunction.error("The linear value cannot be calculated");
+			piecewiseLinearValueFunction.error("The linear value cannot be calculated.The abscisse of the point A "+a.getX()+" can't be the same than the abscisse of the point B "+b.getX());
 			throw new IllegalArgumentException("The points are the same");
 		}
 
@@ -145,10 +152,12 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	public Range<Integer> getInterval(int key) throws IOException {
 		
 		if (key>getMaxKey()) {
+			piecewiseLinearValueFunction.error("The key value "+key+" is more than "+getMaxKey()+ ". No coherent value to return for the range.");
 			throw new IllegalArgumentException("No coherent value to return for the range");
 		}
 		
 		if (key<getMinKey()) {
+			piecewiseLinearValueFunction.error("The key value "+key+" is less than "+getMinKey()+ ". No coherent value to return for the range.");
 			throw new IllegalArgumentException("No coherent value to return for the range");
 		}
 		
@@ -184,6 +193,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		}
 		
 		Range<Integer> interval = Range.closed(key1, key2);
+		piecewiseLinearValueFunction.info("The range for the utility has been set with success.");
 		
 		return interval;
 		
@@ -203,8 +213,10 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		if (utility.containsKey(key))
 			return utility.get(key);
 		
-		if (utility.size()<2)
+		if (utility.size()<2) {
+			piecewiseLinearValueFunction.error("The utility map needs more couples.");
 			throw new IllegalStateException("Need more couples (minimum of 2) to identify the linear value");
+		}
 		
 		
 		Range<Integer> intervalKey = getInterval(key);
@@ -215,6 +227,8 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		Point2D upperBoundPoint = new Point2D.Double(upperBound,utility.get(upperBound));
 		
 		double value = getOrdinateValue(lowerBoundPoint,upperBoundPoint);
+		
+		piecewiseLinearValueFunction.info("The utility has been returned with success.");
 		
 		return key*getLinearValue(lowerBoundPoint,upperBoundPoint) + value;
 	} 
