@@ -14,12 +14,6 @@
 
 	<dependencies>
 		<dependency>
-    			<groupId>net.sf.m-m-m</groupId>
-   			<artifactId>mmm-util-backport-java.util.function</artifactId>
-   			<version>1.0.1</version>
-		</dependency>
-		
-		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.25</version>
