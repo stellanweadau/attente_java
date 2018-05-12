@@ -1,4 +1,2 @@
-17:48:04.793 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [10.0,50.0]  has been set with success in the LinearValueFunction class.
-17:48:04.799 [main] INFO  i.g.o.y.a.v.Discrete3ValueFunction - The Map with the three strings has been set with success in the Discrete3ValueFunction class.
-17:48:04.800 [main] INFO  i.g.o.y.a.v.ValueFunction - Subjective value of Medium computed
-17:48:04.801 [main] INFO  i.g.o.y.a.v.ValueFunction - Subjective value of 20.0 computed
+18:01:36.763 [main] INFO  i.g.o.y.a.v.Discrete3ValueFunction - The Map with the three strings has been set with success in the Discrete3ValueFunction class.
+18:01:36.779 [main] INFO  i.g.o.y.a.v.Discrete3ValueFunction - The Map with the three strings has been set with success in the Discrete3ValueFunction class.
