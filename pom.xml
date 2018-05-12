@@ -14,7 +14,7 @@
 
 	<dependencies>
 		<dependency>
-    		<groupId>net.sf.m-m-m</groupId>
+    			<groupId>net.sf.m-m-m</groupId>
    			<artifactId>mmm-util-backport-java.util.function</artifactId>
    			<version>1.0.1</version>
 		</dependency>
