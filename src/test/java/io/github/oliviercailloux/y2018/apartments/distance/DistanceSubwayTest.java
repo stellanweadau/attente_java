@@ -12,12 +12,11 @@ import com.google.maps.errors.ApiException;
 class DistanceSubwayTest {
 
 	@Test
-	void calculateDistanceTest() throws ApiException, InterruptedException, IOException {
+	void calculateDistanceAddressTest() throws ApiException, InterruptedException, IOException {
 		
 		String api_key = "AIzaSyDuFlzxo-Sbee0E6eMLnfTvxcADSKQzaNs";
 		DistanceSubway dist = new DistanceSubway(api_key,"Paris","Ville d'Avray");
-		
-		Assert.assertEquals(0.635, dist.calculateDistance(), 0);
+		Assert.assertEquals(0.635, dist.calculateDistanceAddress(), 0);
 	}
 
 }

@@ -29,9 +29,9 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 * Initializes the different variables of the ValueDistFunction class.
 	 * @param appartlocation Object Location which represents the apartment location.
 	 */
-	public ValueDistFunction(Location appartlocation){
+	public ValueDistFunction(Location appartlocation, String api_key){
 		interestlocation = new HashMap<>();
-		api_key="";
+		this.api_key=api_key;
 		this.appartlocation = appartlocation;
 		maxDuration = 0;
 	}
@@ -63,7 +63,7 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 */
 	public double calculateDistanceLocation(Location interest) throws ApiException, InterruptedException, IOException {
 		DistanceSubway dist = new DistanceSubway(api_key,interest.getName(),appartlocation.getName());
-		double currentdistance = dist.calculateDistance();
+		double currentdistance = dist.calculateDistanceAddress();
 		valueDistFunction.info("The current distance between the interest place and the apartment has been updated.");
 		if (currentdistance > maxDuration)
 			maxDuration = currentdistance;

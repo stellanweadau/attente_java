@@ -47,7 +47,7 @@ public class DistanceSubway {
 	 * The method uses DistanceMatrix of Google Maps library.
 	 * @return distance in hours between the two points given in the constructor.
 	 */
-	public double calculateDistance() throws ApiException, InterruptedException, IOException {
+	public double calculateDistanceAddress() throws ApiException, InterruptedException, IOException {
 		
 		GeoApiContext dist = new GeoApiContext.Builder()
 				.apiKey(api_key)
