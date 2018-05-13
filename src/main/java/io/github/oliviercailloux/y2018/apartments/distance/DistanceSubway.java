@@ -45,9 +45,9 @@ public class DistanceSubway {
 	/**
 	 * This method enables the user to calculate a distance between two points using Google Maps API.
 	 * The method uses DistanceMatrix of Google Maps library.
-	 * @return distance between the two points given in the constructor.
+	 * @return distance in hours between the two points given in the constructor.
 	 */
-	public long calculateDistance() throws ApiException, InterruptedException, IOException {
+	public double calculateDistance() throws ApiException, InterruptedException, IOException {
 		
 		GeoApiContext dist = new GeoApiContext.Builder()
 				.apiKey(api_key)
@@ -67,7 +67,7 @@ public class DistanceSubway {
 		
 		distanceSubway.info("DistanceMatrix build with success.");
 		
-		return result.rows[0].elements[0].distance.inMeters;
+		return (double)(result.rows[0].elements[0].duration.inSeconds)/3600;
 	}
 	
 }

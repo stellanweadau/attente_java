@@ -16,8 +16,9 @@ class DistanceSubwayTest {
 		
 		String api_key = "AIzaSyDuFlzxo-Sbee0E6eMLnfTvxcADSKQzaNs";
 		DistanceSubway dist = new DistanceSubway(api_key,"Paris","Ville d'Avray");
+		System.out.println(dist.calculateDistance());
 		
-		Assert.assertEquals(17558, dist.calculateDistance(), 0);
+		Assert.assertEquals(0.635, dist.calculateDistance(), 0);
 	}
 
 }
