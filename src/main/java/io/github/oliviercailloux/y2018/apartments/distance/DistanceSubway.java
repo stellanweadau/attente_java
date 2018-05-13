@@ -15,7 +15,7 @@ import com.google.maps.model.TravelMode;
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
 /**
- * This class enables the user to calculate between two points using the metro transport.
+ * This class enables the user to calculate the distance in hours between two points using the metro transport.
  * This class uses Google Maps API.
  * Inspiration from https://www.programcreek.com/java-api-examples/index.php?api=com.google.maps.model.DistanceMatrix
  *
