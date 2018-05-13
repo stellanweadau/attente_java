@@ -67,10 +67,16 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 		valueDistFunction.info("The current distance between the interest place and the apartment has been updated.");
 		if (currentdistance > maxDuration)
 			maxDuration = currentdistance;
+		valueDistFunction.info("The distance between "+interest.getName()+" and "+appartlocation.getName()+" has been calculated and is equal to "+ currentdistance);
 		return currentdistance;
 
 	}
 	
+	/**
+	 * 
+	 * @param currentdistance double distance in hours.
+	 * @return a double corresponding to the utility of the distance.
+	 */
 	public double setUtility(double currentdistance) {
 		LinearValueFunction f = new LinearValueFunction(0,10);
 		return f.getSubjectiveValue(currentdistance);
@@ -78,8 +84,7 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 
 	@Override
 	public double getSubjectiveValue(Location objectiveData) {
-		LinearValueFunction f = new LinearValueFunction(0,10);
-		return f.getSubjectiveValue(interestlocation.get(objectiveData));
+		return interestlocation.get(objectiveData);
 	}
 	
 	@Override
