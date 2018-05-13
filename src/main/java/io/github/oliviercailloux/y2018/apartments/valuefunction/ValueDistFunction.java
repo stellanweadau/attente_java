@@ -6,21 +6,27 @@ import java.util.Map;
 
 import javax.tools.JavaFileManager.Location;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.maps.errors.ApiException;
 
 import io.github.oliviercailloux.y2018.apartments.distance.DistanceSubway;
 
+/**
+ * This class enables the user to calculate the utility of a location by linear interpolation,
+ * to have the maximum duration between the interest places.
+ */
 public class ValueDistFunction implements PartialValueFunction<Location> {
 	
-	private Map<String, Double> interestlocation;
+	private Map<Location, Double> interestlocation;
 	private String api_key;
 	private Location appartlocation;
-	private double currentdistance;
 	private double maxDuration;
-	
-	
+	private Logger valueDistFunction = LoggerFactory.getLogger(ValueDistFunction.class);
+
 	/**
-	 * 
+	 * Initializes the different variables of the ValueDistFunction class.
 	 * @param appartlocation Object Location which represents the apartment location.
 	 */
 	public ValueDistFunction(Location appartlocation){
@@ -33,12 +39,20 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	/**
 	 * Add the apartment location and its utility to the HashMap.
 	 * @param interest Object Location of an interest place of the user.
+	 * @throws IOException 
+	 * @throws InterruptedException 
+	 * @throws ApiException 
 	 */
-	public void addInterestLocation(Location interest) {
-		double utility = getSubjectiveValue(interest);
-		interestlocation.put(interest.getName(), utility);
+	public void addInterestLocation(Location interest) throws ApiException, InterruptedException, IOException {
+		double utility = setUtility(calculateDistanceLocation(interest));
+		interestlocation.put(interest, utility);
+		valueDistFunction.info("The interest location "+interest.getName()+" has been had with success in the Map.");
 	}
 	
+	/**
+	 * 
+	 * @return a double which corresponds to the maximum of the duration between an interest place and the apartment.
+	 */
 	public double getMaxDuration() {
 		return maxDuration;
 	}
@@ -47,18 +61,25 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 * Update the current distance between the apartment and an interest place.
 	 * @param interest Object Location of an interest place of the user.
 	 */
-	public void calculateDistanceLocation(Location interest) throws ApiException, InterruptedException, IOException {
+	public double calculateDistanceLocation(Location interest) throws ApiException, InterruptedException, IOException {
 		DistanceSubway dist = new DistanceSubway(api_key,interest.getName(),appartlocation.getName());
-		currentdistance = dist.calculateDistance();
+		double currentdistance = dist.calculateDistance();
+		valueDistFunction.info("The current distance between the interest place and the apartment has been updated.");
 		if (currentdistance > maxDuration)
 			maxDuration = currentdistance;
+		return currentdistance;
 
+	}
+	
+	public double setUtility(double currentdistance) {
+		LinearValueFunction f = new LinearValueFunction(0,10);
+		return f.getSubjectiveValue(currentdistance);
 	}
 
 	@Override
 	public double getSubjectiveValue(Location objectiveData) {
 		LinearValueFunction f = new LinearValueFunction(0,10);
-		return f.getSubjectiveValue(currentdistance);
+		return f.getSubjectiveValue(interestlocation.get(objectiveData));
 	}
 	
 	@Override
