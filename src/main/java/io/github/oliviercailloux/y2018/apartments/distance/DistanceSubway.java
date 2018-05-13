@@ -1,19 +1,21 @@
 package io.github.oliviercailloux.y2018.apartments.distance;
 
-
 public class DistanceSubway {
 	
-	static private String api_key = "AIzaSyChfj0_E4TO9Nv7iMUJEygpoZU3qgYRoDQ";
+	private String url;
 	
-	static private String url = "https://maps.googleapis.com/maps/api/distancematrix/xml?";
-	static private String startPoint = "Vancouver";
-	static private String endPoint = "Seattle";
-	
-	static private String mode ="bicycling";
+	public DistanceSubway(String api_key, String startPoint, String endPoint, String mode){
+		url = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + startPoint + "&destinations=" + endPoint + "&mode=" + mode + "&language=fr-FR&key=" + api_key + "\\r\\n" ;
+	}
 	
 	
-	static void main(String args[]) {
-		url = url + "origins=" + startPoint + "&destinations=" + endPoint + "&mode=" + mode + "&language=fr-FR&key=" + api_key + "\\r\\n" ;
+	public static void main(String args[]) {
+		
+		String api_key = "AIzaSyChfj0_E4TO9Nv7iMUJEygpoZU3qgYRoDQ";
+		
+		DistanceSubway dist = new DistanceSubway(api_key,"Vancouver","Seattle","bicycling");
+		
+		System.out.println(dist.url);
 	}
 	
 

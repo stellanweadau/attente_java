@@ -54,6 +54,7 @@
 			<scope>test</scope>
 		</dependency>
 
+<!--  
 		<dependency>
 			<groupId>com.google.maps</groupId>
 			<artifactId>google-maps-services</artifactId>
@@ -76,7 +77,7 @@
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>2.9.9</version>
-		</dependency>
+		</dependency> -->
 
 	</dependencies>
 
