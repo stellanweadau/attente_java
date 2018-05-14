@@ -1,1 +1,45 @@
 23:35:27.362 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Enter readApartment method
+23:31:08.568 [main] INFO  i.g.o.y.a.apartment.Apartment - The Apartment has been created with success
+23:31:08.570 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of sleepings has been set to 10
+23:31:08.571 [main] INFO  i.g.o.y.a.apartment.Apartment - The number minimum of night has been set to 1
+23:31:08.571 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set to true
+23:31:08.571 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to 5
+23:31:08.571 [main] INFO  i.g.o.y.a.apartment.Apartment - The price per night has been set to 404.0
+23:31:08.572 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set to false
+23:31:08.572 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to true
+23:31:08.572 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to 1
+23:31:08.572 [main] INFO  i.g.o.y.a.apartment.Apartment - The description has been set to Un igloo tout mignon en compagnie du père noël et de la mère noël
+23:31:08.572 [main] INFO  i.g.o.y.a.apartment.Apartment - The floor area of the terrace has been set to 8.6
+23:31:08.572 [main] INFO  i.g.o.y.a.t.XMLProperties - Entrée de fonction - C:\Users\Micky\eclipse-workspace\Apartments\src\test\resources\io\github\oliviercailloux\y2018\apartments\readApartments\xmlfileTest.xml
+23:31:08.572 [main] INFO  i.g.o.y.a.t.XMLProperties - File already exists. (Erased)
+23:31:08.573 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : apartment : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
+23:31:08.573 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 1182118.48
+23:31:08.573 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : 118 rue du père noel 77480
+23:31:08.573 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 5
+23:31:08.574 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 10
+23:31:08.574 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 1
+23:31:08.574 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : true
+23:31:08.574 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 8.6
+23:31:08.574 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : Un igloo tout mignon en compagnie du père noël et de la mère noël
+23:31:08.574 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : Grand Igloo
+23:31:08.574 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : true
+23:31:08.574 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 404.0
+23:31:08.574 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 1
+23:31:08.574 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
+23:31:08.609 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
+23:31:08.610 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Enter readApartment method
+23:31:08.617 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - XML Files loaded with success
+23:31:08.617 [main] INFO  i.g.o.y.a.apartment.Apartment - The Apartment has been created with success
+23:31:08.617 [main] INFO  i.g.o.y.a.apartment.Apartment - The description has been set to Un igloo tout mignon en compagnie du père noël et de la mère noël
+23:31:08.617 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to 1
+23:31:08.617 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set to true
+23:31:08.617 [main] INFO  i.g.o.y.a.apartment.Apartment - The floor area of the terrace has been set to 8.6
+23:31:08.617 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to true
+23:31:08.617 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set to false
+23:31:08.617 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of sleepings has been set to 10
+23:31:08.617 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to 5
+23:31:08.617 [main] INFO  i.g.o.y.a.apartment.Apartment - The price per night has been set to 404.0
+23:31:08.618 [main] INFO  i.g.o.y.a.apartment.Apartment - The number minimum of night has been set to 1
+23:31:08.618 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Parameters inserted with success in the Apartment Object
+23:31:08.618 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Leave readApartment method
+>>>>>>> 5a232f80b1ae41f754116bdc60ac7d200e29dcce
