@@ -63,7 +63,7 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 */
 	public double calculateDistanceLocation(Location interest) throws ApiException, InterruptedException, IOException {
 		DistanceSubway dist = new DistanceSubway(api_key,interest.getName(),appartlocation.getName());
-		double currentdistance = dist.calculateDistanceAddress();
+		double currentdistance = dist.calculateDistanceAddress(DistanceMode.ADDRESS);
 		valueDistFunction.info("The current distance between the interest place and the apartment has been updated.");
 		if (currentdistance > maxDuration)
 			maxDuration = currentdistance;
