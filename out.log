@@ -1,1 +1,17 @@
-20:36:30.021 [main] INFO  i.g.o.y.a.apartment.Apartment - The Apartment has been created with success
+21:41:34.301 [main] INFO  i.g.o.y.a.apartment.Apartment - The Apartment has been created with success
+21:41:34.304 [main] INFO  i.g.o.y.a.t.XMLProperties - File already exists. (Erased)
+21:41:34.305 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : apartment : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
+21:41:34.307 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 80.5
+21:41:34.307 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : 6 rue des paquerette 74000 Annecy
+21:41:34.307 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
+21:41:34.307 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
+21:41:34.307 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
+21:41:34.308 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
+21:41:34.308 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
+21:41:34.308 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
+21:41:34.308 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : Petit Manoir de campagne
+21:41:34.308 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
+21:41:34.308 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
+21:41:34.308 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
+21:41:34.308 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
+21:41:34.343 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed

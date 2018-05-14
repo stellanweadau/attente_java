@@ -54,7 +54,7 @@ public class XMLProperties{
 	 */
 	public void toXML(Apartment a, File xmlFile) throws IOException, IllegalArgumentException, IllegalAccessException
 	{
-		System.out.println("Entrée de fonction - " + xmlFile.getAbsolutePath());
+		xmlProperties.info("Entrée de fonction - " + xmlFile.getAbsolutePath());
 		if(xmlFile.createNewFile())
 		{
 			xmlProperties.info("File has been created");
@@ -70,11 +70,14 @@ public class XMLProperties{
 				String[] fullName = f.toString().split(" ")[2].split("\\.");
 				
 				f.setAccessible(true);
+				if(f.get(a) != "0" && f.get(a) != " ")
+					properties.setProperty(fullName[fullName.length-1],f.get(a).toString());
 				
-				properties.put(fullName[fullName.length-1], f.get(a));
+				
 				xmlProperties.info("Adding entry : " + fullName[fullName.length-1] + " : " + f.get(a));
 			
 			}
+			
 				properties.storeToXML(s, "Generated file for the apartment " + a.getTitle() );
 				
 				s.close();
