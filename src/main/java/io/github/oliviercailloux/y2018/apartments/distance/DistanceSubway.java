@@ -33,7 +33,7 @@ public class DistanceSubway {
 	private String endPoint;
 	private LatLng startCoordinate;
 	private LatLng endCoordinate;
-	private String api_key_geocode = "AIzaSyA4cPrPs3mzOuTkJVVWtPpsdpVlj8hY14k";
+	private String api_key_geocode;
 	static Logger distanceSubway = LoggerFactory.getLogger(DistanceSubway.class);
 	
 	/**
@@ -45,13 +45,15 @@ public class DistanceSubway {
 	 * @throws InterruptedException 
 	 * @throws ApiException 
 	 */
-	public DistanceSubway(String api_key, String startPoint, String endPoint) throws ApiException, InterruptedException, IOException{
-		//url = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + startPoint + "&destinations=" + endPoint + "&mode=" + mode + "&language=fr-FR&key=" + api_key + "\\r\\n" ;
+	public DistanceSubway(String api_key, String api_geocode_key, String startPoint, String endPoint) throws ApiException, InterruptedException, IOException{
+	
 		this.api_key = api_key;
 		this.endPoint = endPoint;
 		this.startPoint = startPoint;
+		this.api_key_geocode = api_geocode_key;
 		this.startCoordinate = this.getGeometryLocation(startPoint);		
 		this.endCoordinate = this.getGeometryLocation(endPoint);
+		
 		
 		
 		distanceSubway.info("DistanceSubway Object created with success. API Key= "+api_key+" ; Departure= "+startPoint+" ; Arrival= "+ endPoint);

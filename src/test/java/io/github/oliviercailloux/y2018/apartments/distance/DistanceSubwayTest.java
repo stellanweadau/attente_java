@@ -16,8 +16,8 @@ class DistanceSubwayTest {
 	void calculateDistanceAddressTest() throws ApiException, InterruptedException, IOException {
 		
 		String api_key = "AIzaSyDuFlzxo-Sbee0E6eMLnfTvxcADSKQzaNs";
-		DistanceSubway dist = new DistanceSubway(api_key,"Paris","Ville d'Avray");
-		//Assert.assertEquals(0.635, dist.calculateDistanceAddress(), 0);
+		String geocode_api_key = "AIzaSyA4cPrPs3mzOuTkJVVWtPpsdpVlj8hY14k";
+		DistanceSubway dist = new DistanceSubway(api_key,geocode_api_key,"Paris","Ville d'Avray");
 		Assert.assertEquals(0.96833, dist.calculateDistanceAddress(DistanceMode.ADDRESS), 0.0001);
 	}
 

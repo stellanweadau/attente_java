@@ -48,6 +48,7 @@ public class XMLProperties extends JPanel {
 		FileOutputStream s = new FileOutputStream(xmlFilePath);
 		properties.storeToXML(s, "Generated file for the apartment " + a.getTitle() );
 		
+		s.close();
 	}
 	/**
 	 * toXMLProperties transform an Apartment object into an XML file

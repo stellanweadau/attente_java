@@ -1,4 +1,4 @@
-02:29:14.524 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceSubway Object created with success. API Key= AIzaSyDuFlzxo-Sbee0E6eMLnfTvxcADSKQzaNs ; Departure= Paris ; Arrival= Ville d'Avray
-02:29:14.529 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-02:29:14.532 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-02:29:14.676 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
+13:02:01.500 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceSubway Object created with success. API Key= AIzaSyDuFlzxo-Sbee0E6eMLnfTvxcADSKQzaNs ; Departure= Paris ; Arrival= Ville d'Avray
+13:02:01.526 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
+13:02:01.531 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
+13:02:01.918 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.

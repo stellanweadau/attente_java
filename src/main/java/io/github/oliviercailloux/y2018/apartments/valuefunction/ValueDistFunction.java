@@ -21,6 +21,7 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	
 	private Map<Location, Double> interestlocation;
 	private String api_key;
+	private String geocode_api_key;
 	private Location appartlocation;
 	private double maxDuration;
 	private Logger valueDistFunction = LoggerFactory.getLogger(ValueDistFunction.class);
@@ -29,9 +30,10 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 * Initializes the different variables of the ValueDistFunction class.
 	 * @param appartlocation Object Location which represents the apartment location.
 	 */
-	public ValueDistFunction(Location appartlocation, String api_key){
+	public ValueDistFunction(Location appartlocation, String api_key, String api_geocode_key){
 		interestlocation = new HashMap<>();
 		this.api_key=api_key;
+		this.geocode_api_key = api_geocode_key;
 		this.appartlocation = appartlocation;
 		maxDuration = 0;
 	}
@@ -62,7 +64,7 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 * @param interest Object Location of an interest place of the user.
 	 */
 	public double calculateDistanceLocation(Location interest) throws ApiException, InterruptedException, IOException {
-		DistanceSubway dist = new DistanceSubway(api_key,interest.getName(),appartlocation.getName());
+		DistanceSubway dist = new DistanceSubway(api_key,geocode_api_key,interest.getName(),appartlocation.getName());
 		double currentdistance = dist.calculateDistanceAddress(DistanceMode.ADDRESS);
 		valueDistFunction.info("The current distance between the interest place and the apartment has been updated.");
 		if (currentdistance > maxDuration)
