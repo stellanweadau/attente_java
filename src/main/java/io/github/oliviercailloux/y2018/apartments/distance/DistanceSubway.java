@@ -62,6 +62,7 @@ public class DistanceSubway {
 	/**
 	 * This method enables the user to calculate a distance between two points using Google Maps API.
 	 * The method uses DistanceMatrix of Google Maps library.
+	 * @param distanceMode is a enum type, allow the user to choose between address mode (by the name) or by coordinate mode.
 	 * @return distance in hours between the two points given in the constructor.
 	 */
 	public double calculateDistanceAddress(DistanceMode distancemode) throws ApiException, InterruptedException, IOException {
@@ -77,7 +78,7 @@ public class DistanceSubway {
 		distanceSubway.info("DistanceMatrixApiRequest build with success.");
 		DistanceMatrix result = null;
 		
-		if( distancemode == DistanceMode.ADDRESS)
+		if(distancemode == DistanceMode.ADDRESS)
 		{
 		 result = request.origins(startPoint)
 				.destinations(endPoint)
@@ -100,6 +101,15 @@ public class DistanceSubway {
 		return (double)(result.rows[0].elements[0].duration.inSeconds)/3600;
 	}
 	
+	/**	getGeometryLocation return, base on the full address of the location, the geocode of it.
+	 * 
+	 * @param location is the full address of the location
+	 * @return
+	 * 	a LatLng Object which contains the latitude and longitude of the location
+	 * @throws ApiException
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	private LatLng getGeometryLocation(String location) throws ApiException, InterruptedException, IOException
 	{
 		GeoApiContext context = new GeoApiContext.Builder()

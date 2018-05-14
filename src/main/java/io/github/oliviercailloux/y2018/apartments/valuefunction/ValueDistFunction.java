@@ -25,7 +25,8 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	private Location appartlocation;
 	private double maxDuration;
 	private Logger valueDistFunction = LoggerFactory.getLogger(ValueDistFunction.class);
-
+	
+	
 	/**
 	 * Initializes the different variables of the ValueDistFunction class.
 	 * @param appartlocation Object Location which represents the apartment location.
@@ -55,7 +56,7 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 * 
 	 * @return a double which corresponds to the maximum of the duration between an interest place and the apartment.
 	 */
-	public double getMaxDuration() {
+	public double getMaxDuration() {		
 		return maxDuration;
 	}
 	
