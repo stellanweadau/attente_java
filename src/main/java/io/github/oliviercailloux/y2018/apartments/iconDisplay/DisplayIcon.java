@@ -41,7 +41,7 @@ public class DisplayIcon {
 		catch(IOException e)
 		{
 			displayIcon.info("Fail to open the stream or the stream has been interrupted");
-			throw new IOException();
+			throw e;
 		}
 	}
 }
