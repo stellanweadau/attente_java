@@ -61,23 +61,23 @@ public class XMLProperties{
 		}
 		else
 		{
+	
 			xmlProperties.info("File already exists. (Erased)");
 		}
 		try(FileOutputStream s = new FileOutputStream(xmlFile.getAbsolutePath()))
 			{
 			
 			for(Field f : a.getClass().getDeclaredFields()) {
+				
 				String[] fullName = f.toString().split(" ")[2].split("\\.");
 				
 				f.setAccessible(true);
-				if(f.get(a) != "0" && f.get(a) != " ")
-					properties.setProperty(fullName[fullName.length-1],f.get(a).toString());
-				
+				properties.setProperty(fullName[fullName.length-1],f.get(a).toString());
 				
 				xmlProperties.info("Adding entry : " + fullName[fullName.length-1] + " : " + f.get(a));
 			
 			}
-			
+				properties.remove("apartment");
 				properties.storeToXML(s, "Generated file for the apartment " + a.getTitle() );
 				
 				s.close();
