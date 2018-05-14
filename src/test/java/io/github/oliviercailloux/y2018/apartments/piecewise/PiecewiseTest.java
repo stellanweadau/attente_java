@@ -3,7 +3,6 @@ package io.github.oliviercailloux.y2018.apartments.piecewise;
 import java.io.IOException;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.y2018.apartments.piecewise.PiecewiseLinearValueFunction;

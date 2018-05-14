@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Range;
 
-import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
 import java.awt.geom.Point2D;
 import java.io.IOException;

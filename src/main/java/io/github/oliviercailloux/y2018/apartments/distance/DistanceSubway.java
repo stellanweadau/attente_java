@@ -9,16 +9,12 @@ import com.google.maps.DistanceMatrixApi;
 import com.google.maps.DistanceMatrixApiRequest;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
-import com.google.maps.GeocodingApiRequest;
 import com.google.maps.errors.ApiException;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.GeocodingResult;
-import com.google.maps.model.Geometry;
 import com.google.maps.model.LatLng;
 import com.google.maps.model.TransitMode;
 import com.google.maps.model.TravelMode;
-
-import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
 /**
  * This class enables the user to calculate the distance in hours between two points using the metro transport.

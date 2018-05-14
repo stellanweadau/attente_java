@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Range;
 
-import io.github.oliviercailloux.y2018.apartments.piecewise.PiecewiseLinearValueFunction;
 
 /**
  * Class which enables the user to get the subjective value of a double given in argument.

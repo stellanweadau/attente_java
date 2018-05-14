@@ -1,6 +1,5 @@
 package io.github.oliviercailloux.y2018.apartments.distance;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 
