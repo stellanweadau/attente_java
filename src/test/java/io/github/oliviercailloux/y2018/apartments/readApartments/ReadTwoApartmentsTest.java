@@ -5,10 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;

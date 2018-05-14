@@ -3,7 +3,10 @@ package io.github.oliviercailloux.y2018.apartments.toxmlproperties;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.Properties;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,8 +33,22 @@ public class XMLProperties extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private Properties properties;
+	
 	private static JFileChooser dirpicker;
-
+	
+	public XMLProperties()
+	{
+		this.properties = new Properties();
+	}
+	
+	public void toXML(Apartment a, String xmlFilePath) throws IOException
+	{
+		FileOutputStream s = new FileOutputStream(xmlFilePath);
+		properties.storeToXML(s, "Generated file for the apartment " + a.getTitle() );
+		
+	}
 	/**
 	 * toXMLProperties transform an Apartment object into an XML file
 	 * 

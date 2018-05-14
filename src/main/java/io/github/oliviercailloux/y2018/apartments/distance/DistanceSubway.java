@@ -9,16 +9,14 @@ import com.google.maps.DistanceMatrixApi;
 import com.google.maps.DistanceMatrixApiRequest;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
-import com.google.maps.GeocodingApiRequest;
 import com.google.maps.errors.ApiException;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.GeocodingResult;
-import com.google.maps.model.Geometry;
 import com.google.maps.model.LatLng;
 import com.google.maps.model.TransitMode;
 import com.google.maps.model.TravelMode;
 
-import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
+import io.github.oliviercailloux.y2018.apartments.valuefunction.DistanceMode;
 
 /**
  * This class enables the user to calculate the distance in hours between two points using the metro transport.
@@ -29,6 +27,7 @@ import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsX
 public class DistanceSubway {
 	
 	//private String url;
+
 	private String api_key;
 	private String startPoint;
 	private String endPoint;
@@ -63,7 +62,7 @@ public class DistanceSubway {
 	 * The method uses DistanceMatrix of Google Maps library.
 	 * @return distance in hours between the two points given in the constructor.
 	 */
-	public double calculateDistanceAddress() throws ApiException, InterruptedException, IOException {
+	public double calculateDistanceAddress(DistanceMode distancemode) throws ApiException, InterruptedException, IOException {
 		
 		GeoApiContext dist = new GeoApiContext.Builder()
 				.apiKey(api_key)
@@ -74,13 +73,26 @@ public class DistanceSubway {
 		DistanceMatrixApiRequest request = DistanceMatrixApi.newRequest(dist);
 		
 		distanceSubway.info("DistanceMatrixApiRequest build with success.");
+		DistanceMatrix result = null;
 		
-		DistanceMatrix result = request.origins(startPoint)
+		if( distancemode == DistanceMode.ADDRESS)
+		{
+		 result = request.origins(startPoint)
 				.destinations(endPoint)
 				.mode(TravelMode.TRANSIT)
 				.transitModes(TransitMode.SUBWAY)
 				.language("fr-FR")
 				.await();
+		}
+		else
+		{
+			 result = request.origins(startCoordinate)
+					.destinations(endCoordinate)
+					.mode(TravelMode.TRANSIT)
+					.transitModes(TransitMode.SUBWAY)
+					.language("fr-FR")
+					.await();
+		}
 		
 		distanceSubway.info("DistanceMatrix build with success.");
 		return (double)(result.rows[0].elements[0].duration.inSeconds)/3600;
