@@ -1,18 +1,1 @@
-21:57:18.698 [main] INFO  i.g.o.y.a.apartment.Apartment - The Apartment has been created with success
-21:57:18.701 [main] INFO  i.g.o.y.a.t.XMLProperties - Entrée de fonction - C:\Users\Micky\eclipse-workspace\Apartments\src\test\resources\xmlfile.xml
-21:57:18.701 [main] INFO  i.g.o.y.a.t.XMLProperties - File already exists. (Erased)
-21:57:18.702 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : apartment : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
-21:57:18.703 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 80.5
-21:57:18.704 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : 6 rue des paquerette 74000 Annecy
-21:57:18.704 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
-21:57:18.704 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
-21:57:18.704 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
-21:57:18.704 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
-21:57:18.705 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
-21:57:18.705 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
-21:57:18.705 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : Petit Manoir de campagne
-21:57:18.705 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
-21:57:18.705 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
-21:57:18.705 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
-21:57:18.705 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
-21:57:18.747 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
+23:35:27.362 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Enter readApartment method
