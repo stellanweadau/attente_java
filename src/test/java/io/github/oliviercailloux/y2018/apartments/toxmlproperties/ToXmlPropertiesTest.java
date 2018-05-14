@@ -20,10 +20,19 @@ class ToXmlPropertiesTest {
 	void readApartmentTest() throws IllegalArgumentException, IllegalAccessException, IOException
 	{
 		XMLProperties j = new XMLProperties();
-		Apartment a = new Apartment(80.5, "6 rue des paquerette 74000 Annecy", "Petit Manoir de campagne");
-		File f = new File("src/test/resources/xmlfile.xml");
+		Apartment a = new Apartment(1182118.48, "118 rue du père noel 77480", "Grand Igloo");
+		a.setNbSleeping(10);
+		a.setNbMinNight(1);
+		a.setTerrace(true);
+		a.setNbBedrooms(5);
+		a.setPricePerNight(404);
+		a.setTele(false);
+		a.setWifi(true);
+		a.setNbBathrooms(1);
+		a.setDescription("Un igloo tout mignon en compagnie du père noël et de la mère noël");
+		a.setFloorAreaTerrace(8.6);
+		File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/xmlfileTest.xml");
 		j.toXML(a, f);
-		
 		// TO DO test que ça s'est bien écris dans le fichier xml
 	}
 }
