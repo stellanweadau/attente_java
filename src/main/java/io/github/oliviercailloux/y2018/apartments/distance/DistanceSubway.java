@@ -8,8 +8,14 @@ import org.slf4j.LoggerFactory;
 import com.google.maps.DistanceMatrixApi;
 import com.google.maps.DistanceMatrixApiRequest;
 import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.GeocodingApiRequest;
 import com.google.maps.errors.ApiException;
 import com.google.maps.model.DistanceMatrix;
+import com.google.maps.model.GeocodingResult;
+import com.google.maps.model.Geometry;
+import com.google.maps.model.LatLng;
+import com.google.maps.model.TransitMode;
 import com.google.maps.model.TravelMode;
 
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
@@ -26,6 +32,9 @@ public class DistanceSubway {
 	private String api_key;
 	private String startPoint;
 	private String endPoint;
+	private LatLng startCoordinate;
+	private LatLng endCoordinate;
+	private String api_key_geocode = "AIzaSyA4cPrPs3mzOuTkJVVWtPpsdpVlj8hY14k";
 	static Logger distanceSubway = LoggerFactory.getLogger(DistanceSubway.class);
 	
 	/**
@@ -33,12 +42,19 @@ public class DistanceSubway {
 	 * @param api_key the API Key to use Google Maps Services
 	 * @param startPoint the start point of the path
 	 * @param endPoint the end point of the path
+	 * @throws IOException 
+	 * @throws InterruptedException 
+	 * @throws ApiException 
 	 */
-	public DistanceSubway(String api_key, String startPoint, String endPoint){
+	public DistanceSubway(String api_key, String startPoint, String endPoint) throws ApiException, InterruptedException, IOException{
 		//url = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + startPoint + "&destinations=" + endPoint + "&mode=" + mode + "&language=fr-FR&key=" + api_key + "\\r\\n" ;
 		this.api_key = api_key;
 		this.endPoint = endPoint;
 		this.startPoint = startPoint;
+		this.startCoordinate = this.getGeometryLocation(startPoint);		
+		this.endCoordinate = this.getGeometryLocation(endPoint);
+		
+		
 		distanceSubway.info("DistanceSubway Object created with success. API Key= "+api_key+" ; Departure= "+startPoint+" ; Arrival= "+ endPoint);
 	}
 	
@@ -62,12 +78,24 @@ public class DistanceSubway {
 		DistanceMatrix result = request.origins(startPoint)
 				.destinations(endPoint)
 				.mode(TravelMode.TRANSIT)
+				.transitModes(TransitMode.SUBWAY)
 				.language("fr-FR")
 				.await();
 		
 		distanceSubway.info("DistanceMatrix build with success.");
-		
 		return (double)(result.rows[0].elements[0].duration.inSeconds)/3600;
+	}
+	
+	private LatLng getGeometryLocation(String location) throws ApiException, InterruptedException, IOException
+	{
+		GeoApiContext context = new GeoApiContext.Builder()
+				.apiKey(this.api_key_geocode)
+				.build();
+		
+		GeocodingResult[] res = GeocodingApi.newRequest(context).address(location).await();
+		
+		return res[0].geometry.location;
+	
 	}
 	
 }
