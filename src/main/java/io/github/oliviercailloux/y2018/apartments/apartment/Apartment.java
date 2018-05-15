@@ -1,5 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.apartment;
 
+import java.util.Objects;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -377,7 +379,7 @@ public class Apartment extends Object {
 
 	@Override
 	public int hashCode() {
-		return super.hashCode();
+		return Objects.hash(address, floorArea, nbBedrooms, nbSleeping, nbBathrooms, terrace, floorAreaTerrace, description, title, wifi, pricePerNight, nbMinNight, tele);
 	}
 
 }
