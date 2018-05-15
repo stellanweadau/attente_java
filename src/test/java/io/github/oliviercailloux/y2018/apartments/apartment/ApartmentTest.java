@@ -25,5 +25,25 @@ class ApartmentTest {
 		assertFalse(a1.equals(a2));
 		
 	}
+	
+	@Test
+	void hashCodeTestTrue() {
+		
+		Apartment a1 = new Apartment(150,"Arras","Micky's home");
+		Apartment a2 = new Apartment(150,"Arras","Micky's home");
+		
+		assertEquals(a1.hashCode(), a2.hashCode());
+		
+	}
+	
+	@Test
+	void hashCodeTestFalse() {
+		
+		Apartment a1 = new Apartment(150,"Chaville","Marc's home");
+		Apartment a2 = new Apartment(150,"Arras","Micky's home");
+		
+		assertFalse(a1.hashCode() == a2.hashCode());
+		
+	}
 
 }
