@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class Apartment {
+public class Apartment extends Object {
 	
 	static Logger apartment = LoggerFactory.getLogger(Apartment.class);
 
@@ -96,6 +96,15 @@ public class Apartment {
 		apartment.info("The Apartment has been created with success");
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Apartment))
+			return false;
+		Apartment apart = (Apartment) obj;
+		return apart.floorArea == floorArea && apart.address.equals(address) && apart.nbBedrooms == nbBedrooms && apart.nbSleeping == nbSleeping && apart.nbBathrooms == nbBathrooms && apart.terrace == terrace && apart.floorAreaTerrace == floorAreaTerrace && apart.description.equals(description) && apart.title.equals(title) && apart.wifi == wifi && apart.pricePerNight == pricePerNight && apart.nbMinNight == nbMinNight &&  apart.tele == tele ;
+			
+		}
+	
 	@Override
 	public String toString() {
 		String dispTitle ;
@@ -364,6 +373,11 @@ public class Apartment {
 	public void setTele(boolean tele) {
 		this.tele = tele ;
 		apartment.info("The tele has been set to "+ tele);
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 
 }
