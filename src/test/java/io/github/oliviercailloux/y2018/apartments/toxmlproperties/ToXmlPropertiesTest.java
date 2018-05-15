@@ -34,7 +34,6 @@ class ToXmlPropertiesTest {
 		a.setFloorAreaTerrace(8.6);
 		File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/xmlfileTest.xml");
 		j.toXML(a, f);
-		// TO DO test que ça s'est bien écris dans le fichier xml
 		
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 
@@ -58,11 +57,13 @@ class ToXmlPropertiesTest {
 			Assert.assertTrue("The value of boolean terrace doesn't match with the value of terrace in the XML File",a1.getTerrace());
 			Assert.assertTrue("The value of boolean wifi doesn't match with the value of wifi in the XML File",a1.getWifi());
 			
-			ReadApartmentsXMLFormat r11 = new ReadApartmentsXMLFormat();
-			try (InputStream f11 = ReadTwoApartmentsTest.class.getResourceAsStream("xmlfileTest.xml")){
-				Apartment a11 = r11.readApartment(f11);
-				System.out.println(a11);
-			}
+		}
+		
+		ReadApartmentsXMLFormat r1 = new ReadApartmentsXMLFormat();
+		try (InputStream f1 = ReadTwoApartmentsTest.class.getResourceAsStream("xmlfileTest.xml")){
+			Apartment a1 = r1.readApartment(f1);
+			System.out.println(a1);
+			
 		}
 	}
 }
