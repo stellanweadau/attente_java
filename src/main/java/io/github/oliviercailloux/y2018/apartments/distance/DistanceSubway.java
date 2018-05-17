@@ -59,6 +59,7 @@ public class DistanceSubway {
 		LOGGER.info("DistanceSubway Object created with success. API Key= "+api_key+" ; Departure= "+startPoint+" ; Arrival= "+ endPoint);
 	}
 	
+	
 	/**
 	 * This method enables the user to calculate a distance between two points using Google Maps API.
 	 * The method uses DistanceMatrix of Google Maps library.
