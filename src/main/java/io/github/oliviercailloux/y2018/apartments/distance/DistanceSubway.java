@@ -34,7 +34,7 @@ public class DistanceSubway {
 	private LatLng startCoordinate;
 	private LatLng endCoordinate;
 	private String api_key_geocode;
-	static Logger distanceSubway = LoggerFactory.getLogger(DistanceSubway.class);
+	final static Logger LOGGER = LoggerFactory.getLogger(DistanceSubway.class);
 	
 	/**
 	 * Create an Object DistanceSubway in order to calculate a distance between two points using the metro transport.
@@ -56,8 +56,9 @@ public class DistanceSubway {
 		
 		
 		
-		distanceSubway.info("DistanceSubway Object created with success. API Key= "+api_key+" ; Departure= "+startPoint+" ; Arrival= "+ endPoint);
+		LOGGER.info("DistanceSubway Object created with success. API Key= "+api_key+" ; Departure= "+startPoint+" ; Arrival= "+ endPoint);
 	}
+	
 	
 	/**
 	 * This method enables the user to calculate a distance between two points using Google Maps API.
@@ -71,11 +72,11 @@ public class DistanceSubway {
 				.apiKey(api_key)
 				.build();
 		
-		distanceSubway.info("GeoApiContext build with success.");
+		LOGGER.info("GeoApiContext build with success.");
 		
 		DistanceMatrixApiRequest request = DistanceMatrixApi.newRequest(dist);
 		
-		distanceSubway.info("DistanceMatrixApiRequest build with success.");
+		LOGGER.info("DistanceMatrixApiRequest build with success.");
 		DistanceMatrix result = null;
 		
 		if(distancemode == DistanceMode.ADDRESS)
@@ -97,7 +98,7 @@ public class DistanceSubway {
 					.await();
 		}
 		
-		distanceSubway.info("DistanceMatrix build with success.");
+		LOGGER.info("DistanceMatrix build with success.");
 		return (double)(result.rows[0].elements[0].duration.inSeconds)/3600;
 	}
 	

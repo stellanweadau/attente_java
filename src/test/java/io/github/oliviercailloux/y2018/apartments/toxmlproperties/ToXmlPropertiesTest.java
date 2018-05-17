@@ -12,6 +12,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.readApartments.ReadTwoApartmentsTest;
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
 class ToXmlPropertiesTest {
@@ -33,7 +34,10 @@ class ToXmlPropertiesTest {
 		a.setFloorAreaTerrace(8.6);
 		File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/xmlfileTest.xml");
 		j.toXML(a, f);
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 98e6a31c1b458822bde7fa273ff6f48c51a5011d
 		
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 
@@ -57,7 +61,13 @@ class ToXmlPropertiesTest {
 			Assert.assertTrue("The value of boolean terrace doesn't match with the value of terrace in the XML File",a1.getTerrace());
 			Assert.assertTrue("The value of boolean wifi doesn't match with the value of wifi in the XML File",a1.getWifi());
 			
-
+		}
+		
+		ReadApartmentsXMLFormat r1 = new ReadApartmentsXMLFormat();
+		try (InputStream f1 = ReadTwoApartmentsTest.class.getResourceAsStream("xmlfileTest.xml")){
+			Apartment a1 = r1.readApartment(f1);
+			System.out.println(a1);
+			
 		}
 	}
 }
