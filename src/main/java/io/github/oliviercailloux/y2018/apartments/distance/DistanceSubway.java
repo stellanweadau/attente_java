@@ -16,6 +16,7 @@ import com.google.maps.model.LatLng;
 import com.google.maps.model.TransitMode;
 import com.google.maps.model.TravelMode;
 
+import io.github.oliviercailloux.y2018.apartments.localize.Localizer;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.DistanceMode;
 
 /**
@@ -33,7 +34,7 @@ public class DistanceSubway {
 	private String endPoint;
 	private LatLng startCoordinate;
 	private LatLng endCoordinate;
-	private String api_key_geocode;
+	//private String api_key_geocode;
 	final static Logger LOGGER = LoggerFactory.getLogger(DistanceSubway.class);
 	
 	/**
@@ -41,24 +42,30 @@ public class DistanceSubway {
 	 * @param api_key the API Key to use Google Maps Services
 	 * @param startPoint the start point of the path
 	 * @param endPoint the end point of the path
-	 * @throws IOException 
-	 * @throws InterruptedException 
-	 * @throws ApiException 
 	 */
-	public DistanceSubway(String api_key, String api_geocode_key, String startPoint, String endPoint) throws ApiException, InterruptedException, IOException{
-	
+	public DistanceSubway(String api_key, /*String api_geocode_key, */String startPoint, String endPoint){
+		if (startPoint==null || endPoint == null )
+			throw new IllegalArgumentException("Address is not a valid object");
+		if (startPoint.length() == 0 || endPoint.length() == 0)
+			throw new IllegalArgumentException("Address is empty");
+				
 		this.api_key = api_key;
 		this.endPoint = endPoint;
 		this.startPoint = startPoint;
-		this.api_key_geocode = api_geocode_key;
-		this.startCoordinate = this.getGeometryLocation(startPoint);		
-		this.endCoordinate = this.getGeometryLocation(endPoint);
+		//this.api_key_geocode = api_geocode_key;
+		//this.startCoordinate = this.getGeometryLocation(startPoint);		
+		//this.endCoordinate = this.getGeometryLocation(endPoint);
 		
 		
 		
 		LOGGER.info("DistanceSubway Object created with success. API Key= "+api_key+" ; Departure= "+startPoint+" ; Arrival= "+ endPoint);
 	}
 	
+	private void setCoordinate() throws ApiException, InterruptedException, IOException {
+		
+		startCoordinate = Localizer.getGeometryLocation(startPoint);
+		endCoordinate = Localizer.getGeometryLocation(endPoint);
+	}
 	
 	/**
 	 * This method enables the user to calculate a distance between two points using Google Maps API.
@@ -67,6 +74,8 @@ public class DistanceSubway {
 	 * @return distance in hours between the two points given in the constructor.
 	 */
 	public double calculateDistanceAddress(DistanceMode distancemode) throws ApiException, InterruptedException, IOException {
+		
+		setCoordinate();
 		
 		GeoApiContext dist = new GeoApiContext.Builder()
 				.apiKey(api_key)
@@ -100,27 +109,6 @@ public class DistanceSubway {
 		
 		LOGGER.info("DistanceMatrix build with success.");
 		return (double)(result.rows[0].elements[0].duration.inSeconds)/3600;
-	}
-	
-	/**	getGeometryLocation return, base on the full address of the location, the geocode of it.
-	 * 
-	 * @param location is the full address of the location
-	 * @return
-	 * 	a LatLng Object which contains the latitude and longitude of the location
-	 * @throws ApiException
-	 * @throws InterruptedException
-	 * @throws IOException
-	 */
-	private LatLng getGeometryLocation(String location) throws ApiException, InterruptedException, IOException
-	{
-		GeoApiContext context = new GeoApiContext.Builder()
-				.apiKey(this.api_key_geocode)
-				.build();
-		
-		GeocodingResult[] res = GeocodingApi.newRequest(context).address(location).await();
-		
-		return res[0].geometry.location;
-	
 	}
 	
 }
