@@ -34,10 +34,6 @@ class ToXmlPropertiesTest {
 		a.setFloorAreaTerrace(8.6);
 		File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/xmlfileTest.xml");
 		j.toXML(a, f);
-<<<<<<< HEAD
-		
-=======
->>>>>>> 98e6a31c1b458822bde7fa273ff6f48c51a5011d
 		
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 
