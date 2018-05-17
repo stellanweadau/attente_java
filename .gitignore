@@ -3,3 +3,5 @@
 .classpath
 Thumbs.db
 /target/
+*.txt
+.settings

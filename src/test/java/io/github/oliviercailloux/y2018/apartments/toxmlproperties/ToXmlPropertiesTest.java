@@ -33,7 +33,7 @@ class ToXmlPropertiesTest {
 		a.setFloorAreaTerrace(8.6);
 		File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/xmlfileTest.xml");
 		j.toXML(a, f);
-		// TO DO test que ça s'est bien écris dans le fichier xml
+		
 		
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 
