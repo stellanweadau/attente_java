@@ -3,5 +3,5 @@
 .classpath
 Thumbs.db
 /target/
-*.API_KEY.txt
-*.GEOCODE_API_KEY.txt
+/API_KEY.txt
+/GEOCODE_API_KEY.txt
