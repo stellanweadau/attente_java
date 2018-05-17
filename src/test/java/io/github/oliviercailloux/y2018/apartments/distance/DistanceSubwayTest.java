@@ -40,7 +40,7 @@ class DistanceSubwayTest {
 		}
 		catch (IOException exception)
 		{
-		    System.out.println ("Erreur lors de la lecture : " + exception.getMessage());
+		    System.out.println ("Reading error : "+ exception.getMessage());
 		}
 		
 		try(FileReader fr = new FileReader (geocode_api_key)){
@@ -55,7 +55,7 @@ class DistanceSubwayTest {
 		}
 		catch (IOException exception)
 		{
-		    System.out.println ("Erreur lors de la lecture : " + exception.getMessage());
+		    System.out.println ("Reading error : " + exception.getMessage());
 		}
 
 		DistanceSubway dist = new DistanceSubway(codeApiKey,codeGeocode,"Paris","Ville d'Avray");
