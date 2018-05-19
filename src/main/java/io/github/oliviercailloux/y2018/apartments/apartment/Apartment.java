@@ -8,77 +8,90 @@ import org.slf4j.LoggerFactory;
 
 public class Apartment extends Object {
 	
-	static Logger apartment = LoggerFactory.getLogger(Apartment.class);
+	private Logger LOGGER = LoggerFactory.getLogger(Apartment.class);
 
 	/**
-	 * @param floorArea a real number it represents the floor area of the Apartment in square meters
+	 * @param floorArea a real number it represents the floor area of the apartment in square meters.
+	 * Has to be initialized, if not, the apartment can't be created without a floor area.
 	 */
 	private double floorArea; 
 
 	/**
-	 * @param address a String of characters that gives the full location of the Apartment (number, street name, ZIP code, city, country)
+	 * @param address a String of characters that gives the full location of the apartment (number, street name, ZIP code, city, country), has to initialized
+	 * Has to be initialized, if not, the apartment can't be created without an address.
 	 */
 	private String address; 
 
 	/**
-	 * @param nbBedrooms is an integer superior or equal to zero, it is the number of bedrooms available of use in the Apartment
+	 * @param nbBedrooms is an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment.
+	 * if not initalized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have any bedroom.
 	 */
 	private int nbBedrooms;
 
 	/**
-	 * @param nbSleepings is an integer superior or equal to zero corresponding of the accommodation capacity of the Apartment (nb of people that can sleep in the Apartment)
+	 * @param nbSleepings is an integer superior or equal to zero corresponding of the accommodation capacity of the apartment (nb of people that can sleep in the apartment).
+	 * If not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have any place to sleep.
 	 */
 	private int nbSleeping; 
 
 	/**
-	 * @param nbBathrooms an integer superior or equal to zero which corresponds to the number of bathrooms
+	 * @param nbBathrooms an integer superior or equal to zero which corresponds to the number of bathrooms.
+	 * If not initialized, the parameter will have a default value set of <code>0</code> which mean the apartment doesn't have any bathroom.
 	 */
 	private int nbBathrooms;
 
 	/**
-	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not 
+	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not.
+	 * If not initizalized, the parameter will have a default value set of <code>false</code> which mean the apartment doesn't have a terrace.
 	 */
 	private boolean terrace;
 
 	/**
-	 * @param floorAreaTerrace is a real number superior or equal to zero it represents the floor area of the terrace of the Apartment if there's any
+	 * @param floorAreaTerrace is a real number superior or equal to zero it represents the floor area of the terrace of the apartment if there's any.
+	 * If not initialized, the parameter will have a default value set of <code>0</code> which mean the apartment have a floor area of terrace of zero, whether it has or not a terrace.
 	 */
 	private double floorAreaTerrace; 
 
 	/**
-	 * @param description is a string of characters that describe the Apartment and the offer (its accommodations)
+	 * @param description is a string of characters that describe the apartment and the offer (its accommodations).
+	 * If not initialized, the parameter will have a default value set of <code>""</code> which mean the announcement doesn't have a description.
 	 */
 	private String description; 
 
 	/**
-	 * @param title is a string of characters that represents the title of the announcement
+	 * @param title is a string of characters that represents the title of the announcement.
+	 * It has to be initialized, if not, the apartment can't be created without a <code>title</code>.
 	 */
 	private String title;
 
 	/**
-	 * @param wifi is a boolean (true/false) which indicates if there is wireless connection to internet or not
+	 * @param wifi is a boolean (true/false) which indicates if there is wireless connection to internet or not. 
+	 * If not initialized, the parameter will have a default value of <code>false</code> which mean the apartment doesn't have wifi.
 	 */
 	private boolean wifi; 
 
 	/**
-	 * @param pricePerNight is a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros
+	 * @param pricePerNight is a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros. 
+	 * If not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have a price per night.
 	 */
 	private double pricePerNight; 
 
 	/**
-	 * @param nbMinNight is an integer superior or equal to zero, indicates how long in nights the customer will stays
+	 * @param nbMinNight is an integer superior or equal to zero, indicates how long in nights the customer have to stay. 
+	 * If not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have a minimum of night to stay-in.
 	 */
 	private int nbMinNight; 
 
 	/**
-	 * @param tele is a boolean (true/false) which indicates if there's a television or not
+	 * @param tele is a boolean (true/false) which indicates if there's a television or not. 
+	 * If not initialized, the parameter will have a default set value of <code>false</code> which mean the apartment doesn't have a tele.
 	 */
 	private boolean tele; 
 
 
 	/**
-	 * @param floorArea is a real number superior or equal to zero, it represents the floor area of the Apartment in square meters
-	 * @param address is a string of characters that gives the full location of the Apartment
+	 * @param floorArea is a real number superior or equal to zero, it represents the floor area of the apartment in square meters
+	 * @param address is a string of characters that gives the full location of the apartment
 	 * @param title a string of characters that represents the title of the announcement
 	 */
 	public Apartment (double floorArea, String address, String title) {	
@@ -95,7 +108,7 @@ public class Apartment extends Object {
 		this.pricePerNight = 0;
 		this.nbMinNight = 0 ;
 		this.tele = false ;
-		apartment.info("The Apartment has been created with success");
+		LOGGER.info("the apartment has been created with success");
 	}
 
 	@Override
@@ -106,7 +119,8 @@ public class Apartment extends Object {
 		return apart.floorArea == floorArea && apart.address.equals(address) && apart.nbBedrooms == nbBedrooms && apart.nbSleeping == nbSleeping && apart.nbBathrooms == nbBathrooms && apart.terrace == terrace && apart.floorAreaTerrace == floorAreaTerrace && apart.description.equals(description) && apart.title.equals(title) && apart.wifi == wifi && apart.pricePerNight == pricePerNight && apart.nbMinNight == nbMinNight &&  apart.tele == tele ;
 		}
 	
-	@Override
+
+	
 	public String toString() {
 		String dispTitle ;
 		String dispAddress ;
@@ -133,7 +147,7 @@ public class Apartment extends Object {
 		dispDescription = "\nDescription : " + ((description == "") ? "N/A" : description) ;
 		dispWifi = "\nWifi : " + ((wifi == true) ? "Yes" : "No") ;
 		dispTele = "\nTelevision : " + ((tele == true) ? "Yes" : "No") ;
-		dispPricePerNight = "\nPrice per night : " + ((pricePerNight == 0) ? "N/A" : Double.toString(pricePerNight)+"$") ;
+		dispPricePerNight = "\nPrice per night : " + ((pricePerNight == 0) ? "N/A" : Double.toString(pricePerNight)+"€") ;
 		dispNbMinNight = "\nNumber of night minimum to rent this apartment : " + ((nbMinNight == 0) ? "N/A" : Integer.toString(nbMinNight)+" night(s)") ;
 		
 		return dispTitle + dispAddress + dispFloorArea  +dispNbBedrooms + dispNbSleeping + dispNbBathrooms + dispTerrace + dispFloorAreaTerrace + dispDescription  +dispWifi + dispPricePerNight + dispNbMinNight + dispTele ; 
@@ -244,48 +258,46 @@ public class Apartment extends Object {
 	}
 
 
+	private void checkArgument(boolean test, String ErrorMsg) {
+	}
+	
+	
 	/**
 	 * @param floorArea is a real number superior or equal to zero
+	 * @return 
 	 */
 	public void setFloorArea(double floorArea) {
-		if (floorArea < 0) {
-			apartment.debug("The floor area should not be negative");
-			throw new IllegalArgumentException ("The floor area can not be negative");
-		}
+		checkArgument(floorArea < 0,"The floor area should not be negative");
 		this.floorArea = floorArea;
-		apartment.info("The floor area has been set to "+ floorArea);
+		LOGGER.info("The floor area has been set to "+ floorArea);
 	}
+
+
 
 	/**
 	 * @param address is a string of characters 
 	 */
-	public void setaddress(String address) {
+	public void setAddress(String address) {
 		this.address = address;
-		apartment.info("The address has been set to "+ address);
+		LOGGER.info("The address has been set to "+ address);
 	}
 
 	/**
 	 * @param nbBedrooms is an integer superior or equal to zero
 	 */
 	public void setNbBedrooms(int nbBedrooms) {
-		if (nbBedrooms < 0) {
-			apartment.debug("The number of bedrooms should not be negative");
-			throw new IllegalArgumentException ("The number of Bedrooms can not be negative");
-		}
+		checkArgument(nbBedrooms < 0,"The number of Bedrooms can not be negative");
 		this.nbBedrooms = nbBedrooms;
-		apartment.info("The number of bathrooms has been set to "+ nbBedrooms);
+		LOGGER.info("The number of bathrooms has been set to "+ nbBedrooms);
 	}
 
 	/**
 	 * @param nbSleepings is an integer superior or equal to zero
 	 */
 	public void setNbSleeping(int nbSleeping) {
-		if (nbSleeping < 0) {
-			apartment.debug("The accomodation capacity should not be negative");
-			throw new IllegalArgumentException ("The accomodation capacity can not be negative");
-		}
+		checkArgument(nbSleeping < 0,"The accomodation capacity can not be negative");
 		this.nbSleeping = nbSleeping ;
-		apartment.info("The number of sleepings has been set to "+ nbSleeping);
+		LOGGER.info("The number of sleepings has been set to "+ nbSleeping);
 	}
 
 	/**
@@ -293,11 +305,10 @@ public class Apartment extends Object {
 	 */
 	public void setNbBathrooms(int nbBathrooms) {
 		if (nbBathrooms < 0) {
-			apartment.debug("The number of bathrooms should not be negative");
 			throw new IllegalArgumentException ("The number of bathrooms can not be negative");
 		}
 		this.nbBathrooms = nbBathrooms ;
-		apartment.info("The number of bathrooms has been set to "+ nbBathrooms);
+		LOGGER.info("The number of bathrooms has been set to "+ nbBathrooms);
 	}
 
 	/**
@@ -305,7 +316,7 @@ public class Apartment extends Object {
 	 */
 	public void setTerrace(boolean terrace) {
 		this.terrace = terrace ;
-		apartment.info("terrace has been set to "+ terrace);
+		LOGGER.info("terrace has been set to "+ terrace);
 	}
 
 	/**
@@ -313,15 +324,13 @@ public class Apartment extends Object {
 	 */
 	public void setFloorAreaTerrace(double floorAreaTerrace) {
 		if (this.terrace == false && floorAreaTerrace > 0) {
-			apartment.debug("The floor area terrace can't be set if the the terace is set to 'false'");
 			throw new IllegalArgumentException ("The terrace can not have a floor area if it doesn't exists");
 		}
 		if (floorAreaTerrace < 0) {
-			apartment.debug("The floor area of the terrace should not be negative");
 			throw new IllegalArgumentException ("The floor area of the terrace can not be negative");
 		}
 		this.floorAreaTerrace = floorAreaTerrace ;
-		apartment.info("The floor area of the terrace has been set to "+ floorAreaTerrace);
+		LOGGER.info("The floor area of the terrace has been set to "+ floorAreaTerrace);
 	}
 
 	/**
@@ -329,7 +338,7 @@ public class Apartment extends Object {
 	 */
 	public void setDescription(String description) {
 		this.description = description ;
-		apartment.info("The description has been set to " + description);
+		LOGGER.info("The description has been set to " + description);
 	}
 
 	/**
@@ -337,7 +346,7 @@ public class Apartment extends Object {
 	 */
 	public void setTitle(String title) {
 		this.title = title ;
-		apartment.info("The title has been set to "+ floorArea);
+		LOGGER.info("The title has been set to "+ floorArea);
 	}
 
 	/**
@@ -345,7 +354,7 @@ public class Apartment extends Object {
 	 */
 	public void setWifi(boolean wifi) {
 		this.wifi = wifi ;
-		apartment.info("The wifi has been set to "+ wifi);
+		LOGGER.info("The wifi has been set to "+ wifi);
 	}
 
 	/**
@@ -355,7 +364,7 @@ public class Apartment extends Object {
 		if (pricePerNight < 0)
 			throw new IllegalArgumentException ("The price per night can not be negative");
 		this.pricePerNight = pricePerNight ;
-		apartment.info("The price per night has been set to "+ pricePerNight);
+		LOGGER.info("The price per night has been set to "+ pricePerNight);
 	}
 
 	/**
@@ -365,7 +374,7 @@ public class Apartment extends Object {
 		if (nbMinNight < 0)
 			throw new IllegalArgumentException ("The minimum number of nights can not be negative");
 		this.nbMinNight = nbMinNight ;
-		apartment.info("The number minimum of night has been set to "+ nbMinNight);
+		LOGGER.info("The number minimum of night has been set to "+ nbMinNight);
 	}
 
 	/**
@@ -373,7 +382,7 @@ public class Apartment extends Object {
 	 */
 	public void setTele(boolean tele) {
 		this.tele = tele ;
-		apartment.info("The tele has been set to "+ tele);
+		LOGGER.info("The tele has been set to "+ tele);
 	}
 
 	@Override
