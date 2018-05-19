@@ -24,9 +24,8 @@ class DistanceSubwayTest {
 	@Test
 	void calculateDistanceAddressTest() throws ApiException, InterruptedException, IOException {
 
-		String apiKey= KeyManager.getApiKey();
-		DistanceSubway dist = new DistanceSubway(apiKey,"Paris","Ville d'Avray");
-		Assert.assertEquals(0.96833, dist.calculateDistanceAddress(DistanceMode.ADDRESS), 0.0001);
+		DistanceSubway dist = new DistanceSubway("Paris","Ville d'Avray");
+		Assert.assertEquals(3006, dist.calculateDistanceAddress(DistanceMode.ADDRESS), 0.0001);
 	}
 
 }
