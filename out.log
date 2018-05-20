@@ -1,21 +1,21 @@
-16:23:01.729 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-16:23:01.754 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-16:23:02.422 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-16:23:02.422 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The current distance between the interest place and the apartment has been updated.
-16:23:02.426 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 3095.0
-16:23:02.439 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-16:23:02.439 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location has been had with success in the Map.
-16:23:02.455 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-16:23:02.455 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-16:23:02.796 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-16:23:02.808 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The current distance between the interest place and the apartment has been updated.
-16:23:02.809 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 1502.0
-16:23:02.810 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-16:23:02.810 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location has been had with success in the Map.
-16:23:02.826 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-16:23:02.826 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-16:23:03.274 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-16:23:03.274 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The current distance between the interest place and the apartment has been updated.
-16:23:03.274 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85057200,2.65447200 and 48.82700420,2.18869440 has been calculated and is equal to 6524.0
-16:23:03.274 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-16:23:03.274 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location has been had with success in the Map.
+16:29:56.087 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
+16:29:56.097 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
+16:29:56.418 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
+16:29:56.418 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The current distance between the interest place and the apartment has been updated.
+16:29:56.422 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 3095.0
+16:29:56.446 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+16:29:56.446 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.9140277777777778 has been had with success in the Map.
+16:29:56.454 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
+16:29:56.454 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
+16:29:56.727 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
+16:29:56.727 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The current distance between the interest place and the apartment has been updated.
+16:29:56.731 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 1442.0
+16:29:56.731 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+16:29:56.731 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9599444444444445 has been had with success in the Map.
+16:29:56.747 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
+16:29:56.747 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
+16:29:57.045 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
+16:29:57.045 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The current distance between the interest place and the apartment has been updated.
+16:29:57.049 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85057200,2.65447200 and 48.82700420,2.18869440 has been calculated and is equal to 6524.0
+16:29:57.049 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+16:29:57.053 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85057200,2.65447200) with the utility 0.8187777777777778 has been had with success in the Map.

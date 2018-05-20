@@ -22,7 +22,7 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	private Map<Location, Double> interestlocation;
 	private Location appartlocation;
 	private double maxDuration;
-	private Logger valueDistFunction = LoggerFactory.getLogger(ValueDistFunction.class);
+	private Logger LOGGER = LoggerFactory.getLogger(ValueDistFunction.class);
 	
 	
 	/**
@@ -43,9 +43,9 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 * @throws ApiException 
 	 */
 	public void addInterestLocation(Location interest) throws ApiException, InterruptedException, IOException {
-		double utility = setUtility(calculateDistanceLocation(interest));
-		interestlocation.put(interest, 1-utility);
-		valueDistFunction.info("The interest location has been had with success in the Map.");
+		double utility = 1-setUtility(calculateDistanceLocation(interest));
+		interestlocation.put(interest, utility);
+		LOGGER.info("The interest location ("+interest.getCoordinate()+") with the utility "+utility+" has been had with success in the Map.");
 	}
 	
 	/**
@@ -63,10 +63,10 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	public double calculateDistanceLocation(Location interest) throws ApiException, InterruptedException, IOException {
 		DistanceSubway dist = new DistanceSubway(interest.getCoordinate(),appartlocation.getCoordinate());
 		double currentdistance = dist.calculateDistanceAddress(DistanceMode.COORDINATE);
-		valueDistFunction.info("The current distance between the interest place and the apartment has been updated.");
+		LOGGER.info("The current distance between the interest place and the apartment has been updated.");
 		if (currentdistance > maxDuration)
 			maxDuration = currentdistance;
-		valueDistFunction.info("The distance between "+interest.getCoordinate()+" and "+appartlocation.getCoordinate()+" has been calculated and is equal to "+ currentdistance);
+		LOGGER.info("The distance between "+interest.getCoordinate()+" and "+appartlocation.getCoordinate()+" has been calculated and is equal to "+ currentdistance);
 		return currentdistance;
 
 	}
