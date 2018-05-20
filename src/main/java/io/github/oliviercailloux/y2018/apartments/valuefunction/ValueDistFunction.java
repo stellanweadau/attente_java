@@ -60,8 +60,9 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	}
 	
 	/**
-	 * Update the current distance between the apartment and an interest place.
-	 * @param interest Object Location of an interest place of the user.
+	 * 
+	 * @param interest
+	 * @return double number  which corresponds to the distance (seconds) between the Location appartocation and the Location interest in parameter.
 	 */
 	public double calculateDistanceLocation(Location interest) throws ApiException, InterruptedException, IOException {
 		DistanceSubway dist = new DistanceSubway(interest.getCoordinate(),appartlocation.getCoordinate());
