@@ -28,14 +28,11 @@ import io.github.oliviercailloux.y2018.apartments.valuefunction.DistanceMode;
  */
 public class DistanceSubway {
 
-	//private String url;
-
-	//private String api_key;
 	private String startPoint;
 	private String endPoint;
 	private LatLng startCoordinate;
 	private LatLng endCoordinate;
-	//private String api_key_geocode;
+
 	final static Logger LOGGER = LoggerFactory.getLogger(DistanceSubway.class);
 
 	/**
@@ -43,23 +40,27 @@ public class DistanceSubway {
 	 * @param api_key the API Key to use Google Maps Services
 	 * @param startPoint the start point of the path
 	 * @param endPoint the end point of the path
+	 * @throws IOException 
+	 * @throws InterruptedException 
+	 * @throws ApiException 
 	 */
-	public DistanceSubway(String startPoint, String endPoint){
+	public DistanceSubway(String startPoint, String endPoint) throws ApiException, InterruptedException, IOException{
 		if (startPoint==null || endPoint == null )
 			throw new IllegalArgumentException("Address is not a valid object");
 		if (startPoint.length() == 0 || endPoint.length() == 0)
 			throw new IllegalArgumentException("Address is empty");
 
-		//this.api_key = api_key;
 		this.endPoint = endPoint;
 		this.startPoint = startPoint;
-		//this.api_key_geocode = api_geocode_key;
-		//this.startCoordinate = this.getGeometryLocation(startPoint);		
-		//this.endCoordinate = this.getGeometryLocation(endPoint);
-
-
-
+		
+		setCoordinate();
+		
 		LOGGER.info("DistanceSubway Object created with success. Departure= "+startPoint+" ; Arrival= "+ endPoint);
+	}
+	
+	public DistanceSubway(LatLng startCoordinate, LatLng endCoordinate) {
+		this.startCoordinate = startCoordinate;
+		this.endCoordinate = endCoordinate;
 	}
 
 	private void setCoordinate() throws ApiException, InterruptedException, IOException {
@@ -99,7 +100,6 @@ public class DistanceSubway {
 			.await();
 			break;
 		case COORDINATE:
-			setCoordinate();
 			result = request.origins(startCoordinate)
 			.destinations(endCoordinate)
 			.mode(TravelMode.TRANSIT)
