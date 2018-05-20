@@ -24,7 +24,7 @@ public class Apartment extends Object {
 
 	/**
 	 * @param nbBedrooms is an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment.
-	 * if not initalized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have any bedroom.
+	 * if not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have any bedroom.
 	 */
 	private int nbBedrooms;
 
@@ -42,7 +42,7 @@ public class Apartment extends Object {
 
 	/**
 	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not.
-	 * If not initizalized, the parameter will have a default value set of <code>false</code> which mean the apartment doesn't have a terrace.
+	 * If not initialized, the parameter will have a default value set of <code>false</code> which mean the apartment doesn't have a terrace.
 	 */
 	private boolean terrace;
 
@@ -257,8 +257,16 @@ public class Apartment extends Object {
 		return tele;
 	}
 
-
+	/**
+	 * Check the value of an argument :
+	 * Ensures the value of an expression involving one or more parameters to the calling method.
+	 * @param test the value : it corresponds to the impossible case 
+	 * @param ErrorMsg the message that will be showed because of the {@link IllegalArgumentException} 
+	 */
 	private void checkArgument(boolean test, String ErrorMsg) {
+		if (test == true) {
+			throw new IllegalArgumentException (ErrorMsg);
+		}
 	}
 	
 	
@@ -304,9 +312,7 @@ public class Apartment extends Object {
 	 * @param nbBathrooms is an integer superior or equal to zero 
 	 */
 	public void setNbBathrooms(int nbBathrooms) {
-		if (nbBathrooms < 0) {
-			throw new IllegalArgumentException ("The number of bathrooms can not be negative");
-		}
+		checkArgument(nbBathrooms < 0,"The number of bathrooms can not be negative");
 		this.nbBathrooms = nbBathrooms ;
 		LOGGER.info("The number of bathrooms has been set to "+ nbBathrooms);
 	}
@@ -323,12 +329,8 @@ public class Apartment extends Object {
 	 * @param floorAreaTerrace is a real number superior or equal to zero, it only works if terrace = true (use setTerrace)
 	 */
 	public void setFloorAreaTerrace(double floorAreaTerrace) {
-		if (this.terrace == false && floorAreaTerrace > 0) {
-			throw new IllegalArgumentException ("The terrace can not have a floor area if it doesn't exists");
-		}
-		if (floorAreaTerrace < 0) {
-			throw new IllegalArgumentException ("The floor area of the terrace can not be negative");
-		}
+		checkArgument(this.terrace == false && floorAreaTerrace > 0,"The terrace can not have a floor area if it doesn't exists");
+		checkArgument(floorAreaTerrace < 0,"The floor area of the terrace can not be negative");
 		this.floorAreaTerrace = floorAreaTerrace ;
 		LOGGER.info("The floor area of the terrace has been set to "+ floorAreaTerrace);
 	}
@@ -361,8 +363,7 @@ public class Apartment extends Object {
 	 * @param pricePerNight is a real number superior or equal to zero
 	 */
 	public void setPricePerNight(double pricePerNight) {
-		if (pricePerNight < 0)
-			throw new IllegalArgumentException ("The price per night can not be negative");
+		checkArgument(pricePerNight < 0,"The price per night can not be negative");
 		this.pricePerNight = pricePerNight ;
 		LOGGER.info("The price per night has been set to "+ pricePerNight);
 	}
@@ -371,8 +372,7 @@ public class Apartment extends Object {
 	 * @param nbMinNight is an integer superior or equal to zero
 	 */
 	public void setNbMinNight(int nbMinNight) {
-		if (nbMinNight < 0)
-			throw new IllegalArgumentException ("The minimum number of nights can not be negative");
+		checkArgument(nbMinNight < 0,"The minimum number of nights can not be negative");
 		this.nbMinNight = nbMinNight ;
 		LOGGER.info("The number minimum of night has been set to "+ nbMinNight);
 	}

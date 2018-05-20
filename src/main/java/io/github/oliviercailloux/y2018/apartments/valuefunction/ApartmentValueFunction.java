@@ -134,7 +134,16 @@ public class ApartmentValueFunction {
 	}
 
 
+	/**
+	 * Check the value of an argument :
+	 * Ensures the value of an expression involving one or more parameters to the calling method.
+	 * @param test the value : it corresponds to the impossible case 
+	 * @param ErrorMsg the message that will be showed because of the {@link IllegalArgumentException} 
+	 */
 	private void checkArgument(boolean test, String ErrorMsg) {
+		if (test == true) {
+			throw new IllegalArgumentException (ErrorMsg);
+		}
 	}
 
 	/**

@@ -37,8 +37,6 @@ class ToXmlPropertiesTest {
 		
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 
-		
-
 		try (InputStream f1 = ReadApartmentsXMLFormat.class.getResourceAsStream("xmlfileTest.xml")){
 
 			Apartment a1 = r.readApartment(f1);
@@ -58,7 +56,8 @@ class ToXmlPropertiesTest {
 			Assert.assertTrue("The value of boolean wifi doesn't match with the value of wifi in the XML File",a1.getWifi());
 			
 		}
-		
+	
+
 		ReadApartmentsXMLFormat r1 = new ReadApartmentsXMLFormat();
 		try (InputStream f1 = ReadTwoApartmentsTest.class.getResourceAsStream("xmlfileTest.xml")){
 			Apartment a1 = r1.readApartment(f1);
