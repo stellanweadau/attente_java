@@ -473,61 +473,61 @@ public class ApartmentValueFunction {
 		double pricePerNightSubjectiveValueCorrectedWeight;
 		double nbMinNightSubjectiveValueCorrectedWeight;
 		double teleSubjectiveValueCorrectedWeight;
-		
+
 		if ( floorAreaValueFunction == null) {
 			floorAreaSubjectiveValueCorrectedWeight = 0.0; 
 		} else {
 			floorAreaSubjectiveValueCorrectedWeight = floorAreaSubjectiveValueWeight;	
 		}
-		
+
 		if ( nbBedroomsValueFunction == null) {
 			nbBedroomsSubjectiveValueCorrectedWeight = 0.0; 
 		} else {
 			nbBedroomsSubjectiveValueCorrectedWeight = nbBedroomsSubjectiveValueWeight;	
 		}
-		
+
 		if ( nbSleepingValueFunction == null) {
 			nbSleepingSubjectiveValueCorrectedWeight = 0.0; 
 		} else {
 			nbSleepingSubjectiveValueCorrectedWeight = nbSleepingSubjectiveValueWeight;	
 		}
-		
+
 		if ( nbBathroomsValueFunction == null) {
 			nbBathroomsSubjectiveValueCorrectedWeight = 0.0; 
 		} else {
 			nbBathroomsSubjectiveValueCorrectedWeight = nbBathroomsSubjectiveValueWeight;	
 		}
-		
+
 		if ( terraceValueFunction == null) {
 			terraceSubjectiveValueCorrectedWeight = 0.0; 
 		} else {
 			terraceSubjectiveValueCorrectedWeight = terraceSubjectiveValueWeight;	
 		}
-		
+
 		if ( floorAreaTerraceValueFunction == null) {
 			floorAreaTerraceSubjectiveValueCorrectedWeight = 0.0; 
 		} else {
 			floorAreaTerraceSubjectiveValueCorrectedWeight = floorAreaTerraceSubjectiveValueWeight;	
 		}
-		
+
 		if ( wifiValueFunction == null) {
 			wifiSubjectiveValueCorrectedWeight = 0.0; 
 		} else {
 			wifiSubjectiveValueCorrectedWeight = wifiSubjectiveValueWeight;	
 		}
-		
+
 		if ( pricePerNightValueFunction == null) {
 			pricePerNightSubjectiveValueCorrectedWeight = 0.0; 
 		} else {
 			pricePerNightSubjectiveValueCorrectedWeight = pricePerNightSubjectiveValueWeight;	
 		}
-		
+
 		if ( nbMinNightValueFunction == null) {
 			nbMinNightSubjectiveValueCorrectedWeight = 0.0; 
 		} else {
 			nbMinNightSubjectiveValueCorrectedWeight = nbMinNightSubjectiveValueWeight;	
 		}
-		
+
 		if ( teleValueFunction == null) {
 			teleSubjectiveValueCorrectedWeight = 0.0; 
 		} else {
