@@ -14,6 +14,9 @@ public class BooleanValueFunction implements PartialValueFunction<Boolean>{
 	static Logger LOGGER = LoggerFactory.getLogger(BooleanValueFunction.class);
 	
 	private void checkArgument(boolean test, String ErrorMsg) {
+		if (test == true) {
+			throw new IllegalArgumentException (ErrorMsg);
+		}
 	}
 	
 	/**
