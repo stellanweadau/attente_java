@@ -121,6 +121,7 @@ public class Apartment extends Object {
 	
 
 	
+	@Override
 	public String toString() {
 		String dispTitle ;
 		String dispAddress ;

@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.Properties;
 
@@ -52,20 +53,20 @@ public class XMLProperties{
 	 * @throws IllegalArgumentException
 	 * @throws IllegalAccessException
 	 */
-	public void toXML(Apartment a, File xmlFile) throws IOException, IllegalArgumentException, IllegalAccessException
+	public void toXML(Apartment a, OutputStream xmlFile) throws IOException, IllegalArgumentException, IllegalAccessException
 	{
-		xmlProperties.info("Entrée de fonction - " + xmlFile.getAbsolutePath());
-		if(xmlFile.createNewFile())
-		{
-			xmlProperties.info("File has been created");
-		}
-		else
-		{
-	
-			xmlProperties.info("File already exists. (Erased)");
-		}
-		try(FileOutputStream s = new FileOutputStream(xmlFile.getAbsolutePath()))
-			{
+//		xmlProperties.info("Entrée de fonction - " + xmlFile.getAbsolutePath());
+//		if(xmlFile.createNewFile())
+//		{
+//			xmlProperties.info("File has been created");
+//		}
+//		else
+//		{
+//	
+//			xmlProperties.info("File already exists. (Erased)");
+//		}
+//		try(FileOutputStream s = new FileOutputStream(xmlFile.getAbsolutePath()))
+//			{
 			
 			for(Field f : a.getClass().getDeclaredFields()) {
 				
@@ -78,11 +79,11 @@ public class XMLProperties{
 			
 			}
 				properties.remove("apartment");
-				properties.storeToXML(s, "Generated file for the apartment " + a.getTitle() );
+				properties.storeToXML(xmlFile, "Generated file for the apartment " + a.getTitle() );
 				
-				s.close();
+				xmlFile.close();
 				xmlProperties.info("Stream has been closed");
-			}
+//			}
 		
 	}
 	
@@ -100,7 +101,10 @@ public class XMLProperties{
 		XMLProperties j = new XMLProperties();
 		Apartment a = new Apartment(80.5, "6 rue des paquerette 74000 Annecy", "Petit Manoir de campagne");
 		File f = new File("src/test/resources/xmlfile.xml");
-		j.toXML(a, f);
+		try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
+		{
+			j.toXML(a, s);
+		}
 
 	}
 }

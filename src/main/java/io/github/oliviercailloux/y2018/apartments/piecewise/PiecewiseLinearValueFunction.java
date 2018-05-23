@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.piecewise;
 
-import java.util.Map;
+import java.util.NavigableMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,6 @@ import com.google.common.collect.Range;
 
 import java.awt.geom.Point2D;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Iterator;
 
 /**
@@ -24,7 +24,7 @@ import java.util.Iterator;
 public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFunction {
 
 	private String criteria;
-	private Map<Integer, Double> utility;
+	private NavigableMap<Integer, Double> breakPoints;
 	static Logger piecewiseLinearValueFunction = LoggerFactory.getLogger(PiecewiseLinearValueFunction.class);
 
 	/**
@@ -34,19 +34,15 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 	 */
 	public PiecewiseLinearValueFunction(String crit)
 	{
-		utility = new HashMap<>();
+		breakPoints = new ConcurrentSkipListMap<>();
 		criteria = crit;
 	}
 	
-	/**
-	 * This method adds the couple (key,value) in the Map.
-	 * @param key value (int) for the criteria
-	 * @param value value (double) for the specified key
-	 */
+
 	@Override
 	public void setUtility(int key, double value) {
 		
-		if (utility.containsKey(key) == true) {
+		if (breakPoints.containsKey(key) == true) {
 			piecewiseLinearValueFunction.error("The key "+key+" is already in the map.");
 			throw new IllegalArgumentException("The key is already in the Map.");
 		}
@@ -59,20 +55,17 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 			throw new IllegalArgumentException("The key or the utility in parameter is not in keeping with the rules.");
 		}
 		
-		utility.put(key, value);
+		breakPoints.put(key, value);
 		piecewiseLinearValueFunction.info("Utility "+key+" with the value "+value+" set with sucess.");
 			
 	
 	}
 
-	/**
-	 * @return a description of the object {@link PiecewiseLinearValueFunction}
-	 */
 	@Override
 	public String toString()
 	{
 		return  "This object is defining the following criteria :  "+ criteria + 
-				". It contains " + this.utility.size() + " values";
+				". It contains " + this.breakPoints.size() + " values";
 	}
 
 	/**
@@ -105,13 +98,10 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		return a.getY() - (a.getX()* linearValue);
 	}
 	
-	/**
-	 * This method looks for the maximum of the keys and returns it.
-	 * @return max the maximum of all keys
-	 */
+
 	@Override
 	public int getMaxKey() {
-		Iterator<Integer> k = utility.keySet().iterator();
+		Iterator<Integer> k = breakPoints.keySet().iterator();
 		int max = 0;
 		int tmp = 0;
 		while (k.hasNext()) {
@@ -122,13 +112,10 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		return max;
 	}
 	
-	/**
-	 * This method looks for the minimum of the keys and returns it.
-	 * @return the minimum of all keys
-	 */
+
 	@Override
 	public int getMinKey() {
-		Iterator<Integer> k = utility.keySet().iterator();
+		Iterator<Integer> k = breakPoints.keySet().iterator();
 		int min = -1;
 		int tmp = 0;
 		while (k.hasNext()) {
@@ -139,14 +126,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		return min;
 	}
 	
-	/**
-	 * The method returns an interval that is the closest to the key in parameter.
-	 * The first one is calculated less than the key in parameter.
-	 * The second one is calculated more than the key in parameter.
-	 * @param key integer which corresponds to a key value
-	 * @return an closed interval of integers with the two keys as bounds.
-	 * @throws IllegalArgumentException
-	 */
+
 	@Override
 	public Range<Integer> getInterval(int key) throws IOException {
 		
@@ -160,7 +140,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 			throw new IllegalArgumentException("No coherent value to return for the range");
 		}
 		
-		Iterator<Integer> k = utility.keySet().iterator();
+		Iterator<Integer> k = breakPoints.keySet().iterator();
 		int delta1= -1;
 		int delta2 = -1;
 		int key1 = 0;
@@ -199,20 +179,14 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		
 	}
 	
-	/**
-	 * This method calculates and returns the value of the utility associated with the key
-	 * in parameter.
-	 * @param value of the key (int) which has to be more or equal than the min and strictly less or equal than the max 
-	 * @return the value (double) of the utility associated with the key in parameter
-	 * @throws IOException 
-	 */
+
 	@Override
 	public double getUtility(int key) throws IOException {
 		
-		if (utility.containsKey(key))
-			return utility.get(key);
+		if (breakPoints.containsKey(key))
+			return breakPoints.get(key);
 		
-		if (utility.size()<2) {
+		if (breakPoints.size()<2) {
 			piecewiseLinearValueFunction.error("The utility map needs more couples.");
 			throw new IllegalStateException("Need more couples (minimum of 2) to identify the linear value");
 		}
@@ -222,8 +196,8 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 		int lowerBound = intervalKey.lowerEndpoint();
 		int upperBound = intervalKey.upperEndpoint();
 		
-		Point2D lowerBoundPoint = new Point2D.Double(lowerBound,utility.get(lowerBound));
-		Point2D upperBoundPoint = new Point2D.Double(upperBound,utility.get(upperBound));
+		Point2D lowerBoundPoint = new Point2D.Double(lowerBound,breakPoints.get(lowerBound));
+		Point2D upperBoundPoint = new Point2D.Double(upperBound,breakPoints.get(upperBound));
 		
 		double value = getOrdinateValue(lowerBoundPoint,upperBoundPoint);
 		

@@ -30,12 +30,6 @@ public class PiecewiseTest{
 
 	}
 
-	/*@Test
-	void getLinearValueWrongArgument() {
-		PiecewiseLinearValueFunction p = initializePieceWise();
-		Assertions.assertThrows(IllegalArgumentException.class, () -> p.getLinearValue(30, 30, 0.1, 0.1));	
-	} */
-
 	private PiecewiseLinearValueFunction initializePieceWise()
 	{
 		PiecewiseLinearValueFunction p = new PiecewiseLinearValueFunction("Surface");

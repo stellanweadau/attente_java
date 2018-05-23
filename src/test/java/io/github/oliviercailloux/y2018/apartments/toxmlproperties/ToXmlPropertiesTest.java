@@ -33,7 +33,11 @@ class ToXmlPropertiesTest {
 		a.setDescription("Un igloo tout mignon en compagnie du père noël et de la mère noël");
 		a.setFloorAreaTerrace(8.6);
 		File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/xmlfileTest.xml");
-		j.toXML(a, f);
+		try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
+		{
+			j.toXML(a, s);
+		}
+		
 		
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 
