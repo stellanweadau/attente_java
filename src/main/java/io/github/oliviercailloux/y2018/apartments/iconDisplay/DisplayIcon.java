@@ -14,14 +14,14 @@ import io.github.oliviercailloux.y2018.apartments.distance.DistanceSubway;
 
 public class DisplayIcon {
 
-	static Logger displayIcon = LoggerFactory.getLogger(DisplayIcon.class);
+	static Logger LOGGER = LoggerFactory.getLogger(DisplayIcon.class);
 	
 	public static void main(String[] args) throws IOException {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
 			Display d = new Display( );
 			Shell s = new Shell(d);
 			
-			displayIcon.info("The shell has been initialized");
+			LOGGER.info("The shell has been initialized");
 			
 			s.setSize(500,500);
 			Image i = new Image(d, f);
@@ -29,7 +29,7 @@ public class DisplayIcon {
 			s.setText("Apartments");
 			s.open( );
 			
-			displayIcon.info("The image is perfectly loaded");
+			LOGGER.info("The image is perfectly loaded");
 			while(!s.isDisposed( )){
 				if(!d.readAndDispatch( ))
 					d.sleep( );
@@ -40,7 +40,7 @@ public class DisplayIcon {
 		}
 		catch(IOException e)
 		{
-			displayIcon.info("Fail to open the stream or the stream has been interrupted");
+			LOGGER.info("Fail to open the stream or the stream has been interrupted");
 			throw e;
 		}
 	}
