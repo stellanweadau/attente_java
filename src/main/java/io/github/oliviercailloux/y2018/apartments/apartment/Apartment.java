@@ -43,7 +43,7 @@ public class Apartment extends Object {
 	private int nbBathrooms;
 
 	/**
-	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not.
+	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace.
 	 * If not initialized, the parameter will have a default value set of <code>false</code> which mean the apartment doesn't have a terrace.
 	 */
 	private boolean terrace;
@@ -67,7 +67,7 @@ public class Apartment extends Object {
 	private String title;
 
 	/**
-	 * @param wifi is a boolean (true/false) which indicates if there is wireless connection to internet or not. 
+	 * @param wifi is a boolean (true/false) which indicates if there is wireless connection to Internet or not can be interpreted as hasWifi. 
 	 * If not initialized, the parameter will have a default value of <code>false</code> which mean the apartment doesn't have wifi.
 	 */
 	private boolean wifi; 
@@ -85,7 +85,7 @@ public class Apartment extends Object {
 	private int nbMinNight; 
 
 	/**
-	 * @param tele is a boolean (true/false) which indicates if there's a television or not. 
+	 * @param tele is a boolean (true/false) which indicates if there's a television or not can be interpreted as hasTelevision. 
 	 * If not initialized, the parameter will have a default set value of <code>false</code> which mean the apartment doesn't have a tele.
 	 */
 	private boolean tele; 
@@ -125,10 +125,23 @@ public class Apartment extends Object {
 		return apart.floorArea == floorArea && apart.address.equals(address) && apart.nbBedrooms == nbBedrooms && apart.nbSleeping == nbSleeping && apart.nbBathrooms == nbBathrooms && apart.terrace == terrace && apart.floorAreaTerrace == floorAreaTerrace && apart.description.equals(description) && apart.title.equals(title) && apart.wifi == wifi && apart.pricePerNight == pricePerNight && apart.nbMinNight == nbMinNight &&  apart.tele == tele ;
 		}
 	
-
-	
 	@Override
+	/**
+	 * A toString meant to be used while in development for the testing
+	 *  @return only the essential information of an apartment, which are the floor area, its address and his title
+	 */
 	public String toString() {
+		String floorAreaTS = "\nFloor area : " + Double.toString(floorArea) + " square meters";
+		String addressTS = "\nAddress : " + address ;
+		String titleTS = "\nTitle : " + title ;
+		return floorAreaTS + addressTS + titleTS;
+	}
+
+	/**
+	 * A toString based method meant to be used after the development for regular use
+	 *  @return all information of an apartment
+	 */
+	public String toFullString() {
 		String dispTitle ;
 		String dispAddress ;
 		String dispFloorArea ;
@@ -280,6 +293,7 @@ public class Apartment extends Object {
 	 * @param address is a string of characters 
 	 */
 	public void setAddress(String address) {
+		checkArgument(address !="","The address should not be empty");
 		this.address = address;
 		LOGGER.info("The address has been set to "+ address);
 	}
@@ -333,6 +347,7 @@ public class Apartment extends Object {
 	 * @param description is a string of characters
 	 */
 	public void setDescription(String description) {
+		checkArgument(description !="","The description should not be empty");
 		this.description = description ;
 		LOGGER.info("The description has been set to " + description);
 	}
@@ -341,6 +356,7 @@ public class Apartment extends Object {
 	 * @param title is a string of characters 
 	 */
 	public void setTitle(String title) {
+		checkArgument(title !="","The title should not be empty");
 		this.title = title ;
 		LOGGER.info("The title has been set to "+ floorArea);
 	}

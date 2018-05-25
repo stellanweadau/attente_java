@@ -37,7 +37,7 @@ public class XMLProperties{
 	
 	private Properties properties;
 	
-	static Logger xmlProperties = LoggerFactory.getLogger(XMLProperties.class);
+	private Logger LOGGER = LoggerFactory.getLogger(XMLProperties.class);
 	
 	public XMLProperties()
 	{
@@ -75,14 +75,14 @@ public class XMLProperties{
 				f.setAccessible(true);
 				properties.setProperty(fullName[fullName.length-1],f.get(a).toString());
 				
-				xmlProperties.info("Adding entry : " + fullName[fullName.length-1] + " : " + f.get(a));
+				LOGGER.info("Adding entry : " + fullName[fullName.length-1] + " : " + f.get(a));
 			
 			}
 				properties.remove("apartment");
 				properties.storeToXML(xmlFile, "Generated file for the apartment " + a.getTitle() );
 				
 				xmlFile.close();
-				xmlProperties.info("Stream has been closed");
+				LOGGER.info("Stream has been closed");
 //			}
 		
 	}
