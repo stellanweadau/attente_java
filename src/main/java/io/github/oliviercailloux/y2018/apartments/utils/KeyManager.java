@@ -5,24 +5,27 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import io.github.oliviercailloux.y2018.apartments.distance.DistanceSubway;
+
 public class KeyManager {
+	final static Logger LOGGER = LoggerFactory.getLogger(KeyManager.class);
 
 	public static String getApiKey() throws FileNotFoundException, IOException {
 
 		String apiKey = System.getenv("APIKEY");
-		
 
 		if (apiKey == null) {
 			String fichier = new File("API_KEY.txt").getAbsolutePath();
 			apiKey = "";
 
-			try(FileReader fr = new FileReader (fichier)){
+			try (FileReader fr = new FileReader(fichier)) {
 				int c = fr.read();
 
-
-				while (c != -1)
-				{
-					apiKey+=(char) c;
+				while (c != -1) {
+					apiKey += (char) c;
 					c = fr.read();
 				}
 			}
@@ -39,15 +42,13 @@ public class KeyManager {
 		if (geocodeApiKey == null) {
 			String fichier = new File("GEOCODE_API_KEY.txt").getAbsolutePath();
 
-			geocodeApiKey="";
+			geocodeApiKey = "";
 
-			try(FileReader fr = new FileReader (fichier)){
+			try (FileReader fr = new FileReader(fichier)) {
 				int c = fr.read();
 
-
-				while (c != -1)
-				{
-					geocodeApiKey+=(char) c;
+				while (c != -1) {
+					geocodeApiKey += (char) c;
 					c = fr.read();
 				}
 			}
