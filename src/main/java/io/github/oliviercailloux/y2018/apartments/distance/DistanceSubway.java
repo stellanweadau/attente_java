@@ -35,7 +35,7 @@ public class DistanceSubway {
 	private LatLng startCoordinate;
 	private LatLng endCoordinate;
 
-	final static Logger LOGGER = LoggerFactory.getLogger(DistanceSubway.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(DistanceSubway.class);
 
 	/**
 	 * Create an Object DistanceSubway in order to calculate a distance between two

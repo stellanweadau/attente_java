@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import io.github.oliviercailloux.y2018.apartments.distance.DistanceSubway;
 
 public class KeyManager {
-	final static Logger LOGGER = LoggerFactory.getLogger(KeyManager.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(KeyManager.class);
 
 	public static String getApiKey() throws FileNotFoundException, IOException {
 
