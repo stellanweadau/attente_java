@@ -104,9 +104,9 @@ public class DistanceSubway {
 			 apiKey = KeyManager.getApiKey();
 		} catch (FileNotFoundException e) {
 			LOGGER.info(
-					"The file GEOCODE_API_KEY.txt can't be found at the project root. Please be sure that the file is correctly named and present at the project root" + e.getMessage());
+					"The file API_KEY.txt can't be found at the project root. Please be sure that the file is correctly named and present at the project root" + e.getMessage());
 			throw new FileNotFoundException(
-					"ERROR : The file GEOCODE_API_KEY.txt can't be found at the project root. Please be sure that the file is correctly named and present at the project root");
+					"ERROR : The file API_KEY.txt can't be found at the project root. Please be sure that the file is correctly named and present at the project root");
 
 		}
 		try {
