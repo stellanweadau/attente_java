@@ -20,12 +20,21 @@ import io.github.oliviercailloux.y2018.apartments.valuefunction.DistanceMode;
  *
  */
 class DistanceSubwayTest {
-
+	
+	/**
+	 * The test check if the distance (in second) between Ville d'Avray and 
+	 * Paris is below 2h (6300 seconds) and above 30 minutes (1800 seconds)
+	 * This test fail in unnatural conditions of circulation (strike, etc...)
+	 * @throws ApiException
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	@Test
 	void calculateDistanceAddressTest() throws ApiException, InterruptedException, IOException {
 
 		DistanceSubway dist = new DistanceSubway("Paris","Ville d'Avray");
-		Assert.assertEquals(3006, dist.calculateDistanceAddress(DistanceMode.ADDRESS), 0.0001);
+		double time = dist.calculateDistanceAddress(DistanceMode.ADDRESS);
+		Assert.assertTrue(7200 > time &&  1800 < time);
 	}
 
 }
