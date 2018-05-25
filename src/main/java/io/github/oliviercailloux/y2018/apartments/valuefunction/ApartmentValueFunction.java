@@ -118,7 +118,7 @@ public class ApartmentValueFunction {
 	 */
 	private double teleSubjectiveValueWeight;
 
-	static Logger LOGGER = LoggerFactory.getLogger(ApartmentValueFunction.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(ApartmentValueFunction.class);
 
 
 	/**

@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
  */
 public class BooleanValueFunction implements PartialValueFunction<Boolean>{
 	private Map<Boolean, Double> subjective;
-	static Logger LOGGER = LoggerFactory.getLogger(BooleanValueFunction.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(BooleanValueFunction.class);
 
 
 	/**

@@ -25,7 +25,7 @@ public class PiecewiseLinearValueFunction implements IPiecewiseLinearValueFuncti
 
 	private String criteria;
 	private NavigableMap<Integer, Double> breakPoints;
-	static Logger piecewiseLinearValueFunction = LoggerFactory.getLogger(PiecewiseLinearValueFunction.class);
+	private final static Logger piecewiseLinearValueFunction = LoggerFactory.getLogger(PiecewiseLinearValueFunction.class);
 
 	/**
 	 * Constructor of the object {@link PricewiseLinearValueFunction}

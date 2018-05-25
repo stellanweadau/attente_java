@@ -37,7 +37,7 @@ public class XMLProperties{
 	
 	private Properties properties;
 	
-	private Logger LOGGER = LoggerFactory.getLogger(XMLProperties.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(XMLProperties.class);
 	
 	public XMLProperties()
 	{

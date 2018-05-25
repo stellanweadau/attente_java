@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class Discrete3ValueFunction implements PartialValueFunction<String> {
 
 	private Map<String, Double> subjective;
-	static Logger discrete3ValueFunction = LoggerFactory.getLogger(Discrete3ValueFunction.class);
+	private final static Logger discrete3ValueFunction = LoggerFactory.getLogger(Discrete3ValueFunction.class);
 	
 	/**
 	 * Create a map with 3 strings which are associated to 3 subjective values.

@@ -14,7 +14,7 @@ import io.github.oliviercailloux.y2018.apartments.distance.DistanceSubway;
 
 public class DisplayIcon {
 
-	static Logger LOGGER = LoggerFactory.getLogger(DisplayIcon.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(DisplayIcon.class);
 	
 	public static void main(String[] args) throws IOException {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){

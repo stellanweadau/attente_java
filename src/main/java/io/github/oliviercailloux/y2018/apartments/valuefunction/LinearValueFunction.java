@@ -13,7 +13,7 @@ import com.google.common.collect.Range;
 public class LinearValueFunction implements PartialValueFunction<Double> {
 
 	private Range<Double> interval ;
-	static Logger linearValueFunction = LoggerFactory.getLogger(LinearValueFunction.class);
+	private final static Logger linearValueFunction = LoggerFactory.getLogger(LinearValueFunction.class);
 	
 	/**
 	 * Create a guava interval between min and max.

@@ -19,7 +19,7 @@ public class ReadApartmentsXMLFormat {
 	
 	private Properties prop;
 	
-	static Logger readApartmentsXMLFormat = LoggerFactory.getLogger(ReadApartmentsXMLFormat.class);
+	private final static Logger readApartmentsXMLFormat = LoggerFactory.getLogger(ReadApartmentsXMLFormat.class);
 
 	public ReadApartmentsXMLFormat() {
 		

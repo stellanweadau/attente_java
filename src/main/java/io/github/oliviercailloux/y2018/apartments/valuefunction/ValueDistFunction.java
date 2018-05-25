@@ -22,7 +22,7 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	private Map<Location, Double> interestlocation;
 	private Location appartlocation;
 	private double maxDuration;
-	private Logger LOGGER = LoggerFactory.getLogger(ValueDistFunction.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(ValueDistFunction.class);
 	
 	
 	/**
