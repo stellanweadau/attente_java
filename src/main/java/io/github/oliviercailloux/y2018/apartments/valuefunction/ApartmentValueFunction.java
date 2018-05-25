@@ -3,6 +3,8 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunction;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.BooleanValueFunction;
@@ -250,25 +252,12 @@ public class ApartmentValueFunction {
 		LOGGER.info("The wifi preferencies has been set");
 	}
 
-
-	/**
-	 * Check the value of an argument :
-	 * Ensures the value of an expression involving one or more parameters to the calling method.
-	 * @param test the value : it corresponds to the impossible case 
-	 * @param ErrorMsg the message that will be showed because of the {@link IllegalArgumentException} 
-	 */
-	private void checkArgument(boolean test, String ErrorMsg) {
-		if (test == true) {
-			throw new IllegalArgumentException (ErrorMsg);
-		}
-	}
-
 	/**
 	 * set the weight of the floor area subjective value corresponding to the importance of the floor area criteria 
 	 * @param floorAreaSubjectiveValueWeight a positive (or 0) double 
 	 */
 	public void setFloorAreaSubjectiveValueWeight(double floorAreaSubjectiveValueWeight) {
-		checkArgument(floorAreaSubjectiveValueWeight < 0,"The weight of the floor area cannot be negative");
+		checkArgument(floorAreaSubjectiveValueWeight >= 0,"The weight of the floor area cannot be negative");
 		this.floorAreaSubjectiveValueWeight = floorAreaSubjectiveValueWeight;
 		LOGGER.info("The floor area weight has been set");
 	}
@@ -278,7 +267,7 @@ public class ApartmentValueFunction {
 	 * @param VAR a positive (or 0) double 
 	 */
 	public void setNbBedroomsSubjectiveValueWeight(double nbBedroomsSubjectiveValueWeight) {
-		checkArgument(nbBedroomsSubjectiveValueWeight < 0,"The weight of the number of bedrooms cannot be negative");
+		checkArgument(nbBedroomsSubjectiveValueWeight >= 0,"The weight of the number of bedrooms cannot be negative");
 		this.nbBedroomsSubjectiveValueWeight = nbBedroomsSubjectiveValueWeight;
 		LOGGER.info("The number of bedrooms weight has been set");
 	}
@@ -288,7 +277,7 @@ public class ApartmentValueFunction {
 	 * @param VAR a positive (or 0) double 
 	 */
 	public void setNbSleepingSubjectiveValueWeight(double nbSleepingSubjectiveValueWeight) {
-		checkArgument(nbSleepingSubjectiveValueWeight < 0,"The weight of the sleep-in cannot be negative");
+		checkArgument(nbSleepingSubjectiveValueWeight >= 0,"The weight of the sleep-in cannot be negative");
 		this.nbSleepingSubjectiveValueWeight = nbSleepingSubjectiveValueWeight;
 		LOGGER.info("The number of sleep-in weight has been set");
 	}
@@ -298,7 +287,7 @@ public class ApartmentValueFunction {
 	 * @param VAR a positive (or 0) double 
 	 */
 	public void setNbBathroomsSubjectiveValueWeight(double nbBathroomsSubjectiveValueWeight) {
-		checkArgument(nbBathroomsSubjectiveValueWeight < 0,"The weight of the number of bathrooms cannot be negative");
+		checkArgument(nbBathroomsSubjectiveValueWeight >= 0,"The weight of the number of bathrooms cannot be negative");
 		this.nbBathroomsSubjectiveValueWeight = nbBathroomsSubjectiveValueWeight;
 		LOGGER.info("The number of bathrooms weight has been set");
 	}
@@ -308,7 +297,7 @@ public class ApartmentValueFunction {
 	 * @param VAR a positive (or 0) double 
 	 */
 	public void setTerraceSubjectiveValueWeight(double terraceSubjectiveValueWeight) {
-		checkArgument(terraceSubjectiveValueWeight < 0,"The weight of the terrace cannot be negative");
+		checkArgument(terraceSubjectiveValueWeight >= 0,"The weight of the terrace cannot be negative");
 		this.terraceSubjectiveValueWeight = terraceSubjectiveValueWeight;
 		LOGGER.info("The terrace weight has been set");
 	}
@@ -318,7 +307,7 @@ public class ApartmentValueFunction {
 	 * @param VAR a positive (or 0) double 
 	 */
 	public void setFloorAreaTerraceSubjectiveValueWeight(double floorAreaTerraceSubjectiveValueWeight) {
-		checkArgument(floorAreaTerraceSubjectiveValueWeight < 0,"The weight of the floor area terrace cannot be negative");
+		checkArgument(floorAreaTerraceSubjectiveValueWeight >= 0,"The weight of the floor area terrace cannot be negative");
 		this.floorAreaTerraceSubjectiveValueWeight = floorAreaTerraceSubjectiveValueWeight;
 		LOGGER.info("The floor area of the terrace weight has been set");
 	}
@@ -328,7 +317,7 @@ public class ApartmentValueFunction {
 	 * @param VAR a positive (or 0) double 
 	 */
 	public void setWifiSubjectiveValueWeight(double wifiSubjectiveValueWeight) {
-		checkArgument(wifiSubjectiveValueWeight < 0,"The weight of the wifi cannot be negative");
+		checkArgument(wifiSubjectiveValueWeight >= 0,"The weight of the wifi cannot be negative");
 		this.wifiSubjectiveValueWeight = wifiSubjectiveValueWeight;
 		LOGGER.info("The wifi weight has been set");
 	}
@@ -338,7 +327,7 @@ public class ApartmentValueFunction {
 	 * @param VAR a positive (or 0) double 
 	 */
 	public void setPricePerNightSubjectiveValueWeight(double pricePerNightSubjectiveValueWeight) {
-		checkArgument(pricePerNightSubjectiveValueWeight < 0,"The weight of the price per night cannot be negative");
+		checkArgument(pricePerNightSubjectiveValueWeight >= 0,"The weight of the price per night cannot be negative");
 		this.pricePerNightSubjectiveValueWeight = pricePerNightSubjectiveValueWeight;
 		LOGGER.info("The price per night weight has been set");
 	}
@@ -348,7 +337,7 @@ public class ApartmentValueFunction {
 	 * @param VAR a positive (or 0) double 
 	 */
 	public void setNbMinNightSubjectiveValueWeight(double nbMinNightSubjectiveValueWeight) {
-		checkArgument(nbMinNightSubjectiveValueWeight < 0,"The weight of the minimum number of nights cannot be negative");
+		checkArgument(nbMinNightSubjectiveValueWeight >= 0,"The weight of the minimum number of nights cannot be negative");
 		this.nbMinNightSubjectiveValueWeight = nbMinNightSubjectiveValueWeight;
 		LOGGER.info("The number of minimum night weight has been set");
 	}
@@ -358,7 +347,7 @@ public class ApartmentValueFunction {
 	 * @param VAR a positive (or 0) double 
 	 */
 	public void setTeleSubjectiveValueWeight(double teleSubjectiveValueWeight) {
-		checkArgument(teleSubjectiveValueWeight < 0,"The weight of the tele cannot be negative");
+		checkArgument(teleSubjectiveValueWeight >= 0,"The weight of the tele cannot be negative");
 		this.teleSubjectiveValueWeight = teleSubjectiveValueWeight;
 		LOGGER.info("The wifi weight has been set");
 	}
@@ -384,7 +373,7 @@ public class ApartmentValueFunction {
 		if ( floorAreaValueFunction == null) {
 			floorAreaSubjectiveValue = 0.0; 
 		} else {
-			checkArgument(floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) < 0 || floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) > 1 , "The subjective value of floor area should be between 0 and 1");
+			checkArgument(floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) >= 0 || floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1 , "The subjective value of floor area should be between 0 and 1");
 			floorAreaSubjectiveValue = floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea());	
 		}
 		LOGGER.info("the floor area subjective value has been set to "+ floorAreaSubjectiveValue);
@@ -392,7 +381,7 @@ public class ApartmentValueFunction {
 		if ( nbBedroomsValueFunction  == null) {
 			nbBedroomsSubjectiveValue  = 0; 
 		} else {
-			checkArgument(nbBedroomsValueFunction .getSubjectiveValue((double) apart.getNbBedrooms()) < 0 || nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) > 1 , "The subjective value of the number of bedrooms should be between 0 and 1");
+			checkArgument(nbBedroomsValueFunction .getSubjectiveValue((double) apart.getNbBedrooms()) >= 0 || nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1 , "The subjective value of the number of bedrooms should be between 0 and 1");
 			nbBedroomsSubjectiveValue = nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms());	
 		}
 		LOGGER.info("the number of bedrooms subjective value has been set to "+ nbBedroomsSubjectiveValue);
@@ -400,7 +389,7 @@ public class ApartmentValueFunction {
 		if ( nbSleepingValueFunction == null) {
 			nbSleepingSubjectiveValue = 0; 
 		} else {
-			checkArgument(nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) < 0 || nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) > 1 , "The subjective value of the number of sleep-in should be between 0 and 1");
+			checkArgument(nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) >= 0 || nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1 , "The subjective value of the number of sleep-in should be between 0 and 1");
 			nbSleepingSubjectiveValue = nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping());	
 		}
 
@@ -408,49 +397,49 @@ public class ApartmentValueFunction {
 		if ( nbBathroomsValueFunction == null) {
 			nbBathroomsSubjectiveValue = 0; 
 		} else {
-			checkArgument(nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) < 0 || nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) > 1 , "The subjective value of the number of bathrooms should be between 0 and 1");
+			checkArgument(nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) >= 0 || nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1 , "The subjective value of the number of bathrooms should be between 0 and 1");
 			nbBathroomsSubjectiveValue = nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms());	
 		}
 
 		if ( terraceValueFunction == null) {
 			terraceSubjectiveValue = 0; 
 		} else {
-			checkArgument(terraceValueFunction.getSubjectiveValue(apart.getTerrace()) < 0 || terraceValueFunction.getSubjectiveValue(apart.getTerrace()) > 1 , "The subjective value of the terrace should be between 0 and 1");
+			checkArgument(terraceValueFunction.getSubjectiveValue(apart.getTerrace()) >= 0 || terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1 , "The subjective value of the terrace should be between 0 and 1");
 			terraceSubjectiveValue = terraceValueFunction.getSubjectiveValue(apart.getTerrace());	
 		}
 
 		if ( floorAreaTerraceValueFunction == null) {
 			floorAreaTerraceSubjectiveValue = 0; 
 		} else {
-			checkArgument(floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) < 0 || floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) > 1 , "The subjective value of the floor area of the terrace should be between 0 and 1");
+			checkArgument(floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) >= 0 || floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1 , "The subjective value of the floor area of the terrace should be between 0 and 1");
 			floorAreaTerraceSubjectiveValue = floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace());	
 		}
 
 		if ( wifiValueFunction == null) {
 			wifiSubjectiveValue = 0; 
 		} else {
-			checkArgument(wifiValueFunction.getSubjectiveValue(apart.getWifi()) < 0 || wifiValueFunction.getSubjectiveValue(apart.getWifi()) > 1 , "The subjective value of the wifi should be between 0 and 1");
+			checkArgument(wifiValueFunction.getSubjectiveValue(apart.getWifi()) >= 0 || wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1 , "The subjective value of the wifi should be between 0 and 1");
 			wifiSubjectiveValue = wifiValueFunction.getSubjectiveValue(apart.getWifi());	
 		}
 
 		if ( pricePerNightValueFunction == null) {
 			pricePerNightSubjectiveValue = 0; 
 		} else {
-			checkArgument(pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) < 0 || pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) > 1 , "The subjective value of the price per night should be between 0 and 1");
+			checkArgument(pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) >= 0 || pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1 , "The subjective value of the price per night should be between 0 and 1");
 			pricePerNightSubjectiveValue = pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight());	
 		}
 
 		if ( nbMinNightValueFunction == null) {
 			nbMinNightSubjectiveValue = 0; 
 		} else {
-			checkArgument(nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) < 0 || nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) > 1 , "The subjective value of the minimum number of nights should be between 0 and 1");
+			checkArgument(nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) >= 0 || nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1 , "The subjective value of the minimum number of nights should be between 0 and 1");
 			nbMinNightSubjectiveValue = nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight());	
 		}
 
 		if ( teleValueFunction == null) {
 			teleSubjectiveValue = 0; 
 		} else {
-			checkArgument(teleValueFunction.getSubjectiveValue(apart.getTele()) < 0 || teleValueFunction.getSubjectiveValue(apart.getTele()) > 1 , "The subjective value of the presence of a tele should be between 0 and 1");
+			checkArgument(teleValueFunction.getSubjectiveValue(apart.getTele()) >= 0 || teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1 , "The subjective value of the presence of a tele should be between 0 and 1");
 			teleSubjectiveValue = teleValueFunction.getSubjectiveValue(apart.getTele());	
 		}
 

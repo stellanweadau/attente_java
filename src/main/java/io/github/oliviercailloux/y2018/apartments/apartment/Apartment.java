@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import static com.google.common.base.Preconditions.checkArgument;
+
 
 
 public class Apartment extends Object {
@@ -89,6 +91,7 @@ public class Apartment extends Object {
 	private boolean tele; 
 
 
+
 	/**
 	 * @param floorArea is a real number superior or equal to zero, it represents the floor area of the apartment in square meters
 	 * @param address is a string of characters that gives the full location of the apartment
@@ -108,6 +111,9 @@ public class Apartment extends Object {
 		this.pricePerNight = 0;
 		this.nbMinNight = 0 ;
 		this.tele = false ;
+		checkArgument(floorArea>=0,"The floor area of the apartment cannot be negative");
+		checkArgument(address !="","The address of the apartment must be specified");
+		checkArgument(title !="","The title of the apartment must be specified");
 		LOGGER.info("the apartment has been created with success");
 	}
 
@@ -257,30 +263,17 @@ public class Apartment extends Object {
 	public boolean getTele() {
 		return tele;
 	}
+	
 
-	/**
-	 * Check the value of an argument :
-	 * Ensures the value of an expression involving one or more parameters to the calling method.
-	 * @param test the value : it corresponds to the impossible case 
-	 * @param ErrorMsg the message that will be showed because of the {@link IllegalArgumentException} 
-	 */
-	private void checkArgument(boolean test, String ErrorMsg) {
-		if (test == true) {
-			throw new IllegalArgumentException (ErrorMsg);
-		}
-	}
-	
-	
 	/**
 	 * @param floorArea is a real number superior or equal to zero
 	 * @return 
 	 */
 	public void setFloorArea(double floorArea) {
-		checkArgument(floorArea < 0,"The floor area should not be negative");
+		checkArgument(floorArea >= 0,"The floor area should not be negative");
 		this.floorArea = floorArea;
 		LOGGER.info("The floor area has been set to "+ floorArea);
 	}
-
 
 
 	/**
@@ -295,7 +288,7 @@ public class Apartment extends Object {
 	 * @param nbBedrooms is an integer superior or equal to zero
 	 */
 	public void setNbBedrooms(int nbBedrooms) {
-		checkArgument(nbBedrooms < 0,"The number of Bedrooms can not be negative");
+		checkArgument(nbBedrooms >= 0,"The number of Bedrooms can not be negative");
 		this.nbBedrooms = nbBedrooms;
 		LOGGER.info("The number of bathrooms has been set to "+ nbBedrooms);
 	}
@@ -304,7 +297,7 @@ public class Apartment extends Object {
 	 * @param nbSleepings is an integer superior or equal to zero
 	 */
 	public void setNbSleeping(int nbSleeping) {
-		checkArgument(nbSleeping < 0,"The accomodation capacity can not be negative");
+		checkArgument(nbSleeping >= 0,"The accomodation capacity can not be negative");
 		this.nbSleeping = nbSleeping ;
 		LOGGER.info("The number of sleepings has been set to "+ nbSleeping);
 	}
@@ -313,7 +306,7 @@ public class Apartment extends Object {
 	 * @param nbBathrooms is an integer superior or equal to zero 
 	 */
 	public void setNbBathrooms(int nbBathrooms) {
-		checkArgument(nbBathrooms < 0,"The number of bathrooms can not be negative");
+		checkArgument(nbBathrooms >= 0,"The number of bathrooms can not be negative");
 		this.nbBathrooms = nbBathrooms ;
 		LOGGER.info("The number of bathrooms has been set to "+ nbBathrooms);
 	}
@@ -330,8 +323,8 @@ public class Apartment extends Object {
 	 * @param floorAreaTerrace is a real number superior or equal to zero, it only works if terrace = true (use setTerrace)
 	 */
 	public void setFloorAreaTerrace(double floorAreaTerrace) {
-		checkArgument(this.terrace == false && floorAreaTerrace > 0,"The terrace can not have a floor area if it doesn't exists");
-		checkArgument(floorAreaTerrace < 0,"The floor area of the terrace can not be negative");
+		checkArgument(this.terrace == true && floorAreaTerrace >= 0,"The terrace can not have a floor area if it doesn't exists");
+		checkArgument(floorAreaTerrace > 0,"The floor area of the terrace can not be negative");
 		this.floorAreaTerrace = floorAreaTerrace ;
 		LOGGER.info("The floor area of the terrace has been set to "+ floorAreaTerrace);
 	}
@@ -364,7 +357,7 @@ public class Apartment extends Object {
 	 * @param pricePerNight is a real number superior or equal to zero
 	 */
 	public void setPricePerNight(double pricePerNight) {
-		checkArgument(pricePerNight < 0,"The price per night can not be negative");
+		checkArgument(pricePerNight >= 0,"The price per night can not be negative");
 		this.pricePerNight = pricePerNight ;
 		LOGGER.info("The price per night has been set to "+ pricePerNight);
 	}
@@ -373,7 +366,7 @@ public class Apartment extends Object {
 	 * @param nbMinNight is an integer superior or equal to zero
 	 */
 	public void setNbMinNight(int nbMinNight) {
-		checkArgument(nbMinNight < 0,"The minimum number of nights can not be negative");
+		checkArgument(nbMinNight >= 0,"The minimum number of nights can not be negative");
 		this.nbMinNight = nbMinNight ;
 		LOGGER.info("The number minimum of night has been set to "+ nbMinNight);
 	}
