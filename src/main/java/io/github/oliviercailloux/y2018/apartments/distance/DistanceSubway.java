@@ -88,7 +88,10 @@ public class DistanceSubway {
 	/**
 	 * This method enables the user to calculate a distance between two points using
 	 * Google Maps API. The method uses DistanceMatrix of Google Maps library.
-	 * 
+	 * The API key can be found here : <a href="https://developers.google.com/maps/documentation/geocoding/start?hl=fr#get-a-key">Get your api key </a>
+	 * The request return an Object DistanceMatrix with three properties ; desitnation_addresses, origin_addresses and rows. 
+	 * Rows is an Array of elements. In our case there is only one element. In this element, there is the
+	 * properties distance and duration, and both have the properties Text (human reading) and value (double).
 	 * @param distanceMode
 	 *            is a enum type, allow the user to choose between address mode (by
 	 *            the name) or by coordinate mode.

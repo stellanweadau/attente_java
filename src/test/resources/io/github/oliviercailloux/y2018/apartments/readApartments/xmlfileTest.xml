@@ -14,5 +14,6 @@
 <entry key="nbBathrooms">1</entry>
 <entry key="address">118 rue du père noel 77480</entry>
 <entry key="description">Un igloo tout mignon en compagnie du père noël et de la mère noël</entry>
+<entry key="LOGGER">Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]</entry>
 <entry key="floorAreaTerrace">8.6</entry>
 </properties>
