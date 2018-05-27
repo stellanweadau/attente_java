@@ -13,7 +13,7 @@ import com.google.common.collect.Range;
 public class LinearValueFunction implements PartialValueFunction<Double> {
 
 	private Range<Double> interval ;
-	private final static Logger linearValueFunction = LoggerFactory.getLogger(LinearValueFunction.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(LinearValueFunction.class);
 	
 	/**
 	 * Create a guava interval between min and max.
@@ -22,11 +22,11 @@ public class LinearValueFunction implements PartialValueFunction<Double> {
 	 */
 	public LinearValueFunction (double min, double max) {
 		if (min == max) {
-			linearValueFunction.error("The upper bound is equal to the lower bound in the constructor of the LinearValueFunction.");
+			LOGGER.error("The upper bound is equal to the lower bound in the constructor of the LinearValueFunction.");
 			throw new IllegalArgumentException("The upper bound can't be equal to the lower bound.");
 		}
 		interval = Range.closed(min, max);
-		linearValueFunction.info("The interval ["+min+","+max+"] "+" has been set with success in the LinearValueFunction class.");
+		LOGGER.info("The interval ["+min+","+max+"] "+" has been set with success in the LinearValueFunction class.");
 	}
 
 	@Override

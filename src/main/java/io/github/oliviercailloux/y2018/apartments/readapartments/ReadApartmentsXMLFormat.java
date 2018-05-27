@@ -19,7 +19,7 @@ public class ReadApartmentsXMLFormat {
 	
 	private Properties prop;
 	
-	private final static Logger readApartmentsXMLFormat = LoggerFactory.getLogger(ReadApartmentsXMLFormat.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(ReadApartmentsXMLFormat.class);
 
 	public ReadApartmentsXMLFormat() {
 		
@@ -35,14 +35,14 @@ public class ReadApartmentsXMLFormat {
 	 */
 	public Apartment readApartment(InputStream input) throws IOException, NumberFormatException, InvalidPropertiesFormatException{
 		
-		readApartmentsXMLFormat.info("Enter readApartment method");
+		LOGGER.info("Enter readApartment method");
 		
 		prop.loadFromXML(input);
 		
-		readApartmentsXMLFormat.info("XML Files loaded with success");
+		LOGGER.info("XML Files loaded with success");
 		
 		if (prop.containsKey("floorArea")==false || prop.containsKey("address")==false || prop.containsKey("title")==false) {
-			readApartmentsXMLFormat.error("Impossible to create an apartment if a floor Area, a title or an address is missing.");
+			LOGGER.error("Impossible to create an apartment if a floor Area, a title or an address is missing.");
 			throw new InvalidPropertiesFormatException("Capital information left for the creation of an Apartment Object");
 		}
 		
@@ -69,8 +69,8 @@ public class ReadApartmentsXMLFormat {
 		if (prop.containsKey("nbMinNight"))
 			apartment.setNbMinNight(Integer.parseInt(prop.getProperty("nbMinNight")));
 		
-		readApartmentsXMLFormat.info("Parameters inserted with success in the Apartment Object");
-		readApartmentsXMLFormat.info("Leave readApartment method");
+		LOGGER.info("Parameters inserted with success in the Apartment Object");
+		LOGGER.info("Leave readApartment method");
 		
 		return apartment;
 	}

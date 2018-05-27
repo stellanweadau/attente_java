@@ -129,7 +129,7 @@ public class ApartmentValueFunction {
 	 */
 	//PartialValueFunction<String> partialValueString, PartialValueFunction<Double> partialValueDouble, String objDataString, double objDataDouble
 	public ApartmentValueFunction() {
-		this.floorAreaValueFunction = null;
+		this.floorAreaValueFunction = new LinearValueFunction(floorAreaSubjectiveValueWeight, floorAreaSubjectiveValueWeight);
 		this.nbBedroomsValueFunction = null;
 		this.nbSleepingValueFunction = null;
 		this.nbBathroomsValueFunction = null;

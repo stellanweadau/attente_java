@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class Discrete3ValueFunction implements PartialValueFunction<String> {
 
 	private Map<String, Double> subjective;
-	private final static Logger discrete3ValueFunction = LoggerFactory.getLogger(Discrete3ValueFunction.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(Discrete3ValueFunction.class);
 	
 	/**
 	 * Create a map with 3 strings which are associated to 3 subjective values.
@@ -22,14 +22,14 @@ public class Discrete3ValueFunction implements PartialValueFunction<String> {
 	 */
 	public Discrete3ValueFunction(String s1, String s2, String s3) {
 		if (s1 == s2 || s1 == s3 || s2 == s3) {
-			discrete3ValueFunction.error("The strings in input has to be different in the Discrete3ValueFunction class. The Map has not been set with success.");
+			LOGGER.error("The strings in input has to be different in the Discrete3ValueFunction class. The Map has not been set with success.");
 			throw new IllegalArgumentException("The strings has to be different.");
 		}
 		subjective = new HashMap<>();
 		subjective.put(s1, 0.0);
 		subjective.put(s2, 0.5);
 		subjective.put(s3, 1.0);
-		discrete3ValueFunction.info("The Map with the three strings has been set with success in the Discrete3ValueFunction class.");
+		LOGGER.info("The Map with the three strings has been set with success in the Discrete3ValueFunction class.");
 	}
 	
 	@Override
