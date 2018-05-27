@@ -5,4 +5,3 @@ Thumbs.db
 /target/
 *.txt
 .settings
-src/test/java/io/github/oliviercailloux/y2018/apartments/valuefunction/ApartmentValueFunctionTest.java
