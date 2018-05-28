@@ -44,6 +44,22 @@ public class BooleanValueFunction implements PartialValueFunction<Boolean>{
 		return subjective.get(objectiveData);
 	}
 
+	public double getMax() {
+		double valueForTrue = subjective.get(true);
+		double valueForFalse = subjective.get(false);
+		if (valueForTrue > valueForFalse) {
+			return valueForTrue;
+		}
+		else if(valueForFalse>= valueForTrue) {
+			return valueForFalse;	
+		}
+		else {
+			return 0 ;
+		}
+
+
+	}
+
 
 
 

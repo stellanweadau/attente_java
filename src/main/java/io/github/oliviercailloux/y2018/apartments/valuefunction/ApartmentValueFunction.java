@@ -129,7 +129,7 @@ public class ApartmentValueFunction {
 	 */
 	//PartialValueFunction<String> partialValueString, PartialValueFunction<Double> partialValueDouble, String objDataString, double objDataDouble
 	public ApartmentValueFunction() {
-		this.floorAreaValueFunction = new LinearValueFunction(floorAreaSubjectiveValueWeight, floorAreaSubjectiveValueWeight);
+		this.floorAreaValueFunction = null;
 		this.nbBedroomsValueFunction = null;
 		this.nbSleepingValueFunction = null;
 		this.nbBathroomsValueFunction = null;
@@ -462,6 +462,10 @@ public class ApartmentValueFunction {
 		double pricePerNightSubjectiveValueCorrectedWeight;
 		double nbMinNightSubjectiveValueCorrectedWeight;
 		double teleSubjectiveValueCorrectedWeight;
+		
+		double maxValueForTerrace;
+		double maxValueForTele;
+		double maxValueForWifi;
 
 		if ( floorAreaValueFunction == null) {
 			floorAreaSubjectiveValueCorrectedWeight = 0.0; 
@@ -489,8 +493,10 @@ public class ApartmentValueFunction {
 
 		if ( terraceValueFunction == null) {
 			terraceSubjectiveValueCorrectedWeight = 0.0; 
+			maxValueForTerrace = 0;
 		} else {
-			terraceSubjectiveValueCorrectedWeight = terraceSubjectiveValueWeight;	
+			terraceSubjectiveValueCorrectedWeight = terraceSubjectiveValueWeight ;
+			maxValueForTerrace = terraceValueFunction.getMax();
 		}
 
 		if ( floorAreaTerraceValueFunction == null) {
@@ -501,8 +507,10 @@ public class ApartmentValueFunction {
 
 		if ( wifiValueFunction == null) {
 			wifiSubjectiveValueCorrectedWeight = 0.0; 
+			maxValueForWifi = 0.0;
 		} else {
 			wifiSubjectiveValueCorrectedWeight = wifiSubjectiveValueWeight;	
+			maxValueForWifi = wifiValueFunction.getMax();
 		}
 
 		if ( pricePerNightValueFunction == null) {
@@ -519,11 +527,13 @@ public class ApartmentValueFunction {
 
 		if ( teleValueFunction == null) {
 			teleSubjectiveValueCorrectedWeight = 0.0; 
+			maxValueForTele = 0.0;
 		} else {
 			teleSubjectiveValueCorrectedWeight = teleSubjectiveValueWeight;	
+			maxValueForTele = teleValueFunction.getMax();
 		}
 
-		return floorAreaSubjectiveValueCorrectedWeight + nbBedroomsSubjectiveValueCorrectedWeight + nbSleepingSubjectiveValueCorrectedWeight + nbBathroomsSubjectiveValueCorrectedWeight + terraceSubjectiveValueCorrectedWeight + floorAreaTerraceSubjectiveValueCorrectedWeight + wifiSubjectiveValueCorrectedWeight + pricePerNightSubjectiveValueCorrectedWeight + nbMinNightSubjectiveValueCorrectedWeight + teleSubjectiveValueCorrectedWeight;
+		return floorAreaSubjectiveValueCorrectedWeight + nbBedroomsSubjectiveValueCorrectedWeight + nbSleepingSubjectiveValueCorrectedWeight + nbBathroomsSubjectiveValueCorrectedWeight + terraceSubjectiveValueCorrectedWeight * maxValueForTerrace+ floorAreaTerraceSubjectiveValueCorrectedWeight + wifiSubjectiveValueCorrectedWeight * maxValueForWifi + pricePerNightSubjectiveValueCorrectedWeight + nbMinNightSubjectiveValueCorrectedWeight + teleSubjectiveValueCorrectedWeight * maxValueForTele;
 
 	}
 
