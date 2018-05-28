@@ -21,16 +21,23 @@ public class CreateApartmentGUI {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
 			Display d = new Display( );
 			Shell s = new Shell(d);
-
-			s.setSize(500,500);
+			
+			int shellHeight = 500;
+			int shellWidth = 500;
+			int compositeHeight = 90;
+			int compositeWidth = 250;
+			
+			s.setSize(shellWidth,shellHeight);
 			Image i = new Image(d, f);
 			s.setImage(i);
 			s.setText("Apartments");
 			
-			Composite composite = new Composite(s, SWT.NONE); 
+			Composite composite = new Composite(s, SWT.FILL); 
 		    Color color = new Color(d,13,133,131); 
 		    composite.setBackground(color);
-		    composite.setBounds(175, 0, 250, 2500);
+	
+		    composite.setBounds((s.getBounds().width-compositeWidth)/2, 0, compositeWidth, compositeHeight);
+	
 		    
 		    Label label = new Label(composite, SWT.NONE); 
 		    label.setBackground(color); 
@@ -39,12 +46,11 @@ public class CreateApartmentGUI {
 
 		    Text text = new Text(composite, SWT.BORDER); 
 		    text.setText(""); 
-		    text.setBounds(10, 30, 100, 25); 
+		    text.setBounds((compositeWidth-100)/2, 30, 100, 25); 
 
 		    Button button = new Button(composite, SWT.BORDER); 
 		    button.setText("Valider"); 
-		    button.setBounds(10, 60, 100, 25); 
-		    composite.setSize(140,140);
+		    button.setBounds((compositeWidth-100)/2, 60, 100, 25); 
 		    
 			label.pack();
 			s.open();
