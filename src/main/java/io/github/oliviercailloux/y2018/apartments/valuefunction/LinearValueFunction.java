@@ -38,5 +38,5 @@ public class LinearValueFunction implements PartialValueFunction<Double> {
 	public Double apply(Double objectiveData) {
 		return getSubjectiveValue(objectiveData);
 	}
-
+	
 }
