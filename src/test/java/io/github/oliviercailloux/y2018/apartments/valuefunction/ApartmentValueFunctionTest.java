@@ -28,33 +28,34 @@ class ApartmentValueFunctionTest {
 	void apartmentValueFunctionTest() throws NumberFormatException, InvalidPropertiesFormatException, IOException{
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 
-		InputStream f = ReadApartmentsXMLFormat.class.getResourceAsStream("xmlfileTest.xml");
-		Apartment a = r.readApartment(f);
+		try(InputStream f = ReadApartmentsXMLFormat.class.getResourceAsStream("xmlfileTest.xml")){
+			Apartment a = r.readApartment(f);
 
-		ApartmentValueFunction valueFunction = new ApartmentValueFunction();
+			ApartmentValueFunction valueFunction = new ApartmentValueFunction();
 
-		LinearValueFunction floorAreaV = new LinearValueFunction(0,1182118.48);
-		valueFunction.setFloorAreaValueFunction(floorAreaV);
+			LinearValueFunction floorAreaV = new LinearValueFunction(0,1182118.48);
+			valueFunction.setFloorAreaValueFunction(floorAreaV);
 
-		LinearValueFunction pricePerNightV = new LinearValueFunction(0,404);
-		valueFunction.setPricePerNightValueFunction(pricePerNightV);
-		
-		BooleanValueFunction wifiV = new BooleanValueFunction(0.84,0.03);
-		valueFunction.setWifiValueFunction(wifiV);
-		
-		
-		BooleanValueFunction teleV = new BooleanValueFunction(0.03,0.83);
-		valueFunction.setTeleValueFunction(teleV);
-		
-		Assert.assertEquals(3.67, valueFunction.computeValueFunction(a),0);
-		
-		Assert.assertEquals(3.67, valueFunction.getScale(),0);
-		
-		valueFunction.setPricePerNightSubjectiveValueWeight(3.0);
-		
-		Assert.assertEquals(5.67, valueFunction.computeValueFunction(a),0);
-		Assert.assertEquals(5.67, valueFunction.getScale(),0);
-		
+			LinearValueFunction pricePerNightV = new LinearValueFunction(0,404);
+			valueFunction.setPricePerNightValueFunction(pricePerNightV);
+
+			BooleanValueFunction wifiV = new BooleanValueFunction(0.84,0.03);
+			valueFunction.setWifiValueFunction(wifiV);
+
+
+			BooleanValueFunction teleV = new BooleanValueFunction(0.03,0.83);
+			valueFunction.setTeleValueFunction(teleV);
+
+			Assert.assertEquals(3.67, valueFunction.computeValueFunction(a),0);
+
+			Assert.assertEquals(3.67, valueFunction.getScale(),0);
+
+			valueFunction.setPricePerNightSubjectiveValueWeight(3.0);
+
+			Assert.assertEquals(5.67, valueFunction.computeValueFunction(a),0);
+			Assert.assertEquals(5.67, valueFunction.getScale(),0);
+		}
+
 	}
 
 

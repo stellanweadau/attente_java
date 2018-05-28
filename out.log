@@ -1,26 +1,36 @@
-16:30:02.087 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
-16:30:02.089 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of sleepings has been set to 10
-16:30:02.089 [main] INFO  i.g.o.y.a.apartment.Apartment - The number minimum of night has been set to 1
-16:30:02.090 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set to true
-16:30:02.090 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to 5
-16:30:02.090 [main] INFO  i.g.o.y.a.apartment.Apartment - The price per night has been set to 404.0
-16:30:02.091 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set to false
-16:30:02.091 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to true
-16:30:02.091 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to 1
-16:30:02.091 [main] INFO  i.g.o.y.a.apartment.Apartment - The description has been set to Un igloo tout mignon en compagnie du père noël et de la mère noël
-16:30:02.091 [main] INFO  i.g.o.y.a.apartment.Apartment - The floor area of the terrace has been set to 8.6
-16:30:02.092 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : LOGGER : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
-16:30:02.092 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 1182118.48
-16:30:02.092 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : 118 rue du père noel 77480
-16:30:02.092 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 5
-16:30:02.092 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 10
-16:30:02.092 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 1
-16:30:02.093 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : true
-16:30:02.093 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 8.6
-16:30:02.093 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : Un igloo tout mignon en compagnie du père noël et de la mère noël
-16:30:02.093 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : Grand Igloo
-16:30:02.093 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : true
-16:30:02.093 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 404.0
-16:30:02.093 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 1
-16:30:02.093 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
-16:30:02.131 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
+23:42:27.148 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
+23:42:27.155 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
+23:42:27.570 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
+23:42:27.571 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 4485.0
+23:42:27.594 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+23:42:27.595 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.8754166666666666 has been had with success in the Map.
+23:42:27.602 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
+23:42:27.603 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
+23:42:28.081 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
+23:42:28.081 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 2250.0
+23:42:28.082 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+23:42:28.083 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9375 has been had with success in the Map.
+23:42:28.085 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
+23:42:28.085 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
+23:42:29.172 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
+23:42:29.173 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 8131.0
+23:42:29.173 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+23:42:29.174 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.7741388888888889 has been had with success in the Map.
+23:42:30.419 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
+23:42:30.419 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
+23:42:30.543 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
+23:42:30.544 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 4485.0
+23:42:30.544 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+23:42:30.544 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.8754166666666666 has been had with success in the Map.
+23:42:30.547 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
+23:42:30.547 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
+23:42:30.673 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
+23:42:30.674 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 2250.0
+23:42:30.674 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+23:42:30.674 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9375 has been had with success in the Map.
+23:42:30.677 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
+23:42:30.678 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
+23:42:30.787 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
+23:42:30.787 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 8131.0
+23:42:30.787 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+23:42:30.788 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.7741388888888889 has been had with success in the Map.
