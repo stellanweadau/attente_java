@@ -28,23 +28,22 @@ public class CreateApartmentGUI {
 			s.setText("Apartments");
 			
 			Composite composite = new Composite(s, SWT.NONE); 
-		    Color color = new Color(d,13,133,131); 
+		    Color color = new Color(d,100,100,100); 
 		    composite.setBackground(color);
-		    composite.setBounds(175, 0, 250, 2500);
+		    composite.setBounds((s.getBounds().width-250)/2, 0, 250, 90);
 		    
 		    Label label = new Label(composite, SWT.NONE); 
 		    label.setBackground(color); 
 		    label.setText("Enter the announce title"); 
-		    label.setBounds(10, 10, 100, 25); 
+		    label.setBounds(40, 10, 100, 25); 
 
 		    Text text = new Text(composite, SWT.BORDER); 
 		    text.setText(""); 
-		    text.setBounds(10, 30, 100, 25); 
+		    text.setBounds(125, 50, 100, 25); 
 
 		    Button button = new Button(composite, SWT.BORDER); 
 		    button.setText("Valider"); 
-		    button.setBounds(10, 60, 100, 25); 
-		    composite.setSize(140,140);
+		    button.setBounds(125, 100, 100, 25); 
 		    
 			label.pack();
 			s.open();
