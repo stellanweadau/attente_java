@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Button;
@@ -21,31 +22,62 @@ public class CreateApartmentGUI {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
 			Display d = new Display( );
 			Shell s = new Shell(d);
-
-			s.setSize(500,500);
+			
+			int shellHeight = 500;
+			int shellWidth = 500;
+			int compositeHeight = 250;
+			int compositeWidth = 250;
+			
+			s.setSize(shellWidth,shellHeight);
 			Image i = new Image(d, f);
 			s.setImage(i);
 			s.setText("Apartments");
-			
+
 			Composite composite = new Composite(s, SWT.NONE); 
 		    Color color = new Color(d,100,100,100); 
 		    composite.setBackground(color);
-		    composite.setBounds((s.getBounds().width-250)/2, 0, 250, 90);
+		    composite.setBounds((s.getBounds().width-compositeWidth)/2, 40, compositeWidth, compositeHeight);
 		    
-		    Label label = new Label(composite, SWT.NONE); 
-		    label.setBackground(color); 
-		    label.setText("Enter the announce title"); 
-		    label.setBounds(40, 10, 100, 25); 
+		    Label titleLb = new Label(composite, SWT.NONE); 
+		    titleLb.setBackground(color); 
+		    titleLb.setText("Title"); 
+		    titleLb.setBounds(30, 10, 100, 25); 
+		    
+		    Text titleText = new Text(composite, SWT.BORDER); 
+		    titleText.setText(""); 
+		    titleText.setBounds((compositeWidth-90)*3/4, 10, 100, 25);
 
-		    Text text = new Text(composite, SWT.BORDER); 
-		    text.setText(""); 
-		    text.setBounds(125, 50, 100, 25); 
+		    Label floorAreaLb = new Label(composite, SWT.NONE); 
+		    floorAreaLb.setBackground(color); 
+		    floorAreaLb.setText("Floor Area"); 
+		    floorAreaLb.setBounds(30, 60, 100, 25); 
+		    
+		    Text floorAreaText = new Text(composite, SWT.BORDER); 
+		    floorAreaText.setText(""); 
+		    floorAreaText.setBounds((compositeWidth-90)*3/4, 60, 100, 25);
+		    
+		    Label addressLb = new Label(composite, SWT.NONE); 
+		    addressLb.setBackground(color); 
+		    addressLb.setText("Address"); 
+		    addressLb.setBounds(30, 110, 100, 25); 
+		    
+		    Text addressText = new Text(composite, SWT.BORDER); 
+		    addressText.setText(""); 
+		    addressText.setBounds((compositeWidth-90)*3/4, 110, 100, 25); 
 
 		    Button button = new Button(composite, SWT.BORDER); 
 		    button.setText("Valider"); 
-		    button.setBounds(125, 100, 100, 25); 
+		    button.setBounds((compositeWidth-100)/2,200, 100, 25); 
 		    
-			label.pack();
+		    Composite title = new Composite(s, SWT.NONE);
+			title.setBounds(155, 0, compositeWidth, 25);
+			Label lbTitle = new Label(title, SWT.CENTER);
+			lbTitle.setText("CREATE AN APARTMENT");
+		    
+			floorAreaLb.pack();
+			titleLb.pack();
+			lbTitle.pack();
+			addressLb.pack();
 			s.open();
 			
 			
@@ -56,9 +88,7 @@ public class CreateApartmentGUI {
 			}
 			color.dispose();
 			i.dispose();
-			//s.dispose();
 			d.dispose();
-			//label.dispose();
 		}
 	}
 	
