@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<comment>Generated file for the apartment Grand Igloo</comment>
-<entry key="nbSleeping">10</entry>
-<entry key="nbMinNight">1</entry>
-<entry key="terrace">true</entry>
-<entry key="nbBedrooms">5</entry>
-<entry key="floorArea">1182118.48</entry>
-<entry key="pricePerNight">404.0</entry>
+<comment>Generated file for the apartment Hotel</comment>
+<entry key="nbSleeping">0</entry>
+<entry key="nbMinNight">0</entry>
+<entry key="terrace">false</entry>
+<entry key="nbBedrooms">0</entry>
+<entry key="floorArea">300.0</entry>
+<entry key="pricePerNight">0.0</entry>
 <entry key="tele">false</entry>
-<entry key="wifi">true</entry>
-<entry key="title">Grand Igloo</entry>
-<entry key="nbBathrooms">1</entry>
-<entry key="address">118 rue du père noel 77480</entry>
-<entry key="description">Un igloo tout mignon en compagnie du père noël et de la mère noël</entry>
-<entry key="LOGGER">org.slf4j.helpers.NOPLogger(NOP)</entry>
-<entry key="floorAreaTerrace">8.6</entry>
+<entry key="wifi">false</entry>
+<entry key="title">Hotel</entry>
+<entry key="nbBathrooms">0</entry>
+<entry key="address">California</entry>
+<entry key="description"/>
+<entry key="LOGGER">Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]</entry>
+<entry key="floorAreaTerrace">0.0</entry>
 </properties>

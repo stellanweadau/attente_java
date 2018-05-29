@@ -1,6 +1,8 @@
 package io.github.oliviercailloux.y2018.apartments.gui;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.function.Consumer;
@@ -24,7 +26,9 @@ import org.eclipse.swt.widgets.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.iconDisplay.DisplayIcon;
+import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
 
 public class CreateApartmentGUI {
 	
@@ -50,10 +54,10 @@ public class CreateApartmentGUI {
 			shell.setText("Apartments");
 			
 			createPageTitle();
-		    createFormFieldComposite("Title of the apartment : ");
-		    createFormFieldComposite("Address : ");
-		    createFormFieldComposite("Floor Area :" );
-		    createButtonValidation();
+		    Text title = createFormFieldComposite("Title of the apartment : ");
+		    Text address = createFormFieldComposite("Address : ");
+		    Text floorArea = createFormFieldComposite("Floor Area :" );
+		    createButtonValidation(title,address,floorArea);
 
 			shell.pack();
 			shell.setMinimumSize(400, 150);
@@ -70,7 +74,7 @@ public class CreateApartmentGUI {
 		}
 	}
 	
-	private void createFormFieldComposite(String label)
+	private Text createFormFieldComposite(String label)
 	{
 		Composite c = new Composite(shell, SWT.PUSH);
 		
@@ -87,16 +91,30 @@ public class CreateApartmentGUI {
 		t.setText("");
 		t.setLayoutData(a);
 		shell.pack();
+		return t;
 	}
 	
-	private void createButtonValidation() {
+	private void createButtonValidation(Text title, Text address, Text floorArea) throws IllegalArgumentException {
 		Composite compoForButton = new Composite(shell, SWT.CENTER);
 	    GridLayout gl = new GridLayout(1, true);
 	    compoForButton.setLayout(gl);
 	    Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
 	    b.setText("Valider");
 	    Consumer<SelectionEvent> consu = (event) -> {
-	    	LOGGER.info("Coucou");
+	    	LOGGER.info("Coucou " + title.getText());
+	    	if (floorArea.getText()!="") {
+	    			Double floorAreaDouble = Double.parseDouble(floorArea.getText());
+	    			Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
+	    			System.out.println(apart);
+	    			XMLProperties xmlFile = new XMLProperties();
+	    			File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/xmlfileTest.xml");
+	    			try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
+	    			{
+	    				xmlFile.toXML(apart, s);
+	    			} catch (Exception e) {
+						throw new IllegalStateException(e);
+					}
+	    	}
 	    };
 	    consu.accept(null);
 	    SelectionListener l = SelectionListener.widgetSelectedAdapter(consu);
