@@ -48,18 +48,13 @@ public class CreateApartmentGUI {
 			
 			Label title = new Label(shell, SWT.FILL | SWT.BORDER | SWT.CENTER); 
 		    Color color = new Color(display,255,133,131); 
-		    //title.setBackground(color);
 		    title.setText("Create an apartment");
 
 		    
 		    createFormFieldComposite("Title of the apartment : ");
+		    createFormFieldComposite("Address : ");
 		    createFormFieldComposite("Floor Area :" );
-		    
-		    Composite compoForButton = new Composite(s, SWT.CENTER);
-		    GridLayout gl = new GridLayout(1, true);
-		    compoForButton.setLayout(gl);
-		    Button b = new Button(compoForButton, SWT.CENTER);
-		    b.setText("Valider");
+		    createButtonValidation();
 		    
 		    
 //	    Label label = new Label(s, SWT.PUSH); 
@@ -79,9 +74,7 @@ public class CreateApartmentGUI {
 //		    text.setLayoutData(gridDataTitleText);
 //		    text.getParent().layout();
 		    // text.setBounds((compositeWidth-100)/2, 30, 100, 25); 
-//
-		    Button button = new Button(shell, SWT.BORDER); 
-		    button.setText("Valider"); 
+
 		    
 			shell.pack();
 			shell.setMinimumSize(400, 150);
@@ -118,6 +111,19 @@ public class CreateApartmentGUI {
 		t.setText("");
 		t.setLayoutData(a);
 		shell.pack();
+	}
+	
+	private void createButtonValidation() {
+		Composite compoForButton = new Composite(shell, SWT.CENTER);
+	    GridLayout gl = new GridLayout(1, true);
+	    compoForButton.setLayout(gl);
+	    Button b = new Button(compoForButton, SWT.CENTER);
+	    b.setText("Valider");
+	    GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		a.minimumWidth = SWT.FILL;
+		a.horizontalAlignment = SWT.CENTER;
+		a.widthHint = 200;
+		b.setLayoutData(a);
 	}
 	static public void main(String args[]) throws IOException {
 		CreateApartmentGUI c = new CreateApartmentGUI();
