@@ -23,31 +23,37 @@ import org.eclipse.swt.widgets.Text;
 import io.github.oliviercailloux.y2018.apartments.iconDisplay.DisplayIcon;
 
 public class CreateApartmentGUI {
+	
+	private Display display;
+	private Shell shell;
+	
+	public CreateApartmentGUI() {
+		display = new Display();
+		shell = new Shell(display);
+	}
 
 	private void screenDisplay() throws IOException {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
 			
 
-			Display d = new Display( );
-			Shell s = new Shell(d);		
 			// TODO : Ajouter un composite au Shell avec le RowLayout
 			FillLayout r = new FillLayout();
 			r.type = SWT.VERTICAL;
-			s.setLayout(r);
-			Image i = new Image(d, f);
-			s.setImage(i);
-			s.setText("Apartments");
+			shell.setLayout(r);
+			Image i = new Image(display, f);
+			shell.setImage(i);
+			shell.setText("Apartments");
 			
 			
 			
-			Label title = new Label(s, SWT.FILL | SWT.BORDER | SWT.CENTER); 
-		    Color color = new Color(d,255,133,131); 
+			Label title = new Label(shell, SWT.FILL | SWT.BORDER | SWT.CENTER); 
+		    Color color = new Color(display,255,133,131); 
 		    //title.setBackground(color);
 		    title.setText("Create an apartment");
 
 		    
-		    createFormFieldComposite(d, s, "Title of the apartment : ");
-		    createFormFieldComposite(d, s, "Floor Area :" );
+		    createFormFieldComposite("Title of the apartment : ");
+		    createFormFieldComposite("Floor Area :" );
 		    
 //	    Label label = new Label(s, SWT.PUSH); 
 //		    label.setBackground(new Color(d, 255, 255 ,255)); 
@@ -71,27 +77,27 @@ public class CreateApartmentGUI {
 //		    button.setText("Valider"); 
 //		  //  button.setBounds((compositeWidth-100)/2, 60, 100, 25); 
 		    
-			s.pack();
-			s.setMinimumSize(400, 150);
-			s.setSize(400, 150);
+			shell.pack();
+			shell.setMinimumSize(400, 150);
+			shell.setSize(400, 150);
 
-			s.open();
+			shell.open();
 			
 			
 			
-			while(!s.isDisposed( )){
-				if(!d.readAndDispatch( ))
-					d.sleep( );
+			while(!shell.isDisposed( )){
+				if(!display.readAndDispatch( ))
+					display.sleep( );
 			}
 			color.dispose();
 			i.dispose();
-			d.dispose();
+			display.dispose();
 		}
 	}
 	
-	private void createFormFieldComposite(Display d, Shell s, String label )
+	private void createFormFieldComposite(String label )
 	{
-		Composite c = new Composite(s, SWT.PUSH);
+		Composite c = new Composite(shell, SWT.PUSH);
 		
 		GridLayout f = new GridLayout(2, false);
 		c.setLayout(f);
@@ -105,7 +111,7 @@ public class CreateApartmentGUI {
 		Text t = new Text(c, SWT.FILL);
 		t.setText("");
 		t.setLayoutData(a);
-		s.pack();
+		shell.pack();
 	}
 	static public void main(String args[]) throws IOException {
 		CreateApartmentGUI c = new CreateApartmentGUI();
