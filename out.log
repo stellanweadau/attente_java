@@ -1,36 +1,135 @@
-23:42:27.148 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:27.155 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:27.570 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:27.571 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 4485.0
-23:42:27.594 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:27.595 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.8754166666666666 has been had with success in the Map.
-23:42:27.602 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:27.603 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:28.081 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:28.081 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 2250.0
-23:42:28.082 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:28.083 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9375 has been had with success in the Map.
-23:42:28.085 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:28.085 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:29.172 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:29.173 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 8131.0
-23:42:29.173 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:29.174 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.7741388888888889 has been had with success in the Map.
-23:42:30.419 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:30.419 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:30.543 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:30.544 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 4485.0
-23:42:30.544 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:30.544 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.8754166666666666 has been had with success in the Map.
-23:42:30.547 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:30.547 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:30.673 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:30.674 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 2250.0
-23:42:30.674 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:30.674 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9375 has been had with success in the Map.
-23:42:30.677 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:30.678 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:30.787 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:30.787 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 8131.0
-23:42:30.787 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:30.788 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.7741388888888889 has been had with success in the Map.
+12:51:30.928 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:34.515 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:37.776 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:37.924 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:38.069 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:38.179 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:38.308 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:38.439 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:38.581 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:38.724 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:38.866 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:38.997 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:39.142 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:39.281 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:39.433 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:39.573 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:39.697 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:39.845 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:39.997 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:40.144 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:40.284 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:40.431 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:40.581 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:40.729 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:40.877 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:41.031 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:41.190 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:41.352 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:41.506 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:41.658 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:41.814 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:41.972 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:42.150 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:42.333 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:42.456 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:42.612 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:42.772 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:42.926 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:43.078 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:43.220 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:43.372 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:43.536 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:43.682 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:43.836 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:43.974 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:44.126 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:44.281 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:44.428 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:44.604 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:44.737 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:44.906 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:45.046 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:45.198 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:45.352 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:45.506 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:45.652 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:45.814 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:45.969 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:46.137 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:46.291 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:46.451 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:46.606 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:46.754 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:46.930 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:47.081 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:47.236 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:47.406 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:47.583 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:47.729 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:47.854 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:48.028 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:48.191 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:48.354 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:48.499 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:48.667 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:48.815 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:48.993 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:49.161 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:49.301 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:49.460 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:49.607 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:49.791 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:49.974 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:50.162 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:50.340 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:50.493 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:50.681 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:50.998 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:51.279 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:51.482 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:51.645 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:51.806 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:51.967 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:52.127 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:52.278 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:52.616 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:52.838 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:53.022 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:53.373 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:53.529 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:53.673 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:53.841 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:54.210 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:54.398 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:54.588 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:54.792 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:55.026 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:55.246 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:55.438 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:55.619 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:55.843 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:56.042 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:56.226 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:56.384 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:56.548 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:56.707 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:56.852 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:57.056 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:57.202 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:51:57.369 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:20.931 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:21.120 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:21.237 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:21.419 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:21.547 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:21.671 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:21.823 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:21.985 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:22.138 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:22.291 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:22.437 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:22.589 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:22.717 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:22.909 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou
+12:52:23.061 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou

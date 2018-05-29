@@ -3,8 +3,10 @@ package io.github.oliviercailloux.y2018.apartments.gui;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.function.Consumer;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
@@ -19,6 +21,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.iconDisplay.DisplayIcon;
 
@@ -26,6 +30,7 @@ public class CreateApartmentGUI {
 	
 	private Display display;
 	private Shell shell;
+	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 	
 	public CreateApartmentGUI() {
 		display = new Display();
@@ -44,51 +49,22 @@ public class CreateApartmentGUI {
 			shell.setImage(i);
 			shell.setText("Apartments");
 			
-			
-			
-			Label title = new Label(shell, SWT.FILL | SWT.BORDER | SWT.CENTER); 
-		    Color color = new Color(display,255,133,131); 
-		    title.setText("Create an apartment");
-
-		    
+			createPageTitle();
 		    createFormFieldComposite("Title of the apartment : ");
 		    createFormFieldComposite("Address : ");
 		    createFormFieldComposite("Floor Area :" );
 		    createButtonValidation();
-		    
-		    
-//	    Label label = new Label(s, SWT.PUSH); 
-//		    label.setBackground(new Color(d, 255, 255 ,255)); 
-//	    label.setText("Enter the announce title"); 
-//		  // label.setBounds(10, 10, 100, 25); 
-//		    
-//		    label.setLayoutData(new GridData(GridData.CENTER, GridData.BEGINNING, true, true));
-//		    label.getParent().layout();
-//		    
-//		    
-//		    Text text = new Text(s, SWT.BORDER); 
-//		    text.setText(""); 
-//		    text.setBackground(new Color(d, 255,255,255));
-//		    GridData gridDataTitleText = new GridData(SWT.FILL, SWT.BEGINNING, true, true);
-//		    gridDataTitleText.
-//		    text.setLayoutData(gridDataTitleText);
-//		    text.getParent().layout();
-		    // text.setBounds((compositeWidth-100)/2, 30, 100, 25); 
 
-		    
 			shell.pack();
 			shell.setMinimumSize(400, 150);
 			shell.setSize(400, 150);
 
 			shell.open();
-			
-			
-			
+
 			while(!shell.isDisposed( )){
 				if(!display.readAndDispatch( ))
 					display.sleep( );
 			}
-			color.dispose();
 			i.dispose();
 			display.dispose();
 		}
@@ -117,13 +93,32 @@ public class CreateApartmentGUI {
 		Composite compoForButton = new Composite(shell, SWT.CENTER);
 	    GridLayout gl = new GridLayout(1, true);
 	    compoForButton.setLayout(gl);
-	    Button b = new Button(compoForButton, SWT.CENTER);
+	    Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
 	    b.setText("Valider");
+	    Consumer<SelectionEvent> consu = (event) -> {
+	    	LOGGER.info("Coucou");
+	    };
+	    consu.accept(null);
+	    SelectionListener l = SelectionListener.widgetSelectedAdapter(consu);
+	    b.addSelectionListener(l);
 	    GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		a.minimumWidth = SWT.FILL;
 		a.horizontalAlignment = SWT.CENTER;
 		a.widthHint = 200;
 		b.setLayoutData(a);
+	}
+	
+	private void createPageTitle() {
+		Composite compoForTitle = new Composite(shell, SWT.CENTER);
+	    GridLayout gl = new GridLayout(1, true);
+	    compoForTitle.setLayout(gl);
+	    Label title = new Label(compoForTitle, SWT.FILL | SWT.CENTER); 
+	    title.setText("CREATE AN APARTMENT");
+	    GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		a.minimumWidth = SWT.FILL;
+		a.horizontalAlignment = SWT.CENTER;
+		a.widthHint = 200;
+		title.setLayoutData(a);
 	}
 	static public void main(String args[]) throws IOException {
 		CreateApartmentGUI c = new CreateApartmentGUI();
