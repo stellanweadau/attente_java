@@ -73,9 +73,8 @@ public class CreateApartmentGUI {
 //		    text.getParent().layout();
 		    // text.setBounds((compositeWidth-100)/2, 30, 100, 25); 
 //
-//		    Button button = new Button(composite, SWT.BORDER); 
-//		    button.setText("Valider"); 
-//		  //  button.setBounds((compositeWidth-100)/2, 60, 100, 25); 
+		    Button button = new Button(shell, SWT.BORDER); 
+		    button.setText("Valider"); 
 		    
 			shell.pack();
 			shell.setMinimumSize(400, 150);
@@ -95,7 +94,7 @@ public class CreateApartmentGUI {
 		}
 	}
 	
-	private void createFormFieldComposite(String label )
+	private void createFormFieldComposite(String label)
 	{
 		Composite c = new Composite(shell, SWT.PUSH);
 		
