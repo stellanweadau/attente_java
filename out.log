@@ -1,36 +1,18 @@
-23:42:27.148 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:27.155 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:27.570 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:27.571 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 4485.0
-23:42:27.594 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:27.595 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.8754166666666666 has been had with success in the Map.
-23:42:27.602 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:27.603 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:28.081 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:28.081 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 2250.0
-23:42:28.082 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:28.083 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9375 has been had with success in the Map.
-23:42:28.085 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:28.085 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:29.172 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:29.173 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 8131.0
-23:42:29.173 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:29.174 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.7741388888888889 has been had with success in the Map.
-23:42:30.419 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:30.419 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:30.543 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:30.544 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 4485.0
-23:42:30.544 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:30.544 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.8754166666666666 has been had with success in the Map.
-23:42:30.547 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:30.547 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:30.673 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:30.674 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 2250.0
-23:42:30.674 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:30.674 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9375 has been had with success in the Map.
-23:42:30.677 [main] INFO  i.g.o.y.a.distance.DistanceSubway - GeoApiContext build with success.
-23:42:30.678 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrixApiRequest build with success.
-23:42:30.787 [main] INFO  i.g.o.y.a.distance.DistanceSubway - DistanceMatrix build with success.
-23:42:30.787 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 8131.0
-23:42:30.787 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-23:42:30.788 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.7741388888888889 has been had with success in the Map.
+13:24:36.521 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou 
+13:24:56.060 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou Hotel
+13:24:56.075 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
+13:24:56.079 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : LOGGER : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
+13:24:56.083 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 300.0
+13:24:56.083 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : California
+13:24:56.083 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
+13:24:56.083 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
+13:24:56.087 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
+13:24:56.087 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
+13:24:56.087 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
+13:24:56.087 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
+13:24:56.087 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : Hotel
+13:24:56.087 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
+13:24:56.087 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
+13:24:56.091 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
+13:24:56.091 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
+13:24:56.418 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
