@@ -16,14 +16,7 @@ import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunct
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
 class ApartmentValueFunctionTest {
-	/* 
-	Apartment readApartmentTest() throws IllegalArgumentException, IllegalAccessException, IOException{
-		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
 
-		InputStream f = ReadApartmentsXMLFormat.class.getResourceAsStream("xmlfileTest.xml");
-		Apartment a = r.readApartment(f);
-		return a;
-	} */
 	@Test
 	void apartmentValueFunctionTest() throws NumberFormatException, InvalidPropertiesFormatException, IOException{
 		ReadApartmentsXMLFormat r = new ReadApartmentsXMLFormat();
@@ -33,31 +26,28 @@ class ApartmentValueFunctionTest {
 
 			ApartmentValueFunction valueFunction = new ApartmentValueFunction();
 
+
 			LinearValueFunction floorAreaV = new LinearValueFunction(0,1182118.48);
 			valueFunction.setFloorAreaValueFunction(floorAreaV);
 
 			LinearValueFunction pricePerNightV = new LinearValueFunction(0,404);
 			valueFunction.setPricePerNightValueFunction(pricePerNightV);
 
-			BooleanValueFunction wifiV = new BooleanValueFunction(0.84,0.03);
+			BooleanValueFunction wifiV = new BooleanValueFunction(true);
 			valueFunction.setWifiValueFunction(wifiV);
 
+			BooleanValueFunction teleV = new BooleanValueFunction(true);
+			valueFunction.setTeleValueFunction(teleV); 
 
-			BooleanValueFunction teleV = new BooleanValueFunction(0.03,0.83);
-			valueFunction.setTeleValueFunction(teleV);
 
-			Assert.assertEquals(3.67, valueFunction.computeValueFunction(a),0);
+			Assert.assertEquals(0.3, valueFunction.getSubjectiveValue(a),0);
 
-			Assert.assertEquals(3.67, valueFunction.getScale(),0);
+			valueFunction.setTeleSubjectiveValueWeight(100.0);
 
-			valueFunction.setPricePerNightSubjectiveValueWeight(3.0);
+			Assert.assertEquals(0.03, valueFunction.getSubjectiveValue(a),0);
 
-			Assert.assertEquals(5.67, valueFunction.computeValueFunction(a),0);
-			Assert.assertEquals(5.67, valueFunction.getScale(),0);
 		}
 
 	}
-
-
 
 }

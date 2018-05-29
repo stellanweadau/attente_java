@@ -41,5 +41,5 @@ public class Discrete3ValueFunction implements PartialValueFunction<String> {
 	public double getSubjectiveValue(String objectiveData) throws IllegalArgumentException {
 		return subjective.get(objectiveData);
 	}
-
+	
 }

@@ -8,15 +8,17 @@ class BooleanValueFunctionTest {
 
 	@Test
 	void getSubjectiveValueTest() {
-		BooleanValueFunction b = new BooleanValueFunction(0.40,0.80);
-		Assert.assertEquals(0.4, b.getSubjectiveValue(true), 0);
-		Assert.assertEquals(0.8, b.getSubjectiveValue(false), 0);
+		BooleanValueFunction b = new BooleanValueFunction(true);
+		Assert.assertEquals(1, b.getSubjectiveValue(true), 0);
+		Assert.assertEquals(0, b.getSubjectiveValue(false), 0);
 	}
+
 
 	@Test
 	void applyTest() {
-		BooleanValueFunction bo = new BooleanValueFunction(0.42,0.50);
-		Assert.assertEquals(0.42, bo.apply(true), 0);
-		Assert.assertEquals(0.5, bo.apply(false), 0);
+		BooleanValueFunction bo = new BooleanValueFunction(false);
+		Assert.assertEquals(0, bo.apply(true), 0);
+		Assert.assertEquals(1, bo.apply(false), 0);
+
 	}
 }

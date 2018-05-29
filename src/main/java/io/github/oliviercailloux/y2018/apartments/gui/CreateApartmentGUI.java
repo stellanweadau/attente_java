@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
@@ -26,6 +27,7 @@ public class CreateApartmentGUI {
 	private void screenDisplay() throws IOException {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
 			
+
 			Display d = new Display( );
 			Shell s = new Shell(d);		
 			// TODO : Ajouter un composite au Shell avec le RowLayout
@@ -72,6 +74,7 @@ public class CreateApartmentGUI {
 			s.pack();
 			s.setMinimumSize(400, 150);
 			s.setSize(400, 150);
+
 			s.open();
 			
 			
@@ -82,9 +85,7 @@ public class CreateApartmentGUI {
 			}
 			color.dispose();
 			i.dispose();
-			//s.dispose();
 			d.dispose();
-			//label.dispose();
 		}
 	}
 	
