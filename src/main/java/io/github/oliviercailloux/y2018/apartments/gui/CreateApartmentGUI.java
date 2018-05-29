@@ -49,6 +49,13 @@ public class CreateApartmentGUI {
 		    createFormFieldComposite(d, s, "Title of the apartment : ");
 		    createFormFieldComposite(d, s, "Floor Area :" );
 		    
+		    Composite compoForButton = new Composite(s, SWT.CENTER);
+		    GridLayout gl = new GridLayout(1, true);
+		    compoForButton.setLayout(gl);
+		    Button b = new Button(compoForButton, SWT.CENTER);
+		    b.setText("Valider");
+		    
+		    
 //	    Label label = new Label(s, SWT.PUSH); 
 //		    label.setBackground(new Color(d, 255, 255 ,255)); 
 //	    label.setText("Enter the announce title"); 
