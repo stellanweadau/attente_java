@@ -1,18 +1,1 @@
-09:31:44.931 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou 
-09:31:59.080 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - Coucou Hotel
-09:31:59.091 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
-09:31:59.097 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : Logger : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
-09:31:59.098 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 200.0
-09:31:59.099 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : Garches
-09:31:59.100 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
-09:31:59.101 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
-09:31:59.102 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
-09:31:59.103 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
-09:31:59.103 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
-09:31:59.103 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
-09:31:59.104 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : Hotel
-09:31:59.105 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
-09:31:59.105 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
-09:31:59.105 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
-09:31:59.106 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
-09:31:59.217 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
+10:27:32.706 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked

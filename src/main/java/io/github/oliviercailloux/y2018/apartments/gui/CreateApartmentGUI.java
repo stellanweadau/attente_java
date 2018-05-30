@@ -63,7 +63,7 @@ public class CreateApartmentGUI {
 
 			shell.pack();
 			shell.setMinimumSize(400, 150);
-			shell.setSize(400, 150);
+			shell.setSize(500, 500);
 
 			shell.open();
 
@@ -103,7 +103,7 @@ public class CreateApartmentGUI {
 		Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
 		b.setText("Valider");
 		Consumer<SelectionEvent> consu = (event) -> {
-			LOGGER.info("Coucou " + title.getText());
+			LOGGER.info("The button has been clicked");
 			if (floorArea.getText()!="") {
 				Double floorAreaDouble = Double.parseDouble(floorArea.getText());
 				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
