@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.function.Consumer;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -26,16 +27,17 @@ import org.eclipse.swt.widgets.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.qos.logback.core.status.Status;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.iconDisplay.DisplayIcon;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
 
 public class CreateApartmentGUI {
-	
+
 	private Display display;
 	private Shell shell;
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
-	
+
 	public CreateApartmentGUI() {
 		display = new Display();
 		shell = new Shell(display);
@@ -43,7 +45,7 @@ public class CreateApartmentGUI {
 
 	private void screenDisplay() throws IOException {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
-			
+
 
 			// TODO : Ajouter un composite au Shell avec le RowLayout
 			FillLayout r = new FillLayout();
@@ -52,12 +54,12 @@ public class CreateApartmentGUI {
 			Image i = new Image(display, f);
 			shell.setImage(i);
 			shell.setText("Apartments");
-			
+
 			createPageTitle();
-		    Text title = createFormFieldComposite("Title of the apartment : ");
-		    Text address = createFormFieldComposite("Address : ");
-		    Text floorArea = createFormFieldComposite("Floor Area :" );
-		    createButtonValidation(title,address,floorArea);
+			Text title = createFormFieldComposite("Title of the apartment : ");
+			Text address = createFormFieldComposite("Address : ");
+			Text floorArea = createFormFieldComposite("Floor Area :" );
+			createButtonValidation(title,address,floorArea);
 
 			shell.pack();
 			shell.setMinimumSize(400, 150);
@@ -73,11 +75,11 @@ public class CreateApartmentGUI {
 			display.dispose();
 		}
 	}
-	
+
 	private Text createFormFieldComposite(String label)
 	{
 		Composite c = new Composite(shell, SWT.PUSH);
-		
+
 		GridLayout f = new GridLayout(2, false);
 		c.setLayout(f);
 		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
@@ -93,46 +95,52 @@ public class CreateApartmentGUI {
 		shell.pack();
 		return t;
 	}
-	
+
 	private void createButtonValidation(Text title, Text address, Text floorArea) throws IllegalArgumentException {
 		Composite compoForButton = new Composite(shell, SWT.CENTER);
-	    GridLayout gl = new GridLayout(1, true);
-	    compoForButton.setLayout(gl);
-	    Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
-	    b.setText("Valider");
-	    Consumer<SelectionEvent> consu = (event) -> {
-	    	LOGGER.info("Coucou " + title.getText());
-	    	if (floorArea.getText()!="") {
-	    			Double floorAreaDouble = Double.parseDouble(floorArea.getText());
-	    			Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
-	    			System.out.println(apart);
-	    			XMLProperties xmlFile = new XMLProperties();
-	    			File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/xmlfileTest.xml");
-	    			try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
-	    			{
-	    				xmlFile.toXML(apart, s);
-	    			} catch (Exception e) {
-						throw new IllegalStateException(e);
-					}
-	    	}
-	    };
-	    consu.accept(null);
-	    SelectionListener l = SelectionListener.widgetSelectedAdapter(consu);
-	    b.addSelectionListener(l);
-	    GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		GridLayout gl = new GridLayout(1, true);
+		compoForButton.setLayout(gl);
+		Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
+		b.setText("Valider");
+		Consumer<SelectionEvent> consu = (event) -> {
+			LOGGER.info("Coucou " + title.getText());
+			if (floorArea.getText()!="") {
+				Double floorAreaDouble = Double.parseDouble(floorArea.getText());
+				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
+				System.out.println(apart);
+				XMLProperties xmlFile = new XMLProperties();
+				File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/xmlfileTest.xml");
+				try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
+				{
+					xmlFile.toXML(apart, s);
+					MessageDialog.openInformation(shell, "Information","Insertion in the XML File done\n\n");
+				} catch (Exception e) {
+					MessageDialog.openError(shell, "Erreur","Insertion Problem in the XML File\n\nTry to restart the app");
+					throw new IllegalStateException(e);
+				}
+				title.setText("");
+				address.setText("");
+				floorArea.setText("");
+
+			}
+		};
+		consu.accept(null);
+		SelectionListener l = SelectionListener.widgetSelectedAdapter(consu);
+		b.addSelectionListener(l);
+		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		a.minimumWidth = SWT.FILL;
 		a.horizontalAlignment = SWT.CENTER;
 		a.widthHint = 200;
 		b.setLayoutData(a);
 	}
-	
+
 	private void createPageTitle() {
 		Composite compoForTitle = new Composite(shell, SWT.CENTER);
-	    GridLayout gl = new GridLayout(1, true);
-	    compoForTitle.setLayout(gl);
-	    Label title = new Label(compoForTitle, SWT.FILL | SWT.CENTER); 
-	    title.setText("CREATE AN APARTMENT");
-	    GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		GridLayout gl = new GridLayout(1, true);
+		compoForTitle.setLayout(gl);
+		Label title = new Label(compoForTitle, SWT.FILL | SWT.CENTER); 
+		title.setText("CREATE AN APARTMENT");
+		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		a.minimumWidth = SWT.FILL;
 		a.horizontalAlignment = SWT.CENTER;
 		a.widthHint = 200;
