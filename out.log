@@ -1,1 +1,18 @@
-10:27:32.706 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
+10:41:32.743 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
+10:41:49.922 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
+10:41:49.931 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
+10:41:49.931 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : Logger : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 200.0
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : Chaville
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : Coucou
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
+10:41:49.946 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
+10:41:50.071 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed

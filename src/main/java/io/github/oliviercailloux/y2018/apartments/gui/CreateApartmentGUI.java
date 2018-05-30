@@ -27,7 +27,6 @@ import org.eclipse.swt.widgets.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ch.qos.logback.core.status.Status;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.iconDisplay.DisplayIcon;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
