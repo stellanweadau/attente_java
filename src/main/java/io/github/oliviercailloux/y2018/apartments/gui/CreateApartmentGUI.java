@@ -35,18 +35,18 @@ public class CreateApartmentGUI {
 
 	private Display display;
 	private Shell shell;
+	private String file;
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 
-	public CreateApartmentGUI() {
+	public CreateApartmentGUI(String file) {
 		display = new Display();
 		shell = new Shell(display);
+		this.file = file;
 	}
 
 	private void screenDisplay() throws IOException {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
 
-
-			// TODO : Ajouter un composite au Shell avec le RowLayout
 			FillLayout r = new FillLayout();
 			r.type = SWT.VERTICAL;
 			shell.setLayout(r);
@@ -108,7 +108,7 @@ public class CreateApartmentGUI {
 				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
 				System.out.println(apart);
 				XMLProperties xmlFile = new XMLProperties();
-				File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/xmlfileTest.xml");
+				File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/"+file+".xml");
 				try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
 				{
 					xmlFile.toXML(apart, s);
@@ -146,7 +146,7 @@ public class CreateApartmentGUI {
 		title.setLayoutData(a);
 	}
 	static public void main(String args[]) throws IOException {
-		CreateApartmentGUI c = new CreateApartmentGUI();
+		CreateApartmentGUI c = new CreateApartmentGUI("apartTest");
 		c.screenDisplay();
 	}
 }
