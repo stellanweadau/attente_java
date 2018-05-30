@@ -103,17 +103,18 @@ public class CreateApartmentGUI {
 		b.setText("Valider");
 		Consumer<SelectionEvent> consu = (event) -> {
 			LOGGER.info("The button has been clicked");
-			if (floorArea.getText()!="") {
+			if (floorArea.getText().isEmpty()== false && title.getText().isEmpty()==false && address.getText().isEmpty()==false) {
 				Double floorAreaDouble = Double.parseDouble(floorArea.getText());
 				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
 				System.out.println(apart);
 				XMLProperties xmlFile = new XMLProperties();
-				File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/"+file+".xml");
+				File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/gui/"+file+".xml");
 				try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
 				{
 					xmlFile.toXML(apart, s);
-					MessageDialog.openInformation(shell, "Information","Insertion in the XML File done\n\n");
-				} catch (Exception e) {
+					MessageDialog.openInformation(shell, "Information","Apartment created with success\n\n");
+				}
+				catch (Exception e) {
 					MessageDialog.openError(shell, "Erreur","Insertion Problem in the XML File\n\nTry to restart the app");
 					throw new IllegalStateException(e);
 				}
