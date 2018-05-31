@@ -48,7 +48,8 @@ public class CreateApartmentGUI {
 
 	private void screenDisplay() throws IOException {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
-
+			
+			LOGGER.info("The logo has been loaded with success.");
 			FillLayout r = new FillLayout();
 			r.type = SWT.VERTICAL;
 			shell.setLayout(r);
@@ -68,6 +69,7 @@ public class CreateApartmentGUI {
 			shell.setSize(500, 500);
 
 			shell.open();
+			LOGGER.info("The Shell was opened with success.");
 
 			while(!shell.isDisposed( )){
 				if(!display.readAndDispatch( ))
@@ -75,6 +77,7 @@ public class CreateApartmentGUI {
 			}
 			i.dispose();
 			display.dispose();
+			LOGGER.info("The screen was closed with success.");
 		}
 	}
 
@@ -95,6 +98,7 @@ public class CreateApartmentGUI {
 		t.setText("");
 		t.setLayoutData(a);
 		shell.pack();
+		LOGGER.info("The Composite "+label+" was created.");
 		return t;
 	}
 
@@ -120,6 +124,7 @@ public class CreateApartmentGUI {
 					}
 					catch (Exception e) {
 						MessageDialog.openError(shell, "Error","Insertion Problem in the XML File\n\nTry to restart the app");
+						LOGGER.error("Error while inserting data into XML File"+e.getMessage());
 						throw new IllegalStateException(e);
 					}
 					title.setText("");
@@ -156,6 +161,7 @@ public class CreateApartmentGUI {
 		a.horizontalAlignment = SWT.CENTER;
 		a.widthHint = 200;
 		title.setLayoutData(a);
+		LOGGER.info("The Composite of the header was created.");
 	}
 	static public void main(String args[]) throws IOException {
 		CreateApartmentGUI c = new CreateApartmentGUI("apartTest");
