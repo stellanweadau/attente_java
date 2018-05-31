@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DiscreteValueFunctionTest {
 
@@ -34,15 +36,18 @@ class DiscreteValueFunctionTest {
 	}
 	
 	@Test
-		void ConstructorValueExceptionTest() {
+	void exceptionTesting() {
+	    Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			Map<Integer,Double> discreteMapTest = new HashMap<Integer,Double>();
 			discreteMapTest.put(5, 0.0);
 			discreteMapTest.put(10, 0.25);
-			discreteMapTest.put(99, 1.0);
+			discreteMapTest.put(99, 1.2);
 			DiscreteValueFunction<Integer> f = new DiscreteValueFunction<Integer>(discreteMapTest);
-			Assert.assertEquals(1.0,f.getSubjectiveValue(99),0);
-
+			Assert.assertEquals(1.2,f.getSubjectiveValue(99),0);;
+	      });
 	}
+	
+	
 	
 	
 }

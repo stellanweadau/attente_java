@@ -25,11 +25,8 @@ class ApartmentValueFunctionTest {
 			ApartmentValueFunction valueFunction = new ApartmentValueFunction();
 
 
-			LinearValueFunction floorAreaV = new LinearValueFunction(0,1182118.48);
+			LinearValueFunction floorAreaV = new LinearValueFunction(0,200.00);
 			valueFunction.setFloorAreaValueFunction(floorAreaV);
-
-			LinearValueFunction pricePerNightV = new LinearValueFunction(0,404);
-			valueFunction.setPricePerNightValueFunction(pricePerNightV);
 
 			BooleanValueFunction wifiV = new BooleanValueFunction(true);
 			valueFunction.setWifiValueFunction(wifiV);
@@ -38,11 +35,11 @@ class ApartmentValueFunctionTest {
 			valueFunction.setTeleValueFunction(teleV); 
 
 
-			Assert.assertEquals(0.3, valueFunction.getSubjectiveValue(a),0.00001);
+			Assert.assertEquals(0.1, valueFunction.getSubjectiveValue(a),0.0001);
 
 			valueFunction.setTeleSubjectiveValueWeight(10.0);
 
-			Assert.assertEquals(0.027523, valueFunction.getSubjectiveValue(a),0.000001);
+			Assert.assertEquals(0.0091743, valueFunction.getSubjectiveValue(a),0.00001);
 
 		}
 

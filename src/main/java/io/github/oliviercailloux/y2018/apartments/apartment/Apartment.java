@@ -337,8 +337,8 @@ public class Apartment extends Object {
 	 * @param floorAreaTerrace is a real number superior or equal to zero, it only works if terrace = true (use setTerrace)
 	 */
 	public void setFloorAreaTerrace(double floorAreaTerrace) {
-		checkArgument(this.terrace == true && floorAreaTerrace >= 0,"The terrace can not have a floor area if it doesn't exists");
-		checkArgument(floorAreaTerrace > 0,"The floor area of the terrace can not be negative");
+		checkArgument((this.terrace == false && floorAreaTerrace == 0) ||( this.terrace == true),"The terrace can not have a floor area if it doesn't exists");
+		checkArgument(floorAreaTerrace >= 0,"The floor area of the terrace can not be negative");
 		this.floorAreaTerrace = floorAreaTerrace ;
 		LOGGER.info("The floor area of the terrace has been set to "+ floorAreaTerrace);
 	}
