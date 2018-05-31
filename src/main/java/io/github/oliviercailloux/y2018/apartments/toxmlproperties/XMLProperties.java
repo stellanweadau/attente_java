@@ -68,7 +68,7 @@ public class XMLProperties{
 			}
 				properties.remove("apartment");
 				properties.remove("LOGGER");
-				
+				properties.remove("Logger");
 				properties.storeToXML(xmlFile, "Generated file for the apartment " + a.getTitle() );
 				
 				xmlFile.close();
