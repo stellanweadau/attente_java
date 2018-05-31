@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.IllegalFormatException;
 import java.util.function.Consumer;
 
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -42,6 +43,7 @@ public class CreateApartmentGUI {
 		display = new Display();
 		shell = new Shell(display);
 		this.file = file;
+		LOGGER.info("The GUI was initialized with success.");
 	}
 
 	private void screenDisplay() throws IOException {
@@ -104,24 +106,32 @@ public class CreateApartmentGUI {
 		Consumer<SelectionEvent> consu = (event) -> {
 			LOGGER.info("The button has been clicked");
 			if (floorArea.getText().isEmpty()== false && title.getText().isEmpty()==false && address.getText().isEmpty()==false) {
-				Double floorAreaDouble = Double.parseDouble(floorArea.getText());
-				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
-				System.out.println(apart);
-				XMLProperties xmlFile = new XMLProperties();
-				File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/gui/"+file+".xml");
-				try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
-				{
-					xmlFile.toXML(apart, s);
-					MessageDialog.openInformation(shell, "Information","Apartment created with success\n\n");
-				}
-				catch (Exception e) {
-					MessageDialog.openError(shell, "Erreur","Insertion Problem in the XML File\n\nTry to restart the app");
-					throw new IllegalStateException(e);
-				}
-				title.setText("");
-				address.setText("");
-				floorArea.setText("");
+				try {
+					Double floorAreaDouble = Double.parseDouble(floorArea.getText());
+					Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
+					System.out.println(apart);
+					XMLProperties xmlFile = new XMLProperties();
+					File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/gui/"+file+".xml");
+					try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
+					{
+						xmlFile.toXML(apart, s);
+						MessageDialog.openInformation(shell, "Information","Apartment created with success\n\n");
+					}
+					catch (Exception e) {
+						MessageDialog.openError(shell, "Error","Insertion Problem in the XML File\n\nTry to restart the app");
+						throw new IllegalStateException(e);
+					}
+					title.setText("");
+					address.setText("");
+					floorArea.setText("");
 
+				} 
+				catch(NumberFormatException e){
+					MessageDialog.openError(shell,"Error","Please insert a correct number in the floor area field");
+					LOGGER.error("The floor area field is not a number. Exception " + e.getMessage());
+					floorArea.setText("");
+
+				}
 			}
 		};
 		consu.accept(null);

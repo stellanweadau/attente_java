@@ -1,35 +1,20 @@
-19:58:57.552 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
-19:59:27.160 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
-19:59:27.181 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : Logger : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 10000.0
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : Ville d'Avray
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : DisneyLand
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
-19:59:27.181 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
-19:59:27.271 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
-20:00:24.564 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
-20:00:24.564 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : Logger : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 250.0
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : Ville d'Avray
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : Hotel
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
-20:00:24.576 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
-20:00:24.592 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
+17:12:24.447 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
+17:12:38.329 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
+17:12:46.520 [main] ERROR i.g.o.y.a.gui.CreateApartmentGUI - The floor area field is not a number. Exception For input string: "ta mère"
+17:12:53.319 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
+17:12:53.335 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
+17:12:53.342 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : Logger : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
+17:12:53.344 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 150.0
+17:12:53.345 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : VDA
+17:12:53.346 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
+17:12:53.346 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
+17:12:53.347 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
+17:12:53.348 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
+17:12:53.349 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
+17:12:53.349 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
+17:12:53.349 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : Hotel
+17:12:53.350 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
+17:12:53.350 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
+17:12:53.351 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
+17:12:53.351 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
+17:12:53.439 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed

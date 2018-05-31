@@ -7,13 +7,13 @@
 <entry key="nbMinNight">0</entry>
 <entry key="terrace">false</entry>
 <entry key="nbBedrooms">0</entry>
-<entry key="floorArea">250.0</entry>
+<entry key="floorArea">150.0</entry>
 <entry key="pricePerNight">0.0</entry>
 <entry key="tele">false</entry>
 <entry key="wifi">false</entry>
 <entry key="title">Hotel</entry>
 <entry key="nbBathrooms">0</entry>
-<entry key="address">Ville d'Avray</entry>
+<entry key="address">VDA</entry>
 <entry key="description"/>
 <entry key="floorAreaTerrace">0.0</entry>
 </properties>
