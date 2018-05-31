@@ -12,6 +12,14 @@ import io.github.oliviercailloux.y2018.apartments.utils.KeyManager;
 
 public class Localizer {
 	
+	private LatLng startCoordinate;
+	private LatLng endCoordinate;
+	
+	public Localizer(String startAddress, String endAddress) throws ApiException, InterruptedException, IOException {
+		this.startCoordinate = getGeometryLocation(startAddress);
+		this.endCoordinate = getGeometryLocation(endAddress);
+	}
+	
 	/**	getGeometryLocation return, base on the full address of the location, the geocode of it.
 	 * 
 	 * @param location is the full address of the location
@@ -21,7 +29,7 @@ public class Localizer {
 	 * @throws InterruptedException
 	 * @throws IOException
 	 */
-	public static LatLng getGeometryLocation(String address) throws ApiException, InterruptedException, IOException{
+	private LatLng getGeometryLocation(String address) throws ApiException, InterruptedException, IOException{
 		
 		String geocodeApiKey = KeyManager.getGeocodeApiKey();
 		
@@ -33,6 +41,14 @@ public class Localizer {
 		
 		return res[0].geometry.location;
 	
+	}
+	
+	public LatLng getStartCoordinate() {
+		return startCoordinate;
+	}
+	
+	public LatLng getEndCoordinate() {
+		return endCoordinate;
 	}
 	
 
