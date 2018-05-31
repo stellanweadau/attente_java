@@ -17,7 +17,7 @@ class ValueDistFunctionTest {
 	Location interest2;
 	Location interest3;
 	
-	void initializeValueDistFunction() throws ApiException, InterruptedException, IOException {
+	void initializeValueDistFunction() throws Exception {
 		appart = new Location("Ville d'Avray");
 		interest1 = new Location("Paris");
 		interest2 = new Location("Chaville");
@@ -30,13 +30,13 @@ class ValueDistFunctionTest {
 	}
 	
 	@Test 
-	void getSubjectiveValueTest() throws ApiException, InterruptedException, IOException{
+	void getSubjectiveValueTest() throws Exception{
 		initializeValueDistFunction();
 		Assert.assertEquals(0.90919444444, v.getSubjectiveValue(interest1), 0.0001);
 	}
 	
 	@Test
-	void getMaxDurationTest() throws ApiException, InterruptedException, IOException {
+	void getMaxDurationTest() throws Exception {
 		initializeValueDistFunction();
 		Assert.assertEquals(5091.0, v.getMaxDuration(),0);
 	}

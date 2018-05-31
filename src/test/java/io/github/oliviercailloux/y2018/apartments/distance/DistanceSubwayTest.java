@@ -20,12 +20,10 @@ class DistanceSubwayTest {
 	 * The test check if the distance (in second) between Ville d'Avray and 
 	 * Paris is below 2h (6300 seconds) and above 30 minutes (1800 seconds)
 	 * This test fail in unnatural conditions of circulation (strike, etc...)
-	 * @throws ApiException
-	 * @throws InterruptedException
-	 * @throws IOException
+	 * @throws Exception 
 	 */
 	@Test
-	void calculateDistanceAddressTest() throws ApiException, InterruptedException, IOException {
+	void calculateDistanceAddressTest() throws Exception {
 
 		DistanceSubway dist = new DistanceSubway("Paris","Ville d'Avray",KeyManager.getApiKey());
 		double time = dist.calculateDistanceAddress(DistanceMode.ADDRESS);

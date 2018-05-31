@@ -37,11 +37,9 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	/**
 	 * Add the apartment location and its utility to the HashMap and update the variable maxDuration.
 	 * @param interest Object Location of an interest place of the user.
-	 * @throws IOException 
-	 * @throws InterruptedException 
-	 * @throws ApiException 
+	 * @throws Exception 
 	 */
-	public void addInterestLocation(Location interest) throws ApiException, InterruptedException, IOException {
+	public void addInterestLocation(Location interest) throws Exception {
 		double currentdistance = calculateDistanceLocation(interest);
 		if (currentdistance > maxDuration)
 			maxDuration = currentdistance;
@@ -62,8 +60,9 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 * 
 	 * @param interest
 	 * @return double number  which corresponds to the distance (seconds) between the Location appartocation and the Location interest in parameter.
+	 * @throws Exception 
 	 */
-	public double calculateDistanceLocation(Location interest) throws ApiException, InterruptedException, IOException {
+	public double calculateDistanceLocation(Location interest) throws Exception {
 		DistanceSubway dist = new DistanceSubway(interest.getCoordinate(),appartlocation.getCoordinate());
 		double currentdistance = dist.calculateDistanceAddress(DistanceMode.COORDINATE);
 		LOGGER.info("The distance between "+interest.getCoordinate()+" and "+appartlocation.getCoordinate()+" has been calculated and is equal to "+ currentdistance);
