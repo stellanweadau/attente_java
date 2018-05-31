@@ -42,6 +42,7 @@ public class CreateApartmentGUI {
 	Text floorAreaTerrace;
 	Text pricePerNight;
 	Text nbMinNight;
+	Text description;
 	Button wifi;
 	Button tele ;
 	File file;
@@ -59,7 +60,7 @@ public class CreateApartmentGUI {
 
 	private void screenDisplay() throws IOException {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
-			
+
 			LOGGER.info("The logo has been loaded with success.");
 			FillLayout r = new FillLayout();
 			r.type = SWT.VERTICAL;
@@ -70,19 +71,7 @@ public class CreateApartmentGUI {
 
 
 			createPageTitle();
-			title = createFormFieldComposite("Title of the apartment* : ");
-			address = createFormFieldComposite("Address* : ");
-			floorArea = createFormFieldComposite("Floor Area* :" );
-			nbBedrooms = createFormFieldComposite("Number of bedrooms : ");
-			nbSleeping = createFormFieldComposite("Sleeping capacity : ");
-			nbBathrooms = createFormFieldComposite("Number of bathrooms : ");
-			terrace = createCheckboxComposite("Terrace : ");
-			floorAreaTerrace = createFormFieldComposite("Floor area terrace : ");
-			pricePerNight = createFormFieldComposite("Price per night : ");
-			nbMinNight = createFormFieldComposite("Minimum nights to stay : ");
-			wifi = createCheckboxComposite("WiFi : ");
-			tele = createCheckboxComposite("Television : ");
-			
+			createForm();
 			createButtonValidation();
 
 			shell.pack();
@@ -100,6 +89,24 @@ public class CreateApartmentGUI {
 			display.dispose();
 			LOGGER.info("The screen was closed with success.");
 		}
+	}
+
+	private void createForm() {
+		title = createFormFieldComposite("Title of the apartment*: ");
+		address = createFormFieldComposite("Address*: ");
+		floorArea = createFormFieldComposite("Floor Area*:" );
+		nbBedrooms = createFormFieldComposite("Number of bedrooms: ");
+		nbSleeping = createFormFieldComposite("Sleeping capacity: ");
+		nbBathrooms = createFormFieldComposite("Number of bathrooms: ");
+		terrace = createCheckboxComposite("Terrace: ");
+		floorAreaTerrace = createFormFieldComposite("Floor area terrace: ");
+		pricePerNight = createFormFieldComposite("Price per night: ");
+		nbMinNight = createFormFieldComposite("Minimum nights to stay: ");
+		wifi = createCheckboxComposite("WiFi: ");
+		tele = createCheckboxComposite("Television: ");
+		description = createFormFieldComposite("Description:");
+		
+		
 	}
 
 	private Text createFormFieldComposite(String label)
@@ -122,7 +129,7 @@ public class CreateApartmentGUI {
 		LOGGER.info("The Composite "+label+" was created.");
 		return t;
 	}
-	
+
 	private Button createCheckboxComposite(String label)
 	{
 		Composite c = new Composite(shell, SWT.PUSH);
@@ -149,7 +156,7 @@ public class CreateApartmentGUI {
 		compoForButton.setLayout(gl);
 		Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
 		b.setText("Valider");
-		
+
 		Consumer<SelectionEvent> consu = (event) -> {
 			Double floorAreaDouble = 0.0;
 			LOGGER.info("The button has been clicked");
@@ -164,10 +171,10 @@ public class CreateApartmentGUI {
 					floorArea.setText("");
 
 				}
-				
+
 				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
 				apart.setTerrace(terrace.getSelection());
-				
+
 				write(apart);
 				reset();
 			}
@@ -181,7 +188,7 @@ public class CreateApartmentGUI {
 		a.widthHint = 200;
 		b.setLayoutData(a);
 	}
-	
+
 	private void write(Apartment a) {
 		XMLProperties xmlFile = new XMLProperties();
 		try(FileOutputStream s = new FileOutputStream(file.getAbsolutePath()))
@@ -194,7 +201,7 @@ public class CreateApartmentGUI {
 			LOGGER.error("Error while inserting data into XML File"+e.getMessage());
 			throw new IllegalStateException(e);
 		}
-		
+
 	}
 
 	private void reset() {
@@ -210,6 +217,7 @@ public class CreateApartmentGUI {
 		nbMinNight.setText("");
 		wifi.setSelection(false);
 		tele.setSelection(false);
+		description.setText("");
 	}
 	private void createPageTitle() {
 		Composite compoForTitle = new Composite(shell, SWT.CENTER);
