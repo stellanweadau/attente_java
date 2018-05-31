@@ -32,7 +32,7 @@ class DistanceSubwayTest {
 	@Test
 	void calculateDistanceAddressTest() throws ApiException, InterruptedException, IOException {
 
-		DistanceSubway dist = new DistanceSubway("Paris","Ville d'Avray");
+		DistanceSubway dist = new DistanceSubway("Paris","Ville d'Avray",KeyManager.getApiKey());
 		double time = dist.calculateDistanceAddress(DistanceMode.ADDRESS);
 		Assert.assertTrue(7200 > time &&  1800 < time);
 	}
