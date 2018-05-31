@@ -347,7 +347,6 @@ public class Apartment extends Object {
 	 * @param description is a string of characters
 	 */
 	public void setDescription(String description) {
-		checkArgument(description !="","The description should not be empty");
 		this.description = description ;
 		LOGGER.info("The description has been set to " + description);
 	}

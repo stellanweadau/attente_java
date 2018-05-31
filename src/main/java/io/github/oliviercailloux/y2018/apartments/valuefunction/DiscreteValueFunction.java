@@ -2,8 +2,15 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.common.collect.ImmutableMap;
 
 /**
  * Class which enables the user to get the subjective value of a String given in argument.
@@ -11,50 +18,52 @@ import org.slf4j.LoggerFactory;
  */
 public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 
-	private Map<T, Double> subjective;
+	private final ImmutableMap<T, Double> subjective;
 	private final static Logger LOGGER = LoggerFactory.getLogger(DiscreteValueFunction.class);
-
+	
 	/**
-	 * Create a map with 3 strings which are associated to 3 subjective values.
-	 * @param s1 first string which corresponds to the subjective value 0
-	 * @param s2 second string which corresponds to the subjective value 0.5
-	 * @param s3 third string which corresponds to the subjective value 1
+	 * Create a map with 3 discrete values of the same type which are associated to their respective subjective values.
+	 * @param s1 first key of type <b>T</b> which corresponds to the subjective value 0
+	 * @param s2 second key of type <b>T</b> which corresponds to the subjective value 0.5
+	 * @param s3 third key of type <b>T</b> which corresponds to the subjective value 1
 	 */
 	public DiscreteValueFunction(T s1, T s2, T s3) {
 		if (s1 == s2 || s1 == s3 || s2 == s3) {
 			LOGGER.error("The strings in input has to be different in the Discrete3ValueFunction class. The Map has not been set with success.");
 			throw new IllegalArgumentException("The strings has to be different.");
 		}
-		subjective = new HashMap<>();
-		subjective.put(s1, 0.0);
-		subjective.put(s2, 0.5);
-		subjective.put(s3, 1.0);
+		subjective = ImmutableMap.of(s1, 0.0, s2, 0.5, s3, 1.0);
 		LOGGER.info("The Map with the three strings has been set with success in the Discrete3ValueFunction class.");
 	}
 
 	/**
-	 * Create a map with 2 strings which are associated to 2 subjective values.
-	 * @param s1 first string which corresponds to the subjective value 0
-	 * @param s2 third string which corresponds to the subjective value 1
+	 * Create a map with 2 discrete values of the same type which are associated to their respective subjective values.
+	 * @param s1 first key of type <b>T</b> which corresponds to the subjective value 0
+	 * @param s2 second key of type <b>T</b> which corresponds to the subjective value 1
 	 */
 	public DiscreteValueFunction(T s1, T s2) {
 		if (s1 == s2) {
 			LOGGER.error("The strings in input has to be different in the DiscreteValueFunction class. The Map has not been set with success.");
 			throw new IllegalArgumentException("The strings has to be different.");
 		}
-		subjective = new HashMap<>();
-		subjective.put(s1, 0.0);
-		subjective.put(s2, 1.0);
+		subjective = ImmutableMap.of(s1, 0.0, s2, 1.0);
 		LOGGER.info("The Map with the two strings has been set with success in the DiscreteValueFunction class.");
 	}
-	/*
+	
+	/**
+	 * Create a map that match the keys and the subjective values associated
+	 * @param subjective a Map<T, Double> where the key is of type <b>T</b> and the associated value, a double between 0 and 1, defines its subjective value. 
+	 */
 	public DiscreteValueFunction(Map<T, Double> subjective) {
-		
-		for ( int i = 0 ; i < subjective.size() ; i++) {
-			subjective.forEach(action);
+		this.subjective = ImmutableMap.copyOf(subjective);
+		Stream<Entry<T, Double>> erreur  = this.subjective.entrySet().stream().filter((entry)-> entry.getValue() < 0 || entry.getValue() > 1);
+		Map<T,Double> mapError =  erreur.collect(Collectors.toMap((entry)->entry.getKey(), (entry) -> entry.getValue()));
+		if (! (mapError.isEmpty() ) ) {
+			throw new IllegalArgumentException("The subjective values must be between 0 and 1. The wrong values are : " + mapError );
+			
 		}
 	}
-	*/
+	
 	@Override
 	public Double apply(T objectiveData) {
 		return subjective.get(objectiveData);
