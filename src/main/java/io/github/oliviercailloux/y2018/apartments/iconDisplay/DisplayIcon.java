@@ -9,8 +9,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.github.oliviercailloux.y2018.apartments.distance.DistanceSubway;
-
 
 public class DisplayIcon {
 

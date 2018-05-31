@@ -5,11 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import io.github.oliviercailloux.y2018.apartments.distance.DistanceSubway;
-
 public class KeyManager {
 	
 

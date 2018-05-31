@@ -1,12 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.distance;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

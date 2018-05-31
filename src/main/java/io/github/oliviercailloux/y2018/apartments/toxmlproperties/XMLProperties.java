@@ -1,7 +1,5 @@
 package io.github.oliviercailloux.y2018.apartments.toxmlproperties;
 
-import javax.swing.JFileChooser;
-import javax.swing.JPanel;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,28 +7,10 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.Properties;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.DOMException;
-import org.w3c.dom.DOMImplementation;
-//source of the XML writer http://www.mkyong.com/java/how-to-create-xml-file-in-java-dom/
-import org.w3c.dom.Document;
-import org.w3c.dom.DocumentType;
-import org.w3c.dom.Element;
-
-
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
-import io.github.oliviercailloux.y2018.apartments.distance.DistanceSubway;
 
 public class XMLProperties{
 
