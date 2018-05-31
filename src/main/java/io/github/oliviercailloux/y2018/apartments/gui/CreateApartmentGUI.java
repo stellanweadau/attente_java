@@ -61,16 +61,18 @@ public class CreateApartmentGUI {
 			Text nbBedrooms = createFormFieldComposite("Number of bedrooms : ");
 			Text nbSleeping = createFormFieldComposite("Sleeping capacity : ");
 			Text nbBathrooms = createFormFieldComposite("Number of bathrooms : ");
-			Boolean terrace = createCheckboxComposite("Terrace : ");
+			Button terrace = createCheckboxComposite("Terrace : ");
 			Text floorAreaTerrace = createFormFieldComposite("Floor area terrace : ");
 			Text pricePerNight = createFormFieldComposite("Price per night : ");
 			Text nbMinNight = createFormFieldComposite("Minimum nights to stay : ");
+			Button wifi = createCheckboxComposite("WiFi : ");
+			Button tele = createCheckboxComposite("Television : ");
 			
-			createButtonValidation(title,address,floorArea);
+			createButtonValidation(title,address,floorArea,nbBedrooms,nbSleeping,nbBathrooms,terrace,floorAreaTerrace,pricePerNight,nbMinNight,wifi,tele);
 
 			shell.pack();
 			shell.setMinimumSize(400, 150);
-			shell.setSize(500, 500);
+			shell.setSize(600, 600);
 
 			shell.open();
 			LOGGER.info("The Shell was opened with success.");
@@ -106,10 +108,9 @@ public class CreateApartmentGUI {
 		return t;
 	}
 	
-	private boolean createCheckboxComposite(String label)
+	private Button createCheckboxComposite(String label)
 	{
 		Composite c = new Composite(shell, SWT.PUSH);
-
 		GridLayout f = new GridLayout(2, false);
 		c.setLayout(f);
 		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
@@ -124,10 +125,10 @@ public class CreateApartmentGUI {
 		t.setLayoutData(a);
 		shell.pack();
 		LOGGER.info("The Composite "+label+" was created.");
-		return t.getSelection();
+		return t;
 	}
 
-	private void createButtonValidation(Text title, Text address, Text floorArea) throws IllegalArgumentException {
+	private void createButtonValidation(Text title, Text address, Text floorArea, Text nbBedrooms, Text nbSleeping, Text nbBathrooms, Button terrace, Text floorAreaTerrace, Text pricePerNight, Text nbMinNight, Button wifi, Button tele) throws IllegalArgumentException {
 		Composite compoForButton = new Composite(shell, SWT.CENTER);
 		GridLayout gl = new GridLayout(1, true);
 		compoForButton.setLayout(gl);
@@ -139,7 +140,7 @@ public class CreateApartmentGUI {
 				try {
 					Double floorAreaDouble = Double.parseDouble(floorArea.getText());
 					Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
-					System.out.println(apart);
+					apart.setTerrace(terrace.getSelection());
 					XMLProperties xmlFile = new XMLProperties();
 					File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/gui/"+file+".xml");
 					try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
@@ -155,7 +156,15 @@ public class CreateApartmentGUI {
 					title.setText("");
 					address.setText("");
 					floorArea.setText("");
-
+					nbBedrooms.setText("");
+					nbSleeping.setText("");
+					nbBathrooms.setText("");
+					terrace.setSelection(false);
+					floorAreaTerrace.setText("");
+					pricePerNight.setText("");
+					nbMinNight.setText("");
+					wifi.setSelection(false);
+					tele.setSelection(false);
 				} 
 				catch(NumberFormatException e){
 					MessageDialog.openError(shell,"Error","Please insert a correct number in the floor area field");

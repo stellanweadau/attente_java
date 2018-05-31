@@ -1,16 +1,21 @@
-18:02:15.971 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The GUI was initialized with success.
-18:02:15.971 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The logo has been loaded with success.
-18:02:16.340 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite of the header was created.
-18:02:16.350 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Title of the apartment* :  was created.
-18:02:16.350 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Address* :  was created.
-18:02:16.365 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor Area* : was created.
-18:02:16.365 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bedrooms :  was created.
-18:02:16.365 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Sleeping capacity :  was created.
-18:02:16.381 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bathrooms :  was created.
-18:02:16.397 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Terrace :  was created.
-18:02:16.412 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor area terrace :  was created.
-18:02:16.412 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Price per night :  was created.
-18:02:16.428 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Minimum nights to stay :  was created.
-18:02:16.428 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
-18:02:16.553 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Shell was opened with success.
-18:02:21.530 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The screen was closed with success.
+18:33:40.654 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The GUI was initialized with success.
+18:33:40.672 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The logo has been loaded with success.
+18:33:41.047 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite of the header was created.
+18:33:41.063 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Title of the apartment* :  was created.
+18:33:41.063 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Address* :  was created.
+18:33:41.063 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor Area* : was created.
+18:33:41.079 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bedrooms :  was created.
+18:33:41.079 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Sleeping capacity :  was created.
+18:33:41.095 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bathrooms :  was created.
+18:33:41.117 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Terrace :  was created.
+18:33:41.132 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor area terrace :  was created.
+18:33:41.132 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Price per night :  was created.
+18:33:41.132 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Minimum nights to stay :  was created.
+18:33:41.148 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite WiFi :  was created.
+18:33:41.163 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Television :  was created.
+18:33:41.163 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
+18:33:41.320 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Shell was opened with success.
+18:37:44.873 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
+18:37:59.867 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
+18:38:15.424 [main] ERROR i.g.o.y.a.gui.CreateApartmentGUI - The floor area field is not a number. Exception For input string: "fff"
+18:41:39.961 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The screen was closed with success.
