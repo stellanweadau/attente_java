@@ -83,7 +83,7 @@ public class CreateApartmentGUI {
 			wifi = createCheckboxComposite("WiFi : ");
 			tele = createCheckboxComposite("Television : ");
 			
-			createButtonValidation(title,address,floorArea,nbBedrooms,nbSleeping,nbBathrooms,terrace,floorAreaTerrace,pricePerNight,nbMinNight,wifi,tele);
+			createButtonValidation();
 
 			shell.pack();
 			shell.setMinimumSize(400, 150);
@@ -143,7 +143,7 @@ public class CreateApartmentGUI {
 		return t;
 	}
 
-	private void createButtonValidation(Text title, Text address, Text floorArea, Text nbBedrooms, Text nbSleeping, Text nbBathrooms, Button terrace, Text floorAreaTerrace, Text pricePerNight, Text nbMinNight, Button wifi, Button tele) throws IllegalArgumentException {
+	private void createButtonValidation() throws IllegalArgumentException {
 		Composite compoForButton = new Composite(shell, SWT.CENTER);
 		GridLayout gl = new GridLayout(1, true);
 		compoForButton.setLayout(gl);
@@ -215,13 +215,13 @@ public class CreateApartmentGUI {
 		Composite compoForTitle = new Composite(shell, SWT.CENTER);
 		GridLayout gl = new GridLayout(1, true);
 		compoForTitle.setLayout(gl);
-		Label title = new Label(compoForTitle, SWT.FILL | SWT.CENTER); 
-		title.setText("CREATE AN APARTMENT");
+		Label titleLb = new Label(compoForTitle, SWT.FILL | SWT.CENTER); 
+		titleLb.setText("CREATE AN APARTMENT");
 		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		a.minimumWidth = SWT.FILL;
 		a.horizontalAlignment = SWT.CENTER;
 		a.widthHint = 200;
-		title.setLayoutData(a);
+		titleLb.setLayoutData(a);
 		LOGGER.info("The Composite of the header was created.");
 	}
 	/**
