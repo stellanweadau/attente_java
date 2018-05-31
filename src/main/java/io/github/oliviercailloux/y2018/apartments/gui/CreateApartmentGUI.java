@@ -59,9 +59,17 @@ public class CreateApartmentGUI {
 
 
 			createPageTitle();
-			Text title = createFormFieldComposite("Title of the apartment : ");
-			Text address = createFormFieldComposite("Address : ");
-			Text floorArea = createFormFieldComposite("Floor Area :" );
+			Text title = createFormFieldComposite("Title of the apartment* : ");
+			Text address = createFormFieldComposite("Address* : ");
+			Text floorArea = createFormFieldComposite("Floor Area* :" );
+			Text nbBedrooms = createFormFieldComposite("Number of bedrooms : ");
+			Text nbSleeping = createFormFieldComposite("Sleeping capacity : ");
+			Text nbBathrooms = createFormFieldComposite("Number of bathrooms : ");
+			Boolean terrace = createCheckboxComposite("Terrace : ");
+			Text floorAreaTerrace = createFormFieldComposite("Floor area terrace : ");
+			Text pricePerNight = createFormFieldComposite("Price per night : ");
+			Text nbMinNight = createFormFieldComposite("Minimum nights to stay : ");
+			
 			createButtonValidation(title,address,floorArea);
 
 			shell.pack();
@@ -100,6 +108,27 @@ public class CreateApartmentGUI {
 		shell.pack();
 		LOGGER.info("The Composite "+label+" was created.");
 		return t;
+	}
+	
+	private boolean createCheckboxComposite(String label)
+	{
+		Composite c = new Composite(shell, SWT.PUSH);
+
+		GridLayout f = new GridLayout(2, false);
+		c.setLayout(f);
+		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		a.minimumWidth = SWT.FILL;
+		a.horizontalAlignment = SWT.CENTER;
+		a.widthHint = 200;
+		Label lb = new Label(c, SWT.FILL);
+		lb.setText(label);
+		lb.setLayoutData(a);
+		Button t = new Button(c, SWT.CHECK);
+		t.setText("");
+		t.setLayoutData(a);
+		shell.pack();
+		LOGGER.info("The Composite "+label+" was created.");
+		return t.getSelection();
 	}
 
 	private void createButtonValidation(Text title, Text address, Text floorArea) throws IllegalArgumentException {
