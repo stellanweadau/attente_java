@@ -10,7 +10,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 public class Apartment extends Object {
 	
-	private Logger LOGGER = LoggerFactory.getLogger(Apartment.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(Apartment.class);
 
 	/**
 	 * @param floorArea a real number it represents the floor area of the apartment in square meters.

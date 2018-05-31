@@ -2,6 +2,10 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 import java.util.function.Function;
 
+/**
+ *  <code>PartialValueFunction</code> is an object that enables to compute the subjective value of a parameter 
+ * @param <T> the type of the parameter
+ */
 public interface PartialValueFunction<T> extends Function<T, Double> {
 	
 	/**

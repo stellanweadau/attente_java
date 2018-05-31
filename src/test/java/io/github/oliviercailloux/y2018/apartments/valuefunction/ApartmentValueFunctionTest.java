@@ -40,11 +40,11 @@ class ApartmentValueFunctionTest {
 			valueFunction.setTeleValueFunction(teleV); 
 
 
-			Assert.assertEquals(0.3, valueFunction.getSubjectiveValue(a),0);
+			Assert.assertEquals(0.3, valueFunction.getSubjectiveValue(a),0.00001);
 
-			valueFunction.setTeleSubjectiveValueWeight(100.0);
+			valueFunction.setTeleSubjectiveValueWeight(10.0);
 
-			Assert.assertEquals(0.03, valueFunction.getSubjectiveValue(a),0);
+			Assert.assertEquals(0.027523, valueFunction.getSubjectiveValue(a),0.000001);
 
 		}
 
