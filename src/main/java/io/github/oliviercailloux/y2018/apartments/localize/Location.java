@@ -14,8 +14,7 @@ public class Location extends Object{
 	}
 	
 	public Location(String address) throws ApiException, InterruptedException, IOException {
-		Localizer localizer = new Localizer(address, address);
-		coordinate = localizer.getStartCoordinate();
+		coordinate = Localizer.getGeometryLocation(address);
 	}
 	
 	public Location(LatLng coordinate) {

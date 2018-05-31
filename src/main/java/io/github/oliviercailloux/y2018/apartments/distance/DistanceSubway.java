@@ -72,6 +72,11 @@ public class DistanceSubway {
 		LOGGER.info("DistanceSubway Object created with success. Departure= " + startPoint + " ; Arrival= " + endPoint);
 	}
 
+	/**
+	 * Constructor which builds a DistanceSubway object.
+	 * @param startCoordinate LatLng the start coordinate
+	 * @param endCoordinate LatLng the end coordinate
+	 */
 	public DistanceSubway(LatLng startCoordinate, LatLng endCoordinate) {
 		this.startCoordinate = startCoordinate;
 		this.endCoordinate = endCoordinate;
@@ -89,11 +94,9 @@ public class DistanceSubway {
 	 *            is a enum type, allow the user to choose between address mode (by
 	 *            the name) or by coordinate mode.
 	 * @return distance in hours between the two points given in the constructor.
-	 * @throws IOException 
-	 * @throws InterruptedException 
-	 * @throws ApiException 
+	 * @throws Exception 
 	 */
-	public double calculateDistanceAddress(DistanceMode distancemode) throws ApiException, InterruptedException, IOException{
+	public double calculateDistanceAddress(DistanceMode distancemode) throws Exception{
 
 		DistanceMatrixApiRequest request = DistanceMatrixApi.newRequest(dist);
 
@@ -109,9 +112,7 @@ public class DistanceSubway {
 			.transitModes(TransitMode.SUBWAY).language("fr-FR").await();
 			break;
 		default:
-			result = request.origins(startPoint).destinations(endPoint).mode(TravelMode.TRANSIT)
-			.transitModes(TransitMode.SUBWAY).language("fr-FR").await();
-			break;
+			throw new Exception("The distance mode specified is not correct.");
 		}
 
 		return result.rows[0].elements[0].duration.inSeconds;
