@@ -227,7 +227,7 @@ public class CreateApartmentGUI {
 	/**
 	 * 
 	 * @param args
-	 * 	must contains as first parameter the complete name of the file.
+	 * 	must contains as first parameter the complete name of the file (Full Path).
 	 * @throws IOException
 	 */
 	static public void main(String args[]) throws IOException {
