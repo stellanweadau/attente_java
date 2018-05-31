@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<comment>Generated file for the apartment Hotel</comment>
-<entry key="Logger">Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]</entry>
+<comment>Generated file for the apartment cc</comment>
 <entry key="nbSleeping">0</entry>
 <entry key="nbMinNight">0</entry>
 <entry key="terrace">false</entry>
 <entry key="nbBedrooms">0</entry>
-<entry key="floorArea">150.0</entry>
+<entry key="floorArea">2.0</entry>
 <entry key="pricePerNight">0.0</entry>
 <entry key="tele">false</entry>
 <entry key="wifi">false</entry>
-<entry key="title">Hotel</entry>
+<entry key="title">cc</entry>
 <entry key="nbBathrooms">0</entry>
-<entry key="address">VDA</entry>
+<entry key="address">cc</entry>
 <entry key="description"/>
 <entry key="floorAreaTerrace">0.0</entry>
 </properties>

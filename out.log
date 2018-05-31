@@ -1,20 +1,16 @@
-17:12:24.447 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
-17:12:38.329 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
-17:12:46.520 [main] ERROR i.g.o.y.a.gui.CreateApartmentGUI - The floor area field is not a number. Exception For input string: "ta mère"
-17:12:53.319 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
-17:12:53.335 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
-17:12:53.342 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : Logger : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
-17:12:53.344 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 150.0
-17:12:53.345 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : VDA
-17:12:53.346 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
-17:12:53.346 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
-17:12:53.347 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
-17:12:53.348 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
-17:12:53.349 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
-17:12:53.349 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
-17:12:53.349 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : Hotel
-17:12:53.350 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
-17:12:53.350 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
-17:12:53.351 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
-17:12:53.351 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
-17:12:53.439 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
+18:02:15.971 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The GUI was initialized with success.
+18:02:15.971 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The logo has been loaded with success.
+18:02:16.340 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite of the header was created.
+18:02:16.350 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Title of the apartment* :  was created.
+18:02:16.350 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Address* :  was created.
+18:02:16.365 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor Area* : was created.
+18:02:16.365 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bedrooms :  was created.
+18:02:16.365 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Sleeping capacity :  was created.
+18:02:16.381 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bathrooms :  was created.
+18:02:16.397 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Terrace :  was created.
+18:02:16.412 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor area terrace :  was created.
+18:02:16.412 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Price per night :  was created.
+18:02:16.428 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Minimum nights to stay :  was created.
+18:02:16.428 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The button has been clicked
+18:02:16.553 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Shell was opened with success.
+18:02:21.530 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The screen was closed with success.

@@ -44,7 +44,8 @@ public class CreateApartmentGUI {
 
 	private void screenDisplay() throws IOException {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
-
+			
+			LOGGER.info("The logo has been loaded with success.");
 			FillLayout r = new FillLayout();
 			r.type = SWT.VERTICAL;
 			shell.setLayout(r);
@@ -54,9 +55,17 @@ public class CreateApartmentGUI {
 
 
 			createPageTitle();
-			Text title = createFormFieldComposite("Title of the apartment : ");
-			Text address = createFormFieldComposite("Address : ");
-			Text floorArea = createFormFieldComposite("Floor Area :" );
+			Text title = createFormFieldComposite("Title of the apartment* : ");
+			Text address = createFormFieldComposite("Address* : ");
+			Text floorArea = createFormFieldComposite("Floor Area* :" );
+			Text nbBedrooms = createFormFieldComposite("Number of bedrooms : ");
+			Text nbSleeping = createFormFieldComposite("Sleeping capacity : ");
+			Text nbBathrooms = createFormFieldComposite("Number of bathrooms : ");
+			Boolean terrace = createCheckboxComposite("Terrace : ");
+			Text floorAreaTerrace = createFormFieldComposite("Floor area terrace : ");
+			Text pricePerNight = createFormFieldComposite("Price per night : ");
+			Text nbMinNight = createFormFieldComposite("Minimum nights to stay : ");
+			
 			createButtonValidation(title,address,floorArea);
 
 			shell.pack();
@@ -64,6 +73,7 @@ public class CreateApartmentGUI {
 			shell.setSize(500, 500);
 
 			shell.open();
+			LOGGER.info("The Shell was opened with success.");
 
 			while(!shell.isDisposed( )){
 				if(!display.readAndDispatch( ))
@@ -71,6 +81,7 @@ public class CreateApartmentGUI {
 			}
 			i.dispose();
 			display.dispose();
+			LOGGER.info("The screen was closed with success.");
 		}
 	}
 
@@ -91,7 +102,29 @@ public class CreateApartmentGUI {
 		t.setText("");
 		t.setLayoutData(a);
 		shell.pack();
+		LOGGER.info("The Composite "+label+" was created.");
 		return t;
+	}
+	
+	private boolean createCheckboxComposite(String label)
+	{
+		Composite c = new Composite(shell, SWT.PUSH);
+
+		GridLayout f = new GridLayout(2, false);
+		c.setLayout(f);
+		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		a.minimumWidth = SWT.FILL;
+		a.horizontalAlignment = SWT.CENTER;
+		a.widthHint = 200;
+		Label lb = new Label(c, SWT.FILL);
+		lb.setText(label);
+		lb.setLayoutData(a);
+		Button t = new Button(c, SWT.CHECK);
+		t.setText("");
+		t.setLayoutData(a);
+		shell.pack();
+		LOGGER.info("The Composite "+label+" was created.");
+		return t.getSelection();
 	}
 
 	private void createButtonValidation(Text title, Text address, Text floorArea) throws IllegalArgumentException {
@@ -116,6 +149,7 @@ public class CreateApartmentGUI {
 					}
 					catch (Exception e) {
 						MessageDialog.openError(shell, "Error","Insertion Problem in the XML File\n\nTry to restart the app");
+						LOGGER.error("Error while inserting data into XML File"+e.getMessage());
 						throw new IllegalStateException(e);
 					}
 					title.setText("");
@@ -152,6 +186,7 @@ public class CreateApartmentGUI {
 		a.horizontalAlignment = SWT.CENTER;
 		a.widthHint = 200;
 		title.setLayoutData(a);
+		LOGGER.info("The Composite of the header was created.");
 	}
 	static public void main(String args[]) throws IOException {
 		CreateApartmentGUI c = new CreateApartmentGUI("apartTest");
