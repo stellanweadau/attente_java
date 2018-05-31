@@ -1,7 +1,5 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.IOException;
 
 import org.junit.Assert;
@@ -23,7 +21,7 @@ class ValueDistFunctionTest {
 		appart = new Location("Ville d'Avray");
 		interest1 = new Location("Paris");
 		interest2 = new Location("Chaville");
-		interest3 = new Location("Aéroport Roissy Charles de Gaulle");
+		interest3 = new Location("Aï¿½roport Roissy Charles de Gaulle");
 		v = new ValueDistFunction(appart);
 		
 		v.addInterestLocation(interest1);

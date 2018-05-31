@@ -1,7 +1,5 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.InvalidPropertiesFormatException;
