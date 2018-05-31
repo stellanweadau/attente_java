@@ -32,13 +32,28 @@ public class CreateApartmentGUI {
 
 	private Display display;
 	private Shell shell;
-	private String file;
+	Text title;
+	Text address;
+	Text floorArea;
+	Text nbBedrooms;
+	Text nbSleeping ;
+	Text nbBathrooms;
+	Button terrace;
+	Text floorAreaTerrace;
+	Text pricePerNight;
+	Text nbMinNight;
+	Button wifi;
+	Button tele ;
+	File file;
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
-
-	public CreateApartmentGUI(String file) {
-		display = new Display();
-		shell = new Shell(display);
-		this.file = file;
+	/**
+	 * 
+	 * @param fileCompleteName
+	 */
+	public CreateApartmentGUI(String fileCompleteName) {
+		this.display = new Display();
+		this.shell = new Shell(display);
+		this.file = new File(fileCompleteName);
 		LOGGER.info("The GUI was initialized with success.");
 	}
 
@@ -55,18 +70,18 @@ public class CreateApartmentGUI {
 
 
 			createPageTitle();
-			Text title = createFormFieldComposite("Title of the apartment* : ");
-			Text address = createFormFieldComposite("Address* : ");
-			Text floorArea = createFormFieldComposite("Floor Area* :" );
-			Text nbBedrooms = createFormFieldComposite("Number of bedrooms : ");
-			Text nbSleeping = createFormFieldComposite("Sleeping capacity : ");
-			Text nbBathrooms = createFormFieldComposite("Number of bathrooms : ");
-			Button terrace = createCheckboxComposite("Terrace : ");
-			Text floorAreaTerrace = createFormFieldComposite("Floor area terrace : ");
-			Text pricePerNight = createFormFieldComposite("Price per night : ");
-			Text nbMinNight = createFormFieldComposite("Minimum nights to stay : ");
-			Button wifi = createCheckboxComposite("WiFi : ");
-			Button tele = createCheckboxComposite("Television : ");
+			title = createFormFieldComposite("Title of the apartment* : ");
+			address = createFormFieldComposite("Address* : ");
+			floorArea = createFormFieldComposite("Floor Area* :" );
+			nbBedrooms = createFormFieldComposite("Number of bedrooms : ");
+			nbSleeping = createFormFieldComposite("Sleeping capacity : ");
+			nbBathrooms = createFormFieldComposite("Number of bathrooms : ");
+			terrace = createCheckboxComposite("Terrace : ");
+			floorAreaTerrace = createFormFieldComposite("Floor area terrace : ");
+			pricePerNight = createFormFieldComposite("Price per night : ");
+			nbMinNight = createFormFieldComposite("Minimum nights to stay : ");
+			wifi = createCheckboxComposite("WiFi : ");
+			tele = createCheckboxComposite("Television : ");
 			
 			createButtonValidation(title,address,floorArea,nbBedrooms,nbSleeping,nbBathrooms,terrace,floorAreaTerrace,pricePerNight,nbMinNight,wifi,tele);
 
@@ -134,37 +149,14 @@ public class CreateApartmentGUI {
 		compoForButton.setLayout(gl);
 		Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
 		b.setText("Valider");
+		
 		Consumer<SelectionEvent> consu = (event) -> {
+			Double floorAreaDouble = 0.0;
 			LOGGER.info("The button has been clicked");
 			if (floorArea.getText().isEmpty()== false && title.getText().isEmpty()==false && address.getText().isEmpty()==false) {
 				try {
-					Double floorAreaDouble = Double.parseDouble(floorArea.getText());
-					Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
-					apart.setTerrace(terrace.getSelection());
-					XMLProperties xmlFile = new XMLProperties();
-					File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/gui/"+file+".xml");
-					try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
-					{
-						xmlFile.toXML(apart, s);
-						MessageDialog.openInformation(shell, "Information","Apartment created with success\n\n");
-					}
-					catch (Exception e) {
-						MessageDialog.openError(shell, "Error","Insertion Problem in the XML File\n\nTry to restart the app");
-						LOGGER.error("Error while inserting data into XML File"+e.getMessage());
-						throw new IllegalStateException(e);
-					}
-					title.setText("");
-					address.setText("");
-					floorArea.setText("");
-					nbBedrooms.setText("");
-					nbSleeping.setText("");
-					nbBathrooms.setText("");
-					terrace.setSelection(false);
-					floorAreaTerrace.setText("");
-					pricePerNight.setText("");
-					nbMinNight.setText("");
-					wifi.setSelection(false);
-					tele.setSelection(false);
+					floorAreaDouble = Double.parseDouble(floorArea.getText());
+
 				} 
 				catch(NumberFormatException e){
 					MessageDialog.openError(shell,"Error","Please insert a correct number in the floor area field");
@@ -172,6 +164,12 @@ public class CreateApartmentGUI {
 					floorArea.setText("");
 
 				}
+				
+				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
+				apart.setTerrace(terrace.getSelection());
+				
+				write(apart);
+				reset();
 			}
 		};
 		consu.accept(null);
@@ -183,7 +181,36 @@ public class CreateApartmentGUI {
 		a.widthHint = 200;
 		b.setLayoutData(a);
 	}
+	
+	private void write(Apartment a) {
+		XMLProperties xmlFile = new XMLProperties();
+		try(FileOutputStream s = new FileOutputStream(file.getAbsolutePath()))
+		{
+			xmlFile.toXML(a, s);
+			MessageDialog.openInformation(shell, "Information","Apartment created with success\n\n");
+		}
+		catch (Exception e) {
+			MessageDialog.openError(shell, "Error","Insertion Problem in the XML File\n\nTry to restart the app");
+			LOGGER.error("Error while inserting data into XML File"+e.getMessage());
+			throw new IllegalStateException(e);
+		}
+		
+	}
 
+	private void reset() {
+		title.setText("");
+		address.setText("");
+		floorArea.setText("");
+		nbBedrooms.setText("");
+		nbSleeping.setText("");
+		nbBathrooms.setText("");
+		terrace.setSelection(false);
+		floorAreaTerrace.setText("");
+		pricePerNight.setText("");
+		nbMinNight.setText("");
+		wifi.setSelection(false);
+		tele.setSelection(false);
+	}
 	private void createPageTitle() {
 		Composite compoForTitle = new Composite(shell, SWT.CENTER);
 		GridLayout gl = new GridLayout(1, true);
@@ -197,8 +224,14 @@ public class CreateApartmentGUI {
 		title.setLayoutData(a);
 		LOGGER.info("The Composite of the header was created.");
 	}
+	/**
+	 * 
+	 * @param args
+	 * 	must contains as first parameter the complete name of the file.
+	 * @throws IOException
+	 */
 	static public void main(String args[]) throws IOException {
-		CreateApartmentGUI c = new CreateApartmentGUI("apartTest");
+		CreateApartmentGUI c = new CreateApartmentGUI(args[0]);
 		c.screenDisplay();
 	}
 }
