@@ -55,18 +55,6 @@ public class XMLProperties{
 	 */
 	public void toXML(Apartment a, OutputStream xmlFile) throws IOException, IllegalArgumentException, IllegalAccessException
 	{
-//		xmlProperties.info("Entrée de fonction - " + xmlFile.getAbsolutePath());
-//		if(xmlFile.createNewFile())
-//		{
-//			xmlProperties.info("File has been created");
-//		}
-//		else
-//		{
-//	
-//			xmlProperties.info("File already exists. (Erased)");
-//		}
-//		try(FileOutputStream s = new FileOutputStream(xmlFile.getAbsolutePath()))
-//			{
 			
 			for(Field f : a.getClass().getDeclaredFields()) {
 				
@@ -79,6 +67,8 @@ public class XMLProperties{
 			
 			}
 				properties.remove("apartment");
+				properties.remove("LOGGER");
+				
 				properties.storeToXML(xmlFile, "Generated file for the apartment " + a.getTitle() );
 				
 				xmlFile.close();
