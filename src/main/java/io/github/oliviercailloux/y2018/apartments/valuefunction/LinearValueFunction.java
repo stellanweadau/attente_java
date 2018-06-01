@@ -16,7 +16,7 @@ public class LinearValueFunction implements PartialValueFunction<Double> {
 	private final static Logger LOGGER = LoggerFactory.getLogger(LinearValueFunction.class);
 
 	/**
-	 * Create a guava interval between min and max.
+	 * Builder of the class LinearValueFunction.
 	 * @param min lower bound of the interval
 	 * @param max upper bound of the interval
 	 */
@@ -31,10 +31,12 @@ public class LinearValueFunction implements PartialValueFunction<Double> {
 
 	@Override
 	public double getSubjectiveValue(Double objectiveData) throws IllegalArgumentException {
-		if(interval.lowerEndpoint() > objectiveData) {
+		if (interval.isEmpty())
+			throw new IllegalArgumentException();
+		if(interval.lowerEndpoint() >= objectiveData) {
 			return 0;
 		}
-		else if(interval.upperEndpoint() < objectiveData) {
+		else if(interval.upperEndpoint() <= objectiveData) {
 			return 1;
 		}
 		else {

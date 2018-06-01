@@ -21,7 +21,7 @@ class ValueDistFunctionTest {
 		appart = new Location("Ville d'Avray");
 		interest1 = new Location("Paris");
 		interest2 = new Location("Chaville");
-		interest3 = new Location("A�roport Roissy Charles de Gaulle");
+		interest3 = new Location("Aeroport Roissy Charles de Gaulle");
 		v = new ValueDistFunction(appart);
 		
 		v.addInterestLocation(interest1);
