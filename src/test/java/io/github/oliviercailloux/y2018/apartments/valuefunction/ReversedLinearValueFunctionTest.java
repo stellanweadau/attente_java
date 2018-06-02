@@ -2,6 +2,7 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ReversedLinearValueFunctionTest {
@@ -30,6 +31,13 @@ class ReversedLinearValueFunctionTest {
 	void applyTest() {
 		ReversedLinearValueFunction f = new ReversedLinearValueFunction(10,50);
 		Assert.assertEquals(0.25, f.apply(40.0), 0);
+	}
+	
+	@Test
+	void exceptionIllegalArgEquals() {
+	    Assertions.assertThrows(IllegalArgumentException.class, () -> {
+	    	ReversedLinearValueFunction e = new ReversedLinearValueFunction(10,10);
+	      });
 	}
 
 }

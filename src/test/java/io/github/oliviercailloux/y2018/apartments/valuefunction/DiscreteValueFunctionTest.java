@@ -47,7 +47,11 @@ class DiscreteValueFunctionTest {
 	      });
 	}
 	
-	
-	
+	@Test
+	void exceptionDiffArgs() {
+	    Assertions.assertThrows(IllegalArgumentException.class, () -> {
+	    	DiscreteValueFunction<String> vF = new DiscreteValueFunction<>("Unique","Unique","Toto");
+	      });
+	}	
 	
 }

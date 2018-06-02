@@ -1,13 +1,12 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.InvalidPropertiesFormatException;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.BooleanValueFunction;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunction;
@@ -66,7 +65,14 @@ class ApartmentValueFunctionTest {
 		valueFunction.setTeleSubjectiveValueWeight(10);
 		
 		Assert.assertEquals(0.04587, valueFunction.getSubjectiveValue(a),0.00001);
-
 	}
-
+	
+	@Test
+	void exceptionIllegalArgWeightSetter() {
+	    Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			ApartmentValueFunction vF = new ApartmentValueFunction();
+			vF.setFloorAreaSubjectiveValueWeight(-1);
+	      });
+	}
+	
 }
