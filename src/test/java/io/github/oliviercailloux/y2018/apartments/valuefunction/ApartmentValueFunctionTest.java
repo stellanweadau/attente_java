@@ -1,5 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.io.IOException;
 import java.util.InvalidPropertiesFormatException;
 
@@ -13,6 +15,7 @@ import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunct
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
 class ApartmentValueFunctionTest {
+
 
 	@Test
 	void apartmentValueFunctionTest() throws NumberFormatException, InvalidPropertiesFormatException, IOException{
@@ -74,5 +77,7 @@ class ApartmentValueFunctionTest {
 			vF.setFloorAreaSubjectiveValueWeight(-1);
 	      });
 	}
+	
+
 	
 }

@@ -365,43 +365,43 @@ public class ApartmentValueFunction {
 		double nbMinNightSubjectiveValue;
 		double teleSubjectiveValue;
 
-			checkArgument(floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) >= 0 || floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1 , "The subjective value of floor area should be between 0 and 1");
+			checkArgument(floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) >= 0 && floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1 , "The subjective value of floor area should be between 0 and 1");
 			floorAreaSubjectiveValue = floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea());	
 		LOGGER.info("the floor area subjective value has been set to "+ floorAreaSubjectiveValue);
 
-			checkArgument(nbBedroomsValueFunction .getSubjectiveValue((double) apart.getNbBedrooms()) >= 0 || nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1 , "The subjective value of the number of bedrooms should be between 0 and 1");
+			checkArgument(nbBedroomsValueFunction .getSubjectiveValue((double) apart.getNbBedrooms()) >= 0 && nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1 , "The subjective value of the number of bedrooms should be between 0 and 1");
 			nbBedroomsSubjectiveValue = nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms());	
 		LOGGER.info("the number of bedrooms subjective value has been set to "+ nbBedroomsSubjectiveValue);
 
-			checkArgument(nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) >= 0 || nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1 , "The subjective value of the number of sleep-in should be between 0 and 1");
+			checkArgument(nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) >= 0 && nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1 , "The subjective value of the number of sleep-in should be between 0 and 1");
 			nbSleepingSubjectiveValue = nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping());	
 		LOGGER.info("the number of sleepings subjective value has been set to "+ nbSleepingSubjectiveValue);
 
-			checkArgument(nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) >= 0 || nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1 , "The subjective value of the number of bathrooms should be between 0 and 1");
+			checkArgument(nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) >= 0 && nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1 , "The subjective value of the number of bathrooms should be between 0 and 1");
 			nbBathroomsSubjectiveValue = nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms());	
 		LOGGER.info("the number of bathrooms subjective value has been set to "+ nbBathroomsSubjectiveValue);
 
-			checkArgument(terraceValueFunction.getSubjectiveValue(apart.getTerrace()) >= 0 || terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1 , "The subjective value of the terrace should be between 0 and 1");
+			checkArgument(terraceValueFunction.getSubjectiveValue(apart.getTerrace()) >= 0 && terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1 , "The subjective value of the terrace should be between 0 and 1");
 			terraceSubjectiveValue = terraceValueFunction.getSubjectiveValue(apart.getTerrace());	
 		LOGGER.info("the terrace subjective value has been set to "+terraceSubjectiveValue );
 
-			checkArgument(floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) >= 0 || floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1 , "The subjective value of the floor area of the terrace should be between 0 and 1");
+			checkArgument(floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) >= 0 && floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1 , "The subjective value of the floor area of the terrace should be between 0 and 1");
 			floorAreaTerraceSubjectiveValue = floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace());	
 		LOGGER.info("the floor area of the terrace subjective value has been set to "+ floorAreaTerraceSubjectiveValue);
 
-			checkArgument(wifiValueFunction.getSubjectiveValue(apart.getWifi()) >= 0 || wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1 , "The subjective value of the wifi should be between 0 and 1");
+			checkArgument(wifiValueFunction.getSubjectiveValue(apart.getWifi()) >= 0 && wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1 , "The subjective value of the wifi should be between 0 and 1");
 			wifiSubjectiveValue = wifiValueFunction.getSubjectiveValue(apart.getWifi());	
 		LOGGER.info("the wifi subjective value has been set to "+ wifiSubjectiveValue);
 
-			checkArgument(pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) >= 0 || pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1 , "The subjective value of the price per night should be between 0 and 1");
+			checkArgument(pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) >= 0 && pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1 , "The subjective value of the price per night should be between 0 and 1");
 			pricePerNightSubjectiveValue = pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight());	
 		LOGGER.info("the price per night subjective value has been set to "+ pricePerNightSubjectiveValue);
 
-			checkArgument(nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) >= 0 || nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1 , "The subjective value of the minimum number of nights should be between 0 and 1");
+			checkArgument(nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) >= 0 && nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1 , "The subjective value of the minimum number of nights should be between 0 and 1");
 			nbMinNightSubjectiveValue = nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight());	
 		LOGGER.info("the minimum number of nights subjective value has been set to "+ nbMinNightSubjectiveValue);
 
-			checkArgument(teleValueFunction.getSubjectiveValue(apart.getTele()) >= 0 || teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1 , "The subjective value of the presence of a tele should be between 0 and 1");
+			checkArgument(teleValueFunction.getSubjectiveValue(apart.getTele()) >= 0 && teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1 , "The subjective value of the presence of a tele should be between 0 and 1");
 			teleSubjectiveValue = teleValueFunction.getSubjectiveValue(apart.getTele());	
 		LOGGER.info("the tele subjective value has been set to "+ teleSubjectiveValue);
 
