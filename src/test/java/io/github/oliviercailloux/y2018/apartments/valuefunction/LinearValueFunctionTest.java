@@ -35,6 +35,7 @@ class LinearValueFunctionTest {
 	@Test
 	void exceptionIllegalArgEquals() {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			@SuppressWarnings("unused")
 			LinearValueFunction e = new LinearValueFunction(10,10);
 		});
 	}
