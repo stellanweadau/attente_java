@@ -18,7 +18,7 @@ class ApartmentValueFunctionTest {
 
 
 	@Test
-	void apartmentValueFunctionTest() throws NumberFormatException, InvalidPropertiesFormatException, IOException{
+	void apartmentValueFunctionTest() throws NumberFormatException{
 		Apartment a = new Apartment(250, "108 rue de chat-ville Ville-d'Avray 92410", "Une ferme");
 		a.setNbSleeping(4);
 		a.setNbMinNight(3);
