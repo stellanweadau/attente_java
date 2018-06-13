@@ -71,3 +71,9 @@ se
 10:18:04.108 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
 10:18:04.124 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
 10:19:09.003 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The screen was closed with success.
+12:59:14.233 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [10.0,50.0]  has been set with success in the LinearValueFunction class.
+12:59:14.273 [main] ERROR i.g.o.y.a.v.LinearValueFunction - The upper bound is equal to the lower bound in the constructor of the LinearValueFunction.
+12:59:14.275 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [10.0,50.0]  has been set with success in the LinearValueFunction class.
+12:59:14.277 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [10.0,50.0]  has been set with success in the LinearValueFunction class.
+12:59:14.279 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [10.0,50.0]  has been set with success in the LinearValueFunction class.
+
