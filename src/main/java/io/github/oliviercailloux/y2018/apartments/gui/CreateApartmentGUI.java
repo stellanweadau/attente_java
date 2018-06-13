@@ -53,7 +53,7 @@ public class CreateApartmentGUI {
 	private Apartment apart;
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 	/**
-	 * 
+	 * CreateApartmentGUI initialize
 	 * @param fileCompleteName
 	 */
 	public CreateApartmentGUI(String fileCompleteName) {
@@ -94,7 +94,9 @@ public class CreateApartmentGUI {
 			LOGGER.info("The screen was closed with success.");
 		}
 	}
-
+	/**
+	 * 
+	 */
 	private void createForm() {
 		title = createFormFieldComposite("Title of the apartment*: ");
 		address = createFormFieldComposite("Address*: ");
@@ -132,14 +134,14 @@ public class CreateApartmentGUI {
 
 
 		});
-		validationRequiredField();	
+		validationField();	
 	}
 	
 	/**
 	 * validationREquiredField initialize the listener for every component (Checkbox and Text) and execute the informationToFile routine in order to verify 
 	 * if every textField respect its own format.
 	 */
-	private void validationRequiredField()
+	private void validationField()
 	{
 		Listener textVerification = new Listener() {
 
@@ -229,6 +231,32 @@ public class CreateApartmentGUI {
 
 
 
+	
+	private Text createFormFieldComposite(String label)
+	{
+		Composite c = new Composite(shell, SWT.PUSH);
+
+		GridLayout f = new GridLayout(2, false);
+		c.setLayout(f);
+		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		a.minimumWidth = SWT.FILL;
+		a.horizontalAlignment = SWT.CENTER;
+		a.widthHint = 200;
+		Label lb = new Label(c, SWT.FILL);
+		lb.setText(label);
+		lb.setLayoutData(a);
+		Text t = new Text(c, SWT.FILL);
+		t.setText("");
+		t.setLayoutData(a);
+
+		if(label.equalsIgnoreCase("Floor area terrace: "))
+			c.setEnabled(false);
+
+			shell.pack();
+		LOGGER.info("The Composite "+label+" was created.");
+		return t;
+	}
+	
 	private boolean verificationText(Text text, TypeButtonText type)
 	{
 		Color alertColor = new Color(display, 255,200,200);
@@ -258,21 +286,19 @@ public class CreateApartmentGUI {
 				try {
 					Double.parseDouble(text.getText());
 					text.setBackground(normalColor);
-					System.out.println("ok Double");
 					return true;
 				}
 				catch(NumberFormatException e){
 					text.setText("");
 					text.setBackground(alertColor);
 					LOGGER.error("The argument set is not valid "+e.getMessage());
-					System.out.println("pas ok double");
 				}
 			}
 			break;
 		case REQUIRED :
 			if(!text.getText().isEmpty())
 			{
-				floorArea.setBackground(normalColor);
+				text.setBackground(normalColor);
 				return true;
 			}
 			else
@@ -287,31 +313,6 @@ public class CreateApartmentGUI {
 		return false;
 	}
 	
-	private Text createFormFieldComposite(String label)
-	{
-		Composite c = new Composite(shell, SWT.PUSH);
-
-		GridLayout f = new GridLayout(2, false);
-		c.setLayout(f);
-		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
-		a.minimumWidth = SWT.FILL;
-		a.horizontalAlignment = SWT.CENTER;
-		a.widthHint = 200;
-		Label lb = new Label(c, SWT.FILL);
-		lb.setText(label);
-		lb.setLayoutData(a);
-		Text t = new Text(c, SWT.FILL);
-		t.setText("");
-		t.setLayoutData(a);
-
-		if(label.equalsIgnoreCase("Floor area terrace: "))
-			//c.setVisible(false);
-
-			shell.pack();
-		LOGGER.info("The Composite "+label+" was created.");
-		return t;
-	}
-
 	private Button createCheckboxComposite(String label)
 	{
 		Composite c = new Composite(shell, SWT.PUSH);
@@ -333,51 +334,13 @@ public class CreateApartmentGUI {
 		return t;
 	}
 
-	//	private void createButtonValidation() throws IllegalArgumentException {
-	//		Composite compoForButton = new Composite(shell, SWT.CENTER);
-	//		GridLayout gl = new GridLayout(1, true);
-	//		compoForButton.setLayout(gl);
-	//		Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
-	//		b.setText("Valider");
-	//
-	//		Consumer<SelectionEvent> consu = (event) -> {
-	//			Double floorAreaDouble = 0.0;
-	//			LOGGER.info("The button has been clicked");
-	//			if (floorArea.getText().isEmpty()== false && title.getText().isEmpty()==false && address.getText().isEmpty()==false) {
-	//				try {
-	//					floorAreaDouble = Double.parseDouble(floorArea.getText());
-	//
-	//				} 
-	//				catch(NumberFormatException e){
-	//					MessageDialog.openError(shell,"Error","Please insert a correct number in the floor area field");
-	//					LOGGER.error("The floor area field is not a number. Exception " + e.getMessage());
-	//					floorArea.setText("");
-	//
-	//				}
-	//
-	//				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
-	//				apart.setTerrace(terrace.getSelection());
-	//
-	//				write(apart);
-	//				reset();
-	//			}
-	//		};
-	//		consu.accept(null);
-	//		SelectionListener l = SelectionListener.widgetSelectedAdapter(consu);
-	//		b.addSelectionListener(l);
-	//		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
-	//		a.minimumWidth = SWT.FILL;
-	//		a.horizontalAlignment = SWT.CENTER;
-	//		a.widthHint = 200;
-	//		b.setLayoutData(a);
-	//	}
+
 
 	private void write(Apartment a) {
 		XMLProperties xmlFile = new XMLProperties();
 		try(FileOutputStream s = new FileOutputStream(file.getAbsolutePath()))
 		{
 			xmlFile.toXML(a, s);
-			//MessageDialog.openInformation(shell, "Information","Apartment created with success\n\n");
 		}
 		catch (Exception e) {
 			MessageDialog.openError(shell, "Error","Insertion Problem in the XML File\n\nTry to restart the app");
@@ -387,21 +350,7 @@ public class CreateApartmentGUI {
 
 	}
 
-	/*private void reset() {
-		title.setText("");
-		address.setText("");
-		floorArea.setText("");
-		nbBedrooms.setText("");
-		nbSleeping.setText("");
-		nbBathrooms.setText("");
-		terrace.setSelection(false);
-		floorAreaTerrace.setText("");
-		pricePerNight.setText("");
-		nbMinNight.setText("");
-		wifi.setSelection(false);
-		tele.setSelection(false);
-		description.setText("");
-	} */
+
 	private void createPageTitle() {
 		Composite compoForTitle = new Composite(shell, SWT.CENTER);
 		GridLayout gl = new GridLayout(1, true);
