@@ -32,6 +32,10 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.iconDisplay.DisplayIcon;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
 
+/**
+ * Class which enables the user to enter information about an apartment and to record it in a XML File (name given by the user in the constructor)
+ * thanks to a GUI.
+ */
 public class CreateApartmentGUI {
 
 	private Display display;
@@ -53,8 +57,8 @@ public class CreateApartmentGUI {
 	private Apartment apart;
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 	/**
-	 * CreateApartmentGUI initialize
-	 * @param fileCompleteName
+	 * Initializes the constructor of the class.
+	 * @param fileCompleteName String : name of the file the user wants to put Apartment information.
 	 */
 	public CreateApartmentGUI(String fileCompleteName) {
 		this.display = new Display();
@@ -63,6 +67,10 @@ public class CreateApartmentGUI {
 		LOGGER.info("The GUI was initialized with success.");
 	}
 
+	/**
+	 * General method which displays all the element of the GUI.
+	 * @throws IOException if the logo doesn't load well.
+	 */
 	private void screenDisplay() throws IOException {
 		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
 
@@ -94,8 +102,9 @@ public class CreateApartmentGUI {
 			LOGGER.info("The screen was closed with success.");
 		}
 	}
+	
 	/**
-	 * 
+	 * Creates the form in adding different composites for inserting Apartment information.
 	 */
 	private void createForm() {
 		title = createFormFieldComposite("Title of the apartment*: ");
@@ -232,7 +241,11 @@ public class CreateApartmentGUI {
 
 
 
-	
+	/**
+	 * Creates a composite (in the GUI) which contains a Text box.
+	 * @param label String which corresponds to the the title of the Text box.
+	 * @return Text containing the information of the Text box.
+	 */
 	private Text createFormFieldComposite(String label)
 	{
 		Composite c = new Composite(shell, SWT.PUSH);
@@ -258,6 +271,12 @@ public class CreateApartmentGUI {
 		return t;
 	}
 	
+	/**
+	 * Verifies that the data in parameters are in the good type. Change the background color of the Text Box if the type is not correct.
+	 * @param text Text (data to analyze)
+	 * @param type TypeButtonText (type required for the @param text)
+	 * @return a boolean (true if the type is correct)
+	 */
 	private boolean verificationText(Text text, TypeButtonText type)
 	{
 		Color alertColor = new Color(display, 255,200,200);
@@ -311,6 +330,11 @@ public class CreateApartmentGUI {
 		return false;
 	}
 	
+	/**
+	 * Creates a composite (in the GUI) which contains a check box.
+	 * @param label String which corresponds to the the title of the check box.
+	 * @return Button for the validation of data.
+	 */
 	private Button createCheckboxComposite(String label)
 	{
 		Composite c = new Composite(shell, SWT.PUSH);
@@ -333,7 +357,10 @@ public class CreateApartmentGUI {
 	}
 
 
-
+	/**
+	 * Insert Apartment data inserted in the GUI, in a XML File. The name of the file is in the parameters of the class.
+	 * @param a Object Apartment
+	 */
 	private void write(Apartment a) {
 		XMLProperties xmlFile = new XMLProperties();
 		try(FileOutputStream s = new FileOutputStream(file.getAbsolutePath()))
@@ -348,7 +375,9 @@ public class CreateApartmentGUI {
 
 	}
 
-
+	/**
+	 * Initializes the top title of the GUI instance.
+	 */
 	private void createPageTitle() {
 		Composite compoForTitle = new Composite(shell, SWT.CENTER);
 		GridLayout gl = new GridLayout(1, true);
