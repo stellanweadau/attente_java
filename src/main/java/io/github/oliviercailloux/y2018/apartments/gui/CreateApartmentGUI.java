@@ -111,18 +111,17 @@ public class CreateApartmentGUI {
 
 
 		terrace.addListener(SWT.Selection, new Listener() {
+			@Override
 			public void handleEvent(Event e) {
 				Button b = (Button) e.widget;
 				if (b.getSelection())
 				{
-					System.out.println("Button check");
 					floorAreaTerrace.setBackground(new Color(display, 255,255,255));
 					floorAreaTerrace.setEditable(true);
 					floorAreaTerrace.setEnabled(true);
 				}
 				else
 				{
-					System.out.println("Uncheck");
 					floorAreaTerrace.setEditable(false);
 					floorAreaTerrace.setEnabled(false);
 					floorAreaTerrace.setBackground(new Color(display, 200,200,200));
@@ -138,9 +137,9 @@ public class CreateApartmentGUI {
 	private void validationRequiredField()
 	{
 		Listener textVerification = new Listener() {
+			@Override
 			public void handleEvent(Event e) {
 				Text t = (Text)e.widget;
-				System.out.println(t.getText().isEmpty());
 				if(!t.getText().isEmpty()){
 					t.setBackground(new Color(display,255,255,255));
 				}
@@ -164,7 +163,6 @@ public class CreateApartmentGUI {
 		boolean error = false;
 		Double floorAreaDouble = 0.0;
 		Double floorAreaTerraceDouble = 0.0;
-		System.out.println("in informationToFile");
 		if (!floorArea.getText().isEmpty()) {
 			try {
 			
@@ -175,6 +173,7 @@ public class CreateApartmentGUI {
 				floorArea.setText("");
 				floorArea.setBackground(new Color(display, 255,200,200));
 				error = true;
+				LOGGER.error("The argument set is not valid" + e.getMessage());
 			}
 			
 		}
@@ -201,6 +200,7 @@ public class CreateApartmentGUI {
 			floorArea.setText("");
 			floorArea.setBackground(new Color(display, 255,200,200));
 			error = true;
+			LOGGER.error("The argument set is not valid "+e.getMessage());
 			}
 			
 		}
@@ -209,8 +209,11 @@ public class CreateApartmentGUI {
 				
 				apart.setTerrace(terrace.getSelection());
 				apart.setFloorAreaTerrace(floorAreaTerraceDouble);
+				apart.setTele(tele.getSelection());
+				apart.setWifi(wifi.getSelection());
 				write(apart);
 			} 
+		
 		
 		}
 			
@@ -304,7 +307,7 @@ public class CreateApartmentGUI {
 		try(FileOutputStream s = new FileOutputStream(file.getAbsolutePath()))
 		{
 			xmlFile.toXML(a, s);
-			MessageDialog.openInformation(shell, "Information","Apartment created with success\n\n");
+			//MessageDialog.openInformation(shell, "Information","Apartment created with success\n\n");
 		}
 		catch (Exception e) {
 			MessageDialog.openError(shell, "Error","Insertion Problem in the XML File\n\nTry to restart the app");
@@ -314,7 +317,7 @@ public class CreateApartmentGUI {
 
 	}
 
-	private void reset() {
+	/*private void reset() {
 		title.setText("");
 		address.setText("");
 		floorArea.setText("");
@@ -328,7 +331,7 @@ public class CreateApartmentGUI {
 		wifi.setSelection(false);
 		tele.setSelection(false);
 		description.setText("");
-	}
+	} */
 	private void createPageTitle() {
 		Composite compoForTitle = new Composite(shell, SWT.CENTER);
 		GridLayout gl = new GridLayout(1, true);
