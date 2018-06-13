@@ -1,7 +1,6 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 
-import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +8,6 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DiscreteValueFunctionTest {
 

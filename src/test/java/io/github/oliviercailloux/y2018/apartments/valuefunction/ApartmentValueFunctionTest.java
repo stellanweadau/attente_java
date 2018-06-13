@@ -1,9 +1,5 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-import static com.google.common.base.Preconditions.checkArgument;
-
-import java.io.IOException;
-import java.util.InvalidPropertiesFormatException;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;

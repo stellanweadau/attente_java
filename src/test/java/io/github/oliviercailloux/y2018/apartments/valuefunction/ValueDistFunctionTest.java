@@ -1,11 +1,9 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-import java.io.IOException;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import com.google.maps.errors.ApiException;
 
 import io.github.oliviercailloux.y2018.apartments.localize.Location;
 
