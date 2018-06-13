@@ -134,7 +134,11 @@ public class CreateApartmentGUI {
 		});
 		validationRequiredField();	
 	}
-
+	
+	/**
+	 * validationREquiredField initialize the listener for every component (Checkbox and Text) and execute the informationToFile routine in order to verify 
+	 * if every textField respect its own format.
+	 */
 	private void validationRequiredField()
 	{
 		Listener textVerification = new Listener() {
@@ -175,6 +179,11 @@ public class CreateApartmentGUI {
 		informationToFile();
 	}
 
+	/**
+	 * informationToFile is a method which verifies first the required fields first before writing into the xml file.
+	 * In a second hand, it gets the checkbox status and verify every text field who must have a integer or a decimal number.
+	 * If the user doesn't respect the format of a field, it won't be written into the file, the field is clear and highlight in red.
+	 */
 	private void informationToFile()
 	{
 		
