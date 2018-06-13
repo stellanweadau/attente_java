@@ -1,78 +1,59 @@
-11:11:00.618 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The GUI was initialized with success.
-11:11:00.640 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The logo has been loaded with success.
-11:11:01.198 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite of the header was created.
-11:11:01.213 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Title of the apartment*:  was created.
-11:11:01.213 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Address*:  was created.
-11:11:01.213 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor Area*: was created.
-11:11:01.213 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bedrooms:  was created.
-11:11:01.229 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Sleeping capacity:  was created.
-11:11:01.229 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bathrooms:  was created.
-11:11:01.244 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Terrace:  was created.
-11:11:01.291 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor area terrace:  was created.
-11:11:01.312 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Price per night:  was created.
-11:11:01.320 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Minimum nights to stay:  was created.
-11:11:01.347 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite WiFi:  was created.
-11:11:01.347 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Television:  was created.
-11:11:01.347 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Description: was created.
-11:11:01.605 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Shell was opened with success.
-11:11:07.929 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
-11:11:07.931 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set to false
-11:11:07.931 [main] INFO  i.g.o.y.a.apartment.Apartment - The floor area of the terrace has been set to 0.0
-11:11:07.932 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set to false
-11:11:07.932 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to false
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : Logger : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 1.0
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : yge
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : hef
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
-11:11:07.933 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
-11:11:08.011 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
-11:11:09.438 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
-11:11:09.453 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set to false
-11:11:09.454 [main] INFO  i.g.o.y.a.apartment.Apartment - The floor area of the terrace has been set to 0.0
-11:11:09.455 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set to false
-11:11:09.455 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to false
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : Logger : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 12.0
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : yge
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : hef
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
-11:11:09.456 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
-11:11:09.472 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
-11:11:10.595 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
-11:11:10.595 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set to false
-11:11:10.605 [main] INFO  i.g.o.y.a.apartment.Apartment - The floor area of the terrace has been set to 0.0
-11:11:10.605 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set to false
-11:11:10.606 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to false
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : Logger : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 122.0
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : yge
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : hef
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
-11:11:10.608 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
-11:11:10.623 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
-11:11:16.893 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The screen was closed with success.
+21:09:56.816 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The GUI was initialized with success.
+21:09:56.820 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The logo has been loaded with success.
+21:09:57.068 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite of the header was created.
+21:09:57.080 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Title of the apartment*:  was created.
+21:09:57.080 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Address*:  was created.
+21:09:57.080 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor Area*: was created.
+21:09:57.080 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bedrooms:  was created.
+21:09:57.080 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Sleeping capacity:  was created.
+21:09:57.084 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bathrooms:  was created.
+21:09:57.092 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Terrace:  was created.
+21:09:57.092 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor area terrace:  was created.
+21:09:57.096 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Price per night:  was created.
+21:09:57.096 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Minimum nights to stay:  was created.
+21:09:57.108 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite WiFi:  was created.
+21:09:57.116 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Television:  was created.
+21:09:57.116 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Description: was created.
+21:09:57.176 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Shell was opened with success.
+21:10:06.020 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
+21:10:06.020 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set to false
+21:10:06.020 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to false
+21:10:06.020 [main] INFO  i.g.o.y.a.apartment.Apartment - The description has been set to 
+21:10:06.020 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set to false
+21:10:06.024 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : Logger : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
+21:10:06.028 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 1.0
+21:10:06.028 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : a
+21:10:06.028 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
+21:10:06.028 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
+21:10:06.028 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
+21:10:06.028 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : false
+21:10:06.032 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 0.0
+21:10:06.032 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
+21:10:06.032 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : aa
+21:10:06.032 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
+21:10:06.032 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
+21:10:06.032 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
+21:10:06.032 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
+21:10:06.100 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
+21:10:11.043 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
+21:10:11.047 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set to false
+21:10:11.047 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to false
+21:10:11.047 [main] INFO  i.g.o.y.a.apartment.Apartment - The description has been set to 
+21:10:11.048 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set to true
+21:10:11.048 [main] INFO  i.g.o.y.a.apartment.Apartment - The floor area of the terrace has been set to 1.0
+21:10:11.048 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : Logger : Logger[io.github.oliviercailloux.y2018.apartments.apartment.Apartment]
+21:10:11.048 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorArea : 1.0
+21:10:11.048 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : address : a
+21:10:11.048 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBedrooms : 0
+21:10:11.048 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbSleeping : 0
+21:10:11.048 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbBathrooms : 0
+21:10:11.048 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : terrace : true
+21:10:11.048 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : floorAreaTerrace : 1.0
+21:10:11.048 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : description : 
+21:10:11.048 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : title : aa
+21:10:11.048 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : wifi : false
+21:10:11.052 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : pricePerNight : 0.0
+21:10:11.052 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : nbMinNight : 0
+21:10:11.052 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
+21:10:11.064 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
+21:10:15.499 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The screen was closed with success.

@@ -50,6 +50,7 @@ public class CreateApartmentGUI {
 	private Button wifi;
 	private Button tele ;
 	private File file;
+	private Apartment apart;
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 	/**
 	 * 
@@ -137,7 +138,7 @@ public class CreateApartmentGUI {
 	private void validationRequiredField()
 	{
 		Listener textVerification = new Listener() {
-			@Override
+
 			public void handleEvent(Event e) {
 				Text t = (Text)e.widget;
 				if(!t.getText().isEmpty()){
@@ -150,73 +151,133 @@ public class CreateApartmentGUI {
 				informationToFile();
 			}
 		};
+		
+		Listener selectionListener =new Listener()
+				{
+					@Override
+					public void handleEvent(Event arg0) {
+						informationToFile();
+					}
+				};
 		title.addListener(SWT.KeyUp,textVerification);
 		address.addListener(SWT.KeyUp, textVerification);
 		floorArea.addListener(SWT.KeyUp, textVerification);
 		floorAreaTerrace.addListener(SWT.KeyUp, textVerification);
-		
+		terrace.addListener(SWT.Selection, selectionListener);
+		nbBedrooms.addListener(SWT.KeyUp, textVerification);
+		nbSleeping.addListener(SWT.KeyUp, textVerification);
+		nbBathrooms.addListener(SWT.KeyUp, textVerification);
+		pricePerNight.addListener(SWT.KeyUp, textVerification);
+		nbMinNight.addListener(SWT.KeyUp, textVerification);
+		wifi.addListener(SWT.Selection, selectionListener);
+		tele.addListener(SWT.Selection, selectionListener);
+		description.addListener(SWT.KeyUp, textVerification);
 		informationToFile();
 	}
-	
+
 	private void informationToFile()
 	{
-		boolean error = false;
-		Double floorAreaDouble = 0.0;
-		Double floorAreaTerraceDouble = 0.0;
-		if (!floorArea.getText().isEmpty()) {
-			try {
+		
+
+		if(verificationText(floorArea, TypeButtonText.DOUBLE) && verificationText(floorArea, TypeButtonText.REQUIRED)
+				&& verificationText(title, TypeButtonText.REQUIRED) && verificationText(address, TypeButtonText.REQUIRED) )
+		{
 			
-				floorAreaDouble = Double.parseDouble(floorArea.getText());}
+			apart = new Apartment(Double.parseDouble(floorArea.getText()),address.getText(),title.getText());
 			
-			catch(NumberFormatException e){
 			
-				floorArea.setText("");
-				floorArea.setBackground(new Color(display, 255,200,200));
-				error = true;
-				LOGGER.error("The argument set is not valid" + e.getMessage());
+			apart.setTele(tele.getSelection());
+			apart.setWifi(wifi.getSelection());
+			apart.setDescription(description.getText());
+
+			if(verificationText(nbBedrooms, TypeButtonText.INT))
+				apart.setNbBedrooms(Integer.parseInt(nbBedrooms.getText()));
+			if(verificationText(nbMinNight, TypeButtonText.INT))
+				apart.setNbMinNight(Integer.parseInt(nbMinNight.getText()));
+			if(verificationText(nbSleeping, TypeButtonText.INT))
+				apart.setNbSleeping(Integer.parseInt(nbSleeping.getText()));
+			if(verificationText(nbBathrooms, TypeButtonText.INT))
+				apart.setNbBathrooms(Integer.parseInt(nbBathrooms.getText()));
+			if(verificationText(pricePerNight, TypeButtonText.DOUBLE))
+			{
+				apart.setPricePerNight(Double.parseDouble(pricePerNight.getText()));
 			}
 			
-		}
-		else
-		{
-			floorArea.setText("");
-			floorArea.setBackground(new Color(display, 255,200,200));
-			error = true;
-		}
-		if (title.getText().isEmpty())
-		{
-			title.setBackground(new Color(display,255,200,200));
-			error = true;
-		}
-		if(address.getText().isEmpty()) {
-			address.setBackground(new Color(display, 255,200,200));
-		}
-		if(terrace.getSelection())
-		{
-			try {
-				floorAreaTerraceDouble = Double.parseDouble(floorAreaTerrace.getText());}
-			catch(NumberFormatException e){
-			
-			floorArea.setText("");
-			floorArea.setBackground(new Color(display, 255,200,200));
-			error = true;
-			LOGGER.error("The argument set is not valid "+e.getMessage());
-			}
-			
-		}
-		if(!error) {
-				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
-				
-				apart.setTerrace(terrace.getSelection());
-				apart.setFloorAreaTerrace(floorAreaTerraceDouble);
-				apart.setTele(tele.getSelection());
-				apart.setWifi(wifi.getSelection());
-				write(apart);
+			if(terrace.getSelection() && verificationText(floorAreaTerrace, TypeButtonText.DOUBLE))
+			{
+					apart.setTerrace(terrace.getSelection());
+					apart.setFloorAreaTerrace(Double.parseDouble(floorAreaTerrace.getText()));
 			} 
-		
-		
-		}
+			else
+			{
+				apart.setTerrace(false);
+			}
 			
+			
+			write(apart);
+		}
+	}
+
+
+
+	private boolean verificationText(Text text, TypeButtonText type)
+	{
+		Color alertColor = new Color(display, 255,200,200);
+		Color normalColor = new Color(display, 255,255,255);
+
+		switch(type)
+		{
+		case INT :
+			if(!text.getText().equals(""))
+			{
+				try {
+					Integer.parseInt(text.getText());
+					text.setBackground(normalColor);
+					return true;
+				}
+				catch(NumberFormatException e){
+
+					text.setText("");
+					text.setBackground(alertColor);
+					LOGGER.error("The argument set is not valid "+e.getMessage());
+				}
+			}
+			break;
+		case DOUBLE :
+			if(!text.getText().equals(""))
+			{
+				try {
+					Double.parseDouble(text.getText());
+					text.setBackground(normalColor);
+					System.out.println("ok Double");
+					return true;
+				}
+				catch(NumberFormatException e){
+					text.setText("");
+					text.setBackground(alertColor);
+					LOGGER.error("The argument set is not valid "+e.getMessage());
+					System.out.println("pas ok double");
+				}
+			}
+			break;
+		case REQUIRED :
+			if(!text.getText().isEmpty())
+			{
+				floorArea.setBackground(normalColor);
+				return true;
+			}
+			else
+			{
+				text.setBackground(alertColor);
+			}
+			break;
+		default:
+			break;
+		}
+
+		return false;
+	}
+	
 	private Text createFormFieldComposite(String label)
 	{
 		Composite c = new Composite(shell, SWT.PUSH);
@@ -263,44 +324,44 @@ public class CreateApartmentGUI {
 		return t;
 	}
 
-//	private void createButtonValidation() throws IllegalArgumentException {
-//		Composite compoForButton = new Composite(shell, SWT.CENTER);
-//		GridLayout gl = new GridLayout(1, true);
-//		compoForButton.setLayout(gl);
-//		Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
-//		b.setText("Valider");
-//
-//		Consumer<SelectionEvent> consu = (event) -> {
-//			Double floorAreaDouble = 0.0;
-//			LOGGER.info("The button has been clicked");
-//			if (floorArea.getText().isEmpty()== false && title.getText().isEmpty()==false && address.getText().isEmpty()==false) {
-//				try {
-//					floorAreaDouble = Double.parseDouble(floorArea.getText());
-//
-//				} 
-//				catch(NumberFormatException e){
-//					MessageDialog.openError(shell,"Error","Please insert a correct number in the floor area field");
-//					LOGGER.error("The floor area field is not a number. Exception " + e.getMessage());
-//					floorArea.setText("");
-//
-//				}
-//
-//				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
-//				apart.setTerrace(terrace.getSelection());
-//
-//				write(apart);
-//				reset();
-//			}
-//		};
-//		consu.accept(null);
-//		SelectionListener l = SelectionListener.widgetSelectedAdapter(consu);
-//		b.addSelectionListener(l);
-//		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
-//		a.minimumWidth = SWT.FILL;
-//		a.horizontalAlignment = SWT.CENTER;
-//		a.widthHint = 200;
-//		b.setLayoutData(a);
-//	}
+	//	private void createButtonValidation() throws IllegalArgumentException {
+	//		Composite compoForButton = new Composite(shell, SWT.CENTER);
+	//		GridLayout gl = new GridLayout(1, true);
+	//		compoForButton.setLayout(gl);
+	//		Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
+	//		b.setText("Valider");
+	//
+	//		Consumer<SelectionEvent> consu = (event) -> {
+	//			Double floorAreaDouble = 0.0;
+	//			LOGGER.info("The button has been clicked");
+	//			if (floorArea.getText().isEmpty()== false && title.getText().isEmpty()==false && address.getText().isEmpty()==false) {
+	//				try {
+	//					floorAreaDouble = Double.parseDouble(floorArea.getText());
+	//
+	//				} 
+	//				catch(NumberFormatException e){
+	//					MessageDialog.openError(shell,"Error","Please insert a correct number in the floor area field");
+	//					LOGGER.error("The floor area field is not a number. Exception " + e.getMessage());
+	//					floorArea.setText("");
+	//
+	//				}
+	//
+	//				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
+	//				apart.setTerrace(terrace.getSelection());
+	//
+	//				write(apart);
+	//				reset();
+	//			}
+	//		};
+	//		consu.accept(null);
+	//		SelectionListener l = SelectionListener.widgetSelectedAdapter(consu);
+	//		b.addSelectionListener(l);
+	//		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+	//		a.minimumWidth = SWT.FILL;
+	//		a.horizontalAlignment = SWT.CENTER;
+	//		a.widthHint = 200;
+	//		b.setLayoutData(a);
+	//	}
 
 	private void write(Apartment a) {
 		XMLProperties xmlFile = new XMLProperties();
