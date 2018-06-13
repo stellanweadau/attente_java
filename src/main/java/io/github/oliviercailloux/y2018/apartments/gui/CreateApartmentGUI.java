@@ -11,6 +11,8 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -18,7 +20,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.slf4j.Logger;
@@ -32,20 +36,20 @@ public class CreateApartmentGUI {
 
 	private Display display;
 	private Shell shell;
-	Text title;
-	Text address;
-	Text floorArea;
-	Text nbBedrooms;
-	Text nbSleeping ;
-	Text nbBathrooms;
-	Button terrace;
-	Text floorAreaTerrace;
-	Text pricePerNight;
-	Text nbMinNight;
-	Text description;
-	Button wifi;
-	Button tele ;
-	File file;
+	private Text title;
+	private Text address;
+	private Text floorArea;
+	private Text nbBedrooms;
+	private Text nbSleeping ;
+	private Text nbBathrooms;
+	private Button terrace;
+	private Text floorAreaTerrace;
+	private Text pricePerNight;
+	private Text nbMinNight;
+	private Text description;
+	private Button wifi;
+	private Button tele ;
+	private File file;
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 	/**
 	 * 
@@ -72,7 +76,6 @@ public class CreateApartmentGUI {
 
 			createPageTitle();
 			createForm();
-			createButtonValidation();
 
 			shell.pack();
 			shell.setMinimumSize(400, 150);
@@ -105,10 +108,112 @@ public class CreateApartmentGUI {
 		wifi = createCheckboxComposite("WiFi: ");
 		tele = createCheckboxComposite("Television: ");
 		description = createFormFieldComposite("Description:");
-		
-		
+
+
+		terrace.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				Button b = (Button) e.widget;
+				if (b.getSelection())
+				{
+					System.out.println("Button check");
+					floorAreaTerrace.setBackground(new Color(display, 255,255,255));
+					floorAreaTerrace.setEditable(true);
+					floorAreaTerrace.setEnabled(true);
+				}
+				else
+				{
+					System.out.println("Uncheck");
+					floorAreaTerrace.setEditable(false);
+					floorAreaTerrace.setEnabled(false);
+					floorAreaTerrace.setBackground(new Color(display, 200,200,200));
+				}
+
+			}
+
+
+		});
+		validationRequiredField();	
 	}
 
+	private void validationRequiredField()
+	{
+		Listener textVerification = new Listener() {
+			public void handleEvent(Event e) {
+				Text t = (Text)e.widget;
+				System.out.println(t.getText().isEmpty());
+				if(!t.getText().isEmpty()){
+					t.setBackground(new Color(display,255,255,255));
+				}
+				else
+				{
+					t.setBackground(new Color(display, 255,200,200));
+				}
+				informationToFile();
+			}
+		};
+		title.addListener(SWT.KeyUp,textVerification);
+		address.addListener(SWT.KeyUp, textVerification);
+		floorArea.addListener(SWT.KeyUp, textVerification);
+		floorAreaTerrace.addListener(SWT.KeyUp, textVerification);
+		
+		informationToFile();
+	}
+	
+	private void informationToFile()
+	{
+		boolean error = false;
+		Double floorAreaDouble = 0.0;
+		Double floorAreaTerraceDouble = 0.0;
+		System.out.println("in informationToFile");
+		if (!floorArea.getText().isEmpty()) {
+			try {
+			
+				floorAreaDouble = Double.parseDouble(floorArea.getText());}
+			
+			catch(NumberFormatException e){
+			
+				floorArea.setText("");
+				floorArea.setBackground(new Color(display, 255,200,200));
+				error = true;
+			}
+			
+		}
+		else
+		{
+			floorArea.setText("");
+			floorArea.setBackground(new Color(display, 255,200,200));
+			error = true;
+		}
+		if (title.getText().isEmpty())
+		{
+			title.setBackground(new Color(display,255,200,200));
+			error = true;
+		}
+		if(address.getText().isEmpty()) {
+			address.setBackground(new Color(display, 255,200,200));
+		}
+		if(terrace.getSelection())
+		{
+			try {
+				floorAreaTerraceDouble = Double.parseDouble(floorAreaTerrace.getText());}
+			catch(NumberFormatException e){
+			
+			floorArea.setText("");
+			floorArea.setBackground(new Color(display, 255,200,200));
+			error = true;
+			}
+			
+		}
+		if(!error) {
+				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
+				
+				apart.setTerrace(terrace.getSelection());
+				apart.setFloorAreaTerrace(floorAreaTerraceDouble);
+				write(apart);
+			} 
+		
+		}
+			
 	private Text createFormFieldComposite(String label)
 	{
 		Composite c = new Composite(shell, SWT.PUSH);
@@ -125,7 +230,11 @@ public class CreateApartmentGUI {
 		Text t = new Text(c, SWT.FILL);
 		t.setText("");
 		t.setLayoutData(a);
-		shell.pack();
+
+		if(label.equalsIgnoreCase("Floor area terrace: "))
+			//c.setVisible(false);
+
+			shell.pack();
 		LOGGER.info("The Composite "+label+" was created.");
 		return t;
 	}
@@ -145,49 +254,50 @@ public class CreateApartmentGUI {
 		Button t = new Button(c, SWT.CHECK);
 		t.setText("");
 		t.setLayoutData(a);
+
 		shell.pack();
 		LOGGER.info("The Composite "+label+" was created.");
 		return t;
 	}
 
-	private void createButtonValidation() throws IllegalArgumentException {
-		Composite compoForButton = new Composite(shell, SWT.CENTER);
-		GridLayout gl = new GridLayout(1, true);
-		compoForButton.setLayout(gl);
-		Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
-		b.setText("Valider");
-
-		Consumer<SelectionEvent> consu = (event) -> {
-			Double floorAreaDouble = 0.0;
-			LOGGER.info("The button has been clicked");
-			if (floorArea.getText().isEmpty()== false && title.getText().isEmpty()==false && address.getText().isEmpty()==false) {
-				try {
-					floorAreaDouble = Double.parseDouble(floorArea.getText());
-
-				} 
-				catch(NumberFormatException e){
-					MessageDialog.openError(shell,"Error","Please insert a correct number in the floor area field");
-					LOGGER.error("The floor area field is not a number. Exception " + e.getMessage());
-					floorArea.setText("");
-
-				}
-
-				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
-				apart.setTerrace(terrace.getSelection());
-
-				write(apart);
-				reset();
-			}
-		};
-		consu.accept(null);
-		SelectionListener l = SelectionListener.widgetSelectedAdapter(consu);
-		b.addSelectionListener(l);
-		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
-		a.minimumWidth = SWT.FILL;
-		a.horizontalAlignment = SWT.CENTER;
-		a.widthHint = 200;
-		b.setLayoutData(a);
-	}
+//	private void createButtonValidation() throws IllegalArgumentException {
+//		Composite compoForButton = new Composite(shell, SWT.CENTER);
+//		GridLayout gl = new GridLayout(1, true);
+//		compoForButton.setLayout(gl);
+//		Button b = new Button(compoForButton, SWT.CENTER | SWT.PUSH);
+//		b.setText("Valider");
+//
+//		Consumer<SelectionEvent> consu = (event) -> {
+//			Double floorAreaDouble = 0.0;
+//			LOGGER.info("The button has been clicked");
+//			if (floorArea.getText().isEmpty()== false && title.getText().isEmpty()==false && address.getText().isEmpty()==false) {
+//				try {
+//					floorAreaDouble = Double.parseDouble(floorArea.getText());
+//
+//				} 
+//				catch(NumberFormatException e){
+//					MessageDialog.openError(shell,"Error","Please insert a correct number in the floor area field");
+//					LOGGER.error("The floor area field is not a number. Exception " + e.getMessage());
+//					floorArea.setText("");
+//
+//				}
+//
+//				Apartment apart = new Apartment(floorAreaDouble,address.getText(),title.getText());
+//				apart.setTerrace(terrace.getSelection());
+//
+//				write(apart);
+//				reset();
+//			}
+//		};
+//		consu.accept(null);
+//		SelectionListener l = SelectionListener.widgetSelectedAdapter(consu);
+//		b.addSelectionListener(l);
+//		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+//		a.minimumWidth = SWT.FILL;
+//		a.horizontalAlignment = SWT.CENTER;
+//		a.widthHint = 200;
+//		b.setLayoutData(a);
+//	}
 
 	private void write(Apartment a) {
 		XMLProperties xmlFile = new XMLProperties();
