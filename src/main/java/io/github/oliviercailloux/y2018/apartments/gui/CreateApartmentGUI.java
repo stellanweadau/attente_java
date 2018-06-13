@@ -143,6 +143,7 @@ public class CreateApartmentGUI {
 	{
 		Listener textVerification = new Listener() {
 
+			@Override
 			public void handleEvent(Event e) {
 				Text t = (Text)e.widget;
 				if(!t.getText().isEmpty()){
@@ -275,10 +276,7 @@ public class CreateApartmentGUI {
 				floorArea.setBackground(normalColor);
 				return true;
 			}
-			else
-			{
-				text.setBackground(alertColor);
-			}
+			text.setBackground(alertColor);
 			break;
 		default:
 			break;
