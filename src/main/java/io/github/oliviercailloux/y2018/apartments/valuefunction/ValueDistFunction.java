@@ -18,6 +18,7 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	private Map<Location, Double> interestlocation;
 	private Location appartlocation;
 	private double maxDuration;
+	private String apiKey;
 	private final static Logger LOGGER = LoggerFactory.getLogger(ValueDistFunction.class);
 	
 	
@@ -25,9 +26,10 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 * Initializes the different variables of the ValueDistFunction class.
 	 * @param appartlocation Object Location which represents the apartment location.
 	 */
-	public ValueDistFunction(Location appartlocation){
+	public ValueDistFunction(Location appartlocation, String apiKey){
 		interestlocation = new HashMap<>();
 		this.appartlocation = appartlocation;
+		this.apiKey = apiKey;
 		maxDuration = 0;
 	}
 	
@@ -60,7 +62,7 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 * @throws Exception 
 	 */
 	public double calculateDistanceLocation(Location interest) throws Exception {
-		DistanceSubway dist = new DistanceSubway(interest.getCoordinate(),appartlocation.getCoordinate());
+		DistanceSubway dist = new DistanceSubway(interest.getCoordinate(),appartlocation.getCoordinate(),apiKey);
 		double currentdistance = dist.calculateDistanceAddress(DistanceMode.COORDINATE);
 		LOGGER.info("The distance between "+interest.getCoordinate()+" and "+appartlocation.getCoordinate()+" has been calculated and is equal to "+ currentdistance);
 		return currentdistance;

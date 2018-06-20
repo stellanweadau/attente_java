@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 
 import io.github.oliviercailloux.y2018.apartments.localize.Location;
+import io.github.oliviercailloux.y2018.apartments.utils.KeyManager;
 
 class ValueDistFunctionTest {
 
@@ -20,7 +21,7 @@ class ValueDistFunctionTest {
 		interest1 = new Location("Paris");
 		interest2 = new Location("Chaville");
 		interest3 = new Location("Aeroport Roissy Charles de Gaulle");
-		v = new ValueDistFunction(appart);
+		v = new ValueDistFunction(appart,KeyManager.getApiKey());
 		
 		v.addInterestLocation(interest1);
 		v.addInterestLocation(interest2);

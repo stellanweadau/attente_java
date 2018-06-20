@@ -1,24 +1,18 @@
-21:29:41.612 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The GUI was initialized with success.
-21:29:41.624 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The logo has been loaded with success.
-21:29:42.115 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite of the header was created.
-21:29:42.125 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Title of the apartment*:  was created.
-21:29:42.125 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Address*:  was created.
-21:29:42.133 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor Area*: was created.
-21:29:42.135 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bedrooms:  was created.
-21:29:42.135 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Sleeping capacity:  was created.
-21:29:42.135 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Number of bathrooms:  was created.
-21:29:42.155 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Terrace:  was created.
-21:29:42.155 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Floor area terrace:  was created.
-21:29:42.165 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Price per night:  was created.
-21:29:42.165 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Minimum nights to stay:  was created.
-21:29:42.196 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite WiFi:  was created.
-21:29:42.206 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Television:  was created.
-21:29:42.206 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Composite Description: was created.
-21:29:42.327 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Shell was opened with success.
-21:29:50.623 [main] ERROR i.g.o.y.a.gui.CreateApartmentGUI - The argument set is not valid For input string: "e"
-21:29:52.043 [main] ERROR i.g.o.y.a.gui.CreateApartmentGUI - The argument set is not valid For input string: "a"
-21:29:52.359 [main] ERROR i.g.o.y.a.gui.CreateApartmentGUI - The argument set is not valid For input string: "z"
-21:29:52.776 [main] ERROR i.g.o.y.a.gui.CreateApartmentGUI - The argument set is not valid For input string: "e"
-21:29:53.430 [main] ERROR i.g.o.y.a.gui.CreateApartmentGUI - The argument set is not valid For input string: "a"
-21:29:53.642 [main] ERROR i.g.o.y.a.gui.CreateApartmentGUI - The argument set is not valid For input string: "ez"
-21:30:04.215 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The screen was closed with success.
+19:31:50.893 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 3093.0
+19:31:50.972 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+19:31:50.973 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.9140833333333334 has been had with success in the Map.
+19:31:51.362 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 1502.0
+19:31:51.362 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+19:31:51.362 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9582777777777778 has been had with success in the Map.
+19:31:51.741 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 5091.0
+19:31:51.742 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+19:31:51.742 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.8585833333333334 has been had with success in the Map.
+19:31:52.669 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 3093.0
+19:31:52.669 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+19:31:52.669 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.9140833333333334 has been had with success in the Map.
+19:31:52.812 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 1502.0
+19:31:52.813 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+19:31:52.814 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9582777777777778 has been had with success in the Map.
+19:31:52.974 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 5091.0
+19:31:52.975 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+19:31:52.978 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.8585833333333334 has been had with success in the Map.

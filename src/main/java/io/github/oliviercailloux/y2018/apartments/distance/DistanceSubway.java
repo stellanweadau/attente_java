@@ -52,24 +52,21 @@ public class DistanceSubway {
 			throw new IllegalArgumentException("Address is not a valid object");
 		if (startPoint.length() == 0 || endPoint.length() == 0)
 			throw new IllegalArgumentException("Address is empty");
-		
+
 		this.endPoint = endPoint;
 		this.startPoint = startPoint;
-		
+
 		try {
 			this.dist = new GeoApiContext.Builder().apiKey(apiKey).build();
 		}
-		catch (Exception e) {
+		catch (IllegalStateException e) {
+			
+			LOGGER.error("The api key is not valid"+e.getMessage());
+			throw new IllegalStateException("ERROR : The api key is not valid, please be sure you have a valid key" + e.getMessage());
 
-			if (e.getClass() == IllegalStateException.class) {
-				LOGGER.info("ERROR : The api key is not valid, please be sure you have a valid key");
-				throw new IllegalStateException(
-						"ERROR : The api key is not valid, please be sure you have a valid key");
-			}
-			throw e;
 		}
 
-		LOGGER.info("DistanceSubway Object created with success. Departure= " + startPoint + " ; Arrival= " + endPoint);
+		
 	}
 
 	/**
@@ -77,9 +74,17 @@ public class DistanceSubway {
 	 * @param startCoordinate LatLng the start coordinate
 	 * @param endCoordinate LatLng the end coordinate
 	 */
-	public DistanceSubway(LatLng startCoordinate, LatLng endCoordinate) {
+	public DistanceSubway(LatLng startCoordinate, LatLng endCoordinate, String apiKey) {
 		this.startCoordinate = startCoordinate;
 		this.endCoordinate = endCoordinate;
+		try {
+			this.dist = new GeoApiContext.Builder().apiKey(apiKey).build();
+		}
+		catch (IllegalStateException e) {
+			LOGGER.error("The api key is not valid"+e.getMessage());
+			throw new IllegalStateException("ERROR : The api key is not valid, please be sure you have a valid key" + e.getMessage());
+
+		}
 	}
 
 
