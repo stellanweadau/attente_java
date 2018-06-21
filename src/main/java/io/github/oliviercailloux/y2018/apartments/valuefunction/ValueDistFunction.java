@@ -6,17 +6,18 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.maps.model.LatLng;
+
 import io.github.oliviercailloux.y2018.apartments.distance.DistanceSubway;
-import io.github.oliviercailloux.y2018.apartments.localize.Location;
 
 /**
  * This class enables the user to calculate the utility of a location by linear interpolation,
  * to have the maximum duration between the interest places.
  */
-public class ValueDistFunction implements PartialValueFunction<Location> {
+public class ValueDistFunction implements PartialValueFunction<LatLng> {
 	
-	private Map<Location, Double> interestlocation;
-	private Location appartlocation;
+	private Map<LatLng, Double> interestlocation;
+	private LatLng appartlocation;
 	private double maxDuration;
 	private String apiKey;
 	private final static Logger LOGGER = LoggerFactory.getLogger(ValueDistFunction.class);
@@ -24,9 +25,9 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	
 	/**
 	 * Initializes the different variables of the ValueDistFunction class.
-	 * @param appartlocation Object Location which represents the apartment location.
+	 * @param appartlocation Object LatLng which represents the apartment location.
 	 */
-	public ValueDistFunction(Location appartlocation, String apiKey){
+	public ValueDistFunction(LatLng appartlocation, String apiKey){
 		interestlocation = new HashMap<>();
 		this.appartlocation = appartlocation;
 		this.apiKey = apiKey;
@@ -35,16 +36,16 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	
 	/**
 	 * Add the apartment location and its utility to the HashMap and update the variable maxDuration.
-	 * @param interest Object Location of an interest place of the user.
+	 * @param interest Object LatLng of an interest place of the user.
 	 * @throws Exception 
 	 */
-	public void addInterestLocation(Location interest) throws Exception {
+	public void addInterestLocation(LatLng interest) throws Exception {
 		double currentdistance = calculateDistanceLocation(interest);
 		if (currentdistance > maxDuration)
 			maxDuration = currentdistance;
 		double utility = 1-setUtility(currentdistance);
 		interestlocation.put(interest, utility);
-		LOGGER.info("The interest location ("+interest.getCoordinate()+") with the utility "+utility+" has been had with success in the Map.");
+		LOGGER.info("The interest location ("+interest+") with the utility "+utility+" has been had with success in the Map.");
 	}
 	
 	/**
@@ -61,10 +62,10 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	 * @return double number  which corresponds to the distance (seconds) between the Location appartocation and the Location interest in parameter.
 	 * @throws Exception 
 	 */
-	public double calculateDistanceLocation(Location interest) throws Exception {
-		DistanceSubway dist = new DistanceSubway(interest.getCoordinate(),appartlocation.getCoordinate(),apiKey);
+	public double calculateDistanceLocation(LatLng interest) throws Exception {
+		DistanceSubway dist = new DistanceSubway(interest,appartlocation,apiKey);
 		double currentdistance = dist.calculateDistanceAddress(DistanceMode.COORDINATE);
-		LOGGER.info("The distance between "+interest.getCoordinate()+" and "+appartlocation.getCoordinate()+" has been calculated and is equal to "+ currentdistance);
+		LOGGER.info("The distance between "+interest+" and "+appartlocation+" has been calculated and is equal to "+ currentdistance);
 		return currentdistance;
 
 	}
@@ -80,12 +81,12 @@ public class ValueDistFunction implements PartialValueFunction<Location> {
 	}
 
 	@Override
-	public double getSubjectiveValue(Location objectiveData) {
+	public double getSubjectiveValue(LatLng objectiveData) {
 		return interestlocation.get(objectiveData);
 	}
 	
 	@Override
-	public Double apply(Location objectiveData) {
+	public Double apply(LatLng objectiveData) {
 		return getSubjectiveValue(objectiveData);
 	}
 

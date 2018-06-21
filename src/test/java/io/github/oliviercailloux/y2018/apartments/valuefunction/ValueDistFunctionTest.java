@@ -4,23 +4,26 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import com.google.maps.model.LatLng;
 
-import io.github.oliviercailloux.y2018.apartments.localize.Location;
+import io.github.oliviercailloux.y2018.apartments.localize.Localizer;
 import io.github.oliviercailloux.y2018.apartments.utils.KeyManager;
 
 class ValueDistFunctionTest {
 
 	private ValueDistFunction v;
-	Location appart;
-	Location interest1;
-	Location interest2;
-	Location interest3;
+	LatLng appart;
+	LatLng interest1;
+	LatLng interest2;
+	LatLng interest3;
+	String geocodeApiKey;
 	
 	void initializeValueDistFunction() throws Exception {
-		appart = new Location("Ville d'Avray");
-		interest1 = new Location("Paris");
-		interest2 = new Location("Chaville");
-		interest3 = new Location("Aeroport Roissy Charles de Gaulle");
+		geocodeApiKey = KeyManager.getGeocodeApiKey();
+		appart = Localizer.getGeometryLocation("Ville d'Avray",geocodeApiKey);
+		interest1 = Localizer.getGeometryLocation("Paris",geocodeApiKey);
+		interest2 = Localizer.getGeometryLocation("Chaville",geocodeApiKey);
+		interest3 = Localizer.getGeometryLocation("Roissy Charles de Gaulle",geocodeApiKey);
 		v = new ValueDistFunction(appart,KeyManager.getApiKey());
 		
 		v.addInterestLocation(interest1);
