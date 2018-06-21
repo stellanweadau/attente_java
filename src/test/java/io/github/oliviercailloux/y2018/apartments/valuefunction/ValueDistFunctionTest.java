@@ -16,15 +16,15 @@ class ValueDistFunctionTest {
 	LatLng interest1;
 	LatLng interest2;
 	LatLng interest3;
-	String geocodeApiKey;
+	String apiKey;
 	
 	void initializeValueDistFunction() throws Exception {
-		geocodeApiKey = KeyManager.getGeocodeApiKey();
-		appart = Localizer.getGeometryLocation("Ville d'Avray",geocodeApiKey);
-		interest1 = Localizer.getGeometryLocation("Paris",geocodeApiKey);
-		interest2 = Localizer.getGeometryLocation("Chaville",geocodeApiKey);
-		interest3 = Localizer.getGeometryLocation("Roissy Charles de Gaulle",geocodeApiKey);
-		v = new ValueDistFunction(appart,KeyManager.getApiKey());
+		apiKey = KeyManager.getApiKey();
+		appart = Localizer.getGeometryLocation("Ville d'Avray",apiKey);
+		interest1 = Localizer.getGeometryLocation("Paris",apiKey);
+		interest2 = Localizer.getGeometryLocation("Chaville",apiKey);
+		interest3 = Localizer.getGeometryLocation("Roissy Charles de Gaulle",apiKey);
+		v = new ValueDistFunction(appart,apiKey);
 		
 		v.addInterestLocation(interest1);
 		v.addInterestLocation(interest2);

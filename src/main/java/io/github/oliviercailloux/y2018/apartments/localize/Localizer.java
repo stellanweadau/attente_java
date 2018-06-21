@@ -21,10 +21,10 @@ public class Localizer {
 	 * @throws InterruptedException
 	 * @throws IOException
 	 */
-	public static LatLng getGeometryLocation(String address, String geocodeApiKey) throws ApiException, InterruptedException, IOException{
+	public static LatLng getGeometryLocation(String address, String apiKey) throws ApiException, InterruptedException, IOException{
 		
 		GeoApiContext context = new GeoApiContext.Builder()
-				.apiKey(geocodeApiKey)
+				.apiKey(apiKey)
 				.build();
 		
 		GeocodingResult[] res = GeocodingApi.newRequest(context).address(address).await();
