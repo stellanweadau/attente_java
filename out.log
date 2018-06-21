@@ -1,0 +1,32 @@
+22:38:23.751 [main] INFO  i.g.o.y.a.gui.ModifyApartmentGUI - The logo has been loaded with success.
+22:38:23.994 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite of the header was created.
+22:38:23.994 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Title of the apartment*:  was created.
+22:38:23.994 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Address*:  was created.
+22:38:23.994 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Floor Area*: was created.
+22:38:24.010 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Number of bedrooms:  was created.
+22:38:24.013 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Sleeping capacity:  was created.
+22:38:24.017 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Number of bathrooms:  was created.
+22:38:24.027 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Terrace:  was created.
+22:38:24.035 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Floor area terrace:  was created.
+22:38:24.038 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Price per night:  was created.
+22:38:24.041 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Minimum nights to stay:  was created.
+22:38:24.043 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite WiFi:  was created.
+22:38:24.046 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Television:  was created.
+22:38:24.053 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Description: was created.
+22:38:24.107 [main] INFO  i.g.o.y.a.gui.ModifyApartmentGUI - The Shell was opened with success.
+22:38:24.127 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Enter readApartment method
+22:38:24.134 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - XML Files loaded with success
+22:38:24.134 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
+22:38:24.134 [main] INFO  i.g.o.y.a.apartment.Apartment - The description has been set to 
+22:38:24.134 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to 0
+22:38:24.134 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set to false
+22:38:24.134 [main] INFO  i.g.o.y.a.apartment.Apartment - The floor area of the terrace has been set to 0.0
+22:38:24.134 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to true
+22:38:24.134 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set to false
+22:38:24.134 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of sleepings has been set to 0
+22:38:24.134 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to 1
+22:38:24.134 [main] INFO  i.g.o.y.a.apartment.Apartment - The price per night has been set to 156.5
+22:38:24.134 [main] INFO  i.g.o.y.a.apartment.Apartment - The number minimum of night has been set to 0
+22:38:24.134 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Parameters inserted with success in the Apartment Object
+22:38:24.134 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Leave readApartment method
+22:38:29.096 [main] INFO  i.g.o.y.a.gui.ModifyApartmentGUI - The screen was closed with success.

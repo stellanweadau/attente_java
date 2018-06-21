@@ -8,7 +8,6 @@ import com.google.maps.errors.ApiException;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
 
-import io.github.oliviercailloux.y2018.apartments.utils.KeyManager;
 
 public class Localizer {
 	
