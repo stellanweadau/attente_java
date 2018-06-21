@@ -21,9 +21,7 @@ public class Localizer {
 	 * @throws InterruptedException
 	 * @throws IOException
 	 */
-	public static LatLng getGeometryLocation(String address) throws ApiException, InterruptedException, IOException{
-		
-		String geocodeApiKey = KeyManager.getGeocodeApiKey();
+	public static LatLng getGeometryLocation(String address, String geocodeApiKey) throws ApiException, InterruptedException, IOException{
 		
 		GeoApiContext context = new GeoApiContext.Builder()
 				.apiKey(geocodeApiKey)
