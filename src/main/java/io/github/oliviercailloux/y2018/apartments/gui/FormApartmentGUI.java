@@ -77,16 +77,17 @@ public class FormApartmentGUI {
 				Button b = (Button) e.widget;
 				if (b.getSelection())
 				{
-					floorAreaTerrace.setBackground(new Color(display, 255,255,255));
+					
 					floorAreaTerrace.setEditable(true);
-					floorAreaTerrace.setEnabled(true);
+		
+					//floorAreaTerrace.setBackground(new Color(display, 255,255,255));
 				}
 				else
 				{
 					floorAreaTerrace.setEditable(false);
-					floorAreaTerrace.setEnabled(false);
-					floorAreaTerrace.setBackground(new Color(display, 200,200,200));
+					//floorAreaTerrace.setBackground(new Color(display, 200,200,200));
 				}
+				informationToFile();
 
 			}
 
@@ -123,11 +124,11 @@ public class FormApartmentGUI {
 						informationToFile();
 					}
 				};
+
 		title.addListener(SWT.KeyUp,textVerification);
 		address.addListener(SWT.KeyUp, textVerification);
 		floorArea.addListener(SWT.KeyUp, textVerification);
 		floorAreaTerrace.addListener(SWT.KeyUp, textVerification);
-		terrace.addListener(SWT.Selection, selectionListener);
 		nbBedrooms.addListener(SWT.KeyUp, textVerification);
 		nbSleeping.addListener(SWT.KeyUp, textVerification);
 		nbBathrooms.addListener(SWT.KeyUp, textVerification);
@@ -212,7 +213,7 @@ public class FormApartmentGUI {
 		t.setLayoutData(a);
 
 		if(label.equalsIgnoreCase("Floor area terrace: "))
-			c.setEnabled(false);
+			t.setEditable(false);
 
 			shell.pack();
 		LOGGER.info("The Composite "+label+" was created.");
