@@ -1,18 +1,18 @@
-15:12:58.623 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 3256.0
-15:12:58.707 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-15:12:58.708 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.9095555555555556 has been had with success in the Map.
-15:12:59.002 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 1562.0
-15:12:59.002 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-15:12:59.003 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9566111111111111 has been had with success in the Map.
-15:12:59.384 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 5091.0
-15:12:59.385 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-15:12:59.385 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.8585833333333334 has been had with success in the Map.
-15:13:00.315 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 3256.0
-15:13:00.318 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-15:13:00.323 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.9095555555555556 has been had with success in the Map.
-15:13:00.538 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 1562.0
-15:13:00.539 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-15:13:00.543 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9566111111111111 has been had with success in the Map.
-15:13:00.705 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 5091.0
-15:13:00.707 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
-15:13:00.708 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.8585833333333334 has been had with success in the Map.
+15:25:43.935 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 2988.0
+15:25:43.946 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+15:25:43.946 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.917 has been had with success in the Map.
+15:25:44.208 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 1562.0
+15:25:44.209 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+15:25:44.209 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9566111111111111 has been had with success in the Map.
+15:25:44.513 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 5091.0
+15:25:44.513 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+15:25:44.514 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.8585833333333334 has been had with success in the Map.
+15:25:45.442 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.85661400,2.35222190 and 48.82700420,2.18869440 has been calculated and is equal to 2988.0
+15:25:45.442 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+15:25:45.442 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.85661400,2.35222190) with the utility 0.917 has been had with success in the Map.
+15:25:45.573 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 48.80802600,2.19241800 and 48.82700420,2.18869440 has been calculated and is equal to 1562.0
+15:25:45.573 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+15:25:45.573 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (48.80802600,2.19241800) with the utility 0.9566111111111111 has been had with success in the Map.
+15:25:45.724 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The distance between 49.00969060,2.54792450 and 48.82700420,2.18869440 has been calculated and is equal to 5091.0
+15:25:45.724 [main] INFO  i.g.o.y.a.v.LinearValueFunction - The interval [0.0,36000.0]  has been set with success in the LinearValueFunction class.
+15:25:45.725 [main] INFO  i.g.o.y.a.v.ValueDistFunction - The interest location (49.00969060,2.54792450) with the utility 0.8585833333333334 has been had with success in the Map.

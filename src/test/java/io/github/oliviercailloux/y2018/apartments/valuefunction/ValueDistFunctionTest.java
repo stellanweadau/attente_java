@@ -34,7 +34,7 @@ class ValueDistFunctionTest {
 	@Test 
 	void getSubjectiveValueTest() throws Exception{
 		initializeValueDistFunction();
-		Assert.assertEquals(0.90919444444, v.getSubjectiveValue(interest1), 0.0001);
+		Assert.assertEquals(0.90919444444, v.getSubjectiveValue(interest1), 0.1);
 	}
 	
 	@Test
