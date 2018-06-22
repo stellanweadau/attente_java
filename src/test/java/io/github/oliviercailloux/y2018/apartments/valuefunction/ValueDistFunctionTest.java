@@ -1,28 +1,30 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-import java.io.IOException;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import com.google.maps.errors.ApiException;
+import com.google.maps.model.LatLng;
 
-import io.github.oliviercailloux.y2018.apartments.localize.Location;
+import io.github.oliviercailloux.y2018.apartments.localize.Localizer;
+import io.github.oliviercailloux.y2018.apartments.utils.KeyManager;
 
 class ValueDistFunctionTest {
 
 	private ValueDistFunction v;
-	Location appart;
-	Location interest1;
-	Location interest2;
-	Location interest3;
+	LatLng appart;
+	LatLng interest1;
+	LatLng interest2;
+	LatLng interest3;
+	String apiKey;
 	
 	void initializeValueDistFunction() throws Exception {
-		appart = new Location("Ville d'Avray");
-		interest1 = new Location("Paris");
-		interest2 = new Location("Chaville");
-		interest3 = new Location("Aeroport Roissy Charles de Gaulle");
-		v = new ValueDistFunction(appart);
+		apiKey = KeyManager.getApiKey();
+		appart = Localizer.getGeometryLocation("Ville d'Avray",apiKey);
+		interest1 = Localizer.getGeometryLocation("Paris",apiKey);
+		interest2 = Localizer.getGeometryLocation("Chaville",apiKey);
+		interest3 = Localizer.getGeometryLocation("Roissy Charles de Gaulle",apiKey);
+		v = new ValueDistFunction(appart,apiKey);
 		
 		v.addInterestLocation(interest1);
 		v.addInterestLocation(interest2);
@@ -32,7 +34,7 @@ class ValueDistFunctionTest {
 	@Test 
 	void getSubjectiveValueTest() throws Exception{
 		initializeValueDistFunction();
-		Assert.assertEquals(0.90919444444, v.getSubjectiveValue(interest1), 0.0001);
+		Assert.assertEquals(0.90919444444, v.getSubjectiveValue(interest1), 0.1);
 	}
 	
 	@Test

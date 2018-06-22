@@ -8,7 +8,6 @@ import com.google.maps.errors.ApiException;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
 
-import io.github.oliviercailloux.y2018.apartments.utils.KeyManager;
 
 public class Localizer {
 	
@@ -21,12 +20,10 @@ public class Localizer {
 	 * @throws InterruptedException
 	 * @throws IOException
 	 */
-	public static LatLng getGeometryLocation(String address) throws ApiException, InterruptedException, IOException{
-		
-		String geocodeApiKey = KeyManager.getGeocodeApiKey();
+	public static LatLng getGeometryLocation(String address, String apiKey) throws ApiException, InterruptedException, IOException{
 		
 		GeoApiContext context = new GeoApiContext.Builder()
-				.apiKey(geocodeApiKey)
+				.apiKey(apiKey)
 				.build();
 		
 		GeocodingResult[] res = GeocodingApi.newRequest(context).address(address).await();
