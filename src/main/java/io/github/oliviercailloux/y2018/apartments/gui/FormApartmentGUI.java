@@ -23,7 +23,7 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
 
 public class FormApartmentGUI {
-	protected static Display display = new Display();;
+	protected static Display display = new Display();
 	protected static Shell shell = new Shell(display);
 	protected Text title;
 	protected Text address;
@@ -129,7 +129,7 @@ public class FormApartmentGUI {
 		wifi.addListener(SWT.Selection, selectionListener);
 		tele.addListener(SWT.Selection, selectionListener);
 		description.addListener(SWT.KeyUp, textVerification);
-		
+
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class FormApartmentGUI {
 					loadMessage(MessageInfo.ERROR, "Floor Area Terrace should not be empty !");
 					invalid = true;
 				}
-				
+
 			}
 			if(!invalid)
 			{
@@ -182,7 +182,7 @@ public class FormApartmentGUI {
 				loadMessage(MessageInfo.SAVED, "Apartment have been saved !");
 				System.out.println("saved");
 			}
-			
+
 		} else {
 			loadMessage(MessageInfo.REQUIRED, "Title, Address and Floor Area are required");
 
@@ -194,19 +194,20 @@ public class FormApartmentGUI {
 		Color color = alertColor;
 		switch(type)
 		{
-			case REQUIRED :
-				color = alertColor;
-				break;
-			case SAVED :
-				color = okColor;
-				break;
-			case LOAD :
-				color = okColor;
-				break;
-			case ERROR :
-				color = alertColor;
-			default:
-				break;
+		case REQUIRED :
+			color = alertColor;
+			break;
+		case SAVED :
+			color = okColor;
+			break;
+		case LOAD :
+			color = okColor;
+			break;
+		case ERROR :
+			color = alertColor;
+			break;
+		default:
+			break;
 		}
 		information.setBackground(color);
 		Label l = (Label)information.getChildren()[0];
