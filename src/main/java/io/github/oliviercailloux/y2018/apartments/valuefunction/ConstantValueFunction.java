@@ -17,6 +17,6 @@ public class ConstantValueFunction<T> implements PartialValueFunction<T> {
 	public double getSubjectiveValue(T objectiveData) throws IllegalArgumentException {
 		return 0;
 	}
-	
+
 
 }

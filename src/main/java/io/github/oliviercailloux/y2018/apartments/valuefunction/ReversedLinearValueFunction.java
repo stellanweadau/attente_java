@@ -20,7 +20,7 @@ public class ReversedLinearValueFunction implements PartialValueFunction<Double>
 	 * @param min lower bound of the interval associated to the subjective value 1
 	 * @param max upper bound of the interval associated to the subjective value 0
 	 */
-	
+
 	public ReversedLinearValueFunction (double min, double max) {
 		if (min == max) {
 			LOGGER.error("The upper bound is equal to the lower bound in the constructor of the LinearValueFunction.");

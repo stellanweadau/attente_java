@@ -17,7 +17,7 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 
 	private ImmutableMap<T, Double> subjective;
 	private final static Logger LOGGER = LoggerFactory.getLogger(DiscreteValueFunction.class);
-	
+
 	/**
 	 * Create a map with 3 discrete values of the same type which are associated to their respective subjective values.
 	 * @param s1 first key not null which corresponds to the subjective value 0
@@ -40,21 +40,21 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 		subjective = ImmutableMap.of(s1, 0.0, s2, 1.0);
 		LOGGER.info("The Map with the two elements have been set with success");
 	}
-	
+
 	/**
 	 * Create a map that match the not null keys and the subjective values associated
 	 * @param subjective a Map<T, Double> where the key is of type <b>T</b> and the associated value, a double between 0 and 1, defines its subjective value. 
 	 */
 	public DiscreteValueFunction(Map<T, Double> subjective) {
-		this.subjective = ImmutableMap.copyOf(subjective);
-		Stream<Entry<T, Double>> erreur  = this.subjective.entrySet().stream().filter((entry)-> entry.getValue() < 0 || entry.getValue() > 1);
+		subjective = ImmutableMap.copyOf(subjective);
+		Stream<Entry<T, Double>> erreur  = subjective.entrySet().stream().filter((entry)-> entry.getValue() < 0 || entry.getValue() > 1);
 		Map<T,Double> mapError =  erreur.collect(Collectors.toMap((entry)->entry.getKey(), (entry) -> entry.getValue()));
 		if (! (mapError.isEmpty() ) ) {
 			throw new IllegalArgumentException("The subjective values must be between 0 and 1. The wrong values are : " + mapError );
-			
+
 		}
 	}
-	
+
 	@Override
 	public Double apply(T objectiveData) {
 		return getSubjectiveValue(objectiveData);

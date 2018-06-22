@@ -7,7 +7,7 @@ import java.util.function.Function;
  * @param <T> the type of the parameter
  */
 public interface PartialValueFunction<T> extends Function<T, Double> {
-	
+
 	/**
 	 * This function enables to get the subjective value of an objective data
 	 * @param objectiveData is the parameter from which we want to get the subjective value 
@@ -16,6 +16,6 @@ public interface PartialValueFunction<T> extends Function<T, Double> {
 	 */
 	public double getSubjectiveValue(T objectiveData) throws IllegalArgumentException;
 
-	
+
 
 }

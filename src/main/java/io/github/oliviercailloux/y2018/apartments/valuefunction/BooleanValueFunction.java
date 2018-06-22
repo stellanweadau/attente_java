@@ -21,14 +21,14 @@ public class BooleanValueFunction implements PartialValueFunction<Boolean>{
 	public BooleanValueFunction (boolean preference) {
 		subjective = new HashMap<>();
 		if (preference == true) {			
-		subjective.put(true, (double) 1);
-		subjective.put(false, (double) 0);
+			subjective.put(true, (double) 1);
+			subjective.put(false, (double) 0);
 		}
 		else {
-		subjective.put(false, (double) 1);
-		subjective.put(true, (double) 0);
+			subjective.put(false, (double) 1);
+			subjective.put(true, (double) 0);
 		}
-		
+
 		LOGGER.info("The Map with the subjective values for true and false has been set with success in the BooleanValueFunction class.");
 	}
 
@@ -44,7 +44,7 @@ public class BooleanValueFunction implements PartialValueFunction<Boolean>{
 		return subjective.get(objectiveData);
 	}
 
-	}
+}
 
 
 
