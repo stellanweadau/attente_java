@@ -22,6 +22,10 @@ import org.slf4j.LoggerFactory;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
 
+/**
+ * This class enables the user to create a form for creating/modifying an apartment.
+ *
+ */
 public class FormApartmentGUI {
 	protected static Display display = new Display();
 	protected static Shell shell = new Shell(display);
@@ -150,9 +154,9 @@ public class FormApartmentGUI {
 			apart.setTele(tele.getSelection());
 			apart.setWifi(wifi.getSelection());
 			apart.setDescription(description.getText());
-
 			
-
+			if((verificationText(nbBedrooms, TypeButtonText.INT)==false &&  nbBedrooms.getText()!="") || (verificationText(nbMinNight, TypeButtonText.INT)==false &&  nbMinNight.getText()!="") || (verificationText(nbSleeping, TypeButtonText.INT)==false && nbSleeping.getText()!="") || (verificationText(nbBathrooms, TypeButtonText.INT)==false && nbBathrooms.getText()!="") || (verificationText(pricePerNight, TypeButtonText.DOUBLE)==false && pricePerNight.getText()!=""))
+				invalid = true;
 			if (verificationText(nbBedrooms, TypeButtonText.INT))
 				apart.setNbBedrooms(Integer.parseInt(nbBedrooms.getText()));
 			if (verificationText(nbMinNight, TypeButtonText.INT))
@@ -163,8 +167,6 @@ public class FormApartmentGUI {
 				apart.setNbBathrooms(Integer.parseInt(nbBathrooms.getText()));
 			if (verificationText(pricePerNight, TypeButtonText.DOUBLE))
 				apart.setPricePerNight(Double.parseDouble(pricePerNight.getText()));
-			if((verificationText(nbBedrooms, TypeButtonText.INT)==false &&  nbBedrooms.getText()!="") || (verificationText(nbMinNight, TypeButtonText.INT)==false &&  nbMinNight.getText()!="") || (verificationText(nbSleeping, TypeButtonText.INT)==false && nbSleeping.getText()!="") || (verificationText(nbBathrooms, TypeButtonText.INT)==false && nbBathrooms.getText()!="") || (verificationText(pricePerNight, TypeButtonText.DOUBLE)==false && pricePerNight.getText()!=""))
-				invalid = true;
 
 			if (terrace.getSelection() && verificationText(floorAreaTerrace, TypeButtonText.DOUBLE)) {
 				apart.setTerrace(terrace.getSelection());
@@ -193,6 +195,12 @@ public class FormApartmentGUI {
 		}
 
 	}
+	
+	/**
+	 * This method attributes a color to the information window and depends on the MessageInfo type.
+	 * @param type MessageInfo defined in the class MessageInfo for the alert types of a message
+	 * @param message String which corresponds to the message linked with the MessageInfo object
+	 */
 	protected void loadMessage(MessageInfo type, String message)
 	{
 		Color color = alertColor;
@@ -369,6 +377,10 @@ public class FormApartmentGUI {
 		LOGGER.info("The Composite of the header was created.");
 	}
 
+	/**
+	 * This method builds a composite object which contains the validation information of the form.
+	 * @return a Composite Object of the information window.
+	 */
 	private Composite createCompositeInformation() {
 		Composite compo = new Composite(shell, SWT.CENTER);
 

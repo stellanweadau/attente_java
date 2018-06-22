@@ -15,6 +15,10 @@ import com.google.common.io.Files;
 import io.github.oliviercailloux.y2018.apartments.iconDisplay.DisplayIcon;
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
+/**
+ * This class initializes a GUI for modifying an apartment object from an XML File.
+ *
+ */
 public class ModifyApartmentGUI extends FormApartmentGUI{
 	
 	private final static Logger LOGGER = LoggerFactory.getLogger(ModifyApartmentGUI.class);
