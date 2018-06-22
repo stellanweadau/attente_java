@@ -151,23 +151,26 @@ public class FormApartmentGUI {
 			apart.setWifi(wifi.getSelection());
 			apart.setDescription(description.getText());
 
+			
+
 			if (verificationText(nbBedrooms, TypeButtonText.INT))
 				apart.setNbBedrooms(Integer.parseInt(nbBedrooms.getText()));
-			else if (verificationText(nbMinNight, TypeButtonText.INT))
+			if (verificationText(nbMinNight, TypeButtonText.INT))
 				apart.setNbMinNight(Integer.parseInt(nbMinNight.getText()));
-			else if (verificationText(nbSleeping, TypeButtonText.INT))
+			if (verificationText(nbSleeping, TypeButtonText.INT))
 				apart.setNbSleeping(Integer.parseInt(nbSleeping.getText()));
-			else if (verificationText(nbBathrooms, TypeButtonText.INT))
+			if (verificationText(nbBathrooms, TypeButtonText.INT))
 				apart.setNbBathrooms(Integer.parseInt(nbBathrooms.getText()));
-			else if (verificationText(pricePerNight, TypeButtonText.DOUBLE)) {
+			if (verificationText(pricePerNight, TypeButtonText.DOUBLE))
 				apart.setPricePerNight(Double.parseDouble(pricePerNight.getText()));
-			}
-			else
+			if((verificationText(nbBedrooms, TypeButtonText.INT)==false &&  nbBedrooms.getText()!="") || (verificationText(nbMinNight, TypeButtonText.INT)==false &&  nbMinNight.getText()!="") || (verificationText(nbSleeping, TypeButtonText.INT)==false && nbSleeping.getText()!="") || (verificationText(nbBathrooms, TypeButtonText.INT)==false && nbBathrooms.getText()!="") || (verificationText(pricePerNight, TypeButtonText.DOUBLE)==false && pricePerNight.getText()!=""))
 				invalid = true;
+
 			if (terrace.getSelection() && verificationText(floorAreaTerrace, TypeButtonText.DOUBLE)) {
 				apart.setTerrace(terrace.getSelection());
 				apart.setFloorAreaTerrace(Double.parseDouble(floorAreaTerrace.getText()));
-			} else {
+			} 
+			else {
 				apart.setTerrace(false);
 				if(terrace.getSelection())
 				{
@@ -183,7 +186,8 @@ public class FormApartmentGUI {
 				System.out.println("saved");
 			}
 
-		} else {
+		} 
+		else {
 			loadMessage(MessageInfo.REQUIRED, "Title, Address and Floor Area are required");
 
 		}
