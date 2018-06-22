@@ -48,7 +48,7 @@ class DiscreteValueFunctionTest {
 	}
 	
 	@Test
-	void exceptionDiffArgs() {
+	void exceptionDiffArgsString() {
 	    Assertions.assertThrows(IllegalArgumentException.class, () -> {
 	    	@SuppressWarnings("unused")
 			DiscreteValueFunction<String> vF = new DiscreteValueFunction<>("Unique","Unique","Toto");
