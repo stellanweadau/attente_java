@@ -63,8 +63,8 @@ public class CreateApartmentGUI extends FormApartmentGUI {
 			createForm();
 
 			shell.pack();
-			shell.setMinimumSize(400, 150);
-			shell.setSize(600, 600);
+			shell.setMinimumSize(600, 700);
+			shell.setSize(600, 700);
 
 			shell.open();
 			LOGGER.info("The Shell was opened with success.");

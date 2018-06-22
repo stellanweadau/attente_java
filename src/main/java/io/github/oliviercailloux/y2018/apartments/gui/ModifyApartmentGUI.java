@@ -60,7 +60,10 @@ public class ModifyApartmentGUI extends FormApartmentGUI{
 		if(apart.getFloorArea() != 0)
 			floorArea.setText(Double.toString(apart.getFloorArea()));
 		if(apart.getFloorAreaTerrace() != 0)
+		{
 			floorAreaTerrace.setText(Double.toString(apart.getFloorAreaTerrace()));
+			floorAreaTerrace.setEditable(true);
+		}
 		if(apart.getNbBathrooms() != 0)
 			nbBathrooms.setText(Integer.toString(apart.getNbBathrooms()));
 		if(apart.getNbBedrooms() != 0)
@@ -84,7 +87,7 @@ public class ModifyApartmentGUI extends FormApartmentGUI{
 			ReadApartmentsXMLFormat f = new ReadApartmentsXMLFormat();
 			apart = f.readApartment(i);
 		}
-		System.out.println("OKAY");
+
 		
 	}
 	/**
@@ -107,14 +110,14 @@ public class ModifyApartmentGUI extends FormApartmentGUI{
 			createForm();
 
 			shell.pack();
-			shell.setMinimumSize(400, 150);
-			shell.setSize(600, 600);
+			shell.setMinimumSize(600, 700);
+			shell.setSize(600, 700);
 
 			shell.open();
 			LOGGER.info("The Shell was opened with success.");
 			
 			initializeField();
-			
+			loadMessage(MessageInfo.LOAD,  "Everything is loaded !");
 			while(!shell.isDisposed( )){
 				if(!display.readAndDispatch( ))
 					display.sleep( );
