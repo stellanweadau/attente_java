@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 15:03:16.820 [main] INFO  i.g.o.y.a.gui.ModifyApartmentGUI - The logo has been loaded with success.
 15:03:17.064 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite of the header was created.
 15:03:17.077 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Title of the apartment*:  was created.
@@ -527,3 +528,37 @@
 14:59:56.696 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Leave readApartment method
 15:00:03.362 [main] INFO  i.g.o.y.a.gui.ModifyApartmentGUI - The screen was closed with success.
 >>>>>>> 27b362c08eb5355dc9a46dd028adca9e1fe46d37
+=======
+17:01:36.386 [main] INFO  i.g.o.y.a.gui.ModifyApartmentGUI - The logo has been loaded with success.
+17:01:36.814 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite of the header was created.
+17:01:36.837 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Title of the apartment*:  was created.
+17:01:36.841 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Address*:  was created.
+17:01:36.846 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Floor Area*: was created.
+17:01:36.853 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Number of bedrooms:  was created.
+17:01:36.870 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Sleeping capacity:  was created.
+17:01:36.887 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Number of bathrooms:  was created.
+17:01:36.906 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Terrace:  was created.
+17:01:36.915 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Floor area terrace:  was created.
+17:01:36.926 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Price per night:  was created.
+17:01:36.944 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Minimum nights to stay:  was created.
+17:01:36.954 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite WiFi:  was created.
+17:01:36.964 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Television:  was created.
+17:01:36.984 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Description: was created.
+17:01:37.155 [main] INFO  i.g.o.y.a.gui.ModifyApartmentGUI - The Shell was opened with success.
+17:01:37.221 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Enter readApartment method
+17:01:37.275 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - XML Files loaded with success
+17:01:37.279 [main] INFO  i.g.o.y.a.apartment.Apartment - the apartment has been created with success
+17:01:37.280 [main] INFO  i.g.o.y.a.apartment.Apartment - The description has been set to 
+17:01:37.280 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to 0
+17:01:37.280 [main] INFO  i.g.o.y.a.apartment.Apartment - terrace has been set to false
+17:01:37.280 [main] INFO  i.g.o.y.a.apartment.Apartment - The floor area of the terrace has been set to 0.0
+17:01:37.280 [main] INFO  i.g.o.y.a.apartment.Apartment - The wifi has been set to false
+17:01:37.281 [main] INFO  i.g.o.y.a.apartment.Apartment - The tele has been set to false
+17:01:37.281 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of sleepings has been set to 0
+17:01:37.281 [main] INFO  i.g.o.y.a.apartment.Apartment - The number of bathrooms has been set to 0
+17:01:37.281 [main] INFO  i.g.o.y.a.apartment.Apartment - The price per night has been set to 0.0
+17:01:37.281 [main] INFO  i.g.o.y.a.apartment.Apartment - The number minimum of night has been set to 0
+17:01:37.281 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Parameters inserted with success in the Apartment Object
+17:01:37.282 [main] INFO  i.g.o.y.a.r.ReadApartmentsXMLFormat - Leave readApartment method
+17:01:39.797 [main] INFO  i.g.o.y.a.gui.ModifyApartmentGUI - The screen was closed with success.
+>>>>>>> 4d721972771f9ddd58cf97a66ec4f0d34de83228

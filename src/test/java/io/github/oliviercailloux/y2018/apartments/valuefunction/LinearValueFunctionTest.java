@@ -39,5 +39,5 @@ class LinearValueFunctionTest {
 			LinearValueFunction e = new LinearValueFunction(10,10);
 		});
 	}
-	
+
 }
