@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 23:29:00.149 [main] INFO  i.g.o.y.a.gui.ModifyApartmentGUI - The logo has been loaded with success.
 23:29:00.398 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite of the header was created.
 23:29:00.411 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Title of the apartment*:  was created.
@@ -62,3 +63,23 @@
 23:29:47.625 [main] INFO  i.g.o.y.a.t.XMLProperties - Adding entry : tele : false
 23:29:47.653 [main] INFO  i.g.o.y.a.t.XMLProperties - Stream has been closed
 23:31:14.226 [main] INFO  i.g.o.y.a.gui.ModifyApartmentGUI - The screen was closed with success.
+=======
+15:20:28.444 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The GUI was initialized with success.
+15:20:28.451 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The logo has been loaded with success.
+15:20:28.910 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite of the header was created.
+15:20:28.929 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Title of the apartment*:  was created.
+15:20:28.934 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Address*:  was created.
+15:20:28.938 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Floor Area*: was created.
+15:20:28.942 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Number of bedrooms:  was created.
+15:20:28.948 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Sleeping capacity:  was created.
+15:20:28.958 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Number of bathrooms:  was created.
+15:20:28.986 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Terrace:  was created.
+15:20:29.006 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Floor area terrace:  was created.
+15:20:29.028 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Price per night:  was created.
+15:20:29.047 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Minimum nights to stay:  was created.
+15:20:29.057 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite WiFi:  was created.
+15:20:29.063 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Television:  was created.
+15:20:29.069 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Description: was created.
+15:20:29.198 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Shell was opened with success.
+15:20:41.025 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The screen was closed with success.
+>>>>>>> 5e61e5184223ba1fd31e3ff403fe1cc414e250f4
