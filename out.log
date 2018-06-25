@@ -15,3 +15,10 @@
 10:33:36.191 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Television:  was created.
 10:33:36.204 [main] INFO  i.g.o.y.a.gui.FormApartmentGUI - The Composite Description: was created.
 10:33:36.339 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The Shell was opened with success.
+10:35:05.618 [main] ERROR i.g.o.y.a.gui.FormApartmentGUI - The argument set is not valid For input string: "a"
+10:35:05.805 [main] ERROR i.g.o.y.a.gui.FormApartmentGUI - The argument set is not valid For input string: "de"
+10:35:05.911 [main] ERROR i.g.o.y.a.gui.FormApartmentGUI - The argument set is not valid For input string: "a"
+10:35:06.521 [main] ERROR i.g.o.y.a.gui.FormApartmentGUI - The argument set is not valid For input string: "a"
+10:35:06.743 [main] ERROR i.g.o.y.a.gui.FormApartmentGUI - The argument set is not valid For input string: "d"
+10:35:06.978 [main] ERROR i.g.o.y.a.gui.FormApartmentGUI - The argument set is not valid For input string: "da"
+10:35:08.982 [main] INFO  i.g.o.y.a.gui.CreateApartmentGUI - The screen was closed with success.
