@@ -238,9 +238,9 @@ public class FormApartmentGUI {
 
 		GridLayout f = new GridLayout(2, false);
 		c.setLayout(f);
-		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		GridData a = new GridData(SWT.FILL, SWT.NONE, true, false);
 		a.minimumWidth = SWT.FILL;
-		a.horizontalAlignment = SWT.CENTER;
+		a.horizontalAlignment = SWT.NONE;
 		a.widthHint = 200;
 		Label lb = new Label(c, SWT.FILL);
 		lb.setText(label);
@@ -325,9 +325,9 @@ public class FormApartmentGUI {
 		Composite c = new Composite(shell, SWT.PUSH);
 		GridLayout f = new GridLayout(2, false);
 		c.setLayout(f);
-		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		GridData a = new GridData(SWT.FILL, SWT.NONE, true, false);
 		a.minimumWidth = SWT.FILL;
-		a.horizontalAlignment = SWT.CENTER;
+		a.horizontalAlignment = SWT.NONE;
 		a.widthHint = 200;
 		Label lb = new Label(c, SWT.FILL);
 		lb.setText(label);
@@ -364,14 +364,14 @@ public class FormApartmentGUI {
 	 * Initializes the top title of the GUI instance.
 	 */
 	protected void createPageTitle() {
-		Composite compoForTitle = new Composite(shell, SWT.CENTER);
+		Composite compoForTitle = new Composite(shell, SWT.NONE);
 		GridLayout gl = new GridLayout(1, true);
 		compoForTitle.setLayout(gl);
-		Label titleLb = new Label(compoForTitle, SWT.FILL | SWT.CENTER);
+		Label titleLb = new Label(compoForTitle, SWT.FILL | SWT.NONE);
 		titleLb.setText(titlePanel);
-		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		GridData a = new GridData(SWT.FILL, SWT.NONE, true, false);
 		a.minimumWidth = SWT.FILL;
-		a.horizontalAlignment = SWT.CENTER;
+		a.horizontalAlignment = SWT.NONE;
 		a.widthHint = 200;
 		titleLb.setLayoutData(a);
 		LOGGER.info("The Composite of the header was created.");
@@ -382,15 +382,15 @@ public class FormApartmentGUI {
 	 * @return a Composite Object of the information window.
 	 */
 	private Composite createCompositeInformation() {
-		Composite compo = new Composite(shell, SWT.CENTER);
+		Composite compo = new Composite(shell, SWT.NONE);
 
 		GridLayout f = new GridLayout(1, false);
 		compo.setLayout(f);
 		compo.setSize(200, 200);
 		compo.setBackground(okColor);
-		GridData a = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		GridData a = new GridData(SWT.FILL, SWT.NONE, true, false);
 		a.minimumWidth = SWT.FILL;
-		a.horizontalAlignment = SWT.CENTER;
+		a.horizontalAlignment = SWT.NONE;
 		a.widthHint = 300;
 		Label lb = new Label(compo, SWT.FILL);
 		lb.setText("Everything is loaded !");
