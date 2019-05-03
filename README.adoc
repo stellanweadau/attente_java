@@ -1,0 +1,7 @@
+= Apartments
+
+Build status : image:https://travis-ci.org/Deeplygends/Apartments.svg?branch=master["Build Status", link="https://travis-ci.org/Deeplygends/Apartments"]
+
+A Java project developed by students during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
+
+The code is hereby published under the MIT License, with their permission.
