@@ -97,6 +97,18 @@
 			</exclusions>
 		</dependency>
 
+		<dependency>
+			<groupId>org.decision-deck</groupId>
+			<artifactId>xmcda</artifactId>
+			<version>0.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.oliviercailloux.jmcda</groupId>
+			<artifactId>xmcda2-ws</artifactId>
+			<version>0.5.4</version>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
@@ -118,7 +130,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 
 
 </project>
