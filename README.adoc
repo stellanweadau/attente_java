@@ -25,6 +25,13 @@ Après avoir pris connaissance des remarques sur le départ du projet et avoir c
 Cela permettra de tester les fonctionnalités liées à l'utilité de manière plus impartiale.
 ....
 
+Groupes et Pull Requests associés :
+
+Amir : PR #9
+Zeina et Alexis : PR #8 #15
+Farouk et Aissatou : PR #17
+Sandra et Laurence : PR #6 #14
+
 === Livraisons 3&4 ===
 
 Ebauche de ce qu'on ambitionne de faire lors des itérations suivantes :
