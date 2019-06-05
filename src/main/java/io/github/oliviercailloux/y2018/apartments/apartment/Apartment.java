@@ -13,13 +13,13 @@ public class Apartment extends Object {
 	private static Logger LOGGER = LoggerFactory.getLogger(Apartment.class);
 
 	/**
-	 * @param floorArea a real number it represents the floor area of the apartment in square meters.
+	 * @param floorArea is a real number it represents the floor area of the apartment in square meters.
 	 * Has to be initialized, if not, the apartment can't be created without a floor area.
 	 */
 	private double floorArea; 
 
 	/**
-	 * @param address a String of characters that gives the full location of the apartment (number, street name, ZIP code, city, country), has to initialized
+	 * @param address is a String of characters that gives the full location of the apartment (number, street name, ZIP code, city, country), has to initialized
 	 * Has to be initialized, if not, the apartment can't be created without an address.
 	 */
 	private String address; 
@@ -37,13 +37,13 @@ public class Apartment extends Object {
 	private int nbSleeping; 
 
 	/**
-	 * @param nbBathrooms an integer superior or equal to zero which corresponds to the number of bathrooms.
+	 * @param nbBathrooms is an integer superior or equal to zero which corresponds to the number of bathrooms.
 	 * If not initialized, the parameter will have a default value set of <code>0</code> which mean the apartment doesn't have any bathroom.
 	 */
 	private int nbBathrooms;
 
 	/**
-	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace.
+	 * @param terrace is a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace.
 	 * If not initialized, the parameter will have a default value set of <code>false</code> which mean the apartment doesn't have a terrace.
 	 */
 	private boolean terrace;
@@ -117,6 +117,40 @@ public class Apartment extends Object {
 		LOGGER.info("the apartment has been created with success");
 	}
 
+	
+	/**
+	 * @param floorArea is a real number superior or equal to zero, it represents the floor area of the apartment in square meters
+	 * @param address is a string of characters that gives the full location of the apartment
+	 * @param title is a string of characters that represents the title of the announcement
+	 * @param nbBedrooms is an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment
+	 * @param nbSleeping is an integer superior or equal to zero corresponding of the accommodation capacity of the apartment (nb of people that can sleep in the apartment)
+	 * @param nbBathrooms is an integer superior or equal to zero which corresponds to the number of bathrooms
+	 * @param floorAreaTerrace is a real number superior or equal to zero it represents the floor area of the terrace of the apartment if there's any
+	 * @param pricePerNight is a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros
+	 * @param nbMinNight is an integer superior or equal to zero, indicates how long in nights the customer have to stay
+	 * @param terrace is a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace
+	 */
+	public Apartment (double floorArea, String address, String title, int nbBedrooms, int nbSleeping, int nbBathrooms, double floorAreaTerrace, double pricePerNight, int nbMinNight, boolean terrace) {	
+		this.floorArea = floorArea;
+		this.address = address;
+		this.nbBedrooms = nbBedrooms ;
+		this.nbSleeping = nbSleeping ;
+		this.nbBathrooms = nbBathrooms;
+		this.terrace = terrace ;
+		this.floorAreaTerrace = floorAreaTerrace ;
+		this.description = "";
+		this.title = title;
+		this.wifi = false ;
+		this.pricePerNight = pricePerNight;
+		this.nbMinNight = nbMinNight ;
+		this.tele = false ;
+		checkArgument(floorArea>=0,"The floor area of the apartment cannot be negative");
+		checkArgument(address !="","The address of the apartment must be specified");
+		checkArgument(title !="","The title of the apartment must be specified");
+		LOGGER.info("the apartment has been created with success");
+	}
+	
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Apartment))
