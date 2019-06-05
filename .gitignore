@@ -6,3 +6,5 @@ Thumbs.db
 *.txt
 .settings
 GUITest
+out.log
+/src/test/resources/
