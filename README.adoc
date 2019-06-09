@@ -39,7 +39,7 @@ Sandra et Laurence : PR #6 #14
 
 1^er^ Duo : Développer un GUI qui affiche d'une liste d'appartements à l'utilisateur
 
-2^eme^ Duo : Ajoute des photos comme attributs d'un appartement } corriger la fonction ReadApartmentXML
+2^eme^ Duo : Ajoute des photos comme attributs d'un appartement + corriger la fonction ReadApartmentXML
 
 3^eme^ Duo : Tester la classe ApartmentValueFunction et ses méthodes, y inclure les nouvelles méthodes (function d'utilité liénaire par palier) + Ajouter l'utilité de localisation par rapport aux services (gare, supermarché etc ...)
 
