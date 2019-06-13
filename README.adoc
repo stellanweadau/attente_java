@@ -35,7 +35,17 @@ Farouk et Aissatou : PR #21 (anciennement #17)
 
 Sandra et Laurence : PR #6 #14
 
-=== Livraisons 3&4 ===
+=== Livraison 3 ===
+
+1^er^ Duo : Développer un GUI qui affiche d'une liste d'appartements à l'utilisateur + tri des appartement en fonction de l'utilité de l'utilisateur
+
+2^eme^ Duo : Ajoute des photos comme attributs d'un appartement + affichage des photos
+
+3^eme^ Duo : Tester la classe ApartmentValueFunction et ses méthodes, y inclure les nouvelles méthodes (function d'utilité liénaire par palier) & Ajouter l'utilité de localisation par rapport aux services (gare, supermarché etc ...)
+
+Une méthode permettant à l'utilisateur de définir son utilité existe déjà.
+
+=== Livraison 4 ===
 
 Ebauche de ce qu'on ambitionne de faire lors des itérations suivantes :
 
