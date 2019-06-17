@@ -73,12 +73,12 @@ public class XMLProperties{
 		LOGGER.info("Begining of random generation of XML files...");
 		
 		ArrayList<String> titles = new ArrayList<String>(
-							Arrays.asList( "Maison", "logement", "appartement"," "," "," "," "," "," "," "));
+							Arrays.asList( "Location Apartement 1223", "Location Apartement 2434", "Location Apartement 4353","Location Apartement 3423","Location Apartement 4234","Location Apartement 3424","Location Apartement 3477","Location Apartement 376","Location Apartement 678","Location Apartement 757"));
 		ArrayList<String> address = new ArrayList<String>(
 							Arrays.asList( "2 avenue Pasteur 94160 Saint-mandé", "8 avenue de Paris 94160 Saint-mandé", "5 avenue des Champs-Elysées 75016" , "13 rue des Arts 75001","10 rue de Dauphine 75016","33 rue de Tolbiac 75013","33 rue de Tolbiac 75013"," "," ", " "));
 		
 		for (int i = 1; i < 10 ; i ++) {
-			
+			int n = (int) (Math.random()*10);
 			 XMLProperties j = new XMLProperties();
 			 double floorArea = Math.random()*300;
 			 boolean terrace = (Math.random()*2 >= 0) ? true : false;
@@ -91,7 +91,7 @@ public class XMLProperties{
 			 int nbSleeping = (int) (Math.random()*5);
 			 int nbBathrooms = (int) (Math.random()*10);
 			 
-			 Apartment a = new Apartment(floorArea, address.get(i), titles.get(i), nbBedrooms, nbSleeping, nbBathrooms, floorAreaTerrace, pricePerNight, nbMinNight, terrace);
+			 Apartment a = new Apartment(floorArea, address.get(n), titles.get(n), nbBedrooms, nbSleeping, nbBathrooms, floorAreaTerrace, pricePerNight, nbMinNight, terrace);
 			 File f = new File("src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/Apartment" + i + ".xml");
 			 try(FileOutputStream s = new FileOutputStream(f.getAbsolutePath()))
 			 {
