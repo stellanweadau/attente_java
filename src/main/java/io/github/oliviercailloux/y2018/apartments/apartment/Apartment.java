@@ -25,7 +25,7 @@ public class Apartment extends Object {
 	private String address; 
 
 	/**
-	 * @param nbBedrooms is an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment.
+	 * @param nbBedrooms an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment.
 	 * if not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have any bedroom.
 	 */
 	private int nbBedrooms;
@@ -43,7 +43,7 @@ public class Apartment extends Object {
 	private int nbBathrooms;
 
 	/**
-	 * @param terrace is a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace.
+	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace.
 	 * If not initialized, the parameter will have a default value set of <code>false</code> which mean the apartment doesn't have a terrace.
 	 */
 	private boolean terrace;
@@ -93,8 +93,8 @@ public class Apartment extends Object {
 
 
 	/**
-	 * @param floorArea is a real number superior or equal to zero, it represents the floor area of the apartment in square meters
-	 * @param address is a string of characters that gives the full location of the apartment
+	 * @param floorArea a real number superior or equal to zero, it represents the floor area of the apartment in square meters
+	 * @param address a string of characters that gives the full location of the apartment
 	 * @param title a string of characters that represents the title of the announcement
 	 */
 	public Apartment (double floorArea, String address, String title) {	
@@ -119,16 +119,16 @@ public class Apartment extends Object {
 
 	
 	/**
-	 * @param floorArea is a real number superior or equal to zero, it represents the floor area of the apartment in square meters
-	 * @param address is a string of characters that gives the full location of the apartment
-	 * @param title is a string of characters that represents the title of the announcement
-	 * @param nbBedrooms is an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment
-	 * @param nbSleeping is an integer superior or equal to zero corresponding of the accommodation capacity of the apartment (nb of people that can sleep in the apartment)
-	 * @param nbBathrooms is an integer superior or equal to zero which corresponds to the number of bathrooms
-	 * @param floorAreaTerrace is a real number superior or equal to zero it represents the floor area of the terrace of the apartment if there's any
-	 * @param pricePerNight is a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros
-	 * @param nbMinNight is an integer superior or equal to zero, indicates how long in nights the customer have to stay
-	 * @param terrace is a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace
+	 * @param floorArea a real number superior or equal to zero, it represents the floor area of the apartment in square meters
+	 * @param address a string of characters that gives the full location of the apartment
+	 * @param title a string of characters that represents the title of the announcement
+	 * @param nbBedrooms an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment
+	 * @param nbSleeping an integer superior or equal to zero corresponding of the accommodation capacity of the apartment (nb of people that can sleep in the apartment)
+	 * @param nbBathrooms an integer superior or equal to zero which corresponds to the number of bathrooms
+	 * @param floorAreaTerrace a real number superior or equal to zero it represents the floor area of the terrace of the apartment if there's any
+	 * @param pricePerNight a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros
+	 * @param nbMinNight an integer superior or equal to zero, indicates how long in nights the customer have to stay
+	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace
 	 */
 	public Apartment (double floorArea, String address, String title, int nbBedrooms, int nbSleeping, int nbBathrooms, double floorAreaTerrace, double pricePerNight, int nbMinNight, boolean terrace) {	
 		this.floorArea = floorArea;
