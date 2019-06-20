@@ -154,7 +154,7 @@ public class LayoutApartmentGUI {
 			}
 		});
 
-		shell.setSize(1000, 550);
+		shell.setSize(1500, 550);
 		shell.open();
 		LOGGER.info("The Shell was opened with success.");
 
