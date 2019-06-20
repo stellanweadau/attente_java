@@ -54,7 +54,6 @@ public class XMLProperties {
 
 		xmlFile.close();
 		LOGGER.info("Stream has been closed");
-//			}
 
 	}
 
@@ -64,7 +63,7 @@ public class XMLProperties {
 	 * @throws IOException            Generates an object representing random
 	 *                                apartments
 	 */
-	public static Apartment generateRandomXML() throws DOMException, IllegalAccessException, IOException {
+	public static Apartment generateRandom() {
 
 		LOGGER.info("Begining of random generation of an Apartment");
 
@@ -114,14 +113,8 @@ public class XMLProperties {
 	 * This is the main function
 	 * 
 	 * @param args
-	 * @throws IllegalAccessException
-	 * @throws IllegalArgumentException
-	 * @throws DOMException
-	 * @throws IOException
 	 */
-	public static void main(String[] args)
-			throws DOMException, IllegalArgumentException, IllegalAccessException, IOException {
-		generateRandomXML();
-
+	public static void main(String[] args) {
+		generateRandom();
 	}
 }
