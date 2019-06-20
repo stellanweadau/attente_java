@@ -10,6 +10,10 @@ import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.DOMException;
+
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
 public class XMLProperties {
@@ -60,18 +64,18 @@ public class XMLProperties {
 	/**
 	 * @throws DOMException
 	 * @throws IllegalAccessException
-	 * @throws IOException            Generates XML files representing random
+	 * @throws IOException            Generates an object representing random
 	 *                                apartments
 	 */
 	public static Apartment generateRandomXML() throws DOMException, IllegalAccessException, IOException {
 
-		LOGGER.info("Begining of random generation of XML files...");
+		LOGGER.info("Begining of random generation of an Apartment");
 
-		ArrayList<String> titles = new ArrayList<String>(Arrays.asList("Location Apartement 1223",
+		final ImmutableSet<String> titles = new ImmutableSet(Arrays.asList("Location Apartement 1223",
 				"Location Apartement 2434", "Location Apartement 4353", "Location Apartement 3423",
 				"Location Apartement 4234", "Location Apartement 3424", "Location Apartement 3477",
 				"Location Apartement 376", "Location Apartement 678", "Location Apartement 757"));
-		ArrayList<String> address = new ArrayList<String>(Arrays.asList("2 avenue Pasteur 94160 Saint-mandé",
+		final ImmutableList<String> address = new ImmutableList<String>(Arrays.asList("2 avenue Pasteur 94160 Saint-mandé",
 				"8 avenue de Paris 94160 Saint-mandé", "5 avenue des Champs-Elysées 75016", "13 rue des Arts 75001",
 				"10 rue de Dauphine 75016", "33 rue de Tolbiac 75013", "33 rue de Tolbiac 75013", " ", " ", " "));
 

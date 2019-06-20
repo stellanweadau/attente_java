@@ -13,79 +13,79 @@ public class Apartment extends Object {
 	private static Logger LOGGER = LoggerFactory.getLogger(Apartment.class);
 
 	/**
-	 * @param floorArea is a real number it represents the floor area of the apartment in square meters.
+	 * @param a real number it represents the floor area of the apartment in square meters.
 	 * Has to be initialized, if not, the apartment can't be created without a floor area.
 	 */
 	private double floorArea; 
 
 	/**
-	 * @param address is a String of characters that gives the full location of the apartment (number, street name, ZIP code, city, country), has to initialized
+	 * @param a String of characters that gives the full location of the apartment (number, street name, ZIP code, city, country), has to initialized
 	 * Has to be initialized, if not, the apartment can't be created without an address.
 	 */
 	private String address; 
 
 	/**
-	 * @param nbBedrooms an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment.
+	 * @param an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment.
 	 * if not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have any bedroom.
 	 */
 	private int nbBedrooms;
 
 	/**
-	 * @param nbSleepings is an integer superior or equal to zero corresponding of the accommodation capacity of the apartment (nb of people that can sleep in the apartment).
+	 * @param an integer superior or equal to zero corresponding of the accommodation capacity of the apartment (nb of people that can sleep in the apartment).
 	 * If not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have any place to sleep.
 	 */
 	private int nbSleeping; 
 
 	/**
-	 * @param nbBathrooms is an integer superior or equal to zero which corresponds to the number of bathrooms.
+	 * @param an integer superior or equal to zero which corresponds to the number of bathrooms.
 	 * If not initialized, the parameter will have a default value set of <code>0</code> which mean the apartment doesn't have any bathroom.
 	 */
 	private int nbBathrooms;
 
 	/**
-	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace.
+	 * @param a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace.
 	 * If not initialized, the parameter will have a default value set of <code>false</code> which mean the apartment doesn't have a terrace.
 	 */
 	private boolean terrace;
 
 	/**
-	 * @param floorAreaTerrace is a real number superior or equal to zero it represents the floor area of the terrace of the apartment if there's any.
+	 * @param a real number superior or equal to zero it represents the floor area of the terrace of the apartment if there's any.
 	 * If not initialized, the parameter will have a default value set of <code>0</code> which mean the apartment have a floor area of terrace of zero, whether it has or not a terrace.
 	 */
 	private double floorAreaTerrace; 
 
 	/**
-	 * @param description is a string of characters that describe the apartment and the offer (its accommodations).
+	 * @param a string of characters that describe the apartment and the offer (its accommodations).
 	 * If not initialized, the parameter will have a default value set of <code>""</code> which mean the announcement doesn't have a description.
 	 */
 	private String description; 
 
 	/**
-	 * @param title is a string of characters that represents the title of the announcement.
+	 * @param a string of characters that represents the title of the announcement.
 	 * It has to be initialized, if not, the apartment can't be created without a <code>title</code>.
 	 */
 	private String title;
 
 	/**
-	 * @param wifi is a boolean (true/false) which indicates if there is wireless connection to Internet or not can be interpreted as hasWifi. 
+	 * @param a boolean (true/false) which indicates if there is wireless connection to Internet or not can be interpreted as hasWifi. 
 	 * If not initialized, the parameter will have a default value of <code>false</code> which mean the apartment doesn't have wifi.
 	 */
 	private boolean wifi; 
 
 	/**
-	 * @param pricePerNight is a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros. 
+	 * @param a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros. 
 	 * If not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have a price per night.
 	 */
 	private double pricePerNight; 
 
 	/**
-	 * @param nbMinNight is an integer superior or equal to zero, indicates how long in nights the customer have to stay. 
+	 * @param an integer superior or equal to zero, indicates how long in nights the customer have to stay. 
 	 * If not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have a minimum of night to stay-in.
 	 */
 	private int nbMinNight; 
 
 	/**
-	 * @param tele is a boolean (true/false) which indicates if there's a television or not can be interpreted as hasTelevision. 
+	 * @param a boolean (true/false) which indicates if there's a television or not can be interpreted as hasTelevision. 
 	 * If not initialized, the parameter will have a default set value of <code>false</code> which mean the apartment doesn't have a tele.
 	 */
 	private boolean tele; 
