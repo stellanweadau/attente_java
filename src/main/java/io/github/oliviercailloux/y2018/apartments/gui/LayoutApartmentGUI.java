@@ -2,12 +2,15 @@ package io.github.oliviercailloux.y2018.apartments.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.eclipse.swt.*;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.*;
 import org.w3c.dom.DOMException;
+
+import com.google.common.collect.Ordering;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
@@ -56,7 +59,6 @@ public class LayoutApartmentGUI {
 			Apartment a = XMLProperties.generateRandomXML();
 			appart.add(a);
 		}
-		
 		appart.sort(
 				(Apartment c, Apartment d) -> (int) ((avf.getSubjectiveValue(c) - avf.getSubjectiveValue(d)) * 100000));
 
@@ -75,10 +77,9 @@ public class LayoutApartmentGUI {
 
 		Group appartInfo = new Group(shell, SWT.NULL);
 		appartInfo.setText("Détail dur l'appartement sélectionné :");
-		
-			// on refait un grisd coupé eb 2 pour aligner label et contenu.
-			// on pourrai peut etre mettre en read - a tester pour voir si ca se rafraichi
-			// quand meme
+// on refait un grisd coupé eb 2 pour aligner label et contenu.
+// on pourrai peut etre mettre en read - a tester pour voir si ca se rafraichi
+// quand meme
 
 		gridLayout = new GridLayout();
 		gridLayout.numColumns = 2;
@@ -115,7 +116,7 @@ public class LayoutApartmentGUI {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				int[] selectedItems = list.getSelectionIndices();
-				// String outString = "";
+// String outString = "";
 				for (int loopIndex = 0; loopIndex < selectedItems.length; loopIndex++) {
 					adresse.setText(appart.get(list.getSelectionIndex()).getAddress());
 					surface.setText(" " + appart.get(list.getSelectionIndex()).getFloorArea());
@@ -136,9 +137,8 @@ public class LayoutApartmentGUI {
 				display.sleep();
 		}
 
-		// desallocation manuelle ( fichier gourmand - suppression au cas où garbadge
-		// collector ne desaloue pas )
-		
+// desallocation manuelle ( fichier gourmand - suppression au cas où garbadge
+// collector ne desaloue pas )
 		if (photoCanevas != null) {
 			photoCanevas.dispose();
 		}
