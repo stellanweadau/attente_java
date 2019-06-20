@@ -11,6 +11,8 @@ import org.w3c.dom.DOMException;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
+import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
+import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunction;
 
 import org.eclipse.swt.layout.*;
 
@@ -19,15 +21,14 @@ public class LayoutApartmentGUI {
 	static Display display;
 	static Shell shell;
 
-	public static void main(String[] args) throws DOMException, IllegalAccessException, IOException {
-
+	public static void affiche(ApartmentValueFunction avf) throws DOMException, IllegalAccessException, IOException {
 		Label adresse;
 		Label surface;
 		Label prix;
 		Label nbrChambres;
 		Canvas photoCanevas;
 
-		// definition d'un display
+// definition d'un display
 		display = new Display();
 		shell = new Shell(display);
 		shell.setText("Sélection d'un appartement");
@@ -45,7 +46,6 @@ public class LayoutApartmentGUI {
 
 		new Label(shell, SWT.NULL);
 
-
 		new Label(shell, SWT.NULL);
 
 		gridData = new GridData(GridData.FILL_BOTH);
@@ -56,11 +56,16 @@ public class LayoutApartmentGUI {
 			Apartment a = XMLProperties.generateRandomXML();
 			appart.add(a);
 		}
+		
+		appart.sort(
+				(Apartment c, Apartment d) -> (int) ((avf.getSubjectiveValue(c) - avf.getSubjectiveValue(d)) * 100000));
+
 		final List list = new List(shell, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
 
 		for (Apartment a : appart) {
 			System.out.println("Appart : " + a);
 			list.add("Titre: " + a.getTitle() + "\t" + " Adresse : " + a.getAddress());
+			System.out.println(avf.getSubjectiveValue(a));
 		}
 
 		gridData = new GridData(GridData.HORIZONTAL_ALIGN_FILL | GridData.VERTICAL_ALIGN_FILL);
@@ -70,9 +75,10 @@ public class LayoutApartmentGUI {
 
 		Group appartInfo = new Group(shell, SWT.NULL);
 		appartInfo.setText("Détail dur l'appartement sélectionné :");
-		// on refait un grisd coupé eb 2 pour aligner label et contenu.
-		// on pourrai peut etre mettre en read - a tester pour voir si ca se rafraichi
-		// quand meme
+		
+			// on refait un grisd coupé eb 2 pour aligner label et contenu.
+			// on pourrai peut etre mettre en read - a tester pour voir si ca se rafraichi
+			// quand meme
 
 		gridLayout = new GridLayout();
 		gridLayout.numColumns = 2;
@@ -132,9 +138,19 @@ public class LayoutApartmentGUI {
 
 		// desallocation manuelle ( fichier gourmand - suppression au cas où garbadge
 		// collector ne desaloue pas )
+		
 		if (photoCanevas != null) {
 			photoCanevas.dispose();
 		}
+	}
+
+	public static void main(String[] args) throws DOMException, IllegalAccessException, IOException {
+
+		ApartmentValueFunction avf = new ApartmentValueFunction();
+		avf.setFloorAreaValueFunction(new LinearValueFunction(0, 300));
+
+		affiche(avf);
+
 	}
 
 }
