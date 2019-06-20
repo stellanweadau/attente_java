@@ -90,7 +90,10 @@ public class Apartment extends Object {
 	 */
 	private boolean tele; 
 
-
+	/**
+	 * Constructor by default to be used by Apartment.Builder
+	 */
+	private Apartment() {}
 
 	/**
 	 * @param floorArea a real number superior or equal to zero, it represents the floor area of the apartment in square meters
@@ -431,6 +434,76 @@ public class Apartment extends Object {
 	@Override
 	public int hashCode() {
 		return Objects.hash(address, floorArea, nbBedrooms, nbSleeping, nbBathrooms, terrace, floorAreaTerrace, description, title, wifi, pricePerNight, nbMinNight, tele);
+	}
+	
+	/**
+	 * Code from :
+	 * https://codereview.stackexchange.com/questions/127391/simple-builder-pattern-implementation-for-building-immutable-objects/127509#127509
+	 */
+	public static class Builder {
+		
+		private Apartment apartmentToBuild;
+		
+		Builder(){
+			apartmentToBuild = new Apartment();
+		}
+		
+		Apartment build() {
+			Apartment buildApartment = apartmentToBuild;
+			apartmentToBuild = new Apartment();
+			
+			return buildApartment;
+		}	
+			
+		public Builder setFloorArea(double floorArea) {
+			this.apartmentToBuild.floorArea = floorArea;
+			return this;
+		}
+		
+		public Builder setAddress(String address) {
+			this.apartmentToBuild.address = address;
+			return this;
+		}
+		
+		public Builder setTitle(String title) {
+			this.apartmentToBuild.title = title;
+			return this;
+		}
+		
+		public Builder setNbBedrooms(int nbBedrooms) {
+			this.apartmentToBuild.nbBedrooms = nbBedrooms;
+			return this;
+		}
+		
+		public Builder setNbSleeping(int nbSleeping) {
+			this.apartmentToBuild.nbSleeping = nbSleeping;
+			return this;
+		}
+		
+		public Builder setNbBathrooms(int nbBathrooms) {
+			this.apartmentToBuild.nbBathrooms = nbBathrooms;
+			return this;
+		}
+		
+		public Builder setFloorAreaTerrace(double floorAreaTerrace) {
+			this.apartmentToBuild.floorAreaTerrace = floorAreaTerrace;
+			return this;
+		}
+		
+		public Builder setPricePerNight(double pricePerNight) {
+			this.apartmentToBuild.pricePerNight = pricePerNight;
+			return this;
+		}
+		
+		public Builder setNbMinNight(int nbMinNight) {
+			this.apartmentToBuild.nbMinNight = nbMinNight;
+			return this;
+		}
+		
+		public Builder setTerrace(boolean terrace) {
+			this.apartmentToBuild.terrace = terrace;
+			return this;
+		}
 	}
 
 }
