@@ -77,7 +77,6 @@ public class XMLProperties{
 		
 		int n = (int) (Math.random()*10);
 
-		XMLProperties j = new XMLProperties();
 		double floorArea = Math.random()*300;
 		boolean terrace = (Math.random()*2 >= 0) ? true : false;
 		double floorAreaTerrace = 0;
