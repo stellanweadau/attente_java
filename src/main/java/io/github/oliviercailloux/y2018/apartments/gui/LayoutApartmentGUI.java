@@ -2,6 +2,7 @@ package io.github.oliviercailloux.y2018.apartments.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.eclipse.swt.*;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -9,8 +10,12 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.*;
 import org.w3c.dom.DOMException;
 
+import com.google.common.collect.Ordering;
+
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
+import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
+import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunction;
 
 import org.eclipse.swt.layout.*;
 
@@ -19,8 +24,9 @@ public class LayoutApartmentGUI {
 	static Display display;
 	static Shell shell;
 
-	public static void main(String[] args) throws DOMException, IllegalAccessException, IOException {
+	
 
+		public static void affiche(ApartmentValueFunction avf) throws DOMException, IllegalAccessException, IOException  {
 		Label adresse;
 		Label surface;
 		Label prix;
@@ -56,13 +62,16 @@ public class LayoutApartmentGUI {
 			Apartment a = XMLProperties.generateRandomXML();
 			appart.add(a);
 		}
+		appart.sort((Apartment c, Apartment d) -> (int)((avf.getSubjectiveValue(c) - avf.getSubjectiveValue(d))*100000));
+	
 		final List list = new List(shell, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
 
 		for (Apartment a : appart) {
 			System.out.println("Appart : " + a);
 			list.add("Titre: " + a.getTitle() + "\t" + " Adresse : " + a.getAddress());
+			System.out.println(avf.getSubjectiveValue(a));
 		}
-
+		
 		gridData = new GridData(GridData.HORIZONTAL_ALIGN_FILL | GridData.VERTICAL_ALIGN_FILL);
 		gridData.verticalSpan = 4;
 		gridData.heightHint = 400;
@@ -136,5 +145,15 @@ public class LayoutApartmentGUI {
 			photoCanevas.dispose();
 		}
 	}
+		
+		public static void main(String[] args) throws DOMException, IllegalAccessException, IOException {
+			
+			ApartmentValueFunction avf = new ApartmentValueFunction();
+			avf.setFloorAreaValueFunction(new LinearValueFunction(0,300));
+			
+			affiche(avf);
+			
+		}
+		
 
 }
