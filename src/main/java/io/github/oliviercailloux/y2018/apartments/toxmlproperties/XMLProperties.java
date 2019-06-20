@@ -3,8 +3,6 @@ package io.github.oliviercailloux.y2018.apartments.toxmlproperties;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -12,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.DOMException;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
@@ -71,13 +68,13 @@ public class XMLProperties {
 
 		LOGGER.info("Begining of random generation of an Apartment");
 
-		final ImmutableSet<String> titles = new ImmutableSet(Arrays.asList("Location Apartement 1223",
+		final ImmutableList<String> titles = ImmutableList.of("Location Apartement 1223",
 				"Location Apartement 2434", "Location Apartement 4353", "Location Apartement 3423",
 				"Location Apartement 4234", "Location Apartement 3424", "Location Apartement 3477",
-				"Location Apartement 376", "Location Apartement 678", "Location Apartement 757"));
-		final ImmutableList<String> address = new ImmutableList<String>(Arrays.asList("2 avenue Pasteur 94160 Saint-mandé",
+				"Location Apartement 376", "Location Apartement 678", "Location Apartement 757");
+		final ImmutableList<String> address = ImmutableList.of("2 avenue Pasteur 94160 Saint-mandé",
 				"8 avenue de Paris 94160 Saint-mandé", "5 avenue des Champs-Elysées 75016", "13 rue des Arts 75001",
-				"10 rue de Dauphine 75016", "33 rue de Tolbiac 75013", "33 rue de Tolbiac 75013", " ", " ", " "));
+				"10 rue de Dauphine 75016", "33 rue de Tolbiac 75013", "33 rue de Tolbiac 75013", " ", " ", " ");
 
 		int n = (int) (Math.random() * 10);
 
