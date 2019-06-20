@@ -45,15 +45,10 @@ public class LayoutApartmentGUI {
 
 		new Label(shell, SWT.NULL);
 
-//ruse pour gerer les alignements mais intenciations d'un objet pour rien :(
-//en attendant de trouver mieux
+
 		new Label(shell, SWT.NULL);
 
 		gridData = new GridData(GridData.FILL_BOTH);
-
-//gridData.widthHint = 800;
-//gridData.heightHint = 400;
-
 		gridData.verticalSpan = 3;
 
 		ArrayList<Apartment> appart = new ArrayList<Apartment>(10);
@@ -70,7 +65,7 @@ public class LayoutApartmentGUI {
 
 		gridData = new GridData(GridData.HORIZONTAL_ALIGN_FILL | GridData.VERTICAL_ALIGN_FILL);
 		gridData.verticalSpan = 4;
-		gridData.heightHint = 350;
+		gridData.heightHint = 400;
 		list.setLayoutData(gridData);
 
 		Group appartInfo = new Group(shell, SWT.NULL);
@@ -118,6 +113,8 @@ public class LayoutApartmentGUI {
 				for (int loopIndex = 0; loopIndex < selectedItems.length; loopIndex++) {
 					adresse.setText(appart.get(list.getSelectionIndex()).getAddress());
 					surface.setText(" " + appart.get(list.getSelectionIndex()).getFloorArea());
+					prix.setText(" " + appart.get(list.getSelectionIndex()).getPricePerNight());
+					nbrChambres.setText(" " + appart.get(list.getSelectionIndex()).getNbBedrooms());
 				}
 
 			}

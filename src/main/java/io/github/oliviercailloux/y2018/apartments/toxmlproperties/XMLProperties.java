@@ -1,7 +1,6 @@
 package io.github.oliviercailloux.y2018.apartments.toxmlproperties;
 
-import java.io.File;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
@@ -73,9 +72,9 @@ public class XMLProperties{
 		LOGGER.info("Begining of random generation of XML files...");
 		
 		ArrayList<String> titles = new ArrayList<String>(
-							Arrays.asList( "Location Apartement 1223", "Location Apartement 2434", "Location Apartement 4353","Location Apartement 3423","Location Apartement 4234","Location Apartement 3424","Location Apartement 3477","Location Apartement 376","Location Apartement 678","Location Apartement 757"));
+							Arrays.asList( "Location Apartement n°223", "Location Apartement n°434", "Location Apartement n°353","Location Apartement n°423","Location Apartement n°234","Location Apartement n°424","Location Apartement n°477","Location Apartement n°376","Location Apartement n°678","Location Apartement n°757"));
 		ArrayList<String> address = new ArrayList<String>(
-							Arrays.asList( "2 avenue Pasteur 94160 Saint-mandé", "8 avenue de Paris 94160 Saint-mandé", "5 avenue des Champs-Elysées 75016" , "13 rue des Arts 75001","10 rue de Dauphine 75016","33 rue de Tolbiac 75013","33 rue de Tolbiac 75013"," "," ", " "));
+							Arrays.asList( "2 avenue Pasteur 94160 Saint-mandé", "8 avenue de Paris 94160 Saint-mandé", "5 avenue des Champs-Elysées 75016" , "13 rue des Arts 75001","10 rue de Dauphine 75016","33 rue de Tolbiac 75013","3 rue de Tolbiac 75013","2 Avenue Wagram Champs Elysee","12 rue de la Paix Vincennes", "Champs Elysee"));
 		
 		int n = (int) (Math.random()*10);
 
