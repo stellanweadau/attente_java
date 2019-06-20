@@ -444,11 +444,11 @@ public class Apartment extends Object {
 		
 		private Apartment apartmentToBuild;
 		
-		Builder(){
+		public Builder(){
 			apartmentToBuild = new Apartment();
 		}
 		
-		Apartment build() {
+		public Apartment build() {
 			Apartment buildApartment = apartmentToBuild;
 			apartmentToBuild = new Apartment();
 			

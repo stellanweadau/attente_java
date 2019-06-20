@@ -68,10 +68,10 @@ public class XMLProperties {
 
 		LOGGER.info("Begining of random generation of an Apartment");
 
-		final ImmutableList<String> titles = ImmutableList.of("Location Apartement 1223",
-				"Location Apartement 2434", "Location Apartement 4353", "Location Apartement 3423",
-				"Location Apartement 4234", "Location Apartement 3424", "Location Apartement 3477",
-				"Location Apartement 376", "Location Apartement 678", "Location Apartement 757");
+		final ImmutableList<String> titles = ImmutableList.of("Location Apartement 1223", "Location Apartement 2434",
+				"Location Apartement 4353", "Location Apartement 3423", "Location Apartement 4234",
+				"Location Apartement 3424", "Location Apartement 3477", "Location Apartement 376",
+				"Location Apartement 678", "Location Apartement 757");
 		final ImmutableList<String> address = ImmutableList.of("2 avenue Pasteur 94160 Saint-mandé",
 				"8 avenue de Paris 94160 Saint-mandé", "5 avenue des Champs-Elysées 75016", "13 rue des Arts 75001",
 				"10 rue de Dauphine 75016", "33 rue de Tolbiac 75013", "33 rue de Tolbiac 75013", " ", " ", " ");
@@ -90,8 +90,20 @@ public class XMLProperties {
 		int nbSleeping = (int) (Math.random() * 5);
 		int nbBathrooms = (int) (Math.random() * 10);
 
-		Apartment a = new Apartment(floorArea, address.get(n), titles.get(n), nbBedrooms, nbSleeping, nbBathrooms,
-				floorAreaTerrace, pricePerNight, nbMinNight, terrace);
+		Apartment.Builder builder = new Apartment.Builder();
+
+		builder.setFloorArea(floorArea);
+		builder.setAddress(address.get(n));
+		builder.setTitle(titles.get(n));
+		builder.setNbBedrooms(nbBedrooms);
+		builder.setNbSleeping(nbSleeping);
+		builder.setNbBathrooms(nbBathrooms);
+		builder.setTerrace(terrace);
+		builder.setPricePerNight(pricePerNight);
+		builder.setNbMinNight(nbMinNight);
+		builder.setFloorAreaTerrace(floorAreaTerrace);
+
+		Apartment a = builder.build();
 
 		LOGGER.info("Generation done successfully");
 
