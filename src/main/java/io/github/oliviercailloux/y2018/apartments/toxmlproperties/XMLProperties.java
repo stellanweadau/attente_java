@@ -7,8 +7,6 @@ import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.DOMException;
-
 import com.google.common.collect.ImmutableList;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
@@ -58,9 +56,7 @@ public class XMLProperties {
 	}
 
 	/**
-	 * @throws DOMException
-	 * @throws IllegalAccessException
-	 * @throws IOException            Generates an object representing random
+	 * Generates an object representing random
 	 *                                apartments
 	 */
 	public static Apartment generateRandom() {

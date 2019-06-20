@@ -119,40 +119,6 @@ public class Apartment extends Object {
 		checkArgument(title !="","The title of the apartment must be specified");
 		LOGGER.info("the apartment has been created with success");
 	}
-
-	
-	/**
-	 * @param floorArea a real number superior or equal to zero, it represents the floor area of the apartment in square meters
-	 * @param address a string of characters that gives the full location of the apartment
-	 * @param title a string of characters that represents the title of the announcement
-	 * @param nbBedrooms an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment
-	 * @param nbSleeping an integer superior or equal to zero corresponding of the accommodation capacity of the apartment (nb of people that can sleep in the apartment)
-	 * @param nbBathrooms an integer superior or equal to zero which corresponds to the number of bathrooms
-	 * @param floorAreaTerrace a real number superior or equal to zero it represents the floor area of the terrace of the apartment if there's any
-	 * @param pricePerNight a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros
-	 * @param nbMinNight an integer superior or equal to zero, indicates how long in nights the customer have to stay
-	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace
-	 */
-	public Apartment (double floorArea, String address, String title, int nbBedrooms, int nbSleeping, int nbBathrooms, double floorAreaTerrace, double pricePerNight, int nbMinNight, boolean terrace) {	
-		this.floorArea = floorArea;
-		this.address = address;
-		this.nbBedrooms = nbBedrooms ;
-		this.nbSleeping = nbSleeping ;
-		this.nbBathrooms = nbBathrooms;
-		this.terrace = terrace ;
-		this.floorAreaTerrace = floorAreaTerrace ;
-		this.description = "";
-		this.title = title;
-		this.wifi = false ;
-		this.pricePerNight = pricePerNight;
-		this.nbMinNight = nbMinNight ;
-		this.tele = false ;
-		checkArgument(floorArea>=0,"The floor area of the apartment cannot be negative");
-		checkArgument(address !="","The address of the apartment must be specified");
-		checkArgument(title !="","The title of the apartment must be specified");
-		LOGGER.info("the apartment has been created with success");
-	}
-	
 	
 	@Override
 	public boolean equals(Object obj) {
