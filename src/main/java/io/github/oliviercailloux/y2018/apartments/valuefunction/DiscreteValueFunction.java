@@ -42,16 +42,22 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 	}
 
 	/**
-	 * Create a map that match the not null keys and the subjective values associated
-	 * @param subjective a Map<T, Double> where the key is of type <b>T</b> and the associated value, a double between 0 and 1, defines its subjective value. 
+	 * Create a map that match the not null keys and the subjective values
+	 * associated
+	 * 
+	 * @param subjective a Map<T, Double> where the key is of type <b>T</b> and the
+	 *                   associated value, a double between 0 and 1, defines its
+	 *                   subjective value.
 	 */
 	public DiscreteValueFunction(Map<T, Double> subjective) {
-		this.subjective = ImmutableMap.copyOf(subjective);
-		Stream<Entry<T, Double>> erreur  = subjective.entrySet().stream().filter((entry)-> entry.getValue() < 0 || entry.getValue() > 1);
-		Map<T,Double> mapError =  erreur.collect(Collectors.toMap((entry)->entry.getKey(), (entry) -> entry.getValue()));
-		if (! (mapError.isEmpty() ) ) {
-			throw new IllegalArgumentException("The subjective values must be between 0 and 1. The wrong values are : " + mapError );
 
+		Stream<Entry<T, Double>> erreur = subjective.entrySet().stream()
+				.filter((entry) -> entry.getValue() < 0 || entry.getValue() > 1);
+		Map<T, Double> mapError = erreur
+				.collect(Collectors.toMap((entry) -> entry.getKey(), (entry) -> entry.getValue()));
+		if (!(mapError.isEmpty())) {
+			throw new IllegalArgumentException(
+					"The subjective values must be between 0 and 1. The wrong values are : " + mapError);
 		}
 	}
 

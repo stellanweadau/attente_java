@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Generated file for the apartment Location Appartement Grenoble 158 746 </comment>
+<entry key="nbSleeping">0</entry>
+<entry key="nbMinNight">3</entry>
+<entry key="terrace">true</entry>
+<entry key="nbBedrooms">6</entry>
+<entry key="floorArea">37.0</entry>
+<entry key="pricePerNight">63.127235735530945</entry>
+<entry key="tele">false</entry>
+<entry key="wifi">false</entry>
+<entry key="title">Location Appartement Grenoble 158 746 </entry>
+<entry key="nbBathrooms">4</entry>
+<entry key="address">13 rue des Arts 75001</entry>
+<entry key="description"/>
+<entry key="floorAreaTerrace">82.4716520284665</entry>
+</properties>
