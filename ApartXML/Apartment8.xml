@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Generated file for the apartment Location Appartement Poitiers 91 345 </comment>
+<entry key="nbSleeping">4</entry>
+<entry key="nbMinNight">1</entry>
+<entry key="terrace">true</entry>
+<entry key="nbBedrooms">6</entry>
+<entry key="floorArea">59.0</entry>
+<entry key="pricePerNight">32.740341862559966</entry>
+<entry key="tele">false</entry>
+<entry key="wifi">false</entry>
+<entry key="title">Location Appartement Poitiers 91 345 </entry>
+<entry key="nbBathrooms">7</entry>
+<entry key="address"> </entry>
+<entry key="description"/>
+<entry key="floorAreaTerrace">51.65347591306077</entry>
+</properties>
