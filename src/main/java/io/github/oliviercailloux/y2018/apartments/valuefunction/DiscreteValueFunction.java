@@ -59,6 +59,8 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 			throw new IllegalArgumentException(
 					"The subjective values must be between 0 and 1. The wrong values are : " + mapError);
 		}
+		
+		this.subjective = ImmutableMap.copyOf(subjective);
 	}
 
 	@Override
