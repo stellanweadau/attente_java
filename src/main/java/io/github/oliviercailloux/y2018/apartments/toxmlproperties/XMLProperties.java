@@ -50,7 +50,6 @@ public class XMLProperties {
 		properties.remove("Logger");
 		properties.storeToXML(xmlFile, "Generated file for the apartment " + a.getTitle());
 
-		xmlFile.close();
 		LOGGER.info("Stream has been closed");
 
 	}
