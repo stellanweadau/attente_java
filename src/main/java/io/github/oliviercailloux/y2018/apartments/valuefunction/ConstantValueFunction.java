@@ -8,6 +8,16 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 public class ConstantValueFunction<T> implements PartialValueFunction<T> {
 
+	double subjectiveValue;
+	
+	ConstantValueFunction(){
+		this(0d);
+	}
+	
+	public ConstantValueFunction(double d) {
+		this.subjectiveValue = d;
+	}
+
 	@Override
 	public Double apply(T objectiveData) {
 		return getSubjectiveValue(objectiveData);
@@ -15,8 +25,7 @@ public class ConstantValueFunction<T> implements PartialValueFunction<T> {
 
 	@Override
 	public double getSubjectiveValue(T objectiveData) throws IllegalArgumentException {
-		return 0;
+		return this.subjectiveValue;
 	}
-
 
 }
