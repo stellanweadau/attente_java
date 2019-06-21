@@ -70,7 +70,8 @@ public class XMLProperties {
 				"8 avenue de Paris 94160 Saint-mandé", "5 avenue des Champs-Elysées 75016", "13 rue des Arts 75001",
 				"10 rue de Dauphine 75016", "33 rue de Tolbiac 75013", "33 rue de Tolbiac 75013", " ", " ", " ");
 
-		int n = (int) (Math.random() * 10);
+		int n = (int) (Math.random() * titles.size()-1);
+		int m = (int) (Math.random() * address.size()-1);
 
 		double floorArea = Math.random() * 300;
 		boolean terrace = (Math.random() * 2 >= 1) ? true : false;
@@ -87,7 +88,7 @@ public class XMLProperties {
 		Apartment.Builder builder = new Apartment.Builder();
 
 		builder.setFloorArea(floorArea);
-		builder.setAddress(address.get(n));
+		builder.setAddress(address.get(m));
 		builder.setTitle(titles.get(n));
 		builder.setNbBedrooms(nbBedrooms);
 		builder.setNbSleeping(nbSleeping);
