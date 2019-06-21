@@ -5,7 +5,12 @@ import org.slf4j.LoggerFactory;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
+
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.utils.RandomRange;
 
 /**
  * The public class ApartmentValueFunction enables to compute the subjective values of apartments. This is provided by the creation of an object ApartmentValueFunction which contains for each valuable attribute of an apartment : An object of {@link PartialValueFunction} and an associated weight. 
