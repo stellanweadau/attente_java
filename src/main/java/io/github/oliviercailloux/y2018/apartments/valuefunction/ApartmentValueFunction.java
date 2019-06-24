@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -433,9 +432,9 @@ public class ApartmentValueFunction {
 		ApartmentValueFunction apartValueFunction = new ApartmentValueFunction();
 		Random random = new Random();
 		
-		HashMap<Double, Double>  nbBedroomsEndBoundMap= RandomRange.mapBound(4,6);
-		HashMap<Double, Double>  nbSleepingEndBoundMap= RandomRange.mapBound(4,6);
-		HashMap<Double, Double>  nbBathroomsEndBoundMap= RandomRange.mapBound(2,3);
+		DiscreteValueFunction<Double>  nbBedroomsEndBoundMap= DiscreteValueFunction.discreteValueFunctionBeetween(4,6);
+		DiscreteValueFunction<Double>  nbSleepingEndBoundMap= DiscreteValueFunction.discreteValueFunctionBeetween(4,6);
+		DiscreteValueFunction<Double>  nbBathroomsEndBoundMap= DiscreteValueFunction.discreteValueFunctionBeetween(1,3);
 		
 		int floorAreaEndBound = random.nextInt(80) + 21;
 		int terraceEndBoundInt = random.nextInt(2);
@@ -458,9 +457,9 @@ public class ApartmentValueFunction {
 		
 		
 		apartValueFunction.setFloorAreaValueFunction(new LinearValueFunction(floorAreaStartBound,floorAreaEndBound));
-		apartValueFunction.setNbBedroomsValueFunction(new DiscreteValueFunction<Double>(nbBedroomsEndBoundMap));
-		apartValueFunction.setNbSleepingValueFunction(new DiscreteValueFunction<Double>(nbSleepingEndBoundMap));
-		apartValueFunction.setNbBathroomsValueFunction(new DiscreteValueFunction<Double>(nbBathroomsEndBoundMap));
+		apartValueFunction.setNbBedroomsValueFunction(nbBedroomsEndBoundMap);
+		apartValueFunction.setNbSleepingValueFunction(nbSleepingEndBoundMap);
+		apartValueFunction.setNbBathroomsValueFunction(nbBathroomsEndBoundMap);
 		apartValueFunction.setTerraceValueFunction(new BooleanValueFunction(terraceEndBound));
 		apartValueFunction.setFloorAreaTerraceValueFunction(new LinearValueFunction(floorAreaTerraceStartBound,floorAreaTerraceEndBound));
 		apartValueFunction.setWifiValueFunction(new BooleanValueFunction(wifiEndBound));

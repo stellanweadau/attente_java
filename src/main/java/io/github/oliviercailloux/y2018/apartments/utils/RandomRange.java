@@ -1,9 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.utils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import com.google.common.collect.ImmutableList;
 
@@ -34,22 +32,6 @@ public class RandomRange {
 
 		return weightRange;
 
-	}
-
-	/**
-	 * 
-	 * @param min the minimum required for the random number
-	 * @param max the maximum required for the random number
-	 * @return range of values
-	 */
-	public static HashMap<Double, Double> mapBound(int min, int max) {
-		Random random = new Random();
-		int var = random.nextInt(max) + min;
-		HashMap<Double, Double> varMap = new HashMap<>();
-		for (double i = 0; i < var; ++i) {
-			varMap.put(i, Double.valueOf(i) / var);
-		}
-		return varMap;
 	}
 
 }
