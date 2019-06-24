@@ -47,6 +47,22 @@ Une méthode permettant à l'utilisateur de définir son utilité existe déjà.
 
 === Livraison 4 ===
 
+Pour cette 4° itération
+
+En terme de fusion :
+
+- Il faut fusionner l'affichage de la liste des appartements et celle des caractéristiques (SM/PO)
+- A partir des données saisies dans ce GUI, il faut faire une recherche pour afficher les appartements selon l'utilité.(SM/PO)
+
+Les tâches :
+
+1^er^Duo : Un gui pour choisir les utilités?? (sandra et Aïssatou)et calculer les poids?? (Amir et Alexis)
+
+2^eme^Duo : Faire le ménage dans les fonctions de génération aléatoires et corriger les tests unitaires (Laurence et Zeina)
+
+3^eme^Duo : S'assurer que tout fonctionne bien et corriger les class paths pour les ressources (XML et images)  avec ajout des ressources images pour certaines appartement.
+
+
 Ebauche de ce qu'on ambitionne de faire lors des itérations suivantes :
 
 * XMCDA Remis à plus tard
