@@ -10,10 +10,6 @@ public class ConstantValueFunction<T> implements PartialValueFunction<T> {
 
 	double subjectiveValue;
 	
-	ConstantValueFunction(){
-		this(0d);
-	}
-	
 	public ConstantValueFunction(double d) {
 		this.subjectiveValue = d;
 	}

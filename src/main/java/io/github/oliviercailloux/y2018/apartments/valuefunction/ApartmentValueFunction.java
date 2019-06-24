@@ -123,16 +123,16 @@ public class ApartmentValueFunction {
 	 */
 
 	public ApartmentValueFunction() {
-		this.floorAreaValueFunction = new ConstantValueFunction<>();
-		this.nbBedroomsValueFunction = new ConstantValueFunction<>();
-		this.nbSleepingValueFunction = new ConstantValueFunction<>();
-		this.nbBathroomsValueFunction = new ConstantValueFunction<>();
-		this.terraceValueFunction = new ConstantValueFunction<>();
-		this.floorAreaTerraceValueFunction = new ConstantValueFunction<>();
-		this.wifiValueFunction = new ConstantValueFunction<>();
-		this.pricePerNightValueFunction = new ConstantValueFunction<>();
-		this.nbMinNightValueFunction = new ConstantValueFunction<>();
-		this.teleValueFunction = new ConstantValueFunction<>();
+		this.floorAreaValueFunction = new ConstantValueFunction<>(0d);
+		this.nbBedroomsValueFunction = new ConstantValueFunction<>(0d);
+		this.nbSleepingValueFunction = new ConstantValueFunction<>(0d);
+		this.nbBathroomsValueFunction = new ConstantValueFunction<>(0d);
+		this.terraceValueFunction = new ConstantValueFunction<>(0d);
+		this.floorAreaTerraceValueFunction = new ConstantValueFunction<>(0d);
+		this.wifiValueFunction = new ConstantValueFunction<>(0d);
+		this.pricePerNightValueFunction = new ConstantValueFunction<>(0d);
+		this.nbMinNightValueFunction = new ConstantValueFunction<>(0d);
+		this.teleValueFunction = new ConstantValueFunction<>(0d);
 
 		this.floorAreaSubjectiveValueWeight= 0.1;
 		this.nbBedroomsSubjectiveValueWeight= 0.1;

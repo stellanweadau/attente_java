@@ -18,9 +18,9 @@ public class BooleanValueFunction implements PartialValueFunction<Boolean>{
 	 * Create a map which associate a subjective value to true and a subjective value to false. This subjective value will take the value of 1 for the boolean that represent the "good value" and 0 for the other.
 	 * @param preference a boolean that indicates whether true or false represent the "good" value for the corresponding attribute
 	 */
-	public BooleanValueFunction (boolean preference) {
+	public BooleanValueFunction (boolean isPrefered) {
 		subjective = new HashMap<>();
-		if (preference == true) {			
+		if (isPrefered) {			
 			subjective.put(true, 1d);
 			subjective.put(false, 0d);
 		}
