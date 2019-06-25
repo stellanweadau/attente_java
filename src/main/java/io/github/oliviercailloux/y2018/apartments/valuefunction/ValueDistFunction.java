@@ -76,7 +76,13 @@ public class ValueDistFunction implements PartialValueFunction<LatLng> {
 	 * @return a double corresponding to the utility of the distance.
 	 */
 	public double setUtility(double currentdistance) {
-		LinearValueFunction f = new LinearValueFunction(0,36000);
+		
+		Map<Double, Double> map = new HashMap<>();
+		map.put(0d, 0d);
+		map.put(3600d, 0.8);
+		map.put(36000d, 1d);
+		
+		PieceWiseLinearValueFunction f = new PieceWiseLinearValueFunction(map);
 		return f.getSubjectiveValue(currentdistance);
 	}
 
