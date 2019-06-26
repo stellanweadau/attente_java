@@ -647,7 +647,7 @@ public class ApartmentValueFunction {
 
 		return apartValueFunction;
 	}
-	
+
 	/**
 	 * We make the assumption (by casting), that the runtime PartialValueFunction
 	 * associated to criteria is a LinearValueFunction, even if in real life it
