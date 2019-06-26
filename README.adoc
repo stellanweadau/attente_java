@@ -66,7 +66,7 @@ Pour les Duos:
 3^eme^Duo : Faire le ménage dans les fonctions de génération aléatoires et corriger les tests unitaires (Laurence et Zeina)
 
 
-Ebauche de ce qu'on ambitionne de faire lors des itérations suivantes :
+Perspectives d'amélioration :
 
 * XMCDA Remis à plus tard
 
