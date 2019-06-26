@@ -487,6 +487,23 @@ public class ApartmentValueFunction {
 		return apartValueFunction;
 	}
 
+	/**
+	 * @param criteria
+	 * @param newBound
+	 * @param lower is true when we want to adapt the lower bound, false if we want to adapt the upper bound
+	 */
+	void adaptBounds(String criteria, double newBound, boolean lower) {
+		
+		switch(criteria) {
+		case "":
+			
+		}
+	}
+	
+	/**
+	 * @param moreImportant is the criteria that is to be prioritized in this object of ApartmentValueFunction
+	 * @param lessImportant is the criteria that is to be less important in this object of ApartmentValueFunction
+	 */
 	void adaptWeight(AdaptiveWeightType moreImportant, AdaptiveWeightType lessImportant) {
 		
 		Preconditions.checkArgument(lessImportant.equals(moreImportant), "Both fields are the same.");
@@ -512,8 +529,11 @@ public class ApartmentValueFunction {
 		
 		switch (awt) {
 		case TELE: this.setTeleSubjectiveValueWeight(value);
+			break;
 		case TERRACE: this.setTerraceSubjectiveValueWeight(value);
+			break;
 		case WIFI: this.setWifiSubjectiveValueWeight(value);
+			break;
 		default: throw new IllegalArgumentException();
 		}
 		
