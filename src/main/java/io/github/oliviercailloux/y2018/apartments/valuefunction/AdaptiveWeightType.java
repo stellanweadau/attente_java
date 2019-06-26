@@ -3,6 +3,12 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 public enum AdaptiveWeightType {
 	TELE,
 	TERRACE,
-	WIFI;
-	
+	WIFI,
+	FLOOR_AREA,
+	FLOOR_AREA_TERRACE,
+	NB_BATHROOMS,
+	NB_BEDROOMS,
+	NB_SLEEPING,
+	NB_MIN_NIGHT,
+	PRICE_PER_NIGHT;
 }

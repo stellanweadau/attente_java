@@ -4,13 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Verify;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
@@ -652,33 +649,6 @@ public class ApartmentValueFunction {
 	}
 	
 	/**
-	 * This method is called when the alternative Apartment, which differs from the
-	 * control Apartment by some (numerical)* details, is compared to be more
-	 * convenient or not in the eyes of a user. Therefore, this method has an impact
-	 * on the weights only.
-	 * 
-	 * @param control     is the model apartment
-	 * @param alternative
-	 * @param wouldCommit is the answer of the user, saying if he would choose the
-	 *                    alternative Apartment rather than the control one
-	 */
-	@SuppressWarnings("unused")
-	public void adaptByAlternative(Apartment control, Apartment alternative, boolean wouldCommit) {
-
-		Map<String, Double> deltas = new HashMap<>();
-		deltas.put("floorArea", alternative.getFloorArea() - control.getFloorArea());
-		deltas.put("nbBedrooms", (double) alternative.getNbBedrooms() - control.getNbBedrooms());
-		deltas.put("nbBathrooms", (double) alternative.getNbBathrooms() - control.getNbBathrooms());
-		deltas.put("nbSleeping", (double) alternative.getNbSleeping() - control.getNbSleeping());
-		deltas.put("floorAreaTerrace", alternative.getFloorAreaTerrace() - control.getFloorAreaTerrace());
-		deltas.put("pricePerNight", alternative.getPricePerNight() - control.getPricePerNight());
-		deltas.put("nbMinNight", (double) alternative.getNbMinNight() - control.getNbMinNight());
-
-		/*Set<String> nonZeroDeltas = deltas.keySet().stream().filter(k -> deltas.get(k) != 0)
-				.collect(Collectors.toSet());*/
-	}
-
-	/**
 	 * We make the assumption (by casting), that the runtime PartialValueFunction
 	 * associated to criteria is a LinearValueFunction, even if in real life it
 	 * would be a discrete criteria (e.g. the number of bedrooms)
@@ -768,6 +738,20 @@ public class ApartmentValueFunction {
 			return this.terraceSubjectiveValueWeight;
 		case WIFI:
 			return this.wifiSubjectiveValueWeight;
+		case FLOOR_AREA:
+			return this.floorAreaTerraceSubjectiveValueWeight;
+		case FLOOR_AREA_TERRACE:
+			return this.floorAreaTerraceSubjectiveValueWeight;
+		case NB_BATHROOMS:
+			return this.nbBathroomsSubjectiveValueWeight;
+		case NB_BEDROOMS:
+			return this.nbBedroomsSubjectiveValueWeight;
+		case NB_SLEEPING:
+			return this.nbSleepingSubjectiveValueWeight;
+		case NB_MIN_NIGHT:
+			return this.nbMinNightSubjectiveValueWeight;
+		case PRICE_PER_NIGHT:
+			return this.pricePerNightSubjectiveValueWeight;
 		default:
 			throw new IllegalArgumentException();
 		}
@@ -784,6 +768,27 @@ public class ApartmentValueFunction {
 			break;
 		case WIFI:
 			this.setWifiSubjectiveValueWeight(value);
+			break;
+		case FLOOR_AREA:
+			this.setFloorAreaSubjectiveValueWeight(value);
+			break;
+		case FLOOR_AREA_TERRACE:
+			this.setFloorAreaTerraceSubjectiveValueWeight(value);
+			break;
+		case NB_BATHROOMS:
+			this.setNbBathroomsSubjectiveValueWeight(value);
+			break;
+		case NB_BEDROOMS:
+			this.setNbBedroomsSubjectiveValueWeight(value);
+			break;
+		case NB_SLEEPING:
+			this.setNbSleepingSubjectiveValueWeight(value);
+			break;
+		case NB_MIN_NIGHT:
+			this.setNbMinNightSubjectiveValueWeight(value);
+			break;
+		case PRICE_PER_NIGHT:
+			this.setPricePerNightSubjectiveValueWeight(value);
 			break;
 		default:
 			throw new IllegalArgumentException();
