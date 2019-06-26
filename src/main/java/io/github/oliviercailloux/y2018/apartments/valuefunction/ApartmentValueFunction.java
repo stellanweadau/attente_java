@@ -649,6 +649,20 @@ public class ApartmentValueFunction {
 	}
 
 	/**
+	 * This method is called when the alternative Apartment, which differs from the
+	 * control Apartment by some details, is set to be more convenient in the eyes
+	 * of a user. Therefore, this method has an impact on the weights only.
+	 * 
+	 * @param control     the model
+	 * @param alternative
+	 */
+	public void adaptByAlternative(Apartment control, Apartment alternative) {
+		
+		
+		
+	}
+
+	/**
 	 * We make the assumption (by casting), that the runtime PartialValueFunction
 	 * associated to criteria is a LinearValueFunction, even if in real life it
 	 * would be a discrete criteria (e.g. the number of bedrooms)
@@ -668,20 +682,20 @@ public class ApartmentValueFunction {
 					this.adaptLinearValueFunction((LinearValueFunction) this.floorAreaValueFunction, newBound, lower));
 			break;
 		case "floorAreaTerrace":
-			this.setFloorAreaTerraceValueFunction(
-					this.adaptLinearValueFunction((LinearValueFunction) this.floorAreaTerraceValueFunction, newBound, lower));
+			this.setFloorAreaTerraceValueFunction(this.adaptLinearValueFunction(
+					(LinearValueFunction) this.floorAreaTerraceValueFunction, newBound, lower));
 			break;
 		case "pricePerNight":
-			this.setPricePerNightValueFunction(
-					this.adaptLinearValueFunction((LinearValueFunction) this.pricePerNightValueFunction, newBound, lower));
+			this.setPricePerNightValueFunction(this
+					.adaptLinearValueFunction((LinearValueFunction) this.pricePerNightValueFunction, newBound, lower));
 			break;
 		case "nbSleeping":
 			this.setNbSleepingValueFunction(
 					this.adaptLinearValueFunction((LinearValueFunction) this.nbSleepingValueFunction, newBound, lower));
 			break;
 		case "nbBathrooms":
-			this.setNbBathroomsValueFunction(
-					this.adaptLinearValueFunction((LinearValueFunction) this.nbBathroomsValueFunction, newBound, lower));
+			this.setNbBathroomsValueFunction(this
+					.adaptLinearValueFunction((LinearValueFunction) this.nbBathroomsValueFunction, newBound, lower));
 			break;
 		case "nbBedrooms":
 			this.setNbBedroomsValueFunction(
