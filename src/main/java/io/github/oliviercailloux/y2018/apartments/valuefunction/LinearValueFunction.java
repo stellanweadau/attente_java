@@ -28,6 +28,10 @@ public class LinearValueFunction implements PartialValueFunction<Double> {
 		interval = Range.closed(min, max);
 		LOGGER.info("The interval ["+min+","+max+"] "+" has been set with success in the LinearValueFunction class.");
 	}
+	
+	public Range<Double> getInterval() {
+		return this.interval;
+	}
 
 	@Override
 	public double getSubjectiveValue(Double objectiveData) throws IllegalStateException {
