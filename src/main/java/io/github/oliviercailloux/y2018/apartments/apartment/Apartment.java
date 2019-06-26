@@ -13,84 +13,87 @@ public class Apartment extends Object {
 	private static Logger LOGGER = LoggerFactory.getLogger(Apartment.class);
 
 	/**
-	 * @param floorArea is a real number it represents the floor area of the apartment in square meters.
+	 * @param a real number it represents the floor area of the apartment in square meters.
 	 * Has to be initialized, if not, the apartment can't be created without a floor area.
 	 */
 	private double floorArea; 
 
 	/**
-	 * @param address is a String of characters that gives the full location of the apartment (number, street name, ZIP code, city, country), has to initialized
+	 * @param a String of characters that gives the full location of the apartment (number, street name, ZIP code, city, country), has to initialized
 	 * Has to be initialized, if not, the apartment can't be created without an address.
 	 */
 	private String address; 
 
 	/**
-	 * @param nbBedrooms an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment.
+	 * @param an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment.
 	 * if not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have any bedroom.
 	 */
 	private int nbBedrooms;
 
 	/**
-	 * @param nbSleepings is an integer superior or equal to zero corresponding of the accommodation capacity of the apartment (nb of people that can sleep in the apartment).
+	 * @param an integer superior or equal to zero corresponding of the accommodation capacity of the apartment (nb of people that can sleep in the apartment).
 	 * If not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have any place to sleep.
 	 */
 	private int nbSleeping; 
 
 	/**
-	 * @param nbBathrooms is an integer superior or equal to zero which corresponds to the number of bathrooms.
+	 * @param an integer superior or equal to zero which corresponds to the number of bathrooms.
 	 * If not initialized, the parameter will have a default value set of <code>0</code> which mean the apartment doesn't have any bathroom.
 	 */
 	private int nbBathrooms;
 
 	/**
-	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace.
+	 * @param a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace.
 	 * If not initialized, the parameter will have a default value set of <code>false</code> which mean the apartment doesn't have a terrace.
 	 */
 	private boolean terrace;
 
 	/**
-	 * @param floorAreaTerrace is a real number superior or equal to zero it represents the floor area of the terrace of the apartment if there's any.
+	 * @param a real number superior or equal to zero it represents the floor area of the terrace of the apartment if there's any.
 	 * If not initialized, the parameter will have a default value set of <code>0</code> which mean the apartment have a floor area of terrace of zero, whether it has or not a terrace.
 	 */
 	private double floorAreaTerrace; 
 
 	/**
-	 * @param description is a string of characters that describe the apartment and the offer (its accommodations).
+	 * @param a string of characters that describe the apartment and the offer (its accommodations).
 	 * If not initialized, the parameter will have a default value set of <code>""</code> which mean the announcement doesn't have a description.
 	 */
 	private String description; 
 
 	/**
-	 * @param title is a string of characters that represents the title of the announcement.
+	 * @param a string of characters that represents the title of the announcement.
 	 * It has to be initialized, if not, the apartment can't be created without a <code>title</code>.
 	 */
 	private String title;
 
 	/**
-	 * @param wifi is a boolean (true/false) which indicates if there is wireless connection to Internet or not can be interpreted as hasWifi. 
+	 * @param a boolean (true/false) which indicates if there is wireless connection to Internet or not can be interpreted as hasWifi. 
 	 * If not initialized, the parameter will have a default value of <code>false</code> which mean the apartment doesn't have wifi.
 	 */
 	private boolean wifi; 
 
 	/**
-	 * @param pricePerNight is a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros. 
+	 * @param a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros. 
 	 * If not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have a price per night.
 	 */
 	private double pricePerNight; 
 
 	/**
-	 * @param nbMinNight is an integer superior or equal to zero, indicates how long in nights the customer have to stay. 
+	 * @param an integer superior or equal to zero, indicates how long in nights the customer have to stay. 
 	 * If not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't have a minimum of night to stay-in.
 	 */
 	private int nbMinNight; 
 
 	/**
-	 * @param tele is a boolean (true/false) which indicates if there's a television or not can be interpreted as hasTelevision. 
+	 * @param a boolean (true/false) which indicates if there's a television or not can be interpreted as hasTelevision. 
 	 * If not initialized, the parameter will have a default set value of <code>false</code> which mean the apartment doesn't have a tele.
 	 */
 	private boolean tele; 
 
-
+	/**
+	 * Constructor by default to be used by Apartment.Builder
+	 */
+	private Apartment() {}
 
 	/**
 	 * @param floorArea a real number superior or equal to zero, it represents the floor area of the apartment in square meters
@@ -116,40 +119,6 @@ public class Apartment extends Object {
 		checkArgument(title !="","The title of the apartment must be specified");
 		LOGGER.info("the apartment has been created with success");
 	}
-
-	
-	/**
-	 * @param floorArea a real number superior or equal to zero, it represents the floor area of the apartment in square meters
-	 * @param address a string of characters that gives the full location of the apartment
-	 * @param title a string of characters that represents the title of the announcement
-	 * @param nbBedrooms an integer superior or equal to zero, it is the number of bedrooms available of use in the apartment
-	 * @param nbSleeping an integer superior or equal to zero corresponding of the accommodation capacity of the apartment (nb of people that can sleep in the apartment)
-	 * @param nbBathrooms an integer superior or equal to zero which corresponds to the number of bathrooms
-	 * @param floorAreaTerrace a real number superior or equal to zero it represents the floor area of the terrace of the apartment if there's any
-	 * @param pricePerNight a real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros
-	 * @param nbMinNight an integer superior or equal to zero, indicates how long in nights the customer have to stay
-	 * @param terrace a boolean (true/false) which indicates if there's a terrace or not can be interpreted as hasTerrace
-	 */
-	public Apartment (double floorArea, String address, String title, int nbBedrooms, int nbSleeping, int nbBathrooms, double floorAreaTerrace, double pricePerNight, int nbMinNight, boolean terrace) {	
-		this.floorArea = floorArea;
-		this.address = address;
-		this.nbBedrooms = nbBedrooms ;
-		this.nbSleeping = nbSleeping ;
-		this.nbBathrooms = nbBathrooms;
-		this.terrace = terrace ;
-		this.floorAreaTerrace = floorAreaTerrace ;
-		this.description = "";
-		this.title = title;
-		this.wifi = false ;
-		this.pricePerNight = pricePerNight;
-		this.nbMinNight = nbMinNight ;
-		this.tele = false ;
-		checkArgument(floorArea>=0,"The floor area of the apartment cannot be negative");
-		checkArgument(address !="","The address of the apartment must be specified");
-		checkArgument(title !="","The title of the apartment must be specified");
-		LOGGER.info("the apartment has been created with success");
-	}
-	
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -431,6 +400,76 @@ public class Apartment extends Object {
 	@Override
 	public int hashCode() {
 		return Objects.hash(address, floorArea, nbBedrooms, nbSleeping, nbBathrooms, terrace, floorAreaTerrace, description, title, wifi, pricePerNight, nbMinNight, tele);
+	}
+	
+	/**
+	 * Code from :
+	 * https://codereview.stackexchange.com/questions/127391/simple-builder-pattern-implementation-for-building-immutable-objects/127509#127509
+	 */
+	public static class Builder {
+		
+		private Apartment apartmentToBuild;
+		
+		public Builder(){
+			apartmentToBuild = new Apartment();
+		}
+		
+		public Apartment build() {
+			Apartment buildApartment = apartmentToBuild;
+			apartmentToBuild = new Apartment();
+			
+			return buildApartment;
+		}	
+			
+		public Builder setFloorArea(double floorArea) {
+			this.apartmentToBuild.floorArea = floorArea;
+			return this;
+		}
+		
+		public Builder setAddress(String address) {
+			this.apartmentToBuild.address = address;
+			return this;
+		}
+		
+		public Builder setTitle(String title) {
+			this.apartmentToBuild.title = title;
+			return this;
+		}
+		
+		public Builder setNbBedrooms(int nbBedrooms) {
+			this.apartmentToBuild.nbBedrooms = nbBedrooms;
+			return this;
+		}
+		
+		public Builder setNbSleeping(int nbSleeping) {
+			this.apartmentToBuild.nbSleeping = nbSleeping;
+			return this;
+		}
+		
+		public Builder setNbBathrooms(int nbBathrooms) {
+			this.apartmentToBuild.nbBathrooms = nbBathrooms;
+			return this;
+		}
+		
+		public Builder setFloorAreaTerrace(double floorAreaTerrace) {
+			this.apartmentToBuild.floorAreaTerrace = floorAreaTerrace;
+			return this;
+		}
+		
+		public Builder setPricePerNight(double pricePerNight) {
+			this.apartmentToBuild.pricePerNight = pricePerNight;
+			return this;
+		}
+		
+		public Builder setNbMinNight(int nbMinNight) {
+			this.apartmentToBuild.nbMinNight = nbMinNight;
+			return this;
+		}
+		
+		public Builder setTerrace(boolean terrace) {
+			this.apartmentToBuild.terrace = terrace;
+			return this;
+		}
 	}
 
 }

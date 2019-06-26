@@ -5,7 +5,11 @@ import org.slf4j.LoggerFactory;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
+import java.util.List;
+import java.util.Random;
+
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.utils.RandomRange;
 
 /**
  * The public class ApartmentValueFunction enables to compute the subjective values of apartments. This is provided by the creation of an object ApartmentValueFunction which contains for each valuable attribute of an apartment : An object of {@link PartialValueFunction} and an associated weight. 
@@ -123,16 +127,16 @@ public class ApartmentValueFunction {
 	 */
 
 	public ApartmentValueFunction() {
-		this.floorAreaValueFunction = new ConstantValueFunction<>();
-		this.nbBedroomsValueFunction = new ConstantValueFunction<>();
-		this.nbSleepingValueFunction = new ConstantValueFunction<>();
-		this.nbBathroomsValueFunction = new ConstantValueFunction<>();
-		this.terraceValueFunction = new ConstantValueFunction<>();
-		this.floorAreaTerraceValueFunction = new ConstantValueFunction<>();
-		this.wifiValueFunction = new ConstantValueFunction<>();
-		this.pricePerNightValueFunction = new ConstantValueFunction<>();
-		this.nbMinNightValueFunction = new ConstantValueFunction<>();
-		this.teleValueFunction = new ConstantValueFunction<>();
+		this.floorAreaValueFunction = new ConstantValueFunction<>(0d);
+		this.nbBedroomsValueFunction = new ConstantValueFunction<>(0d);
+		this.nbSleepingValueFunction = new ConstantValueFunction<>(0d);
+		this.nbBathroomsValueFunction = new ConstantValueFunction<>(0d);
+		this.terraceValueFunction = new ConstantValueFunction<>(0d);
+		this.floorAreaTerraceValueFunction = new ConstantValueFunction<>(0d);
+		this.wifiValueFunction = new ConstantValueFunction<>(0d);
+		this.pricePerNightValueFunction = new ConstantValueFunction<>(0d);
+		this.nbMinNightValueFunction = new ConstantValueFunction<>(0d);
+		this.teleValueFunction = new ConstantValueFunction<>(0d);
 
 		this.floorAreaSubjectiveValueWeight= 0.1;
 		this.nbBedroomsSubjectiveValueWeight= 0.1;
@@ -418,5 +422,68 @@ public class ApartmentValueFunction {
 		return ((floorAreaSubjectiveValue * floorAreaSubjectiveValueWeight + nbBedroomsSubjectiveValue * nbBedroomsSubjectiveValueWeight + nbSleepingSubjectiveValue * nbSleepingSubjectiveValueWeight + nbBathroomsSubjectiveValue * nbBathroomsSubjectiveValueWeight + terraceSubjectiveValue * terraceSubjectiveValueWeight + floorAreaTerraceSubjectiveValue * floorAreaTerraceSubjectiveValueWeight + wifiSubjectiveValue * wifiSubjectiveValueWeight + pricePerNightSubjectiveValue * pricePerNightSubjectiveValueWeight + nbMinNightSubjectiveValue * nbMinNightSubjectiveValueWeight + teleSubjectiveValue * teleSubjectiveValueWeight)
 				/ ( floorAreaSubjectiveValueWeight + nbBedroomsSubjectiveValueWeight + nbSleepingSubjectiveValueWeight + nbBathroomsSubjectiveValueWeight + terraceSubjectiveValueWeight + floorAreaTerraceSubjectiveValueWeight + wifiSubjectiveValueWeight + pricePerNightSubjectiveValueWeight + nbMinNightSubjectiveValueWeight + teleSubjectiveValueWeight));
 	}
+	
+
+	/**
+	 * @return A randomized instance of an ApartmentValueFunction
+	 */
+	public static ApartmentValueFunction getRandomApartmentValueFunction() {
+		
+		ApartmentValueFunction apartValueFunction = new ApartmentValueFunction();
+		Random random = new Random();
+		
+		DiscreteValueFunction<Double>  nbBedroomsEndBoundMap= DiscreteValueFunction.discreteValueFunctionBeetween(4,6);
+		DiscreteValueFunction<Double>  nbSleepingEndBoundMap= DiscreteValueFunction.discreteValueFunctionBeetween(4,6);
+		DiscreteValueFunction<Double>  nbBathroomsEndBoundMap= DiscreteValueFunction.discreteValueFunctionBeetween(1,3);
+		
+		int floorAreaEndBound = random.nextInt(80) + 21;
+		int terraceEndBoundInt = random.nextInt(2);
+		boolean terraceEndBound = false;
+		if (terraceEndBoundInt == 1) terraceEndBound = true;
+		int floorAreaTerraceEndBound = random.nextInt(80) + 21;
+		int wifiEndBoundInt = random.nextInt(2);
+		boolean wifiEndBound = false;
+		if (wifiEndBoundInt == 1) wifiEndBound = true;
+		int pricePerNightEndBound = random.nextInt(180) + 21;
+		int nbMinNightEndBound = random.nextInt(7) + 3;
+		int teleEndBoundInt = random.nextInt(2);
+		boolean teleEndBound = false;
+		if (teleEndBoundInt == 1) teleEndBound = true;
+		
+		int floorAreaStartBound = random.nextInt(floorAreaEndBound);
+		int floorAreaTerraceStartBound = random.nextInt(floorAreaTerraceEndBound);
+		int pricePerNightStartBound = random.nextInt(pricePerNightEndBound);
+		int nbMinNightStartBound = random.nextInt(nbMinNightEndBound);
+		
+		
+		apartValueFunction.setFloorAreaValueFunction(new LinearValueFunction(floorAreaStartBound,floorAreaEndBound));
+		apartValueFunction.setNbBedroomsValueFunction(nbBedroomsEndBoundMap);
+		apartValueFunction.setNbSleepingValueFunction(nbSleepingEndBoundMap);
+		apartValueFunction.setNbBathroomsValueFunction(nbBathroomsEndBoundMap);
+		apartValueFunction.setTerraceValueFunction(new BooleanValueFunction(terraceEndBound));
+		apartValueFunction.setFloorAreaTerraceValueFunction(new LinearValueFunction(floorAreaTerraceStartBound,floorAreaTerraceEndBound));
+		apartValueFunction.setWifiValueFunction(new BooleanValueFunction(wifiEndBound));
+		apartValueFunction.setPricePerNightValueFunction(new LinearValueFunction(pricePerNightStartBound,pricePerNightEndBound));
+		apartValueFunction.setNbMinNightValueFunction(new ReversedLinearValueFunction(nbMinNightStartBound, nbMinNightEndBound));
+		apartValueFunction.setTeleValueFunction(new BooleanValueFunction(teleEndBound));
+
+		List<Double> weightRange = RandomRange.weightRangeOfSum(1d, 10);
+		
+		LOGGER.info("Weight has been set to : " + weightRange);
+		
+		apartValueFunction.floorAreaSubjectiveValueWeight= weightRange.get(0);
+		apartValueFunction.nbBedroomsSubjectiveValueWeight= weightRange.get(1);
+		apartValueFunction.nbSleepingSubjectiveValueWeight= weightRange.get(2);
+		apartValueFunction.nbBathroomsSubjectiveValueWeight= weightRange.get(3);
+		apartValueFunction.terraceSubjectiveValueWeight= weightRange.get(4);
+		apartValueFunction.floorAreaTerraceSubjectiveValueWeight= weightRange.get(5);
+		apartValueFunction.wifiSubjectiveValueWeight= weightRange.get(6);
+		apartValueFunction.pricePerNightSubjectiveValueWeight= weightRange.get(7);
+		apartValueFunction.nbMinNightSubjectiveValueWeight= weightRange.get(8);
+		apartValueFunction.teleSubjectiveValueWeight= weightRange.get(9);
+		
+		return apartValueFunction;
+	}
+
 
 }
