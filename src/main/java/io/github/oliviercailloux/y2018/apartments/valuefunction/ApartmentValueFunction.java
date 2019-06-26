@@ -12,8 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.utils.RandomRange;
@@ -659,8 +657,6 @@ public class ApartmentValueFunction {
 	 * convenient or not in the eyes of a user. Therefore, this method has an impact
 	 * on the weights only.
 	 * 
-	 * Caution : we assume here that the subjectiveValue of 0 is 0 for every criteria
-	 * 
 	 * @param control     is the model apartment
 	 * @param alternative
 	 * @param wouldCommit is the answer of the user, saying if he would choose the
@@ -669,60 +665,68 @@ public class ApartmentValueFunction {
 	public void adaptByAlternative(Apartment control, Apartment alternative, boolean wouldCommit) {
 
 		Map<String, Double> deltas = new HashMap<>();
-		deltas.put("floorArea", control.getFloorArea() - alternative.getFloorArea());
-		deltas.put("nbBedrooms", (double) control.getNbBedrooms() - alternative.getNbBedrooms());
-		deltas.put("nbBathrooms", (double) control.getNbBathrooms() - alternative.getNbBathrooms());
-		deltas.put("nbSleeping", (double) control.getNbSleeping() - alternative.getNbSleeping());
-		deltas.put("floorAreaTerrace", control.getFloorAreaTerrace() - alternative.getFloorAreaTerrace());
-		deltas.put("pricePerNight", control.getPricePerNight() - alternative.getPricePerNight());
-		deltas.put("nbMinNight", (double) control.getNbMinNight() - alternative.getNbMinNight());
+		deltas.put("floorArea", alternative.getFloorArea() - control.getFloorArea());
+		deltas.put("nbBedrooms", (double) alternative.getNbBedrooms() - control.getNbBedrooms());
+		deltas.put("nbBathrooms", (double) alternative.getNbBathrooms() - control.getNbBathrooms());
+		deltas.put("nbSleeping", (double) alternative.getNbSleeping() - control.getNbSleeping());
+		deltas.put("floorAreaTerrace", alternative.getFloorAreaTerrace() - control.getFloorAreaTerrace());
+		deltas.put("pricePerNight", alternative.getPricePerNight() - control.getPricePerNight());
+		deltas.put("nbMinNight", (double) alternative.getNbMinNight() - control.getNbMinNight());
 
-		Set<String> nonZeroDeltas = deltas.keySet().stream().filter(k -> deltas.get(k) != 0)
-				.collect(Collectors.toSet());
-		
+		/*Set<String> nonZeroDeltas = deltas.keySet().stream().filter(k -> deltas.get(k) != 0)
+				.collect(Collectors.toSet());*/
+
 		Map<String, Double> subjectiveValuesDeltas = new HashMap<>();
-		for (String criteria : nonZeroDeltas) {
+		for (String criteria : deltas.keySet()) {
 			if ("floorArea".equals(criteria))
 				subjectiveValuesDeltas.put("floorArea",
-						this.floorAreaValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+						this.floorAreaValueFunction.getSubjectiveValue(alternative.getFloorArea())
+								- this.floorAreaValueFunction.getSubjectiveValue(control.getFloorArea()));
 			else if ("nbBedrooms".equals(criteria))
 				subjectiveValuesDeltas.put("nbBedrooms",
-						this.nbBedroomsValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+						this.nbBedroomsValueFunction.getSubjectiveValue((double) alternative.getNbBedrooms())
+								- this.nbBedroomsValueFunction.getSubjectiveValue((double) control.getNbBedrooms()));
 			else if ("nbBathrooms".equals(criteria))
 				subjectiveValuesDeltas.put("nbBathrooms",
-						this.nbBathroomsValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+						this.nbBathroomsValueFunction.getSubjectiveValue((double) alternative.getNbBathrooms())
+						- this.nbBathroomsValueFunction.getSubjectiveValue((double) control.getNbBathrooms()));
 			else if ("nbSleeping".equals(criteria))
 				subjectiveValuesDeltas.put("nbSleeping",
-						this.nbSleepingValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+						this.nbSleepingValueFunction.getSubjectiveValue((double) alternative.getNbSleeping())
+						- this.nbSleepingValueFunction.getSubjectiveValue((double) control.getNbSleeping()));
 			else if ("floorAreaTerrace".equals(criteria))
 				subjectiveValuesDeltas.put("floorAreaTerrace",
-						this.floorAreaTerraceValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+						this.floorAreaTerraceValueFunction.getSubjectiveValue(alternative.getFloorAreaTerrace())
+						- this.floorAreaTerraceValueFunction.getSubjectiveValue(control.getFloorAreaTerrace()));
 			else if ("pricePerNight".equals(criteria))
 				subjectiveValuesDeltas.put("pricePerNight",
-						this.pricePerNightValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+						this.pricePerNightValueFunction.getSubjectiveValue(alternative.getPricePerNight())
+						- this.pricePerNightValueFunction.getSubjectiveValue(control.getPricePerNight()));
 			else if ("nbMinNight".equals(criteria))
 				subjectiveValuesDeltas.put("nbMinNight",
-						this.nbMinNightValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+						this.nbMinNightValueFunction.getSubjectiveValue((double) alternative.getNbMinNight())
+						- this.nbMinNightValueFunction.getSubjectiveValue((double) control.getNbMinNight()));
 		}
 
 		double sumOfPositiveDeltas = 0d;
 		double sumOfNegativeDeltas = 0d;
-		for(String criteria : subjectiveValuesDeltas.keySet()) {
-			if(deltas.get(criteria) > 0)
+		for (String criteria : subjectiveValuesDeltas.keySet()) {
+			if (deltas.get(criteria) > 0)
 				sumOfPositiveDeltas += subjectiveValuesDeltas.get(criteria);
-			else if(deltas.get(criteria) < 0)
+			else if (deltas.get(criteria) < 0)
 				sumOfNegativeDeltas += subjectiveValuesDeltas.get(criteria);
-			else throw new AssertionError();
+			else
+				throw new AssertionError();
 		}
-		
+
 		Verify.verify(sumOfPositiveDeltas != 0);
 		Verify.verify(sumOfNegativeDeltas != 0);
-		
-		double adaptingCoeff = sumOfPositiveDeltas / sumOfNegativeDeltas;
-		
-		for (String criteria : nonZeroDeltas) {
+
+		double adaptingCoeff = Math.abs(sumOfPositiveDeltas) / sumOfNegativeDeltas;
+
+		for (String criteria : deltas.keySet()) {
 			if ("floorArea".equals(criteria))
-				floorArea.
+				;
 			else if ("nbBedrooms".equals(criteria))
 				subjectiveValuesDeltas.put("nbBedrooms",
 						this.nbBedroomsValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
@@ -743,7 +747,6 @@ public class ApartmentValueFunction {
 						this.nbMinNightValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
 		}
 
-		
 	}
 
 	/**
