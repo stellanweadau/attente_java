@@ -3,6 +3,8 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.Preconditions;
+
 import static com.google.common.base.Preconditions.checkArgument;
 
 import java.util.List;
@@ -485,9 +487,35 @@ public class ApartmentValueFunction {
 		return apartValueFunction;
 	}
 
-	void adaptImportance(String isMoreImportant, String isLessImportant) {
+	void adaptWeight(AdaptiveWeightType moreImportant, AdaptiveWeightType lessImportant) {
 		
-		Apartment a = new Apartment(0,"","");
+		Preconditions.checkArgument(lessImportant.equals(moreImportant), "Both fields are the same.");
+		
+		double weightSum = 0;
+		weightSum += this.getSubjectiveValueWeight(moreImportant);
+		weightSum += this.getSubjectiveValueWeight(lessImportant);
+		
+		this.setSubjectiveValueWeight(moreImportant, 9*weightSum/10);
+		this.setSubjectiveValueWeight(lessImportant, weightSum/10);
+	}
+	
+	private double getSubjectiveValueWeight(AdaptiveWeightType awt) {
+		switch (awt) {
+		case TELE: return this.teleSubjectiveValueWeight;
+		case TERRACE: return this.terraceSubjectiveValueWeight;
+		case WIFI: return this.wifiSubjectiveValueWeight;
+		default: throw new IllegalArgumentException();
+		}
+	}
+
+	private void setSubjectiveValueWeight(AdaptiveWeightType awt, double value) {
+		
+		switch (awt) {
+		case TELE: this.setTeleSubjectiveValueWeight(value);
+		case TERRACE: this.setTerraceSubjectiveValueWeight(value);
+		case WIFI: this.setWifiSubjectiveValueWeight(value);
+		default: throw new IllegalArgumentException();
+		}
 		
 	}
 	
