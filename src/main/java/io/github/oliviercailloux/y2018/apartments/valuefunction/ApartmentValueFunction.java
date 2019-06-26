@@ -487,7 +487,7 @@ public class ApartmentValueFunction {
 
 	void adaptImportance(String isMoreImportant, String isLessImportant) {
 		
-		
+		Apartment a = new Apartment(0,"","");
 		
 	}
 	
