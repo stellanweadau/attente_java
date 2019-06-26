@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.Properties;
+import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,8 +56,11 @@ public class XMLProperties {
 	}
 
 	/**
-	 * Generates an object representing random
-	 *                                apartments
+	 * Generates an object representing random apartments.
+	 * Means and standard deviations were found in the following sources:
+	 * https://www.airbnb.fr
+	 * https://www.logisneuf.com/statistique-immobiliere.html
+	 * https://www.seloger.com/prix-de-l-immo/location/pays/france.htm
 	 */
 	public static Apartment generateRandom() {
 
@@ -73,17 +77,22 @@ public class XMLProperties {
 		int n = (int) (Math.random() * titles.size()-1);
 		int m = (int) (Math.random() * address.size()-1);
 
-		double floorArea = Math.random() * 300;
+		double floorArea = simulateRandomDraw(65d, 21d);
+		
 		boolean terrace = (Math.random() * 2 >= 1) ? true : false;
-		double floorAreaTerrace = 0;
-		if (terrace)
-			floorAreaTerrace = Math.random() * 100;
-
-		int nbMinNight = (int) (Math.random() * 5);
-		int nbBedrooms = (int) (Math.random() * 10);
-		double pricePerNight = Math.random() * 80 + 20d;
-		int nbSleeping = (int) (Math.random() * 5);
-		int nbBathrooms = (int) (Math.random() * 10);
+		double floorAreaTerrace = (terrace) ? simulateRandomDraw(15d, 2d) : 0;
+		
+		int nbMinNight = (int) (Math.random() * 8);
+		
+		int averageRoomArea = (int) (10 + (Math.random() * 20));
+		int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 0);
+		
+		double pricePerMeterSquared = simulateRandomDraw(8d, 3d);
+		double pricePerNight = floorArea * pricePerMeterSquared;
+		
+		int nbSleeping = ((int) (1 + Math.random() * 4)) * nbBedrooms;
+		
+		int nbBathrooms = (int) (Math.random() * nbBedrooms);
 
 		Apartment.Builder builder = new Apartment.Builder();
 
@@ -103,6 +112,17 @@ public class XMLProperties {
 		LOGGER.info("Generation done successfully");
 
 		return a;
+	}
+	
+	/**
+	 * This function simulates a random draw of a variable, being given its expectation and its deviation.
+	 * @param mean the mathematical expectation of the variable
+	 * @param deviation the standard deviation of the variable
+	 * @return an outcome of the randomized experiment 
+	 */
+	private static double simulateRandomDraw(double mean, double deviation) {
+		double draw = new Random().nextGaussian();
+		return deviation * draw + mean;
 	}
 
 	/**
