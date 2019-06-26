@@ -2,7 +2,6 @@ package io.github.oliviercailloux.y2018.apartments.toxmlproperties;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.lang.reflect.Field;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -33,18 +32,22 @@ public class XMLProperties {
 	 * @throws IllegalAccessException
 	 */
 	public void toXML(Apartment a, OutputStream xmlFile)
-			throws IOException, IllegalArgumentException, IllegalAccessException {
-
-		for (Field f : a.getClass().getDeclaredFields()) {
-
-			String[] fullName = f.toString().split(" ")[2].split("\\.");
-
-			f.setAccessible(true);
-			properties.setProperty(fullName[fullName.length - 1], f.get(a).toString());
-
-			LOGGER.info("Adding entry : " + fullName[fullName.length - 1] + " : " + f.get(a));
-
-		}
+			throws IOException {
+		
+		properties.setProperty("nbSleeping", String.valueOf(a.getNbSleeping()));
+		properties.setProperty("nbMinNight", String.valueOf(a.getNbMinNight()));
+		properties.setProperty("terrace", String.valueOf(a.getTerrace()));
+		properties.setProperty("nbBedrooms", String.valueOf(a.getNbBedrooms()));
+		properties.setProperty("floorArea", String.valueOf(a.getFloorArea()));
+		properties.setProperty("pricePerNight", String.valueOf(a.getPricePerNight()));
+		properties.setProperty("tele", String.valueOf(a.getTele()));
+		properties.setProperty("wifi", String.valueOf(a.getWifi()));
+		properties.setProperty("title", a.getTitle());
+		properties.setProperty("nbBathrooms", String.valueOf(a.getNbBathrooms()));
+		properties.setProperty("address", a.getAddress());
+		properties.setProperty("floorAreaTerrace", String.valueOf(a.getFloorAreaTerrace()));
+		properties.setProperty("description", a.getDescription());
+		
 		properties.remove("apartment");
 		properties.remove("LOGGER");
 		properties.remove("Logger");
