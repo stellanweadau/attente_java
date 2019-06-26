@@ -4,11 +4,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Verify;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.utils.RandomRange;
@@ -650,15 +655,94 @@ public class ApartmentValueFunction {
 
 	/**
 	 * This method is called when the alternative Apartment, which differs from the
-	 * control Apartment by some details, is set to be more convenient in the eyes
-	 * of a user. Therefore, this method has an impact on the weights only.
+	 * control Apartment by some (numerical)* details, is compared to be more
+	 * convenient or not in the eyes of a user. Therefore, this method has an impact
+	 * on the weights only.
 	 * 
-	 * @param control     the model
+	 * Caution : we assume here that the subjectiveValue of 0 is 0 for every criteria
+	 * 
+	 * @param control     is the model apartment
 	 * @param alternative
+	 * @param wouldCommit is the answer of the user, saying if he would choose the
+	 *                    alternative Apartment rather than the control one
 	 */
-	public void adaptByAlternative(Apartment control, Apartment alternative) {
+	public void adaptByAlternative(Apartment control, Apartment alternative, boolean wouldCommit) {
+
+		Map<String, Double> deltas = new HashMap<>();
+		deltas.put("floorArea", control.getFloorArea() - alternative.getFloorArea());
+		deltas.put("nbBedrooms", (double) control.getNbBedrooms() - alternative.getNbBedrooms());
+		deltas.put("nbBathrooms", (double) control.getNbBathrooms() - alternative.getNbBathrooms());
+		deltas.put("nbSleeping", (double) control.getNbSleeping() - alternative.getNbSleeping());
+		deltas.put("floorAreaTerrace", control.getFloorAreaTerrace() - alternative.getFloorAreaTerrace());
+		deltas.put("pricePerNight", control.getPricePerNight() - alternative.getPricePerNight());
+		deltas.put("nbMinNight", (double) control.getNbMinNight() - alternative.getNbMinNight());
+
+		Set<String> nonZeroDeltas = deltas.keySet().stream().filter(k -> deltas.get(k) != 0)
+				.collect(Collectors.toSet());
 		
+		Map<String, Double> subjectiveValuesDeltas = new HashMap<>();
+		for (String criteria : nonZeroDeltas) {
+			if ("floorArea".equals(criteria))
+				subjectiveValuesDeltas.put("floorArea",
+						this.floorAreaValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+			else if ("nbBedrooms".equals(criteria))
+				subjectiveValuesDeltas.put("nbBedrooms",
+						this.nbBedroomsValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+			else if ("nbBathrooms".equals(criteria))
+				subjectiveValuesDeltas.put("nbBathrooms",
+						this.nbBathroomsValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+			else if ("nbSleeping".equals(criteria))
+				subjectiveValuesDeltas.put("nbSleeping",
+						this.nbSleepingValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+			else if ("floorAreaTerrace".equals(criteria))
+				subjectiveValuesDeltas.put("floorAreaTerrace",
+						this.floorAreaTerraceValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+			else if ("pricePerNight".equals(criteria))
+				subjectiveValuesDeltas.put("pricePerNight",
+						this.pricePerNightValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+			else if ("nbMinNight".equals(criteria))
+				subjectiveValuesDeltas.put("nbMinNight",
+						this.nbMinNightValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+		}
+
+		double sumOfPositiveDeltas = 0d;
+		double sumOfNegativeDeltas = 0d;
+		for(String criteria : subjectiveValuesDeltas.keySet()) {
+			if(deltas.get(criteria) > 0)
+				sumOfPositiveDeltas += subjectiveValuesDeltas.get(criteria);
+			else if(deltas.get(criteria) < 0)
+				sumOfNegativeDeltas += subjectiveValuesDeltas.get(criteria);
+			else throw new AssertionError();
+		}
 		
+		Verify.verify(sumOfPositiveDeltas != 0);
+		Verify.verify(sumOfNegativeDeltas != 0);
+		
+		double adaptingCoeff = sumOfPositiveDeltas / sumOfNegativeDeltas;
+		
+		for (String criteria : nonZeroDeltas) {
+			if ("floorArea".equals(criteria))
+				floorArea.
+			else if ("nbBedrooms".equals(criteria))
+				subjectiveValuesDeltas.put("nbBedrooms",
+						this.nbBedroomsValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+			else if ("nbBathrooms".equals(criteria))
+				subjectiveValuesDeltas.put("nbBathrooms",
+						this.nbBathroomsValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+			else if ("nbSleeping".equals(criteria))
+				subjectiveValuesDeltas.put("nbSleeping",
+						this.nbSleepingValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+			else if ("floorAreaTerrace".equals(criteria))
+				subjectiveValuesDeltas.put("floorAreaTerrace",
+						this.floorAreaTerraceValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+			else if ("pricePerNight".equals(criteria))
+				subjectiveValuesDeltas.put("pricePerNight",
+						this.pricePerNightValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+			else if ("nbMinNight".equals(criteria))
+				subjectiveValuesDeltas.put("nbMinNight",
+						this.nbMinNightValueFunction.getSubjectiveValue(Math.abs(deltas.get(criteria))));
+		}
+
 		
 	}
 
@@ -724,6 +808,9 @@ public class ApartmentValueFunction {
 	}
 
 	/**
+	 * This method assumes that the preference between true and false is known but
+	 * doesn't matter.
+	 * 
 	 * @param moreImportant is the criteria that is to be prioritized in this object
 	 *                      of ApartmentValueFunction
 	 * @param lessImportant is the criteria that is to be less important in this
