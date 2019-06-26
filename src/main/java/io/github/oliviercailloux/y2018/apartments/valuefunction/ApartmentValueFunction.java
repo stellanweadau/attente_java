@@ -485,5 +485,10 @@ public class ApartmentValueFunction {
 		return apartValueFunction;
 	}
 
-
+	void adaptImportance(String isMoreImportant, String isLessImportant) {
+		
+		
+		
+	}
+	
 }
