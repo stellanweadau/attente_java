@@ -28,7 +28,7 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
 public class AskAvisForUtility {
 	
-	//static int i = 0; 
+	static int i = 0; 
 	static int j =0 ; 
 	static Display display = new Display();
 	static Shell shell = new Shell(display);
@@ -43,8 +43,11 @@ public class AskAvisForUtility {
 		ArrayList<String> choix1 = new ArrayList<String>();
 		choix1.add("Surface");
 		choix1.add("tele");
-		choix1.add("terrace");
-		choix1.add("metro");
+		
+		ArrayList<String> choix2 = new ArrayList<String>();
+		choix2.add("wifi");
+		choix2.add("prix");
+		
 		
 		
 		Label title = new Label(shell, SWT.CENTER);
@@ -83,17 +86,22 @@ public class AskAvisForUtility {
 	    
 		button1.addSelectionListener(new SelectionAdapter() {
 			   public void widgetSelected(SelectionEvent arg0) {
-				  /* if (i < 6) i++;
+			/*if (i < 2) i++;
 				   
 				   else 
 					i=0;*/
-					
 				   
+					
+				   if (j < choix1.size()) {
+						
+					
 					buttonChoix1.setText(choix1.get(j));
 			
-					buttonChoix2.setText(choix1.get(j+1));
+					buttonChoix2.setText(choix2.get(j));
 				
-					j+=2; 
+					j++; 
+				   }
+				   
 					
 					button1.pack();
 					buttonChoix1.pack();
