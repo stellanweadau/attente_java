@@ -183,7 +183,7 @@ public class LayoutApartmentGUI {
 			throws IOException, IllegalAccessException {
 		ArrayList<Apartment> appart = new ArrayList<Apartment>();
 		for (int i = 0; i < 50; ++i) {
-			Apartment a = XMLProperties.generateRandomXML(); // lately we will use generateRandom
+			Apartment a = XMLProperties.generateRandom(); 
 			appart.add(a);
 		}
 
