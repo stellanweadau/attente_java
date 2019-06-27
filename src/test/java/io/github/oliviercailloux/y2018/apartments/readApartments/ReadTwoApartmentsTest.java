@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.readApartments;
 
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

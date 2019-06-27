@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.readApartments;
 
 import org.junit.Assert;
+
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

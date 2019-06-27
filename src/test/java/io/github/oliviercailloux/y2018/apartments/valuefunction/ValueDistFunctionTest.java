@@ -1,7 +1,8 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-
+//file API_KEY.txt not found
 import org.junit.Assert;
+
 import org.junit.jupiter.api.Test;
 
 import com.google.maps.model.LatLng;
