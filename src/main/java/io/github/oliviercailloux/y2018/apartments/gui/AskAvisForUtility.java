@@ -2,6 +2,7 @@ package io.github.oliviercailloux.y2018.apartments.gui;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWT.*;
@@ -26,31 +27,31 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
  */
 
 public class AskAvisForUtility {
-	static int i = 0; 
+	
+	//static int i = 0; 
+	static int j =0 ; 
 	static Display display = new Display();
 	static Shell shell = new Shell(display);
 	
-	//private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 	
-/*	public static void setDisplayApartment() {
-		display = new Display();
-		shell = new Shell(display);
 
-		shell.setText("Apartments");
-		shell.setMinimumSize(700, 800);
-		shell.setSize(1000, 1500);
-		shell.pack();
-		shell.open();
-		
-		setDisplayApartment();
-
-	}*/
+	
+	
 	
 	public static void main(String[] args) {
+		
+		ArrayList<String> choix1 = new ArrayList<String>();
+		choix1.add("Surface");
+		choix1.add("tele");
+		choix1.add("terrace");
+		choix1.add("metro");
+		
+		
 		Label title = new Label(shell, SWT.CENTER);
 		title.setText("Donnez moi votre avis :)");
 		title.setLocation(25, 10);
 		title.pack();
+		
 ////////////////////
 		
 		Label question1 = new Label(shell, SWT.CENTER);
@@ -80,26 +81,27 @@ public class AskAvisForUtility {
 	    button1.setLocation(100,100);
 	    button1.setSize(new Point(70,30));
 	    
-		//button1.addSelectionListener(new SelectionAdapter() {
-			   /*public void widgetSelected(SelectionEvent arg0) {
-				   if (i < 6) i++;
+		button1.addSelectionListener(new SelectionAdapter() {
+			   public void widgetSelected(SelectionEvent arg0) {
+				  /* if (i < 6) i++;
 				   
 				   else 
-					i=0;
+					i=0;*/
 					
-					choix1.setText("surface");
+				   
+					buttonChoix1.setText(choix1.get(j));
 			
-					choix2.setText("metro");
+					buttonChoix2.setText(choix1.get(j+1));
 				
+					j+=2; 
 					
 					button1.pack();
-					choix1.pack();
-					choix2.pack();
+					buttonChoix1.pack();
+					buttonChoix2.pack();
 			   }
 			 
 			   
-		});*/
-	   
+		});
 	////////////////////////////////////////	
 		
 		/*Label question2 = new Label(shell, SWT.CENTER);
