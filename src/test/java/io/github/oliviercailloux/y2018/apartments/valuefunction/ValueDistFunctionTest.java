@@ -1,7 +1,8 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 //file API_KEY.txt not found
-import org.junit.Assert;
+//import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -35,13 +36,13 @@ class ValueDistFunctionTest {
 	@Test 
 	void getSubjectiveValueTest() throws Exception{
 		initializeValueDistFunction();
-		Assert.assertEquals(0.90919444444, v.getSubjectiveValue(interest1), 0.1);
+		assertEquals(0.90919444444, v.getSubjectiveValue(interest1));
 	}
 	
 	@Test
 	void getMaxDurationTest() throws Exception {
 		initializeValueDistFunction();
-		Assert.assertEquals(5091.0, v.getMaxDuration(),0);
+		assertEquals(5091.0, v.getMaxDuration());
 	}
 
 }

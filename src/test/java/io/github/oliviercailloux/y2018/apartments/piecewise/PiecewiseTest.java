@@ -1,8 +1,9 @@
 package io.github.oliviercailloux.y2018.apartments.piecewise;
 
 import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.y2018.apartments.piecewise.PiecewiseLinearValueFunction;
@@ -12,20 +13,20 @@ public class PiecewiseTest{
 	@Test
 	void getUtilityNormalTest() throws IOException {
 		PiecewiseLinearValueFunction p = initializePieceWise();
-		Assert.assertEquals(0.55, p.getUtility(55), 0);
+		assertEquals(0.55, p.getUtility(55), 0);
 	}
 		
 	@Test
 	void getUtilityWithParamAboveMax() throws IOException {
 		PiecewiseLinearValueFunction p = initializePieceWise();
-		Assert.assertEquals(1, p.getUtility(70), 0);
+		assertEquals(1, p.getUtility(70), 0);
 	}
 
 	@Test
 	void getUtilityWithParamBelowMin() throws IOException{
 		PiecewiseLinearValueFunction p = initializePieceWise();
 
-		Assert.assertEquals(0, p.getUtility(20), 0);
+		assertEquals(0, p.getUtility(20), 0);
 
 
 	}

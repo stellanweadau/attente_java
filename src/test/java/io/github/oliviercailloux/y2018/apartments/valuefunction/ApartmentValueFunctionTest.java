@@ -1,8 +1,8 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
@@ -59,16 +59,16 @@ class ApartmentValueFunctionTest {
 		LinearValueFunction floorAreaTerraceV = new LinearValueFunction(30,50);
 		valueFunction.setFloorAreaTerraceValueFunction(floorAreaTerraceV);
 
-		Assert.assertEquals(0.5, valueFunction.getSubjectiveValue(a),0.0001);
+		assertEquals(0.5, valueFunction.getSubjectiveValue(a),0.0001);
 
 		valueFunction.setTeleSubjectiveValueWeight(10);
 
-		Assert.assertEquals(0.04587, valueFunction.getSubjectiveValue(a),0.00001);
+		assertEquals(0.04587, valueFunction.getSubjectiveValue(a),0.00001);
 	}
 
 	@Test
 	void exceptionIllegalArgWeightSetter() {
-		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+		assertThrows(IllegalArgumentException.class, () -> {
 			ApartmentValueFunction vF = new ApartmentValueFunction();
 			vF.setFloorAreaSubjectiveValueWeight(-1);
 		});
