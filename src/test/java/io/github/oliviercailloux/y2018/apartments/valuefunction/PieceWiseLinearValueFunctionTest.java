@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.SortedMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
-
 public class PieceWiseLinearValueFunctionTest {
 
 	@Test
@@ -31,7 +30,7 @@ public class PieceWiseLinearValueFunctionTest {
 	public void getUtilityWithParamBelowMin() throws IOException {
 
 		PieceWiseLinearValueFunction p = initializePieceWise();
-		
+
 		assertEquals(0, p.getSubjectiveValue(-10d));
 
 	}
@@ -42,7 +41,7 @@ public class PieceWiseLinearValueFunctionTest {
 		map.put(0d, 0d);
 		map.put(10d, 0.5);
 		map.put(30d, 1d);
-		
+
 		return new PieceWiseLinearValueFunction(map);
 	}
 }

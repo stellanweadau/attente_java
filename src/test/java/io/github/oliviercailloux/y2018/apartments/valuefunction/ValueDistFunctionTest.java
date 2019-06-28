@@ -1,7 +1,5 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-//file API_KEY.txt not found
-//import org.junit.Assert;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -19,26 +17,26 @@ class ValueDistFunctionTest {
 	LatLng interest2;
 	LatLng interest3;
 	String apiKey;
-	
+
 	void initializeValueDistFunction() throws Exception {
 		apiKey = KeyManager.getApiKey();
-		appart = Localizer.getGeometryLocation("Ville d'Avray",apiKey);
-		interest1 = Localizer.getGeometryLocation("Paris",apiKey);
-		interest2 = Localizer.getGeometryLocation("Chaville",apiKey);
-		interest3 = Localizer.getGeometryLocation("Roissy Charles de Gaulle",apiKey);
-		v = new ValueDistFunction(appart,apiKey);
-		
+		appart = Localizer.getGeometryLocation("Ville d'Avray", apiKey);
+		interest1 = Localizer.getGeometryLocation("Paris", apiKey);
+		interest2 = Localizer.getGeometryLocation("Chaville", apiKey);
+		interest3 = Localizer.getGeometryLocation("Roissy Charles de Gaulle", apiKey);
+		v = new ValueDistFunction(appart, apiKey);
+
 		v.addInterestLocation(interest1);
 		v.addInterestLocation(interest2);
 		v.addInterestLocation(interest3);
 	}
-	
-	@Test 
-	void getSubjectiveValueTest() throws Exception{
+
+	@Test
+	void getSubjectiveValueTest() throws Exception {
 		initializeValueDistFunction();
 		assertEquals(0.90919444444, v.getSubjectiveValue(interest1));
 	}
-	
+
 	@Test
 	void getMaxDurationTest() throws Exception {
 		initializeValueDistFunction();

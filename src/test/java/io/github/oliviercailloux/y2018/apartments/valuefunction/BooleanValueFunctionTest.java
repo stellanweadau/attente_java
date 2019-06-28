@@ -1,6 +1,5 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,6 @@ class BooleanValueFunctionTest {
 		Assert.assertEquals(1, b.getSubjectiveValue(true), 0);
 		Assert.assertEquals(0, b.getSubjectiveValue(false), 0);
 	}
-
 
 	@Test
 	void applyTest() {
