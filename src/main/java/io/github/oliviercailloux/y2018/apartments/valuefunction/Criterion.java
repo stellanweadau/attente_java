@@ -1,6 +1,6 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-public enum AdaptiveWeightType {
+public enum Criterion {
 	TELE,
 	TERRACE,
 	WIFI,
