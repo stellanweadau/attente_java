@@ -15,6 +15,7 @@ class DistanceSubwayTest {
 	 * The test check if the distance (in second) between Ville d'Avray and 
 	 * Paris is below 2h (6300 seconds) and above 30 minutes (1800 seconds)
 	 * This test fail in unnatural conditions of circulation (strike, etc...)
+	 * This test does not run due to the absence of the file API_KEY.txt of Google Maps
 	 * @throws Exception 
 	 */
 	

@@ -2,7 +2,6 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 import com.google.maps.model.LatLng;
 
 import io.github.oliviercailloux.y2018.apartments.localize.Localizer;
@@ -16,7 +15,12 @@ class ValueDistFunctionTest {
 	LatLng interest2;
 	LatLng interest3;
 	String apiKey;
-
+	
+	/**
+	 * This test does not run due to the absence of the file API_KEY.txt of Google MAps
+	 * @throws Exception 
+	 */
+	
 	void initializeValueDistFunction() throws Exception {
 		apiKey = KeyManager.getApiKey();
 		appart = Localizer.getGeometryLocation("Ville d'Avray", apiKey);
