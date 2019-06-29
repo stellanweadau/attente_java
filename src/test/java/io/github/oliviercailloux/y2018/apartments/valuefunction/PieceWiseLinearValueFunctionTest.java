@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import java.util.SortedMap;
