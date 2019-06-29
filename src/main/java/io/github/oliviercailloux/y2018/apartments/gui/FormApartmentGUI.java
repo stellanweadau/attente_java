@@ -23,13 +23,14 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
 
 /**
- * This class enables the user to create a form for creating/modifying an apartment.
+ * This class enables the user to create a form for creating/modifying an
+ * apartment.
  *
  */
 public class FormApartmentGUI {
 	protected static Display display = new Display();
 	protected static Shell shell = new Shell(display);
-	protected Text title; 
+	protected Text title;
 	protected Text address;
 	protected Text floorArea;
 	protected Text nbBedrooms;
@@ -106,8 +107,8 @@ public class FormApartmentGUI {
 				if (!t.getText().isEmpty()) {
 					t.setBackground(new Color(display, 255, 255, 255));
 				} else {
-					Label l = (Label)t.getParent().getChildren()[0];
-					if(l.getText().contains("*"))
+					Label l = (Label) t.getParent().getChildren()[0];
+					if (l.getText().contains("*"))
 						t.setBackground(new Color(display, 255, 200, 200));
 				}
 				informationToFile();
@@ -154,8 +155,13 @@ public class FormApartmentGUI {
 			apart.setTele(tele.getSelection());
 			apart.setWifi(wifi.getSelection());
 			apart.setDescription(description.getText());
-			
-			if((verificationText(nbBedrooms, TypeButtonText.INT)==false &&  nbBedrooms.getText()!="") || (verificationText(nbMinNight, TypeButtonText.INT)==false &&  nbMinNight.getText()!="") || (verificationText(nbSleeping, TypeButtonText.INT)==false && nbSleeping.getText()!="") || (verificationText(nbBathrooms, TypeButtonText.INT)==false && nbBathrooms.getText()!="") || (verificationText(pricePerNight, TypeButtonText.DOUBLE)==false && pricePerNight.getText()!=""))
+
+			if ((verificationText(nbBedrooms, TypeButtonText.INT) == false && nbBedrooms.getText() != "")
+					|| (verificationText(nbMinNight, TypeButtonText.INT) == false && nbMinNight.getText() != "")
+					|| (verificationText(nbSleeping, TypeButtonText.INT) == false && nbSleeping.getText() != "")
+					|| (verificationText(nbBathrooms, TypeButtonText.INT) == false && nbBathrooms.getText() != "")
+					|| (verificationText(pricePerNight, TypeButtonText.DOUBLE) == false
+							&& pricePerNight.getText() != ""))
 				invalid = true;
 			if (verificationText(nbBedrooms, TypeButtonText.INT))
 				apart.setNbBedrooms(Integer.parseInt(nbBedrooms.getText()));
@@ -171,66 +177,64 @@ public class FormApartmentGUI {
 			if (terrace.getSelection() && verificationText(floorAreaTerrace, TypeButtonText.DOUBLE)) {
 				apart.setTerrace(terrace.getSelection());
 				apart.setFloorAreaTerrace(Double.parseDouble(floorAreaTerrace.getText()));
-			} 
-			else {
+			} else {
 				apart.setTerrace(false);
-				if(terrace.getSelection())
-				{
+				if (terrace.getSelection()) {
 					loadMessage(MessageInfo.ERROR, "Floor Area Terrace should not be empty !");
 					invalid = true;
 				}
 
 			}
-			if(!invalid)
-			{
+			if (!invalid) {
 				write(apart);
 				loadMessage(MessageInfo.SAVED, "Apartment have been saved !");
 				System.out.println("saved");
 			}
 
-		} 
-		else {
+		} else {
 			loadMessage(MessageInfo.REQUIRED, "Title, Address and Floor Area are required");
 
 		}
 
 	}
-	
+
 	/**
-	 * This method attributes a color to the information window and depends on the MessageInfo type.
-	 * @param type MessageInfo defined in the class MessageInfo for the alert types of a message
-	 * @param message String which corresponds to the message linked with the MessageInfo object
+	 * This method attributes a color to the information window and depends on the
+	 * MessageInfo type.
+	 * 
+	 * @param type    MessageInfo defined in the class MessageInfo for the alert
+	 *                types of a message
+	 * @param message String which corresponds to the message linked with the
+	 *                MessageInfo object
 	 */
-	protected void loadMessage(MessageInfo type, String message)
-	{
+	protected void loadMessage(MessageInfo type, String message) {
 		Color color = alertColor;
-		switch(type)
-		{
-		case REQUIRED :
+		switch (type) {
+		case REQUIRED:
 			color = alertColor;
 			break;
-		case SAVED :
+		case SAVED:
 			color = okColor;
 			break;
-		case LOAD :
+		case LOAD:
 			color = okColor;
 			break;
-		case ERROR :
+		case ERROR:
 			color = alertColor;
 			break;
 		default:
 			break;
 		}
 		information.setBackground(color);
-		Label l = (Label)information.getChildren()[0];
+		Label l = (Label) information.getChildren()[0];
 		l.setBackground(color);
 		l.setText(message);
 	}
+
 	/**
 	 * Creates a composite (in the GUI) which contains a Text box.
 	 * 
-	 * @param label
-	 *            String which corresponds to the the title of the Text box.
+	 * @param label String which corresponds to the the title of the Text box.
 	 * @return Text containing the information of the Text box.
 	 */
 	private Text createFormFieldComposite(String label) {
@@ -263,10 +267,8 @@ public class FormApartmentGUI {
 	 * Verifies that the data in parameters are in the good type. Change the
 	 * background color of the Text Box if the type is not correct.
 	 * 
-	 * @param text
-	 *            Text (data to analyze)
-	 * @param type
-	 *            TypeButtonText (type required for the @param text)
+	 * @param text Text (data to analyze)
+	 * @param type TypeButtonText (type required for the @param text)
 	 * @return a boolean (true if the type is correct)
 	 */
 	private boolean verificationText(Text text, TypeButtonText type) {
@@ -295,7 +297,8 @@ public class FormApartmentGUI {
 				} catch (NumberFormatException e) {
 					text.setText("");
 					Label l = (Label) text.getParent().getChildren()[0];
-					loadMessage(MessageInfo.ERROR, "Error : " + l.getText().substring(0, l.getText().length() - 2) + "have not a valid format");
+					loadMessage(MessageInfo.ERROR, "Error : " + l.getText().substring(0, l.getText().length() - 2)
+							+ "have not a valid format");
 					LOGGER.error("The argument set is not valid " + e.getMessage());
 				}
 			}
@@ -317,8 +320,7 @@ public class FormApartmentGUI {
 	/**
 	 * Creates a composite (in the GUI) which contains a check box.
 	 * 
-	 * @param label
-	 *            String which corresponds to the the title of the check box.
+	 * @param label String which corresponds to the the title of the check box.
 	 * @return Button for the validation of data.
 	 */
 	private Button createCheckboxComposite(String label) {
@@ -345,8 +347,7 @@ public class FormApartmentGUI {
 	 * Insert Apartment data inserted in the GUI, in a XML File. The name of the
 	 * file is in the parameters of the class.
 	 * 
-	 * @param a
-	 *            Object Apartment
+	 * @param a Object Apartment
 	 */
 	private void write(Apartment a) {
 		XMLProperties xmlFile = new XMLProperties();
@@ -378,7 +379,9 @@ public class FormApartmentGUI {
 	}
 
 	/**
-	 * This method builds a composite object which contains the validation information of the form.
+	 * This method builds a composite object which contains the validation
+	 * information of the form.
+	 * 
 	 * @return a Composite Object of the information window.
 	 */
 	private Composite createCompositeInformation() {
