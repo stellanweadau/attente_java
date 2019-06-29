@@ -16,23 +16,24 @@ import io.github.oliviercailloux.y2018.apartments.iconDisplay.DisplayIcon;
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
 /**
- * This class initializes a GUI for modifying an apartment object from an XML File.
+ * This class initializes a GUI for modifying an apartment object from an XML
+ * File.
  *
  */
-public class ModifyApartmentGUI extends FormApartmentGUI{
-	
+public class ModifyApartmentGUI extends FormApartmentGUI {
+
 	private final static Logger LOGGER = LoggerFactory.getLogger(ModifyApartmentGUI.class);
-	
+
 	public ModifyApartmentGUI(String fileCompleteName) {
 		super();
 		this.file = new File(fileCompleteName);
 		this.titlePanel = "Modify an apartment";
 	}
-	
+
 	/**
 	 * 
-	 * @param args
-	 * 	must contains as first parameter the complete name of the file (Full Path).
+	 * @param args must contains as first parameter the complete name of the file
+	 *             (Full Path).
 	 * @throws IOException
 	 */
 	static public void main(String args[]) throws IOException {
@@ -42,68 +43,68 @@ public class ModifyApartmentGUI extends FormApartmentGUI{
 		else
 			c = new ModifyApartmentGUI(args[0]);
 		c.screenDisplay();
-		
+
 	}
+
 	/**
-	 * This method initialize every element of the form with the data present 
-	 * in the Apartment apart field.
-	 * It used getApartment() in order to get the apartment from the xml file 
-	 * transmit in the main method
+	 * This method initialize every element of the form with the data present in the
+	 * Apartment apart field. It used getApartment() in order to get the apartment
+	 * from the xml file transmit in the main method
+	 * 
 	 * @throws IOException
 	 */
 	private void initializeField() throws IOException {
 		getApartment();
-		if(!apart.getTitle().equals("") && !apart.getTitle().isEmpty())
+		if (!apart.getTitle().equals("") && !apart.getTitle().isEmpty())
 			title.setText(apart.getTitle());
-		if(apart.getTele())
+		if (apart.getTele())
 			tele.setSelection(true);
-		if(apart.getTerrace())
+		if (apart.getTerrace())
 			terrace.setSelection(true);
-		if(apart.getWifi())
+		if (apart.getWifi())
 			wifi.setSelection(true);
-		if(!apart.getAddress().equals("") && !apart.getAddress().isEmpty())
+		if (!apart.getAddress().equals("") && !apart.getAddress().isEmpty())
 			address.setText(apart.getAddress());
-		if(!apart.getDescription().equals("") && !apart.getDescription().isEmpty())
+		if (!apart.getDescription().equals("") && !apart.getDescription().isEmpty())
 			description.setText(apart.getDescription());
-		if(apart.getFloorArea() != 0)
+		if (apart.getFloorArea() != 0)
 			floorArea.setText(Double.toString(apart.getFloorArea()));
-		if(apart.getFloorAreaTerrace() != 0)
-		{
+		if (apart.getFloorAreaTerrace() != 0) {
 			floorAreaTerrace.setText(Double.toString(apart.getFloorAreaTerrace()));
 			floorAreaTerrace.setEditable(true);
 		}
-		if(apart.getNbBathrooms() != 0)
+		if (apart.getNbBathrooms() != 0)
 			nbBathrooms.setText(Integer.toString(apart.getNbBathrooms()));
-		if(apart.getNbBedrooms() != 0)
+		if (apart.getNbBedrooms() != 0)
 			nbBedrooms.setText(Integer.toString(apart.getNbBedrooms()));
-		if(apart.getNbMinNight() != 0)
+		if (apart.getNbMinNight() != 0)
 			nbMinNight.setText(Integer.toString(apart.getNbMinNight()));
-		if(apart.getNbSleeping() != 0)
+		if (apart.getNbSleeping() != 0)
 			nbSleeping.setText(Integer.toString(apart.getNbSleeping()));
-		if(apart.getPricePerNight() != 0)
+		if (apart.getPricePerNight() != 0)
 			pricePerNight.setText(Double.toString(apart.getPricePerNight()));
 	}
-	
+
 	/**
 	 * Initialize the apart field with the xml file set in the file field.
+	 * 
 	 * @throws IOException
 	 */
-	private void getApartment() throws IOException
-	{
-		try (InputStream i = Files.asByteSource(file).openStream())
-		{
+	private void getApartment() throws IOException {
+		try (InputStream i = Files.asByteSource(file).openStream()) {
 			ReadApartmentsXMLFormat f = new ReadApartmentsXMLFormat();
 			apart = f.readApartment(i);
 		}
 
-		
 	}
+
 	/**
 	 * General method which displays all the element of the GUI.
+	 * 
 	 * @throws IOException if the logo doesn't load well.
 	 */
 	protected void screenDisplay() throws IOException {
-		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
+		try (InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")) {
 
 			LOGGER.info("The logo has been loaded with success.");
 			FillLayout r = new FillLayout();
@@ -112,7 +113,6 @@ public class ModifyApartmentGUI extends FormApartmentGUI{
 			Image i = new Image(display, f);
 			shell.setImage(i);
 			shell.setText("Apartments");
-
 
 			createPageTitle();
 			createForm();
@@ -123,12 +123,12 @@ public class ModifyApartmentGUI extends FormApartmentGUI{
 
 			shell.open();
 			LOGGER.info("The Shell was opened with success.");
-			
+
 			initializeField();
-			loadMessage(MessageInfo.LOAD,  "Everything is loaded !");
-			while(!shell.isDisposed( )){
-				if(!display.readAndDispatch( ))
-					display.sleep( );
+			loadMessage(MessageInfo.LOAD, "Everything is loaded !");
+			while (!shell.isDisposed()) {
+				if (!display.readAndDispatch())
+					display.sleep();
 			}
 			i.dispose();
 			display.dispose();
@@ -136,5 +136,3 @@ public class ModifyApartmentGUI extends FormApartmentGUI{
 		}
 	}
 }
-	
-

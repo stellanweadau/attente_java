@@ -2,7 +2,6 @@ package io.github.oliviercailloux.y2018.apartments.toxmlproperties;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.lang.reflect.Field;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -32,22 +31,22 @@ public class XMLProperties {
 	 * @throws IllegalArgumentException
 	 * @throws IllegalAccessException
 	 */
-	public void toXML(Apartment a, OutputStream xmlFile)
-			throws IOException, IllegalArgumentException, IllegalAccessException {
+	public void toXML(Apartment a, OutputStream xmlFile) throws IOException {
 
-		for (Field f : a.getClass().getDeclaredFields()) {
+		properties.setProperty("nbSleeping", String.valueOf(a.getNbSleeping()));
+		properties.setProperty("nbMinNight", String.valueOf(a.getNbMinNight()));
+		properties.setProperty("terrace", String.valueOf(a.getTerrace()));
+		properties.setProperty("nbBedrooms", String.valueOf(a.getNbBedrooms()));
+		properties.setProperty("floorArea", String.valueOf(a.getFloorArea()));
+		properties.setProperty("pricePerNight", String.valueOf(a.getPricePerNight()));
+		properties.setProperty("tele", String.valueOf(a.getTele()));
+		properties.setProperty("wifi", String.valueOf(a.getWifi()));
+		properties.setProperty("title", a.getTitle());
+		properties.setProperty("nbBathrooms", String.valueOf(a.getNbBathrooms()));
+		properties.setProperty("address", a.getAddress());
+		properties.setProperty("floorAreaTerrace", String.valueOf(a.getFloorAreaTerrace()));
+		properties.setProperty("description", a.getDescription());
 
-			String[] fullName = f.toString().split(" ")[2].split("\\.");
-
-			f.setAccessible(true);
-			properties.setProperty(fullName[fullName.length - 1], f.get(a).toString());
-
-			LOGGER.info("Adding entry : " + fullName[fullName.length - 1] + " : " + f.get(a));
-
-		}
-		properties.remove("apartment");
-		properties.remove("LOGGER");
-		properties.remove("Logger");
 		properties.storeToXML(xmlFile, "Generated file for the apartment " + a.getTitle());
 
 		LOGGER.info("Stream has been closed");
@@ -55,8 +54,7 @@ public class XMLProperties {
 	}
 
 	/**
-	 * Generates an object representing random
-	 *                                apartments
+	 * Generates an object representing random apartments
 	 */
 	public static Apartment generateRandom() {
 
@@ -70,8 +68,8 @@ public class XMLProperties {
 				"8 avenue de Paris 94160 Saint-mandé", "5 avenue des Champs-Elysées 75016", "13 rue des Arts 75001",
 				"10 rue de Dauphine 75016", "33 rue de Tolbiac 75013", "33 rue de Tolbiac 75013", " ", " ", " ");
 
-		int n = (int) (Math.random() * titles.size()-1);
-		int m = (int) (Math.random() * address.size()-1);
+		int n = (int) (Math.random() * titles.size() - 1);
+		int m = (int) (Math.random() * address.size() - 1);
 
 		double floorArea = Math.random() * 300;
 		boolean terrace = (Math.random() * 2 >= 1) ? true : false;

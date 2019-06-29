@@ -579,6 +579,7 @@ public class ApartmentValueFunction {
 						+ floorAreaTerraceSubjectiveValueWeight + wifiSubjectiveValueWeight
 						+ pricePerNightSubjectiveValueWeight + nbMinNightSubjectiveValueWeight
 						+ teleSubjectiveValueWeight));
+
 	}
 
 	private ApartmentValueFunction cloneAVF() {
