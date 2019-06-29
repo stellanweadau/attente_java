@@ -140,7 +140,7 @@ public class LayoutApartmentGUI {
 		gridData = new GridData(GridData.HORIZONTAL_ALIGN_END);
 		gridData.horizontalSpan = 3;
 
-		onClick(adresse, surface, prix, nbrChambres, listApp);
+		onClick(adresse, surface, prix, nbrChambres);
 
 		shell.setSize(1000, 550);
 		shell.open();
@@ -201,7 +201,7 @@ public class LayoutApartmentGUI {
 	 * @param          adresse, surface, prix, nbrChambres the parameters of apps to
 	 *                 display when clicking on an apartment
 	 */
-	private void onClick(Label adresse, Label surface, Label prix, Label nbrChambres, ArrayList<Apartment> listApp3) {
+	private void onClick(Label adresse, Label surface, Label prix, Label nbrChambres) {
 		listShell.addSelectionListener(new SelectionAdapter() {
 
 			@Override
@@ -209,10 +209,10 @@ public class LayoutApartmentGUI {
 				int[] selectedItems = listShell.getSelectionIndices();
 
 				for (int loopIndex = 0; loopIndex < selectedItems.length; loopIndex++) {
-					adresse.setText(listApp3.get(listShell.getSelectionIndex()).getAddress());
-					surface.setText(" " + listApp3.get(listShell.getSelectionIndex()).getFloorArea());
-					prix.setText(" " + listApp3.get(listShell.getSelectionIndex()).getPricePerNight());
-					nbrChambres.setText(" " + listApp3.get(listShell.getSelectionIndex()).getNbBedrooms());
+					adresse.setText(listApp.get(listShell.getSelectionIndex()).getAddress());
+					surface.setText(" " + listApp.get(listShell.getSelectionIndex()).getFloorArea());
+					prix.setText(" " + listApp.get(listShell.getSelectionIndex()).getPricePerNight());
+					nbrChambres.setText(" " + listApp.get(listShell.getSelectionIndex()).getNbBedrooms());
 				}
 			}
 		});
