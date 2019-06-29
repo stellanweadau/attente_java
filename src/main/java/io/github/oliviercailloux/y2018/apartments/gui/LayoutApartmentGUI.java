@@ -50,22 +50,6 @@ public class LayoutApartmentGUI {
 	}
 
 	/**
-	 * This is the main function
-	 * 
-	 * @param args
-	 * @throws IllegalAccessException
-	 * @throws DOMException
-	 * @throws IOException
-	 */
-	public static void main(String[] args) throws IllegalAccessException, IOException {
-		ApartmentValueFunction avf = new ApartmentValueFunction();
-		avf.setFloorAreaValueFunction(new LinearValueFunction(0, 300));
-
-		LayoutApartmentGUI layout = new LayoutApartmentGUI(avf);
-		layout.displayAppart();
-	}
-
-	/**
 	 * General method which displays all the sorted apartment
 	 * 
 	 * @param listApp the list of apartments to display
@@ -219,4 +203,20 @@ public class LayoutApartmentGUI {
 
 	}
 
+	/**
+	 * This is the main function
+	 * 
+	 * @param args
+	 * @throws IllegalAccessException
+	 * @throws DOMException
+	 * @throws IOException
+	 */
+	public static void main(String[] args) throws IllegalAccessException, IOException {
+		ApartmentValueFunction avf = new ApartmentValueFunction();
+		avf.setFloorAreaValueFunction(new LinearValueFunction(0, 300));
+
+		LayoutApartmentGUI layout = new LayoutApartmentGUI(avf);
+		layout.displayAppart();
+	}
+	
 }
