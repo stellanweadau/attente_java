@@ -272,12 +272,12 @@ public class AskOpinionForUtility {
 		ApartmentValueFunction avf = new ApartmentValueFunction();
 
 		// we collect the answers on the minimums and we adapt the utility of the user
-		avf.setSubjectiveValueWeight(Criterion.NB_BEDROOMS, surfaceMin);
-		avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA, nbBedMin);
+		avf = avf.setSubjectiveValueWeight(Criterion.NB_BEDROOMS, surfaceMin);
+		avf= avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA, nbBedMin);
 
 		// we collect the answer of the first Question and adapt the utility of the user
 		if (attributsImportant.get(0).equals("WIFI") && attributsPasImportant.get(0).equals("TERRACE")) {
-			avf.adaptWeight(Criterion.WIFI, Criterion.TERRACE);
+			avf= avf.adaptWeight(Criterion.WIFI, Criterion.TERRACE);
 		} else {
 			avf.adaptWeight(Criterion.TERRACE, Criterion.WIFI);
 		}
@@ -285,9 +285,9 @@ public class AskOpinionForUtility {
 		// we collect the answer of the second Question and we adapt the utility of the
 		// user
 		if (attributsImportant.get(1).equals("TELE") && attributsPasImportant.get(1).equals("PRICE_PER_NIGHT low")) {
-			avf.adaptWeight(Criterion.TELE, Criterion.PRICE_PER_NIGHT);
+			avf=avf.adaptWeight(Criterion.TELE, Criterion.PRICE_PER_NIGHT);
 		} else {
-			avf.adaptWeight(Criterion.PRICE_PER_NIGHT, Criterion.TELE);
+			avf= avf.adaptWeight(Criterion.PRICE_PER_NIGHT, Criterion.TELE);
 		}
 
 	}
