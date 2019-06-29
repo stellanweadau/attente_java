@@ -25,7 +25,7 @@ public class ApartmentGenerator {
 	 */
 	public Apartment generateRandomApartment() {
 
-		LOGGER.info("Begining of random generation of an Apartment");
+		LOGGER.info("Beginning of random generation of an Apartment");
 
 		final ImmutableList<String> titles = ImmutableList.of("Location Apartement 1223", "Location Apartement 2434",
 				"Location Apartement 4353", "Location Apartement 3423", "Location Apartement 4234",
