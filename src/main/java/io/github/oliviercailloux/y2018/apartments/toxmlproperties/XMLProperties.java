@@ -31,9 +31,8 @@ public class XMLProperties {
 	 * @throws IllegalArgumentException
 	 * @throws IllegalAccessException
 	 */
-	public void toXML(Apartment a, OutputStream xmlFile)
-			throws IOException {
-		
+	public void toXML(Apartment a, OutputStream xmlFile) throws IOException {
+
 		properties.setProperty("nbSleeping", String.valueOf(a.getNbSleeping()));
 		properties.setProperty("nbMinNight", String.valueOf(a.getNbMinNight()));
 		properties.setProperty("terrace", String.valueOf(a.getTerrace()));
@@ -47,7 +46,7 @@ public class XMLProperties {
 		properties.setProperty("address", a.getAddress());
 		properties.setProperty("floorAreaTerrace", String.valueOf(a.getFloorAreaTerrace()));
 		properties.setProperty("description", a.getDescription());
-		
+
 		properties.storeToXML(xmlFile, "Generated file for the apartment " + a.getTitle());
 
 		LOGGER.info("Stream has been closed");
@@ -55,8 +54,7 @@ public class XMLProperties {
 	}
 
 	/**
-	 * Generates an object representing random
-	 *                                apartments
+	 * Generates an object representing random apartments
 	 */
 	public static Apartment generateRandom() {
 
@@ -70,8 +68,8 @@ public class XMLProperties {
 				"8 avenue de Paris 94160 Saint-mandé", "5 avenue des Champs-Elysées 75016", "13 rue des Arts 75001",
 				"10 rue de Dauphine 75016", "33 rue de Tolbiac 75013", "33 rue de Tolbiac 75013", " ", " ", " ");
 
-		int n = (int) (Math.random() * titles.size()-1);
-		int m = (int) (Math.random() * address.size()-1);
+		int n = (int) (Math.random() * titles.size() - 1);
+		int m = (int) (Math.random() * address.size() - 1);
 
 		double floorArea = Math.random() * 300;
 		boolean terrace = (Math.random() * 2 >= 1) ? true : false;
