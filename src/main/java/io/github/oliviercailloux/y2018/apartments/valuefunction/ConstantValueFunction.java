@@ -9,7 +9,7 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 public class ConstantValueFunction<T> implements PartialValueFunction<T> {
 
 	double subjectiveValue;
-	
+
 	public ConstantValueFunction(double d) {
 		this.subjectiveValue = d;
 	}
