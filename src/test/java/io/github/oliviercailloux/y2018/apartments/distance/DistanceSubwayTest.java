@@ -1,6 +1,5 @@
 package io.github.oliviercailloux.y2018.apartments.distance;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.github.oliviercailloux.y2018.apartments.utils.KeyManager;
@@ -18,7 +17,7 @@ class DistanceSubwayTest {
 	 * This test fail in unnatural conditions of circulation (strike, etc...)
 	 * @throws Exception 
 	 */
-	@Test
+	
 	void calculateDistanceAddressTest() throws Exception {
 
 		DistanceSubway dist = new DistanceSubway("Paris","Ville d'Avray",KeyManager.getApiKey());
@@ -28,4 +27,3 @@ class DistanceSubwayTest {
 
 }
 
-//the file text is not found here
