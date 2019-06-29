@@ -11,11 +11,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Shell;
-import org.w3c.dom.DOMException;
 
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
-import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunction;
 
 import org.eclipse.swt.widgets.*;
 
@@ -33,16 +31,27 @@ import org.eclipse.swt.widgets.*;
 
 public class AskOpinionForUtility {
 
-	static int pointer = 0; // to move for questions
-	static ArrayList<String> attributImportant = new ArrayList<String>(); // this array will stock the user's answers (
-																			// when he presses the button)
-	static ArrayList<String> attributPasImportant = new ArrayList<String>(); // this array will stock the attribut that
-																				// the user did'nt answer (the unpressed
-																				// button)
-	static ArrayList<String> choix1 = new ArrayList<String>(); // this array has the attributs for the first button
-																// (buttonchoix1) , we can add how much we want
-	static ArrayList<String> choix2 = new ArrayList<String>(); // this array hay attributs for the second button (
-																// buttonchoix2)
+	/**
+	 * To move for questions
+	 */
+	static int pointer = 0;
+	/**
+	 * This array will stock the user's answers (when he presses the button)
+	 */
+	static ArrayList<String> attributImportant = new ArrayList<String>();
+	/**
+	 * This array will stock the attribute that the user didn't answer (the unpressed button)
+	 */
+	static ArrayList<String> attributPasImportant = new ArrayList<String>();
+	/**
+	 * This array has the attributes for the first button (buttonchoix1),
+	 *  we can add how much we want
+	 */
+	static ArrayList<String> choix1 = new ArrayList<String>();
+	/**
+	 * This array has attributes for the second button (buttonchoix2)
+	 */
+	static ArrayList<String> choix2 = new ArrayList<String>();
 	static double surfaceMin;
 	static double nbBedMin;
 	static Display display = new Display();
@@ -58,8 +67,8 @@ public class AskOpinionForUtility {
 	 */
 
 	public static void main(String[] args) throws IllegalAccessException, IOException {
-		AskQuestions();
-		AdaptAnswers();
+		askQuestions();
+		adaptAnswers();
 		Layout2 lay = new Layout2();
 		Layout2.DisplayApps();
 
@@ -73,7 +82,7 @@ public class AskOpinionForUtility {
 	 * 
 	 */
 
-	public static void AskQuestions() {
+	public static void askQuestions() {
 
 		// we add the other two criteria
 		choix1.add("TELE");
@@ -148,8 +157,8 @@ public class AskOpinionForUtility {
 		buttonchoix2.setText("TERRACE");
 
 		// when cliquing on theses buttons
-		ClickOnButton(buttonchoix1, buttonchoix2);
-		ClickOnButton(buttonchoix2, buttonchoix1);
+		clickOnButton(buttonchoix1, buttonchoix2);
+		clickOnButton(buttonchoix2, buttonchoix1);
 
 		// open the window
 		shell.open();
@@ -173,7 +182,7 @@ public class AskOpinionForUtility {
 	 * 
 	 */
 
-	public static void ClickOnButton(Button pressedButton, Button unPressedButton) {
+	public static void clickOnButton(Button pressedButton, Button unPressedButton) {
 		Label boo = new Label(shell, SWT.NULL);
 		pressedButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -201,16 +210,16 @@ public class AskOpinionForUtility {
 					pressedButton.setText(choix1.get(pointer));
 					unPressedButton.setText(choix2.get(pointer));
 					pointer++;
-					/*
+					/**
 					 * this will change the text of the buttons by choosing the content of the
 					 * arrays attributImportant and attributPasImportant
 					 */
 				}
 
 				pressedButton
-						.setSelection(false); /*
-												 * to not be selected by default in the question in the next iteration
-												 */
+						.setSelection(false); /**
+											   * to not be selected by default in the question in the next iteration
+											   */
 				pressedButton.pack();
 				unPressedButton.pack();
 			}
@@ -225,7 +234,7 @@ public class AskOpinionForUtility {
 	 * This function will adapt the utility of the user using ApartmentValueFunction
 	 * 
 	 */
-	public static void AdaptAnswers() {
+	public static void adaptAnswers() {
 		ApartmentValueFunction avf = new ApartmentValueFunction();
 
 		// we collect the answers on the minimums and we adapt the utility of the user
