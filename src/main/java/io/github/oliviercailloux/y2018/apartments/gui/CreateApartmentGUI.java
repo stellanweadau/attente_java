@@ -1,6 +1,5 @@
 package io.github.oliviercailloux.y2018.apartments.gui;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,30 +12,32 @@ import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.iconDisplay.DisplayIcon;
 
-
 /**
- * Class which enables the user to enter information about an apartment and to record it in a XML File (name given by the user in the constructor)
- * thanks to a GUI.
+ * Class which enables the user to enter information about an apartment and to
+ * record it in a XML File (name given by the user in the constructor) thanks to
+ * a GUI.
  */
 public class CreateApartmentGUI extends FormApartmentGUI {
 
-	
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
+
 	/**
 	 * Initializes the constructor of the class.
-	 * @param fileCompleteName String : name of the file the user wants to put Apartment information.
+	 * 
+	 * @param fileCompleteName String : name of the file the user wants to put
+	 *                         Apartment information.
 	 */
 	public CreateApartmentGUI(String fileCompleteName) {
 		super();
 		this.file = new File(fileCompleteName);
 		this.titlePanel = "Create an Apartment";
 		LOGGER.info("The GUI was initialized with success.");
-		}
+	}
 
 	/**
 	 * 
-	 * @param args
-	 * 	must contains as first parameter the complete name of the file (Full Path).
+	 * @param args must contains as first parameter the complete name of the file
+	 *             (Full Path).
 	 * @throws IOException
 	 */
 	static public void main(String args[]) throws IOException {
@@ -44,15 +45,17 @@ public class CreateApartmentGUI extends FormApartmentGUI {
 		if (args[0] == null)
 			c = new CreateApartmentGUI("GUITest");
 		else
-			 c = new CreateApartmentGUI(args[0]);
+			c = new CreateApartmentGUI(args[0]);
 		c.screenDisplay();
 	}
+
 	/**
 	 * General method which displays all the element of the GUI.
+	 * 
 	 * @throws IOException if the logo doesn't load well.
 	 */
 	protected void screenDisplay() throws IOException {
-		try(InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")){
+		try (InputStream f = DisplayIcon.class.getResourceAsStream("logo.png")) {
 
 			LOGGER.info("The logo has been loaded with success.");
 			FillLayout r = new FillLayout();
@@ -61,7 +64,6 @@ public class CreateApartmentGUI extends FormApartmentGUI {
 			Image i = new Image(display, f);
 			shell.setImage(i);
 			shell.setText("Apartments");
-
 
 			createPageTitle();
 			createForm();
@@ -73,9 +75,9 @@ public class CreateApartmentGUI extends FormApartmentGUI {
 			shell.open();
 			LOGGER.info("The Shell was opened with success.");
 
-			while(!shell.isDisposed( )){
-				if(!display.readAndDispatch( ))
-					display.sleep( );
+			while (!shell.isDisposed()) {
+				if (!display.readAndDispatch())
+					display.sleep();
 			}
 			i.dispose();
 			display.dispose();
