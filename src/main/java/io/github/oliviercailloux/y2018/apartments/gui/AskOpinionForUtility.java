@@ -11,6 +11,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Shell;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Preconditions;
 
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
@@ -29,6 +33,8 @@ import org.eclipse.swt.widgets.*;
  */
 
 public class AskOpinionForUtility {
+	
+	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 
 	/**
 	 * To move for questions
@@ -36,12 +42,12 @@ public class AskOpinionForUtility {
 	int pointer = 0;
 
 	/**
-	 * This array will stock the user's answers (when he presses the button)
+	 * Keeps the user’s answers (when he presses the button)
 	 */
 	ArrayList<String> attributsImportant;
 
 	/**
-	 * This array will stock the attribute that the user didn't answer (the
+	 * Stock the attribute that the user didn't answer (the
 	 * unpressed button)
 	 */
 	ArrayList<String> attributsPasImportant;
@@ -133,36 +139,50 @@ public class AskOpinionForUtility {
 		buttonGroup.setLayout(gridLayout);
 		buttonGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		buttonGroup.setText("Qu'est ce qui a le plus d'importance pour vous");
-
-		// This is a submit button, it will close the shell when the user click on
-		// Terminer
-		final Button finish = new Button(shell, SWT.PUSH);
-		finish.setText("Terminé");
-		finish.pack();
-		finish.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
+		
+		
+		
+		//the listener when we click on finish
+		Listener finishlistener = new Listener() {	
+				public void handleEvent(Event event) {
+			
+				Preconditions.checkArgument(!text1.getText().equals(""), "il faut saisir un chiffre :(");
+				Preconditions.checkArgument(!text2.getText().equals(""), "il faut saisir un texte :(" );
 
 				surfaceMin = Double.parseDouble(text1.getText());
 				nbBedMin = Double.parseDouble(text2.getText());
 
 				shell.close();
+				
+				LOGGER.info("Les attributs importants sont : ");
+				for (int j = 0; j < attributsImportant.size(); j++) {
+					LOGGER.info(attributsImportant.get(j));
+					
+				}
+				
+				LOGGER.info("Les attribut pas importants sont : ");
+				for (int j = 0; j < attributsPasImportant.size(); j++) {
+					LOGGER.info(attributsPasImportant.get(j));
+					
+				}
+				LOGGER.info("la valeur minmum de la surface est " + surfaceMin +
+				 "\nLa valeur minimum du nbre de chambre est " + nbBedMin);
 
-				// some tests
-				/*
-				 * System.out.print("Les attribut important sont : "); for (int j = 0; j <
-				 * attributImportant.size(); j++) {
-				 * System.out.println(attributImportant.get(j)); }
-				 * 
-				 * System.out.print("Les attribut pas important sont : "); for (int j = 0; j <
-				 * attributPasImportant.size(); j++) {
-				 * 
-				 * System.out.println(attributPasImportant.get(j)); }
-				 * System.out.println("la valeur minmum de la surface est " + surfaceMin +
-				 * "\nLa valeur minimum du nbre de chambre est " + nbBedMin);
-				 */
+
 			}
-
-		});
+		};
+		
+		
+		
+		// This is a submit button, it will close the shell when the user click on
+		// Terminer
+		final Button finish = new Button(shell, SWT.PUSH);
+		finish.setText("Terminé");
+		finish.pack();
+		finish.addListener(SWT.Selection, finishlistener);
+			
+			
+		
 
 		// buttonchoix1 and buttonchoix2 are two radio buttons, to let the user chose
 		// between two options
@@ -178,6 +198,7 @@ public class AskOpinionForUtility {
 
 		// open the window
 		shell.open();
+		LOGGER.info("The Shell was opened with success.");
 		while (!shell.isDisposed()) {
 
 			if (!display.readAndDispatch()) {
@@ -186,6 +207,7 @@ public class AskOpinionForUtility {
 			}
 		}
 		display.dispose();
+		LOGGER.info("The screen was closed with success.");
 	}
 
 	/**
@@ -269,5 +291,9 @@ public class AskOpinionForUtility {
 		}
 
 	}
+		
+	
+	
+	
 
 }

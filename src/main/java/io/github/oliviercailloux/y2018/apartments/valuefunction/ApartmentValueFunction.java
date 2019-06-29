@@ -343,7 +343,7 @@ public class ApartmentValueFunction {
 	public void setTeleValueFunction(PartialValueFunction<Boolean> teleValueFunction) throws IllegalArgumentException {
 		this.teleValueFunction = teleValueFunction;
 		checkArgument(!(this.teleValueFunction.equals(null)), "the  cannot be nulled");
-		LOGGER.info("The wifi preferencies has been set");
+		LOGGER.info("The tele preferencies has been set");
 	}
 
 	/**
