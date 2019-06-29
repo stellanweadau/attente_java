@@ -17,7 +17,6 @@ import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFu
 
 import org.eclipse.swt.widgets.*;
 
-
 /**
  * @author SALAME & SAKHO
  * 
@@ -34,28 +33,35 @@ public class AskOpinionForUtility {
 	/**
 	 * To move for questions
 	 */
-	static int pointer = 0;
+	int pointer = 0;
+	
 	/**
 	 * This array will stock the user's answers (when he presses the button)
 	 */
-	static ArrayList<String> attributImportant = new ArrayList<String>();
+	ArrayList<String> attributImportant;
+	
 	/**
-	 * This array will stock the attribute that the user didn't answer (the unpressed button)
+	 * This array will stock the attribute that the user didn't answer (the
+	 * unpressed button)
 	 */
-	static ArrayList<String> attributPasImportant = new ArrayList<String>();
+	ArrayList<String> attributPasImportant;
+	
 	/**
-	 * This array has the attributes for the first button (buttonchoix1),
-	 *  we can add how much we want
+	 * This array has the attributes for the first button (buttonchoix1), we can add
+	 * how much we want
 	 */
-	static ArrayList<String> choix1 = new ArrayList<String>();
+	ArrayList<Criterion> choix1;
+	
 	/**
 	 * This array has attributes for the second button (buttonchoix2)
 	 */
-	static ArrayList<String> choix2 = new ArrayList<String>();
-	static double surfaceMin;
-	static double nbBedMin;
-	static Display display = new Display();
-	static Shell shell = new Shell(display);
+	ArrayList<Criterion> choix2;
+	
+	double surfaceMin;
+	double nbBedMin;
+	
+	Display display = new Display();
+	Shell shell = new Shell(display);
 
 	/**
 	 * This is the main function, it asks Questions , AdaptAnswers and then displays
@@ -67,14 +73,15 @@ public class AskOpinionForUtility {
 	 */
 
 	public static void main(String[] args) throws IllegalAccessException, IOException {
-		askQuestions();
-		adaptAnswers();
+		
+		AskOpinionForUtility asker = new AskOpinionForUtility();
+		
+		asker.askQuestions();
+		asker.adaptAnswers();
 		Layout2 lay = new Layout2();
 		Layout2.DisplayApps();
 
 	}
-	
-	
 
 	/**
 	 * This function will create and display the window (interface)to ask the user
@@ -82,11 +89,11 @@ public class AskOpinionForUtility {
 	 * 
 	 */
 
-	public static void askQuestions() {
+	public void askQuestions() {
 
 		// we add the other two criteria
-		choix1.add("TELE");
-		choix2.add("PRICE_PER_NIGHT low");
+		choix1.add(Criterion.TELE);
+		choix2.add(Criterion.PRICE_PER_NIGHT);
 
 		shell.setText("Votre avis nous intéresse ;)");
 		shell.setLayout(new GridLayout());
@@ -131,18 +138,17 @@ public class AskOpinionForUtility {
 				shell.close();
 
 				// some tests
-				/*System.out.print("Les attribut important sont : ");
-				for (int j = 0; j < attributImportant.size(); j++) {
-					System.out.println(attributImportant.get(j));
-				}
-
-				System.out.print("Les attribut pas important sont : ");
-				for (int j = 0; j < attributPasImportant.size(); j++) {
-
-					System.out.println(attributPasImportant.get(j));
-				}
-				System.out.println("la valeur minmum de la surface est " + surfaceMin
-						+ "\nLa valeur minimum du nbre de chambre est " + nbBedMin);
+				/*
+				 * System.out.print("Les attribut important sont : "); for (int j = 0; j <
+				 * attributImportant.size(); j++) {
+				 * System.out.println(attributImportant.get(j)); }
+				 * 
+				 * System.out.print("Les attribut pas important sont : "); for (int j = 0; j <
+				 * attributPasImportant.size(); j++) {
+				 * 
+				 * System.out.println(attributPasImportant.get(j)); }
+				 * System.out.println("la valeur minmum de la surface est " + surfaceMin +
+				 * "\nLa valeur minimum du nbre de chambre est " + nbBedMin);
 				 */
 			}
 
@@ -171,7 +177,6 @@ public class AskOpinionForUtility {
 		}
 		display.dispose();
 	}
-	
 
 	/**
 	 * Method that responds when we click on a button. It needs to retrieve the two
@@ -182,7 +187,7 @@ public class AskOpinionForUtility {
 	 * 
 	 */
 
-	public static void clickOnButton(Button pressedButton, Button unPressedButton) {
+	public void clickOnButton(Button pressedButton, Button unPressedButton) {
 		Label boo = new Label(shell, SWT.NULL);
 		pressedButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -207,8 +212,8 @@ public class AskOpinionForUtility {
 
 				else {
 
-					pressedButton.setText(choix1.get(pointer));
-					unPressedButton.setText(choix2.get(pointer));
+					pressedButton.setText(choix1.get(pointer).toString());
+					unPressedButton.setText(choix2.get(pointer).toString());
 					pointer++;
 					/**
 					 * this will change the text of the buttons by choosing the content of the
@@ -218,8 +223,8 @@ public class AskOpinionForUtility {
 
 				pressedButton
 						.setSelection(false); /**
-											   * to not be selected by default in the question in the next iteration
-											   */
+												 * to not be selected by default in the question in the next iteration
+												 */
 				pressedButton.pack();
 				unPressedButton.pack();
 			}
@@ -227,14 +232,12 @@ public class AskOpinionForUtility {
 		});
 
 	}
-	
-	
 
 	/**
 	 * This function will adapt the utility of the user using ApartmentValueFunction
 	 * 
 	 */
-	public static void adaptAnswers() {
+	public void adaptAnswers() {
 		ApartmentValueFunction avf = new ApartmentValueFunction();
 
 		// we collect the answers on the minimums and we adapt the utility of the user
