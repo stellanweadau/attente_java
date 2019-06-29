@@ -31,17 +31,14 @@ public class LayoutApartmentGUI {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 
-	Display display;
-	Shell shell;
-	
-	// add objects of apartments in a listShell
+	Display display = new Display();
+	Shell shell = new Shell(display);
+
+	/**
+	 * add objects of apartments in a listShell
+	 */
 	final List listShell = new List(shell, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
-	
-	public LayoutApartmentGUI() {
-		display = new Display();
-		shell = new Shell(display);
-	}
-	
+
 	/**
 	 * This is the main function
 	 * 
@@ -67,17 +64,13 @@ public class LayoutApartmentGUI {
 	 * @throws IllegalAccessException
 	 * @throws IOException
 	 */
-		
-
 	public void displayAppart(ArrayList<Apartment> listApp) {
-		//add apartements in the listShell
-		AddAppinListShell(listApp);
-		
 
+		addAppinListShell(listApp);
 
 		shell.setText("Sélection d'un appartement");
 
-		// create a gridLayout of 2 columns
+		// create a gridLayout of 3 columns
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 3;
 		shell.setLayout(gridLayout);
@@ -97,8 +90,6 @@ public class LayoutApartmentGUI {
 		gridData = new GridData(GridData.FILL_BOTH);
 		gridData.verticalSpan = 3;
 
-
-
 		gridData = new GridData(GridData.HORIZONTAL_ALIGN_FILL | GridData.VERTICAL_ALIGN_FILL);
 		gridData.verticalSpan = 4;
 		gridData.heightHint = 400;
@@ -114,14 +105,12 @@ public class LayoutApartmentGUI {
 		gridData = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
 		gridData.horizontalSpan = 2;
 		appartInfo.setLayoutData(gridData);
-		
-		
+
 		// beginning of creation of elements to display when we click on an apartement
 		Label adresse;
 		Label surface;
 		Label prix;
 		Label nbrChambres;
-		
 
 		new Label(appartInfo, SWT.NULL).setText("Adresse :");
 		adresse = new Label(appartInfo, SWT.SINGLE | SWT.BORDER);
@@ -141,9 +130,8 @@ public class LayoutApartmentGUI {
 
 		gridData = new GridData(GridData.HORIZONTAL_ALIGN_END);
 		gridData.horizontalSpan = 3;
-		
-		// on click on an apartment
-				OnClick(adresse,surface,prix,nbrChambres,listApp);
+
+		onClick(adresse, surface, prix, nbrChambres, listApp);
 
 		shell.setSize(1000, 550);
 		shell.open();
@@ -156,11 +144,10 @@ public class LayoutApartmentGUI {
 		LOGGER.info("The screen was closed with success.");
 
 	}
-	
-	
-	
+
 	/**
-	 * Method that creates a list of random apartments and tries them according to the utility of the user
+	 * Method that creates a list of random apartments and tries them according to
+	 * the utility of the user
 	 * 
 	 * @param avf a way to rate the apartments
 	 * @throws IllegalAccessException
@@ -168,64 +155,60 @@ public class LayoutApartmentGUI {
 	 */
 	private static ArrayList<Apartment> getListSorted(ApartmentValueFunction avf)
 			throws IOException, IllegalAccessException {
-		
+
 		ArrayList<Apartment> appart = new ArrayList<Apartment>();
 		for (int i = 0; i < 50; ++i) {
-			Apartment a = XMLProperties.generateRandom(); 
+			Apartment a = XMLProperties.generateRandom();
 			appart.add(a);
 		}
 
 		// trier la liste selon l'utilité
-		appart.sort(
-				(Apartment c, Apartment d) -> (int) ((avf.getSubjectiveValue(c) - avf.getSubjectiveValue(d)) * 100000));
+		appart.sort((Apartment c, Apartment d) -> {
+			return Double.compare(avf.getSubjectiveValue(c), avf.getSubjectiveValue(d));
+		});
 
 		return appart;
 
 	}
-
-	
 
 	/**
 	 * Method that adds available apartments in the shell list to display
 	 * 
 	 * @param listApp2 the list of apartments to display
 	 */
-	public void AddAppinListShell(ArrayList<Apartment> listApp2) {
+	public void addAppinListShell(ArrayList<Apartment> listApp2) {
 		for (Apartment a : listApp2) {
 			System.out.println("Appart : " + a);
 			listShell.add("Titre: " + a.getTitle() + "\t" + " Adresse : " + a.getAddress());
-			
+
 		}
-		
+
 	}
-	
-	
+
 	/**
-	 * Method that defines the action to execute when clicking on an apartment, here we display some elements of the apartment
+	 * Method that defines the action to execute when clicking on an apartment, here
+	 * we display some elements of the apartment
 	 * 
 	 * @param listApp3 the list of apartments to display
-	 * @param adresse, surface, prix, nbrChambres the parameters of apps to display when clicking on an apartment
+	 * @param          adresse, surface, prix, nbrChambres the parameters of apps to
+	 *                 display when clicking on an apartment
 	 */
-	public void OnClick(Label adresse,Label surface, Label prix, Label nbrChambres, ArrayList<Apartment> listApp3 ) {
-				listShell.addSelectionListener(new SelectionAdapter() {
+	private void onClick(Label adresse, Label surface, Label prix, Label nbrChambres, ArrayList<Apartment> listApp3) {
+		listShell.addSelectionListener(new SelectionAdapter() {
 
-					@Override
-					public void widgetSelected(SelectionEvent event) {
-						int[] selectedItems = listShell.getSelectionIndices();
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				int[] selectedItems = listShell.getSelectionIndices();
 
-						for (int loopIndex = 0; loopIndex < selectedItems.length; loopIndex++) {
-							adresse.setText(listApp3.get(listShell.getSelectionIndex()).getAddress());
-							surface.setText(" " + listApp3.get(listShell.getSelectionIndex()).getFloorArea());
-							prix.setText(" " + listApp3.get(listShell.getSelectionIndex()).getPricePerNight());
-							nbrChambres.setText(" " + listApp3.get(listShell.getSelectionIndex()).getNbBedrooms());
-						}
-					}
-				});	
-	
+				for (int loopIndex = 0; loopIndex < selectedItems.length; loopIndex++) {
+					adresse.setText(listApp3.get(listShell.getSelectionIndex()).getAddress());
+					surface.setText(" " + listApp3.get(listShell.getSelectionIndex()).getFloorArea());
+					prix.setText(" " + listApp3.get(listShell.getSelectionIndex()).getPricePerNight());
+					nbrChambres.setText(" " + listApp3.get(listShell.getSelectionIndex()).getNbBedrooms());
+				}
+			}
+		});
+
 	}
-	
-	
-	
 
-	
 }
