@@ -31,6 +31,8 @@ public class LayoutApartmentGUI {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 
+	ArrayList<Apartment> listApp;
+
 	Display display = new Display();
 	Shell shell = new Shell(display);
 
@@ -38,6 +40,14 @@ public class LayoutApartmentGUI {
 	 * add objects of apartments in a listShell
 	 */
 	final List listShell = new List(shell, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+
+	public LayoutApartmentGUI() {
+		this(new ApartmentValueFunction());
+	}
+	
+	public LayoutApartmentGUI(ApartmentValueFunction avf) {
+		listApp = getListSorted(avf);
+	}
 
 	/**
 	 * This is the main function
@@ -51,9 +61,8 @@ public class LayoutApartmentGUI {
 		ApartmentValueFunction avf = new ApartmentValueFunction();
 		avf.setFloorAreaValueFunction(new LinearValueFunction(0, 300));
 
-		ArrayList<Apartment> listap = getListSorted(avf);
-		LayoutApartmentGUI layout = new LayoutApartmentGUI();
-		layout.displayAppart(listap);
+		LayoutApartmentGUI layout = new LayoutApartmentGUI(avf);
+		layout.displayAppart();
 	}
 
 	/**
@@ -64,9 +73,9 @@ public class LayoutApartmentGUI {
 	 * @throws IllegalAccessException
 	 * @throws IOException
 	 */
-	public void displayAppart(ArrayList<Apartment> listApp) {
+	public void displayAppart() {
 
-		addAppinListShell(listApp);
+		addAppinListShell();
 
 		shell.setText("Sélection d'un appartement");
 
@@ -153,8 +162,7 @@ public class LayoutApartmentGUI {
 	 * @throws IllegalAccessException
 	 * @throws IOException
 	 */
-	private static ArrayList<Apartment> getListSorted(ApartmentValueFunction avf)
-			throws IOException, IllegalAccessException {
+	private static ArrayList<Apartment> getListSorted(ApartmentValueFunction avf) {
 
 		ArrayList<Apartment> appart = new ArrayList<Apartment>();
 		for (int i = 0; i < 50; ++i) {
@@ -176,8 +184,8 @@ public class LayoutApartmentGUI {
 	 * 
 	 * @param listApp2 the list of apartments to display
 	 */
-	public void addAppinListShell(ArrayList<Apartment> listApp2) {
-		for (Apartment a : listApp2) {
+	public void addAppinListShell() {
+		for (Apartment a : listApp) {
 			System.out.println("Appart : " + a);
 			listShell.add("Titre: " + a.getTitle() + "\t" + " Adresse : " + a.getAddress());
 
