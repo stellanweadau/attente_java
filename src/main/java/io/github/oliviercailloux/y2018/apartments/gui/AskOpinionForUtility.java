@@ -34,35 +34,47 @@ public class AskOpinionForUtility {
 	 * To move for questions
 	 */
 	int pointer = 0;
-	
+
 	/**
 	 * This array will stock the user's answers (when he presses the button)
 	 */
-	ArrayList<String> attributImportant;
-	
+	ArrayList<String> attributsImportant;
+
 	/**
 	 * This array will stock the attribute that the user didn't answer (the
 	 * unpressed button)
 	 */
-	ArrayList<String> attributPasImportant;
-	
+	ArrayList<String> attributsPasImportant;
+
 	/**
 	 * This array has the attributes for the first button (buttonchoix1), we can add
 	 * how much we want
 	 */
 	ArrayList<Criterion> choix1;
-	
+
 	/**
 	 * This array has attributes for the second button (buttonchoix2)
 	 */
 	ArrayList<Criterion> choix2;
-	
+
 	double surfaceMin;
 	double nbBedMin;
-	
-	Display display = new Display();
-	Shell shell = new Shell(display);
 
+	Display display;
+	Shell shell;
+
+	public AskOpinionForUtility() {
+		this.attributsImportant = new ArrayList<>();
+		this.attributsPasImportant = new ArrayList<>();
+		this.choix1 = new ArrayList<>();
+		this.choix2 = new ArrayList<>();
+		this.surfaceMin = 0d;
+		this.nbBedMin = 0d;
+		this.pointer = 0;
+		this.display = new Display();
+		this.shell = new Shell(display);
+	}
+	
 	/**
 	 * This is the main function, it asks Questions , AdaptAnswers and then displays
 	 * the list of Apartements
@@ -71,11 +83,10 @@ public class AskOpinionForUtility {
 	 * @throws IllegalAccessException for the DisplayApps function
 	 * @throws IOException
 	 */
-
 	public static void main(String[] args) throws IllegalAccessException, IOException {
-		
+
 		AskOpinionForUtility asker = new AskOpinionForUtility();
-		
+
 		asker.askQuestions();
 		asker.adaptAnswers();
 		Layout2 lay = new Layout2();
@@ -84,11 +95,10 @@ public class AskOpinionForUtility {
 	}
 
 	/**
-	 * This function will create and display the window (interface)to ask the user
+	 * This function will create and display the window (interface) to ask the user
 	 * questions and to determine later the weight of his choices
 	 * 
 	 */
-
 	public void askQuestions() {
 
 		// we add the other two criteria
@@ -186,17 +196,16 @@ public class AskOpinionForUtility {
 	 * @param unPressedButton the other choice not selected
 	 * 
 	 */
-
 	public void clickOnButton(Button pressedButton, Button unPressedButton) {
 		Label boo = new Label(shell, SWT.NULL);
 		pressedButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				Button source1 = (Button) e.widget;
 
-				if (source1.getSelection() && !attributImportant.contains(source1.getText())) {
-					attributImportant.add(source1.getText()); // to add the pressed button answer to the array
+				if (source1.getSelection() && !attributsImportant.contains(source1.getText())) {
+					attributsImportant.add(source1.getText()); // to add the pressed button answer to the array
 																// attributImportant
-					attributPasImportant.add(unPressedButton.getText()); // to add the unpessed button answer to the
+					attributsPasImportant.add(unPressedButton.getText()); // to add the unpessed button answer to the
 																			// array
 																			// attributPasImporta
 				}
@@ -245,7 +254,7 @@ public class AskOpinionForUtility {
 		avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA, nbBedMin);
 
 		// we collect the answer of the first Question and adapt the utility of the user
-		if (attributImportant.get(0).equals("WIFI") && attributPasImportant.get(0).equals("TERRACE")) {
+		if (attributsImportant.get(0).equals("WIFI") && attributsPasImportant.get(0).equals("TERRACE")) {
 			avf.adaptWeight(Criterion.WIFI, Criterion.TERRACE);
 		} else {
 			avf.adaptWeight(Criterion.TERRACE, Criterion.WIFI);
@@ -253,7 +262,7 @@ public class AskOpinionForUtility {
 
 		// we collect the answer of the second Question and we adapt the utility of the
 		// user
-		if (attributImportant.get(1).equals("TELE") && attributPasImportant.get(1).equals("PRICE_PER_NIGHT low")) {
+		if (attributsImportant.get(1).equals("TELE") && attributsPasImportant.get(1).equals("PRICE_PER_NIGHT low")) {
 			avf.adaptWeight(Criterion.TELE, Criterion.PRICE_PER_NIGHT);
 		} else {
 			avf.adaptWeight(Criterion.PRICE_PER_NIGHT, Criterion.TELE);
