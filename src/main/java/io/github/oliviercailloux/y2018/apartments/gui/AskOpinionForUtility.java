@@ -86,9 +86,9 @@ public class AskOpinionForUtility {
 	public static void main(String[] args) throws IllegalAccessException, IOException {
 
 		AskOpinionForUtility asker = new AskOpinionForUtility();
-
+		ApartmentValueFunction avf = new ApartmentValueFunction();
 		asker.askQuestions();
-		asker.adaptAnswers();
+		asker.adaptAnswers(avf);
 		Layout2 lay = new Layout2();
 		lay.displayAppart();
 
@@ -246,8 +246,7 @@ public class AskOpinionForUtility {
 	 * This function will adapt the utility of the user using ApartmentValueFunction
 	 * 
 	 */
-	public void adaptAnswers() {
-		ApartmentValueFunction avf = new ApartmentValueFunction();
+	public void adaptAnswers(ApartmentValueFunction avf) {
 
 		// we collect the answers on the minimums and we adapt the utility of the user
 		avf.setSubjectiveValueWeight(Criterion.NB_BEDROOMS, surfaceMin);
