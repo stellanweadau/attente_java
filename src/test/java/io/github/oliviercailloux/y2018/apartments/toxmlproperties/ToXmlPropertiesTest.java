@@ -9,14 +9,13 @@ import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.readApartments.ReadTwoApartmentsTest;
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
 class ToXmlPropertiesTest {
-	@Test
+	
 
 	void readApartmentTest() throws IllegalArgumentException, IllegalAccessException, IOException {
 		XMLProperties j = new XMLProperties();

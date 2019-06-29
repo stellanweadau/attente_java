@@ -1,9 +1,9 @@
 package io.github.oliviercailloux.y2018.apartments.readApartments;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +18,8 @@ import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsX
  */
 class ReadApartmentsXMLFormatTest {
 
-
+	
+	@Test
 	void readApartmentTest() throws IOException{
 
 		ReadApartmentsXMLFormat r = initializeReadApartmentsXMLFormat();
