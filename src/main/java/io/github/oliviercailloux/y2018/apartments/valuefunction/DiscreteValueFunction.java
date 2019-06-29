@@ -14,7 +14,8 @@ import com.google.common.base.Verify;
 import com.google.common.collect.ImmutableMap;
 
 /**
- * Class which enables the user to get the subjective value of an element given in argument.
+ * Class which enables the user to get the subjective value of an element given
+ * in argument.
  */
 public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 
@@ -22,24 +23,29 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 	private final static Logger LOGGER = LoggerFactory.getLogger(DiscreteValueFunction.class);
 
 	/**
-	 * Create a map with 3 discrete values of the same type which are associated to their respective subjective values.
+	 * Create a map with 3 discrete values of the same type which are associated to
+	 * their respective subjective values.
+	 * 
 	 * @param s1 first key not null which corresponds to the subjective value 0
 	 * @param s2 second key not null which corresponds to the subjective value 0.5
 	 * @param s3 third key not null which corresponds to the subjective value 1
 	 */
 	public DiscreteValueFunction(T s1, T s2, T s3) {
-		checkArgument(!(s1.equals(s2) && s1.equals(s3) && s2.equals(s3)),"The elements have to be different");
+		checkArgument(!(s1.equals(s2) && s1.equals(s3) && s2.equals(s3)), "The elements have to be different");
 		subjective = ImmutableMap.of(s1, 0.0, s2, 0.5, s3, 1.0);
 		LOGGER.info("The Map with the three elements have been set with success");
 	}
 
 	/**
-	 * Create a map with 2 discrete values of the same type which are associated to their respective subjective values.
+	 * Create a map with 2 discrete values of the same type which are associated to
+	 * their respective subjective values.
+	 * 
 	 * @param s1 first key not null which corresponds to the subjective value 0
-	 * @param s2 second key not null of type which corresponds to the subjective value 1
+	 * @param s2 second key not null of type which corresponds to the subjective
+	 *           value 1
 	 */
 	public DiscreteValueFunction(T s1, T s2) {
-		checkArgument(!(s1.equals(s2)),"The elements have to be different");
+		checkArgument(!(s1.equals(s2)), "The elements have to be different");
 		subjective = ImmutableMap.of(s1, 0.0, s2, 1.0);
 		LOGGER.info("The Map with the two elements have been set with success");
 	}
@@ -62,7 +68,7 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 			throw new IllegalArgumentException(
 					"The subjective values must be between 0 and 1. The wrong values are : " + mapError);
 		}
-		
+
 		this.subjective = ImmutableMap.copyOf(subjective);
 	}
 
@@ -78,18 +84,20 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 
 	/**
 	 * Factory method
+	 * 
 	 * @param min the minimum required for the random number
 	 * @param max the maximum required for the random number
-	 * @return DiscreteValueFunction with a map of utilities from min to max 
-	 * (it is not set by default to uniform, that way it is not equivalent to a LinearValue Function)
+	 * @return DiscreteValueFunction with a map of utilities from min to max (it is
+	 *         not set by default to uniform, that way it is not equivalent to a
+	 *         LinearValue Function)
 	 */
 	public static DiscreteValueFunction<Double> discreteValueFunctionBeetween(int min, int max) {
-		
+
 		Verify.verify(min < max);
-		
+
 		Random random = new Random();
-		int var = random.nextInt(max-min+1) + min;
-		
+		int var = random.nextInt(max - min + 1) + min;
+
 		double newSubjectiveValue = 0;
 		double oldSubjectiveValue = 0;
 		HashMap<Double, Double> varMap = new HashMap<>();
@@ -99,10 +107,8 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 			newSubjectiveValue = random.nextDouble() * newSubjectiveValue + oldSubjectiveValue;
 			varMap.put(i, newSubjectiveValue);
 		}
-		
+
 		return new DiscreteValueFunction<Double>(varMap);
 	}
 
-
 }
-

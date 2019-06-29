@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class KeyManager {
-	
 
 	public static String getApiKey() throws FileNotFoundException, IOException {
 
