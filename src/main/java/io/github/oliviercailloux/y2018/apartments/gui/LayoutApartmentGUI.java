@@ -31,13 +31,17 @@ public class LayoutApartmentGUI {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 
-	static Display display =new Display();
-	static Shell shell  = new Shell(display);
+	Display display;
+	Shell shell;
 	
 	// add objects of apartments in a listShell
-	final static List listShell = new List(shell, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+	final List listShell = new List(shell, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
 	
-
+	public LayoutApartmentGUI() {
+		display = new Display();
+		shell = new Shell(display);
+	}
+	
 	/**
 	 * This is the main function
 	 * 
@@ -51,7 +55,8 @@ public class LayoutApartmentGUI {
 		avf.setFloorAreaValueFunction(new LinearValueFunction(0, 300));
 
 		ArrayList<Apartment> listap = getListSorted(avf);
-		displayAppart(listap);
+		LayoutApartmentGUI layout = new LayoutApartmentGUI();
+		layout.displayAppart(listap);
 	}
 
 	/**
@@ -64,7 +69,7 @@ public class LayoutApartmentGUI {
 	 */
 		
 
-	public static void displayAppart(ArrayList<Apartment> listApp) {
+	public void displayAppart(ArrayList<Apartment> listApp) {
 		//add apartements in the listShell
 		AddAppinListShell(listApp);
 		
@@ -138,7 +143,7 @@ public class LayoutApartmentGUI {
 		gridData.horizontalSpan = 3;
 		
 		// on click on an apartment
-				OnaClick(adresse,surface,prix,nbrChambres,listApp);
+				OnClick(adresse,surface,prix,nbrChambres,listApp);
 
 		shell.setSize(1000, 550);
 		shell.open();
@@ -161,8 +166,9 @@ public class LayoutApartmentGUI {
 	 * @throws IllegalAccessException
 	 * @throws IOException
 	 */
-	public static ArrayList<Apartment> getListSorted(ApartmentValueFunction avf)
+	private static ArrayList<Apartment> getListSorted(ApartmentValueFunction avf)
 			throws IOException, IllegalAccessException {
+		
 		ArrayList<Apartment> appart = new ArrayList<Apartment>();
 		for (int i = 0; i < 50; ++i) {
 			Apartment a = XMLProperties.generateRandom(); 
@@ -184,7 +190,7 @@ public class LayoutApartmentGUI {
 	 * 
 	 * @param listApp2 the list of apartments to display
 	 */
-	public static void AddAppinListShell(ArrayList<Apartment> listApp2) {
+	public void AddAppinListShell(ArrayList<Apartment> listApp2) {
 		for (Apartment a : listApp2) {
 			System.out.println("Appart : " + a);
 			listShell.add("Titre: " + a.getTitle() + "\t" + " Adresse : " + a.getAddress());
@@ -200,7 +206,7 @@ public class LayoutApartmentGUI {
 	 * @param listApp3 the list of apartments to display
 	 * @param adresse, surface, prix, nbrChambres the parameters of apps to display when clicking on an apartment
 	 */
-	public static void OnaClick(Label adresse,Label surface, Label prix, Label nbrChambres, ArrayList<Apartment> listApp3 ) {
+	public void OnClick(Label adresse,Label surface, Label prix, Label nbrChambres, ArrayList<Apartment> listApp3 ) {
 				listShell.addSelectionListener(new SelectionAdapter() {
 
 					@Override
