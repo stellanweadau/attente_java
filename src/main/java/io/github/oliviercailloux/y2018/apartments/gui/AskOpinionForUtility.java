@@ -90,7 +90,7 @@ public class AskOpinionForUtility {
 		asker.askQuestions();
 		asker.adaptAnswers();
 		Layout2 lay = new Layout2();
-		Layout2.DisplayApps();
+		lay.displayAppart();
 
 	}
 
