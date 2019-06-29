@@ -27,6 +27,11 @@ class ReversedLinearValueFunctionTest {
 		assertEquals(0, f.getSubjectiveValue(55.0));
 	}
 
+	@Test
+	void applyTest() {
+		ReversedLinearValueFunction f = new ReversedLinearValueFunction(10,50);
+		assertEquals(0.25, f.getSubjectiveValue(40.0));
+	}
 
 	@Test
 	void exceptionIllegalArgEquals() {
