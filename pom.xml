@@ -1,397 +1,393 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.github.oliviercailloux</groupId>
+    <artifactId>apartments</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
-	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>io.github.oliviercailloux</groupId>
+    <properties>
 
-	<artifactId>apartments</artifactId>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-	<version>0.0.1-SNAPSHOT</version>
+        <maven.compiler.source>8</maven.compiler.source>
 
+        <maven.compiler.target>8</maven.compiler.target>
 
-	<properties>
+    </properties>
 
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<maven.compiler.source>8</maven.compiler.source>
 
-		<maven.compiler.target>8</maven.compiler.target>
+    <profiles>
 
-	</properties>
+        <profile>
 
+            <id>swt-unix</id>
 
+            <activation>
 
-	<profiles>
+                <os>
 
-		<profile>
+                    <family>unix</family>
 
-			<id>swt-unix</id>
+                </os>
 
-			<activation>
+            </activation>
 
-				<os>
+            <properties>
 
-					<family>unix</family>
+                <swt.artifactId>org.eclipse.swt.gtk.linux.x86_64</swt.artifactId>
 
-				</os>
+                <env>linux</env>
 
-			</activation>
+            </properties>
 
-			<properties>
+            <dependencies>
 
-				<swt.artifactId>org.eclipse.swt.gtk.linux.x86_64</swt.artifactId>
+                <dependency>
 
-				<env>linux</env>
+                    <groupId>org.eclipse.platform</groupId>
 
-			</properties>
+                    <artifactId>${swt.artifactId}</artifactId>
 
-			<dependencies>
+                    <version>3.106.3</version>
 
-				<dependency>
+                    <optional>true</optional>
 
-					<groupId>org.eclipse.platform</groupId>
+                    <exclusions>
 
-					<artifactId>${swt.artifactId}</artifactId>
+                        <exclusion>
 
-					<version>3.106.3</version>
+                            <groupId>org.eclipse.platform</groupId>
 
-					<optional>true</optional>
+                            <artifactId>org.eclipse.swt</artifactId>
 
-					<exclusions>
+                        </exclusion>
 
-						<exclusion>
+                    </exclusions>
 
-							<groupId>org.eclipse.platform</groupId>
+                </dependency>
 
-							<artifactId>org.eclipse.swt</artifactId>
+            </dependencies>
 
-						</exclusion>
+        </profile>
 
-					</exclusions>
+        <profile>
 
-				</dependency>
+            <id>swt-mac</id>
 
-			</dependencies>
+            <activation>
 
-		</profile>
+                <os>
 
-		<profile>
+                    <family>mac</family>
 
-			<id>swt-mac</id>
+                </os>
 
-			<activation>
+            </activation>
 
-				<os>
+            <properties>
 
-					<family>mac</family>
+                <swt.artifactId>org.eclipse.swt.cocoa.macosx.x86_64</swt.artifactId>
 
-				</os>
+                <env>mac</env>
 
-			</activation>
+            </properties>
 
-			<properties>
+            <dependencies>
 
-				<swt.artifactId>org.eclipse.swt.cocoa.macosx.x86_64</swt.artifactId>
+                <dependency>
 
-				<env>mac</env>
+                    <groupId>org.eclipse.platform</groupId>
 
-			</properties>
+                    <artifactId>${swt.artifactId}</artifactId>
 
-			<dependencies>
+                    <version>3.106.3</version>
 
-				<dependency>
+                    <optional>true</optional>
 
-					<groupId>org.eclipse.platform</groupId>
+                    <exclusions>
 
-					<artifactId>${swt.artifactId}</artifactId>
+                        <exclusion>
 
-					<version>3.106.3</version>
+                            <groupId>org.eclipse.platform</groupId>
 
-					<optional>true</optional>
+                            <artifactId>org.eclipse.swt</artifactId>
 
-					<exclusions>
+                        </exclusion>
 
-						<exclusion>
+                    </exclusions>
 
-							<groupId>org.eclipse.platform</groupId>
+                </dependency>
 
-							<artifactId>org.eclipse.swt</artifactId>
+            </dependencies>
 
-						</exclusion>
+        </profile>
 
-					</exclusions>
+        <profile>
 
-				</dependency>
+            <id>swt-windows</id>
 
-			</dependencies>
+            <activation>
 
-		</profile>
+                <os>
 
-		<profile>
+                    <family>windows</family>
 
-			<id>swt-windows</id>
+                </os>
 
-			<activation>
+            </activation>
 
-				<os>
+            <properties>
 
-					<family>windows</family>
+                <swt.artifactId>org.eclipse.swt.win32.win32.x86_64</swt.artifactId>
 
-				</os>
+                <env>windows</env>
 
-			</activation>
+            </properties>
 
-			<properties>
+            <dependencies>
 
-				<swt.artifactId>org.eclipse.swt.win32.win32.x86_64</swt.artifactId>
+                <dependency>
 
-				<env>windows</env>
+                    <groupId>org.eclipse.platform</groupId>
 
-			</properties>
+                    <artifactId>${swt.artifactId}</artifactId>
 
-			<dependencies>
+                    <version>3.106.3</version>
 
-				<dependency>
+                    <optional>true</optional>
 
-					<groupId>org.eclipse.platform</groupId>
+                    <exclusions>
 
-					<artifactId>${swt.artifactId}</artifactId>
+                        <exclusion>
 
-					<version>3.106.3</version>
+                            <groupId>org.eclipse.platform</groupId>
 
-					<optional>true</optional>
+                            <artifactId>org.eclipse.swt</artifactId>
 
-					<exclusions>
+                        </exclusion>
 
-						<exclusion>
+                    </exclusions>
 
-							<groupId>org.eclipse.platform</groupId>
+                </dependency>
 
-							<artifactId>org.eclipse.swt</artifactId>
+            </dependencies>
 
-						</exclusion>
+        </profile>
 
-					</exclusions>
+    </profiles>
 
-				</dependency>
 
-			</dependencies>
+    <dependencies>
 
-		</profile>
+        <dependency>
 
-	</profiles>
+            <groupId>org.slf4j</groupId>
 
+            <artifactId>slf4j-api</artifactId>
 
-	<dependencies>
+            <version>1.7.5</version>
 
-		<dependency>
+            <type>jar</type>
 
-			<groupId>org.slf4j</groupId>
+        </dependency>
 
-			<artifactId>slf4j-api</artifactId>
 
-			<version>1.7.5</version>
+        <dependency>
 
-			<type>jar</type>
+            <groupId>com.google.guava</groupId>
 
-		</dependency>
+            <artifactId>guava</artifactId>
 
+            <version>27.1-jre</version>
 
-		<dependency>
+        </dependency>
 
-			<groupId>com.google.guava</groupId>
 
-			<artifactId>guava</artifactId>
+        <dependency>
 
-			<version>27.1-jre</version>
+            <groupId>ch.qos.logback</groupId>
 
-		</dependency>
+            <artifactId>logback-classic</artifactId>
 
+            <version>1.2.3</version>
 
-		<dependency>
+            <scope>runtime</scope>
 
-			<groupId>ch.qos.logback</groupId>
+            <optional>true</optional>
 
-			<artifactId>logback-classic</artifactId>
+        </dependency>
 
-			<version>1.2.3</version>
 
-			<scope>runtime</scope>
+        <dependency>
 
-			<optional>true</optional>
+            <groupId>org.eclipse.platform</groupId>
 
-		</dependency>
+            <artifactId>org.eclipse.jface</artifactId>
 
+            <version>3.15.100</version>
 
-		<dependency>
+            <exclusions>
 
-			<groupId>org.eclipse.platform</groupId>
+                <exclusion>
 
-			<artifactId>org.eclipse.jface</artifactId>
+                    <groupId>org.eclipse.platform</groupId>
 
-			<version>3.15.100</version>
+                    <artifactId>org.eclipse.swt</artifactId>
 
-			<exclusions>
+                </exclusion>
 
-				<exclusion>
+            </exclusions>
 
-					<groupId>org.eclipse.platform</groupId>
+        </dependency>
 
-					<artifactId>org.eclipse.swt</artifactId>
+        <dependency>
 
-				</exclusion>
+            <groupId>org.junit.platform</groupId>
 
-			</exclusions>
+            <artifactId>junit-platform-launcher</artifactId>
 
-		</dependency>
+            <version>1.4.2</version>
 
-		<dependency>
+            <scope>test</scope>
 
-			<groupId>org.junit.platform</groupId>
+        </dependency>
 
-			<artifactId>junit-platform-launcher</artifactId>
 
-			<version>1.4.2</version>
+        <dependency>
 
-			<scope>test</scope>
+            <groupId>org.junit.jupiter</groupId>
 
-		</dependency>
+            <artifactId>junit-jupiter-engine</artifactId>
 
+            <version>5.4.2</version>
 
-		<dependency>
+            <scope>test</scope>
 
-			<groupId>org.junit.jupiter</groupId>
+        </dependency>
 
-			<artifactId>junit-jupiter-engine</artifactId>
 
-			<version>5.4.2</version>
 
-			<scope>test</scope>
+        <dependency>
 
-		</dependency>
+            <groupId>com.google.maps</groupId>
 
+            <artifactId>google-maps-services</artifactId>
 
+            <version>0.9.0</version>
 
-		<dependency>
+        </dependency>
 
-			<groupId>com.google.maps</groupId>
 
-			<artifactId>google-maps-services</artifactId>
+        <dependency>
 
-			<version>0.9.0</version>
+            <groupId>com.google.code.gson</groupId>
 
-		</dependency>
+            <artifactId>gson</artifactId>
 
+            <version>2.8.5</version>
 
-		<dependency>
+        </dependency>
 
-			<groupId>com.google.code.gson</groupId>
 
-			<artifactId>gson</artifactId>
+        <dependency>
 
-			<version>2.8.5</version>
+            <groupId>com.squareup.okhttp3</groupId>
 
-		</dependency>
+            <artifactId>okhttp</artifactId>
 
+            <version>3.14.2</version>
 
-		<dependency>
+        </dependency>
 
-			<groupId>com.squareup.okhttp3</groupId>
 
-			<artifactId>okhttp</artifactId>
+        <dependency>
 
-			<version>3.14.2</version>
+            <groupId>joda-time</groupId>
 
-		</dependency>
+            <artifactId>joda-time</artifactId>
 
+            <version>2.10.2</version>
 
-		<dependency>
+        </dependency>
 
-			<groupId>joda-time</groupId>
 
-			<artifactId>joda-time</artifactId>
+        <dependency>
 
-			<version>2.10.2</version>
+            <groupId>org.joda</groupId>
 
-		</dependency>
+            <artifactId>joda-convert</artifactId>
 
+            <version>2.2.1</version>
 
-		<dependency>
+        </dependency>
 
-			<groupId>org.joda</groupId>
+        <!-- à enlever aprés -->
 
-			<artifactId>joda-convert</artifactId>
+        <dependency>
 
-			<version>2.2.1</version>
+            <groupId>junit</groupId>
 
-		</dependency>
+            <artifactId>junit</artifactId>
 
-		<!-- à enlever aprés -->
+            <version>4.12</version>
 
-		<dependency>
+            <scope>test</scope>
 
-			<groupId>junit</groupId>
+            <type>jar</type>
 
-			<artifactId>junit</artifactId>
+        </dependency>
 
-			<version>4.12</version>
 
-			<scope>test</scope>
 
-			<type>jar</type>
 
-		</dependency>
 
 
 
+    </dependencies>
 
 
+    <dependencyManagement>
 
+        <dependencies>
 
-	</dependencies>
+            <dependency>
 
+                <groupId>org.eclipse.platform</groupId>
 
-	<dependencyManagement>
+                <artifactId>org.eclipse.swt</artifactId>
 
-		<dependencies>
+                <version>3.107.0</version>
 
-			<dependency>
+            </dependency>
 
-				<groupId>org.eclipse.platform</groupId>
+            <dependency>
 
-				<artifactId>org.eclipse.swt</artifactId>
+                <groupId>org.eclipse.platform</groupId>
 
-				<version>3.107.0</version>
+                <artifactId>org.eclipse.core.commands</artifactId>
 
-			</dependency>
+                <version>3.9.200</version>
 
-			<dependency>
+            </dependency>
 
-				<groupId>org.eclipse.platform</groupId>
+            <dependency>
 
-				<artifactId>org.eclipse.core.commands</artifactId>
+                <groupId>org.eclipse.platform</groupId>
 
-				<version>3.9.200</version>
+                <artifactId>org.eclipse.equinox.common</artifactId>
 
-			</dependency>
+                <version>3.10.0</version>
 
-			<dependency>
+            </dependency>
 
-				<groupId>org.eclipse.platform</groupId>
+        </dependencies>
 
-				<artifactId>org.eclipse.equinox.common</artifactId>
-
-				<version>3.10.0</version>
-
-			</dependency>
-
-		</dependencies>
-
-	</dependencyManagement>
+    </dependencyManagement>
 
 
 
