@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.DOMException;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.apartment.ApartmentGenerator;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunction;
@@ -149,7 +150,8 @@ public class LayoutApartmentGUI {
 
         ArrayList<Apartment> appart = new ArrayList<Apartment>();
         for (int i = 0; i < 50; ++i) {
-            Apartment a = XMLProperties.generateRandom();
+        	ApartmentGenerator generator = new ApartmentGenerator();
+            Apartment a = generator.generateRandomApartment();
             appart.add(a);
         }
 
