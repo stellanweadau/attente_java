@@ -46,7 +46,6 @@ public class XMLProperties {
 		properties.setProperty("address", a.getAddress());
 		properties.setProperty("floorAreaTerrace", String.valueOf(a.getFloorAreaTerrace()));
 		properties.setProperty("description", a.getDescription());
-
 		properties.storeToXML(xmlFile, "Generated file for the apartment " + a.getTitle());
 
 		LOGGER.info("Stream has been closed");

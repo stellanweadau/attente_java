@@ -153,6 +153,7 @@ public class LayoutApartmentGUI {
             appart.add(a);
         }
 
+
         // trier la liste selon l'utilité (décroissant)
         appart.sort((Apartment c, Apartment d) -> {
             return - Double.compare(avf.getSubjectiveValue(c), avf.getSubjectiveValue(d));
