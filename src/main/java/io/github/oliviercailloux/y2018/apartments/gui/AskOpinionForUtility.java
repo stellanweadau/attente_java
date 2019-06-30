@@ -55,13 +55,13 @@ public class AskOpinionForUtility {
 	List<String> attributsPasImportant;
 
 	/**
-	 * This array has the attributes for the first button (buttonchoix1), we can add
+	 * Is composed of the attributes for the first button (buttonchoix1), we can add
 	 * how much we want
 	 */
 	List<Criterion> choix1;
 
 	/**
-	 * This array has attributes for the second button (buttonchoix2)
+	 * Is composed of the attributes for the second button (buttonchoix2)
 	 */
 	List<Criterion> choix2;
 
@@ -185,7 +185,7 @@ public class AskOpinionForUtility {
 					
 				}
 				
-				LOGGER.info("Les attribut pas importants sont : ");
+				LOGGER.info("Les attribut moins importants sont : ");
 				for (int j = 0; j < attributsPasImportant.size(); j++) {
 					LOGGER.info(attributsPasImportant.get(j));
 					
@@ -250,11 +250,8 @@ public class AskOpinionForUtility {
 				Button source1 = (Button) e.widget;
 
 				if (source1.getSelection() && !attributsImportant.contains(source1.getText())) {
-					attributsImportant.add(source1.getText()); // to add the pressed button answer to the array
-																// attributImportant
-					attributsPasImportant.add(unPressedButton.getText()); // to add the unpessed button answer to the
-																			// array
-																			// attributPasImporta
+					attributsImportant.add(source1.getText());
+					attributsPasImportant.add(unPressedButton.getText());
 				}
 
 				if (pointer == choix1.size() || pointer == choix2.size()) {
