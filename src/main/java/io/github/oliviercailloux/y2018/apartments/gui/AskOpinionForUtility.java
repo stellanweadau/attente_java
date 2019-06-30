@@ -120,7 +120,7 @@ public class AskOpinionForUtility {
 		
 		LOGGER.info("Begining the Layout.");
 		
-		Layout2 lay = new Layout2(avf);
+		LayoutApartmentGUI lay = new LayoutApartmentGUI(avf);
 		lay.displayAppart();
 
 	}
