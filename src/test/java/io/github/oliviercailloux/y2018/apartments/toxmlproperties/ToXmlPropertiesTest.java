@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -15,8 +17,8 @@ import io.github.oliviercailloux.y2018.apartments.readApartments.ReadTwoApartmen
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
 class ToXmlPropertiesTest {
-	
 
+	@Test
 	void readApartmentTest() throws IllegalArgumentException, IllegalAccessException, IOException {
 		XMLProperties j = new XMLProperties();
 		Apartment a = new Apartment(1182118.48, "118 rue du père noel 77480", "Grand Igloo");
