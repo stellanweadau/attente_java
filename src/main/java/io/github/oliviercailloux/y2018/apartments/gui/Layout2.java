@@ -156,7 +156,7 @@ public class Layout2 {
 
 		// trier la liste selon l'utilité
 		appart.sort((Apartment c, Apartment d) -> {
-			return Double.compare(avf.getSubjectiveValue(c), avf.getSubjectiveValue(d));
+			return - Double.compare(avf.getSubjectiveValue(c), avf.getSubjectiveValue(d));
 		});
 
 		return appart;

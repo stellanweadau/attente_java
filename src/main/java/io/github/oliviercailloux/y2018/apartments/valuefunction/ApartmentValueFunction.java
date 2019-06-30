@@ -355,7 +355,7 @@ public class ApartmentValueFunction {
 	public void setFloorAreaSubjectiveValueWeight(double floorAreaSubjectiveValueWeight) {
 		checkArgument(floorAreaSubjectiveValueWeight >= 0, "The weight of the floor area cannot be negative");
 		this.floorAreaSubjectiveValueWeight = floorAreaSubjectiveValueWeight;
-		LOGGER.info("The floor area weight has been set");
+		LOGGER.info("The floor area weight has been set to " + floorAreaSubjectiveValueWeight);
 	}
 
 	/**
@@ -367,7 +367,7 @@ public class ApartmentValueFunction {
 	public void setNbBedroomsSubjectiveValueWeight(double nbBedroomsSubjectiveValueWeight) {
 		checkArgument(nbBedroomsSubjectiveValueWeight >= 0, "The weight of the number of bedrooms cannot be negative");
 		this.nbBedroomsSubjectiveValueWeight = nbBedroomsSubjectiveValueWeight;
-		LOGGER.info("The number of bedrooms weight has been set");
+		LOGGER.info("The number of bedrooms weight has been set to " + nbBedroomsSubjectiveValueWeight);
 	}
 
 	/**
@@ -379,7 +379,7 @@ public class ApartmentValueFunction {
 	public void setNbSleepingSubjectiveValueWeight(double nbSleepingSubjectiveValueWeight) {
 		checkArgument(nbSleepingSubjectiveValueWeight >= 0, "The weight of the sleep-in cannot be negative");
 		this.nbSleepingSubjectiveValueWeight = nbSleepingSubjectiveValueWeight;
-		LOGGER.info("The number of sleep-in weight has been set");
+		LOGGER.info("The number of sleep-in weight has been set to " + nbSleepingSubjectiveValueWeight);
 	}
 
 	/**
@@ -392,7 +392,7 @@ public class ApartmentValueFunction {
 		checkArgument(nbBathroomsSubjectiveValueWeight >= 0,
 				"The weight of the number of bathrooms cannot be negative");
 		this.nbBathroomsSubjectiveValueWeight = nbBathroomsSubjectiveValueWeight;
-		LOGGER.info("The number of bathrooms weight has been set");
+		LOGGER.info("The number of bathrooms weight has been set to " + nbBathroomsSubjectiveValueWeight);
 	}
 
 	/**
@@ -404,7 +404,7 @@ public class ApartmentValueFunction {
 	public void setTerraceSubjectiveValueWeight(double terraceSubjectiveValueWeight) {
 		checkArgument(terraceSubjectiveValueWeight >= 0, "The weight of the terrace cannot be negative");
 		this.terraceSubjectiveValueWeight = terraceSubjectiveValueWeight;
-		LOGGER.info("The terrace weight has been set");
+		LOGGER.info("The terrace weight has been set to " + terraceSubjectiveValueWeight);
 	}
 
 	/**
@@ -417,7 +417,7 @@ public class ApartmentValueFunction {
 		checkArgument(floorAreaTerraceSubjectiveValueWeight >= 0,
 				"The weight of the floor area terrace cannot be negative");
 		this.floorAreaTerraceSubjectiveValueWeight = floorAreaTerraceSubjectiveValueWeight;
-		LOGGER.info("The floor area of the terrace weight has been set");
+		LOGGER.info("The floor area of the terrace weight has been set to " + floorAreaTerraceSubjectiveValueWeight);
 	}
 
 	/**
@@ -429,7 +429,7 @@ public class ApartmentValueFunction {
 	public void setWifiSubjectiveValueWeight(double wifiSubjectiveValueWeight) {
 		checkArgument(wifiSubjectiveValueWeight >= 0, "The weight of the wifi cannot be negative");
 		this.wifiSubjectiveValueWeight = wifiSubjectiveValueWeight;
-		LOGGER.info("The wifi weight has been set");
+		LOGGER.info("The wifi weight has been set to " + wifiSubjectiveValueWeight);
 	}
 
 	/**
@@ -441,7 +441,7 @@ public class ApartmentValueFunction {
 	public void setPricePerNightSubjectiveValueWeight(double pricePerNightSubjectiveValueWeight) {
 		checkArgument(pricePerNightSubjectiveValueWeight >= 0, "The weight of the price per night cannot be negative");
 		this.pricePerNightSubjectiveValueWeight = pricePerNightSubjectiveValueWeight;
-		LOGGER.info("The price per night weight has been set");
+		LOGGER.info("The price per night weight has been set to " + pricePerNightSubjectiveValueWeight);
 	}
 
 	/**
@@ -454,7 +454,7 @@ public class ApartmentValueFunction {
 		checkArgument(nbMinNightSubjectiveValueWeight >= 0,
 				"The weight of the minimum number of nights cannot be negative");
 		this.nbMinNightSubjectiveValueWeight = nbMinNightSubjectiveValueWeight;
-		LOGGER.info("The number of minimum night weight has been set");
+		LOGGER.info("The number of minimum night weight has been set to " + nbMinNightSubjectiveValueWeight);
 	}
 
 	/**
@@ -466,7 +466,7 @@ public class ApartmentValueFunction {
 	public void setTeleSubjectiveValueWeight(double teleSubjectiveValueWeight) {
 		checkArgument(teleSubjectiveValueWeight >= 0, "The weight of the tele cannot be negative");
 		this.teleSubjectiveValueWeight = teleSubjectiveValueWeight;
-		LOGGER.info("The wifi weight has been set");
+		LOGGER.info("The wifi weight has been set to " + teleSubjectiveValueWeight);
 	}
 
 	/**
@@ -586,16 +586,16 @@ public class ApartmentValueFunction {
 
 		ApartmentValueFunction avf = new ApartmentValueFunction();
 
-		setFloorAreaValueFunction(this.floorAreaValueFunction);
-		setNbBedroomsValueFunction(this.nbBedroomsValueFunction);
-		setNbSleepingValueFunction(this.nbSleepingValueFunction);
-		setNbBathroomsValueFunction(this.nbBathroomsValueFunction);
-		setTerraceValueFunction(this.terraceValueFunction);
-		setFloorAreaTerraceValueFunction(this.floorAreaTerraceValueFunction);
-		setWifiValueFunction(this.wifiValueFunction);
-		setPricePerNightValueFunction(this.pricePerNightValueFunction);
-		setNbMinNightValueFunction(this.nbMinNightValueFunction);
-		setTeleValueFunction(this.teleValueFunction);
+		avf.setFloorAreaValueFunction(this.floorAreaValueFunction);
+		avf.setNbBedroomsValueFunction(this.nbBedroomsValueFunction);
+		avf.setNbSleepingValueFunction(this.nbSleepingValueFunction);
+		avf.setNbBathroomsValueFunction(this.nbBathroomsValueFunction);
+		avf.setTerraceValueFunction(this.terraceValueFunction);
+		avf.setFloorAreaTerraceValueFunction(this.floorAreaTerraceValueFunction);
+		avf.setWifiValueFunction(this.wifiValueFunction);
+		avf.setPricePerNightValueFunction(this.pricePerNightValueFunction);
+		avf.setNbMinNightValueFunction(this.nbMinNightValueFunction);
+		avf.setTeleValueFunction(this.teleValueFunction);
 
 		avf.floorAreaSubjectiveValueWeight = this.floorAreaSubjectiveValueWeight;
 		avf.nbBedroomsSubjectiveValueWeight = this.nbBedroomsSubjectiveValueWeight;

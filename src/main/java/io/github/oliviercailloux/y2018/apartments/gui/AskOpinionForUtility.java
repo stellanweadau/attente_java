@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
+import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunction;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
 
 import org.eclipse.swt.widgets.*;
@@ -94,8 +95,31 @@ public class AskOpinionForUtility {
 		AskOpinionForUtility asker = new AskOpinionForUtility();
 		ApartmentValueFunction avf = new ApartmentValueFunction();
 		asker.askQuestions();
-		asker.adaptAnswers(avf);
-		Layout2 lay = new Layout2();
+		
+		avf.setFloorAreaValueFunction(new LinearValueFunction(0d,300d));
+		avf.setNbBedroomsValueFunction(new LinearValueFunction(0d,6d));
+		avf.setNbSleepingValueFunction(new LinearValueFunction(0d,6d));
+		avf.setNbBathroomsValueFunction(new LinearValueFunction(0d,6d));
+		avf.setFloorAreaTerraceValueFunction(new LinearValueFunction(0d,100d));
+		avf.setPricePerNightValueFunction(new LinearValueFunction(0d,80d));
+		avf.setNbMinNightValueFunction(new LinearValueFunction(0d,6d));
+		
+		avf = asker.adaptAnswers(avf);
+		
+		avf = avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA, 0.5);
+		avf = avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE, 0);
+		avf = avf.setSubjectiveValueWeight(Criterion.NB_BATHROOMS, 0);
+		avf = avf.setSubjectiveValueWeight(Criterion.NB_BEDROOMS, 0.5);
+		avf = avf.setSubjectiveValueWeight(Criterion.NB_MIN_NIGHT, 0);
+		avf = avf.setSubjectiveValueWeight(Criterion.NB_SLEEPING, 0);
+		avf = avf.setSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT, 0);
+		avf = avf.setSubjectiveValueWeight(Criterion.TELE, 0);
+		avf = avf.setSubjectiveValueWeight(Criterion.TERRACE, 0);
+		avf = avf.setSubjectiveValueWeight(Criterion.WIFI, 0);
+		
+		LOGGER.info("Begining the Layout.");
+		
+		Layout2 lay = new Layout2(avf);
 		lay.displayAppart();
 
 	}
@@ -268,11 +292,11 @@ public class AskOpinionForUtility {
 	 * This function will adapt the utility of the user using ApartmentValueFunction
 	 * 
 	 */
-	public void adaptAnswers(ApartmentValueFunction avf) {
+	public ApartmentValueFunction adaptAnswers(ApartmentValueFunction avf) {
 
 		// we collect the answers on the minimums and we adapt the utility of the user
-		avf = avf.setSubjectiveValueWeight(Criterion.NB_BEDROOMS, surfaceMin);
-		avf= avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA, nbBedMin);
+		avf = avf.adaptBounds(Criterion.NB_BEDROOMS, nbBedMin, true);
+		avf = avf.adaptBounds(Criterion.FLOOR_AREA, surfaceMin, true);
 
 		// we collect the answer of the first Question and adapt the utility of the user
 		if (attributsImportant.get(0).equals("WIFI") && attributsPasImportant.get(0).equals("TERRACE")) {
@@ -289,6 +313,8 @@ public class AskOpinionForUtility {
 			avf= avf.adaptWeight(Criterion.PRICE_PER_NIGHT, Criterion.TELE);
 		}
 
+		return avf;
+		
 	}
 		
 	
