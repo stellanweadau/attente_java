@@ -30,6 +30,10 @@ public class LinearValueFunction implements PartialValueFunction<Double> {
 		LOGGER.info("The interval [" + min + "," + max + "] "
 				+ " has been set with success in the LinearValueFunction class.");
 	}
+	
+	public Range<Double> getInterval() {
+		return this.interval;
+	}
 
 	@Override
 	public double getSubjectiveValue(Double objectiveData) throws IllegalStateException {

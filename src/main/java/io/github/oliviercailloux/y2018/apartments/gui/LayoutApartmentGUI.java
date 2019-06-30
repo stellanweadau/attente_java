@@ -218,5 +218,4 @@ public class LayoutApartmentGUI {
 		LayoutApartmentGUI layout = new LayoutApartmentGUI(avf);
 		layout.displayAppart();
 	}
-
 }
