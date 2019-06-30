@@ -35,7 +35,7 @@ import org.eclipse.swt.widgets.*;
  */
 
 public class AskOpinionForUtility {
-	
+
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 
 	/**
@@ -46,13 +46,12 @@ public class AskOpinionForUtility {
 	/**
 	 * Keeps the user’s answers (when he presses the button)
 	 */
-	List<String> attributsImportant;
+	List<String> moreImportantAttributes;
 
 	/**
-	 * Stock the attribute that the user didn't answer (the
-	 * unpressed button)
+	 * Stock the attribute that the user didn't answer (the unpressed button)
 	 */
-	List<String> attributsPasImportant;
+	List<String> lessImportantAttributes;
 
 	/**
 	 * Is composed of the attributes for the first button (buttonchoix1), we can add
@@ -72,8 +71,8 @@ public class AskOpinionForUtility {
 	Shell shell;
 
 	public AskOpinionForUtility() {
-		this.attributsImportant = new ArrayList<>();
-		this.attributsPasImportant = new ArrayList<>();
+		this.moreImportantAttributes = new ArrayList<>();
+		this.lessImportantAttributes = new ArrayList<>();
 		this.choix1 = new ArrayList<>();
 		this.choix2 = new ArrayList<>();
 		this.surfaceMin = 0d;
@@ -82,7 +81,7 @@ public class AskOpinionForUtility {
 		this.display = new Display();
 		this.shell = new Shell(display);
 	}
-	
+
 	/**
 	 * This is the main function, it asks Questions , AdaptAnswers and then displays
 	 * the list of Apartements
@@ -96,17 +95,17 @@ public class AskOpinionForUtility {
 		AskOpinionForUtility asker = new AskOpinionForUtility();
 		ApartmentValueFunction avf = new ApartmentValueFunction();
 		asker.askQuestions();
-		
-		avf.setFloorAreaValueFunction(new LinearValueFunction(0d,300d));
-		avf.setNbBedroomsValueFunction(new LinearValueFunction(0d,6d));
-		avf.setNbSleepingValueFunction(new LinearValueFunction(0d,6d));
-		avf.setNbBathroomsValueFunction(new LinearValueFunction(0d,6d));
-		avf.setFloorAreaTerraceValueFunction(new LinearValueFunction(0d,100d));
-		avf.setPricePerNightValueFunction(new LinearValueFunction(0d,80d));
-		avf.setNbMinNightValueFunction(new LinearValueFunction(0d,6d));
-		
+
+		avf.setFloorAreaValueFunction(new LinearValueFunction(0d, 300d));
+		avf.setNbBedroomsValueFunction(new LinearValueFunction(0d, 6d));
+		avf.setNbSleepingValueFunction(new LinearValueFunction(0d, 6d));
+		avf.setNbBathroomsValueFunction(new LinearValueFunction(0d, 6d));
+		avf.setFloorAreaTerraceValueFunction(new LinearValueFunction(0d, 100d));
+		avf.setPricePerNightValueFunction(new LinearValueFunction(0d, 80d));
+		avf.setNbMinNightValueFunction(new LinearValueFunction(0d, 6d));
+
 		avf = asker.adaptAnswers(avf);
-		
+
 		avf = avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA, 0.5);
 		avf = avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE, 0);
 		avf = avf.setSubjectiveValueWeight(Criterion.NB_BATHROOMS, 0);
@@ -117,9 +116,9 @@ public class AskOpinionForUtility {
 		avf = avf.setSubjectiveValueWeight(Criterion.TELE, 0);
 		avf = avf.setSubjectiveValueWeight(Criterion.TERRACE, 0);
 		avf = avf.setSubjectiveValueWeight(Criterion.WIFI, 0);
-		
+
 		LOGGER.info("Begining the Layout.");
-		
+
 		LayoutApartmentGUI lay = new LayoutApartmentGUI(avf);
 		lay.displayAppart();
 
@@ -164,50 +163,42 @@ public class AskOpinionForUtility {
 		buttonGroup.setLayout(gridLayout);
 		buttonGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		buttonGroup.setText("Qu'est ce qui a le plus d'importance pour vous");
-		
-		
-		
-		//the listener when we click on finish
-		Listener finishlistener = new Listener() {	
-				public void handleEvent(Event event) {
-			
+
+		// the listener when we click on finish
+		Listener finishlistener = new Listener() {
+			public void handleEvent(Event event) {
+
 				Preconditions.checkArgument(!text1.getText().equals(""), "il faut saisir un chiffre :(");
-				Preconditions.checkArgument(!text2.getText().equals(""), "il faut saisir un texte :(" );
+				Preconditions.checkArgument(!text2.getText().equals(""), "il faut saisir un texte :(");
 
 				surfaceMin = Double.parseDouble(text1.getText());
 				nbBedMin = Double.parseDouble(text2.getText());
 
 				shell.close();
-				
-				LOGGER.info("Les attributs importants sont : ");
-				for (int j = 0; j < attributsImportant.size(); j++) {
-					LOGGER.info(attributsImportant.get(j));
-					
-				}
-				
-				LOGGER.info("Les attribut moins importants sont : ");
-				for (int j = 0; j < attributsPasImportant.size(); j++) {
-					LOGGER.info(attributsPasImportant.get(j));
-					
-				}
-				LOGGER.info("la valeur minmum de la surface est " + surfaceMin +
-				 "\nLa valeur minimum du nbre de chambre est " + nbBedMin);
 
+				LOGGER.info("Les attributs importants sont : ");
+				for (int j = 0; j < moreImportantAttributes.size(); j++) {
+					LOGGER.info(moreImportantAttributes.get(j));
+
+				}
+
+				LOGGER.info("Les attribut moins importants sont : ");
+				for (int j = 0; j < lessImportantAttributes.size(); j++) {
+					LOGGER.info(lessImportantAttributes.get(j));
+
+				}
+				LOGGER.info("la valeur minmum de la surface est " + surfaceMin
+						+ "\nLa valeur minimum du nbre de chambre est " + nbBedMin);
 
 			}
 		};
-		
-		
-		
+
 		// This is a submit button, it will close the shell when the user click on
 		// Terminer
 		final Button finish = new Button(shell, SWT.PUSH);
 		finish.setText("Terminé");
 		finish.pack();
 		finish.addListener(SWT.Selection, finishlistener);
-			
-			
-		
 
 		// buttonchoix1 and buttonchoix2 are two radio buttons, to let the user chose
 		// between two options
@@ -249,9 +240,9 @@ public class AskOpinionForUtility {
 			public void widgetSelected(SelectionEvent e) {
 				Button source1 = (Button) e.widget;
 
-				if (source1.getSelection() && !attributsImportant.contains(source1.getText())) {
-					attributsImportant.add(source1.getText());
-					attributsPasImportant.add(unPressedButton.getText());
+				if (source1.getSelection() && !moreImportantAttributes.contains(source1.getText())) {
+					moreImportantAttributes.add(source1.getText());
+					lessImportantAttributes.add(unPressedButton.getText());
 				}
 
 				if (pointer == choix1.size() || pointer == choix2.size()) {
@@ -274,10 +265,11 @@ public class AskOpinionForUtility {
 					 */
 				}
 
-				pressedButton
-						.setSelection(false); /**
-												 * to not be selected by default in the question in the next iteration
-												 */
+				/**
+				 * in order not to be selected by default in the question in the next iteration
+				 */
+				pressedButton.setSelection(false);
+
 				pressedButton.pack();
 				unPressedButton.pack();
 			}
@@ -297,26 +289,22 @@ public class AskOpinionForUtility {
 		avf = avf.adaptBounds(Criterion.FLOOR_AREA, surfaceMin, true);
 
 		// we collect the answer of the first Question and adapt the utility of the user
-		if (attributsImportant.get(0).equals("WIFI") && attributsPasImportant.get(0).equals("TERRACE")) {
-			avf= avf.adaptWeight(Criterion.WIFI, Criterion.TERRACE);
+		if (moreImportantAttributes.get(0).equals("WIFI") && lessImportantAttributes.get(0).equals("TERRACE")) {
+			avf = avf.adaptWeight(Criterion.WIFI, Criterion.TERRACE);
 		} else {
 			avf.adaptWeight(Criterion.TERRACE, Criterion.WIFI);
 		}
 
 		// we collect the answer of the second Question and we adapt the utility of the
 		// user
-		if (attributsImportant.get(1).equals("TELE") && attributsPasImportant.get(1).equals("PRICE_PER_NIGHT low")) {
-			avf=avf.adaptWeight(Criterion.TELE, Criterion.PRICE_PER_NIGHT);
+		if (moreImportantAttributes.get(1).equals("TELE") && lessImportantAttributes.get(1).equals("PRICE_PER_NIGHT low")) {
+			avf = avf.adaptWeight(Criterion.TELE, Criterion.PRICE_PER_NIGHT);
 		} else {
-			avf= avf.adaptWeight(Criterion.PRICE_PER_NIGHT, Criterion.TELE);
+			avf = avf.adaptWeight(Criterion.PRICE_PER_NIGHT, Criterion.TELE);
 		}
 
 		return avf;
-		
+
 	}
-		
-	
-	
-	
 
 }
