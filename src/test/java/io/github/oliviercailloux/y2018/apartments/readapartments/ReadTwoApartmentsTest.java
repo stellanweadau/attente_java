@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.apartments.readApartments;
+package io.github.oliviercailloux.y2018.apartments.readapartments;
 
 import java.io.File;
 

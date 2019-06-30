@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
-import io.github.oliviercailloux.y2018.apartments.readApartments.ReadTwoApartmentsTest;
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
 class ToXmlPropertiesTest {
@@ -33,7 +32,7 @@ class ToXmlPropertiesTest {
 		a.setDescription("Un igloo tout mignon en compagnie du père noël et de la mère noël");
 		a.setFloorAreaTerrace(8.6);
 		File f = new File(
-				"src/test/resources/io/github/oliviercailloux/y2018/apartments/readApartments/xmlfileTest.xml");
+				"src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/xmlfileTest.xml");
 		try (FileOutputStream s = new FileOutputStream(f.getAbsolutePath())) {
 			j.toXML(a, s);
 		}
@@ -61,10 +60,10 @@ class ToXmlPropertiesTest {
 		}
 
 		ReadApartmentsXMLFormat r1 = new ReadApartmentsXMLFormat();
-		try (InputStream f1 = ReadTwoApartmentsTest.class.getResourceAsStream("xmlfileTest.xml")) {
+		try(InputStream f1 = ReadApartmentsXMLFormat.class.getResourceAsStream("xmlfileTest.xml")){
 			Apartment a1 = r1.readApartment(f1);
 			System.out.println(a1);
-
+			
 		}
 	}
 }
