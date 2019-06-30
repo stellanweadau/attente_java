@@ -1,8 +1,6 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.google.maps.model.LatLng;
 
@@ -18,29 +16,32 @@ class ValueDistFunctionTest {
 	LatLng interest3;
 	String apiKey;
 	
+	/**
+	 * This test does not run due to the absence of the file API_KEY.txt of Google MAps
+	 * @throws Exception 
+	 */
+	
 	void initializeValueDistFunction() throws Exception {
 		apiKey = KeyManager.getApiKey();
-		appart = Localizer.getGeometryLocation("Ville d'Avray",apiKey);
-		interest1 = Localizer.getGeometryLocation("Paris",apiKey);
-		interest2 = Localizer.getGeometryLocation("Chaville",apiKey);
-		interest3 = Localizer.getGeometryLocation("Roissy Charles de Gaulle",apiKey);
-		v = new ValueDistFunction(appart,apiKey);
-		
+		appart = Localizer.getGeometryLocation("Ville d'Avray", apiKey);
+		interest1 = Localizer.getGeometryLocation("Paris", apiKey);
+		interest2 = Localizer.getGeometryLocation("Chaville", apiKey);
+		interest3 = Localizer.getGeometryLocation("Roissy Charles de Gaulle", apiKey);
+		v = new ValueDistFunction(appart, apiKey);
+
 		v.addInterestLocation(interest1);
 		v.addInterestLocation(interest2);
 		v.addInterestLocation(interest3);
 	}
-	
-	@Test 
-	void getSubjectiveValueTest() throws Exception{
+
+	void getSubjectiveValueTest() throws Exception {
 		initializeValueDistFunction();
-		Assert.assertEquals(0.90919444444, v.getSubjectiveValue(interest1), 0.1);
+		assertEquals(0.90919444444, v.getSubjectiveValue(interest1));
 	}
-	
-	@Test
+
 	void getMaxDurationTest() throws Exception {
 		initializeValueDistFunction();
-		Assert.assertEquals(5091.0, v.getMaxDuration(),0);
+		assertEquals(5091.0, v.getMaxDuration());
 	}
 
 }
