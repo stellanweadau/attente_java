@@ -1,24 +1,21 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 class BooleanValueFunctionTest {
 
 	@Test
-	void getSubjectiveValueTest() {
+	void getSubjectiveValueOfTrueTest() {
 		BooleanValueFunction b = new BooleanValueFunction(true);
-		Assert.assertEquals(1, b.getSubjectiveValue(true), 0);
-		Assert.assertEquals(0, b.getSubjectiveValue(false), 0);
+		assertEquals(1, b.getSubjectiveValue(true));
+		assertEquals(0, b.getSubjectiveValue(false));
 	}
 
-
 	@Test
-	void applyTest() {
+	void getSubjectiveValueOfFalseTest() {
 		BooleanValueFunction bo = new BooleanValueFunction(false);
-		Assert.assertEquals(0, bo.apply(true), 0);
-		Assert.assertEquals(1, bo.apply(false), 0);
-
+		assertEquals(0, bo.getSubjectiveValue(true));
+		assertEquals(1, bo.getSubjectiveValue(false));
 	}
 }
