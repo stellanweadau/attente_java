@@ -44,24 +44,24 @@ public class AskOpinionForUtility {
 	/**
 	 * Keeps the user’s answers (when he presses the button)
 	 */
-	List<String> attributsImportant;
+	ArrayList<String> attributsImportant;
 
 	/**
 	 * Stock the attribute that the user didn't answer (the
 	 * unpressed button)
 	 */
-	List<String> attributsPasImportant;
+	ArrayList<String> attributsPasImportant;
 
 	/**
 	 * This array has the attributes for the first button (buttonchoix1), we can add
 	 * how much we want
 	 */
-	List<Criterion> choix1;
+	ArrayList<Criterion> choix1;
 
 	/**
 	 * This array has attributes for the second button (buttonchoix2)
 	 */
-	List<Criterion> choix2;
+	ArrayList<Criterion> choix2;
 
 	double surfaceMin;
 	double nbBedMin;
