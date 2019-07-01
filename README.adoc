@@ -67,7 +67,26 @@ Entre temps, Laurence (SMPO pour cette itération) a également continué à tra
 
 === Livraison 4 ===
 
-Ebauche de ce qu'on ambitionne de faire lors des itérations suivantes :
+Pour cette 4° itération
+
+En terme de fusion :
+
+- Il faut fusionner l'affichage de la liste des appartements et celle des caractéristiques - (SM/PO)
+- A partir des données saisies dans ce GUI, il faut faire une recherche pour afficher les appartements selon l'utilité.(SM/PO)
+- S'assurer que tout fonctionne bien et corriger les class paths pour les ressources (XML et images)  avec ajout des ressources images pour certaines appartement. (SM/PO)
+
+Ces deux tâches consistent à la mise en place d'un main pour unifier les fonctionnalités (une recherche, puis une liste triée et enfin selection et détails d'appartments). 
+
+Pour les Duos:
+
+1^er^Duo : Un gui pour choisir les utilités (sandra et Aïssatou)
+
+2^eme Duo : calculer les poids à partir des critères de l'utilisateur (Amir et Alexis)
+
+3^eme^Duo : Faire le ménage dans les fonctions de génération aléatoires et corriger les tests unitaires (Laurence et Zeina)
+
+
+Perspectives d'amélioration :
 
 * XMCDA Remis à plus tard
 
