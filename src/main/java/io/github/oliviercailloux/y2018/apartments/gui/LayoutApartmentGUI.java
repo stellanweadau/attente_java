@@ -155,7 +155,7 @@ public class LayoutApartmentGUI {
 		}
 
 		appart.sort((Apartment c, Apartment d) -> {
-			return Double.compare(avf.getSubjectiveValue(c), avf.getSubjectiveValue(d));
+			return - Double.compare(avf.getSubjectiveValue(c), avf.getSubjectiveValue(d));
 		});
 
 		return appart;
