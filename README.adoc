@@ -1,5 +1,5 @@
 = Apartments
-gitHubUserName: oliviercailloux
+:gitHubUserName: oliviercailloux
 :groupId: io.github.{gitHubUserName}
 :artifactId: apartments
 :repository: Apartments
