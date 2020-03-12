@@ -8,3 +8,5 @@ Thumbs.db
 GUITest
 out.log
 /ApartXML/
+.idea/
+apartments.iml

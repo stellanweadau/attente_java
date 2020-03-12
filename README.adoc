@@ -1,11 +1,58 @@
 = Apartments
+
 :gitHubUserName: oliviercailloux
 :groupId: io.github.{gitHubUserName}
 :artifactId: apartments
 :repository: Apartments
 
-image:https://travis-ci.com/{gitHubUserName}/{repository}.svg?branch=master["Build Status", link="https://travis-ci.com/{gitHubUserName}/{repository}"]
-
-A Java project developed by students during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
+A Java project developed by students during the link:https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in link:http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
 
 The code is hereby published under the MIT License, with their permission.
+
+== Iteration
+
+=== Iteration 1 -- 16/03/2020
+
+For information on team, see link:doc/It1.adoc[here]
+
+== Documentation
+
+- Project documentation can be found in the directory link:doc/[*doc/*]
+
+== Changelog
+
+- Link of link:doc/changelog.adoc[changelog]
+
+== Repository available on Github
+
+- Link of this link:https://github.com/av1m/Apartments[repository]
+
+== Contributors
+
+=== 2020
+
+- link:https://github.com/EtienneCartier[EtienneCartier]
+- link:https://github.com/MorganeFt[MorganeFt]
+- link:https://github.com/GabG02[GabG02]
+- link:https://github.com/clemencecousin[clemencecousin]
+- link:https://github.com/av1m[av1m]
+
+=== Old
+
+- link:https://github.com/DAYAUX[DAYAUX]
+- link:https://github.com/Deeplygends[Deeplygends]
+- link:https://github.com/Amioplk[Amioplk]
+- link:https://github.com/SlowVirtuousGiant[SlowVirtuousGiant]
+- link:https://github.com/marccohen92[marccohen92]
+- link:https://github.com/LaurenceTsizaza[LaurenceTsizaza]
+- link:https://github.com/zeinaalwazzan[zeinaalwazzan]
+- link:https://github.com/alexisperdereau[alexisperdereau]
+- link:https://github.com/Aichaaa[Aichaaa]
+- link:https://github.com/SandraSalame[SandraSalame]
+- link:https://github.com/aitalibraham[aitalibraham]
+- link:https://github.com/oliviercailloux[oliviercailloux]
+
+
+== License
+
+* link:https://github.com/av1m/python-retweet/blob/master/LICENSE[MIT]
