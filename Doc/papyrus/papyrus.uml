@@ -3232,6 +3232,38 @@
     <packagedElement xmi:type="uml:Package" xmi:id="_A3YaoF_BEeqAAb4u4HLI7w" name="Toxmlproperties"/>
     <packagedElement xmi:type="uml:Package" xmi:id="_QgD_sF_BEeqAAb4u4HLI7w" name="Utils"/>
     <packagedElement xmi:type="uml:Package" xmi:id="_d2M6YF_BEeqAAb4u4HLI7w" name="Valuefunction"/>
+    <packagedElement xmi:type="uml:Interaction" xmi:id="_Pt_w8GSgEeqgR6r_D9TUsQ" name="AskOpinionForUtility">
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_gesG8GSgEeqgR6r_D9TUsQ" name="Find an apartment">
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_s0UKYGShEeqgR6r_D9TUsQ" name="ExtensionPoint1"/>
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_uBdS8GShEeqgR6r_D9TUsQ" name="ExtensionPoint2"/>
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_uuafkGShEeqgR6r_D9TUsQ" name="ExtensionPoint3"/>
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_zo2ZQGShEeqgR6r_D9TUsQ" name="ExtensionPoint4"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_jmovUGSgEeqgR6r_D9TUsQ" name="Fill the number of bedrooms">
+        <extend xmi:type="uml:Extend" xmi:id="_uuZ4gGShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_uuafkGShEeqgR6r_D9TUsQ"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_oXWFQGSgEeqgR6r_D9TUsQ" name="Fill the superficy">
+        <extend xmi:type="uml:Extend" xmi:id="_uBcr4GShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_uBdS8GShEeqgR6r_D9TUsQ"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_saPS8GSgEeqgR6r_D9TUsQ" name="Check most important criteria">
+        <extend xmi:type="uml:Extend" xmi:id="_s0RHEGShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_s0UKYGShEeqgR6r_D9TUsQ"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_vfArgGSgEeqgR6r_D9TUsQ" name="Display results">
+        <extend xmi:type="uml:Extend" xmi:id="_zo1LIGShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_zo2ZQGShEeqgR6r_D9TUsQ"/>
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_1_2F0GShEeqgR6r_D9TUsQ" name="ExtensionPoint2"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_yGayoGSgEeqgR6r_D9TUsQ" name="Select an apartment">
+        <extend xmi:type="uml:Extend" xmi:id="_1_03sGShEeqgR6r_D9TUsQ" extendedCase="_vfArgGSgEeqgR6r_D9TUsQ" extensionLocation="_1_2F0GShEeqgR6r_D9TUsQ"/>
+      </ownedUseCase>
+      <nestedClassifier xmi:type="uml:Actor" xmi:id="_ZaRpAGSgEeqgR6r_D9TUsQ" name="Locator"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_QMvF8GShEeqgR6r_D9TUsQ" name="Lacator triggers to find an apartment" memberEnd="_QMvtAmShEeqgR6r_D9TUsQ _QMwUEGShEeqgR6r_D9TUsQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QMvtAGShEeqgR6r_D9TUsQ" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QMvtAWShEeqgR6r_D9TUsQ" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_QMvtAmShEeqgR6r_D9TUsQ" name="find an apartment" type="_gesG8GSgEeqgR6r_D9TUsQ" association="_QMvF8GShEeqgR6r_D9TUsQ"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_QMwUEGShEeqgR6r_D9TUsQ" name="locator" type="_ZaRpAGSgEeqgR6r_D9TUsQ" association="_QMvF8GShEeqgR6r_D9TUsQ"/>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_ZAfQAF--EeqAAb4u4HLI7w">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZAkIgF--EeqAAb4u4HLI7w" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
@@ -3298,7 +3330,6 @@
   <standard:Create xmi:id="_G6ksIF_BEeqAAb4u4HLI7w" base_BehavioralFeature="_G6jeAl_BEeqAAb4u4HLI7w"/>
   <PapyrusJava:External xmi:id="_G6nvcF_BEeqAAb4u4HLI7w" name="java.io.OutputStream" base_Classifier="_G6mhUV_BEeqAAb4u4HLI7w"/>
   <PapyrusJava:External xmi:id="_WcbQcF_BEeqAAb4u4HLI7w" name="java.io.FileNotFoundException" base_Classifier="_WcZbQF_BEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_72s5kF_BEeqAAb4u4HLI7w" name="PartialValueFunction"/>
   <standard:Create xmi:id="_72_0gF_BEeqAAb4u4HLI7w" base_BehavioralFeature="_729_UF_BEeqAAb4u4HLI7w"/>
   <PapyrusJava:External xmi:id="_73HJQF_BEeqAAb4u4HLI7w" name="IllegalArgumentException" base_Classifier="_73FUEF_BEeqAAb4u4HLI7w"/>
   <PapyrusJava:External xmi:id="_74UqMF_BEeqAAb4u4HLI7w" name="Criterion" base_Classifier="_74TcEF_BEeqAAb4u4HLI7w"/>
