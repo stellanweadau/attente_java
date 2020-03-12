@@ -55,4 +55,4 @@ For information on team, see link:doc/It1.adoc[here]
 
 == License
 
-* link:https://github.com/av1m/python-retweet/blob/master/LICENSE[MIT]
+* link:LICENSE[MIT]
