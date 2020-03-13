@@ -2122,77 +2122,6 @@
                     </ownedOperation>
                   </packagedElement>
                   <packagedElement xmi:type="uml:Class" xmi:id="_Wne0cF_CEeqAAb4u4HLI7w" name="IllegalStateException"/>
-                  <packagedElement xmi:type="uml:Class" xmi:id="_d19NUF_CEeqAAb4u4HLI7w" name="PieceWiseLinearValueFunction" visibility="public">
-                    <generalization xmi:type="uml:Generalization" xmi:id="_d1-bcF_CEeqAAb4u4HLI7w"/>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_d2AQoF_CEeqAAb4u4HLI7w" name="utilities" visibility="private" type="_d1-bcV_CEeqAAb4u4HLI7w" isUnique="false"/>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_d2A3sF_CEeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
-                      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_d2A3sV_CEeqAAb4u4HLI7w" name="defaultValue">
-                        <language>JAVA</language>
-                        <body>LoggerFactory.getLogger(PieceWiseLinearValueFunction.class)</body>
-                      </defaultValue>
-                    </ownedAttribute>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d2DT8F_CEeqAAb4u4HLI7w" name="PieceWiseLinearValueFunction" specification="_d2A3sl_CEeqAAb4u4HLI7w">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    if (!utilParameters.containsValue(0d) || !utilParameters.containsValue(1d)) {&#xD;
-        throw new IllegalArgumentException(&quot;The value associated to the grade 0 or 1 is missing.&quot;);&#xD;
-    }&#xD;
-    Stream&lt;Double> error = utilParameters.values().stream().filter( v -> v > 1d || v &lt; 0d);&#xD;
-    if (error.count() > 0) {&#xD;
-        throw new IllegalArgumentException(&quot;The grades have to be between 0 and 1.&quot;);&#xD;
-    }&#xD;
-    utilities = ImmutableSortedMap.copyOf(utilParameters);&#xD;
-    if (!Comparators.isInOrder(this.utilities.values(), Comparator.naturalOrder())) {&#xD;
-        throw new IllegalArgumentException(&quot;A grade cannot be greater than another if its value associated is lower.&quot;);&#xD;
-    }&#xD;
-    LOGGER.info(&quot;The map of data has been successfully instantiated.&quot;);&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d2FwMV_CEeqAAb4u4HLI7w" name="getSubjectiveValue" specification="_d2EiEF_CEeqAAb4u4HLI7w">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    Verify.verify(utilities.size() >= 2);&#xD;
-    if (objectiveData &lt;= utilities.firstKey()) {&#xD;
-        return 0d;&#xD;
-    }&#xD;
-    if (objectiveData >= utilities.lastKey()) {&#xD;
-        return 1d;&#xD;
-    }&#xD;
-    Map.Entry&lt;Double, Double> minEntry = utilities.floorEntry(objectiveData);&#xD;
-    Map.Entry&lt;Double, Double> maxEntry = utilities.ceilingEntry(objectiveData);&#xD;
-    Double minKey = minEntry.getKey();&#xD;
-    Double maxKey = maxEntry.getKey();&#xD;
-    Double minValue = minEntry.getValue();&#xD;
-    Double maxValue = maxEntry.getValue();&#xD;
-    return ((objectiveData - minKey) * (maxValue - minValue) / (maxKey - minKey)) + minValue;&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d2JakF_CEeqAAb4u4HLI7w" name="apply" specification="_d2HlYF_CEeqAAb4u4HLI7w">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    return getSubjectiveValue(t);&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_d2A3sl_CEeqAAb4u4HLI7w" name="PieceWiseLinearValueFunction" visibility="public" method="_d2DT8F_CEeqAAb4u4HLI7w">
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_d2Cs4F_CEeqAAb4u4HLI7w" name="utilParameters" type="_8ue2IF_BEeqAAb4u4HLI7w"/>
-                    </ownedOperation>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_d2EiEF_CEeqAAb4u4HLI7w" name="getSubjectiveValue" visibility="public" method="_d2FwMV_CEeqAAb4u4HLI7w">
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_d2FJIF_CEeqAAb4u4HLI7w" direction="return">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
-                      </ownedParameter>
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_d2FwMF_CEeqAAb4u4HLI7w" name="objectiveData">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
-                      </ownedParameter>
-                    </ownedOperation>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_d2HlYF_CEeqAAb4u4HLI7w" name="apply" visibility="public" method="_d2JakF_CEeqAAb4u4HLI7w">
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_d2IMcF_CEeqAAb4u4HLI7w" direction="return">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
-                      </ownedParameter>
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_d2IzgF_CEeqAAb4u4HLI7w" name="t">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
-                      </ownedParameter>
-                    </ownedOperation>
-                  </packagedElement>
                   <packagedElement xmi:type="uml:Class" xmi:id="_oHIiMF_CEeqAAb4u4HLI7w" name="ReversedLinearValueFunction" visibility="public">
                     <generalization xmi:type="uml:Generalization" xmi:id="_oHJJQF_CEeqAAb4u4HLI7w"/>
                     <ownedAttribute xmi:type="uml:Property" xmi:id="_oHJJQV_CEeqAAb4u4HLI7w" name="interval" visibility="private" type="_WnYGwF_CEeqAAb4u4HLI7w" isUnique="false"/>
@@ -2371,6 +2300,13 @@
                       <ownedParameter xmi:type="uml:Parameter" xmi:id="_pKZ9EF_CEeqAAb4u4HLI7w" name="objectiveData" type="_ESE1Ul_AEeqAAb4u4HLI7w"/>
                     </ownedOperation>
                   </packagedElement>
+                  <packagedElement xmi:type="uml:Realization" xmi:id="_FnmEQGVGEeq0U8CyxWHVBA" client="_74b-8F_BEeqAAb4u4HLI7w" supplier="_siBZIF_CEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Realization" xmi:id="_GjPNIGVGEeq0U8CyxWHVBA" client="_MMSn8F_CEeqAAb4u4HLI7w" supplier="_siBZIF_CEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Realization" xmi:id="_PMAZwGVGEeq0U8CyxWHVBA" client="_oHIiMF_CEeqAAb4u4HLI7w" supplier="_siBZIF_CEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Realization" xmi:id="_QaN5UGVGEeq0U8CyxWHVBA" client="_pKHpMF_CEeqAAb4u4HLI7w" supplier="_siBZIF_CEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Realization" xmi:id="_RSrLUGVGEeq0U8CyxWHVBA" client="_SVVCwF_CEeqAAb4u4HLI7w" supplier="_siBZIF_CEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Realization" xmi:id="_SPxswGVGEeq0U8CyxWHVBA" client="_72rEYF_BEeqAAb4u4HLI7w" supplier="_siBZIF_CEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Realization" xmi:id="_TWpOMGVGEeq0U8CyxWHVBA" client="_8udoAF_BEeqAAb4u4HLI7w" supplier="_siBZIF_CEeqAAb4u4HLI7w"/>
                 </packagedElement>
               </packagedElement>
             </packagedElement>
@@ -3231,7 +3167,80 @@
     <packagedElement xmi:type="uml:Package" xmi:id="_1bkeoF_AEeqAAb4u4HLI7w" name="Readapartments"/>
     <packagedElement xmi:type="uml:Package" xmi:id="_A3YaoF_BEeqAAb4u4HLI7w" name="Toxmlproperties"/>
     <packagedElement xmi:type="uml:Package" xmi:id="_QgD_sF_BEeqAAb4u4HLI7w" name="Utils"/>
-    <packagedElement xmi:type="uml:Package" xmi:id="_d2M6YF_BEeqAAb4u4HLI7w" name="Valuefunction"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_d2M6YF_BEeqAAb4u4HLI7w" name="Valuefunction">
+      <packagedElement xmi:type="uml:Class" xmi:id="_d19NUF_CEeqAAb4u4HLI7w" name="PieceWiseLinearValueFunction" visibility="public">
+        <generalization xmi:type="uml:Generalization" xmi:id="_d1-bcF_CEeqAAb4u4HLI7w"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_d2AQoF_CEeqAAb4u4HLI7w" name="utilities" visibility="private" type="_d1-bcV_CEeqAAb4u4HLI7w" isUnique="false"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_d2A3sF_CEeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
+          <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_d2A3sV_CEeqAAb4u4HLI7w" name="defaultValue">
+            <language>JAVA</language>
+            <body>LoggerFactory.getLogger(PieceWiseLinearValueFunction.class)</body>
+          </defaultValue>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d2DT8F_CEeqAAb4u4HLI7w" name="PieceWiseLinearValueFunction" specification="_d2A3sl_CEeqAAb4u4HLI7w">
+          <language>JAVA</language>
+          <body>&#xD;
+    if (!utilParameters.containsValue(0d) || !utilParameters.containsValue(1d)) {&#xD;
+        throw new IllegalArgumentException(&quot;The value associated to the grade 0 or 1 is missing.&quot;);&#xD;
+    }&#xD;
+    Stream&lt;Double> error = utilParameters.values().stream().filter( v -> v > 1d || v &lt; 0d);&#xD;
+    if (error.count() > 0) {&#xD;
+        throw new IllegalArgumentException(&quot;The grades have to be between 0 and 1.&quot;);&#xD;
+    }&#xD;
+    utilities = ImmutableSortedMap.copyOf(utilParameters);&#xD;
+    if (!Comparators.isInOrder(this.utilities.values(), Comparator.naturalOrder())) {&#xD;
+        throw new IllegalArgumentException(&quot;A grade cannot be greater than another if its value associated is lower.&quot;);&#xD;
+    }&#xD;
+    LOGGER.info(&quot;The map of data has been successfully instantiated.&quot;);&#xD;
+</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d2FwMV_CEeqAAb4u4HLI7w" name="getSubjectiveValue" specification="_d2EiEF_CEeqAAb4u4HLI7w">
+          <language>JAVA</language>
+          <body>&#xD;
+    Verify.verify(utilities.size() >= 2);&#xD;
+    if (objectiveData &lt;= utilities.firstKey()) {&#xD;
+        return 0d;&#xD;
+    }&#xD;
+    if (objectiveData >= utilities.lastKey()) {&#xD;
+        return 1d;&#xD;
+    }&#xD;
+    Map.Entry&lt;Double, Double> minEntry = utilities.floorEntry(objectiveData);&#xD;
+    Map.Entry&lt;Double, Double> maxEntry = utilities.ceilingEntry(objectiveData);&#xD;
+    Double minKey = minEntry.getKey();&#xD;
+    Double maxKey = maxEntry.getKey();&#xD;
+    Double minValue = minEntry.getValue();&#xD;
+    Double maxValue = maxEntry.getValue();&#xD;
+    return ((objectiveData - minKey) * (maxValue - minValue) / (maxKey - minKey)) + minValue;&#xD;
+</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d2JakF_CEeqAAb4u4HLI7w" name="apply" specification="_d2HlYF_CEeqAAb4u4HLI7w">
+          <language>JAVA</language>
+          <body>&#xD;
+    return getSubjectiveValue(t);&#xD;
+</body>
+        </ownedBehavior>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_d2A3sl_CEeqAAb4u4HLI7w" name="PieceWiseLinearValueFunction" visibility="public" method="_d2DT8F_CEeqAAb4u4HLI7w">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_d2Cs4F_CEeqAAb4u4HLI7w" name="utilParameters" type="_8ue2IF_BEeqAAb4u4HLI7w"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_d2EiEF_CEeqAAb4u4HLI7w" name="getSubjectiveValue" visibility="public" method="_d2FwMV_CEeqAAb4u4HLI7w">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_d2FJIF_CEeqAAb4u4HLI7w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_d2FwMF_CEeqAAb4u4HLI7w" name="objectiveData">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_d2HlYF_CEeqAAb4u4HLI7w" name="apply" visibility="public" method="_d2JakF_CEeqAAb4u4HLI7w">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_d2IMcF_CEeqAAb4u4HLI7w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_d2IzgF_CEeqAAb4u4HLI7w" name="t">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Realization" xmi:id="_MVF3AGVGEeq0U8CyxWHVBA" client="_d19NUF_CEeqAAb4u4HLI7w" supplier="_siBZIF_CEeqAAb4u4HLI7w"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:Interaction" xmi:id="_Pt_w8GSgEeqgR6r_D9TUsQ" name="AskOpinionForUtility">
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_gesG8GSgEeqgR6r_D9TUsQ" name="Find an apartment">
         <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_s0UKYGShEeqgR6r_D9TUsQ" name="ExtensionPoint1"/>
