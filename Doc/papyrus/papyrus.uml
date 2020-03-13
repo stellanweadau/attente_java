@@ -687,236 +687,6 @@
                     <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_VP0v4F_AEeqAAb4u4HLI7w" name="DOUBLE"/>
                     <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_VP1-AF_AEeqAAb4u4HLI7w" name="REQUIRED"/>
                   </packagedElement>
-                  <packagedElement xmi:type="uml:Class" xmi:id="_VP_vAF_AEeqAAb4u4HLI7w" name="AskOpinionForUtility" visibility="public">
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VQCyUF_AEeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
-                      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_VQKHEF_AEeqAAb4u4HLI7w" name="defaultValue">
-                        <language>JAVA</language>
-                        <body>LoggerFactory.getLogger(CreateApartmentGUI.class)</body>
-                      </defaultValue>
-                    </ownedAttribute>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VQKHEV_AEeqAAb4u4HLI7w" name="pointer" visibility="private" isUnique="false">
-                      <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
-                      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_VQKuIF_AEeqAAb4u4HLI7w" name="defaultValue">
-                        <language>JAVA</language>
-                        <body>0</body>
-                      </defaultValue>
-                    </ownedAttribute>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VQKuIV_AEeqAAb4u4HLI7w" name="moreImportantAttributes" visibility="private" type="_ZDXk4F--EeqAAb4u4HLI7w" isUnique="false">
-                      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VQKuIl_AEeqAAb4u4HLI7w"/>
-                      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VQLVMF_AEeqAAb4u4HLI7w" value="*"/>
-                    </ownedAttribute>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VQLVMV_AEeqAAb4u4HLI7w" name="lessImportantAttributes" visibility="private" type="_ZDXk4F--EeqAAb4u4HLI7w" isUnique="false">
-                      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VQLVMl_AEeqAAb4u4HLI7w"/>
-                      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VQLVM1_AEeqAAb4u4HLI7w" value="*"/>
-                    </ownedAttribute>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VQNxcF_AEeqAAb4u4HLI7w" name="choix1" visibility="private" type="_VQLVNF_AEeqAAb4u4HLI7w" isUnique="false">
-                      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VQNxcV_AEeqAAb4u4HLI7w"/>
-                      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VQNxcl_AEeqAAb4u4HLI7w" value="*"/>
-                    </ownedAttribute>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VQNxc1_AEeqAAb4u4HLI7w" name="choix2" visibility="private" type="_VQLVNF_AEeqAAb4u4HLI7w" isUnique="false">
-                      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VQOYgF_AEeqAAb4u4HLI7w"/>
-                      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VQOYgV_AEeqAAb4u4HLI7w" value="*"/>
-                    </ownedAttribute>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VQOYgl_AEeqAAb4u4HLI7w" name="surfaceMin" visibility="private" isUnique="false">
-                      <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
-                    </ownedAttribute>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VQOYg1_AEeqAAb4u4HLI7w" name="nbBedMin" visibility="private" isUnique="false">
-                      <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
-                    </ownedAttribute>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VQO_kF_AEeqAAb4u4HLI7w" name="display" visibility="private" type="_VLuTAV_AEeqAAb4u4HLI7w" isUnique="false"/>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VQO_kV_AEeqAAb4u4HLI7w" name="shell" visibility="private" type="_VL0ZoF_AEeqAAb4u4HLI7w" isUnique="false"/>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VQQNsV_AEeqAAb4u4HLI7w" name="AskOpinionForUtility" specification="_VQO_kl_AEeqAAb4u4HLI7w">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    this.moreImportantAttributes = new ArrayList&lt;>();&#xD;
-    this.lessImportantAttributes = new ArrayList&lt;>();&#xD;
-    this.choix1 = new ArrayList&lt;>();&#xD;
-    this.choix2 = new ArrayList&lt;>();&#xD;
-    this.surfaceMin = 0d;&#xD;
-    this.nbBedMin = 0d;&#xD;
-    this.pointer = 0;&#xD;
-    this.display = new Display();&#xD;
-    this.shell = new Shell(display);&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VQSC4F_AEeqAAb4u4HLI7w" name="main" specification="_VQQ0wF_AEeqAAb4u4HLI7w">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    AskOpinionForUtility asker = new AskOpinionForUtility();&#xD;
-    ApartmentValueFunction avf = new ApartmentValueFunction();&#xD;
-    asker.askQuestions();&#xD;
-    avf.setFloorAreaValueFunction(new LinearValueFunction(0d, 300d));&#xD;
-    avf.setNbBedroomsValueFunction(new LinearValueFunction(0d, 6d));&#xD;
-    avf.setNbSleepingValueFunction(new LinearValueFunction(0d, 6d));&#xD;
-    avf.setNbBathroomsValueFunction(new LinearValueFunction(0d, 6d));&#xD;
-    avf.setFloorAreaTerraceValueFunction(new LinearValueFunction(0d, 100d));&#xD;
-    avf.setPricePerNightValueFunction(new LinearValueFunction(0d, 80d));&#xD;
-    avf.setNbMinNightValueFunction(new LinearValueFunction(0d, 6d));&#xD;
-    avf = asker.adaptAnswers(avf);&#xD;
-    avf = avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA, 0.5);&#xD;
-    avf = avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE, 0);&#xD;
-    avf = avf.setSubjectiveValueWeight(Criterion.NB_BATHROOMS, 0);&#xD;
-    avf = avf.setSubjectiveValueWeight(Criterion.NB_BEDROOMS, 0.5);&#xD;
-    avf = avf.setSubjectiveValueWeight(Criterion.NB_MIN_NIGHT, 0);&#xD;
-    avf = avf.setSubjectiveValueWeight(Criterion.NB_SLEEPING, 0);&#xD;
-    avf = avf.setSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT, 0);&#xD;
-    avf = avf.setSubjectiveValueWeight(Criterion.TELE, 0);&#xD;
-    avf = avf.setSubjectiveValueWeight(Criterion.TERRACE, 0);&#xD;
-    avf = avf.setSubjectiveValueWeight(Criterion.WIFI, 0);&#xD;
-    LOGGER.info(&quot;Begining the Layout.&quot;);&#xD;
-    LayoutApartmentGUI lay = new LayoutApartmentGUI(avf);&#xD;
-    lay.displayAppart();&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VQSp8F_AEeqAAb4u4HLI7w" name="askQuestions" specification="_VQSC4V_AEeqAAb4u4HLI7w">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    // we add the other two criteria&#xD;
-    choix1.add(Criterion.TELE);&#xD;
-    choix2.add(Criterion.PRICE_PER_NIGHT);&#xD;
-    shell.setText(&quot;Votre avis nous intéresse ;)&quot;);&#xD;
-    shell.setLayout(new GridLayout());&#xD;
-    shell.setBounds(500, 500, 600, 500);&#xD;
-    // for the first questions about minimum&#xD;
-    final Group group = new Group(shell, SWT.NONE);&#xD;
-    group.setText(&quot;Combien il vous faut pour accepter un apartement?&quot;);&#xD;
-    group.setLayout(new GridLayout(2, false));&#xD;
-    Label label1 = new Label(group, SWT.NONE);&#xD;
-    label1.setText(&quot;Surface minimum?&quot;);&#xD;
-    Text text1 = new Text(group, SWT.LEAD | SWT.BORDER);&#xD;
-    text1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));&#xD;
-    Label label2 = new Label(group, SWT.NONE);&#xD;
-    label2.setText(&quot;Nombre de chambre minimum?&quot;);&#xD;
-    Text text2 = new Text(group, SWT.LEAD | SWT.BORDER);&#xD;
-    text2.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));&#xD;
-    // question about the importance of an element for the user&#xD;
-    Group buttonGroup = new Group(shell, SWT.NONE);&#xD;
-    GridLayout gridLayout = new GridLayout();&#xD;
-    gridLayout.numColumns = 1;&#xD;
-    buttonGroup.setLayout(gridLayout);&#xD;
-    buttonGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));&#xD;
-    buttonGroup.setText(&quot;Qu'est ce qui a le plus d'importance pour vous&quot;);&#xD;
-    // the listener when we click on finish&#xD;
-    Listener finishlistener = new Listener() {&#xD;
-&#xD;
-        public void handleEvent(Event event) {&#xD;
-            Preconditions.checkArgument(!text1.getText().equals(&quot;&quot;), &quot;il faut saisir un chiffre :(&quot;);&#xD;
-            Preconditions.checkArgument(!text2.getText().equals(&quot;&quot;), &quot;il faut saisir un texte :(&quot;);&#xD;
-            surfaceMin = Double.parseDouble(text1.getText());&#xD;
-            nbBedMin = Double.parseDouble(text2.getText());&#xD;
-            shell.close();&#xD;
-            LOGGER.info(&quot;Les attributs importants sont : &quot;);&#xD;
-            for (int j = 0; j &lt; moreImportantAttributes.size(); j++) {&#xD;
-                LOGGER.info(moreImportantAttributes.get(j));&#xD;
-            }&#xD;
-            LOGGER.info(&quot;Les attribut moins importants sont : &quot;);&#xD;
-            for (int j = 0; j &lt; lessImportantAttributes.size(); j++) {&#xD;
-                LOGGER.info(lessImportantAttributes.get(j));&#xD;
-            }&#xD;
-            LOGGER.info(&quot;la valeur minmum de la surface est &quot; + surfaceMin + &quot;\nLa valeur minimum du nbre de chambre est &quot; + nbBedMin);&#xD;
-        }&#xD;
-    };&#xD;
-    // This is a submit button, it will close the shell when the user click on&#xD;
-    // Terminer&#xD;
-    final Button finish = new Button(shell, SWT.PUSH);&#xD;
-    finish.setText(&quot;Terminé&quot;);&#xD;
-    finish.pack();&#xD;
-    finish.addListener(SWT.Selection, finishlistener);&#xD;
-    // buttonchoix1 and buttonchoix2 are two radio buttons, to let the user chose&#xD;
-    // between two options&#xD;
-    Button buttonchoix1 = new Button(buttonGroup, SWT.RADIO);&#xD;
-    buttonchoix1.setText(&quot;WIFI&quot;);&#xD;
-    Button buttonchoix2 = new Button(buttonGroup, SWT.RADIO);&#xD;
-    buttonchoix2.setText(&quot;TERRACE&quot;);&#xD;
-    // when cliquing on theses buttons&#xD;
-    clickOnButton(buttonchoix1, buttonchoix2);&#xD;
-    clickOnButton(buttonchoix2, buttonchoix1);&#xD;
-    // open the window&#xD;
-    shell.open();&#xD;
-    LOGGER.info(&quot;The Shell was opened with success.&quot;);&#xD;
-    while (!shell.isDisposed()) {&#xD;
-        if (!display.readAndDispatch()) {&#xD;
-            display.sleep();&#xD;
-        }&#xD;
-    }&#xD;
-    display.dispose();&#xD;
-    LOGGER.info(&quot;The screen was closed with success.&quot;);&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VQVtQF_AEeqAAb4u4HLI7w" name="clickOnButton" specification="_VQTRAF_AEeqAAb4u4HLI7w">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    Label boo = new Label(shell, SWT.NULL);&#xD;
-    pressedButton.addSelectionListener(new SelectionAdapter() {&#xD;
-&#xD;
-        public void widgetSelected(SelectionEvent e) {&#xD;
-            Button source1 = (Button) e.widget;&#xD;
-            if (source1.getSelection() &amp;&amp; !moreImportantAttributes.contains(source1.getText())) {&#xD;
-                moreImportantAttributes.add(source1.getText());&#xD;
-                lessImportantAttributes.add(unPressedButton.getText());&#xD;
-            }&#xD;
-            if (pointer == choix1.size() || pointer == choix2.size()) {&#xD;
-                pressedButton.setEnabled(false);&#xD;
-                unPressedButton.setEnabled(false);&#xD;
-                boo.setText(&quot;\&quot;Merci pour vos choix, nous allons chercher pour vous les meilleurs apartements :) &quot;);&#xD;
-                boo.pack();&#xD;
-            } else {&#xD;
-                pressedButton.setText(choix1.get(pointer).toString());&#xD;
-                unPressedButton.setText(choix2.get(pointer).toString());&#xD;
-                pointer++;&#xD;
-            /**
-					 * this will change the text of the buttons by choosing the content of the
-					 * arrays attributImportant and attributPasImportant
-					 */&#xD;
-            }&#xD;
-            /**
-				 * in order not to be selected by default in the question in the next iteration
-				 */&#xD;
-            pressedButton.setSelection(false);&#xD;
-            pressedButton.pack();&#xD;
-            unPressedButton.pack();&#xD;
-        }&#xD;
-    });&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VQZ-sF_AEeqAAb4u4HLI7w" name="adaptAnswers" specification="_VQXicF_AEeqAAb4u4HLI7w">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    // we collect the answers on the minimums and we adapt the utility of the user&#xD;
-    avf = avf.adaptBounds(Criterion.NB_BEDROOMS, nbBedMin, true);&#xD;
-    avf = avf.adaptBounds(Criterion.FLOOR_AREA, surfaceMin, true);&#xD;
-    // we collect the answer of the first Question and adapt the utility of the user&#xD;
-    if (moreImportantAttributes.get(0).equals(&quot;WIFI&quot;) &amp;&amp; lessImportantAttributes.get(0).equals(&quot;TERRACE&quot;)) {&#xD;
-        avf = avf.adaptWeight(Criterion.WIFI, Criterion.TERRACE);&#xD;
-    } else {&#xD;
-        avf.adaptWeight(Criterion.TERRACE, Criterion.WIFI);&#xD;
-    }&#xD;
-    // user&#xD;
-    if (moreImportantAttributes.get(1).equals(&quot;TELE&quot;) &amp;&amp; lessImportantAttributes.get(1).equals(&quot;PRICE_PER_NIGHT low&quot;)) {&#xD;
-        avf = avf.adaptWeight(Criterion.TELE, Criterion.PRICE_PER_NIGHT);&#xD;
-    } else {&#xD;
-        avf = avf.adaptWeight(Criterion.PRICE_PER_NIGHT, Criterion.TELE);&#xD;
-    }&#xD;
-    return avf;&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VQO_kl_AEeqAAb4u4HLI7w" name="AskOpinionForUtility" visibility="public" method="_VQQNsV_AEeqAAb4u4HLI7w"/>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VQQ0wF_AEeqAAb4u4HLI7w" name="main" visibility="public" isStatic="true" method="_VQSC4F_AEeqAAb4u4HLI7w" raisedException="_VK_6QV_AEeqAAb4u4HLI7w _VLELsF_AEeqAAb4u4HLI7w">
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VQRb0F_AEeqAAb4u4HLI7w" name="args" type="_ZDXk4F--EeqAAb4u4HLI7w">
-                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VQRb0V_AEeqAAb4u4HLI7w"/>
-                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VQRb0l_AEeqAAb4u4HLI7w" value="*"/>
-                      </ownedParameter>
-                    </ownedOperation>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VQSC4V_AEeqAAb4u4HLI7w" name="askQuestions" visibility="public" method="_VQSp8F_AEeqAAb4u4HLI7w"/>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VQTRAF_AEeqAAb4u4HLI7w" name="clickOnButton" visibility="public" method="_VQVtQF_AEeqAAb4u4HLI7w">
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VQT4EF_AEeqAAb4u4HLI7w" name="pressedButton" type="_VMDqMF_AEeqAAb4u4HLI7w"/>
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VQT4EV_AEeqAAb4u4HLI7w" name="unPressedButton" type="_VMDqMF_AEeqAAb4u4HLI7w"/>
-                    </ownedOperation>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VQXicF_AEeqAAb4u4HLI7w" name="adaptAnswers" visibility="public" method="_VQZ-sF_AEeqAAb4u4HLI7w">
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VQYJgF_AEeqAAb4u4HLI7w" type="_VKgyEF_AEeqAAb4u4HLI7w" direction="return"/>
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VQZXoF_AEeqAAb4u4HLI7w" name="avf" type="_VKgyEF_AEeqAAb4u4HLI7w"/>
-                    </ownedOperation>
-                  </packagedElement>
                   <packagedElement xmi:type="uml:Class" xmi:id="_VQfeQF_AEeqAAb4u4HLI7w" name="CreateApartmentGUI" visibility="public">
                     <generalization xmi:type="uml:Generalization" xmi:id="_VQhTcF_AEeqAAb4u4HLI7w" general="_VLMukF_AEeqAAb4u4HLI7w"/>
                     <ownedAttribute xmi:type="uml:Property" xmi:id="_VQkWwF_AEeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
@@ -1800,7 +1570,7 @@
                     </ownedOperation>
                     <ownedOperation xmi:type="uml:Operation" xmi:id="_74V4UF_BEeqAAb4u4HLI7w" name="adaptBounds" visibility="public" method="_74aw0F_BEeqAAb4u4HLI7w">
                       <ownedParameter xmi:type="uml:Parameter" xmi:id="_74WfYF_BEeqAAb4u4HLI7w" type="_72rEYF_BEeqAAb4u4HLI7w" direction="return"/>
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74XtgF_BEeqAAb4u4HLI7w" name="criterion" type="_74TcEF_BEeqAAb4u4HLI7w"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74XtgF_BEeqAAb4u4HLI7w" name="criterion" type="__lgUEGVHEeq0U8CyxWHVBA"/>
                       <ownedParameter xmi:type="uml:Parameter" xmi:id="_74YUkF_BEeqAAb4u4HLI7w" name="newBound">
                         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
                       </ownedParameter>
@@ -1820,18 +1590,18 @@
                     </ownedOperation>
                     <ownedOperation xmi:type="uml:Operation" xmi:id="_74j6wF_BEeqAAb4u4HLI7w" name="adaptWeight" visibility="public" method="_74m-EF_BEeqAAb4u4HLI7w">
                       <ownedParameter xmi:type="uml:Parameter" xmi:id="_74kh0F_BEeqAAb4u4HLI7w" type="_72rEYF_BEeqAAb4u4HLI7w" direction="return"/>
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74lv8F_BEeqAAb4u4HLI7w" name="moreImportant" type="_74TcEF_BEeqAAb4u4HLI7w"/>
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74mXAF_BEeqAAb4u4HLI7w" name="lessImportant" type="_74TcEF_BEeqAAb4u4HLI7w"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74lv8F_BEeqAAb4u4HLI7w" name="moreImportant" type="__lgUEGVHEeq0U8CyxWHVBA"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74mXAF_BEeqAAb4u4HLI7w" name="lessImportant" type="__lgUEGVHEeq0U8CyxWHVBA"/>
                     </ownedOperation>
                     <ownedOperation xmi:type="uml:Operation" xmi:id="_74oMMF_BEeqAAb4u4HLI7w" name="getSubjectiveValueWeight" visibility="private" method="_74qBYF_BEeqAAb4u4HLI7w">
                       <ownedParameter xmi:type="uml:Parameter" xmi:id="_74ozQF_BEeqAAb4u4HLI7w" direction="return">
                         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
                       </ownedParameter>
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74paUF_BEeqAAb4u4HLI7w" name="awt" type="_74TcEF_BEeqAAb4u4HLI7w"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74paUF_BEeqAAb4u4HLI7w" name="awt" type="__lgUEGVHEeq0U8CyxWHVBA"/>
                     </ownedOperation>
                     <ownedOperation xmi:type="uml:Operation" xmi:id="_74rPgF_BEeqAAb4u4HLI7w" name="setSubjectiveValueWeight" visibility="public" method="_74trwF_BEeqAAb4u4HLI7w">
                       <ownedParameter xmi:type="uml:Parameter" xmi:id="_74r2kF_BEeqAAb4u4HLI7w" type="_72rEYF_BEeqAAb4u4HLI7w" direction="return"/>
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74sdoF_BEeqAAb4u4HLI7w" name="awt" type="_74TcEF_BEeqAAb4u4HLI7w"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74sdoF_BEeqAAb4u4HLI7w" name="awt" type="__lgUEGVHEeq0U8CyxWHVBA"/>
                       <ownedParameter xmi:type="uml:Parameter" xmi:id="_74tEsF_BEeqAAb4u4HLI7w" name="value">
                         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
                       </ownedParameter>
@@ -1847,7 +1617,18 @@
                     </ownedOperation>
                   </packagedElement>
                   <packagedElement xmi:type="uml:Class" xmi:id="_73FUEF_BEeqAAb4u4HLI7w" name="IllegalArgumentException"/>
-                  <packagedElement xmi:type="uml:Class" xmi:id="_74TcEF_BEeqAAb4u4HLI7w" name="Criterion"/>
+                  <packagedElement xmi:type="uml:Enumeration" xmi:id="__lgUEGVHEeq0U8CyxWHVBA" name="Criterion" visibility="public">
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__lzPAGVHEeq0U8CyxWHVBA" name="TELE"/>
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__l0dIGVHEeq0U8CyxWHVBA" name="TERRACE"/>
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__l1EMGVHEeq0U8CyxWHVBA" name="WIFI"/>
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__l1rQGVHEeq0U8CyxWHVBA" name="FLOOR_AREA"/>
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__l25YGVHEeq0U8CyxWHVBA" name="FLOOR_AREA_TERRACE"/>
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__l4ukGVHEeq0U8CyxWHVBA" name="NB_BATHROOMS"/>
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__l58sGVHEeq0U8CyxWHVBA" name="NB_BEDROOMS"/>
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__l8Y8GVHEeq0U8CyxWHVBA" name="NB_SLEEPING"/>
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__l-1MGVHEeq0U8CyxWHVBA" name="NB_MIN_NIGHT"/>
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__mDGoGVHEeq0U8CyxWHVBA" name="PRICE_PER_NIGHT"/>
+                  </packagedElement>
                   <packagedElement xmi:type="uml:Class" xmi:id="_74b-8F_BEeqAAb4u4HLI7w" name="LinearValueFunction" visibility="public">
                     <generalization xmi:type="uml:Generalization" xmi:id="_WnXfsF_CEeqAAb4u4HLI7w"/>
                     <ownedAttribute xmi:type="uml:Property" xmi:id="_WnZ78F_CEeqAAb4u4HLI7w" name="interval" visibility="private" type="_WnYGwF_CEeqAAb4u4HLI7w" isUnique="false"/>
@@ -2307,6 +2088,10 @@
                   <packagedElement xmi:type="uml:Realization" xmi:id="_RSrLUGVGEeq0U8CyxWHVBA" client="_SVVCwF_CEeqAAb4u4HLI7w" supplier="_siBZIF_CEeqAAb4u4HLI7w"/>
                   <packagedElement xmi:type="uml:Realization" xmi:id="_SPxswGVGEeq0U8CyxWHVBA" client="_72rEYF_BEeqAAb4u4HLI7w" supplier="_siBZIF_CEeqAAb4u4HLI7w"/>
                   <packagedElement xmi:type="uml:Realization" xmi:id="_TWpOMGVGEeq0U8CyxWHVBA" client="_8udoAF_BEeqAAb4u4HLI7w" supplier="_siBZIF_CEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Enumeration" xmi:id="_ByP4cGVIEeq0U8CyxWHVBA" name="DistanceMode" visibility="public">
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ByRGkGVIEeq0U8CyxWHVBA" name="ADDRESS"/>
+                    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ByRGkWVIEeq0U8CyxWHVBA" name="COORDINATE"/>
+                  </packagedElement>
                 </packagedElement>
               </packagedElement>
             </packagedElement>
@@ -3066,6 +2851,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_JAqEUF_AEeqAAb4u4HLI7w" name="distance">
       <packagedElement xmi:type="uml:Class" xmi:id="_ESBK8F_AEeqAAb4u4HLI7w" name="DistanceSubway" visibility="public">
+        <elementImport xmi:type="uml:ElementImport" xmi:id="_Fw_l8GVIEeq0U8CyxWHVBA" importedElement="_ByP4cGVIEeq0U8CyxWHVBA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ESByAF_AEeqAAb4u4HLI7w" name="startPoint" visibility="private" type="_ZDXk4F--EeqAAb4u4HLI7w" isUnique="false"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ESByAV_AEeqAAb4u4HLI7w" name="endPoint" visibility="private" type="_ZDXk4F--EeqAAb4u4HLI7w" isUnique="false"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ESE1UF_AEeqAAb4u4HLI7w" name="dist" visibility="private" type="_ESCZE1_AEeqAAb4u4HLI7w" isUnique="false"/>
@@ -3143,7 +2929,246 @@
         </ownedOperation>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_S32y8F_AEeqAAb4u4HLI7w" name="GUI"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_S32y8F_AEeqAAb4u4HLI7w" name="GUI">
+      <packagedElement xmi:type="uml:Class" xmi:id="_VP_vAF_AEeqAAb4u4HLI7w" name="AskOpinionForUtility" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VQCyUF_AEeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
+          <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_VQKHEF_AEeqAAb4u4HLI7w" name="defaultValue">
+            <language>JAVA</language>
+            <body>LoggerFactory.getLogger(CreateApartmentGUI.class)</body>
+          </defaultValue>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VQKHEV_AEeqAAb4u4HLI7w" name="pointer" visibility="private" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_VQKuIF_AEeqAAb4u4HLI7w" name="defaultValue">
+            <language>JAVA</language>
+            <body>0</body>
+          </defaultValue>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VQKuIV_AEeqAAb4u4HLI7w" name="moreImportantAttributes" visibility="private" type="_ZDXk4F--EeqAAb4u4HLI7w" isUnique="false">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VQKuIl_AEeqAAb4u4HLI7w"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VQLVMF_AEeqAAb4u4HLI7w" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VQLVMV_AEeqAAb4u4HLI7w" name="lessImportantAttributes" visibility="private" type="_ZDXk4F--EeqAAb4u4HLI7w" isUnique="false">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VQLVMl_AEeqAAb4u4HLI7w"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VQLVM1_AEeqAAb4u4HLI7w" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VQNxcF_AEeqAAb4u4HLI7w" name="choix1" visibility="private" type="_VQLVNF_AEeqAAb4u4HLI7w" isUnique="false">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VQNxcV_AEeqAAb4u4HLI7w"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VQNxcl_AEeqAAb4u4HLI7w" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VQNxc1_AEeqAAb4u4HLI7w" name="choix2" visibility="private" type="_VQLVNF_AEeqAAb4u4HLI7w" isUnique="false">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VQOYgF_AEeqAAb4u4HLI7w"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VQOYgV_AEeqAAb4u4HLI7w" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VQOYgl_AEeqAAb4u4HLI7w" name="surfaceMin" visibility="private" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VQOYg1_AEeqAAb4u4HLI7w" name="nbBedMin" visibility="private" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VQO_kF_AEeqAAb4u4HLI7w" name="display" visibility="private" type="_VLuTAV_AEeqAAb4u4HLI7w" isUnique="false"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VQO_kV_AEeqAAb4u4HLI7w" name="shell" visibility="private" type="_VL0ZoF_AEeqAAb4u4HLI7w" isUnique="false"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_rrjRoGVIEeq0U8CyxWHVBA" name="criterion" type="__lgUEGVHEeq0U8CyxWHVBA" aggregation="composite" association="_rrSy8GVIEeq0U8CyxWHVBA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rrj4sGVIEeq0U8CyxWHVBA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rrj4sWVIEeq0U8CyxWHVBA" value="1"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xRQ88mVIEeq0U8CyxWHVBA" name="criterion" type="__lgUEGVHEeq0U8CyxWHVBA" aggregation="composite" association="_xRQV4GVIEeq0U8CyxWHVBA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xRRkAGVIEeq0U8CyxWHVBA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xRRkAWVIEeq0U8CyxWHVBA" value="1"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VQQNsV_AEeqAAb4u4HLI7w" name="AskOpinionForUtility" specification="_VQO_kl_AEeqAAb4u4HLI7w">
+          <language>JAVA</language>
+          <body>&#xD;
+    this.moreImportantAttributes = new ArrayList&lt;>();&#xD;
+    this.lessImportantAttributes = new ArrayList&lt;>();&#xD;
+    this.choix1 = new ArrayList&lt;>();&#xD;
+    this.choix2 = new ArrayList&lt;>();&#xD;
+    this.surfaceMin = 0d;&#xD;
+    this.nbBedMin = 0d;&#xD;
+    this.pointer = 0;&#xD;
+    this.display = new Display();&#xD;
+    this.shell = new Shell(display);&#xD;
+</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VQSC4F_AEeqAAb4u4HLI7w" name="main" specification="_VQQ0wF_AEeqAAb4u4HLI7w">
+          <language>JAVA</language>
+          <body>&#xD;
+    AskOpinionForUtility asker = new AskOpinionForUtility();&#xD;
+    ApartmentValueFunction avf = new ApartmentValueFunction();&#xD;
+    asker.askQuestions();&#xD;
+    avf.setFloorAreaValueFunction(new LinearValueFunction(0d, 300d));&#xD;
+    avf.setNbBedroomsValueFunction(new LinearValueFunction(0d, 6d));&#xD;
+    avf.setNbSleepingValueFunction(new LinearValueFunction(0d, 6d));&#xD;
+    avf.setNbBathroomsValueFunction(new LinearValueFunction(0d, 6d));&#xD;
+    avf.setFloorAreaTerraceValueFunction(new LinearValueFunction(0d, 100d));&#xD;
+    avf.setPricePerNightValueFunction(new LinearValueFunction(0d, 80d));&#xD;
+    avf.setNbMinNightValueFunction(new LinearValueFunction(0d, 6d));&#xD;
+    avf = asker.adaptAnswers(avf);&#xD;
+    avf = avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA, 0.5);&#xD;
+    avf = avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE, 0);&#xD;
+    avf = avf.setSubjectiveValueWeight(Criterion.NB_BATHROOMS, 0);&#xD;
+    avf = avf.setSubjectiveValueWeight(Criterion.NB_BEDROOMS, 0.5);&#xD;
+    avf = avf.setSubjectiveValueWeight(Criterion.NB_MIN_NIGHT, 0);&#xD;
+    avf = avf.setSubjectiveValueWeight(Criterion.NB_SLEEPING, 0);&#xD;
+    avf = avf.setSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT, 0);&#xD;
+    avf = avf.setSubjectiveValueWeight(Criterion.TELE, 0);&#xD;
+    avf = avf.setSubjectiveValueWeight(Criterion.TERRACE, 0);&#xD;
+    avf = avf.setSubjectiveValueWeight(Criterion.WIFI, 0);&#xD;
+    LOGGER.info(&quot;Begining the Layout.&quot;);&#xD;
+    LayoutApartmentGUI lay = new LayoutApartmentGUI(avf);&#xD;
+    lay.displayAppart();&#xD;
+</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VQSp8F_AEeqAAb4u4HLI7w" name="askQuestions" specification="_VQSC4V_AEeqAAb4u4HLI7w">
+          <language>JAVA</language>
+          <body>&#xD;
+    // we add the other two criteria&#xD;
+    choix1.add(Criterion.TELE);&#xD;
+    choix2.add(Criterion.PRICE_PER_NIGHT);&#xD;
+    shell.setText(&quot;Votre avis nous intéresse ;)&quot;);&#xD;
+    shell.setLayout(new GridLayout());&#xD;
+    shell.setBounds(500, 500, 600, 500);&#xD;
+    // for the first questions about minimum&#xD;
+    final Group group = new Group(shell, SWT.NONE);&#xD;
+    group.setText(&quot;Combien il vous faut pour accepter un apartement?&quot;);&#xD;
+    group.setLayout(new GridLayout(2, false));&#xD;
+    Label label1 = new Label(group, SWT.NONE);&#xD;
+    label1.setText(&quot;Surface minimum?&quot;);&#xD;
+    Text text1 = new Text(group, SWT.LEAD | SWT.BORDER);&#xD;
+    text1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));&#xD;
+    Label label2 = new Label(group, SWT.NONE);&#xD;
+    label2.setText(&quot;Nombre de chambre minimum?&quot;);&#xD;
+    Text text2 = new Text(group, SWT.LEAD | SWT.BORDER);&#xD;
+    text2.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));&#xD;
+    // question about the importance of an element for the user&#xD;
+    Group buttonGroup = new Group(shell, SWT.NONE);&#xD;
+    GridLayout gridLayout = new GridLayout();&#xD;
+    gridLayout.numColumns = 1;&#xD;
+    buttonGroup.setLayout(gridLayout);&#xD;
+    buttonGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));&#xD;
+    buttonGroup.setText(&quot;Qu'est ce qui a le plus d'importance pour vous&quot;);&#xD;
+    // the listener when we click on finish&#xD;
+    Listener finishlistener = new Listener() {&#xD;
+&#xD;
+        public void handleEvent(Event event) {&#xD;
+            Preconditions.checkArgument(!text1.getText().equals(&quot;&quot;), &quot;il faut saisir un chiffre :(&quot;);&#xD;
+            Preconditions.checkArgument(!text2.getText().equals(&quot;&quot;), &quot;il faut saisir un texte :(&quot;);&#xD;
+            surfaceMin = Double.parseDouble(text1.getText());&#xD;
+            nbBedMin = Double.parseDouble(text2.getText());&#xD;
+            shell.close();&#xD;
+            LOGGER.info(&quot;Les attributs importants sont : &quot;);&#xD;
+            for (int j = 0; j &lt; moreImportantAttributes.size(); j++) {&#xD;
+                LOGGER.info(moreImportantAttributes.get(j));&#xD;
+            }&#xD;
+            LOGGER.info(&quot;Les attribut moins importants sont : &quot;);&#xD;
+            for (int j = 0; j &lt; lessImportantAttributes.size(); j++) {&#xD;
+                LOGGER.info(lessImportantAttributes.get(j));&#xD;
+            }&#xD;
+            LOGGER.info(&quot;la valeur minmum de la surface est &quot; + surfaceMin + &quot;\nLa valeur minimum du nbre de chambre est &quot; + nbBedMin);&#xD;
+        }&#xD;
+    };&#xD;
+    // This is a submit button, it will close the shell when the user click on&#xD;
+    // Terminer&#xD;
+    final Button finish = new Button(shell, SWT.PUSH);&#xD;
+    finish.setText(&quot;Terminé&quot;);&#xD;
+    finish.pack();&#xD;
+    finish.addListener(SWT.Selection, finishlistener);&#xD;
+    // buttonchoix1 and buttonchoix2 are two radio buttons, to let the user chose&#xD;
+    // between two options&#xD;
+    Button buttonchoix1 = new Button(buttonGroup, SWT.RADIO);&#xD;
+    buttonchoix1.setText(&quot;WIFI&quot;);&#xD;
+    Button buttonchoix2 = new Button(buttonGroup, SWT.RADIO);&#xD;
+    buttonchoix2.setText(&quot;TERRACE&quot;);&#xD;
+    // when cliquing on theses buttons&#xD;
+    clickOnButton(buttonchoix1, buttonchoix2);&#xD;
+    clickOnButton(buttonchoix2, buttonchoix1);&#xD;
+    // open the window&#xD;
+    shell.open();&#xD;
+    LOGGER.info(&quot;The Shell was opened with success.&quot;);&#xD;
+    while (!shell.isDisposed()) {&#xD;
+        if (!display.readAndDispatch()) {&#xD;
+            display.sleep();&#xD;
+        }&#xD;
+    }&#xD;
+    display.dispose();&#xD;
+    LOGGER.info(&quot;The screen was closed with success.&quot;);&#xD;
+</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VQVtQF_AEeqAAb4u4HLI7w" name="clickOnButton" specification="_VQTRAF_AEeqAAb4u4HLI7w">
+          <language>JAVA</language>
+          <body>&#xD;
+    Label boo = new Label(shell, SWT.NULL);&#xD;
+    pressedButton.addSelectionListener(new SelectionAdapter() {&#xD;
+&#xD;
+        public void widgetSelected(SelectionEvent e) {&#xD;
+            Button source1 = (Button) e.widget;&#xD;
+            if (source1.getSelection() &amp;&amp; !moreImportantAttributes.contains(source1.getText())) {&#xD;
+                moreImportantAttributes.add(source1.getText());&#xD;
+                lessImportantAttributes.add(unPressedButton.getText());&#xD;
+            }&#xD;
+            if (pointer == choix1.size() || pointer == choix2.size()) {&#xD;
+                pressedButton.setEnabled(false);&#xD;
+                unPressedButton.setEnabled(false);&#xD;
+                boo.setText(&quot;\&quot;Merci pour vos choix, nous allons chercher pour vous les meilleurs apartements :) &quot;);&#xD;
+                boo.pack();&#xD;
+            } else {&#xD;
+                pressedButton.setText(choix1.get(pointer).toString());&#xD;
+                unPressedButton.setText(choix2.get(pointer).toString());&#xD;
+                pointer++;&#xD;
+            /**
+					 * this will change the text of the buttons by choosing the content of the
+					 * arrays attributImportant and attributPasImportant
+					 */&#xD;
+            }&#xD;
+            /**
+				 * in order not to be selected by default in the question in the next iteration
+				 */&#xD;
+            pressedButton.setSelection(false);&#xD;
+            pressedButton.pack();&#xD;
+            unPressedButton.pack();&#xD;
+        }&#xD;
+    });&#xD;
+</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VQZ-sF_AEeqAAb4u4HLI7w" name="adaptAnswers" specification="_VQXicF_AEeqAAb4u4HLI7w">
+          <language>JAVA</language>
+          <body>&#xD;
+    // we collect the answers on the minimums and we adapt the utility of the user&#xD;
+    avf = avf.adaptBounds(Criterion.NB_BEDROOMS, nbBedMin, true);&#xD;
+    avf = avf.adaptBounds(Criterion.FLOOR_AREA, surfaceMin, true);&#xD;
+    // we collect the answer of the first Question and adapt the utility of the user&#xD;
+    if (moreImportantAttributes.get(0).equals(&quot;WIFI&quot;) &amp;&amp; lessImportantAttributes.get(0).equals(&quot;TERRACE&quot;)) {&#xD;
+        avf = avf.adaptWeight(Criterion.WIFI, Criterion.TERRACE);&#xD;
+    } else {&#xD;
+        avf.adaptWeight(Criterion.TERRACE, Criterion.WIFI);&#xD;
+    }&#xD;
+    // user&#xD;
+    if (moreImportantAttributes.get(1).equals(&quot;TELE&quot;) &amp;&amp; lessImportantAttributes.get(1).equals(&quot;PRICE_PER_NIGHT low&quot;)) {&#xD;
+        avf = avf.adaptWeight(Criterion.TELE, Criterion.PRICE_PER_NIGHT);&#xD;
+    } else {&#xD;
+        avf = avf.adaptWeight(Criterion.PRICE_PER_NIGHT, Criterion.TELE);&#xD;
+    }&#xD;
+    return avf;&#xD;
+</body>
+        </ownedBehavior>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_VQO_kl_AEeqAAb4u4HLI7w" name="AskOpinionForUtility" visibility="public" method="_VQQNsV_AEeqAAb4u4HLI7w"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_VQQ0wF_AEeqAAb4u4HLI7w" name="main" visibility="public" isStatic="true" method="_VQSC4F_AEeqAAb4u4HLI7w" raisedException="_VK_6QV_AEeqAAb4u4HLI7w _VLELsF_AEeqAAb4u4HLI7w">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VQRb0F_AEeqAAb4u4HLI7w" name="args" type="_ZDXk4F--EeqAAb4u4HLI7w">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VQRb0V_AEeqAAb4u4HLI7w"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VQRb0l_AEeqAAb4u4HLI7w" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_VQSC4V_AEeqAAb4u4HLI7w" name="askQuestions" visibility="public" method="_VQSp8F_AEeqAAb4u4HLI7w"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_VQTRAF_AEeqAAb4u4HLI7w" name="clickOnButton" visibility="public" method="_VQVtQF_AEeqAAb4u4HLI7w">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VQT4EF_AEeqAAb4u4HLI7w" name="pressedButton" type="_VMDqMF_AEeqAAb4u4HLI7w"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VQT4EV_AEeqAAb4u4HLI7w" name="unPressedButton" type="_VMDqMF_AEeqAAb4u4HLI7w"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_VQXicF_AEeqAAb4u4HLI7w" name="adaptAnswers" visibility="public" method="_VQZ-sF_AEeqAAb4u4HLI7w">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VQYJgF_AEeqAAb4u4HLI7w" type="_VKgyEF_AEeqAAb4u4HLI7w" direction="return"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VQZXoF_AEeqAAb4u4HLI7w" name="avf" type="_VKgyEF_AEeqAAb4u4HLI7w"/>
+        </ownedOperation>
+      </packagedElement>
+    </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_VLr2wF_AEeqAAb4u4HLI7w" name="swt">
       <packagedElement xmi:type="uml:Package" xmi:id="_VLtE4F_AEeqAAb4u4HLI7w" name="org">
         <packagedElement xmi:type="uml:Package" xmi:id="_VLtE4V_AEeqAAb4u4HLI7w" name="eclipse">
@@ -3365,6 +3390,18 @@
       <ownedEnd xmi:type="uml:Property" xmi:id="_8nxvMmS5EeqTxqp8Bmjtjg" name="create an apartment" type="_mgI0kGS3EeqTxqp8Bmjtjg" association="_8nxIIGS5EeqTxqp8Bmjtjg"/>
       <ownedEnd xmi:type="uml:Property" xmi:id="_8nxvM2S5EeqTxqp8Bmjtjg" name="owner" type="_KA8aoGS4EeqTxqp8Bmjtjg" association="_8nxIIGS5EeqTxqp8Bmjtjg"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_rrSy8GVIEeq0U8CyxWHVBA" memberEnd="_rrjRoGVIEeq0U8CyxWHVBA _rrkfwGVIEeq0U8CyxWHVBA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rrg1YGVIEeq0U8CyxWHVBA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rrhccGVIEeq0U8CyxWHVBA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_rrkfwGVIEeq0U8CyxWHVBA" name="askopinionforutility" type="_VP_vAF_AEeqAAb4u4HLI7w" association="_rrSy8GVIEeq0U8CyxWHVBA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_xRQV4GVIEeq0U8CyxWHVBA" memberEnd="_xRQ88mVIEeq0U8CyxWHVBA _xRRkAmVIEeq0U8CyxWHVBA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xRQ88GVIEeq0U8CyxWHVBA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xRQ88WVIEeq0U8CyxWHVBA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_xRRkAmVIEeq0U8CyxWHVBA" name="askopinionforutility" type="_VP_vAF_AEeqAAb4u4HLI7w" association="_xRQV4GVIEeq0U8CyxWHVBA"/>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_ZAfQAF--EeqAAb4u4HLI7w">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZAkIgF--EeqAAb4u4HLI7w" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
@@ -3433,7 +3470,7 @@
   <PapyrusJava:External xmi:id="_WcbQcF_BEeqAAb4u4HLI7w" name="java.io.FileNotFoundException" base_Classifier="_WcZbQF_BEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_72_0gF_BEeqAAb4u4HLI7w" base_BehavioralFeature="_729_UF_BEeqAAb4u4HLI7w"/>
   <PapyrusJava:External xmi:id="_73HJQF_BEeqAAb4u4HLI7w" name="IllegalArgumentException" base_Classifier="_73FUEF_BEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_74UqMF_BEeqAAb4u4HLI7w" name="Criterion" base_Classifier="_74TcEF_BEeqAAb4u4HLI7w"/>
+  <PapyrusJava:External xmi:id="_74UqMF_BEeqAAb4u4HLI7w" name="Criterion" base_Classifier="__lgUEGVHEeq0U8CyxWHVBA"/>
   <PapyrusJava:External xmi:id="_74dNEF_BEeqAAb4u4HLI7w" name="LinearValueFunction" base_Classifier="_74b-8F_BEeqAAb4u4HLI7w"/>
   <PapyrusJava:External xmi:id="_8ugEQF_BEeqAAb4u4HLI7w" name="java.util.Map" base_Classifier="_8ue2IF_BEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_8uiggF_BEeqAAb4u4HLI7w" base_BehavioralFeature="_8uhSYl_BEeqAAb4u4HLI7w"/>
