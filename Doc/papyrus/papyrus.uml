@@ -758,15 +758,16 @@
                     </ownedOperation>
                     <ownedOperation xmi:type="uml:Operation" xmi:id="_VRDe8F_AEeqAAb4u4HLI7w" name="screenDisplay" visibility="protected" method="_VRFUIF_AEeqAAb4u4HLI7w" raisedException="_VLELsF_AEeqAAb4u4HLI7w"/>
                   </packagedElement>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_XW-m8GXREeqLXLaj_4v3Nw" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_G6iP4F_BEeqAAb4u4HLI7w"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_Yf5E4GXTEeqLXLaj_4v3Nw" client="_VLK5YF_AEeqAAb4u4HLI7w" supplier="_VTRsgF_AEeqAAb4u4HLI7w"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_ZOl98GXTEeqLXLaj_4v3Nw" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_VTRsgF_AEeqAAb4u4HLI7w"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_xbDh8GXTEeqLXLaj_4v3Nw" client="_VLK5YF_AEeqAAb4u4HLI7w" supplier="_4qWHwF_AEeqAAb4u4HLI7w"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_yWFm0GXTEeqLXLaj_4v3Nw" client="_VLK5YF_AEeqAAb4u4HLI7w" supplier="_ck78QF_AEeqAAb4u4HLI7w"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_zTzMQGXTEeqLXLaj_4v3Nw" client="_VQfeQF_AEeqAAb4u4HLI7w" supplier="_ck78QF_AEeqAAb4u4HLI7w"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_JPF-4GXUEeqLXLaj_4v3Nw" client="_VPupQF_AEeqAAb4u4HLI7w" supplier="_VLMukF_AEeqAAb4u4HLI7w"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_91ORsGXVEeqLXLaj_4v3Nw" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_72rEYF_BEeqAAb4u4HLI7w"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_NQjFUGXYEeqLXLaj_4v3Nw" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_74b-8F_BEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_frpf8GXeEeqLXLaj_4v3Nw" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_74b-8F_BEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_si-XsGXeEeqLXLaj_4v3Nw" client="_VLK5YF_AEeqAAb4u4HLI7w" supplier="_VTRsgF_AEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_vUI3wGXeEeqLXLaj_4v3Nw" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_VTRsgF_AEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_wEJYYGXeEeqLXLaj_4v3Nw" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_VPupQF_AEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_y6FqwGXeEeqLXLaj_4v3Nw" client="_VQfeQF_AEeqAAb4u4HLI7w" supplier="_ck78QF_AEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_z2_X4GXeEeqLXLaj_4v3Nw" client="_VLK5YF_AEeqAAb4u4HLI7w" supplier="_ck78QF_AEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_3SZHwGXeEeqLXLaj_4v3Nw" client="_VLK5YF_AEeqAAb4u4HLI7w" supplier="_4qWHwF_AEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_6ZTOUGXeEeqLXLaj_4v3Nw" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_G6iP4F_BEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_msGOcGXfEeqLXLaj_4v3Nw" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_72rEYF_BEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_pVlZMGXfEeqLXLaj_4v3Nw" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_VP_vAF_AEeqAAb4u4HLI7w"/>
                 </packagedElement>
                 <packagedElement xmi:type="uml:Package" xmi:id="_ck6uIF_AEeqAAb4u4HLI7w" name="iconDisplay">
                   <packagedElement xmi:type="uml:Class" xmi:id="_ck78QF_AEeqAAb4u4HLI7w" name="DisplayIcon" visibility="public">
@@ -2108,11 +2109,11 @@
                     <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ByRGkGVIEeq0U8CyxWHVBA" name="ADDRESS"/>
                     <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ByRGkWVIEeq0U8CyxWHVBA" name="COORDINATE"/>
                   </packagedElement>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_kGC9wGXVEeqLXLaj_4v3Nw" client="_72rEYF_BEeqAAb4u4HLI7w" supplier="_XDw9QF_BEeqAAb4u4HLI7w"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_DiMmIGXXEeqLXLaj_4v3Nw" client="_72rEYF_BEeqAAb4u4HLI7w" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_ao8fQGXXEeqLXLaj_4v3Nw" client="_72rEYF_BEeqAAb4u4HLI7w" supplier="_d2M6YF_BEeqAAb4u4HLI7w"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_BbXAAGXYEeqLXLaj_4v3Nw" client="_pKHpMF_CEeqAAb4u4HLI7w" supplier="_ByP4cGVIEeq0U8CyxWHVBA"/>
-                  <packagedElement xmi:type="uml:Usage" xmi:id="_qVATAGXYEeqLXLaj_4v3Nw" client="_pKHpMF_CEeqAAb4u4HLI7w" supplier="_d19NUF_CEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_FajVQGXfEeqLXLaj_4v3Nw" client="_72rEYF_BEeqAAb4u4HLI7w" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_Jk4nsGXfEeqLXLaj_4v3Nw" client="_72rEYF_BEeqAAb4u4HLI7w" supplier="_XDw9QF_BEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_LRaa8GXfEeqLXLaj_4v3Nw" client="_72rEYF_BEeqAAb4u4HLI7w" supplier="_d2M6YF_BEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_ORtjMGXfEeqLXLaj_4v3Nw" client="_pKHpMF_CEeqAAb4u4HLI7w" supplier="_d19NUF_CEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_SjbQAGXfEeqLXLaj_4v3Nw" client="_pKHpMF_CEeqAAb4u4HLI7w" supplier="_ByP4cGVIEeq0U8CyxWHVBA"/>
                 </packagedElement>
               </packagedElement>
             </packagedElement>
@@ -2873,11 +2874,10 @@
           </ownedOperation>
         </nestedClassifier>
       </packagedElement>
-      <packagedElement xmi:type="uml:Dependency" xmi:id="_cfdV8GXMEeqLXLaj_4v3Nw" client="_1Q2uUF--EeqAAb4u4HLI7w" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="__cUcQGXeEeqLXLaj_4v3Nw" client="_1Q2uUF--EeqAAb4u4HLI7w" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_JAqEUF_AEeqAAb4u4HLI7w" name="distance">
       <packagedElement xmi:type="uml:Class" xmi:id="_ESBK8F_AEeqAAb4u4HLI7w" name="DistanceSubway" visibility="public">
-        <elementImport xmi:type="uml:ElementImport" xmi:id="_Fw_l8GVIEeq0U8CyxWHVBA" importedElement="_ByP4cGVIEeq0U8CyxWHVBA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ESByAF_AEeqAAb4u4HLI7w" name="startPoint" visibility="private" type="_ZDXk4F--EeqAAb4u4HLI7w" isUnique="false"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ESByAV_AEeqAAb4u4HLI7w" name="endPoint" visibility="private" type="_ZDXk4F--EeqAAb4u4HLI7w" isUnique="false"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ESE1UF_AEeqAAb4u4HLI7w" name="dist" visibility="private" type="_ESCZE1_AEeqAAb4u4HLI7w" isUnique="false"/>
@@ -2954,6 +2954,7 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_ESu8oF_AEeqAAb4u4HLI7w" name="distancemode" type="_ESqEIF_AEeqAAb4u4HLI7w"/>
         </ownedOperation>
       </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_W5LIQGXfEeqLXLaj_4v3Nw" client="_ESBK8F_AEeqAAb4u4HLI7w" supplier="_ByP4cGVIEeq0U8CyxWHVBA"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_S32y8F_AEeqAAb4u4HLI7w" name="GUI">
       <packagedElement xmi:type="uml:Class" xmi:id="_VP_vAF_AEeqAAb4u4HLI7w" name="AskOpinionForUtility" visibility="public">
@@ -3186,10 +3187,9 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_VQZXoF_AEeqAAb4u4HLI7w" name="avf" type="_VKgyEF_AEeqAAb4u4HLI7w"/>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_ZwO9UGXREeqLXLaj_4v3Nw" client="_VP_vAF_AEeqAAb4u4HLI7w" supplier="_72rEYF_BEeqAAb4u4HLI7w"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_cT5M4GXREeqLXLaj_4v3Nw" client="_VP_vAF_AEeqAAb4u4HLI7w" supplier="_74b-8F_BEeqAAb4u4HLI7w"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_C6nbAGXSEeqLXLaj_4v3Nw" client="_VP_vAF_AEeqAAb4u4HLI7w" supplier="_VKBp4F_AEeqAAb4u4HLI7w"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_sx9TEGXXEeqLXLaj_4v3Nw" client="_VP_vAF_AEeqAAb4u4HLI7w" supplier="__lgUEGVHEeq0U8CyxWHVBA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_jfou8GXeEeqLXLaj_4v3Nw" client="_VP_vAF_AEeqAAb4u4HLI7w" supplier="_74b-8F_BEeqAAb4u4HLI7w"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_iHYGEGXfEeqLXLaj_4v3Nw" client="_VP_vAF_AEeqAAb4u4HLI7w" supplier="__lgUEGVHEeq0U8CyxWHVBA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_kouBcGXfEeqLXLaj_4v3Nw" client="_VP_vAF_AEeqAAb4u4HLI7w" supplier="_72rEYF_BEeqAAb4u4HLI7w"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_VLr2wF_AEeqAAb4u4HLI7w" name="swt">
       <packagedElement xmi:type="uml:Package" xmi:id="_VLtE4F_AEeqAAb4u4HLI7w" name="org">
