@@ -2968,14 +2968,6 @@
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_VQO_kF_AEeqAAb4u4HLI7w" name="display" visibility="private" type="_VLuTAV_AEeqAAb4u4HLI7w" isUnique="false"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_VQO_kV_AEeqAAb4u4HLI7w" name="shell" visibility="private" type="_VL0ZoF_AEeqAAb4u4HLI7w" isUnique="false"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_rrjRoGVIEeq0U8CyxWHVBA" name="criterion" type="__lgUEGVHEeq0U8CyxWHVBA" aggregation="composite" association="_rrSy8GVIEeq0U8CyxWHVBA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rrj4sGVIEeq0U8CyxWHVBA"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rrj4sWVIEeq0U8CyxWHVBA" value="1"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_xRQ88mVIEeq0U8CyxWHVBA" name="criterion" type="__lgUEGVHEeq0U8CyxWHVBA" aggregation="composite" association="_xRQV4GVIEeq0U8CyxWHVBA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xRRkAGVIEeq0U8CyxWHVBA"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xRRkAWVIEeq0U8CyxWHVBA" value="1"/>
-        </ownedAttribute>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VQQNsV_AEeqAAb4u4HLI7w" name="AskOpinionForUtility" specification="_VQO_kl_AEeqAAb4u4HLI7w">
           <language>JAVA</language>
           <body>&#xD;
@@ -3390,17 +3382,31 @@
       <ownedEnd xmi:type="uml:Property" xmi:id="_8nxvMmS5EeqTxqp8Bmjtjg" name="create an apartment" type="_mgI0kGS3EeqTxqp8Bmjtjg" association="_8nxIIGS5EeqTxqp8Bmjtjg"/>
       <ownedEnd xmi:type="uml:Property" xmi:id="_8nxvM2S5EeqTxqp8Bmjtjg" name="owner" type="_KA8aoGS4EeqTxqp8Bmjtjg" association="_8nxIIGS5EeqTxqp8Bmjtjg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_rrSy8GVIEeq0U8CyxWHVBA" memberEnd="_rrjRoGVIEeq0U8CyxWHVBA _rrkfwGVIEeq0U8CyxWHVBA">
+    <packagedElement xmi:type="uml:Association" xmi:id="_rrSy8GVIEeq0U8CyxWHVBA" name="choix2" visibility="private" memberEnd="_rrjRoGVIEeq0U8CyxWHVBA _rrkfwGVIEeq0U8CyxWHVBA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rrg1YGVIEeq0U8CyxWHVBA" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rrhccGVIEeq0U8CyxWHVBA" key="nature" value="UML_Nature"/>
       </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_rrkfwGVIEeq0U8CyxWHVBA" name="askopinionforutility" type="_VP_vAF_AEeqAAb4u4HLI7w" association="_rrSy8GVIEeq0U8CyxWHVBA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_rrkfwGVIEeq0U8CyxWHVBA" name="choix2" type="_VP_vAF_AEeqAAb4u4HLI7w" association="_rrSy8GVIEeq0U8CyxWHVBA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7qadcGXJEeqLXLaj_4v3Nw"/>
+        <upperValue xmi:type="uml:LiteralString" xmi:id="_8noToGXJEeqLXLaj_4v3Nw" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_rrjRoGVIEeq0U8CyxWHVBA" type="__lgUEGVHEeq0U8CyxWHVBA" aggregation="composite" association="_rrSy8GVIEeq0U8CyxWHVBA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rrj4sGVIEeq0U8CyxWHVBA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rrj4sWVIEeq0U8CyxWHVBA" value="2"/>
+      </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_xRQV4GVIEeq0U8CyxWHVBA" memberEnd="_xRQ88mVIEeq0U8CyxWHVBA _xRRkAmVIEeq0U8CyxWHVBA">
+    <packagedElement xmi:type="uml:Association" xmi:id="_xRQV4GVIEeq0U8CyxWHVBA" name="choix1" memberEnd="_xRQ88mVIEeq0U8CyxWHVBA _xRRkAmVIEeq0U8CyxWHVBA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xRQ88GVIEeq0U8CyxWHVBA" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xRQ88WVIEeq0U8CyxWHVBA" key="nature" value="UML_Nature"/>
       </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_xRRkAmVIEeq0U8CyxWHVBA" name="askopinionforutility" type="_VP_vAF_AEeqAAb4u4HLI7w" association="_xRQV4GVIEeq0U8CyxWHVBA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_xRRkAmVIEeq0U8CyxWHVBA" name="choix1" type="_VP_vAF_AEeqAAb4u4HLI7w" association="_xRQV4GVIEeq0U8CyxWHVBA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Uu0ykGXJEeqLXLaj_4v3Nw"/>
+        <upperValue xmi:type="uml:LiteralString" xmi:id="_bLR4oGXJEeqLXLaj_4v3Nw" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_xRQ88mVIEeq0U8CyxWHVBA" type="__lgUEGVHEeq0U8CyxWHVBA" aggregation="composite" association="_xRQV4GVIEeq0U8CyxWHVBA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xRRkAGVIEeq0U8CyxWHVBA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xRRkAWVIEeq0U8CyxWHVBA" value="2"/>
+      </ownedEnd>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_ZAfQAF--EeqAAb4u4HLI7w">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZAkIgF--EeqAAb4u4HLI7w" source="http://www.eclipse.org/uml2/2.0.0/UML">
