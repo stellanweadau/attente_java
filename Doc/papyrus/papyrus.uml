@@ -768,6 +768,9 @@
                   <packagedElement xmi:type="uml:Dependency" xmi:id="_6ZTOUGXeEeqLXLaj_4v3Nw" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_G6iP4F_BEeqAAb4u4HLI7w"/>
                   <packagedElement xmi:type="uml:Dependency" xmi:id="_msGOcGXfEeqLXLaj_4v3Nw" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_72rEYF_BEeqAAb4u4HLI7w"/>
                   <packagedElement xmi:type="uml:Dependency" xmi:id="_pVlZMGXfEeqLXLaj_4v3Nw" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_VP_vAF_AEeqAAb4u4HLI7w"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_vAkuwGbfEeqYDoGRuvwelQ" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_cISsEGbdEeqYDoGRuvwelQ"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_xM_jAGbfEeqYDoGRuvwelQ" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_cISsEGbdEeqYDoGRuvwelQ"/>
+                  <packagedElement xmi:type="uml:Dependency" xmi:id="_H4F6kGbjEeqYDoGRuvwelQ" client="_VLK5YF_AEeqAAb4u4HLI7w" supplier="_P1sxsGbgEeqYDoGRuvwelQ"/>
                 </packagedElement>
                 <packagedElement xmi:type="uml:Package" xmi:id="_ck6uIF_AEeqAAb4u4HLI7w" name="iconDisplay">
                   <packagedElement xmi:type="uml:Class" xmi:id="_ck78QF_AEeqAAb4u4HLI7w" name="DisplayIcon" visibility="public">
@@ -2192,90 +2195,6 @@
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_1QqroF-_EeqAAb4u4HLI7w" name="apartment">
-      <packagedElement xmi:type="uml:Class" xmi:id="_1Q2uUF--EeqAAb4u4HLI7w" name="ApartmentGenerator" visibility="public">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_1RBGYF--EeqAAb4u4HLI7w" name="random" visibility="private" type="_1Q9cAF--EeqAAb4u4HLI7w" isUnique="false"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_1RC7kF--EeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
-          <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_1REwwF--EeqAAb4u4HLI7w" name="defaultValue">
-            <language>JAVA</language>
-            <body>LoggerFactory.getLogger(ApartmentGenerator.class)</body>
-          </defaultValue>
-        </ownedAttribute>
-        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_1RKQUF--EeqAAb4u4HLI7w" name="ApartmentGenerator" specification="_1RGl8F--EeqAAb4u4HLI7w">
-          <language>JAVA</language>
-          <body>&#xD;
-    random = new Random();&#xD;
-</body>
-        </ownedBehavior>
-        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_1RNToF--EeqAAb4u4HLI7w" name="generateRandomApartment" specification="_1RLecF--EeqAAb4u4HLI7w">
-          <language>JAVA</language>
-          <body>&#xD;
-    LOGGER.info(&quot;Beginning of random generation of an Apartment&quot;);&#xD;
-    final ImmutableList&lt;String> titles = ImmutableList.of(&quot;Location Apartement 1223&quot;, &quot;Location Apartement 2434&quot;, &quot;Location Apartement 4353&quot;, &quot;Location Apartement 3423&quot;, &quot;Location Apartement 4234&quot;, &quot;Location Apartement 3424&quot;, &quot;Location Apartement 3477&quot;, &quot;Location Apartement 376&quot;, &quot;Location Apartement 678&quot;, &quot;Location Apartement 757&quot;);&#xD;
-    final ImmutableList&lt;String> address = ImmutableList.of(&quot;2 avenue Pasteur 94160 Saint-mandé&quot;, &quot;8 avenue de Paris 94160 Saint-mandé&quot;, &quot;5 avenue des Champs-Elysées 75016&quot;, &quot;13 rue des Arts 75001&quot;, &quot;10 rue de Dauphine 75016&quot;, &quot;33 rue de Tolbiac 75013&quot;, &quot;33 rue de Tolbiac 75013&quot;, &quot; &quot;, &quot; &quot;, &quot; &quot;);&#xD;
-    int n = (int) (Math.random() * titles.size() - 1);&#xD;
-    int m = (int) (Math.random() * address.size() - 1);&#xD;
-    double floorArea = simulateRandomDraw(65d, 21d);&#xD;
-    boolean terrace = (Math.random() * 2 >= 1) ? true : false;&#xD;
-    double floorAreaTerrace = (terrace) ? simulateRandomDraw(15d, 2d) : 0;&#xD;
-    int nbMinNight = (int) (Math.random() * 8);&#xD;
-    int averageRoomArea = (int) (10 + (Math.random() * 20));&#xD;
-    int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 0);&#xD;
-    double pricePerMeterSquared = simulateRandomDraw(8d, 3d);&#xD;
-    double pricePerNight = floorArea * pricePerMeterSquared;&#xD;
-    int nbSleeping = ((int) (1 + Math.random() * 4)) * nbBedrooms;&#xD;
-    int nbBathrooms = (int) (Math.random() * nbBedrooms);&#xD;
-    Apartment.Builder builder = new Apartment.Builder();&#xD;
-    builder.setFloorArea(floorArea);&#xD;
-    builder.setAddress(address.get(m));&#xD;
-    builder.setTitle(titles.get(n));&#xD;
-    builder.setNbBedrooms(nbBedrooms);&#xD;
-    builder.setNbSleeping(nbSleeping);&#xD;
-    builder.setNbBathrooms(nbBathrooms);&#xD;
-    builder.setTerrace(terrace);&#xD;
-    builder.setPricePerNight(pricePerNight);&#xD;
-    builder.setNbMinNight(nbMinNight);&#xD;
-    builder.setFloorAreaTerrace(floorAreaTerrace);&#xD;
-    Apartment a = builder.build();&#xD;
-    LOGGER.info(&quot;Generation done successfully&quot;);&#xD;
-    return a;&#xD;
-</body>
-        </ownedBehavior>
-        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_1RSMIV--EeqAAb4u4HLI7w" name="simulateRandomDraw" specification="_1RPI0F--EeqAAb4u4HLI7w">
-          <language>JAVA</language>
-          <body>&#xD;
-    double draw = random.nextGaussian();&#xD;
-    return deviation * draw + mean;&#xD;
-</body>
-        </ownedBehavior>
-        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_1RXEoF--EeqAAb4u4HLI7w" name="main" specification="_1RUBUF--EeqAAb4u4HLI7w">
-          <language>JAVA</language>
-          <body>&#xD;
-    ApartmentGenerator generator = new ApartmentGenerator();&#xD;
-    generator.generateRandomApartment();&#xD;
-</body>
-        </ownedBehavior>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_1RGl8F--EeqAAb4u4HLI7w" name="ApartmentGenerator" visibility="public" method="_1RKQUF--EeqAAb4u4HLI7w"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_1RLecF--EeqAAb4u4HLI7w" name="generateRandomApartment" visibility="public" method="_1RNToF--EeqAAb4u4HLI7w">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_1RMskF--EeqAAb4u4HLI7w" type="_1N7WIF--EeqAAb4u4HLI7w" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_1RPI0F--EeqAAb4u4HLI7w" name="simulateRandomDraw" visibility="private" method="_1RSMIV--EeqAAb4u4HLI7w">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_1RQW8F--EeqAAb4u4HLI7w" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_1RQ-AF--EeqAAb4u4HLI7w" name="mean">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_1RSMIF--EeqAAb4u4HLI7w" name="deviation">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_1RUBUF--EeqAAb4u4HLI7w" name="main" visibility="public" isStatic="true" method="_1RXEoF--EeqAAb4u4HLI7w">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_1RVPcF--EeqAAb4u4HLI7w" name="args" type="_ZDXk4F--EeqAAb4u4HLI7w">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1RV2gF--EeqAAb4u4HLI7w"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1RWdkF--EeqAAb4u4HLI7w" value="*"/>
-          </ownedParameter>
-        </ownedOperation>
-      </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_1N7WIF--EeqAAb4u4HLI7w" name="Apartment" visibility="public">
         <generalization xmi:type="uml:Generalization" xmi:id="_1N8kQF--EeqAAb4u4HLI7w" general="_ZCdl8F--EeqAAb4u4HLI7w"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_1N9LUF--EeqAAb4u4HLI7w" name="LOGGER" visibility="private" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
@@ -2726,6 +2645,7 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
           </ownedParameter>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_SdV0QGbeEeqYDoGRuvwelQ" name="apartment" visibility="package"/>
         <nestedClassifier xmi:type="uml:Class" xmi:id="_1P324F--EeqAAb4u4HLI7w" name="Builder" visibility="public">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_1P9WcF--EeqAAb4u4HLI7w" name="apartmentToBuild" visibility="private" type="_1N7WIF--EeqAAb4u4HLI7w" isUnique="false"/>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_1QBA0F--EeqAAb4u4HLI7w" name="Builder" specification="_1P99gF--EeqAAb4u4HLI7w">
@@ -2874,7 +2794,18 @@
           </ownedOperation>
         </nestedClassifier>
       </packagedElement>
-      <packagedElement xmi:type="uml:Dependency" xmi:id="__cUcQGXeEeqLXLaj_4v3Nw" client="_1Q2uUF--EeqAAb4u4HLI7w" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_cISsEGbdEeqYDoGRuvwelQ" name="ApartmentFactory" isAbstract="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_1RC7kF--EeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
+          <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_1REwwF--EeqAAb4u4HLI7w" name="defaultValue">
+            <language>JAVA</language>
+            <body>LoggerFactory.getLogger(ApartmentGenerator.class)</body>
+          </defaultValue>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_G0HHUGbeEeqYDoGRuvwelQ" name="generateApartment" isStatic="true"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_zQorMGbeEeqYDoGRuvwelQ" name="generateRandomApartment" isStatic="true"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_KlG3QGbfEeqYDoGRuvwelQ" name="generateApartmentFromJson" isStatic="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_ivplIGbeEeqYDoGRuvwelQ" client="_cISsEGbdEeqYDoGRuvwelQ" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_JAqEUF_AEeqAAb4u4HLI7w" name="distance">
       <packagedElement xmi:type="uml:Class" xmi:id="_ESBK8F_AEeqAAb4u4HLI7w" name="DistanceSubway" visibility="public">
@@ -3213,7 +3144,16 @@
     <packagedElement xmi:type="uml:Package" xmi:id="_m5QrwF_AEeqAAb4u4HLI7w" name="Localize"/>
     <packagedElement xmi:type="uml:Package" xmi:id="_1bkeoF_AEeqAAb4u4HLI7w" name="Readapartments"/>
     <packagedElement xmi:type="uml:Package" xmi:id="_A3YaoF_BEeqAAb4u4HLI7w" name="Toxmlproperties"/>
-    <packagedElement xmi:type="uml:Package" xmi:id="_QgD_sF_BEeqAAb4u4HLI7w" name="Utils"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_QgD_sF_BEeqAAb4u4HLI7w" name="Utils">
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_DOF4UGbdEeqYDoGRuvwelQ" name="FilePath"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_P1sxsGbgEeqYDoGRuvwelQ" name="JsonConvert" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_rL8KEGbgEeqYDoGRuvwelQ" name="apartmentToJson" isStatic="true"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_RQ_OgGbhEeqYDoGRuvwelQ" name="apartmentsToJson" isStatic="true"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_qt8KAGbhEeqYDoGRuvwelQ" name="jsonToApartments" isStatic="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_LqoqAGbhEeqYDoGRuvwelQ" client="_P1sxsGbgEeqYDoGRuvwelQ" supplier="_DOF4UGbdEeqYDoGRuvwelQ"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_9nbYgGbhEeqYDoGRuvwelQ" client="_P1sxsGbgEeqYDoGRuvwelQ" supplier="_cISsEGbdEeqYDoGRuvwelQ"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_d2M6YF_BEeqAAb4u4HLI7w" name="Valuefunction">
       <packagedElement xmi:type="uml:Class" xmi:id="_d19NUF_CEeqAAb4u4HLI7w" name="PieceWiseLinearValueFunction" visibility="public">
         <generalization xmi:type="uml:Generalization" xmi:id="_d1-bcF_CEeqAAb4u4HLI7w"/>
@@ -3490,7 +3430,6 @@
   <standard:Create xmi:id="_1P_LoF--EeqAAb4u4HLI7w" base_BehavioralFeature="_1P99gF--EeqAAb4u4HLI7w"/>
   <PapyrusJava:External xmi:id="_1QHugF--EeqAAb4u4HLI7w" name="Builder" base_Classifier="_1P324F--EeqAAb4u4HLI7w"/>
   <PapyrusJava:External xmi:id="_1Q_RMF--EeqAAb4u4HLI7w" name="java.util.Random" base_Classifier="_1Q9cAF--EeqAAb4u4HLI7w"/>
-  <standard:Create xmi:id="_1RIbIF--EeqAAb4u4HLI7w" base_BehavioralFeature="_1RGl8F--EeqAAb4u4HLI7w"/>
   <PapyrusJava:External xmi:id="_ESDnMF_AEeqAAb4u4HLI7w" name="com.google.maps.GeoApiContext" base_Classifier="_ESCZE1_AEeqAAb4u4HLI7w"/>
   <PapyrusJava:External xmi:id="_ESH4oF_AEeqAAb4u4HLI7w" name="com.google.maps.model.LatLng" base_Classifier="_ESE1Ul_AEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_ESP0cF_AEeqAAb4u4HLI7w" base_BehavioralFeature="_ESOmUF_AEeqAAb4u4HLI7w"/>
