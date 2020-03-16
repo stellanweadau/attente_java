@@ -58,7 +58,7 @@ The group will also have to build the Apartment factory. We will replace the fun
 
 == Documentation
 
-- Project documentation can be found in the directory link:doc/[*doc/*]
+- Project documentation can be found in the directory link:doc/README.adoc[*doc/*]
 
 == Changelog
 

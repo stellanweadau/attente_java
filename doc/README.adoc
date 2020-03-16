@@ -1,23 +1,9 @@
-= Apartments
+= Documentation
 
-:gitHubUserName: oliviercailloux
-:groupId: io.github.{gitHubUserName}
-:artifactId: apartments
-:repository: Apartments
-
-A Java project developed by students during the link:https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in link:http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
-
-The code is hereby published under the MIT License, with their permission.
-
-== Documentation
-
-=== Existing project (Before february 2020)
+== Existing project (Before february 2020)
 
 A description of the project before our works can be found link:existing-project.adoc[here]
 
-==== Iteration 1 
+== Iteration 1 
 
 You can see a description of processes and program by following this link:It1.adoc[link]
-
-
-* link:LICENSE[MIT]
