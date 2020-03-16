@@ -15,6 +15,47 @@ The code is hereby published under the MIT License, with their permission.
 
 For information on team, see link:doc/It1.adoc[here]
 
+For our first run on the project, we have chosen to work on two main axis:
+
+* Adapt the program ton run with JSON stored apartments. 
+
+* Clean the project from its unneeded dependencies and create an Apartment factory that will build immutable Apartment Objects  
+
+Starting from there and because we divided our 5 persons group into 2 groups, we have decided to affect a point per group.
+
+==== Team 1
+
+The first group will oversee the JSON adaptation of the apartment storage. We are planning to use the JSON writer link:https://javaee.github.io/jsonb-spec/getting-started.html["JSON Builder"] and add the corresponding dependencies. The function will take the number of Apartment desired and the location of the JSON file it will have to write in as parameters. We will have to modify the functions that run with the XML format (the write function in the FromApartmentGUI class). +
+We will begin to change the storage place of the apartments created in the first place. When this will be ok and functional, we will dive into it to truly randomise the creation of the apartments if this is possible to randomise the generation of addresses if it adds something to the project.  
+
+Finally, we will add a JSONConvert static class with three functions:
+
+* *apartmentToJson* get an `Apartment` and an *optional string* as attributes of the function and it does not return anything. +
+The Apartement is the data to store in the JSON file, and the String is the path of JSON file to write in. The function will make an error if it could not write the Apartment in the file properly. 
+
+* *apartmentsToJson* get an *array of Apartment* and an *optional string* as attributes of the function and it does not return anything. +
+The array of Apartement is the data to store in the JSON file, and the String is the path of JSON file to write in. The function will make an error if it could not write the Apartment in the file properly. 
+
+* *jsonToApartments* take an *optional string* as attribute and return an array of Apartment. The string is the path of the JSON file to read in and the array of Apartment is the data parsed from the JSON file. 
+
+* If there is no character string, it will look in `filePath` (an enum public) for the default path of the files with which the program interacts
+
+`FilePath` : This enumeration will store all the adresses of the different files used by the program. We have nowdesigned it to be an enumeration with associated values (like a map struct in other languages), but we could also use an abstract class and a HashMap that get the values from a config file. This would allow the user to personalise the default file name in the config file. 
+
+==== Team 2
+
+The second group will have to delete the Joda Time dependency. +
+Following our primary researches, it appears that this dependency is never used in the program. We will run tests to make sure of that. +
+The group will also have to build the Apartment factory. We will replace the function ApartmentGenerator class with an ApartmentFactory class to build the immutable apartments. In Apartment Factory, we have different ways to generate one or more Apartments, we can use: 
+
+* **GenerateApartment**: Takes all the data of an Apartment as parameters and returns the Apartment Object with the corresponding data. 
+
+* **GenerateRandomApartment**: Does not take any parameter and it returns a randomly generated Apartment Objet. 
+
+* **GenerateRandomApartmentList**: Takes the number of Apartments to generate randomly as parameter and return an array of Apartments of this size. 
+
+* **GenerateApartmentFromJson**: takes an optional string as a parameter and will call the function JSONToApartment from the class JSONConvert to return the list of the apartments present in the Json file. 
+
 == Documentation
 
 - Project documentation can be found in the directory link:doc/[*doc/*]

@@ -1,0 +1,177 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:     
+:imagesdir: img/
+:toc:
+:toc-placement!:
+
+= Documentation of the existing project
+
+toc::[]
+
+NOTE: "Open Arrow" arrows appear in white in diagrams
+
+== Main (executable) classes
+
+=== AskOpinionForUtility
+
+*Effective version:*
+
+This function runs a GUI, which asks the user his criteria of selection for choosing an apartment. The user can input the minimum surface and the minimum number of bedrooms for example. The user can also choose which criteria is the most important between Wi-Fi and a terrace and between the television and the price per night.
+
+This answer seems to order the apartment results but not efficiently. To display results, our function calls `LayoutApartmentGUI`.
+
+The title of the GUI is “Votre avis nous intéresse” which could mislead the user by making him think that’s just an opinion pool.  
+
+*Improvement idea:*
+
+For the moment, all questions are in French and unwell worded. One objective could be translating these sentences and reformulating them to precisely guide the user.
+
+The preference function must also be improved in order to present the user more pertinent results.
+
+=== LayoutApartmentGUI
+
+*Effective version:*
+
+This function runs a GUI, which displays all the apartments in the database. If you select an apartment in the list, multiple details are displayed:
+
+* The address
+* The surfaces
+* The price
+* The number of bedrooms
+
+*Improvement idea:*
+
+The field which displays details is too small to read them completely. A first improvement could be to enlarge them.
+
+We could also add more details such as the number of bathrooms or if the apartment has Wi-Fi or television. In fact, we could add all the information we have on the apartment.
+
+=== ModifyApartmentGUI
+
+This class initialize an interface in order to modify an existing apartment. When the graphic interface has been launched, a window with the last apartment created pops up. We can then modify the diverse characteristics of the apartment such as the number of bedrooms... + 
+We will not do a use case diagram for this class as we will try during the next iterations to transform apartments into « unchanging » apartments. That means that once the apartments will be created, it won’t be possible for the users to modify its characteristics.
+
+This class belongs to the `apartments.gui` package and extends the class `FormApartmentGUI`. +
+This class allows us to create the window we previously saw, to deal with several mistakes we could have and to save the created and modified apartments.
+
+=== CreateApartmentGUI
+
+*Effective version:*
+
+Graphic interface which enables the user to create a new apartment ad. When this class is run, it launches a graphic interface with fields to fill in order to define the characteristics of the created apartment.
+
+Three fields must be filled in order to create the apartment: the title (of the ad), the address and the floor to know where the apartment is located.
+
+We can also add details to our ad such as:
+
+* The number of bedrooms;
+* The number of people who can sleep in the apartment;
+* If the apartment has a terrace or no;
+* The location of the terrace if existing (which floor);
+* The price per night;
+* The minimum number of nights the tenants have to stay in the house;
+* If the apartment has Wi-Fi and television;
+* A brief description.
+
+Once the mandatory fields filled, the apartment is automatically saved and updated with the optional information in an XML file.
+
+As we have the ambition to transform our software into a long-term apartment rental platform, some fields such as the minimum number of nights might be deleted in the next iterations.
+
+*Improvement idea:*
+
+In order to improve and make this window match with our ambitions, we might add or modify the following fields (non-exhaustive list):
+
+* Improve the « design » of some error messages. Actually, some of them are cut and we can only see the beginning of the displayed message. 
+* Add options. For example, we can add a field which indicates if the apartment is furnished or not or if the animals are allowed in the building.
+
+This class belongs to the `apartments.gui`  package and extends the class `FormApartmentGUI`.
+
+=== ApartementGenerator
+
+This class belongs to the `apartment` package. +
+It allows you to generate an apartment randomly
+
+Generation consists of:
+
+1. Retrieve a list of addresses stored in hard (we could also add the possibility of recovering them via  link:https://api.namefake.com/french-france/random[API] for example)
+2. Perform operations in order to completely randomly calculate all the attributes of an apartment (surface, terrace, surface of the terrace, average surface for a room, etc.)
+3. Create an immutable apartment (using the `Apartment.Builder` class)
+
+[WARNING]
+====
+This should be changed, as an evolution would be to make all apartments directly immutable
+====
+
+=== ReadTwoApartmentsTest
+
+*Effective version:*
+
+This class belongs to the `readapartments` package +
+We are looking here to create instances of `Apartments` from resources (example: file)
+
+`ReadTwoApartmentsTest` is a test code for reading apartments from an XML file.
+
+There are two ways to retrieve information stored in an XML file:
+
+1. Using a `FileInputStream`: Opens a connection to a real file (the name of the file is passed in parameters). +
+This creates a `FileDescriptor` which represents the file in the application (pay attention to the exception `FileNotFound`)
+2. Using `getResourceAsStream`: Allows you to search for a resource by name (pay attention to the exception `NullPointerException`)
+
+In both cases, we use an `InputStream` because it is external resources. +
+In this sense, we call a method of the class `ReadApartmentsXMLFormat` which converts the XML file into an `Apartment` object.
+
+*Improvement idea:*
+
+This class will evolve because the apartments are stored in XML format, and one of the needs is to migrate from XML format to JSON format
+
+== Current code organization
+
+=== Code structure
+
+The actual program is divided in few packages:
+
+* `Apartment`: This part explains the model of an apartment and creation methods of apartments. We can imagine making the generator class abstract because we don’t need to interact with values of these objects. 
+
+* `valueFunction`: This package includes thoughts about calculating the satisfaction of a property's criteria for a customer 
+
+* `utils`: This package combines all functionality which can help all classes of the program. All classes, global logic method and helper class, are organized in this packages package. In fact, if we want to change well-known method (like a date comparator) to adapt it to our needs, we can do it here.
+
+* `localize`: Inside, we can find a class which allows the program to get *the location of* an address using GoogleMaps’ API. This class is used only in test part, but we can expect to use GoogleMaps’ API if it’s free. 
+
+* `iconDisplay`: This package contains a class getting the logo of the application. This class is used by some of GUI package classes. We can imagine moving this class in the `utils` package. 
+
+* `toXMLProperties`: This package has a class called XMLProperties which allows us to export apartment’s informations in a XML file. We can also imagine moving it in the `utils` package. 
+
+* `GUI`:  All this package concerns the Graphical User Interface and all interactions with the user. It’s very important for this package to do minimum operations linked to the thoughts of the program and keep only his role of builder of the display for the user and to send all requests to the thought part of the code.
+
+* `Distance`: the only class we can find in this package is used to calculate distance between 2 points of a map. We can use it with 2 modes: 
+- Address Mode: To build distance between 2 addresses given to the constructor. 
+- Coordinate Mode:  To build distance from coordinate (type of the Google Maps dependency:  LatLng) 
+
+* `ReadApartment`: the class which compose this package is ReadApartmentsXMLFormat and allows us to get an apartment form an XML file. We can imagine making this class an abstract and the operations static because we don’t have to keep in memory immediately treated data. Another improvement idea can be to move this class in the `utils` package. 
+
+=== Use of code
+
+== Class Diagram
+
+image::it1-class-diagram.png[]
+
+This class diagram led us to think about some fact. First of all, we can see a lot of packages containing only one class. These classes are used once or twice in the program. A first idea can be to join all these classes into the `utils` package and make them abstract with static operation if it’s possible. 
+
+We also can see 3 important parts of the program. The `GUI`, `Value Fonction` and `Apartment`
+
+We had problems to display arrow in the Papyrus model. So, in the PNG file, we had manually open arrow for each dependancy. 
+
+== Futur general improvement
+
+=== Users roles
+
+The general use case has been designed in such a way that there is an owner and a tenant. In this sense, during the realization of this one we found that there was no real actor in this application
+
+In other words, the current application has no real user. These are just features developed with no real link.
+
+In this sense, we could consider the creation of actors: a tenant and an owner
+
+Another solution would be to say that it is only a manager (who plays the role of owner and tenant)
