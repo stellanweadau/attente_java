@@ -1,0 +1,72 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:     
+:imagesdir: img/
+:toc:
+:toc-placement!:
+
+= Iteration 1
+
+[IMPORTANT]
+====
+
+Deadline : **16 March** 2020
+
+All the documentation for this iteration is in the link:existing-project.adoc[existing-project] file
+
+This file only explains the distribution of work between the two teams (and indicates through links the realizations)
+
+====
+
+The main objectives of this iteration are to document the existing project. In addition, an additional objective is to prepare the next iteration
+
+toc::[]
+
+== Team 1
+
+=== Members
+
+- link:https://github.com/clemencecousin[Clémence COUSIN]
+- link:https://github.com/MorganeFt[Morgane FIOT]
+- link:https://github.com/av1m[Avi MIMOUN]
+
+=== Realizations
+
+1. Use case diagram:
+
+* link:existing-project.adoc#users-roles[General] : Use of an apartment rental platform
+* link:existing-project.adoc#askopinionforutility[Ask opinion for utility]
+* link:existing-project.adoc#createapartmentgui[Creation of an apartment]
+
+2. Documentation:
+
+Explanation of the entry points of the application and the different main (executable) classes
+
+* link:existing-project.adoc#askopinionforutility[AskOpinionForUtility]
+* link:existing-project.adoc#layoutapartmentgui[LayoutApartmentGUI]
+* link:existing-project.adoc#modifyapartmentgui[ModifyApartmentGUI]
+* link:existing-project.adoc#apartementgenerator[ApartementGenerator]
+* link:existing-project.adoc#readtwoapartmentstest[ReadTwoApartmentsTest]
+
+Finally, a last part which deals with the general functioning of users in the application (which has not been seen until now by former developers)
+
+* link:existing-project.adoc#users-roles[Users roles]
+
+== Team 2
+
+=== Members
+
+- link:https://github.com/EtienneCartier[Etienne CARTIER]
+- link:https://github.com/GabG02[Gabriel GUISSET]
+
+=== Realizations
+
+1. link:existing-project.adoc#class-diagram[Class diagram] that provides an overview of the classes and relationships of the current project
+
+2. Documentation on the current organization of the code 
+
+* link:existing-project.adoc#code-structure[Code structure]
+* link:existing-project.adoc#use-of-code[Use of code]
+
