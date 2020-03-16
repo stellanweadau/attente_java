@@ -152,8 +152,6 @@ The actual program is divided in few packages:
 
 * `ReadApartment`: the class which compose this package is ReadApartmentsXMLFormat and allows us to get an apartment form an XML file. We can imagine making this class an abstract and the operations static because we don’t have to keep in memory immediately treated data. Another improvement idea can be to move this class in the `utils` package. 
 
-=== Use of code
-
 == Class Diagram
 
 image::it1-class-diagram.png[]
