@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
-  <notation:Diagram xmi:id="_GxESMF--EeqAAb4u4HLI7w" type="PapyrusUMLClassDiagram" name="Global Class Diagram" measurementUnit="Pixel">
+  <notation:Diagram xmi:id="_GxESMF--EeqAAb4u4HLI7w" type="PapyrusUMLClassDiagram" name="CD Iteration 1 " measurementUnit="Pixel">
     <children xmi:type="notation:Shape" xmi:id="_1Qr5wF-_EeqAAb4u4HLI7w" type="Package_Shape">
       <children xmi:type="notation:DecorationNode" xmi:id="_1Qr5wl-_EeqAAb4u4HLI7w" type="Package_NameLabel"/>
       <children xmi:type="notation:BasicCompartment" xmi:id="_1Qsg0F-_EeqAAb4u4HLI7w" type="Package_PackagedElementCompartment">
@@ -1043,7 +1043,7 @@
     <styles xmi:type="notation:StringValueStyle" xmi:id="_GxESMV--EeqAAb4u4HLI7w" name="diagram_compatibility_version" stringValue="1.4.0"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_GxESMl--EeqAAb4u4HLI7w"/>
     <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_GxESM1--EeqAAb4u4HLI7w" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
-      <owner xmi:type="uml:Model" href="papyrus.uml#_7UbegF-3EeqrPafii89tnw"/>
+      <owner xmi:type="uml:Package" href="papyrus.uml#_uGGXUGrAEeqG6NsufvOKcA"/>
     </styles>
     <styles xmi:type="notation:BooleanValueStyle" xmi:id="_n29c4GXQEeqLXLaj_4v3Nw" name="rulergrid.viewrulers"/>
     <styles xmi:type="notation:BooleanValueStyle" xmi:id="_o9UoAGXQEeqLXLaj_4v3Nw" name="rulergrid.snaptogeometry"/>
