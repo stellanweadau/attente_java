@@ -4,6 +4,223 @@
     <packageImport xmi:type="uml:PackageImport" xmi:id="_7ZRiQF-3EeqrPafii89tnw">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
     </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_ZCtdkF--EeqAAb4u4HLI7w" name="importedTypes">
+      <packagedElement xmi:type="uml:Package" xmi:id="_ZCursF--EeqAAb4u4HLI7w" name="org">
+        <packagedElement xmi:type="uml:Package" xmi:id="_ZCv50F--EeqAAb4u4HLI7w" name="slf4j">
+          <packagedElement xmi:type="uml:Class" xmi:id="_ZCxH8F--EeqAAb4u4HLI7w" name="Logger"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_ESCZEF_AEeqAAb4u4HLI7w" name="com">
+        <packagedElement xmi:type="uml:Package" xmi:id="_ESCZEV_AEeqAAb4u4HLI7w" name="google">
+          <packagedElement xmi:type="uml:Package" xmi:id="_ESCZEl_AEeqAAb4u4HLI7w" name="maps">
+            <packagedElement xmi:type="uml:Class" xmi:id="_ESCZE1_AEeqAAb4u4HLI7w" name="GeoApiContext"/>
+            <packagedElement xmi:type="uml:Package" xmi:id="_ESE1UV_AEeqAAb4u4HLI7w" name="model">
+              <packagedElement xmi:type="uml:Class" xmi:id="_ESE1Ul_AEeqAAb4u4HLI7w" name="LatLng"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_tRrmYV_AEeqAAb4u4HLI7w" name="errors">
+              <packagedElement xmi:type="uml:Class" xmi:id="_tRrmYl_AEeqAAb4u4HLI7w" name="ApiException"/>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_SVWQ4F_CEeqAAb4u4HLI7w" name="common">
+            <packagedElement xmi:type="uml:Package" xmi:id="_SVWQ4V_CEeqAAb4u4HLI7w" name="collect">
+              <packagedElement xmi:type="uml:Class" xmi:id="_SVWQ4l_CEeqAAb4u4HLI7w" name="ImmutableMap"/>
+              <packagedElement xmi:type="uml:Class" xmi:id="_WnYGwF_CEeqAAb4u4HLI7w" name="Range"/>
+              <packagedElement xmi:type="uml:Class" xmi:id="_d1-bcV_CEeqAAb4u4HLI7w" name="ImmutableSortedMap"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_gpoyMGrAEeqG6NsufvOKcA" name="diagrams">
+      <packagedElement xmi:type="uml:Package" xmi:id="_i7vXsGrAEeqG6NsufvOKcA" name="September 2019">
+        <packagedElement xmi:type="uml:Package" xmi:id="_2RqOEGrBEeqG6NsufvOKcA" name="UCD CreateApartment">
+          <packagedElement xmi:type="uml:Interaction" xmi:id="_osnYYGSlEeqldqZ7K2B8Ig" name="CreateApartment">
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_ttc1AGSlEeqldqZ7K2B8Ig" name="CreateApartment">
+              <ownedUseCase xmi:type="uml:UseCase" xmi:id="_wQhOsGSlEeqldqZ7K2B8Ig" name="Fill the mandatory fields">
+                <ownedUseCase xmi:type="uml:UseCase" xmi:id="_2CmiEGSlEeqldqZ7K2B8Ig" name="Fill the &quot;Title&quot; field"/>
+                <ownedUseCase xmi:type="uml:UseCase" xmi:id="_5Cv5UGSlEeqldqZ7K2B8Ig" name="Fill the &quot;Address&quot; field"/>
+                <ownedUseCase xmi:type="uml:UseCase" xmi:id="_8pc6QGSlEeqldqZ7K2B8Ig" name="Fill the &quot;Floor&quot; field"/>
+              </ownedUseCase>
+              <ownedUseCase xmi:type="uml:UseCase" xmi:id="_y62G8GSlEeqldqZ7K2B8Ig" name="Fill the optional fields">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_knfEIGSnEeqldqZ7K2B8Ig" annotatedElement="_y62G8GSlEeqldqZ7K2B8Ig">
+                  <body>Elements such as the number of bedrooms</body>
+                </ownedComment>
+                <extend xmi:type="uml:Extend" xmi:id="_pxb18GSmEeqldqZ7K2B8Ig" extendedCase="_ttc1AGSlEeqldqZ7K2B8Ig"/>
+              </ownedUseCase>
+            </ownedUseCase>
+            <nestedClassifier xmi:type="uml:Actor" xmi:id="_BB9LkGSmEeqldqZ7K2B8Ig" name="Apartment's owner"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_botnwGSmEeqldqZ7K2B8Ig" name="Apartment's owner triggers to create an apartment" memberEnd="_boygQGSmEeqldqZ7K2B8Ig _bozHUGSmEeqldqZ7K2B8Ig">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_boxSIGSmEeqldqZ7K2B8Ig" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_box5MGSmEeqldqZ7K2B8Ig" key="nature" value="UML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_boygQGSmEeqldqZ7K2B8Ig" name="createapartment" type="_ttc1AGSlEeqldqZ7K2B8Ig" association="_botnwGSmEeqldqZ7K2B8Ig"/>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_bozHUGSmEeqldqZ7K2B8Ig" name="apartment's owner" type="_BB9LkGSmEeqldqZ7K2B8Ig" association="_botnwGSmEeqldqZ7K2B8Ig"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Usage" xmi:id="_v448YGSmEeqldqZ7K2B8Ig" client="_wQhOsGSlEeqldqZ7K2B8Ig" supplier="_ttc1AGSlEeqldqZ7K2B8Ig"/>
+          <packagedElement xmi:type="uml:Usage" xmi:id="_2T87UGSmEeqldqZ7K2B8Ig" client="_2CmiEGSlEeqldqZ7K2B8Ig" supplier="_wQhOsGSlEeqldqZ7K2B8Ig"/>
+          <packagedElement xmi:type="uml:Usage" xmi:id="_6vst4GSmEeqldqZ7K2B8Ig" client="_5Cv5UGSlEeqldqZ7K2B8Ig" supplier="_wQhOsGSlEeqldqZ7K2B8Ig"/>
+          <packagedElement xmi:type="uml:Usage" xmi:id="__Vdw4GrBEeqG6NsufvOKcA" client="_8pc6QGSlEeqldqZ7K2B8Ig" supplier="_wQhOsGSlEeqldqZ7K2B8Ig"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_FaoYUGrCEeqG6NsufvOKcA" name="UCD AskOpinionForUtility">
+          <packagedElement xmi:type="uml:Interaction" xmi:id="_Pt_w8GSgEeqgR6r_D9TUsQ" name="AskOpinionForUtility">
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_gesG8GSgEeqgR6r_D9TUsQ" name="Find an apartment">
+              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_s0UKYGShEeqgR6r_D9TUsQ" name="ExtensionPoint1"/>
+              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_uBdS8GShEeqgR6r_D9TUsQ" name="ExtensionPoint2"/>
+              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_uuafkGShEeqgR6r_D9TUsQ" name="ExtensionPoint3"/>
+              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_zo2ZQGShEeqgR6r_D9TUsQ" name="ExtensionPoint4"/>
+            </ownedUseCase>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_jmovUGSgEeqgR6r_D9TUsQ" name="Fill the number of bedrooms">
+              <extend xmi:type="uml:Extend" xmi:id="_uuZ4gGShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_uuafkGShEeqgR6r_D9TUsQ"/>
+            </ownedUseCase>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_oXWFQGSgEeqgR6r_D9TUsQ" name="Fill the superficy">
+              <extend xmi:type="uml:Extend" xmi:id="_uBcr4GShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_uBdS8GShEeqgR6r_D9TUsQ"/>
+            </ownedUseCase>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_saPS8GSgEeqgR6r_D9TUsQ" name="Check most important criteria">
+              <extend xmi:type="uml:Extend" xmi:id="_s0RHEGShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_s0UKYGShEeqgR6r_D9TUsQ"/>
+            </ownedUseCase>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_vfArgGSgEeqgR6r_D9TUsQ" name="Display results">
+              <extend xmi:type="uml:Extend" xmi:id="_zo1LIGShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_zo2ZQGShEeqgR6r_D9TUsQ"/>
+              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_1_2F0GShEeqgR6r_D9TUsQ" name="ExtensionPoint2"/>
+            </ownedUseCase>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_yGayoGSgEeqgR6r_D9TUsQ" name="Select an apartment">
+              <extend xmi:type="uml:Extend" xmi:id="_1_03sGShEeqgR6r_D9TUsQ" extendedCase="_vfArgGSgEeqgR6r_D9TUsQ" extensionLocation="_1_2F0GShEeqgR6r_D9TUsQ"/>
+            </ownedUseCase>
+            <nestedClassifier xmi:type="uml:Actor" xmi:id="_ZaRpAGSgEeqgR6r_D9TUsQ" name="Tenant"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_QMvF8GShEeqgR6r_D9TUsQ" name="Lacator triggers to find an apartment" memberEnd="_QMvtAmShEeqgR6r_D9TUsQ _QMwUEGShEeqgR6r_D9TUsQ">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QMvtAGShEeqgR6r_D9TUsQ" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QMvtAWShEeqgR6r_D9TUsQ" key="nature" value="UML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_QMvtAmShEeqgR6r_D9TUsQ" name="find an apartment" type="_gesG8GSgEeqgR6r_D9TUsQ" association="_QMvF8GShEeqgR6r_D9TUsQ"/>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_QMwUEGShEeqgR6r_D9TUsQ" name="locator" type="_ZaRpAGSgEeqgR6r_D9TUsQ" association="_QMvF8GShEeqgR6r_D9TUsQ"/>
+          </packagedElement>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_RYNkoGrCEeqG6NsufvOKcA" name="UCD Use of an apartment rental platform">
+          <packagedElement xmi:type="uml:Interaction" xmi:id="_TPRn4GS3EeqTxqp8Bmjtjg" name="GlobalUseCase" useCase="_oWFpkGS3EeqTxqp8Bmjtjg _mgI0kGS3EeqTxqp8Bmjtjg _jJ2OMGS3EeqTxqp8Bmjtjg _gumTwGS3EeqTxqp8Bmjtjg _fIsF4GS3EeqTxqp8Bmjtjg _czcs0GS3EeqTxqp8Bmjtjg">
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_czcs0GS3EeqTxqp8Bmjtjg" name="Filter the apartments" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
+              <include xmi:type="uml:Include" xmi:id="_wZGy4GS5EeqTxqp8Bmjtjg" addition="_fIsF4GS3EeqTxqp8Bmjtjg"/>
+            </ownedUseCase>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_fIsF4GS3EeqTxqp8Bmjtjg" name="List the apartments" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_gumTwGS3EeqTxqp8Bmjtjg" name="Modify an apartment" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_jJ2OMGS3EeqTxqp8Bmjtjg" name="Generate apartments randomly" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_mgI0kGS3EeqTxqp8Bmjtjg" name="Create an apartment" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
+              <include xmi:type="uml:Include" xmi:id="_9kIpwGS5EeqTxqp8Bmjtjg" addition="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
+            </ownedUseCase>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_oWFpkGS3EeqTxqp8Bmjtjg" name="Calculate distance by public transport" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_Mh7UMGS5EeqTxqp8Bmjtjg" name="" type="_fIsF4GS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_NEaWMGS5EeqTxqp8Bmjtjg" name="" type="_gumTwGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_NSCigWS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_O7nIYGS5EeqTxqp8Bmjtjg" name="" type="_gumTwGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_PJTmIGS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_PcUBsGS5EeqTxqp8Bmjtjg" name="" type="_mgI0kGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_QdOsIWS5EeqTxqp8Bmjtjg" name="" type="_oWFpkGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_RJulwGS5EeqTxqp8Bmjtjg" name="" type="_czcs0GS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_RJ1TcWS5EeqTxqp8Bmjtjg" name="" type="_fIsF4GS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_RJ7aEWS5EeqTxqp8Bmjtjg" name="" type="_gumTwGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_RKCHwWS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_RKIOYWS5EeqTxqp8Bmjtjg" name="" type="_mgI0kGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_RKOVAWS5EeqTxqp8Bmjtjg" name="" type="_oWFpkGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_STfqMWS5EeqTxqp8Bmjtjg" name="" type="_czcs0GS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_STqCQWS5EeqTxqp8Bmjtjg" name="" type="_fIsF4GS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_STx-EWS5EeqTxqp8Bmjtjg" name="" type="_gumTwGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_ST4EsWS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_ST-LUWS5EeqTxqp8Bmjtjg" name="" type="_mgI0kGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SUDq4WS5EeqTxqp8Bmjtjg" name="" type="_oWFpkGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SeickWS5EeqTxqp8Bmjtjg" name="" type="_oWFpkGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SojUMGS5EeqTxqp8Bmjtjg" name="" type="_oWFpkGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_S2qBoGS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_S_NgsGS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
+            <nestedClassifier xmi:type="uml:Actor" xmi:id="_IYcy0GS4EeqTxqp8Bmjtjg" name="Tenant"/>
+            <nestedClassifier xmi:type="uml:Actor" xmi:id="_KA8aoGS4EeqTxqp8Bmjtjg" name="Owner"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_btb1EGS5EeqTxqp8Bmjtjg" name="Locators filters apartments" memberEnd="_bte4YGS5EeqTxqp8Bmjtjg _bte4YWS5EeqTxqp8Bmjtjg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_btdqQGS5EeqTxqp8Bmjtjg" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bteRUGS5EeqTxqp8Bmjtjg" key="nature" value="UML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_bte4YGS5EeqTxqp8Bmjtjg" name="filter the apartments" type="_czcs0GS3EeqTxqp8Bmjtjg" association="_btb1EGS5EeqTxqp8Bmjtjg"/>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_bte4YWS5EeqTxqp8Bmjtjg" name="locator" type="_IYcy0GS4EeqTxqp8Bmjtjg" association="_btb1EGS5EeqTxqp8Bmjtjg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_gCNc8GS5EeqTxqp8Bmjtjg" memberEnd="_gCOEAmS5EeqTxqp8Bmjtjg _gCOrEGS5EeqTxqp8Bmjtjg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gCOEAGS5EeqTxqp8Bmjtjg" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gCOEAWS5EeqTxqp8Bmjtjg" key="nature" value="UML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_gCOEAmS5EeqTxqp8Bmjtjg" name="calculate distance by public transport" type="_oWFpkGS3EeqTxqp8Bmjtjg" association="_gCNc8GS5EeqTxqp8Bmjtjg"/>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_gCOrEGS5EeqTxqp8Bmjtjg" name="locator" type="_IYcy0GS4EeqTxqp8Bmjtjg" association="_gCNc8GS5EeqTxqp8Bmjtjg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_25ldUGS5EeqTxqp8Bmjtjg" name="Owner modify an apartment" memberEnd="_25mEYmS5EeqTxqp8Bmjtjg _25mEY2S5EeqTxqp8Bmjtjg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_25mEYGS5EeqTxqp8Bmjtjg" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_25mEYWS5EeqTxqp8Bmjtjg" key="nature" value="UML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_25mEYmS5EeqTxqp8Bmjtjg" name="owner" type="_KA8aoGS4EeqTxqp8Bmjtjg" association="_25ldUGS5EeqTxqp8Bmjtjg"/>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_25mEY2S5EeqTxqp8Bmjtjg" name="modify an apartment" type="_gumTwGS3EeqTxqp8Bmjtjg" association="_25ldUGS5EeqTxqp8Bmjtjg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_8nxIIGS5EeqTxqp8Bmjtjg" memberEnd="_8nxvMmS5EeqTxqp8Bmjtjg _8nxvM2S5EeqTxqp8Bmjtjg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8nxvMGS5EeqTxqp8Bmjtjg" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_8nxvMWS5EeqTxqp8Bmjtjg" key="nature" value="UML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_8nxvMmS5EeqTxqp8Bmjtjg" name="create an apartment" type="_mgI0kGS3EeqTxqp8Bmjtjg" association="_8nxIIGS5EeqTxqp8Bmjtjg"/>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_8nxvM2S5EeqTxqp8Bmjtjg" name="owner" type="_KA8aoGS4EeqTxqp8Bmjtjg" association="_8nxIIGS5EeqTxqp8Bmjtjg"/>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_p_uX0GrAEeqG6NsufvOKcA" name="2020">
+        <packagedElement xmi:type="uml:Package" xmi:id="_uGGXUGrAEeqG6NsufvOKcA" name="Iteration1">
+          <packagedElement xmi:type="uml:Package" xmi:id="_DFOKsGrDEeqG6NsufvOKcA" name="CD Global Iteration 1">
+            <packagedElement xmi:type="uml:Association" xmi:id="_rrSy8GVIEeq0U8CyxWHVBA" name="&lt; a choisi" visibility="private" memberEnd="_rrjRoGVIEeq0U8CyxWHVBA _rrkfwGVIEeq0U8CyxWHVBA">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rrg1YGVIEeq0U8CyxWHVBA" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rrhccGVIEeq0U8CyxWHVBA" key="nature" value="UML_Nature"/>
+              </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_rrkfwGVIEeq0U8CyxWHVBA" name="choix2" type="_VP_vAF_AEeqAAb4u4HLI7w" association="_rrSy8GVIEeq0U8CyxWHVBA">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7qadcGXJEeqLXLaj_4v3Nw"/>
+                <upperValue xmi:type="uml:LiteralString" xmi:id="_8noToGXJEeqLXLaj_4v3Nw" value="*"/>
+              </ownedEnd>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_rrjRoGVIEeq0U8CyxWHVBA" type="__lgUEGVHEeq0U8CyxWHVBA" aggregation="composite" association="_rrSy8GVIEeq0U8CyxWHVBA">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rrj4sGVIEeq0U8CyxWHVBA"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rrj4sWVIEeq0U8CyxWHVBA" value="2"/>
+              </ownedEnd>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_xRQV4GVIEeq0U8CyxWHVBA" name="&lt; a choisi" memberEnd="_xRQ88mVIEeq0U8CyxWHVBA _xRRkAmVIEeq0U8CyxWHVBA">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xRQ88GVIEeq0U8CyxWHVBA" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xRQ88WVIEeq0U8CyxWHVBA" key="nature" value="UML_Nature"/>
+              </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_xRRkAmVIEeq0U8CyxWHVBA" name="choix1" type="_VP_vAF_AEeqAAb4u4HLI7w" association="_xRQV4GVIEeq0U8CyxWHVBA">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Uu0ykGXJEeqLXLaj_4v3Nw"/>
+                <upperValue xmi:type="uml:LiteralString" xmi:id="_bLR4oGXJEeqLXLaj_4v3Nw" value="*"/>
+              </ownedEnd>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_xRQ88mVIEeq0U8CyxWHVBA" type="__lgUEGVHEeq0U8CyxWHVBA" aggregation="composite" association="_xRQV4GVIEeq0U8CyxWHVBA">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xRRkAGVIEeq0U8CyxWHVBA"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xRRkAWVIEeq0U8CyxWHVBA" value="2"/>
+              </ownedEnd>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_fAj5YGXPEeqLXLaj_4v3Nw" name="↑ enregistre " visibility="protected" memberEnd="_fBLkcGXPEeqLXLaj_4v3Nw _fBNZoGXPEeqLXLaj_4v3Nw" navigableOwnedEnd="_fBNZoGXPEeqLXLaj_4v3Nw">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fBIhIGXPEeqLXLaj_4v3Nw" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fBJIMGXPEeqLXLaj_4v3Nw" key="nature" value="UML_Nature"/>
+              </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_fBNZoGXPEeqLXLaj_4v3Nw" name="apart" type="_VLMukF_AEeqAAb4u4HLI7w" association="_fAj5YGXPEeqLXLaj_4v3Nw"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_odBscGXSEeqLXLaj_4v3Nw" memberEnd="_odEvwmXSEeqLXLaj_4v3Nw _odFW0mXSEeqLXLaj_4v3Nw">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_odEvwGXSEeqLXLaj_4v3Nw" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_odEvwWXSEeqLXLaj_4v3Nw" key="nature" value="UML_Nature"/>
+              </eAnnotations>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_MT4ToGXWEeqLXLaj_4v3Nw" visibility="private" memberEnd="_MT5hwGXWEeqLXLaj_4v3Nw _MT5hw2XWEeqLXLaj_4v3Nw">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MT46sGXWEeqLXLaj_4v3Nw" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MT46sWXWEeqLXLaj_4v3Nw" key="nature" value="UML_Nature"/>
+              </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_MT5hw2XWEeqLXLaj_4v3Nw" name="XValueFunction" type="_72rEYF_BEeqAAb4u4HLI7w" association="_MT4ToGXWEeqLXLaj_4v3Nw">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rNfFEGXWEeqLXLaj_4v3Nw" value="8"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rNqrQGXWEeqLXLaj_4v3Nw" value="8"/>
+              </ownedEnd>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_MT5hwGXWEeqLXLaj_4v3Nw" type="_siBZIF_CEeqAAb4u4HLI7w" association="_MT4ToGXWEeqLXLaj_4v3Nw">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MT5hwWXWEeqLXLaj_4v3Nw"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MT5hwmXWEeqLXLaj_4v3Nw" value="1"/>
+              </ownedEnd>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_VlcsAGrAEeqG6NsufvOKcA" name="io.github.oliviercailloux.y2018">
       <packagedElement xmi:type="uml:Package" xmi:id="_1QqroF-_EeqAAb4u4HLI7w" name="apartment">
         <packagedElement xmi:type="uml:Class" xmi:id="_1N7WIF--EeqAAb4u4HLI7w" name="Apartment" visibility="public">
@@ -3111,223 +3328,6 @@
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_pKZ9EF_CEeqAAb4u4HLI7w" name="objectiveData" type="_ESE1Ul_AEeqAAb4u4HLI7w"/>
           </ownedOperation>
-        </packagedElement>
-      </packagedElement>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_ZCtdkF--EeqAAb4u4HLI7w" name="importedTypes">
-      <packagedElement xmi:type="uml:Package" xmi:id="_ZCursF--EeqAAb4u4HLI7w" name="org">
-        <packagedElement xmi:type="uml:Package" xmi:id="_ZCv50F--EeqAAb4u4HLI7w" name="slf4j">
-          <packagedElement xmi:type="uml:Class" xmi:id="_ZCxH8F--EeqAAb4u4HLI7w" name="Logger"/>
-        </packagedElement>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_ESCZEF_AEeqAAb4u4HLI7w" name="com">
-        <packagedElement xmi:type="uml:Package" xmi:id="_ESCZEV_AEeqAAb4u4HLI7w" name="google">
-          <packagedElement xmi:type="uml:Package" xmi:id="_ESCZEl_AEeqAAb4u4HLI7w" name="maps">
-            <packagedElement xmi:type="uml:Class" xmi:id="_ESCZE1_AEeqAAb4u4HLI7w" name="GeoApiContext"/>
-            <packagedElement xmi:type="uml:Package" xmi:id="_ESE1UV_AEeqAAb4u4HLI7w" name="model">
-              <packagedElement xmi:type="uml:Class" xmi:id="_ESE1Ul_AEeqAAb4u4HLI7w" name="LatLng"/>
-            </packagedElement>
-            <packagedElement xmi:type="uml:Package" xmi:id="_tRrmYV_AEeqAAb4u4HLI7w" name="errors">
-              <packagedElement xmi:type="uml:Class" xmi:id="_tRrmYl_AEeqAAb4u4HLI7w" name="ApiException"/>
-            </packagedElement>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Package" xmi:id="_SVWQ4F_CEeqAAb4u4HLI7w" name="common">
-            <packagedElement xmi:type="uml:Package" xmi:id="_SVWQ4V_CEeqAAb4u4HLI7w" name="collect">
-              <packagedElement xmi:type="uml:Class" xmi:id="_SVWQ4l_CEeqAAb4u4HLI7w" name="ImmutableMap"/>
-              <packagedElement xmi:type="uml:Class" xmi:id="_WnYGwF_CEeqAAb4u4HLI7w" name="Range"/>
-              <packagedElement xmi:type="uml:Class" xmi:id="_d1-bcV_CEeqAAb4u4HLI7w" name="ImmutableSortedMap"/>
-            </packagedElement>
-          </packagedElement>
-        </packagedElement>
-      </packagedElement>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_gpoyMGrAEeqG6NsufvOKcA" name="diagrams">
-      <packagedElement xmi:type="uml:Package" xmi:id="_i7vXsGrAEeqG6NsufvOKcA" name="September 2019">
-        <packagedElement xmi:type="uml:Package" xmi:id="_2RqOEGrBEeqG6NsufvOKcA" name="UCD CreateApartment">
-          <packagedElement xmi:type="uml:Interaction" xmi:id="_osnYYGSlEeqldqZ7K2B8Ig" name="CreateApartment">
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_ttc1AGSlEeqldqZ7K2B8Ig" name="CreateApartment">
-              <ownedUseCase xmi:type="uml:UseCase" xmi:id="_wQhOsGSlEeqldqZ7K2B8Ig" name="Fill the mandatory fields">
-                <ownedUseCase xmi:type="uml:UseCase" xmi:id="_2CmiEGSlEeqldqZ7K2B8Ig" name="Fill the &quot;Title&quot; field"/>
-                <ownedUseCase xmi:type="uml:UseCase" xmi:id="_5Cv5UGSlEeqldqZ7K2B8Ig" name="Fill the &quot;Address&quot; field"/>
-                <ownedUseCase xmi:type="uml:UseCase" xmi:id="_8pc6QGSlEeqldqZ7K2B8Ig" name="Fill the &quot;Floor&quot; field"/>
-              </ownedUseCase>
-              <ownedUseCase xmi:type="uml:UseCase" xmi:id="_y62G8GSlEeqldqZ7K2B8Ig" name="Fill the optional fields">
-                <ownedComment xmi:type="uml:Comment" xmi:id="_knfEIGSnEeqldqZ7K2B8Ig" annotatedElement="_y62G8GSlEeqldqZ7K2B8Ig">
-                  <body>Elements such as the number of bedrooms</body>
-                </ownedComment>
-                <extend xmi:type="uml:Extend" xmi:id="_pxb18GSmEeqldqZ7K2B8Ig" extendedCase="_ttc1AGSlEeqldqZ7K2B8Ig"/>
-              </ownedUseCase>
-            </ownedUseCase>
-            <nestedClassifier xmi:type="uml:Actor" xmi:id="_BB9LkGSmEeqldqZ7K2B8Ig" name="Apartment's owner"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_botnwGSmEeqldqZ7K2B8Ig" name="Apartment's owner triggers to create an apartment" memberEnd="_boygQGSmEeqldqZ7K2B8Ig _bozHUGSmEeqldqZ7K2B8Ig">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_boxSIGSmEeqldqZ7K2B8Ig" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_box5MGSmEeqldqZ7K2B8Ig" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_boygQGSmEeqldqZ7K2B8Ig" name="createapartment" type="_ttc1AGSlEeqldqZ7K2B8Ig" association="_botnwGSmEeqldqZ7K2B8Ig"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_bozHUGSmEeqldqZ7K2B8Ig" name="apartment's owner" type="_BB9LkGSmEeqldqZ7K2B8Ig" association="_botnwGSmEeqldqZ7K2B8Ig"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Usage" xmi:id="_v448YGSmEeqldqZ7K2B8Ig" client="_wQhOsGSlEeqldqZ7K2B8Ig" supplier="_ttc1AGSlEeqldqZ7K2B8Ig"/>
-          <packagedElement xmi:type="uml:Usage" xmi:id="_2T87UGSmEeqldqZ7K2B8Ig" client="_2CmiEGSlEeqldqZ7K2B8Ig" supplier="_wQhOsGSlEeqldqZ7K2B8Ig"/>
-          <packagedElement xmi:type="uml:Usage" xmi:id="_6vst4GSmEeqldqZ7K2B8Ig" client="_5Cv5UGSlEeqldqZ7K2B8Ig" supplier="_wQhOsGSlEeqldqZ7K2B8Ig"/>
-          <packagedElement xmi:type="uml:Usage" xmi:id="__Vdw4GrBEeqG6NsufvOKcA" client="_8pc6QGSlEeqldqZ7K2B8Ig" supplier="_wQhOsGSlEeqldqZ7K2B8Ig"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Package" xmi:id="_FaoYUGrCEeqG6NsufvOKcA" name="UCD AskOpinionForUtility">
-          <packagedElement xmi:type="uml:Interaction" xmi:id="_Pt_w8GSgEeqgR6r_D9TUsQ" name="AskOpinionForUtility">
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_gesG8GSgEeqgR6r_D9TUsQ" name="Find an apartment">
-              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_s0UKYGShEeqgR6r_D9TUsQ" name="ExtensionPoint1"/>
-              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_uBdS8GShEeqgR6r_D9TUsQ" name="ExtensionPoint2"/>
-              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_uuafkGShEeqgR6r_D9TUsQ" name="ExtensionPoint3"/>
-              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_zo2ZQGShEeqgR6r_D9TUsQ" name="ExtensionPoint4"/>
-            </ownedUseCase>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_jmovUGSgEeqgR6r_D9TUsQ" name="Fill the number of bedrooms">
-              <extend xmi:type="uml:Extend" xmi:id="_uuZ4gGShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_uuafkGShEeqgR6r_D9TUsQ"/>
-            </ownedUseCase>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_oXWFQGSgEeqgR6r_D9TUsQ" name="Fill the superficy">
-              <extend xmi:type="uml:Extend" xmi:id="_uBcr4GShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_uBdS8GShEeqgR6r_D9TUsQ"/>
-            </ownedUseCase>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_saPS8GSgEeqgR6r_D9TUsQ" name="Check most important criteria">
-              <extend xmi:type="uml:Extend" xmi:id="_s0RHEGShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_s0UKYGShEeqgR6r_D9TUsQ"/>
-            </ownedUseCase>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_vfArgGSgEeqgR6r_D9TUsQ" name="Display results">
-              <extend xmi:type="uml:Extend" xmi:id="_zo1LIGShEeqgR6r_D9TUsQ" extendedCase="_gesG8GSgEeqgR6r_D9TUsQ" extensionLocation="_zo2ZQGShEeqgR6r_D9TUsQ"/>
-              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_1_2F0GShEeqgR6r_D9TUsQ" name="ExtensionPoint2"/>
-            </ownedUseCase>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_yGayoGSgEeqgR6r_D9TUsQ" name="Select an apartment">
-              <extend xmi:type="uml:Extend" xmi:id="_1_03sGShEeqgR6r_D9TUsQ" extendedCase="_vfArgGSgEeqgR6r_D9TUsQ" extensionLocation="_1_2F0GShEeqgR6r_D9TUsQ"/>
-            </ownedUseCase>
-            <nestedClassifier xmi:type="uml:Actor" xmi:id="_ZaRpAGSgEeqgR6r_D9TUsQ" name="Tenant"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_QMvF8GShEeqgR6r_D9TUsQ" name="Lacator triggers to find an apartment" memberEnd="_QMvtAmShEeqgR6r_D9TUsQ _QMwUEGShEeqgR6r_D9TUsQ">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QMvtAGShEeqgR6r_D9TUsQ" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QMvtAWShEeqgR6r_D9TUsQ" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_QMvtAmShEeqgR6r_D9TUsQ" name="find an apartment" type="_gesG8GSgEeqgR6r_D9TUsQ" association="_QMvF8GShEeqgR6r_D9TUsQ"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_QMwUEGShEeqgR6r_D9TUsQ" name="locator" type="_ZaRpAGSgEeqgR6r_D9TUsQ" association="_QMvF8GShEeqgR6r_D9TUsQ"/>
-          </packagedElement>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Package" xmi:id="_RYNkoGrCEeqG6NsufvOKcA" name="UCD Use of an apartment rental platform">
-          <packagedElement xmi:type="uml:Interaction" xmi:id="_TPRn4GS3EeqTxqp8Bmjtjg" name="GlobalUseCase" useCase="_oWFpkGS3EeqTxqp8Bmjtjg _mgI0kGS3EeqTxqp8Bmjtjg _jJ2OMGS3EeqTxqp8Bmjtjg _gumTwGS3EeqTxqp8Bmjtjg _fIsF4GS3EeqTxqp8Bmjtjg _czcs0GS3EeqTxqp8Bmjtjg">
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_czcs0GS3EeqTxqp8Bmjtjg" name="Filter the apartments" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
-              <include xmi:type="uml:Include" xmi:id="_wZGy4GS5EeqTxqp8Bmjtjg" addition="_fIsF4GS3EeqTxqp8Bmjtjg"/>
-            </ownedUseCase>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_fIsF4GS3EeqTxqp8Bmjtjg" name="List the apartments" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_gumTwGS3EeqTxqp8Bmjtjg" name="Modify an apartment" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_jJ2OMGS3EeqTxqp8Bmjtjg" name="Generate apartments randomly" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_mgI0kGS3EeqTxqp8Bmjtjg" name="Create an apartment" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
-              <include xmi:type="uml:Include" xmi:id="_9kIpwGS5EeqTxqp8Bmjtjg" addition="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
-            </ownedUseCase>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_oWFpkGS3EeqTxqp8Bmjtjg" name="Calculate distance by public transport" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_Mh7UMGS5EeqTxqp8Bmjtjg" name="" type="_fIsF4GS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_NEaWMGS5EeqTxqp8Bmjtjg" name="" type="_gumTwGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_NSCigWS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_O7nIYGS5EeqTxqp8Bmjtjg" name="" type="_gumTwGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_PJTmIGS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_PcUBsGS5EeqTxqp8Bmjtjg" name="" type="_mgI0kGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_QdOsIWS5EeqTxqp8Bmjtjg" name="" type="_oWFpkGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_RJulwGS5EeqTxqp8Bmjtjg" name="" type="_czcs0GS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_RJ1TcWS5EeqTxqp8Bmjtjg" name="" type="_fIsF4GS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_RJ7aEWS5EeqTxqp8Bmjtjg" name="" type="_gumTwGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_RKCHwWS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_RKIOYWS5EeqTxqp8Bmjtjg" name="" type="_mgI0kGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_RKOVAWS5EeqTxqp8Bmjtjg" name="" type="_oWFpkGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_STfqMWS5EeqTxqp8Bmjtjg" name="" type="_czcs0GS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_STqCQWS5EeqTxqp8Bmjtjg" name="" type="_fIsF4GS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_STx-EWS5EeqTxqp8Bmjtjg" name="" type="_gumTwGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_ST4EsWS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_ST-LUWS5EeqTxqp8Bmjtjg" name="" type="_mgI0kGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SUDq4WS5EeqTxqp8Bmjtjg" name="" type="_oWFpkGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SeickWS5EeqTxqp8Bmjtjg" name="" type="_oWFpkGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SojUMGS5EeqTxqp8Bmjtjg" name="" type="_oWFpkGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_S2qBoGS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_S_NgsGS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
-            <nestedClassifier xmi:type="uml:Actor" xmi:id="_IYcy0GS4EeqTxqp8Bmjtjg" name="Tenant"/>
-            <nestedClassifier xmi:type="uml:Actor" xmi:id="_KA8aoGS4EeqTxqp8Bmjtjg" name="Owner"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_btb1EGS5EeqTxqp8Bmjtjg" name="Locators filters apartments" memberEnd="_bte4YGS5EeqTxqp8Bmjtjg _bte4YWS5EeqTxqp8Bmjtjg">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_btdqQGS5EeqTxqp8Bmjtjg" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bteRUGS5EeqTxqp8Bmjtjg" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_bte4YGS5EeqTxqp8Bmjtjg" name="filter the apartments" type="_czcs0GS3EeqTxqp8Bmjtjg" association="_btb1EGS5EeqTxqp8Bmjtjg"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_bte4YWS5EeqTxqp8Bmjtjg" name="locator" type="_IYcy0GS4EeqTxqp8Bmjtjg" association="_btb1EGS5EeqTxqp8Bmjtjg"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_gCNc8GS5EeqTxqp8Bmjtjg" memberEnd="_gCOEAmS5EeqTxqp8Bmjtjg _gCOrEGS5EeqTxqp8Bmjtjg">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gCOEAGS5EeqTxqp8Bmjtjg" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gCOEAWS5EeqTxqp8Bmjtjg" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_gCOEAmS5EeqTxqp8Bmjtjg" name="calculate distance by public transport" type="_oWFpkGS3EeqTxqp8Bmjtjg" association="_gCNc8GS5EeqTxqp8Bmjtjg"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_gCOrEGS5EeqTxqp8Bmjtjg" name="locator" type="_IYcy0GS4EeqTxqp8Bmjtjg" association="_gCNc8GS5EeqTxqp8Bmjtjg"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_25ldUGS5EeqTxqp8Bmjtjg" name="Owner modify an apartment" memberEnd="_25mEYmS5EeqTxqp8Bmjtjg _25mEY2S5EeqTxqp8Bmjtjg">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_25mEYGS5EeqTxqp8Bmjtjg" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_25mEYWS5EeqTxqp8Bmjtjg" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_25mEYmS5EeqTxqp8Bmjtjg" name="owner" type="_KA8aoGS4EeqTxqp8Bmjtjg" association="_25ldUGS5EeqTxqp8Bmjtjg"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_25mEY2S5EeqTxqp8Bmjtjg" name="modify an apartment" type="_gumTwGS3EeqTxqp8Bmjtjg" association="_25ldUGS5EeqTxqp8Bmjtjg"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_8nxIIGS5EeqTxqp8Bmjtjg" memberEnd="_8nxvMmS5EeqTxqp8Bmjtjg _8nxvM2S5EeqTxqp8Bmjtjg">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8nxvMGS5EeqTxqp8Bmjtjg" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_8nxvMWS5EeqTxqp8Bmjtjg" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_8nxvMmS5EeqTxqp8Bmjtjg" name="create an apartment" type="_mgI0kGS3EeqTxqp8Bmjtjg" association="_8nxIIGS5EeqTxqp8Bmjtjg"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_8nxvM2S5EeqTxqp8Bmjtjg" name="owner" type="_KA8aoGS4EeqTxqp8Bmjtjg" association="_8nxIIGS5EeqTxqp8Bmjtjg"/>
-          </packagedElement>
-        </packagedElement>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_p_uX0GrAEeqG6NsufvOKcA" name="2020">
-        <packagedElement xmi:type="uml:Package" xmi:id="_uGGXUGrAEeqG6NsufvOKcA" name="Iteration1">
-          <packagedElement xmi:type="uml:Package" xmi:id="_DFOKsGrDEeqG6NsufvOKcA" name="CD Iteration 1">
-            <packagedElement xmi:type="uml:Association" xmi:id="_rrSy8GVIEeq0U8CyxWHVBA" name="&lt; a choisi" visibility="private" memberEnd="_rrjRoGVIEeq0U8CyxWHVBA _rrkfwGVIEeq0U8CyxWHVBA">
-              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rrg1YGVIEeq0U8CyxWHVBA" source="org.eclipse.papyrus">
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rrhccGVIEeq0U8CyxWHVBA" key="nature" value="UML_Nature"/>
-              </eAnnotations>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_rrkfwGVIEeq0U8CyxWHVBA" name="choix2" type="_VP_vAF_AEeqAAb4u4HLI7w" association="_rrSy8GVIEeq0U8CyxWHVBA">
-                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7qadcGXJEeqLXLaj_4v3Nw"/>
-                <upperValue xmi:type="uml:LiteralString" xmi:id="_8noToGXJEeqLXLaj_4v3Nw" value="*"/>
-              </ownedEnd>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_rrjRoGVIEeq0U8CyxWHVBA" type="__lgUEGVHEeq0U8CyxWHVBA" aggregation="composite" association="_rrSy8GVIEeq0U8CyxWHVBA">
-                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rrj4sGVIEeq0U8CyxWHVBA"/>
-                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rrj4sWVIEeq0U8CyxWHVBA" value="2"/>
-              </ownedEnd>
-            </packagedElement>
-            <packagedElement xmi:type="uml:Association" xmi:id="_xRQV4GVIEeq0U8CyxWHVBA" name="&lt; a choisi" memberEnd="_xRQ88mVIEeq0U8CyxWHVBA _xRRkAmVIEeq0U8CyxWHVBA">
-              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xRQ88GVIEeq0U8CyxWHVBA" source="org.eclipse.papyrus">
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xRQ88WVIEeq0U8CyxWHVBA" key="nature" value="UML_Nature"/>
-              </eAnnotations>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_xRRkAmVIEeq0U8CyxWHVBA" name="choix1" type="_VP_vAF_AEeqAAb4u4HLI7w" association="_xRQV4GVIEeq0U8CyxWHVBA">
-                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Uu0ykGXJEeqLXLaj_4v3Nw"/>
-                <upperValue xmi:type="uml:LiteralString" xmi:id="_bLR4oGXJEeqLXLaj_4v3Nw" value="*"/>
-              </ownedEnd>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_xRQ88mVIEeq0U8CyxWHVBA" type="__lgUEGVHEeq0U8CyxWHVBA" aggregation="composite" association="_xRQV4GVIEeq0U8CyxWHVBA">
-                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xRRkAGVIEeq0U8CyxWHVBA"/>
-                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xRRkAWVIEeq0U8CyxWHVBA" value="2"/>
-              </ownedEnd>
-            </packagedElement>
-            <packagedElement xmi:type="uml:Association" xmi:id="_fAj5YGXPEeqLXLaj_4v3Nw" name="↑ enregistre " visibility="protected" memberEnd="_fBLkcGXPEeqLXLaj_4v3Nw _fBNZoGXPEeqLXLaj_4v3Nw" navigableOwnedEnd="_fBNZoGXPEeqLXLaj_4v3Nw">
-              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fBIhIGXPEeqLXLaj_4v3Nw" source="org.eclipse.papyrus">
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fBJIMGXPEeqLXLaj_4v3Nw" key="nature" value="UML_Nature"/>
-              </eAnnotations>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_fBNZoGXPEeqLXLaj_4v3Nw" name="apart" type="_VLMukF_AEeqAAb4u4HLI7w" association="_fAj5YGXPEeqLXLaj_4v3Nw"/>
-            </packagedElement>
-            <packagedElement xmi:type="uml:Association" xmi:id="_odBscGXSEeqLXLaj_4v3Nw" memberEnd="_odEvwmXSEeqLXLaj_4v3Nw _odFW0mXSEeqLXLaj_4v3Nw">
-              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_odEvwGXSEeqLXLaj_4v3Nw" source="org.eclipse.papyrus">
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_odEvwWXSEeqLXLaj_4v3Nw" key="nature" value="UML_Nature"/>
-              </eAnnotations>
-            </packagedElement>
-            <packagedElement xmi:type="uml:Association" xmi:id="_MT4ToGXWEeqLXLaj_4v3Nw" visibility="private" memberEnd="_MT5hwGXWEeqLXLaj_4v3Nw _MT5hw2XWEeqLXLaj_4v3Nw">
-              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MT46sGXWEeqLXLaj_4v3Nw" source="org.eclipse.papyrus">
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MT46sWXWEeqLXLaj_4v3Nw" key="nature" value="UML_Nature"/>
-              </eAnnotations>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_MT5hw2XWEeqLXLaj_4v3Nw" name="XValueFunction" type="_72rEYF_BEeqAAb4u4HLI7w" association="_MT4ToGXWEeqLXLaj_4v3Nw">
-                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rNfFEGXWEeqLXLaj_4v3Nw" value="8"/>
-                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rNqrQGXWEeqLXLaj_4v3Nw" value="8"/>
-              </ownedEnd>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_MT5hwGXWEeqLXLaj_4v3Nw" type="_siBZIF_CEeqAAb4u4HLI7w" association="_MT4ToGXWEeqLXLaj_4v3Nw">
-                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MT5hwWXWEeqLXLaj_4v3Nw"/>
-                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MT5hwmXWEeqLXLaj_4v3Nw" value="1"/>
-              </ownedEnd>
-            </packagedElement>
-          </packagedElement>
         </packagedElement>
       </packagedElement>
     </packagedElement>
