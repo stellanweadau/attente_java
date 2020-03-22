@@ -48,7 +48,7 @@
                 <extend xmi:type="uml:Extend" xmi:id="_pxb18GSmEeqldqZ7K2B8Ig" extendedCase="_ttc1AGSlEeqldqZ7K2B8Ig"/>
               </ownedUseCase>
             </ownedUseCase>
-            <nestedClassifier xmi:type="uml:Actor" xmi:id="_BB9LkGSmEeqldqZ7K2B8Ig" name="Apartment's owner"/>
+            <nestedClassifier xmi:type="uml:Actor" xmi:id="_BB9LkGSmEeqldqZ7K2B8Ig" name="Manager"/>
           </packagedElement>
           <packagedElement xmi:type="uml:Association" xmi:id="_botnwGSmEeqldqZ7K2B8Ig" name="Apartment's owner triggers to create an apartment" memberEnd="_boygQGSmEeqldqZ7K2B8Ig _bozHUGSmEeqldqZ7K2B8Ig">
             <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_boxSIGSmEeqldqZ7K2B8Ig" source="org.eclipse.papyrus">
@@ -132,7 +132,7 @@
             <ownedAttribute xmi:type="uml:Property" xmi:id="_S2qBoGS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
             <ownedAttribute xmi:type="uml:Property" xmi:id="_S_NgsGS5EeqTxqp8Bmjtjg" name="" type="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
             <nestedClassifier xmi:type="uml:Actor" xmi:id="_IYcy0GS4EeqTxqp8Bmjtjg" name="Tenant"/>
-            <nestedClassifier xmi:type="uml:Actor" xmi:id="_KA8aoGS4EeqTxqp8Bmjtjg" name="Owner"/>
+            <nestedClassifier xmi:type="uml:Actor" xmi:id="_KA8aoGS4EeqTxqp8Bmjtjg" name="Manager"/>
           </packagedElement>
           <packagedElement xmi:type="uml:Association" xmi:id="_btb1EGS5EeqTxqp8Bmjtjg" name="Locators filters apartments" memberEnd="_bte4YGS5EeqTxqp8Bmjtjg _bte4YWS5EeqTxqp8Bmjtjg">
             <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_btdqQGS5EeqTxqp8Bmjtjg" source="org.eclipse.papyrus">
