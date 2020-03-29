@@ -850,6 +850,91 @@
           <ownedOperation xmi:type="uml:Operation" xmi:id="_KlG3QGbfEeqYDoGRuvwelQ" name="generateApartmentFromJson" isStatic="true"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_ivplIGbeEeqYDoGRuvwelQ" client="_cISsEGbdEeqYDoGRuvwelQ" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_i_F0QHEvEeq9ooUMj2JdaQ" name="ApartmentGenerator" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_i_xJsXEvEeq9ooUMj2JdaQ" name="random" visibility="private" type="_i_F0QnEvEeq9ooUMj2JdaQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_i_3QUHEvEeq9ooUMj2JdaQ" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_i_3QUXEvEeq9ooUMj2JdaQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>LoggerFactory.getLogger(ApartmentGenerator.class)</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_jAcfIHEvEeq9ooUMj2JdaQ" name="ApartmentGenerator" specification="_i_3QUnEvEeq9ooUMj2JdaQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    random = new Random();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_jA7nUHEvEeq9ooUMj2JdaQ" name="generateRandomApartment" specification="_jAilwHEvEeq9ooUMj2JdaQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    LOGGER.info(&quot;Beginning of random generation of an Apartment&quot;);&#xD;
+    final ImmutableList&lt;String> titles = ImmutableList.of(&quot;Location Apartement 1223&quot;, &quot;Location Apartement 2434&quot;, &quot;Location Apartement 4353&quot;, &quot;Location Apartement 3423&quot;, &quot;Location Apartement 4234&quot;, &quot;Location Apartement 3424&quot;, &quot;Location Apartement 3477&quot;, &quot;Location Apartement 376&quot;, &quot;Location Apartement 678&quot;, &quot;Location Apartement 757&quot;);&#xD;
+    final ImmutableList&lt;String> address = ImmutableList.of(&quot;2 avenue Pasteur 94160 Saint-mandé&quot;, &quot;8 avenue de Paris 94160 Saint-mandé&quot;, &quot;5 avenue des Champs-Elysées 75016&quot;, &quot;13 rue des Arts 75001&quot;, &quot;10 rue de Dauphine 75016&quot;, &quot;33 rue de Tolbiac 75013&quot;, &quot;33 rue de Tolbiac 75013&quot;, &quot; &quot;, &quot; &quot;, &quot; &quot;);&#xD;
+    int n = (int) (Math.random() * titles.size() - 1);&#xD;
+    int m = (int) (Math.random() * address.size() - 1);&#xD;
+    double floorArea = simulateRandomDraw(65d, 21d);&#xD;
+    boolean terrace = (Math.random() * 2 >= 1) ? true : false;&#xD;
+    double floorAreaTerrace = (terrace) ? simulateRandomDraw(15d, 2d) : 0;&#xD;
+    int nbMinNight = (int) (Math.random() * 8);&#xD;
+    int averageRoomArea = (int) (10 + (Math.random() * 20));&#xD;
+    int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 0);&#xD;
+    double pricePerMeterSquared = simulateRandomDraw(8d, 3d);&#xD;
+    double pricePerNight = floorArea * pricePerMeterSquared;&#xD;
+    int nbSleeping = ((int) (1 + Math.random() * 4)) * nbBedrooms;&#xD;
+    int nbBathrooms = (int) (Math.random() * nbBedrooms);&#xD;
+    Apartment.Builder builder = new Apartment.Builder();&#xD;
+    builder.setFloorArea(floorArea);&#xD;
+    builder.setAddress(address.get(m));&#xD;
+    builder.setTitle(titles.get(n));&#xD;
+    builder.setNbBedrooms(nbBedrooms);&#xD;
+    builder.setNbSleeping(nbSleeping);&#xD;
+    builder.setNbBathrooms(nbBathrooms);&#xD;
+    builder.setTerrace(terrace);&#xD;
+    builder.setPricePerNight(pricePerNight);&#xD;
+    builder.setNbMinNight(nbMinNight);&#xD;
+    builder.setFloorAreaTerrace(floorAreaTerrace);&#xD;
+    Apartment a = builder.build();&#xD;
+    LOGGER.info(&quot;Generation done successfully&quot;);&#xD;
+    return a;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_jBscUHEvEeq9ooUMj2JdaQ" name="simulateRandomDraw" specification="_jBOiQHEvEeq9ooUMj2JdaQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    double draw = random.nextGaussian();&#xD;
+    return deviation * draw + mean;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_jCMyoXEvEeq9ooUMj2JdaQ" name="main" specification="_jB53sHEvEeq9ooUMj2JdaQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    ApartmentGenerator generator = new ApartmentGenerator();&#xD;
+    generator.generateRandomApartment();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_i_3QUnEvEeq9ooUMj2JdaQ" name="ApartmentGenerator" visibility="public" method="_jAcfIHEvEeq9ooUMj2JdaQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_jAilwHEvEeq9ooUMj2JdaQ" name="generateRandomApartment" visibility="public" method="_jA7nUHEvEeq9ooUMj2JdaQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_jA0SkHEvEeq9ooUMj2JdaQ" type="__C4EkHEuEeq9ooUMj2JdaQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_jBOiQHEvEeq9ooUMj2JdaQ" name="simulateRandomDraw" visibility="private" method="_jBscUHEvEeq9ooUMj2JdaQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_jBOiQXEvEeq9ooUMj2JdaQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_jBOiQnEvEeq9ooUMj2JdaQ" name="mean">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_jBUo4HEvEeq9ooUMj2JdaQ" name="deviation">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_jB53sHEvEeq9ooUMj2JdaQ" name="main" visibility="public" isStatic="true" method="_jCMyoXEvEeq9ooUMj2JdaQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_jB_-UHEvEeq9ooUMj2JdaQ" name="args" type="__EuesHEuEeq9ooUMj2JdaQ">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jCGsAHEvEeq9ooUMj2JdaQ"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jCMyoHEvEeq9ooUMj2JdaQ" value="*"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_jRnIYHHDEeq5FbnHuCmiFw" client="_i_F0QHEvEeq9ooUMj2JdaQ" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_JAqEUF_AEeqAAb4u4HLI7w" name="distance">
         <packagedElement xmi:type="uml:Class" xmi:id="_ESBK8F_AEeqAAb4u4HLI7w" name="DistanceSubway" visibility="public">
@@ -3949,90 +4034,6 @@
                         </ownedParameter>
                       </ownedOperation>
                     </nestedClassifier>
-                  </packagedElement>
-                  <packagedElement xmi:type="uml:Class" xmi:id="_i_F0QHEvEeq9ooUMj2JdaQ" name="ApartmentGenerator" visibility="public">
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_i_xJsXEvEeq9ooUMj2JdaQ" name="random" visibility="private" type="_i_F0QnEvEeq9ooUMj2JdaQ" isUnique="false"/>
-                    <ownedAttribute xmi:type="uml:Property" xmi:id="_i_3QUHEvEeq9ooUMj2JdaQ" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
-                      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_i_3QUXEvEeq9ooUMj2JdaQ" name="defaultValue">
-                        <language>JAVA</language>
-                        <body>LoggerFactory.getLogger(ApartmentGenerator.class)</body>
-                      </defaultValue>
-                    </ownedAttribute>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_jAcfIHEvEeq9ooUMj2JdaQ" name="ApartmentGenerator" specification="_i_3QUnEvEeq9ooUMj2JdaQ">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    random = new Random();&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_jA7nUHEvEeq9ooUMj2JdaQ" name="generateRandomApartment" specification="_jAilwHEvEeq9ooUMj2JdaQ">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    LOGGER.info(&quot;Beginning of random generation of an Apartment&quot;);&#xD;
-    final ImmutableList&lt;String> titles = ImmutableList.of(&quot;Location Apartement 1223&quot;, &quot;Location Apartement 2434&quot;, &quot;Location Apartement 4353&quot;, &quot;Location Apartement 3423&quot;, &quot;Location Apartement 4234&quot;, &quot;Location Apartement 3424&quot;, &quot;Location Apartement 3477&quot;, &quot;Location Apartement 376&quot;, &quot;Location Apartement 678&quot;, &quot;Location Apartement 757&quot;);&#xD;
-    final ImmutableList&lt;String> address = ImmutableList.of(&quot;2 avenue Pasteur 94160 Saint-mandé&quot;, &quot;8 avenue de Paris 94160 Saint-mandé&quot;, &quot;5 avenue des Champs-Elysées 75016&quot;, &quot;13 rue des Arts 75001&quot;, &quot;10 rue de Dauphine 75016&quot;, &quot;33 rue de Tolbiac 75013&quot;, &quot;33 rue de Tolbiac 75013&quot;, &quot; &quot;, &quot; &quot;, &quot; &quot;);&#xD;
-    int n = (int) (Math.random() * titles.size() - 1);&#xD;
-    int m = (int) (Math.random() * address.size() - 1);&#xD;
-    double floorArea = simulateRandomDraw(65d, 21d);&#xD;
-    boolean terrace = (Math.random() * 2 >= 1) ? true : false;&#xD;
-    double floorAreaTerrace = (terrace) ? simulateRandomDraw(15d, 2d) : 0;&#xD;
-    int nbMinNight = (int) (Math.random() * 8);&#xD;
-    int averageRoomArea = (int) (10 + (Math.random() * 20));&#xD;
-    int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 0);&#xD;
-    double pricePerMeterSquared = simulateRandomDraw(8d, 3d);&#xD;
-    double pricePerNight = floorArea * pricePerMeterSquared;&#xD;
-    int nbSleeping = ((int) (1 + Math.random() * 4)) * nbBedrooms;&#xD;
-    int nbBathrooms = (int) (Math.random() * nbBedrooms);&#xD;
-    Apartment.Builder builder = new Apartment.Builder();&#xD;
-    builder.setFloorArea(floorArea);&#xD;
-    builder.setAddress(address.get(m));&#xD;
-    builder.setTitle(titles.get(n));&#xD;
-    builder.setNbBedrooms(nbBedrooms);&#xD;
-    builder.setNbSleeping(nbSleeping);&#xD;
-    builder.setNbBathrooms(nbBathrooms);&#xD;
-    builder.setTerrace(terrace);&#xD;
-    builder.setPricePerNight(pricePerNight);&#xD;
-    builder.setNbMinNight(nbMinNight);&#xD;
-    builder.setFloorAreaTerrace(floorAreaTerrace);&#xD;
-    Apartment a = builder.build();&#xD;
-    LOGGER.info(&quot;Generation done successfully&quot;);&#xD;
-    return a;&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_jBscUHEvEeq9ooUMj2JdaQ" name="simulateRandomDraw" specification="_jBOiQHEvEeq9ooUMj2JdaQ">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    double draw = random.nextGaussian();&#xD;
-    return deviation * draw + mean;&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_jCMyoXEvEeq9ooUMj2JdaQ" name="main" specification="_jB53sHEvEeq9ooUMj2JdaQ">
-                      <language>JAVA</language>
-                      <body>&#xD;
-    ApartmentGenerator generator = new ApartmentGenerator();&#xD;
-    generator.generateRandomApartment();&#xD;
-</body>
-                    </ownedBehavior>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_i_3QUnEvEeq9ooUMj2JdaQ" name="ApartmentGenerator" visibility="public" method="_jAcfIHEvEeq9ooUMj2JdaQ"/>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_jAilwHEvEeq9ooUMj2JdaQ" name="generateRandomApartment" visibility="public" method="_jA7nUHEvEeq9ooUMj2JdaQ">
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jA0SkHEvEeq9ooUMj2JdaQ" type="__C4EkHEuEeq9ooUMj2JdaQ" direction="return"/>
-                    </ownedOperation>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_jBOiQHEvEeq9ooUMj2JdaQ" name="simulateRandomDraw" visibility="private" method="_jBscUHEvEeq9ooUMj2JdaQ">
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jBOiQXEvEeq9ooUMj2JdaQ" direction="return">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
-                      </ownedParameter>
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jBOiQnEvEeq9ooUMj2JdaQ" name="mean">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
-                      </ownedParameter>
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jBUo4HEvEeq9ooUMj2JdaQ" name="deviation">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
-                      </ownedParameter>
-                    </ownedOperation>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_jB53sHEvEeq9ooUMj2JdaQ" name="main" visibility="public" isStatic="true" method="_jCMyoXEvEeq9ooUMj2JdaQ">
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jB_-UHEvEeq9ooUMj2JdaQ" name="args" type="__EuesHEuEeq9ooUMj2JdaQ">
-                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jCGsAHEvEeq9ooUMj2JdaQ"/>
-                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jCMyoHEvEeq9ooUMj2JdaQ" value="*"/>
-                      </ownedParameter>
-                    </ownedOperation>
                   </packagedElement>
                   <packagedElement xmi:type="uml:Dependency" xmi:id="_5s-IIHE0Eeq9ooUMj2JdaQ" client="_i_F0QHEvEeq9ooUMj2JdaQ" supplier="__C4EkHEuEeq9ooUMj2JdaQ"/>
                 </packagedElement>
