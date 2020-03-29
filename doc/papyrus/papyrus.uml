@@ -30,19 +30,6 @@
           </packagedElement>
         </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_jdz-UHE0Eeq9ooUMj2JdaQ" name="io">
-        <packagedElement xmi:type="uml:Package" xmi:id="_jd6E8HE0Eeq9ooUMj2JdaQ" name="github">
-          <packagedElement xmi:type="uml:Package" xmi:id="_jd6E8XE0Eeq9ooUMj2JdaQ" name="oliviercailloux">
-            <packagedElement xmi:type="uml:Package" xmi:id="_jd6E8nE0Eeq9ooUMj2JdaQ" name="y2018">
-              <packagedElement xmi:type="uml:Package" xmi:id="_jd6E83E0Eeq9ooUMj2JdaQ" name="apartments">
-                <packagedElement xmi:type="uml:Package" xmi:id="_jd6E9HE0Eeq9ooUMj2JdaQ" name="valuefunction">
-                  <packagedElement xmi:type="uml:Class" xmi:id="_jeALkHE0Eeq9ooUMj2JdaQ" name="ApartmentValueFunction"/>
-                </packagedElement>
-              </packagedElement>
-            </packagedElement>
-          </packagedElement>
-        </packagedElement>
-      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_gpoyMGrAEeqG6NsufvOKcA" name="diagrams">
       <packagedElement xmi:type="uml:Package" xmi:id="_i7vXsGrAEeqG6NsufvOKcA" name="September 2019">
@@ -3539,6 +3526,5 @@
   <PapyrusJava:External xmi:id="_Y7cBMHEzEeq9ooUMj2JdaQ" name="java.io.File" base_Classifier="_Y7Pz8XEzEeq9ooUMj2JdaQ"/>
   <PapyrusJava:External xmi:id="_Y71p0HEzEeq9ooUMj2JdaQ" name="org.eclipse.swt.widgets.Composite" base_Classifier="_Y7o1gHEzEeq9ooUMj2JdaQ"/>
   <PapyrusJava:External xmi:id="_Y8yFAHEzEeq9ooUMj2JdaQ" name="org.eclipse.swt.graphics.Color" base_Classifier="_Y8g_QHEzEeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="_jeLxwHE0Eeq9ooUMj2JdaQ" name="io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction" base_Classifier="_jeALkHE0Eeq9ooUMj2JdaQ"/>
   <PapyrusJava:External xmi:id="_jhgykHE0Eeq9ooUMj2JdaQ" name="java.io.IOException" base_Classifier="_jhOesHE0Eeq9ooUMj2JdaQ"/>
 </xmi:XMI>
