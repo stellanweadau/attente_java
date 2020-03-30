@@ -1,9 +1,17 @@
 = Documentation
 
+== Diagrams UML
+
+For an overview of all diagrams, see link:diagram.adoc[here]
+
 == Existing project (Before february 2020)
 
 A description of the project before our works can be found link:existing-project.adoc[here]
 
-== Iteration 1 
+== Iteration 1
 
 You can see a description of processes and program by following this link:It1.adoc[link]
+
+== Iteration 2
+
+You can see a description of processes and program by following this link:It2.adoc[link]

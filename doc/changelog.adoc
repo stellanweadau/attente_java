@@ -1,1 +1,3 @@
 = Changelog
+
+This file notes all the modifications (a minimum important) made on the java code

@@ -1,0 +1,46 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:     
+:imagesdir: img/
+:toc:
+:toc-placement!:
+
+= Development
+
+toc::[]
+
+== Users roles
+
+We decided to give a goal to our app and to define clearly the users of it. It will help us to choose which functionalities to improve in the next iteration. +
+Indeed, the current state of the application is not obvious: it is difficult to see who will use the app and the uses of it.  
+
+So, we decided to clarify these two points. +
+First, let’s talk about the goal of the app. We will try to develop this app so that it will be used for long-term apartment’s rental. +
+Users will be able to see the different apartments and to select them according to the most important criteria for them. That led us to the second point: for whom will be this app designed. +
+We decided that the main users of this app will be the tenants. The apartment’s owner won’t interact with the app. To put the apartments online and eventually to modify them, we add a second actor in our model : a manager. +
+The role of this actor is basically to put the apartments online, to modify them if needed and to delete them if a place is rented for example.
+
+== API
+
+=== Address generation for random apartment
+
+This section deals with the generation of random apartments.
+
+Until now, the generation of addresses is done using a hard-stored address list. Then there is a random draw on this list.
+
+The challenge is then to generate addresses randomly as a function of latitude and longitude.
+
+[NOTE]
+====
+Longitude and latitude are restricted in a geographic area. +
+For example for Paris: lat = 48.8534, lon = 2.3488
+====
+
+An example of such an API is available link:https://avim.eu/real-random-address/api[here]
+
+These changes will be made in iteration 2 java in the `generateRandomApartment()` function which is in the `Apartment` class. +
+First, we will implement the API expressed above. Then in a second step, we will directly implement the logic in our Java code.
+
+Indeed, the logic will be to generate a longitude/latitude as explained above. Then reverse the longitude and latitude using the link:https://geo.api.gouv.fr/adresse[government API] by calling a json parser

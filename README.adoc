@@ -1,17 +1,21 @@
-= Apartments
-
 :gitHubUserName: oliviercailloux
 :groupId: io.github.{gitHubUserName}
 :artifactId: apartments
 :repository: Apartments
+:toc:
+:toc-placement!:
+
+= Apartments
 
 A Java project developed by students during the link:https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in link:http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
 
 The code is hereby published under the MIT License, with their permission.
 
-== Iteration
+toc::[]
 
-=== Iteration 1 -- 16/03/2020
+== Java iteration
+
+=== Iteration 1
 
 For information on team, see link:doc/It1.adoc[here]
 
@@ -71,15 +75,21 @@ The group will also have to build the Apartment factory. We will replace the fun
 == Contributors
 
 === 2020
-
+.See contributors
+[%collapsible]
+====
 - link:https://github.com/EtienneCartier[EtienneCartier]
 - link:https://github.com/MorganeFt[MorganeFt]
 - link:https://github.com/GabG02[GabG02]
 - link:https://github.com/clemencecousin[clemencecousin]
 - link:https://github.com/av1m[av1m]
+====
 
 === Old
 
+.See contributors
+[%collapsible]
+====
 - link:https://github.com/DAYAUX[DAYAUX]
 - link:https://github.com/Deeplygends[Deeplygends]
 - link:https://github.com/Amioplk[Amioplk]
@@ -92,7 +102,7 @@ The group will also have to build the Apartment factory. We will replace the fun
 - link:https://github.com/SandraSalame[SandraSalame]
 - link:https://github.com/aitalibraham[aitalibraham]
 - link:https://github.com/oliviercailloux[oliviercailloux]
-
+====
 
 == License
 

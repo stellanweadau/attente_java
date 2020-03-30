@@ -11,11 +11,35 @@
 
 toc::[]
 
-NOTE: "Open Arrow" arrows appear in white in diagrams
+== Diagram
+
+All diagrams of the existing project have been grouped in link:diagram.adoc#3-diagrams-of-the-existing-project[this section]
+
+== Users roles
+
+[WARNING]
+====
+Users roles have been defined link:development.adoc#users-roles[here]
+====
+
+The general use case has been designed in such a way that there is an owner and a tenant. In this sense, during the realization of this one we found that there was no real actor in this application
+
+In other words, the current application has no real user. These are just features developed with no real link.
+
+In this sense, we could consider the creation of actors: a tenant and an owner
+
+Another solution would be to say that it is only a manager (who plays the role of owner and tenant)
+
 
 == Main (executable) classes
 
 === AskOpinionForUtility
+
+.see diagram
+[%collapsible]
+====
+image::it1/it1-usecase-askopinionforutility.png[Diagram ask opinion for utility]
+====
 
 *Effective version:*
 
@@ -57,6 +81,12 @@ This class belongs to the `apartments.gui` package and extends the class `FormAp
 This class allows us to create the window we previously saw, to deal with several mistakes we could have and to save the created and modified apartments.
 
 === CreateApartmentGUI
+
+.see diagram
+[%collapsible]
+====
+image::it2/it2-usecase-createapartment.png[Diagram create apartment]
+====
 
 *Effective version:*
 
@@ -126,15 +156,16 @@ In this sense, we call a method of the class `ReadApartmentsXMLFormat` which con
 
 This class will evolve because the apartments are stored in XML format, and one of the needs is to migrate from XML format to JSON format
 
-== Current code organization
+== Current code
 
-=== Code structure
+=== Code Organization
 
 The actual program is divided in few packages:
 
 * `Apartment`: This part explains the model of an apartment and creation methods of apartments. We can imagine making the generator class abstract because we don’t need to interact with values of these objects. 
 
-* `valueFunction`: This package includes thoughts about calculating the satisfaction of a property's criteria for a customer 
+* `valueFunction`: This package includes thoughts about calculating the satisfaction of a property's criteria for a customer +
+link:#valuefunction-package[See more information]
 
 * `utils`: This package combines all functionality which can help all classes of the program. All classes, global logic method and helper class, are organized in this packages package. In fact, if we want to change well-known method (like a date comparator) to adapt it to our needs, we can do it here.
 
@@ -152,24 +183,37 @@ The actual program is divided in few packages:
 
 * `ReadApartment`: the class which compose this package is ReadApartmentsXMLFormat and allows us to get an apartment form an XML file. We can imagine making this class an abstract and the operations static because we don’t have to keep in memory immediately treated data. Another improvement idea can be to move this class in the `utils` package. 
 
-== Class Diagram
+=== valueFunction package
 
-image::it1-class-diagram.png[]
+The valueFunction package gathers all the functions which attribute a value to each apartment according to some criteria. +
+The functions of this package are called by AskOpinionForUtilities class. Apartments are sorted by value to show the user the apartments which are the most likely to suit them.
 
-This class diagram led us to think about some fact. First of all, we can see a lot of packages containing only one class. These classes are used once or twice in the program. A first idea can be to join all these classes into the `utils` package and make them abstract with static operation if it’s possible. 
+* *`PartialValueFunction<T>` interface*
++
+This interface attributes a subjective value to a parameter. This is interface extends the class Function<T, Double> which transform the generic type in input to a double; see link:https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html[here]
++
+This interface uses a getSubjectiveValue(T objectiveData) method and can throws an IllegalArgumentException. objectiveData is the parameter on which we want to get the subjective value between 0 and 1.
 
-We also can see 3 important parts of the program. The `GUI`, `Value Fonction` and `Apartment`
+* *`ApartmentValueFunction` class*
++
+This class create an object `ApartmentValueFunction` from the different classes in the package. Every criterion, such as the number of bedrooms, the presence of a terrace or the TV, etc., is associated to a value and a weight. +
+The default value for the criterion is 0 and its default weight is 0.1. At the end, the ApartmentValueFunction method returns the value of the apartment, that is the weighted sum of all criterion value divided by the sum of all weight. It’s a basic weighted average. 
 
-We had problems to display arrow in the Papyrus model. So, in the PNG file, we had manually open arrow for each dependancy. 
+* *`LinearValueFunction` class & `ReversedLinearValueFunction` class* 
++
+The tricky part is that you can’t ask the user to attribute a value between 0 and 1. +
+As we saw, `AskOpinionForUtilities` only ask the user how many bedrooms he desires or the surface he would like to have. The `LinearValueFunction` class transforms a number (for example 5 bedrooms) into a value between 0 and 1 using linear interpolation
++
+`ReversedLinearValueFunction` is only used for the minimal number of nights. `LinearValueFunction` is for the floor area and the price per night. 
 
-== Futur general improvement
+* *`BooleanValueFunction` class*
++
+`AskOpinionForUtilities` asks the user if he wants the WiFi, a TV or a terrace. According to the user responses, `BooleanValueFunction` attributes the value 1 if the user wants this 0 else.
 
-=== Users roles
-
-The general use case has been designed in such a way that there is an owner and a tenant. In this sense, during the realization of this one we found that there was no real actor in this application
-
-In other words, the current application has no real user. These are just features developed with no real link.
-
-In this sense, we could consider the creation of actors: a tenant and an owner
-
-Another solution would be to say that it is only a manager (who plays the role of owner and tenant)
+* *Elements of improvement* 
++
+We could find a way to simplify the attribution of a value to an apartment because every time we use `AskOpinionForUtilities`, the value of each apartment is once again calculated. 
++
+Maybe we could also lighten the `ApartmentValueFunction` which is very long and redundant. 
++
+Improving our way to calculate the “value” of an apartment according to criteria could be improved to propose the user better apartments. 

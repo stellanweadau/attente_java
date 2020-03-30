@@ -41,17 +41,17 @@ toc::[]
 * link:existing-project.adoc#createapartmentgui[Creation of an apartment]
 
 2. Documentation:
-
++
 Explanation of the entry points of the application and the different main (executable) classes
-
++
 * link:existing-project.adoc#askopinionforutility[AskOpinionForUtility]
 * link:existing-project.adoc#layoutapartmentgui[LayoutApartmentGUI]
 * link:existing-project.adoc#modifyapartmentgui[ModifyApartmentGUI]
 * link:existing-project.adoc#apartementgenerator[ApartementGenerator]
 * link:existing-project.adoc#readtwoapartmentstest[ReadTwoApartmentsTest]
-
++
 Finally, a last part which deals with the general functioning of users in the application (which has not been seen until now by former developers)
-
++
 * link:existing-project.adoc#users-roles[Users roles]
 
 == Team 2

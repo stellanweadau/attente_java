@@ -1,0 +1,130 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:     
+:imagesdir: img/
+:toc:
+:toc-placement!:
+:lastSimplifiedDiagram: state/09-2019_class-diagram-global-simplified.png
+
+= UML Diagrams
+
+toc::[]
+
+NOTE: Some "Open Arrow" arrows appear in white in diagrams
+
+== 1. Diagrams showing the application in real time
+
+* link:img/{lastSimplifiedDiagram}[Last **Simplified** class diagram] 
++
+.see diagram
+[%collapsible]
+====
+image::{lastSimplifiedDiagram}[Last simplified class diagram]
+====
+
+* Older versions are available in  link:img/state/[this directory]
+
+== 2. Diagrams documenting future improvements
+
+=== 2.1 Uses cases
+
+=== 2.2 Class
+
+* "Before/After" between the existing project and iteration 1 : simplified diagram
++
+.see diagram
+[%collapsible]
+====
+*BEFORE*
+
+image::it2/it2-class-diagram-before-first-iteration.png[Before IT1 - JAVA]
+
+*AFTER*
+
+image::it2/it2-class-diagram-after-first-iteration.png[AFTER IT1 - JAVA]
+====
++
+.see documentation
+[%collapsible]
+====
+Just above is a view of the current state of the Apartment Class that will be modified during the first iteration. +
+The goal of this iteration is to implement an Apartment Factory that will be able to generate Apartment from scratch randomly or not, and it will also be able to generate Apartments form JSON files.
+
+In order to add this compatibility with JSON files, we will add a new class in the Utils package to deal with the parsing end conversion to JSON. +
+This new class, JsonConvert, will allow us in the long term, when we will be sure of the strength of the JSON storage of the Apartment, to get rid of the storage of Apartments with properties files that is currently used by the application. +
+But in a fisrt time, we will keep a coexistence of the XML storage and JSON storage.
+
+Finnally, the replacement of the Apartment Generator by the new Apartment Factory will force us to add the former dependencies it had with the GUI package. 
+====
+
+== 3. Diagrams of the existing project
+
+=== 3.1 Uses cases
+
+* General : Use of an apartment rental platform
++
+.see diagram
+[%collapsible]
+====
+image::it2/it2-usecase-global.png[General use cases IT 1]
+====
++
+.see documentation
+[%collapsible]
+====
+As the main user of the application will be the tenants (see link:development.adoc#users-roles[users roles]), we have identified several actions that the tenants will be able to do. 
+
+The main use case of the application will then be to look for an apartment that the user of the app will rent for a long period of time. The user, during his/her research, will be able to indicate his/her preferences (for example, the user is looking for an apartment with a terrace) and to obtain a sorted list of apartments after filling all the criteria. The first apartment in the list will be the best match between the characteristics of the location and the user’s criteria. 
+
+We can also imagine other general use case such as saving the user’s favourite apartments in a list and consult them or a chat functionality which will allow the users to talk with the manager and to ask questions about the apartments.
+====
+
+* link:existing-project.adoc#askopinionforutility[Ask opinion for utility]
++
+.see diagram
+[%collapsible]
+====
+image::it1/it1-usecase-askopinionforutility.png[AskOpinionForUtility use case]
+====
++
+.link:existing-project.adoc#askopinionforutility[see documentation]
+[%collapsible]
+====
+link:existing-project.adoc#askopinionforutility[Click here to see documentation about AskOpinionForUtity]
+====
+
+* link:existing-project.adoc#createapartmentgui[Creation of an apartment]
++
+.see diagram
+[%collapsible]
+====
+image::it2/it2-usecase-createapartment.png[create an apartment use case]
+====
++
+.link:existing-project.adoc#createapartmentgui[see documentation]
+[%collapsible]
+====
+link:existing-project.adoc#createapartmentgui[Click here to see documentation about CreateApartment]
+====
+
+=== 3.2 Class
+
+* General : not simplified
++
+.see diagram
+[%collapsible]
+====
+image::it1/it1-class-diagram.png[general class diagram (not simplified)]
+====
++
+.see documentation
+[%collapsible]
+====
+This class diagram led us to think about some fact. First of all, we can see a lot of packages containing only one class. These classes are used once or twice in the program. A first idea can be to join all these classes into the `utils` package and make them abstract with static operation if it’s possible. 
+
+We also can see 3 important parts of the program. The `GUI`, `Value Fonction` and `Apartment`
+
+We had problems to display arrow in the Papyrus model. So, in the PNG file, we had manually open arrow for each dependancy. 
+====
