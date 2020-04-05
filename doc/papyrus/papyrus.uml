@@ -39,7 +39,7 @@
         </ownedComment>
         <packagedElement xmi:type="uml:Package" xmi:id="_2RqOEGrBEeqG6NsufvOKcA" name="UCD CreateApartment">
           <packagedElement xmi:type="uml:Interaction" xmi:id="_osnYYGSlEeqldqZ7K2B8Ig" name="CreateApartment">
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_ttc1AGSlEeqldqZ7K2B8Ig" name="CreateApartment">
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_ttc1AGSlEeqldqZ7K2B8Ig" name="Fill fields">
               <ownedUseCase xmi:type="uml:UseCase" xmi:id="_wQhOsGSlEeqldqZ7K2B8Ig" name="Fill the mandatory fields">
                 <ownedUseCase xmi:type="uml:UseCase" xmi:id="_2CmiEGSlEeqldqZ7K2B8Ig" name="Fill the &quot;Title&quot; field"/>
                 <ownedUseCase xmi:type="uml:UseCase" xmi:id="_5Cv5UGSlEeqldqZ7K2B8Ig" name="Fill the &quot;Address&quot; field"/>
