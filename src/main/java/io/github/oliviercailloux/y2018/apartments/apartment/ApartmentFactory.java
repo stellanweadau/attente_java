@@ -9,6 +9,8 @@ import java.util.Random;
  */
 public abstract class ApartmentFactory {
 	
+	private static Random r = new Random();  
+	
 	/**
 	 * The function aims to build a new apartment when all the characteristics are known
 	 *
@@ -58,17 +60,17 @@ public abstract class ApartmentFactory {
 		
 		double floorArea = simulateRandomDraw(65d, 21d);
 		String address = "2 avenue Pasteur 94160 Saint-mandé";
-		int nbBedrooms = Math.max(((int) (floorArea / ((int) (10 + Math.random() * 20))) - 1), 0);
-		int nbSleeping = ((int) (1 + Math.random() * 4)) * nbBedrooms;
-		int nbBathrooms = (int) (Math.random() * nbBedrooms);
-		boolean terrace = (Math.random() * 2 >= 1) ? true : false;
+		int nbBedrooms = Math.max(((int) (floorArea / (10 + r.nextInt(20))) - 1), 0);
+		int nbSleeping = (1 + r.nextInt(4)) * nbBedrooms;
+		int nbBathrooms = 1 + r.nextInt(nbBedrooms);
+		boolean terrace = Math.random() >= 0.5;
 		double floorAreaTerrace = (terrace) ? simulateRandomDraw(15d, 2d) : 0;
-		String title = "Location Apartement "+(int)(Math.random()*1000000);
+		String title = "Location Apartement "+ r.nextInt(1000000);
 		String description = "This apartment has " + nbBedrooms + " bedrooms and a size of " + floorArea + "square meters";
-		boolean wifi = (Math.random() * 2 >= 1) ? true : false;
+		boolean wifi = Math.random() >= 0.5;
 		double pricePerNight = floorArea * simulateRandomDraw(8d,3d);
-		boolean tele = (Math.random() * 2 >= 1) ? true : false;
-		int nbMinNight = (int)(Math.random()*700);
+		boolean tele = Math.random() >= 0.5;
+		int nbMinNight = r.nextInt(700) + 60;
 		return generateApartment(floorArea,address, nbBedrooms, nbSleeping, nbBathrooms,
 								 terrace, floorAreaTerrace, description,title, 
 								 wifi, pricePerNight,nbMinNight, tele);
@@ -84,8 +86,7 @@ public abstract class ApartmentFactory {
 	 * @return an outcome of the randomized experiment
 	 */
 	private static double simulateRandomDraw(double mean, double deviation) {
-		Random random = new Random();
-		double draw = random.nextGaussian();
+		double draw = r.nextGaussian();
 		return deviation * draw + mean;
 	}
 
