@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.apartment.ApartmentFactory;
 
 /**
  * 
@@ -23,7 +24,6 @@ public class ReadApartmentsXMLFormat {
 	private final static Logger LOGGER = LoggerFactory.getLogger(ReadApartmentsXMLFormat.class);
 
 	public ReadApartmentsXMLFormat() {
-
 		prop = new Properties();
 	}
 
@@ -53,30 +53,21 @@ public class ReadApartmentsXMLFormat {
 			throw new InvalidPropertiesFormatException(
 					"Capital information left for the creation of an Apartment Object");
 		}
-
-		Apartment apartment = new Apartment(Double.parseDouble(prop.getProperty("floorArea")),
-				prop.getProperty("address"), prop.getProperty("title"));
-
-		if (prop.containsKey("description"))
-			apartment.setDescription(prop.getProperty("description"));
-		if (prop.containsKey("nbBathrooms"))
-			apartment.setNbBathrooms(Integer.parseInt(prop.getProperty("nbBathrooms")));
-		if (prop.containsKey("terrace"))
-			apartment.setTerrace(Boolean.valueOf(prop.getProperty("terrace")));
-		if (prop.containsKey("floorAreaTerrace"))
-			apartment.setFloorAreaTerrace(Double.parseDouble(prop.getProperty("floorAreaTerrace")));
-		if (prop.containsKey("wifi"))
-			apartment.setWifi(Boolean.valueOf(prop.getProperty("wifi")));
-		if (prop.containsKey("tele"))
-			apartment.setTele(Boolean.valueOf(prop.getProperty("tele")));
-		if (prop.containsKey("nbSleeping"))
-			apartment.setNbSleeping(Integer.parseInt(prop.getProperty("nbSleeping")));
-		if (prop.containsKey("nbBedrooms"))
-			apartment.setNbBedrooms(Integer.parseInt(prop.getProperty("nbBedrooms")));
-		if (prop.containsKey("pricePerNight"))
-			apartment.setPricePerNight(Double.parseDouble(prop.getProperty("pricePerNight")));
-		if (prop.containsKey("nbMinNight"))
-			apartment.setNbMinNight(Integer.parseInt(prop.getProperty("nbMinNight")));
+		
+		Apartment apartment = ApartmentFactory.generateApartment(
+				Double.parseDouble(prop.getProperty("floorArea")), 
+				prop.getProperty("address"), 
+				prop.containsKey("nbBedrooms")?Integer.parseInt(prop.getProperty("nbBedrooms")):0, 
+				prop.containsKey("nbSleeping")?Integer.parseInt(prop.getProperty("nbSleeping")):0, 
+				prop.containsKey("nbBathrooms")?Integer.parseInt(prop.getProperty("nbBathrooms")):null, 
+				prop.containsKey("terrace")?Boolean.valueOf(prop.getProperty("terrace")):false, 
+				prop.containsKey("floorAreaTerrace")?Double.parseDouble(prop.getProperty("floorAreaTerrace")):0, 
+				prop.containsKey("description")?prop.getProperty("description"):"", 
+				prop.getProperty("title"), 
+				prop.containsKey("wifi")?Boolean.valueOf(prop.getProperty("wifi")):false, 
+				prop.containsKey("pricePerNight")?Double.parseDouble(prop.getProperty("pricePerNight")):0, 
+				prop.containsKey("nbMinNight")?Integer.parseInt(prop.getProperty("nbMinNight")):0,
+				prop.containsKey("tele") && Boolean.valueOf(prop.getProperty("tele")));
 
 		LOGGER.info("Parameters inserted with success in the Apartment Object");
 		LOGGER.info("Leave readApartment method");
