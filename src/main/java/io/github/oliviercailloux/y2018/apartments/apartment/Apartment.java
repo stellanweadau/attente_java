@@ -528,6 +528,21 @@ public class Apartment extends Object {
 			this.apartmentToBuild.terrace = terrace;
 			return this;
 		}
+		
+		public Builder setDescription(String description) {
+			this.apartmentToBuild.setDescription(description);
+			return this;
+		}
+		
+		public Builder setWifi(boolean wifi) {
+			this.apartmentToBuild.setWifi(wifi);
+			return this;
+		}
+		
+		public Builder setTele(boolean tele) {
+			this.apartmentToBuild.setTele(tele);
+			return this;
+		}
 	}
 
 }
