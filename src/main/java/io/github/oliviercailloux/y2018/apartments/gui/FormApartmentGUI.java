@@ -171,6 +171,7 @@ public class FormApartmentGUI {
 					title.getText(), 
 					wifi.getSelection(), 
 					Double.parseDouble(pricePerNight.getText()), 
+					0,
 					tele.getSelection());
 			write(apart);
 			loadMessage(MessageInfo.SAVED, "Apartment have been saved !");
