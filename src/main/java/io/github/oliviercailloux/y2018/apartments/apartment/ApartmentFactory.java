@@ -2,17 +2,20 @@ package io.github.oliviercailloux.y2018.apartments.apartment;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 
+import java.util.ArrayList;
 import java.util.Random;
 
+// TODO: Auto-generated Javadoc
 /**
  * A factory for creating Apartment objects.
  */
 public abstract class ApartmentFactory {
 	
+	/** The r. */
 	private static Random r = new Random();  
 	
 	/**
-	 * The function aims to build a new apartment when all the characteristics are known
+	 * The function aims to build a new apartment when all the characteristics are known.
 	 *
 	 * @param floorArea the floor area of the apartment built
 	 * @param address the address of the apartment built
@@ -27,7 +30,6 @@ public abstract class ApartmentFactory {
 	 * @param pricePerNight gives the price per night spent in the apartment
 	 * @param nbMinNight indicate the number minimum of night to locate an apartment
 	 * @param tele says whether the apartment has a TV or not
-	 * 
 	 * @return the apartment built with the previous characteristics
 	 */
 	public static Apartment generateApartment(double floorArea, String address, int nbBedrooms,int nbSleeping, 
@@ -75,6 +77,21 @@ public abstract class ApartmentFactory {
 								 terrace, floorAreaTerrace, description,title, 
 								 wifi, pricePerNight,nbMinNight, tele);
 
+	}
+	
+	/**
+	 * This function aims to generate a list of random apartments
+	 *
+	 * @param nbApartment the number of apartments the list should contains
+	 * @return a list of random apartments of size nbApartment
+	 */
+	public static ArrayList<Apartment> generateRandomApartmentList(int nbApartment) {
+		
+		ArrayList<Apartment> listApartment = new ArrayList<>();
+		for(int i = 0; i < nbApartment ; i++) {
+			listApartment.add(generateRandomApartment());
+		}
+		return listApartment;
 	}
 	
 	/**
