@@ -5,19 +5,17 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import java.util.ArrayList;
 import java.util.Random;
 
-// TODO: Auto-generated Javadoc
 /**
  * A factory for creating Apartment objects.
  */
 public abstract class ApartmentFactory {
 	
-	/** The r. */
-	private static Random r = new Random();  
+	private static Random rand = new Random();  
 	
 	/**
 	 * The function aims to build a new apartment when all the characteristics are known.
 	 *
-	 * @param floorArea the floor area of the apartment built
+	 * @param floorArea <i>double</i> the floor area of the apartment built
 	 * @param address the address of the apartment built
 	 * @param nbBedrooms the number of bedrooms of the apartment built
 	 * @param nbSleeping the maximum number of people who can sleep in this apartment
@@ -62,17 +60,17 @@ public abstract class ApartmentFactory {
 		
 		double floorArea = simulateRandomDraw(65d, 21d);
 		String address = "2 avenue Pasteur 94160 Saint-mandé";
-		int nbBedrooms = Math.max(((int) (floorArea / (10 + r.nextInt(20))) - 1), 0);
-		int nbSleeping = (1 + r.nextInt(4)) * nbBedrooms;
-		int nbBathrooms = 1 + r.nextInt(nbBedrooms);
+		int nbBedrooms = Math.max(((int) (floorArea / (10 + rand.nextInt(20))) - 1), 0);
+		int nbSleeping = (1 + rand.nextInt(4)) * nbBedrooms;
+		int nbBathrooms = 1 + rand.nextInt(nbBedrooms);
 		boolean terrace = Math.random() >= 0.5;
 		double floorAreaTerrace = (terrace) ? simulateRandomDraw(15d, 2d) : 0;
-		String title = "Location Apartement "+ r.nextInt(1000000);
+		String title = "Location Apartement "+ rand.nextInt(1000000);
 		String description = "This apartment has " + nbBedrooms + " bedrooms and a size of " + floorArea + "square meters";
 		boolean wifi = Math.random() >= 0.5;
 		double pricePerNight = floorArea * simulateRandomDraw(8d,3d);
 		boolean tele = Math.random() >= 0.5;
-		int nbMinNight = r.nextInt(700) + 60;
+		int nbMinNight = rand.nextInt(700) + 60;
 		return generateApartment(floorArea,address, nbBedrooms, nbSleeping, nbBathrooms,
 								 terrace, floorAreaTerrace, description,title, 
 								 wifi, pricePerNight,nbMinNight, tele);
@@ -103,7 +101,7 @@ public abstract class ApartmentFactory {
 	 * @return an outcome of the randomized experiment
 	 */
 	private static double simulateRandomDraw(double mean, double deviation) {
-		double draw = r.nextGaussian();
+		double draw = rand.nextGaussian();
 		return deviation * draw + mean;
 	}
 

@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.DOMException;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.apartment.ApartmentFactory;
 import io.github.oliviercailloux.y2018.apartments.apartment.ApartmentGenerator;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunction;
@@ -147,12 +148,7 @@ public class LayoutApartmentGUI {
 	 */
 	private static ArrayList<Apartment> getListSorted(ApartmentValueFunction avf) {
 
-		ArrayList<Apartment> appart = new ArrayList<Apartment>();
-		for (int i = 0; i < 50; ++i) {
-			ApartmentGenerator generator = new ApartmentGenerator();
-			Apartment a = generator.generateRandomApartment();
-			appart.add(a);
-		}
+		ArrayList<Apartment> appart = ApartmentFactory.generateRandomApartmentList(50);
 
 		appart.sort((Apartment c, Apartment d) -> {
 			return - Double.compare(avf.getSubjectiveValue(c), avf.getSubjectiveValue(d));
