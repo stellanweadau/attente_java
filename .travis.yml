@@ -1,9 +1,9 @@
 cache: 
   directories: 
     - $HOME/.m2
-dist: trusty
+dist: xenial
 git: 
   depth: 1
 jdk: 
-  - openjdk8
+  - openjdk11
 language: java
