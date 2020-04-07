@@ -341,7 +341,7 @@ public class Apartment extends Object {
 	 * @param floorArea is a real number superior or equal to zero
 	 * @return
 	 */
-	public void setFloorArea(double floorArea) {
+	private void setFloorArea(double floorArea) {
 		checkArgument(floorArea >= 0, "The floor area should not be negative");
 		this.floorArea = floorArea;
 		LOGGER.info("The floor area has been set to " + floorArea);
@@ -350,7 +350,7 @@ public class Apartment extends Object {
 	/**
 	 * @param address is a string of characters
 	 */
-	public void setAddress(String address) {
+	private void setAddress(String address) {
 		checkArgument(address != "", "The address should not be empty");
 		this.address = address;
 		LOGGER.info("The address has been set to " + address);
@@ -359,7 +359,7 @@ public class Apartment extends Object {
 	/**
 	 * @param nbBedrooms is an integer superior or equal to zero
 	 */
-	public void setNbBedrooms(int nbBedrooms) {
+	private void setNbBedrooms(int nbBedrooms) {
 		checkArgument(nbBedrooms >= 0, "The number of Bedrooms can not be negative");
 		this.nbBedrooms = nbBedrooms;
 		LOGGER.info("The number of bathrooms has been set to " + nbBedrooms);
@@ -368,7 +368,7 @@ public class Apartment extends Object {
 	/**
 	 * @param nbSleepings is an integer superior or equal to zero
 	 */
-	public void setNbSleeping(int nbSleeping) {
+	private void setNbSleeping(int nbSleeping) {
 		checkArgument(nbSleeping >= 0, "The accomodation capacity can not be negative");
 		this.nbSleeping = nbSleeping;
 		LOGGER.info("The number of sleepings has been set to " + nbSleeping);
@@ -377,7 +377,7 @@ public class Apartment extends Object {
 	/**
 	 * @param nbBathrooms is an integer superior or equal to zero
 	 */
-	public void setNbBathrooms(int nbBathrooms) {
+	private void setNbBathrooms(int nbBathrooms) {
 		checkArgument(nbBathrooms >= 0, "The number of bathrooms can not be negative");
 		this.nbBathrooms = nbBathrooms;
 		LOGGER.info("The number of bathrooms has been set to " + nbBathrooms);
@@ -386,7 +386,7 @@ public class Apartment extends Object {
 	/**
 	 * @param terrace is a boolean (true/false)
 	 */
-	public void setTerrace(boolean terrace) {
+	private void setTerrace(boolean terrace) {
 		this.terrace = terrace;
 		LOGGER.info("terrace has been set to " + terrace);
 	}
@@ -395,7 +395,7 @@ public class Apartment extends Object {
 	 * @param floorAreaTerrace is a real number superior or equal to zero, it only
 	 *                         works if terrace = true (use setTerrace)
 	 */
-	public void setFloorAreaTerrace(double floorAreaTerrace) {
+	private void setFloorAreaTerrace(double floorAreaTerrace) {
 		checkArgument((this.terrace == false && floorAreaTerrace == 0) || (this.terrace == true),
 				"The terrace can not have a floor area if it doesn't exists");
 		checkArgument(floorAreaTerrace >= 0, "The floor area of the terrace can not be negative");
@@ -406,7 +406,7 @@ public class Apartment extends Object {
 	/**
 	 * @param description is a string of characters
 	 */
-	public void setDescription(String description) {
+	private void setDescription(String description) {
 		this.description = description;
 		LOGGER.info("The description has been set to " + description);
 	}
@@ -414,7 +414,7 @@ public class Apartment extends Object {
 	/**
 	 * @param title is a string of characters
 	 */
-	public void setTitle(String title) {
+	private void setTitle(String title) {
 		checkArgument(title != "", "The title should not be empty");
 		this.title = title;
 		LOGGER.info("The title has been set to " + floorArea);
@@ -423,7 +423,7 @@ public class Apartment extends Object {
 	/**
 	 * @param wifi is a boolean (true/false)
 	 */
-	public void setWifi(boolean wifi) {
+	private void setWifi(boolean wifi) {
 		this.wifi = wifi;
 		LOGGER.info("The wifi has been set to " + wifi);
 	}
@@ -431,7 +431,7 @@ public class Apartment extends Object {
 	/**
 	 * @param pricePerNight is a real number superior or equal to zero
 	 */
-	public void setPricePerNight(double pricePerNight) {
+	private void setPricePerNight(double pricePerNight) {
 		checkArgument(pricePerNight >= 0, "The price per night can not be negative");
 		this.pricePerNight = pricePerNight;
 		LOGGER.info("The price per night has been set to " + pricePerNight);
@@ -440,7 +440,7 @@ public class Apartment extends Object {
 	/**
 	 * @param nbMinNight is an integer superior or equal to zero
 	 */
-	public void setNbMinNight(int nbMinNight) {
+	private void setNbMinNight(int nbMinNight) {
 		checkArgument(nbMinNight >= 0, "The minimum number of nights can not be negative");
 		this.nbMinNight = nbMinNight;
 		LOGGER.info("The number minimum of night has been set to " + nbMinNight);
@@ -449,7 +449,7 @@ public class Apartment extends Object {
 	/**
 	 * @param tele is a boolean (true/false)
 	 */
-	public void setTele(boolean tele) {
+	private void setTele(boolean tele) {
 		this.tele = tele;
 		LOGGER.info("The tele has been set to " + tele);
 	}
