@@ -10,25 +10,27 @@ import java.util.Random;
  */
 public abstract class ApartmentFactory {
 	
-	private static Random rand = new Random();  
+	private static Random rand = new Random();
+	//private static String urlAddress;
 	
 	/**
 	 * The function aims to build a new apartment when all the characteristics are known.
 	 *
 	 * @param floorArea <i>double</i> the floor area of the apartment built
-	 * @param address the address of the apartment built
-	 * @param nbBedrooms the number of bedrooms of the apartment built
-	 * @param nbSleeping the maximum number of people who can sleep in this apartment
-	 * @param nbBathrooms the number of bathrooms of the apartment built
-	 * @param terrace says whether the apartment has a terrace or not
-	 * @param floorAreaTerrace gives the size of the terrace
-	 * @param description a description of the apartment
-	 * @param title gives the title of the announce
-	 * @param wifi says whether the apartment has the wifi or not
-	 * @param pricePerNight gives the price per night spent in the apartment
-	 * @param nbMinNight indicate the number minimum of night to locate an apartment
-	 * @param tele says whether the apartment has a TV or not
-	 * @return the apartment built with the previous characteristics
+	 * @param address <i>String</i> the address of the apartment built
+	 * @param nbBedrooms <i>int</i> the number of bedrooms of the apartment built
+	 * @param nbSleeping <i>int</i> the maximum number of people who can sleep in this apartment
+	 * @param nbBathrooms <i>int</i> the number of bathrooms of the apartment built
+	 * @param terrace <i>boolean</i> says whether the apartment has a terrace or not
+	 * @param floorAreaTerrace <i>double</i> gives the size of the terrace
+	 * @param description <i>String</i> a description of the apartment
+	 * @param title <i>String</i> gives the title of the announce
+	 * @param wifi <i>boolean</i> says whether the apartment has the wifi or not
+	 * @param pricePerNight <i>double</i> gives the price per night spent in the apartment
+	 * @param nbMinNight <i>int</i> indicate the number minimum of night to locate an apartment
+	 * @param tele <i>boolean</i> says whether the apartment has a TV or not
+	 * 
+	 * @return <i>Apartment</i> the apartment built with the previous characteristics
 	 */
 	public static Apartment generateApartment(double floorArea, String address, int nbBedrooms,int nbSleeping, 
 											  int nbBathrooms, boolean terrace, double floorAreaTerrace, 
@@ -54,7 +56,7 @@ public abstract class ApartmentFactory {
 	/**
 	 * This function aims to generate a new apartment with random characteristics.
 	 *
-	 * @return the apartment built
+	 * @return <i>Apartment</i> the apartment built
 	 */
 	public static Apartment generateRandomApartment() {
 		
@@ -80,8 +82,8 @@ public abstract class ApartmentFactory {
 	/**
 	 * This function aims to generate a list of random apartments
 	 *
-	 * @param nbApartment the number of apartments the list should contains
-	 * @return a list of random apartments of size nbApartment
+	 * @param nbApartment <i>int</i> the number of apartments the list should contains
+	 * @return <i>ArrayList</i> a list of random apartments of size nbApartment 
 	 */
 	public static ArrayList<Apartment> generateRandomApartmentList(int nbApartment) {
 		
@@ -96,13 +98,17 @@ public abstract class ApartmentFactory {
 	 * This function simulates a random draw of a variable, being given its
 	 * expectation and its deviation.
 	 * 
-	 * @param mean gives the mathematical expectation of the variable
-	 * @param deviation is the standard deviation of the variable
-	 * @return an outcome of the randomized experiment
+	 * @param mean <i>double</i> gives the mathematical expectation of the variable
+	 * @param deviation <i>double</i> is the standard deviation of the variable
+	 * @return <i>double</i> an outcome of the randomized experiment
 	 */
 	private static double simulateRandomDraw(double mean, double deviation) {
 		double draw = rand.nextGaussian();
 		return deviation * draw + mean;
 	}
+	
+	//private static String generateRandomAddress() {
+		
+	//}
 
 }
