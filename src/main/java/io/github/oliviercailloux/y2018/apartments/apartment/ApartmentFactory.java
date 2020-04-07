@@ -23,6 +23,7 @@ public abstract class ApartmentFactory {
 	 * @param title gives the title of the announce
 	 * @param wifi says whether the apartment has the wifi or not
 	 * @param pricePerNight gives the price per night spent in the apartment
+	 * @param nbMinNight indicate the number minimum of night to locate an apartment
 	 * @param tele says whether the apartment has a TV or not
 	 * 
 	 * @return the apartment built with the previous characteristics
