@@ -62,21 +62,21 @@ public abstract class ApartmentFactory {
 		
 		double floorArea = simulateRandomDraw(65d, 21d);
 		String address = "2 avenue Pasteur 94160 Saint-mandé";
-		int nbBedrooms = Math.max(((int) (floorArea / (10 + rand.nextInt(20))) - 1), 0);
+		int averageRoomArea = (int) (10 + (Math.random() * 20));
+		int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 1);
 		int nbSleeping = (1 + rand.nextInt(4)) * nbBedrooms;
 		int nbBathrooms = 1 + rand.nextInt(nbBedrooms);
 		boolean terrace = Math.random() >= 0.5;
 		double floorAreaTerrace = (terrace) ? simulateRandomDraw(15d, 2d) : 0;
-		String title = "Location Apartement "+ rand.nextInt(1000000);
+		String title = "Location Apartement "+ rand.nextInt(10000);
 		String description = "This apartment has " + nbBedrooms + " bedrooms and a size of " + floorArea + "square meters";
 		boolean wifi = Math.random() >= 0.5;
-		double pricePerNight = floorArea * simulateRandomDraw(8d,3d);
+		double pricePerNight = floorArea * simulateRandomDraw(11d,3d);
 		boolean tele = Math.random() >= 0.5;
-		int nbMinNight = rand.nextInt(700) + 60;
+		int nbMinNight = rand.nextInt(700) + 1;
 		return generateApartment(floorArea,address, nbBedrooms, nbSleeping, nbBathrooms,
 								 terrace, floorAreaTerrace, description,title, 
 								 wifi, pricePerNight,nbMinNight, tele);
-
 	}
 	
 	/**
@@ -86,7 +86,9 @@ public abstract class ApartmentFactory {
 	 * @return <i>ArrayList</i> a list of random apartments of size nbApartment 
 	 */
 	public static ArrayList<Apartment> generateRandomApartmentList(int nbApartment) {
-		
+		if(nbApartment <=0) {
+			throw new IllegalArgumentException("You must indicate a number of apartments > 0");
+		}
 		ArrayList<Apartment> listApartment = new ArrayList<>();
 		for(int i = 0; i < nbApartment ; i++) {
 			listApartment.add(generateRandomApartment());
@@ -103,12 +105,10 @@ public abstract class ApartmentFactory {
 	 * @return <i>double</i> an outcome of the randomized experiment
 	 */
 	private static double simulateRandomDraw(double mean, double deviation) {
-		double draw = rand.nextGaussian();
+		double draw = Math.abs(rand.nextGaussian());
 		return deviation * draw + mean;
 	}
 	
-	//private static String generateRandomAddress() {
-		
-	//}
+	
 
 }
