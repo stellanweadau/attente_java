@@ -1,14 +1,20 @@
 package io.github.oliviercailloux.y2018.apartments.apartment;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test class for ApartmentFactory
+ * @author Gabriel GUISSET & Clémence COUSIN
+ */
 class ApartmentFactoryTest {
 
+	/**
+	 * Test GenerateApartment function 
+	 * tests the correspondence between the results sent and those recorded
+	 * @author Gabriel GUISSET & Clémence COUSIN
+	 */
 	@Test
 	void testGenerateApartmentFromParameters() {
 		double floorArea = 456.56; 
@@ -43,6 +49,10 @@ class ApartmentFactoryTest {
 		assertEquals(tele, apart.getTele());
 	}
 
+	/**
+	 * this function tests the immutability of an instance of Apartment using
+	 * Method invoke to check the accessibility of setters.
+	 */
 	@Test
 	void testImmutableApartment() {		
 		Apartment apart = ApartmentFactory.generateRandomApartment();
@@ -81,17 +91,21 @@ class ApartmentFactoryTest {
 				()->{apart.getClass().getMethod("setNbMinNight", int.class).invoke(apart,5);  });
 	}
 
+	/**
+	 * This class tests the validity of randomly generated apartment
+	 * by the function generateRandomApartment() used by generateRandomApartmentList()
+	 */
 	@Test
 	void TestGenerateRandomAparmentsList() {
 		int nbAparts = 1000000;
 		List<Apartment> aparts = ApartmentFactory.generateRandomApartmentList(nbAparts);
 		assertEquals(aparts.size(),nbAparts);
 		for(Apartment a : aparts) {
-			assertNotEquals(a.getAddress(), "");
+			assertNotEquals("",a.getAddress());
 			assertNotNull(a.getAddress());
-			assertNotEquals(a.getDescription(), "");
+			assertNotEquals("",a.getDescription() );
 			assertNotNull(a.getDescription());
-			assertNotEquals(a.getTitle(), "");
+			assertNotEquals("",a.getTitle());
 			assertNotNull(a.getTitle());
 			System.out.println("* Floor Area : "+a.getFloorArea());
 			assertTrue(a.getFloorArea()>0);

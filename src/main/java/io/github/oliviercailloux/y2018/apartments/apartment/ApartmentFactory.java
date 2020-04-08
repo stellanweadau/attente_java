@@ -7,11 +7,12 @@ import java.util.Random;
 
 /**
  * A factory for creating Apartment objects.
+ * @author Clémence COUSIN & Gabriel GUISSET 
  */
 public abstract class ApartmentFactory {
 	
 	private static Random rand = new Random();
-	//private static String urlAddress;
+	//private static String urlApiAddress;
 	
 	/**
 	 * The function aims to build a new apartment when all the characteristics are known.
