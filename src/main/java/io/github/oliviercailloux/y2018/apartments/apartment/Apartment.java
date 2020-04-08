@@ -480,52 +480,52 @@ public class Apartment extends Object {
 		}
 
 		public Builder setFloorArea(double floorArea) {
-			this.apartmentToBuild.floorArea = floorArea;
+			this.apartmentToBuild.setFloorArea(floorArea);
 			return this;
 		}
 
 		public Builder setAddress(String address) {
-			this.apartmentToBuild.address = address;
+			this.apartmentToBuild.setAddress(address);
 			return this;
 		}
 
 		public Builder setTitle(String title) {
-			this.apartmentToBuild.title = title;
+			this.apartmentToBuild.setTitle(title);
 			return this;
 		}
 
 		public Builder setNbBedrooms(int nbBedrooms) {
-			this.apartmentToBuild.nbBedrooms = nbBedrooms;
+			this.apartmentToBuild.setNbBedrooms(nbBedrooms);
 			return this;
 		}
 
 		public Builder setNbSleeping(int nbSleeping) {
-			this.apartmentToBuild.nbSleeping = nbSleeping;
+			this.apartmentToBuild.setNbSleeping(nbSleeping);
 			return this;
 		}
 
 		public Builder setNbBathrooms(int nbBathrooms) {
-			this.apartmentToBuild.nbBathrooms = nbBathrooms;
+			this.apartmentToBuild.setNbBathrooms(nbBathrooms);
 			return this;
 		}
 
 		public Builder setFloorAreaTerrace(double floorAreaTerrace) {
-			this.apartmentToBuild.floorAreaTerrace = floorAreaTerrace;
+			this.apartmentToBuild.setFloorAreaTerrace(floorAreaTerrace);
 			return this;
 		}
 
 		public Builder setPricePerNight(double pricePerNight) {
-			this.apartmentToBuild.pricePerNight = pricePerNight;
+			this.apartmentToBuild.setPricePerNight(pricePerNight);
 			return this;
 		}
 
 		public Builder setNbMinNight(int nbMinNight) {
-			this.apartmentToBuild.nbMinNight = nbMinNight;
+			this.apartmentToBuild.setNbMinNight(nbMinNight);
 			return this;
 		}
 
 		public Builder setTerrace(boolean terrace) {
-			this.apartmentToBuild.terrace = terrace;
+			this.apartmentToBuild.setTerrace(terrace);
 			return this;
 		}
 		
