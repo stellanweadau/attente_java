@@ -97,12 +97,14 @@ class ApartmentFactoryTest {
 	 */
 	@Test
 	void TestGenerateRandomAparmentsList() {
-		int nbAparts = 1000000;
+		int nbAparts = 10000;
 		List<Apartment> aparts = ApartmentFactory.generateRandomApartmentList(nbAparts);
 		assertEquals(aparts.size(),nbAparts);
 		for(Apartment a : aparts) {
 			assertNotEquals("",a.getAddress());
 			assertNotNull(a.getAddress());
+			assertTrue(a.getAddress().length()>=12); //Min size of an adress
+			assertTrue(a.getAddress().trim().length()>0);
 			assertNotEquals("",a.getDescription() );
 			assertNotNull(a.getDescription());
 			assertNotEquals("",a.getTitle());
@@ -121,4 +123,6 @@ class ApartmentFactoryTest {
 
 		}
 	}
+	
+	
 }

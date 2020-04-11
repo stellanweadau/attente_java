@@ -2,18 +2,27 @@ package io.github.oliviercailloux.y2018.apartments.apartment;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A factory for creating Apartment objects.
  * @author Clémence COUSIN & Gabriel GUISSET 
  */
 public abstract class ApartmentFactory {
-	
+	private static Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
 	private static Random rand = new Random();
-	//private static String urlApiAddress;
-	
+	private static String urlApiAddress = "https://8n8iajahab.execute-api.us-east-1.amazonaws.com/default/RealRandomAdress";
+
 	/**
 	 * The function aims to build a new apartment when all the characteristics are known.
 	 *
@@ -34,9 +43,9 @@ public abstract class ApartmentFactory {
 	 * @return <i>Apartment</i> the apartment built with the previous characteristics
 	 */
 	public static Apartment generateApartment(double floorArea, String address, int nbBedrooms,int nbSleeping, 
-											  int nbBathrooms, boolean terrace, double floorAreaTerrace, 
-											  String description, String title, boolean wifi, 
-											  double pricePerNight,int nbMinNight, boolean tele) {
+			int nbBathrooms, boolean terrace, double floorAreaTerrace, 
+			String description, String title, boolean wifi, 
+			double pricePerNight,int nbMinNight, boolean tele) {
 		Builder apartBuilder = new Builder();
 		return apartBuilder.setFloorArea(floorArea)
 				.setAddress(address)
@@ -53,14 +62,14 @@ public abstract class ApartmentFactory {
 				.setTele(tele)
 				.build();
 	}
-	
+
 	/**
 	 * This function aims to generate a new apartment with random characteristics.
 	 *
 	 * @return <i>Apartment</i> the apartment built
 	 */
 	public static Apartment generateRandomApartment() {
-		
+
 		double floorArea = simulateRandomDraw(65d, 21d);
 		String address = "2 avenue Pasteur 94160 Saint-mandé";
 		int averageRoomArea = (int) (10 + (Math.random() * 20));
@@ -76,10 +85,10 @@ public abstract class ApartmentFactory {
 		boolean tele = Math.random() >= 0.5;
 		int nbMinNight = rand.nextInt(700) + 1;
 		return generateApartment(floorArea,address, nbBedrooms, nbSleeping, nbBathrooms,
-								 terrace, floorAreaTerrace, description,title, 
-								 wifi, pricePerNight,nbMinNight, tele);
+				terrace, floorAreaTerrace, description,title, 
+				wifi, pricePerNight,nbMinNight, tele);
 	}
-	
+
 	/**
 	 * This function aims to generate a list of random apartments
 	 *
@@ -96,7 +105,7 @@ public abstract class ApartmentFactory {
 		}
 		return listApartment;
 	}
-	
+
 	/**
 	 * This function simulates a random draw of a variable, being given its
 	 * expectation and its deviation.
@@ -109,7 +118,25 @@ public abstract class ApartmentFactory {
 		double draw = Math.abs(rand.nextGaussian());
 		return deviation * draw + mean;
 	}
-	
-	
 
+	private static String getRandomAdress() {
+		//Code from https://www.developpez.net/forums/d1354479/java/general-java/recuperer-reponse-d-adresse-http/ 
+		try(InputStream is = new URL(urlApiAddress).openConnection().getInputStream()) { 
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "utf-8"));   
+			StringBuilder builder = new StringBuilder(); 
+			for(String line = reader.readLine(); line != null; line = reader.readLine()) { 
+				builder.append(line + "\n"); 
+			} 
+			String bodyContent = builder.toString();
+			//End of code picking
+			
+			return JSONConvert.getAdressFromJson(bodyContent); 
+			
+			
+		} catch (MalformedURLException e) {
+			LOGGER.error("Problem while contacting address generator API",e);
+		} catch (IOException e) {
+			LOGGER.error("Problem while formating address generation",e);
+		} 
+	}
 }
