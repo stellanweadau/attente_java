@@ -16,6 +16,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.json.bind.Jsonb;
@@ -71,23 +73,13 @@ public abstract class JsonConvert {
 	}
 	
 	public static String getAddressFromJson(String jsonString) {
-		
-		class Address {
-			String[] data;
-			String address;
-			
-			public Address() {
-				
-			}
-		}
-		
-		Jsonb jsonb = JsonbBuilder.create(); 
-		LOGGER.info("Create Json builder");
-		Address result = jsonb.fromJson(jsonString, Address.class);
-		LOGGER.info("Get address");
-		
-		return result.address;
-	}
-	
+        Jsonb jsonb = JsonbBuilder.create();
+        LOGGER.info("Create Json builder");
+
+        final LinkedHashMap<String, Object> result = jsonb.fromJson(jsonString, LinkedHashMap.class);
+        LOGGER.info("Get address");
+
+        return result.get("address").toString();
+    }
 
 }
