@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.apartment;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
+import io.github.oliviercailloux.y2018.apartments.utils.JsonConvert;
 
 import java.io.BufferedReader;
 import java.io.IOException;
