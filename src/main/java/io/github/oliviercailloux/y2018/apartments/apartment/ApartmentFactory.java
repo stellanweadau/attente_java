@@ -127,9 +127,9 @@ public abstract class ApartmentFactory {
 
 	/**
 	 * Call an API which generates a random address.
-	 * This function aims at getting the random address generating
+	 * This function aims at getting the random address generated.
 	 *
-	 * @return <i>String</i> the address generating
+	 * @return <i>String</i> the address generated.
 	 */
 	private static String getRandomAddress() {
 		String address = "";
