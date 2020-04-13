@@ -15,10 +15,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 import javax.json.bind.Jsonb;
 
@@ -27,7 +24,7 @@ public abstract class JsonConvert {
 	
 	private final static Logger LOGGER = LoggerFactory.getLogger(JsonConvert.class);
 	
-	private final static String apartmentSaveJson = "path_json.json";
+	private final static String apartmentSaveJson = "Apartment_Json.json";
 	
 	public static void ApartmentToJson(Apartment a) throws IOException {
 		ApartmentToJson(a, apartmentSaveJson);
