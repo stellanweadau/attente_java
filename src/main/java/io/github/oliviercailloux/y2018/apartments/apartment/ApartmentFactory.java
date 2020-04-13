@@ -19,8 +19,14 @@ import org.slf4j.LoggerFactory;
  * @author Clémence COUSIN & Gabriel GUISSET 
  */
 public abstract class ApartmentFactory {
+	
+	/** The logger. */
 	private static Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
+	
+	/** The rand. */
 	private static Random rand = new Random();
+	
+	/** The url api address. */
 	private static String urlApiAddress = "https://8n8iajahab.execute-api.us-east-1.amazonaws.com/default/RealRandomAdress";
 
 	/**
@@ -71,7 +77,7 @@ public abstract class ApartmentFactory {
 	public static Apartment generateRandomApartment() {
 
 		double floorArea = simulateRandomDraw(65d, 21d);
-		String address = "2 avenue Pasteur 94160 Saint-mandé";
+		String address = getRandomAddress();
 		int averageRoomArea = (int) (10 + (Math.random() * 20));
 		int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 1);
 		int nbSleeping = (1 + rand.nextInt(4)) * nbBedrooms;
@@ -90,10 +96,10 @@ public abstract class ApartmentFactory {
 	}
 
 	/**
-	 * This function aims to generate a list of random apartments
+	 * This function aims to generate a list of random apartments.
 	 *
 	 * @param nbApartment <i>int</i> the number of apartments the list should contains
-	 * @return <i>ArrayList</i> a list of random apartments of size nbApartment 
+	 * @return <i>ArrayList</i> a list of random apartments of size nbApartment
 	 */
 	public static ArrayList<Apartment> generateRandomApartmentList(int nbApartment) {
 		if(nbApartment <=0) {
@@ -119,7 +125,14 @@ public abstract class ApartmentFactory {
 		return deviation * draw + mean;
 	}
 
-	private static String getRandomAdress() {
+	/**
+	 * Call an API which generates a random address.
+	 * This function aims at getting the random address generating
+	 *
+	 * @return <i>String</i> the address generating
+	 */
+	private static String getRandomAddress() {
+		String address = "";
 		//Code from https://www.developpez.net/forums/d1354479/java/general-java/recuperer-reponse-d-adresse-http/ 
 		try(InputStream is = new URL(urlApiAddress).openConnection().getInputStream()) { 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "utf-8"));   
@@ -130,13 +143,14 @@ public abstract class ApartmentFactory {
 			String bodyContent = builder.toString();
 			//End of code picking
 			
-			return JSONConvert.getAdressFromJson(bodyContent); 
+			return JsonConvert.getAddressFromJson(bodyContent); 
 			
 			
 		} catch (MalformedURLException e) {
 			LOGGER.error("Problem while contacting address generator API",e);
 		} catch (IOException e) {
 			LOGGER.error("Problem while formating address generation",e);
-		} 
+		}
+		return address;
 	}
 }
