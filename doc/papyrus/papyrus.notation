@@ -1934,6 +1934,21 @@
   </notation:Diagram>
   <notation:Diagram xmi:id="_h7rQEGSlEeqldqZ7K2B8Ig" type="UseCase" name="CreateApartment" measurementUnit="Pixel">
     <children xmi:type="notation:Shape" xmi:id="_J_DpcGSmEeqldqZ7K2B8Ig" type="Classifier_SubjectShape">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BF0OEH2jEeqMFavzhfuQEg" source="PapyrusHyperLink_Object" references="_VTXzPl_AEeqAAb4u4HLI7w">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BF0OEX2jEeqMFavzhfuQEg" key="tooltip_text"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BF0OEn2jEeqMFavzhfuQEg" key="pageName" value="PapyrusHyperLink_Object"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BF0OE32jEeqMFavzhfuQEg" key="is_default_navigation" value="false"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BF01IH2jEeqMFavzhfuQEg" source="PapyrusHyperLink_Object" references="_VXIPwG58EeqRyqbgMW9ZbA">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BF01IX2jEeqMFavzhfuQEg" key="tooltip_text"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BF01In2jEeqMFavzhfuQEg" key="pageName" value="PapyrusHyperLink_Object"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BF01I32jEeqMFavzhfuQEg" key="is_default_navigation" value="false"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BF1cMH2jEeqMFavzhfuQEg" source="PapyrusHyperLink_Object" references="_ORaU0GS5EeqTxqp8Bmjtjg">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BF1cMX2jEeqMFavzhfuQEg" key="tooltip_text"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BF1cMn2jEeqMFavzhfuQEg" key="pageName" value="PapyrusHyperLink_Object"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BF1cM32jEeqMFavzhfuQEg" key="is_default_navigation" value="false"/>
+      </eAnnotations>
       <children xmi:type="notation:DecorationNode" xmi:id="_J_UvMGSmEeqldqZ7K2B8Ig" type="Classifier_NameLabel"/>
       <children xmi:type="notation:DecorationNode" xmi:id="_J_VWQGSmEeqldqZ7K2B8Ig" type="Classifier_FloatingNameLabel">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_J_VWQWSmEeqldqZ7K2B8Ig" y="15"/>
@@ -2199,6 +2214,11 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LOsxwWS5EeqTxqp8Bmjtjg" x="314" y="183"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_ORaU0GS5EeqTxqp8Bmjtjg" type="UseCase_Shape_CCN">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xIuxMH2gEeqMFavzhfuQEg" source="PapyrusHyperLink_Object" references="_h7rQEGSlEeqldqZ7K2B8Ig">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xIuxMX2gEeqMFavzhfuQEg" key="tooltip_text"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xIuxMn2gEeqMFavzhfuQEg" key="pageName" value="PapyrusHyperLink_Object"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xIuxM32gEeqMFavzhfuQEg" key="is_default_navigation" value="true"/>
+          </eAnnotations>
           <children xmi:type="notation:DecorationNode" xmi:id="_ORaU0mS5EeqTxqp8Bmjtjg" type="UseCase_NameLabel_CCN"/>
           <children xmi:type="notation:DecorationNode" xmi:id="_ORaU02S5EeqTxqp8Bmjtjg" type="UseCase_FloatingNameLabel_CCN">
             <layoutConstraint xmi:type="notation:Location" xmi:id="_ORaU1GS5EeqTxqp8Bmjtjg" y="15"/>
