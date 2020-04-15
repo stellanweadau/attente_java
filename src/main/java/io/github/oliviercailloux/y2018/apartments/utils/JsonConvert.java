@@ -16,6 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.LinkedHashMap;
+import java.util.ArrayList;
 
 import javax.json.bind.Jsonb;
 
@@ -63,7 +64,7 @@ public abstract class JsonConvert {
 			}
 			
 			jsonFilePath.close();
-			LOGGER.info("Apartment has been red with success");
+			LOGGER.info("Apartment has been read with success");
 		
 			return jsonRead;
 		}	
@@ -78,5 +79,44 @@ public abstract class JsonConvert {
 
         return result.get("address").toString();
     }
+	
+	public static Apartment JsonToApartment(String jsonString) {
+		Jsonb jsonb = JsonbBuilder.create();
+		LOGGER.info("Create Json builder");
+		
+		Apartment apart = jsonb.fromJson(jsonString, Apartment.class);
+		LOGGER.info("Apartment created from JSON");
+		
+		return apart;
+	}
 
+	public static ArrayList<Apartment> JsonToApartments(String jsonString) {
+		ArrayList<Apartment> apartments = new ArrayList<Apartment>();
+		LOGGER.info("Create ArrayList of Apartment");
+		
+		Jsonb jsonb = JsonbBuilder.create();
+		LOGGER.info("Create Json builder");
+		
+		apartments = jsonb.fromJson(jsonString, new ArrayList<Apartment>(){}.getClass().getGenericSuperclass());
+		
+		return apartments;
+	}
+	
+	public static void ApartmentsToJson(ArrayList<Apartment> listApartments) throws IOException {
+		ApartmentsToJson(listApartments, apartmentSaveJson);
+	}
+	
+	public static void ApartmentsToJson(ArrayList<Apartment> listApartments, String jsonPath) throws IOException {
+		
+		File jsonFile = new File(jsonPath);
+		Jsonb jsonb = JsonbBuilder.create();
+		
+		try (Writer jsonFilePath = new BufferedWriter(new FileWriter(jsonFile))) {
+			jsonFilePath.write(jsonb.toJson(listApartments));
+			jsonFilePath.close();
+			
+			LOGGER.info("Apartment have been converted with success");
+		}
+	}
+	
 }
