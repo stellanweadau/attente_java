@@ -94,10 +94,12 @@ class ApartmentFactoryTest {
 	/**
 	 * This class tests the validity of randomly generated apartment
 	 * by the function generateRandomApartment() used by generateRandomApartmentList()
+	 * The test are done with 100 apartments in order to have a representative list of Apartments.
+	 * It will allow us to have a huge range of values and check the validity of all parameters.
 	 */
 	@Test
 	void TestGenerateRandomAparmentsList() {
-		int nbAparts = 10000;
+		int nbAparts = 100; 
 		List<Apartment> aparts = ApartmentFactory.generateRandomApartmentList(nbAparts);
 		assertEquals(aparts.size(),nbAparts);
 		for(Apartment a : aparts) {

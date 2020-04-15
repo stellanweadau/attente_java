@@ -21,15 +21,17 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class ApartmentFactory {
 
+	/** This constant allow us to know the maximum number of times we should try to 
+	 * reach the API address */
 	private static final int NB_MAX_RETRY = 5;
 
-	/** The logger. */
+	/** Logger whic allow us to know where the mistakes are. */
 	private static Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
 
-	/** The rand. */
+	/** Random object which allow us to generate random numbers */
 	private static Random rand = new Random();
 
-	/** The url api address. */
+	/** The URL of the API address. */
 	private static String urlApiAddress = "https://8n8iajahab.execute-api.us-east-1.amazonaws.com/default/RealRandomAdress";
 
 	/**
@@ -132,7 +134,11 @@ public abstract class ApartmentFactory {
 	 * Call an API which generates a random address.
 	 * This function aims at getting the random address generated.
 	 *
+	 * @param retry <i> int </i> indicates how many time the function has been called.
+	 * It will allow us to avoid problems with API connection (if it fails once, we try to call it
+	 * again).
 	 * @return <i>String</i> the address generated.
+	 * @throws IOException if we cannot contact the API generator.
 	 */
 	private static String getRandomAddress(int retry) throws IOException {
 
@@ -162,8 +168,24 @@ public abstract class ApartmentFactory {
 		return address;
 	}
 	
+	
+	/**
+	 * Call an API which generates a random address.
+	 * This function aims at getting the random address generated.
+	 *
+	 * @return the random address
+	 */
 	private static String getRandomAddress() {
-		return getRandomAddress(0);
-	}
+        try {
+            return getRandomAddress(0);
+        } catch (IOException e) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(rand.nextInt(3000))
+            .append(" rue de l'appel échoué ")
+            .append(rand.nextInt(19)+75001)
+            .append(" Paris ");
+            return sb.toString();
+        }
+    }
 
 }
