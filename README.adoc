@@ -7,6 +7,8 @@
 
 = Apartments
 
+image:https://travis-ci.com/av1m/Apartments.svg?branch=master["Build Status", link="https://travis-ci.com/av1m/Apartments"]
+
 A Java project developed by students during the link:https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in link:http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
 
 The code is hereby published under the MIT License, with their permission.
