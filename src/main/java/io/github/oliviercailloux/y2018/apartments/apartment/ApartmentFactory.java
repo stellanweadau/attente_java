@@ -20,13 +20,15 @@ import org.slf4j.LoggerFactory;
  * @author Clémence COUSIN & Gabriel GUISSET 
  */
 public abstract class ApartmentFactory {
-	
+
+	private static final int NB_MAX_RETRY = 5;
+
 	/** The logger. */
 	private static Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
-	
+
 	/** The rand. */
 	private static Random rand = new Random();
-	
+
 	/** The url api address. */
 	private static String urlApiAddress = "https://8n8iajahab.execute-api.us-east-1.amazonaws.com/default/RealRandomAdress";
 
@@ -132,7 +134,8 @@ public abstract class ApartmentFactory {
 	 *
 	 * @return <i>String</i> the address generated.
 	 */
-	private static String getRandomAddress() {
+	private static String getRandomAddress(int retry) throws IOException {
+
 		String address = "";
 		//Code from https://www.developpez.net/forums/d1354479/java/general-java/recuperer-reponse-d-adresse-http/ 
 		try(InputStream is = new URL(urlApiAddress).openConnection().getInputStream()) { 
@@ -143,15 +146,24 @@ public abstract class ApartmentFactory {
 			} 
 			String bodyContent = builder.toString();
 			//End of code picking
-			
+
 			return JsonConvert.getAddressFromJson(bodyContent); 
-			
-			
+
 		} catch (MalformedURLException e) {
 			LOGGER.error("Problem while contacting address generator API",e);
 		} catch (IOException e) {
-			LOGGER.error("Problem while formating address generation",e);
+			if(retry < NB_MAX_RETRY) {
+				return getRandomAddress(retry+1);
+			}
+			else {
+				throw e;
+			}
 		}
 		return address;
 	}
+	
+	private static String getRandomAddress() {
+		return getRandomAddress(0);
+	}
+
 }
