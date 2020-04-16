@@ -3,12 +3,17 @@ package io.github.oliviercailloux.y2018.apartments.apartment;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Test class for ApartmentFactory
  * @author Gabriel GUISSET & Clémence COUSIN
  */
 class ApartmentFactoryTest {
+
+	//Logger for AparmentFactoryTest class
+	private static Logger LOGGER = LoggerFactory.getLogger(ApartmentFactoryTest.class);
 
 	/**
 	 * Test GenerateApartment function 
@@ -111,12 +116,12 @@ class ApartmentFactoryTest {
 			assertNotNull(a.getDescription());
 			assertNotEquals("",a.getTitle());
 			assertNotNull(a.getTitle());
-			System.out.println("* Floor Area : "+a.getFloorArea());
+			LOGGER.debug("Floor Area : "+a.getFloorArea());
 			assertTrue(a.getFloorArea()>0);
 			if(a.getTerrace()) {
 				assertTrue(a.getFloorAreaTerrace()>0);
 			}
-			System.out.println("€ Floor Area : "+a.getPricePerNight());
+			LOGGER.debug("Price per night : "+a.getPricePerNight());
 			assertTrue(a.getPricePerNight()>=0);
 			assertTrue(a.getNbMinNight()>0);
 			assertTrue(a.getNbBedrooms()>=1);
@@ -125,6 +130,4 @@ class ApartmentFactoryTest {
 
 		}
 	}
-	
-	
 }
