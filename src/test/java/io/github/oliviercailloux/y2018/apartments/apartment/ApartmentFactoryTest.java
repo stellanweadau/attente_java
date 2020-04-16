@@ -104,7 +104,7 @@ class ApartmentFactoryTest {
 	 */
 	@Test
 	void TestGenerateRandomAparmentsList() {
-		int nbAparts = 100; 
+		int nbAparts = 15; 
 		List<Apartment> aparts = ApartmentFactory.generateRandomApartmentList(nbAparts);
 		assertEquals(aparts.size(),nbAparts);
 		for(Apartment a : aparts) {
