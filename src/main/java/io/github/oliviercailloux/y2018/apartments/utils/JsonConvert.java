@@ -69,10 +69,9 @@ public abstract class JsonConvert {
 	 *
 	 * @param jsonPath <i>String</i> the path where the JSON file is located
 	 * @return <i>String</i> containing an Apartment into JSON format
-	 * @throws FileNotFoundException if the file doesn't exists.
 	 * @throws IOException if the file can't be convert into JSON format.
 	 */
-	public static String readApartmentFromJson(String jsonPath) throws FileNotFoundException, IOException {
+	public static String readApartmentFromJson(String jsonPath) throws IOException {
 		
 		File jsonFile = new File(jsonPath);
 		
@@ -104,7 +103,6 @@ public abstract class JsonConvert {
 	 */
 	public static String getAddressFromJson(String jsonString) {
         Jsonb jsonb = JsonbBuilder.create();
-        LOGGER.info("Create Json builder");
 
         final LinkedHashMap<String, Object> result = jsonb.fromJson(jsonString, LinkedHashMap.class);
         LOGGER.info("Get address");
@@ -122,10 +120,10 @@ public abstract class JsonConvert {
 		Jsonb jsonb = JsonbBuilder.create();
 		LOGGER.info("Create Json builder");
 		
-		Apartment apart = jsonb.fromJson(jsonString, Apartment.class);
+		Apartment.Builder apartBuild = jsonb.fromJson(jsonString, Apartment.Builder.class);
 		LOGGER.info("Apartment created from JSON");
 		
-		return apart;
+		return apartBuild.build();
 	}
 
 	/**
@@ -135,13 +133,18 @@ public abstract class JsonConvert {
 	 * @return <i>ArrayList</i> the list of Apartments created
 	 */
 	public static ArrayList<Apartment> jsonToApartments(String jsonString) {
+		ArrayList<Apartment.Builder> apartmentsBuild;
 		ArrayList<Apartment> apartments = new ArrayList<Apartment>();
 		LOGGER.info("Create ArrayList of Apartment");
 		
 		Jsonb jsonb = JsonbBuilder.create();
 		LOGGER.info("Create Json builder");
 		
-		apartments = jsonb.fromJson(jsonString, new ArrayList<Apartment>(){}.getClass().getGenericSuperclass());
+		apartmentsBuild = jsonb.fromJson(jsonString, new ArrayList<Apartment.Builder>(){}.getClass().getGenericSuperclass());
+		
+		for (int i = 0; i < apartmentsBuild.size(); i++) {
+			apartments.add(apartmentsBuild.get(i).build());
+		}
 		
 		return apartments;
 	}
