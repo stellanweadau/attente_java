@@ -10,12 +10,12 @@ import javax.json.bind.JsonbBuilder;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.ArrayList;
 
 import javax.json.bind.Jsonb;
@@ -104,10 +104,15 @@ public abstract class JsonConvert {
 	public static String getAddressFromJson(String jsonString) {
         Jsonb jsonb = JsonbBuilder.create();
 
-        final LinkedHashMap<String, Object> result = jsonb.fromJson(jsonString, LinkedHashMap.class);
+        final LinkedHashMap<?, ?> result = jsonb.fromJson(jsonString, LinkedHashMap.class);
         LOGGER.info("Get address");
-
-        return result.get("address").toString();
+        String address = result.get("address").toString();
+        
+        if (address.isEmpty()) {
+			throw new IllegalArgumentException();
+		} else {
+			return result.get("address").toString();
+		}
     }
 	
 	/**
@@ -132,9 +137,9 @@ public abstract class JsonConvert {
 	 * @param jsonString <i>String</i> the JSON expression to convert into a list of Apartments
 	 * @return <i>ArrayList</i> the list of Apartments created
 	 */
-	public static ArrayList<Apartment> jsonToApartments(String jsonString) {
-		ArrayList<Apartment.Builder> apartmentsBuild;
-		ArrayList<Apartment> apartments = new ArrayList<Apartment>();
+	public static List<Apartment> jsonToApartments(String jsonString) {
+		List<Apartment.Builder> apartmentsBuild;
+		List<Apartment> apartments = new ArrayList<Apartment>();
 		LOGGER.info("Create ArrayList of Apartment");
 		
 		Jsonb jsonb = JsonbBuilder.create();
@@ -155,7 +160,7 @@ public abstract class JsonConvert {
 	 * @param a <i>ArrayList</i> object to convert into JSON
 	 * @throws IOException if the JSON file can't be created.
 	 */
-	public static void apartmentsToJson(ArrayList<Apartment> listApartments) throws IOException {
+	public static void apartmentsToJson(List<Apartment> listApartments) throws IOException {
 		apartmentsToJson(listApartments, APARTMENT_PATH_JSON);
 	}
 	
@@ -166,7 +171,7 @@ public abstract class JsonConvert {
 	 * @param jsonPath <i>String</i> the path where to create the JSON file
 	 * @throws IOException if the JSON file can't be created.
 	 */
-	public static void apartmentsToJson(ArrayList<Apartment> listApartments, String jsonPath) throws IOException {
+	public static void apartmentsToJson(List<Apartment> listApartments, String jsonPath) throws IOException {
 		
 		File jsonFile = new File(jsonPath);
 		Jsonb jsonb = JsonbBuilder.create();
