@@ -134,9 +134,9 @@ public abstract class ApartmentFactory {
 	 * Call an API which generates a random address.
 	 * This function aims at getting the random address generated.
 	 *
-	 * @param retry <i> int </i> indicates how many time the function has been called.
-	 * It will allow us to avoid problems with API connection (if it fails once, we try to call it
-	 * again).
+	 * @param retry <i> int </i> indicates how many time the function has been called (Retry System).
+	 * It will allow us to try escaping problems while contacting API (if it fails once, we try to call it
+	 * again until the number specified in the class attribute NB_MAX_RETRY).
 	 * @return <i>String</i> the address generated.
 	 * @throws IOException if we cannot contact the API generator.
 	 */
@@ -170,9 +170,9 @@ public abstract class ApartmentFactory {
 	
 	
 	/**
-	 * Call an API which generates a random address.
+	 * Call an API which generates an existing random address.
 	 * This function aims at getting the random address generated.
-	 *
+	 * if the Address API cannot answer, it will generate a random fake address.
 	 * @return the random address
 	 */
 	private static String getRandomAddress() {
