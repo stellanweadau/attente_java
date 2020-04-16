@@ -32,6 +32,12 @@ public abstract class JsonConvert {
 	/** The Constant APARTMENT_PATH_JSON gives the default location for JSON file. */
 	private static final String APARTMENT_PATH_JSON = "Apartment_Json.json";
 	
+	/**
+	 * Converts an Apartment object to a JSON file with the default path APARTMENT_PATH_JSON.
+	 *
+	 * @param a <i>Apartment</i> object to convert into JSON
+	 * @throws IOException if the JSON file can't be created.
+	 */
 	public static void apartmentToJson(Apartment a) throws IOException {
 		apartmentToJson(a, APARTMENT_PATH_JSON);
 	}
@@ -122,6 +128,12 @@ public abstract class JsonConvert {
 		return apart;
 	}
 
+	/**
+	 * Converts a JSON expression to a list of Apartments.
+	 *
+	 * @param jsonString <i>String</i> the JSON expression to convert into a list of Apartments
+	 * @return <i>ArrayList</i> the list of Apartments created
+	 */
 	public static ArrayList<Apartment> jsonToApartments(String jsonString) {
 		ArrayList<Apartment> apartments = new ArrayList<Apartment>();
 		LOGGER.info("Create ArrayList of Apartment");
@@ -134,10 +146,23 @@ public abstract class JsonConvert {
 		return apartments;
 	}
 	
+	/**
+	 * Converts a list of Apartments to a JSON file with the default path APARTMENT_PATH_JSON.
+	 *
+	 * @param a <i>ArrayList</i> object to convert into JSON
+	 * @throws IOException if the JSON file can't be created.
+	 */
 	public static void apartmentsToJson(ArrayList<Apartment> listApartments) throws IOException {
 		apartmentsToJson(listApartments, APARTMENT_PATH_JSON);
 	}
 	
+	/**
+	 * Converts a list of Apartments to a JSON file.
+	 *
+	 * @param an <i>ArrayList</i> to convert into JSON
+	 * @param jsonPath <i>String</i> the path where to create the JSON file
+	 * @throws IOException if the JSON file can't be created.
+	 */
 	public static void apartmentsToJson(ArrayList<Apartment> listApartments, String jsonPath) throws IOException {
 		
 		File jsonFile = new File(jsonPath);
