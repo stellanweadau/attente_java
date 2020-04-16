@@ -21,17 +21,29 @@ import java.util.ArrayList;
 import javax.json.bind.Jsonb;
 
 
+/**
+ * The Class JsonConvert contains all function to transform Apartment object to JSON and vice-versa.
+ * @author Etienne CARTIER & Morgane FIOT
+ */
 public abstract class JsonConvert {
 	
-	private final static Logger LOGGER = LoggerFactory.getLogger(JsonConvert.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(JsonConvert.class);
 	
-	private final static String apartmentSaveJson = "Apartment_Json.json";
+	/** The Constant APARTMENT_PATH_JSON gives the default location for JSON file. */
+	private static final String APARTMENT_PATH_JSON = "Apartment_Json.json";
 	
-	public static void ApartmentToJson(Apartment a) throws IOException {
-		ApartmentToJson(a, apartmentSaveJson);
+	public static void apartmentToJson(Apartment a) throws IOException {
+		apartmentToJson(a, APARTMENT_PATH_JSON);
 	}
 	
-	public static void ApartmentToJson(Apartment a, String jsonPath) throws IOException {
+	/**
+	 * Converts an Apartment object to a JSON file.
+	 *
+	 * @param a <i>Apartment</i> object to convert into JSON
+	 * @param jsonPath <i>String</i> the path where to create the JSON file
+	 * @throws IOException if the JSON file can't be created.
+	 */
+	public static void apartmentToJson(Apartment a, String jsonPath) throws IOException {
 		
 		File jsonFile = new File(jsonPath);
 		Jsonb jsonb = JsonbBuilder.create();
@@ -46,7 +58,15 @@ public abstract class JsonConvert {
 		
 	}
 	
-	public static String ReadApartmentFromJson(String jsonPath) throws FileNotFoundException, IOException {
+	/**
+	 * Read a JSON file which contains an Apartment.
+	 *
+	 * @param jsonPath <i>String</i> the path where the JSON file is located
+	 * @return <i>String</i> containing an Apartment into JSON format
+	 * @throws FileNotFoundException if the file doesn't exists.
+	 * @throws IOException if the file can't be convert into JSON format.
+	 */
+	public static String readApartmentFromJson(String jsonPath) throws FileNotFoundException, IOException {
 		
 		File jsonFile = new File(jsonPath);
 		
@@ -70,6 +90,12 @@ public abstract class JsonConvert {
 		}	
 	}
 	
+	/**
+	 * Gets the address field from an Address JSON.
+	 *
+	 * @param jsonString <i>String</i> the Address into JSON format
+	 * @return <i>String</i> the address field
+	 */
 	public static String getAddressFromJson(String jsonString) {
         Jsonb jsonb = JsonbBuilder.create();
         LOGGER.info("Create Json builder");
@@ -80,7 +106,13 @@ public abstract class JsonConvert {
         return result.get("address").toString();
     }
 	
-	public static Apartment JsonToApartment(String jsonString) {
+	/**
+	 * Converts a JSON expression to an Apartment object.
+	 *
+	 * @param jsonString <i>String</i> the JSON expression to convert into Apartment object
+	 * @return <i>Apartment</i> the Apartment generated
+	 */
+	public static Apartment jsonToApartment(String jsonString) {
 		Jsonb jsonb = JsonbBuilder.create();
 		LOGGER.info("Create Json builder");
 		
@@ -90,7 +122,7 @@ public abstract class JsonConvert {
 		return apart;
 	}
 
-	public static ArrayList<Apartment> JsonToApartments(String jsonString) {
+	public static ArrayList<Apartment> jsonToApartments(String jsonString) {
 		ArrayList<Apartment> apartments = new ArrayList<Apartment>();
 		LOGGER.info("Create ArrayList of Apartment");
 		
@@ -102,11 +134,11 @@ public abstract class JsonConvert {
 		return apartments;
 	}
 	
-	public static void ApartmentsToJson(ArrayList<Apartment> listApartments) throws IOException {
-		ApartmentsToJson(listApartments, apartmentSaveJson);
+	public static void apartmentsToJson(ArrayList<Apartment> listApartments) throws IOException {
+		apartmentsToJson(listApartments, APARTMENT_PATH_JSON);
 	}
 	
-	public static void ApartmentsToJson(ArrayList<Apartment> listApartments, String jsonPath) throws IOException {
+	public static void apartmentsToJson(ArrayList<Apartment> listApartments, String jsonPath) throws IOException {
 		
 		File jsonFile = new File(jsonPath);
 		Jsonb jsonb = JsonbBuilder.create();
