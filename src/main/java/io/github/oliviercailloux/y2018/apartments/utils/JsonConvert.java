@@ -37,6 +37,11 @@ public abstract class JsonConvert {
 	private static final String APARTMENT_PATH_JSON = "Apartment_Json.json";
 
 	/**
+	 * The Constant START_APARTMENT is a default JSON file red by jsonToApartments.
+	 */
+	private static final String START_APARTMENT = "src/main/resources/io/github/oliviercailloux/y2018/jsonResources/defaultJsonToApartments.json";
+
+	/**
 	 * Converts an Apartment object to a JSON file with the default path
 	 * APARTMENT_PATH_JSON.
 	 *
@@ -73,7 +78,7 @@ public abstract class JsonConvert {
 	 * @return <i>String</i> containing an Apartment into JSON format
 	 * @throws IOException if the file can't be convert into JSON format.
 	 */
-	public static String readApartmentFromJson(String jsonPath) throws IOException {
+	protected static String readApartmentFromJson(String jsonPath) throws IOException {
 		File jsonFile = new File(jsonPath);
 
 		try (BufferedReader jsonFilePath = new BufferedReader(new FileReader(jsonFile, StandardCharsets.UTF_8))) {
@@ -120,8 +125,10 @@ public abstract class JsonConvert {
 	 * @param jsonString <i>String</i> the JSON expression to convert into Apartment
 	 *                   object
 	 * @return <i>Apartment</i> the Apartment generated
+	 * @throws IOException if the file can't be red
 	 */
-	public static Apartment jsonToApartment(String jsonString) {
+	public static Apartment jsonToApartment(String jsonPath) throws IOException {
+		String jsonString = readApartmentFromJson(jsonPath);
 		Jsonb jsonb = JsonbBuilder.create();
 		LOGGER.info("Create Json builder");
 
@@ -134,11 +141,23 @@ public abstract class JsonConvert {
 	/**
 	 * Converts a JSON expression to a list of Apartments.
 	 *
+	 * @return <i>List</i> the list of Apartments created
+	 * @throws IOException if the file doesn't exists
+	 */
+	public static List<Apartment> jsonToApartments() throws IOException {
+		return jsonToApartments(START_APARTMENT);
+	}
+
+	/**
+	 * Converts a JSON expression to a list of Apartments.
+	 *
 	 * @param jsonString <i>String</i> the JSON expression to convert into a list of
 	 *                   Apartments
 	 * @return <i>List</i> the list of Apartments created
+	 * @throws IOException if the file doesn't exists
 	 */
-	public static List<Apartment> jsonToApartments(String jsonString) {
+	public static List<Apartment> jsonToApartments(String jsonPath) throws IOException {
+		String jsonString = readApartmentFromJson(jsonPath);
 		List<Apartment.Builder> apartmentsBuild;
 		List<Apartment> apartments = new ArrayList<Apartment>();
 		LOGGER.info("Create ArrayList of Apartment");
