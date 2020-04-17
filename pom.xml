@@ -102,12 +102,15 @@
 
 
 	<dependencies>
-
+		<!-- dependency for Log4j logger 
+		https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.26</version>
+			<version>1.7.30</version>
 		</dependency>
+		<!-- dependency used to complete Log4j used 
+		http://logback.qos.ch/ -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
@@ -115,16 +118,20 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- dependency used for checkArguments 
+		https://github.com/google/guava -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>27.1-jre</version>
+			<version>29.0-jre</version>
 		</dependency>
-
+		<!-- Used to create MessageDialog in the GUI 
+		https://wiki.eclipse.org/Platform -->
 		<dependency>
 			<groupId>org.eclipse.platform</groupId>
 			<artifactId>org.eclipse.jface</artifactId>
-			<version>3.15.100</version>
+			<version>3.19.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.eclipse.platform</groupId>
@@ -133,14 +140,15 @@
 			</exclusions>
 		</dependency>
 
-
+		<!-- used to get Google Maps' services to get distance or localization
+			  -->
 		<dependency>
 			<groupId>com.google.maps</groupId>
 			<artifactId>google-maps-services</artifactId>
-			<version>0.9.0</version>
+			<version>0.11.0</version>
 		</dependency>
 
-
+		<!-- Dependencies used for Unit Tests -->
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-launcher</artifactId>
@@ -160,13 +168,36 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!--  Dependencies used by JSON Convert to manipulate JSONB -->
+		<dependency>
+			<groupId>javax.json.bind</groupId>
+			<artifactId>javax.json.bind-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<!--  https://projects.eclipse.org/projects/ee4j.yasson -->
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>yasson</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.json</artifactId>
+			<version>1.1.4</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.json</groupId>
+			<artifactId>javax.json-api</artifactId>
+			<version>1.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.1</version>
+				<version>3.0.0-M4</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -182,13 +213,13 @@
 			<dependency>
 				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.core.commands</artifactId>
-				<version>3.9.200</version>
+				<version>3.9.700</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.equinox.common</artifactId>
-				<version>3.10.0</version>
+				<version>3.11.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
