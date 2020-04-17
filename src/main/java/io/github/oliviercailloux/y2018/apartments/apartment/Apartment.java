@@ -1,14 +1,13 @@
 package io.github.oliviercailloux.y2018.apartments.apartment;
 
 import java.util.Objects;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import static com.google.common.base.Preconditions.checkArgument;
 
 public class Apartment extends Object {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(Apartment.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Apartment.class);
 
 	/**
 	 * @param a real number it represents the floor area of the apartment in square
@@ -118,34 +117,19 @@ public class Apartment extends Object {
 	 * Constructor by default to be used by Apartment.Builder
 	 */
 	private Apartment() {
-	}
-
-	/**
-	 * @param floorArea a real number superior or equal to zero, it represents the
-	 *                  floor area of the apartment in square meters
-	 * @param address   a string of characters that gives the full location of the
-	 *                  apartment
-	 * @param title     a string of characters that represents the title of the
-	 *                  announcement
-	 */
-	public Apartment(double floorArea, String address, String title) {
-		this.floorArea = floorArea;
-		this.address = address;
-		this.nbBedrooms = 0;
-		this.nbSleeping = 0;
-		this.nbBathrooms = 0;
-		this.terrace = false;
-		this.floorAreaTerrace = 0;
-		this.description = "";
-		this.title = title;
-		this.wifi = false;
-		this.pricePerNight = 0;
-		this.nbMinNight = 0;
-		this.tele = false;
-		checkArgument(floorArea >= 0, "The floor area of the apartment cannot be negative");
-		checkArgument(address != "", "The address of the apartment must be specified");
-		checkArgument(title != "", "The title of the apartment must be specified");
-		LOGGER.info("the apartment has been created with success");
+		this.floorArea = 0;
+		this.address = null;
+		this.title = null;
+		setNbBedrooms(0);
+		setNbSleeping(0);
+		setNbBathrooms(0);
+		setTerrace(false);
+		setFloorAreaTerrace(0);
+		setDescription("");
+		setWifi(false);
+		setPricePerNight(0);
+		setNbMinNight(0);
+		setTele(false);
 	}
 
 	@Override
@@ -205,9 +189,10 @@ public class Apartment extends Object {
 		dispNbBathrooms = "\nNumber of bathrooms : "
 				+ ((nbBathrooms == 0) ? "N/A" : Integer.toString(nbBathrooms) + " bathroom(s)");
 		dispTerrace = "\nTerrace : " + ((terrace) ? "Yes" : "No");
-		dispFloorAreaTerrace = (!(terrace) ? ""
-				: "\nTerrace floor area : "
-						+ ((floorAreaTerrace == 0) ? "N/A" : Double.toString(floorAreaTerrace) + " square meters"));
+		dispFloorAreaTerrace = new StringBuilder()
+				.append(!(terrace) ? "": "\nTerrace floor area : ")
+				.append((floorAreaTerrace == 0) ? "N/A" : Double.toString(floorAreaTerrace) + " square meters")
+				.toString();
 		dispDescription = "\nDescription : " + ((description == "") ? "N/A" : description);
 		dispWifi = "\nWifi : " + ((wifi) ? "Yes" : "No");
 		dispTele = "\nTelevision : " + ((tele) ? "Yes" : "No");
@@ -351,7 +336,7 @@ public class Apartment extends Object {
 	 * @param address is a string of characters
 	 */
 	private void setAddress(String address) {
-		checkArgument(address != "", "The address should not be empty");
+		checkArgument(!address.isEmpty() && address != null , "The address should not be empty");
 		this.address = address;
 		LOGGER.info("The address has been set to " + address);
 	}
@@ -415,7 +400,7 @@ public class Apartment extends Object {
 	 * @param title is a string of characters
 	 */
 	private void setTitle(String title) {
-		checkArgument(title != "", "The title should not be empty");
+		checkArgument((!title.isEmpty()) && (title != null), "The title should not be empty");
 		this.title = title;
 		LOGGER.info("The title has been set to " + floorArea);
 	}
@@ -461,7 +446,7 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * Code from :
+	 * Code inspired from :
 	 * https://codereview.stackexchange.com/questions/127391/simple-builder-pattern-implementation-for-building-immutable-objects/127509#127509
 	 */
 	public static class Builder {
@@ -473,10 +458,17 @@ public class Apartment extends Object {
 		}
 
 		public Apartment build() {
-			Apartment buildApartment = apartmentToBuild;
-			apartmentToBuild = new Apartment();
-
-			return buildApartment;
+			if(apartmentToBuild.getFloorArea() < 0) {
+				throw new IllegalStateException("The floor area of the apartment cannot be negative");
+			}else if(apartmentToBuild.getAddress() == null) {
+				throw new IllegalStateException("The address of the apartment must be specified");
+			}else if(apartmentToBuild.getTitle() == null) {
+				throw new IllegalStateException("The title of the apartment must be specified");
+			}else {
+				Apartment buildApartment = apartmentToBuild;
+				apartmentToBuild = new Apartment();
+				return buildApartment;
+			}
 		}
 
 		public Builder setFloorArea(double floorArea) {

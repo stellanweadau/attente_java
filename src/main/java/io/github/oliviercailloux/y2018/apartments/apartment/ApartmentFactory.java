@@ -26,14 +26,14 @@ public abstract class ApartmentFactory {
 	/**  This constant allow us to know the maximum number of times we should try to  reach the API address. */
 	private static final int NB_MAX_RETRY = 5;
 
-	/** Logger whic allow us to know where the mistakes are. */
-	private static Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
+	/** Logger which allow us to know where the mistakes are. */
+	private static final Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
 
 	/**  Random object which allow us to generate random numbers. */
 	private static Random rand = new Random();
 
 	/** The URL of the API address. */
-	private static String urlApiAddress = "https://8n8iajahab.execute-api.us-east-1.amazonaws.com/default/RealRandomAdress";
+	private static final String URL_API_ADDRESS = "https://8n8iajahab.execute-api.us-east-1.amazonaws.com/default/RealRandomAdress";
 
 	/**
 	 * The function aims to build a new apartment when all the characteristics are known.
@@ -54,10 +54,10 @@ public abstract class ApartmentFactory {
 	 * 
 	 * @return <i>Apartment</i> the apartment built with the previous characteristics
 	 */
-	public static Apartment generateApartment(double floorArea, String address, int nbBedrooms,int nbSleeping, 
+	public static Apartment generateApartment(double floorArea, String address, int nbBedrooms, int nbSleeping, 
 			int nbBathrooms, boolean terrace, double floorAreaTerrace, 
 			String description, String title, boolean wifi, 
-			double pricePerNight,int nbMinNight, boolean tele) {
+			double pricePerNight, int nbMinNight, boolean tele) {
 		Builder apartBuilder = new Builder();
 		return apartBuilder.setFloorArea(floorArea)
 				.setAddress(address)
@@ -84,7 +84,7 @@ public abstract class ApartmentFactory {
 
 		double floorArea = simulateRandomDraw(65d, 21d);
 		String address = getRandomAddress();
-		int averageRoomArea = (int) (10 + (Math.random() * 20));
+		int averageRoomArea = (int) (10 + (rand.nextInt(20)));
 		int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 1);
 		int nbSleeping = (1 + rand.nextInt(4)) * nbBedrooms;
 		int nbBathrooms = 1 + rand.nextInt(nbBedrooms);
@@ -93,12 +93,12 @@ public abstract class ApartmentFactory {
 		String title = "Location Apartement "+ rand.nextInt(10000);
 		String description = "This apartment has " + nbBedrooms + " bedrooms and a size of " + floorArea + "square meters";
 		boolean wifi = Math.random() >= 0.5;
-		double pricePerNight = floorArea * simulateRandomDraw(11d,3d);
+		double pricePerNight = floorArea * simulateRandomDraw(11d, 3d);
 		boolean tele = Math.random() >= 0.5;
 		int nbMinNight = rand.nextInt(700) + 1;
-		return generateApartment(floorArea,address, nbBedrooms, nbSleeping, nbBathrooms,
-				terrace, floorAreaTerrace, description,title, 
-				wifi, pricePerNight,nbMinNight, tele);
+		return generateApartment(floorArea, address, nbBedrooms, nbSleeping, nbBathrooms,
+				terrace, floorAreaTerrace, description, title, 
+				wifi, pricePerNight, nbMinNight, tele);
 	}
 
 	/**
@@ -135,9 +135,9 @@ public abstract class ApartmentFactory {
 	 * Call an API which generates a random address.
 	 * This function aims at getting the random address generated.
 	 *
-	 * @param retry <i> int </i> indicates how many time the function has been called.
-	 * It will allow us to avoid problems with API connection (if it fails once, we try to call it
-	 * again).
+	 * @param retry <i> int </i> indicates how many time the function has been called (Retry System).
+	 * It will allow us to try escaping problems while contacting API (if it fails once, we try to call it
+	 * again until the number specified in the class attribute NB_MAX_RETRY).
 	 * @return <i>String</i> the address generated.
 	 * @throws IOException if we cannot contact the API generator.
 	 */
@@ -145,7 +145,7 @@ public abstract class ApartmentFactory {
 
 		String address = "";
 		//Code from https://www.developpez.net/forums/d1354479/java/general-java/recuperer-reponse-d-adresse-http/ 
-		try(InputStream is = new URL(urlApiAddress).openConnection().getInputStream()) { 
+		try(InputStream is = new URL(URL_API_ADDRESS).openConnection().getInputStream()) { 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "utf-8"));   
 			StringBuilder builder = new StringBuilder(); 
 			for(String line = reader.readLine(); line != null; line = reader.readLine()) { 
@@ -168,14 +168,20 @@ public abstract class ApartmentFactory {
 		}
 		return address;
 	}
+<<<<<<< HEAD
 	
+=======
+
+
+>>>>>>> 28797df6fa189b0106eb664234f23b44c52c5833
 	/**
-	 * Call an API which generates a random address.
+	 * Call an API which generates an existing random address.
 	 * This function aims at getting the random address generated.
-	 *
+	 * if the Address API cannot answer, it will generate a random fake address.
 	 * @return the random address
 	 */
 	private static String getRandomAddress() {
+<<<<<<< HEAD
         try {
             return getRandomAddress(0);
         } catch (IOException e) {
@@ -207,6 +213,18 @@ public abstract class ApartmentFactory {
 	 */
 	public static List<Apartment> generateApartmentFromJson() throws IOException {
 		return JsonConvert.jsonToApartments();		
+=======
+		try {
+			return getRandomAddress(0);
+		} catch (IOException e) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(rand.nextInt(3000))
+			.append(" rue de l'appel échoué ")
+			.append(rand.nextInt(19)+75001)
+			.append(" Paris ");
+			return sb.toString();
+		}
+>>>>>>> 28797df6fa189b0106eb664234f23b44c52c5833
 	}
 
 }
