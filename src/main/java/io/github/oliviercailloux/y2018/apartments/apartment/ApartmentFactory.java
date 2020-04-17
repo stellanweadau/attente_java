@@ -19,17 +19,14 @@ import org.slf4j.LoggerFactory;
 
 /**
  * A factory for creating Apartment objects.
- * @author Clémence COUSIN & Gabriel GUISSET 
  */
 public abstract class ApartmentFactory {
 
 	/**  This constant allow us to know the maximum number of times we should try to  reach the API address. */
 	private static final int NB_MAX_RETRY = 5;
 
-	/** Logger which allow us to know where the mistakes are. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
 
-	/**  Random object which allow us to generate random numbers. */
 	private static Random rand = new Random();
 
 	/** The URL of the API address. */

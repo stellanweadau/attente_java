@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 /**
  * Test class for ApartmentFactory.
  *
- * @author Gabriel GUISSET & Clémence COUSIN
  */
 class ApartmentFactoryTest {
 
@@ -107,7 +106,7 @@ class ApartmentFactoryTest {
 	 * It will allow us to have a huge range of values and check the validity of all parameters.
 	 */
 	@Test
-	void TestGenerateRandomAparmentsList() {
+	void testGenerateRandomAparmentsList() {
 		int nbAparts = 15; 
 		List<Apartment> aparts = ApartmentFactory.generateRandomApartmentList(nbAparts);
 		assertEquals(aparts.size(), nbAparts);
@@ -139,6 +138,7 @@ class ApartmentFactoryTest {
 	 * This function allow us to test if we have an exception thrown when the json path given
 	 * in argument of the method is wrong.
 	 */
+	@Test
 	public void generateApartmentFromJsonExceptionTest() {
 		assertThrows(IOException.class,
 				()-> ApartmentFactory.generateApartmentFromJson("abc"));
