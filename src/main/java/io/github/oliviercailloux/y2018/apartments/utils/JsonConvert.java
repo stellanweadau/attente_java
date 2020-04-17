@@ -54,7 +54,6 @@ public abstract class JsonConvert {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentToJson(Apartment a, String jsonPath) throws IOException {
-
 		File jsonFile = new File(jsonPath);
 		Jsonb jsonb = JsonbBuilder.create();
 
@@ -64,7 +63,6 @@ public abstract class JsonConvert {
 
 			LOGGER.info("Apartment has been converted with success");
 		}
-
 	}
 
 	/**
@@ -75,11 +73,9 @@ public abstract class JsonConvert {
 	 * @throws IOException if the file can't be convert into JSON format.
 	 */
 	public static String readApartmentFromJson(String jsonPath) throws IOException {
-
 		File jsonFile = new File(jsonPath);
 
 		try (BufferedReader jsonFilePath = new BufferedReader(new FileReader(jsonFile))) {
-
 			String jsonLine = jsonFilePath.readLine();
 			String jsonRead = jsonLine;
 
@@ -109,9 +105,8 @@ public abstract class JsonConvert {
 
 		final LinkedHashMap<?, ?> result = jsonb.fromJson(jsonString, LinkedHashMap.class);
 		LOGGER.info("Get address");
-		String address = result.get("address").toString();
-
-		if (address.isEmpty()) {
+		
+		if (result.get("address").toString().isEmpty() || !result.containsKey("address")) {
 			throw new IllegalArgumentException();
 		} else {
 			return result.get("address").toString();
@@ -140,7 +135,7 @@ public abstract class JsonConvert {
 	 *
 	 * @param jsonString <i>String</i> the JSON expression to convert into a list of
 	 *                   Apartments
-	 * @return <i>ArrayList</i> the list of Apartments created
+	 * @return <i>List</i> the list of Apartments created
 	 */
 	public static List<Apartment> jsonToApartments(String jsonString) {
 		List<Apartment.Builder> apartmentsBuild;
@@ -151,6 +146,9 @@ public abstract class JsonConvert {
 		LOGGER.info("Create Json builder");
 
 		apartmentsBuild = jsonb.fromJson(jsonString, new ArrayList<Apartment.Builder>() {
+
+			/** The Constant serialVersionUID for apartmentsBuild. */
+			private static final long serialVersionUID = 2876323727155064950L;
 		}.getClass().getGenericSuperclass());
 
 		for (int i = 0; i < apartmentsBuild.size(); i++) {
@@ -164,7 +162,7 @@ public abstract class JsonConvert {
 	 * Converts a list of Apartments to a JSON file with the default path
 	 * APARTMENT_PATH_JSON.
 	 *
-	 * @param a <i>ArrayList</i> object to convert into JSON
+	 * @param listApartments <code>{@link List}</code> object to convert into JSON
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments) throws IOException {
@@ -174,12 +172,11 @@ public abstract class JsonConvert {
 	/**
 	 * Converts a list of Apartments to a JSON file.
 	 *
-	 * @param an       <i>ArrayList</i> to convert into JSON
-	 * @param jsonPath <i>String</i> the path where to create the JSON file
+	 * @param listApartments <code>{@link List}</code> object to convert into JSON
+	 * @param jsonPath       <i>String</i> the path where to create the JSON file
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments, String jsonPath) throws IOException {
-
 		File jsonFile = new File(jsonPath);
 		Jsonb jsonb = JsonbBuilder.create();
 
@@ -190,5 +187,4 @@ public abstract class JsonConvert {
 			LOGGER.info("Apartment have been converted with success");
 		}
 	}
-
 }

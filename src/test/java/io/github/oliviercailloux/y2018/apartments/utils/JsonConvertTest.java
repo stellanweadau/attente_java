@@ -16,7 +16,7 @@ import java.util.List;
  * 
  * @author Etienne CARTIER & Morgane FIOT
  */
-public class JsonConvertTests {
+public class JsonConvertTest {
 
 	/**
 	 * Tests apartmentToJson function. Verifies if the JSON file created by the
@@ -26,15 +26,15 @@ public class JsonConvertTests {
 	 */
 	@Test
 	void apartmentToJsonTest() throws IOException {
-
 		Apartment a = new Apartment(1182118.48, "118 rue du père noel 77480", "Grand Igloo");
 		String expectedApartment = "{\"address\":\"118 rue du père noel 77480\",\"description\":\"\",\"floorArea\":1182118.48,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Grand Igloo\",\"wifi\":false}";
 		String jsonPath = "src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json";
 
 		JsonConvert.apartmentToJson(a, jsonPath);
+		JsonConvert.apartmentToJson(a);
 
 		assertEquals(expectedApartment, JsonConvert.readApartmentFromJson(jsonPath));
-
+		assertEquals(expectedApartment, JsonConvert.readApartmentFromJson("Apartment_Json.json"));
 		assertThrows(IOException.class, () -> JsonConvert.apartmentToJson(a, ""));
 	}
 
@@ -46,12 +46,13 @@ public class JsonConvertTests {
 	 * @throws IOException           if the file can't be convert into JSON format.
 	 */
 	@Test
-	void getAddressFromJsonTest() throws FileNotFoundException, IOException {
+	void getAddressFromJsonTest() {
 
 		String adressJson = "{\"data\":{\"latitude\":48.91777636365895,\"longitude\":2.4954686289120067,\"formattedAddress\":\"Allée de Turenne, Nonneville, Les Pavillons-sous-Bois, Le Raincy, Seine-Saint-Denis, Île-de-France, France métropolitaine, 93320, France\",\"country\":\"France\",\"city\":\"Les Pavillons-sous-Bois\",\"state\":\"Île-de-France\",\"zipcode\":\"93320\",\"streetName\":\"Allée de Turenne\",\"countryCode\":\"FR\",\"neighbourhood\":\"\",\"provider\":\"openstreetmap\"},\"address\":\"1 Allée de Turenne, 93320 Les Pavillons-sous-Bois\"}";
-
+		String adressJsonWrong = "{\"data\":{\"latitude\":48.91777636365895,\"longitude\":2.4954686289120067,\"formattedAddress\":\"Allée de Turenne, Nonneville, Les Pavillons-sous-Bois, Le Raincy, Seine-Saint-Denis, Île-de-France, France métropolitaine, 93320, France\",\"country\":\"France\",\"city\":\"Les Pavillons-sous-Bois\",\"state\":\"Île-de-France\",\"zipcode\":\"93320\",\"streetName\":\"Allée de Turenne\",\"countryCode\":\"FR\",\"neighbourhood\":\"\",\"provider\":\"openstreetmap\"},\"address\":\"\"}";
+		
 		assertEquals("1 Allée de Turenne, 93320 Les Pavillons-sous-Bois", JsonConvert.getAddressFromJson(adressJson));
-
+		assertThrows(IllegalArgumentException.class, () -> JsonConvert.getAddressFromJson(adressJsonWrong));
 	}
 
 	/**
@@ -73,7 +74,6 @@ public class JsonConvertTests {
 		JsonConvert.apartmentsToJson(apartments, jsonPath);
 
 		assertEquals(expectedApartment, JsonConvert.readApartmentFromJson(jsonPath));
-
 		assertThrows(IOException.class, () -> JsonConvert.apartmentsToJson(apartments, ""));
 	}
 
@@ -88,7 +88,6 @@ public class JsonConvertTests {
 	void jsonToApartmentTest() throws FileNotFoundException, IOException {
 
 		Apartment apartmentRef = new Apartment(1182118.48, "118 rue du père noel 77480", "Grand Igloo");
-
 		String jsonPath = "src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json";
 		String jsonToConvert = JsonConvert.readApartmentFromJson(jsonPath);
 
@@ -120,5 +119,4 @@ public class JsonConvertTests {
 		assertEquals(apartmentsRef.get(0).hashCode(), apartmentsTest.get(0).hashCode());
 		assertEquals(apartmentsRef.get(1).hashCode(), apartmentsTest.get(1).hashCode());
 	}
-
 }
