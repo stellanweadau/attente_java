@@ -35,24 +35,24 @@ public abstract class ApartmentFactory {
 	/**
 	 * The function aims to build a new apartment when all the characteristics are known.
 	 *
-	 * @param floorArea <i>double</i> the floor area of the apartment built
-	 * @param address <i>String</i> the address of the apartment built
-	 * @param nbBedrooms <i>int</i> the number of bedrooms of the apartment built
-	 * @param nbSleeping <i>int</i> the maximum number of people who can sleep in this apartment
-	 * @param nbBathrooms <i>int</i> the number of bathrooms of the apartment built
-	 * @param terrace <i>boolean</i> says whether the apartment has a terrace or not
-	 * @param floorAreaTerrace <i>double</i> gives the size of the terrace
-	 * @param description <i>String</i> a description of the apartment
-	 * @param title <i>String</i> gives the title of the announce
-	 * @param wifi <i>boolean</i> says whether the apartment has the wifi or not
-	 * @param pricePerNight <i>double</i> gives the price per night spent in the apartment
-	 * @param nbMinNight <i>int</i> indicate the number minimum of night to locate an apartment
-	 * @param tele <i>boolean</i> says whether the apartment has a TV or not
+	 * @param floorArea the floor area of the apartment built
+	 * @param address the address of the apartment built
+	 * @param nbBedrooms the number of bedrooms of the apartment built
+	 * @param nbSleeping the maximum number of people who can sleep in this apartment
+	 * @param nbBathrooms the number of bathrooms of the apartment built
+	 * @param terrace says whether the apartment has a terrace or not
+	 * @param floorAreaTerrace gives the size of the terrace
+	 * @param description a description of the apartment
+	 * @param title gives the title of the announce
+	 * @param wifi says whether the apartment has the wifi or not
+	 * @param pricePerNight gives the price per night spent in the apartment
+	 * @param nbMinNight indicate the number minimum of night to locate an apartment
+	 * @param tele says whether the apartment has a TV or not
 	 * 
 	 * @return <i>Apartment</i> the apartment built with the previous characteristics
 	 */
 	public static Apartment generateApartment(double floorArea, String address, int nbBedrooms, int nbSleeping, 
-			int nbBathrooms, boolean terrace, double floorAreaTerrace, 
+			int nbBathrooms, boolean hasTerrace, double floorAreaTerrace, 
 			String description, String title, boolean wifi, 
 			double pricePerNight, int nbMinNight, boolean tele) {
 		Builder apartBuilder = new Builder();
@@ -61,7 +61,7 @@ public abstract class ApartmentFactory {
 				.setNbBedrooms(nbBedrooms)
 				.setNbSleeping(nbSleeping)
 				.setNbBathrooms(nbBathrooms)
-				.setTerrace(terrace)
+				.setTerrace(hasTerrace)
 				.setFloorAreaTerrace(floorAreaTerrace)
 				.setDescription(description)
 				.setTitle(title)
@@ -85,8 +85,8 @@ public abstract class ApartmentFactory {
 		int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 1);
 		int nbSleeping = (1 + rand.nextInt(4)) * nbBedrooms;
 		int nbBathrooms = 1 + rand.nextInt(nbBedrooms);
-		boolean terrace = Math.random() >= 0.5;
-		double floorAreaTerrace = (terrace) ? simulateRandomDraw(15d, 2d) : 0;
+		boolean hasTerrace = Math.random() >= 0.5;
+		double floorAreaTerrace = (hasTerrace) ? simulateRandomDraw(15d, 2d) : 0;
 		String title = "Location Apartement "+ rand.nextInt(10000);
 		String description = "This apartment has " + nbBedrooms + " bedrooms and a size of " + floorArea + "square meters";
 		boolean wifi = Math.random() >= 0.5;
@@ -94,14 +94,14 @@ public abstract class ApartmentFactory {
 		boolean tele = Math.random() >= 0.5;
 		int nbMinNight = rand.nextInt(700) + 1;
 		return generateApartment(floorArea, address, nbBedrooms, nbSleeping, nbBathrooms,
-				terrace, floorAreaTerrace, description, title, 
+				hasTerrace, floorAreaTerrace, description, title, 
 				wifi, pricePerNight, nbMinNight, tele);
 	}
 
 	/**
 	 * This function aims to generate a list of random apartments.
 	 *
-	 * @param nbApartment <i>int</i> the number of apartments the list should contains
+	 * @param nbApartment the number of apartments the list should contains
 	 * @return <i>ArrayList</i> a list of random apartments of size nbApartment
 	 */
 	public static ArrayList<Apartment> generateRandomApartmentList(int nbApartment) {
@@ -119,8 +119,8 @@ public abstract class ApartmentFactory {
 	 * This function simulates a random draw of a variable, being given its
 	 * expectation and its deviation.
 	 * 
-	 * @param mean <i>double</i> gives the mathematical expectation of the variable
-	 * @param deviation <i>double</i> is the standard deviation of the variable
+	 * @param mean gives the mathematical expectation of the variable
+	 * @param deviation is the standard deviation of the variable
 	 * @return <i>double</i> an outcome of the randomized experiment
 	 */
 	private static double simulateRandomDraw(double mean, double deviation) {
@@ -132,7 +132,7 @@ public abstract class ApartmentFactory {
 	 * Call an API which generates a random address.
 	 * This function aims at getting the random address generated.
 	 *
-	 * @param retry <i> int </i> indicates how many time the function has been called (Retry System).
+	 * @param retry indicates how many time the function has been called (Retry System).
 	 * It will allow us to try escaping problems while contacting API (if it fails once, we try to call it
 	 * again until the number specified in the class attribute NB_MAX_RETRY).
 	 * @return <i>String</i> the address generated.
@@ -189,7 +189,7 @@ public abstract class ApartmentFactory {
 	/**
 	 * Generate a list of apartments from a json file.
 	 *
-	 * @param jsonFileAddress <i> String </i> the address where the json with all the apartments are
+	 * @param jsonFileAddress the address where the json with all the apartments are
 	 * @return the list <i> List </i> of apartments found in the json file.
 	 * @throws IOException if we cannot have access to the json file.
 	 */

@@ -55,7 +55,7 @@ public class Apartment extends Object {
 	 *          have a default value set of <code>false</code> which mean the
 	 *          apartment doesn't have a terrace.
 	 */
-	private boolean terrace;
+	private boolean hasTerrace;
 
 	/**
 	 * @param a real number superior or equal to zero it represents the floor area
@@ -137,11 +137,11 @@ public class Apartment extends Object {
 		if (!(obj instanceof Apartment))
 			return false;
 		Apartment apart = (Apartment) obj;
-		return apart.floorArea == floorArea && apart.address.equals(address) && apart.nbBedrooms == nbBedrooms
-				&& apart.nbSleeping == nbSleeping && apart.nbBathrooms == nbBathrooms && apart.terrace == terrace
-				&& apart.floorAreaTerrace == floorAreaTerrace && apart.description.equals(description)
-				&& apart.title.equals(title) && apart.wifi == wifi && apart.pricePerNight == pricePerNight
-				&& apart.nbMinNight == nbMinNight && apart.tele == tele;
+		return apart.floorArea == this.floorArea && apart.address.equals(this.address) && apart.nbBedrooms == this.nbBedrooms
+				&& apart.nbSleeping == this.nbSleeping && apart.nbBathrooms == this.nbBathrooms && apart.hasTerrace == this.hasTerrace
+				&& apart.floorAreaTerrace == this.floorAreaTerrace && apart.description.equals(this.description)
+				&& apart.title.equals(this.title) && apart.wifi == this.wifi && apart.pricePerNight == this.pricePerNight
+				&& apart.nbMinNight == this.nbMinNight && apart.tele == this.tele;
 	}
 
 	@Override
@@ -152,9 +152,9 @@ public class Apartment extends Object {
 	 *         area, its address and his title
 	 */
 	public String toString() {
-		String floorAreaTS = "\nFloor area : " + Double.toString(floorArea) + " square meters";
-		String addressTS = "\nAddress : " + address;
-		String titleTS = "\nTitle : " + title;
+		String floorAreaTS = "\nFloor area : " + Double.toString(this.floorArea) + " square meters";
+		String addressTS = "\nAddress : " + this.address;
+		String titleTS = "\nTitle : " + this.title;
 		return floorAreaTS + addressTS + titleTS;
 	}
 
@@ -179,27 +179,27 @@ public class Apartment extends Object {
 		String dispNbMinNight;
 		String dispTele;
 
-		dispTitle = "\nTitle : " + title;
-		dispAddress = "\nAddress : " + address;
-		dispFloorArea = "\nFloor area : " + Double.toString(floorArea) + " square meters";
+		dispTitle = "\nTitle : " + this.title;
+		dispAddress = "\nAddress : " + this.address;
+		dispFloorArea = "\nFloor area : " + Double.toString(this.floorArea) + " square meters";
 		dispNbBedrooms = "\nNumber of bedrooms : "
-				+ ((nbBedrooms == 0) ? "N/A" : Integer.toString(nbBedrooms) + " bedroom(s)");
+				+ ((this.nbBedrooms == 0) ? "N/A" : Integer.toString(this.nbBedrooms) + " bedroom(s)");
 		dispNbSleeping = "\nNumber of sleeping (capacity) : "
-				+ ((nbSleeping == 0) ? "N/A" : Integer.toString(nbSleeping) + " person(s)");
+				+ ((this.nbSleeping == 0) ? "N/A" : Integer.toString(this.nbSleeping) + " person(s)");
 		dispNbBathrooms = "\nNumber of bathrooms : "
-				+ ((nbBathrooms == 0) ? "N/A" : Integer.toString(nbBathrooms) + " bathroom(s)");
-		dispTerrace = "\nTerrace : " + ((terrace) ? "Yes" : "No");
+				+ ((this.nbBathrooms == 0) ? "N/A" : Integer.toString(this.nbBathrooms) + " bathroom(s)");
+		dispTerrace = "\nTerrace : " + ((this.hasTerrace) ? "Yes" : "No");
 		dispFloorAreaTerrace = new StringBuilder()
-				.append(!(terrace) ? "": "\nTerrace floor area : ")
-				.append((floorAreaTerrace == 0) ? "N/A" : Double.toString(floorAreaTerrace) + " square meters")
+				.append(!(this.hasTerrace) ? "": "\nTerrace floor area : ")
+				.append((floorAreaTerrace == 0) ? "N/A" : Double.toString(this.floorAreaTerrace) + " square meters")
 				.toString();
-		dispDescription = "\nDescription : " + ((description == "") ? "N/A" : description);
-		dispWifi = "\nWifi : " + ((wifi) ? "Yes" : "No");
-		dispTele = "\nTelevision : " + ((tele) ? "Yes" : "No");
+		dispDescription = "\nDescription : " + ((this.description == "") ? "N/A" : this.description);
+		dispWifi = "\nWifi : " + ((this.wifi) ? "Yes" : "No");
+		dispTele = "\nTelevision : " + ((this.tele) ? "Yes" : "No");
 		dispPricePerNight = "\nPrice per night : "
-				+ ((pricePerNight == 0) ? "N/A" : Double.toString(pricePerNight) + "€");
+				+ ((this.pricePerNight == 0) ? "N/A" : Double.toString(this.pricePerNight) + "€");
 		dispNbMinNight = "\nNumber of night minimum to rent this apartment : "
-				+ ((nbMinNight == 0) ? "N/A" : Integer.toString(nbMinNight) + " night(s)");
+				+ ((this.nbMinNight == 0) ? "N/A" : Integer.toString(this.nbMinNight) + " night(s)");
 
 		return dispTitle + dispAddress + dispFloorArea + dispNbBedrooms + dispNbSleeping + dispNbBathrooms + dispTerrace
 				+ dispFloorAreaTerrace + dispDescription + dispWifi + dispPricePerNight + dispNbMinNight + dispTele;
@@ -211,7 +211,7 @@ public class Apartment extends Object {
 	 * @return a double positive or equal to zero
 	 */
 	public double getFloorArea() {
-		return floorArea;
+		return this.floorArea;
 	}
 
 	/**
@@ -220,7 +220,7 @@ public class Apartment extends Object {
 	 * @return a String of characters
 	 */
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 
 	/**
@@ -229,7 +229,7 @@ public class Apartment extends Object {
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbBedrooms() {
-		return nbBedrooms;
+		return this.nbBedrooms;
 	}
 
 	/**
@@ -238,7 +238,7 @@ public class Apartment extends Object {
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbSleeping() {
-		return nbSleeping;
+		return this.nbSleeping;
 	}
 
 	/**
@@ -247,7 +247,7 @@ public class Apartment extends Object {
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbBathrooms() {
-		return nbBathrooms;
+		return this.nbBathrooms;
 	}
 
 	/**
@@ -256,7 +256,7 @@ public class Apartment extends Object {
 	 * @return a boolean
 	 */
 	public boolean getTerrace() {
-		return terrace;
+		return this.hasTerrace;
 	}
 
 	/**
@@ -265,7 +265,7 @@ public class Apartment extends Object {
 	 * @return a double positive or equal to zero
 	 */
 	public double getFloorAreaTerrace() {
-		return floorAreaTerrace;
+		return this.floorAreaTerrace;
 	}
 
 	/**
@@ -274,7 +274,7 @@ public class Apartment extends Object {
 	 * @return a string of characters
 	 */
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	/**
@@ -283,7 +283,7 @@ public class Apartment extends Object {
 	 * @return a string of characters
 	 */
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	/**
@@ -292,7 +292,7 @@ public class Apartment extends Object {
 	 * @return a boolean
 	 */
 	public boolean getWifi() {
-		return wifi;
+		return this.wifi;
 	}
 
 	/**
@@ -301,7 +301,7 @@ public class Apartment extends Object {
 	 * @return a double positive or equal to zero
 	 */
 	public double getPricePerNight() {
-		return pricePerNight;
+		return this.pricePerNight;
 	}
 
 	/**
@@ -310,7 +310,7 @@ public class Apartment extends Object {
 	 * @return an integer positive or equal to zero
 	 */
 	public int getNbMinNight() {
-		return nbMinNight;
+		return this.nbMinNight;
 	}
 
 	/**
@@ -319,12 +319,11 @@ public class Apartment extends Object {
 	 * @return a boolean
 	 */
 	public boolean getTele() {
-		return tele;
+		return this.tele;
 	}
 
 	/**
 	 * @param floorArea is a real number superior or equal to zero
-	 * @return
 	 */
 	private void setFloorArea(double floorArea) {
 		checkArgument(floorArea >= 0, "The floor area should not be negative");
@@ -372,7 +371,7 @@ public class Apartment extends Object {
 	 * @param terrace is a boolean (true/false)
 	 */
 	private void setTerrace(boolean terrace) {
-		this.terrace = terrace;
+		this.hasTerrace = terrace;
 		LOGGER.info("terrace has been set to " + terrace);
 	}
 
@@ -381,7 +380,7 @@ public class Apartment extends Object {
 	 *                         works if terrace = true (use setTerrace)
 	 */
 	private void setFloorAreaTerrace(double floorAreaTerrace) {
-		checkArgument((this.terrace == false && floorAreaTerrace == 0) || (this.terrace == true),
+		checkArgument((!this.hasTerrace && floorAreaTerrace == 0) || (this.hasTerrace),
 				"The terrace can not have a floor area if it doesn't exists");
 		checkArgument(floorAreaTerrace >= 0, "The floor area of the terrace can not be negative");
 		this.floorAreaTerrace = floorAreaTerrace;
@@ -392,6 +391,7 @@ public class Apartment extends Object {
 	 * @param description is a string of characters
 	 */
 	private void setDescription(String description) {
+		checkArgument(!description.isEmpty(), "The description should not be empty");
 		this.description = description;
 		LOGGER.info("The description has been set to " + description);
 	}
@@ -441,7 +441,7 @@ public class Apartment extends Object {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, floorArea, nbBedrooms, nbSleeping, nbBathrooms, terrace, floorAreaTerrace,
+		return Objects.hash(address, floorArea, nbBedrooms, nbSleeping, nbBathrooms, hasTerrace, floorAreaTerrace,
 				description, title, wifi, pricePerNight, nbMinNight, tele);
 	}
 
