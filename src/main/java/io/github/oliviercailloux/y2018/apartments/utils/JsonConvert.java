@@ -105,7 +105,7 @@ public abstract class JsonConvert {
 
 		final LinkedHashMap<?, ?> result = jsonb.fromJson(jsonString, LinkedHashMap.class);
 		LOGGER.info("Get address");
-		
+
 		if (result.get("address").toString().isEmpty() || !result.containsKey("address")) {
 			throw new IllegalArgumentException();
 		} else {
