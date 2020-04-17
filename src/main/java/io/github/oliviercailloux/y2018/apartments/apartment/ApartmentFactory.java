@@ -83,7 +83,7 @@ public abstract class ApartmentFactory {
 
 		double floorArea = simulateRandomDraw(65d, 21d);
 		String address = getRandomAddress();
-		int averageRoomArea = (int) (10 + (Math.random() * 20));
+		int averageRoomArea = (int) (10 + (rand.nextInt(20)));
 		int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 1);
 		int nbSleeping = (1 + rand.nextInt(4)) * nbBedrooms;
 		int nbBathrooms = 1 + rand.nextInt(nbBedrooms);
