@@ -139,6 +139,7 @@ class ApartmentFactoryTest {
 	 * This function allow us to test if we have an exception thrown when the json path given
 	 * in argument of the method is wrong.
 	 */
+	@Test
 	public void generateApartmentFromJsonExceptionTest() {
 		assertThrows(IOException.class,
 				()-> ApartmentFactory.generateApartmentFromJson("abc"));
