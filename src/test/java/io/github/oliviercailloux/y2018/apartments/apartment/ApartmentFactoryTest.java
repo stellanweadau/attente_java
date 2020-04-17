@@ -1,6 +1,8 @@
 package io.github.oliviercailloux.y2018.apartments.apartment;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.IOException;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -124,6 +126,11 @@ class ApartmentFactoryTest {
 			assertTrue(a.getNbBathrooms()>=1);
 
 		}
+	}
+	
+	public void generateApartmentFromJsonTest() {
+		assertThrows(IOException.class,
+				()-> ApartmentFactory.generateApartmentFromJson("abc"));
 	}
 	
 	

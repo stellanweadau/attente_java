@@ -10,10 +10,12 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 /**
  * A factory for creating Apartment objects.
@@ -21,14 +23,13 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class ApartmentFactory {
 
-	/** This constant allow us to know the maximum number of times we should try to 
-	 * reach the API address */
+	/**  This constant allow us to know the maximum number of times we should try to  reach the API address. */
 	private static final int NB_MAX_RETRY = 5;
 
 	/** Logger whic allow us to know where the mistakes are. */
 	private static Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
 
-	/** Random object which allow us to generate random numbers */
+	/**  Random object which allow us to generate random numbers. */
 	private static Random rand = new Random();
 
 	/** The URL of the API address. */
@@ -168,7 +169,6 @@ public abstract class ApartmentFactory {
 		return address;
 	}
 	
-	
 	/**
 	 * Call an API which generates a random address.
 	 * This function aims at getting the random address generated.
@@ -187,5 +187,26 @@ public abstract class ApartmentFactory {
             return sb.toString();
         }
     }
+	
+	/**
+	 * Generate a list of apartments from a json file.
+	 *
+	 * @param jsonFileAddress <i> String </i> the address where the json with all the apartments are
+	 * @return the list <i> List </i> of apartments found in the json file.
+	 * @throws IOException if we cannot have access to the json file.
+	 */
+	public static List<Apartment> generateApartmentFromJson(String jsonFileAddress) throws IOException {
+		return JsonConvert.jsonToApartments(jsonFileAddress);
+	}
+	
+	/**
+	 * Generate apartment from a json file by default.
+	 *
+	 * @return the list <i> List </i> of apartments found in the json file by default.
+	 * @throws IOException if we cannot have access to the json file.
+	 */
+	public static List<Apartment> generateApartmentFromJson() throws IOException {
+		return JsonConvert.jsonToApartments();		
+	}
 
 }
