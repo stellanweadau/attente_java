@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.charset.Charset;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public abstract class JsonConvert {
 		File jsonFile = new File(jsonPath);
 		Jsonb jsonb = JsonbBuilder.create();
 
-		try (Writer jsonFilePath = new BufferedWriter(new FileWriter(jsonFile))) {
+		try (Writer jsonFilePath = new BufferedWriter(new FileWriter(jsonFile, Charset.forName("utf-8")))) {
 			jsonFilePath.write(jsonb.toJson(a));
 			jsonFilePath.close();
 
@@ -75,7 +76,7 @@ public abstract class JsonConvert {
 	public static String readApartmentFromJson(String jsonPath) throws IOException {
 		File jsonFile = new File(jsonPath);
 
-		try (BufferedReader jsonFilePath = new BufferedReader(new FileReader(jsonFile))) {
+		try (BufferedReader jsonFilePath = new BufferedReader(new FileReader(jsonFile, Charset.forName("utf-8")))) {
 			String jsonLine = jsonFilePath.readLine();
 			String jsonRead = jsonLine;
 
@@ -180,7 +181,7 @@ public abstract class JsonConvert {
 		File jsonFile = new File(jsonPath);
 		Jsonb jsonb = JsonbBuilder.create();
 
-		try (Writer jsonFilePath = new BufferedWriter(new FileWriter(jsonFile))) {
+		try (Writer jsonFilePath = new BufferedWriter(new FileWriter(jsonFile, Charset.forName("utf-8")))) {
 			jsonFilePath.write(jsonb.toJson(listApartments));
 			jsonFilePath.close();
 
