@@ -25,14 +25,14 @@ public abstract class ApartmentFactory {
 	 * reach the API address */
 	private static final int NB_MAX_RETRY = 5;
 
-	/** Logger whic allow us to know where the mistakes are. */
-	private static Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
+	/** Logger which allow us to know where the mistakes are. */
+	private static final Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
 
 	/** Random object which allow us to generate random numbers */
 	private static Random rand = new Random();
 
 	/** The URL of the API address. */
-	private static String urlApiAddress = "https://8n8iajahab.execute-api.us-east-1.amazonaws.com/default/RealRandomAdress";
+	private static final String URL_API_ADDRESS = "https://8n8iajahab.execute-api.us-east-1.amazonaws.com/default/RealRandomAdress";
 
 	/**
 	 * The function aims to build a new apartment when all the characteristics are known.
@@ -144,7 +144,7 @@ public abstract class ApartmentFactory {
 
 		String address = "";
 		//Code from https://www.developpez.net/forums/d1354479/java/general-java/recuperer-reponse-d-adresse-http/ 
-		try(InputStream is = new URL(urlApiAddress).openConnection().getInputStream()) { 
+		try(InputStream is = new URL(URL_API_ADDRESS).openConnection().getInputStream()) { 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "utf-8"));   
 			StringBuilder builder = new StringBuilder(); 
 			for(String line = reader.readLine(); line != null; line = reader.readLine()) { 
@@ -167,8 +167,8 @@ public abstract class ApartmentFactory {
 		}
 		return address;
 	}
-	
-	
+
+
 	/**
 	 * Call an API which generates an existing random address.
 	 * This function aims at getting the random address generated.
@@ -176,16 +176,16 @@ public abstract class ApartmentFactory {
 	 * @return the random address
 	 */
 	private static String getRandomAddress() {
-        try {
-            return getRandomAddress(0);
-        } catch (IOException e) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(rand.nextInt(3000))
-            .append(" rue de l'appel échoué ")
-            .append(rand.nextInt(19)+75001)
-            .append(" Paris ");
-            return sb.toString();
-        }
-    }
+		try {
+			return getRandomAddress(0);
+		} catch (IOException e) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(rand.nextInt(3000))
+			.append(" rue de l'appel échoué ")
+			.append(rand.nextInt(19)+75001)
+			.append(" Paris ");
+			return sb.toString();
+		}
+	}
 
 }

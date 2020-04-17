@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 class ApartmentFactoryTest {
 
 	//Logger for AparmentFactoryTest class
-	private static Logger LOGGER = LoggerFactory.getLogger(ApartmentFactoryTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ApartmentFactoryTest.class);
 
 	/**
 	 * Test GenerateApartment function 
