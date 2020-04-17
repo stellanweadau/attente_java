@@ -447,7 +447,7 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * Code from :
+	 * Code inspired from :
 	 * https://codereview.stackexchange.com/questions/127391/simple-builder-pattern-implementation-for-building-immutable-objects/127509#127509
 	 */
 	public static class Builder {
