@@ -84,7 +84,7 @@ public abstract class ApartmentFactory {
 
 		double floorArea = simulateRandomDraw(65d, 21d);
 		String address = getRandomAddress();
-		int averageRoomArea = (int) (10 + (rand.nextInt(20)));
+		int averageRoomArea = 10 + rand.nextInt(20);
 		int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 1);
 		int nbSleeping = (1 + rand.nextInt(4)) * nbBedrooms;
 		int nbBathrooms = 1 + rand.nextInt(nbBedrooms);
@@ -168,12 +168,7 @@ public abstract class ApartmentFactory {
 		}
 		return address;
 	}
-<<<<<<< HEAD
-	
-=======
 
-
->>>>>>> 28797df6fa189b0106eb664234f23b44c52c5833
 	/**
 	 * Call an API which generates an existing random address.
 	 * This function aims at getting the random address generated.
@@ -181,10 +176,10 @@ public abstract class ApartmentFactory {
 	 * @return the random address
 	 */
 	private static String getRandomAddress() {
-<<<<<<< HEAD
         try {
             return getRandomAddress(0);
         } catch (IOException e) {
+        	LOGGER.error("Problem while getting random address",e);
             StringBuilder sb = new StringBuilder();
             sb.append(rand.nextInt(3000))
             .append(" rue de l'appel échoué ")
@@ -213,18 +208,6 @@ public abstract class ApartmentFactory {
 	 */
 	public static List<Apartment> generateApartmentFromJson() throws IOException {
 		return JsonConvert.jsonToApartments();		
-=======
-		try {
-			return getRandomAddress(0);
-		} catch (IOException e) {
-			StringBuilder sb = new StringBuilder();
-			sb.append(rand.nextInt(3000))
-			.append(" rue de l'appel échoué ")
-			.append(rand.nextInt(19)+75001)
-			.append(" Paris ");
-			return sb.toString();
-		}
->>>>>>> 28797df6fa189b0106eb664234f23b44c52c5833
 	}
 
 }
