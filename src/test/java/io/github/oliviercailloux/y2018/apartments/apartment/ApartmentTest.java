@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
-
 class ApartmentTest {
 
 	private double floorArea = 456.56; 
