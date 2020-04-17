@@ -53,10 +53,10 @@ public abstract class ApartmentFactory {
 	 * 
 	 * @return <i>Apartment</i> the apartment built with the previous characteristics
 	 */
-	public static Apartment generateApartment(double floorArea, String address, int nbBedrooms,int nbSleeping, 
+	public static Apartment generateApartment(double floorArea, String address, int nbBedrooms, int nbSleeping, 
 			int nbBathrooms, boolean terrace, double floorAreaTerrace, 
 			String description, String title, boolean wifi, 
-			double pricePerNight,int nbMinNight, boolean tele) {
+			double pricePerNight, int nbMinNight, boolean tele) {
 		Builder apartBuilder = new Builder();
 		return apartBuilder.setFloorArea(floorArea)
 				.setAddress(address)
@@ -92,12 +92,12 @@ public abstract class ApartmentFactory {
 		String title = "Location Apartement "+ rand.nextInt(10000);
 		String description = "This apartment has " + nbBedrooms + " bedrooms and a size of " + floorArea + "square meters";
 		boolean wifi = Math.random() >= 0.5;
-		double pricePerNight = floorArea * simulateRandomDraw(11d,3d);
+		double pricePerNight = floorArea * simulateRandomDraw(11d, 3d);
 		boolean tele = Math.random() >= 0.5;
 		int nbMinNight = rand.nextInt(700) + 1;
-		return generateApartment(floorArea,address, nbBedrooms, nbSleeping, nbBathrooms,
-				terrace, floorAreaTerrace, description,title, 
-				wifi, pricePerNight,nbMinNight, tele);
+		return generateApartment(floorArea, address, nbBedrooms, nbSleeping, nbBathrooms,
+				terrace, floorAreaTerrace, description, title, 
+				wifi, pricePerNight, nbMinNight, tele);
 	}
 
 	/**

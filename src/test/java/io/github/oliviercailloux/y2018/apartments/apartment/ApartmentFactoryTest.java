@@ -30,14 +30,14 @@ class ApartmentFactoryTest {
 		boolean terrace = true;
 		double floorAreaTerrace = 25.32; 
 		String description = "A Random Description for A Random House in A Random Address"; 
-		String title ="A Random House"; 
+		String title = "A Random House"; 
 		boolean wifi = true;
 		double pricePerNight = 45.95;
 		int nbMinNight = 60; 
 		boolean tele = false;
-		Apartment apart = ApartmentFactory.generateApartment(floorArea,address,nbBedrooms,
-				nbSleeping,nbBathrooms,terrace,floorAreaTerrace, description, 
-				title, wifi, pricePerNight,nbMinNight, tele);
+		Apartment apart = ApartmentFactory.generateApartment(floorArea, address, nbBedrooms,
+				nbSleeping, nbBathrooms, terrace, floorAreaTerrace, description, 
+				title, wifi, pricePerNight, nbMinNight, tele);
 
 		assertEquals(floorArea, apart.getFloorArea());
 		assertEquals(address, apart.getAddress());
@@ -63,37 +63,37 @@ class ApartmentFactoryTest {
 		Apartment apart = ApartmentFactory.generateRandomApartment();
 		//Test boolean Setters Permissions
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setWifi", boolean.class).invoke(apart,true);  });
+				()->{apart.getClass().getMethod("setWifi", boolean.class).invoke(apart, true);  });
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setTele", boolean.class).invoke(apart,true);  });
+				()->{apart.getClass().getMethod("setTele", boolean.class).invoke(apart, true);  });
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setTerrace", boolean.class).invoke(apart,true);  });
+				()->{apart.getClass().getMethod("setTerrace", boolean.class).invoke(apart, true);  });
 
 		//Test double Setters Permissions
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setFloorArea", double.class).invoke(apart,5.5);  });
+				()->{apart.getClass().getMethod("setFloorArea", double.class).invoke(apart, 5.5);  });
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setFloorAreaTerrace", double.class).invoke(apart,5.5);  });
+				()->{apart.getClass().getMethod("setFloorAreaTerrace", double.class).invoke(apart, 5.5);  });
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setPricePerNight", double.class).invoke(apart,5.5);  });
+				()->{apart.getClass().getMethod("setPricePerNight", double.class).invoke(apart, 5.5);  });
 
 		//Test String Setters Permissions
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setAddress", String.class).invoke(apart,"Don't");  });
+				()->{apart.getClass().getMethod("setAddress", String.class).invoke(apart, "Don't");  });
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setDescription", String.class).invoke(apart,"Do");  });
+				()->{apart.getClass().getMethod("setDescription", String.class).invoke(apart, "Do");  });
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setTitle", String.class).invoke(apart,"That ! :o");  });
+				()->{apart.getClass().getMethod("setTitle", String.class).invoke(apart, "That ! :o");  });
 
 		//Test int Setters Permissions
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setNbBedrooms", int.class).invoke(apart,5);  });
+				()->{apart.getClass().getMethod("setNbBedrooms", int.class).invoke(apart, 5);  });
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setNbSleeping", int.class).invoke(apart,5);  });
+				()->{apart.getClass().getMethod("setNbSleeping", int.class).invoke(apart, 5);  });
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setNbBathrooms", int.class).invoke(apart,5);  });
+				()->{apart.getClass().getMethod("setNbBathrooms", int.class).invoke(apart, 5);  });
 		assertThrows(NoSuchMethodException.class,
-				()->{apart.getClass().getMethod("setNbMinNight", int.class).invoke(apart,5);  });
+				()->{apart.getClass().getMethod("setNbMinNight", int.class).invoke(apart, 5);  });
 	}
 
 	/**
@@ -106,27 +106,27 @@ class ApartmentFactoryTest {
 	void TestGenerateRandomAparmentsList() {
 		int nbAparts = 15; 
 		List<Apartment> aparts = ApartmentFactory.generateRandomApartmentList(nbAparts);
-		assertEquals(aparts.size(),nbAparts);
+		assertEquals(aparts.size(), nbAparts);
 		for(Apartment a : aparts) {
-			assertNotEquals("",a.getAddress());
+			assertNotEquals("", a.getAddress());
 			assertNotNull(a.getAddress());
-			assertTrue(a.getAddress().length()>=12); //Min size of an adress
-			assertTrue(a.getAddress().trim().length()>0);
-			assertNotEquals("",a.getDescription() );
+			assertTrue(a.getAddress().length() >= 12); //Min size of an adress
+			assertTrue(a.getAddress().trim().length() > 0);
+			assertNotEquals("", a.getDescription() );
 			assertNotNull(a.getDescription());
-			assertNotEquals("",a.getTitle());
+			assertNotEquals("", a.getTitle());
 			assertNotNull(a.getTitle());
-			LOGGER.debug("Floor Area : "+a.getFloorArea());
-			assertTrue(a.getFloorArea()>0);
+			LOGGER.debug("Floor Area : " + a.getFloorArea());
+			assertTrue(a.getFloorArea() > 0);
 			if(a.getTerrace()) {
-				assertTrue(a.getFloorAreaTerrace()>0);
+				assertTrue(a.getFloorAreaTerrace() > 0);
 			}
-			LOGGER.debug("Price per night : "+a.getPricePerNight());
-			assertTrue(a.getPricePerNight()>=0);
-			assertTrue(a.getNbMinNight()>0);
-			assertTrue(a.getNbBedrooms()>=1);
-			assertTrue(a.getNbSleeping()>=1);
-			assertTrue(a.getNbBathrooms()>=1);
+			LOGGER.debug("Price per night : " + a.getPricePerNight());
+			assertTrue(a.getPricePerNight() >= 0);
+			assertTrue(a.getNbMinNight() > 0);
+			assertTrue(a.getNbBedrooms() >= 1);
+			assertTrue(a.getNbSleeping() >= 1);
+			assertTrue(a.getNbBathrooms() >= 1);
 
 		}
 	}
