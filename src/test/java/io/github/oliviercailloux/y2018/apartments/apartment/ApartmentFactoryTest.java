@@ -20,8 +20,6 @@ class ApartmentFactoryTest {
 	/**
 	 * Test GenerateApartment function 
 	 * tests the correspondence between the results sent and those recorded.
-	 *
-	 * @author Gabriel GUISSET & Clémence COUSIN
 	 */
 	@Test
 	void testGenerateApartmentFromParameters() {
