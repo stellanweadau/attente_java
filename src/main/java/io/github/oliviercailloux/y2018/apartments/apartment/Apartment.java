@@ -384,9 +384,6 @@ public class Apartment extends Object {
 	 *                         works if terrace = true (use setTerrace)
 	 */
 	private void setFloorAreaTerrace(double floorAreaTerrace) {
-		checkArgument((!this.hasTerrace && floorAreaTerrace == 0) || (this.hasTerrace),
-				"The terrace can not have a floor area if it doesn't exists");
-		checkArgument(floorAreaTerrace >= 0, "The floor area of the terrace can not be negative");
 		this.floorAreaTerrace = floorAreaTerrace;
 		LOGGER.info("The floor area of the terrace has been set to " + floorAreaTerrace);
 	}
@@ -471,10 +468,14 @@ public class Apartment extends Object {
 				throw new IllegalStateException("The title of the apartment must be specified");
 			} else if (apartmentToBuild.getTele() == null){
 				throw new IllegalStateException("You must specify if the apartment has WIFI");
-			}else if (apartmentToBuild.getWifi() == null){
+			} else if (apartmentToBuild.getWifi() == null){
 				throw new IllegalStateException("You must specify if the apartment has TV");
-			}else if (apartmentToBuild.getTerrace() == null){
+			} else if (apartmentToBuild.getTerrace() == null){
 				throw new IllegalStateException("You must specify if the apartment has a Terrace");
+			} else if (apartmentToBuild.getTerrace().equals(Boolean.FALSE) && apartmentToBuild.getFloorAreaTerrace()>0){
+				throw new IllegalStateException("The terrace can not have a floor area if it doesn't exists");
+			} else if (apartmentToBuild.getTerrace().equals(Boolean.TRUE) && apartmentToBuild.getFloorAreaTerrace()<=0){
+				throw new IllegalStateException("The existing terrace can not have a floor area  <= 0");
 			}
 			Apartment buildApartment = apartmentToBuild;
 			apartmentToBuild = new Apartment();
