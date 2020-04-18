@@ -10,29 +10,29 @@ class DiscreteValueFunctionTest {
 
 	@Test
 	void getSubjectiveValueTest() {
-		DiscreteValueFunction<String> f = new DiscreteValueFunction<>("Bad","Medium","Good");
+		DiscreteValueFunction<String> f = new DiscreteValueFunction<>("Bad", "Medium", "Good");
 		assertEquals(0.5, f.getSubjectiveValue("Medium"));
 	}
 
 	@Test
 	void ConstructorValueTest() {
-		Map<Integer,Double> discreteMapTest = new HashMap<>();
+		Map<Integer, Double> discreteMapTest = new HashMap<>();
 		discreteMapTest.put(5, 0.0);
 		discreteMapTest.put(10, 0.25);
 		discreteMapTest.put(99, 1.0);
 		DiscreteValueFunction<Integer> f = new DiscreteValueFunction<>(discreteMapTest);
-		assertEquals(1.0,f.getSubjectiveValue(99));
+		assertEquals(1.0, f.getSubjectiveValue(99));
 	}
 
 	@Test
 	void exceptionTesting() {
 		assertThrows(IllegalArgumentException.class, () -> {
-			Map<Integer,Double> discreteMapTest = new HashMap<>();
+			Map<Integer, Double> discreteMapTest = new HashMap<>();
 			discreteMapTest.put(5, 0.0);
 			discreteMapTest.put(10, 0.25);
 			discreteMapTest.put(99, 1.2);
 			DiscreteValueFunction<Integer> f = new DiscreteValueFunction<>(discreteMapTest);
-			assertEquals(1.2,f.getSubjectiveValue(99));
+			assertEquals(1.2, f.getSubjectiveValue(99));
 		});
 	}
 
@@ -40,8 +40,8 @@ class DiscreteValueFunctionTest {
 	void exceptionDiffArgsString() {
 		assertThrows(IllegalArgumentException.class, () -> {
 			@SuppressWarnings("unused")
-			DiscreteValueFunction<String> vF = new DiscreteValueFunction<>("Unique","Unique","Toto");
+			DiscreteValueFunction<String> vF = new DiscreteValueFunction<>("Unique", "Unique", "Toto");
 		});
-	}	
+	}
 
 }

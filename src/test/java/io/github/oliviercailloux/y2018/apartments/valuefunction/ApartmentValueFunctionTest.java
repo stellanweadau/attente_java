@@ -14,22 +14,12 @@ class ApartmentValueFunctionTest {
 
 	@Test
 	void apartmentValueFunctionTest() throws NumberFormatException {
-		
-		Apartment a = new Builder().setFloorArea(250)
-				.setAddress("108 rue de chat-ville Ville-d'Avray 92410")
-				.setNbBedrooms(1)
-				.setNbSleeping(4)
-				.setNbBathrooms(1)
-				.setTerrace(true)
-				.setFloorAreaTerrace(40)
+
+		Apartment a = new Builder().setFloorArea(250).setAddress("108 rue de chat-ville Ville-d'Avray 92410")
+				.setNbBedrooms(1).setNbSleeping(4).setNbBathrooms(1).setTerrace(true).setFloorAreaTerrace(40)
 				.setDescription("Une ferme rustique en compagnie de Dwight Schrute, interdit à Jim Halpert")
-				.setTitle("Une ferme")
-				.setWifi(false)
-				.setPricePerNight(3.3)
-				.setNbMinNight(3)
-				.setTele(false)
-				.build();
-		
+				.setTitle("Une ferme").setWifi(false).setPricePerNight(3.3).setNbMinNight(3).setTele(false).build();
+
 		ApartmentValueFunction valueFunction = new ApartmentValueFunction();
 
 		LinearValueFunction floorAreaV = new LinearValueFunction(0, 200.00);

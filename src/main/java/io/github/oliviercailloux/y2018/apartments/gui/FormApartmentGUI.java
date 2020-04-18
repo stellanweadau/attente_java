@@ -146,8 +146,7 @@ public class FormApartmentGUI {
 	 * written into the file, the field is clear and highlight in red.
 	 */
 	protected void informationToFile() {
-		if (!verificationText(floorArea, TypeButtonText.DOUBLE)
-				|| !verificationText(floorArea, TypeButtonText.REQUIRED)
+		if (!verificationText(floorArea, TypeButtonText.DOUBLE) || !verificationText(floorArea, TypeButtonText.REQUIRED)
 				|| !verificationText(title, TypeButtonText.REQUIRED)
 				|| !verificationText(address, TypeButtonText.REQUIRED)) {
 			loadMessage(MessageInfo.REQUIRED, "Title, Address and Floor Area are required");
@@ -155,30 +154,21 @@ public class FormApartmentGUI {
 				|| !verificationText(nbMinNight, TypeButtonText.INT)
 				|| !verificationText(nbSleeping, TypeButtonText.INT)
 				|| !verificationText(nbBathrooms, TypeButtonText.INT)
-				|| !verificationText(pricePerNight, TypeButtonText.DOUBLE)){
+				|| !verificationText(pricePerNight, TypeButtonText.DOUBLE)) {
 			loadMessage(MessageInfo.ERROR, "There is an error with the informations given !");
-		} else if((terrace.getSelection() && !verificationText(floorAreaTerrace, TypeButtonText.DOUBLE))) {
+		} else if ((terrace.getSelection() && !verificationText(floorAreaTerrace, TypeButtonText.DOUBLE))) {
 			loadMessage(MessageInfo.ERROR, "Floor Area Terrace should not be empty !");
 		} else {
-			apart= ApartmentFactory.generateApartment(Double.parseDouble(floorArea.getText()), 
-					address.getText(), 
-					Integer.parseInt(nbBedrooms.getText()), 
-					Integer.parseInt(nbSleeping.getText()), 
-					Integer.parseInt(nbBathrooms.getText()), 
-					terrace.getSelection(), 
-					Double.parseDouble(floorAreaTerrace.getText()), 
-					description.getText(), 
-					title.getText(), 
-					wifi.getSelection(), 
-					Double.parseDouble(pricePerNight.getText()), 
-					0,
-					tele.getSelection());
+			apart = ApartmentFactory.generateApartment(Double.parseDouble(floorArea.getText()), address.getText(),
+					Integer.parseInt(nbBedrooms.getText()), Integer.parseInt(nbSleeping.getText()),
+					Integer.parseInt(nbBathrooms.getText()), terrace.getSelection(),
+					Double.parseDouble(floorAreaTerrace.getText()), description.getText(), title.getText(),
+					wifi.getSelection(), Double.parseDouble(pricePerNight.getText()), 0, tele.getSelection());
 			write(apart);
 			loadMessage(MessageInfo.SAVED, "Apartment have been saved !");
 			System.out.println("saved");
 		}
 	}
-
 
 	/**
 	 * This method attributes a color to the information window and depends on the

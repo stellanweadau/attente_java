@@ -149,7 +149,7 @@ public class LayoutApartmentGUI {
 		java.util.List<Apartment> appart = ApartmentFactory.generateRandomApartmentList(50);
 
 		appart.sort((Apartment c, Apartment d) -> {
-			return - Double.compare(avf.getSubjectiveValue(c), avf.getSubjectiveValue(d));
+			return -Double.compare(avf.getSubjectiveValue(c), avf.getSubjectiveValue(d));
 		});
 
 		return appart;
@@ -175,8 +175,8 @@ public class LayoutApartmentGUI {
 	 * we display some elements of the apartment
 	 *
 	 * @param listApp3 the list of apartments to display
-	 * @param          adresse, surface, prix, nbrChambres the parameters of apps to
-	 *                 display when clicking on an apartment
+	 * @param adresse, surface, prix, nbrChambres the parameters of apps to display
+	 *                 when clicking on an apartment
 	 */
 	private void onClick(Label adresse, Label surface, Label prix, Label nbrChambres) {
 		// the listener when we click on an apartment
