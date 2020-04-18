@@ -79,7 +79,7 @@ public abstract class ApartmentFactory {
 	public static Apartment generateRandomRealApartment() throws IOException {
 		return generateRandomApartment(true);
 	}
-	
+
 	/**
 	 * This function aims to generate a new apartment with random characteristics and a real address if the Address Api answer.
 	 * @return An Apartment with random characteristics and a real address if the Address Api answer
@@ -129,7 +129,7 @@ public abstract class ApartmentFactory {
 			throw new IllegalStateException(e);
 		}
 	}
-	
+
 	/**
 	 * This function aims to generate a list of random apartments with real adrss.
 	 * 
@@ -138,9 +138,9 @@ public abstract class ApartmentFactory {
 	 * @throws IOException if the Address API doesn't answer
 	 */
 	public static List<Apartment> generateRandomRealApartmentList(int nbApartment) throws IOException{
-			return generateRandomApartmentList(nbApartment,true);
+		return generateRandomApartmentList(nbApartment,true);
 	}
-	
+
 	/**
 	 * This function aims to generate a list of random apartments.
 	 *
