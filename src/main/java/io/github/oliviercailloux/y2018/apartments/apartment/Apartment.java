@@ -335,7 +335,10 @@ public class Apartment extends Object {
 	 * @param address is a string of characters
 	 */
 	private void setAddress(String address) {
-		checkArgument(!address.isEmpty() && address != null , "The address should not be empty");
+		if(address == null) {
+			throw new NullPointerException("The address should not be null");
+		}
+		checkArgument(!address.isEmpty(), "The address should not be empty");
 		this.address = address;
 		LOGGER.info("The address has been set to " + address);
 	}
@@ -391,7 +394,9 @@ public class Apartment extends Object {
 	 * @param description is a string of characters
 	 */
 	private void setDescription(String description) {
-		checkArgument(!description.isEmpty(), "The description should not be empty");
+		if(description==null) {
+			throw new NullPointerException("The description should not be null");
+		}
 		this.description = description;
 		LOGGER.info("The description has been set to " + description);
 	}
@@ -400,7 +405,10 @@ public class Apartment extends Object {
 	 * @param title is a string of characters
 	 */
 	private void setTitle(String title) {
-		checkArgument((!title.isEmpty()) && (title != null), "The title should not be empty");
+		if(title == null) {
+			throw new NullPointerException("The title should not be null");
+		}
+		checkArgument(!title.isEmpty(), "The title should not be empty");
 		this.title = title;
 		LOGGER.info("The title has been set to " + floorArea);
 	}
