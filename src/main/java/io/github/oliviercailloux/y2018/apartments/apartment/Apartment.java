@@ -479,7 +479,6 @@ public class Apartment extends Object {
 			Apartment buildApartment = apartmentToBuild;
 			apartmentToBuild = new Apartment();
 			return buildApartment;
-
 		}
 
 		public Builder setFloorArea(double floorArea) {
