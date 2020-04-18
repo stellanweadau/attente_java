@@ -175,9 +175,7 @@ public abstract class ApartmentFactory {
 			if(retry < NB_MAX_RETRY) {
 				return getRandomAddress(retry+1);
 			}
-			else {
-				throw e;
-			}
+			throw e;
 		}
 		return address;
 	}
