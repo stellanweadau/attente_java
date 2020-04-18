@@ -56,7 +56,7 @@ public class Apartment extends Object {
 	 *          have a default value set of <code>false</code> which mean the
 	 *          apartment doesn't have a terrace.
 	 */
-	private boolean hasTerrace;
+	private Boolean hasTerrace;
 
 	/**
 	 * @param a real number superior or equal to zero it represents the floor area
@@ -88,7 +88,7 @@ public class Apartment extends Object {
 	 *          initialized, the parameter will have a default value of
 	 *          <code>false</code> which mean the apartment doesn't have wifi.
 	 */
-	private boolean wifi;
+	private Boolean wifi;
 
 	/**
 	 * @param a real number superior or equal to zero, how much it cost (before any
@@ -112,7 +112,7 @@ public class Apartment extends Object {
 	 *          parameter will have a default set value of <code>false</code> which
 	 *          mean the apartment doesn't have a tele.
 	 */
-	private boolean tele;
+	private Boolean tele;
 
 	/**
 	 * Constructor by default to be used by Apartment.Builder
@@ -124,13 +124,13 @@ public class Apartment extends Object {
 		setNbBedrooms(0);
 		setNbSleeping(0);
 		setNbBathrooms(0);
-		setTerrace(false);
+		setTerrace(null);
 		setFloorAreaTerrace(0);
 		setDescription("");
-		setWifi(false);
+		setWifi(null);
 		setPricePerNight(0);
 		setNbMinNight(0);
-		setTele(false);
+		setTele(null);
 	}
 
 	@Override
@@ -257,7 +257,7 @@ public class Apartment extends Object {
 	 * 
 	 * @return a boolean
 	 */
-	public boolean getTerrace() {
+	public Boolean getTerrace() {
 		return this.hasTerrace;
 	}
 
@@ -293,7 +293,7 @@ public class Apartment extends Object {
 	 * 
 	 * @return a boolean
 	 */
-	public boolean getWifi() {
+	public Boolean getWifi() {
 		return this.wifi;
 	}
 
@@ -320,7 +320,7 @@ public class Apartment extends Object {
 	 * 
 	 * @return a boolean
 	 */
-	public boolean getTele() {
+	public Boolean getTele() {
 		return this.tele;
 	}
 
@@ -374,7 +374,7 @@ public class Apartment extends Object {
 	/**
 	 * @param terrace is a boolean (true/false)
 	 */
-	private void setTerrace(boolean terrace) {
+	private void setTerrace(Boolean terrace) {
 		this.hasTerrace = terrace;
 		LOGGER.info("terrace has been set to " + terrace);
 	}
@@ -413,7 +413,7 @@ public class Apartment extends Object {
 	/**
 	 * @param wifi is a boolean (true/false)
 	 */
-	private void setWifi(boolean wifi) {
+	private void setWifi(Boolean wifi) {
 		this.wifi = wifi;
 		LOGGER.info("The wifi has been set to " + wifi);
 	}
@@ -439,7 +439,7 @@ public class Apartment extends Object {
 	/**
 	 * @param tele is a boolean (true/false)
 	 */
-	private void setTele(boolean tele) {
+	private void setTele(Boolean tele) {
 		this.tele = tele;
 		LOGGER.info("The tele has been set to " + tele);
 	}
@@ -469,11 +469,17 @@ public class Apartment extends Object {
 				throw new IllegalStateException("The address of the apartment must be specified");
 			} else if (apartmentToBuild.getTitle() == null) {
 				throw new IllegalStateException("The title of the apartment must be specified");
-			} else {
-				Apartment buildApartment = apartmentToBuild;
-				apartmentToBuild = new Apartment();
-				return buildApartment;
+			} else if (apartmentToBuild.getTele() == null){
+				throw new IllegalStateException("You must specify if the apartment has WIFI");
+			}else if (apartmentToBuild.getWifi() == null){
+				throw new IllegalStateException("You must specify if the apartment has TV");
+			}else if (apartmentToBuild.getTerrace() == null){
+				throw new IllegalStateException("You must specify if the apartment has a Terrace");
 			}
+			Apartment buildApartment = apartmentToBuild;
+			apartmentToBuild = new Apartment();
+			return buildApartment;
+
 		}
 
 		public Builder setFloorArea(double floorArea) {
