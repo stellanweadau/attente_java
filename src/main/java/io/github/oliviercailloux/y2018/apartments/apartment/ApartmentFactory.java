@@ -72,14 +72,34 @@ public abstract class ApartmentFactory {
 	}
 
 	/**
+	 * This function aims to generate a new apartment with random characteristics and a real address.
+	 * @return An Apartment with random characteristics and a real address
+	 * @throws IOException if the Address API doesn't answer
+	 */
+	public static Apartment generateRandomRealApartment() throws IOException {
+		return generateRandomApartment(true);
+	}
+	
+	/**
+	 * This function aims to generate a new apartment with random characteristics and a real address if the Address Api answer.
+	 * @return An Apartment with random characteristics and a real address if the Address Api answer
+	 */
+	public static Apartment generateRandomApartment(){
+		try {
+			return generateRandomApartment(false);
+		} catch (IOException e) {
+			throw new IllegalStateException(e);
+		}
+	}
+	/**
 	 * This function aims to generate a new apartment with random characteristics.
 	 *
 	 * @return <i>Apartment</i> the apartment built
+	 * @throws IOException if the Address Api doesn't answer
 	 */
-	public static Apartment generateRandomApartment() {
-
+	private static Apartment generateRandomApartment(boolean realAddress) throws IOException {
 		double floorArea = simulateRandomDraw(65d, 21d);
-		String address = getRandomAddress();
+		String address = realAddress? getRandomAddressOnlyReal():getRandomAddress();
 		int averageRoomArea = 10 + rand.nextInt(20);
 		int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 1);
 		int nbSleeping = (1 + rand.nextInt(4)) * nbBedrooms;
@@ -98,18 +118,43 @@ public abstract class ApartmentFactory {
 	}
 
 	/**
+	 * This function aims to generate a list of random apartments with real address.
+	 * @param nbApartment the number of apartments the list should contains
+	 * @return <i>List</i> a list of random apartments of size nbApartment with real Address
+	 */
+	public static List<Apartment> generateRandomApartmentList(int nbApartment){
+		try {
+			return generateRandomApartmentList(nbApartment,false);
+		} catch (IOException e) {
+			throw new IllegalStateException(e);
+		}
+	}
+	
+	/**
+	 * This function aims to generate a list of random apartments with real adrss.
+	 * 
+	 * @param nbApartment the number of apartments the list should contains
+	 * @return <i>List</i> a list of random apartments of size nbApartment with real Address
+	 * @throws IOException if the Address API doesn't answer
+	 */
+	public static List<Apartment> generateRandomRealApartmentList(int nbApartment) throws IOException{
+			return generateRandomApartmentList(nbApartment,true);
+	}
+	
+	/**
 	 * This function aims to generate a list of random apartments.
 	 *
 	 * @param nbApartment the number of apartments the list should contains
-	 * @return <i>ArrayList</i> a list of random apartments of size nbApartment
+	 * @return <i>List</i> a list of random apartments of size nbApartment
+	 * @throws IOException if the Address API doesn't answer
 	 */
-	public static List<Apartment> generateRandomApartmentList(int nbApartment) {
+	private static List<Apartment> generateRandomApartmentList(int nbApartment,boolean realAddress) throws IOException {
 		if(nbApartment <=0) {
 			throw new IllegalArgumentException("You must indicate a number of apartments > 0");
 		}
 		List<Apartment> listApartment = new ArrayList<>();
 		for(int i = 0; i < nbApartment ; i++) {
-			listApartment.add(generateRandomApartment());
+			listApartment.add(realAddress ? generateRandomRealApartment():generateRandomApartment());
 		}
 		return listApartment;
 	}
@@ -172,19 +217,29 @@ public abstract class ApartmentFactory {
 	 * @return the random address
 	 */
 	private static String getRandomAddress() {
-        try {
-            return getRandomAddress(0);
-        } catch (IOException e) {
-        	LOGGER.error("Problem while getting random address",e);
-            StringBuilder sb = new StringBuilder();
-            sb.append(rand.nextInt(3000))
-            .append(" rue de l'appel échoué ")
-            .append(rand.nextInt(19)+75001)
-            .append(" Paris ");
-            return sb.toString();
-        }
-    }
-	
+		try {
+			return getRandomAddress(0);
+		} catch (IOException e) {
+			LOGGER.error("Problem while getting random address",e);
+			StringBuilder sb = new StringBuilder();
+			sb.append(rand.nextInt(3000))
+			.append(" rue de l'appel échoué ")
+			.append(rand.nextInt(19)+75001)
+			.append(" Paris ");
+			return sb.toString();
+		}
+	}
+
+	/**
+	 * Call an API which generates an existing random address.
+	 * This function aims at getting the random address generated.
+	 * @return the random address
+	 * @throws IOException if the Address API cannot answer
+	 */
+	private static String getRandomAddressOnlyReal() throws IOException {
+		return getRandomAddress(0);
+	}
+
 	/**
 	 * Generate a list of apartments from a json file.
 	 *
@@ -195,7 +250,7 @@ public abstract class ApartmentFactory {
 	public static List<Apartment> generateApartmentFromJson(String jsonFileAddress) throws IOException {
 		return JsonConvert.jsonToApartments(jsonFileAddress);
 	}
-	
+
 	/**
 	 * Generate apartment from a json file by default.
 	 *
