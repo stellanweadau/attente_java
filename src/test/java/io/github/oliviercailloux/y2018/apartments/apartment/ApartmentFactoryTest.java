@@ -139,7 +139,7 @@ class ApartmentFactoryTest {
 	@Test
 	public void generateApartmentFromJsonExceptionTest() {
 		assertThrows(IOException.class,
-				()-> ApartmentFactory.generateApartmentFromJson("abc"));
+				()-> ApartmentFactory.generateApartmentFromJsonPath("abc"));
 	}
 
 }

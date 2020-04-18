@@ -247,7 +247,7 @@ public abstract class ApartmentFactory {
 	 * @return the list <i> List </i> of apartments found in the json file.
 	 * @throws IOException if we cannot have access to the json file.
 	 */
-	public static List<Apartment> generateApartmentFromJson(String jsonFileAddress) throws IOException {
+	public static List<Apartment> generateApartmentFromJsonPath(String jsonFileAddress) throws IOException {
 		return JsonConvert.jsonToApartments(jsonFileAddress);
 	}
 
@@ -257,7 +257,7 @@ public abstract class ApartmentFactory {
 	 * @return the list <i> List </i> of apartments found in the json file by default.
 	 * @throws IOException if we cannot have access to the json file.
 	 */
-	public static List<Apartment> generateApartmentFromJson() throws IOException {
+	public static List<Apartment> getDefaultApartments() throws IOException {
 		return JsonConvert.jsonToApartments();		
 	}
 
