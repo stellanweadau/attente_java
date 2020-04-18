@@ -22,7 +22,6 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class ApartmentFactory {
 
-	/**  This constant allow us to know the maximum number of times we should try to  reach the API address. */
 	private static final int NB_MAX_RETRY = 5;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
