@@ -163,7 +163,7 @@ public class LayoutApartmentGUI {
 	 */
 	public void addAppinListShell() {
 		for (Apartment a : listApp) {
-			LOGGER.info("Appart : " + a);
+			LOGGER.debug("Appart : " + a);
 			listShell.add("Titre: " + a.getTitle() + "\t" + " Adresse : " + a.getAddress());
 
 		}
