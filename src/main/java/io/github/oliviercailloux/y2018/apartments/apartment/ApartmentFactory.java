@@ -103,11 +103,11 @@ public abstract class ApartmentFactory {
 	 * @param nbApartment the number of apartments the list should contains
 	 * @return <i>ArrayList</i> a list of random apartments of size nbApartment
 	 */
-	public static ArrayList<Apartment> generateRandomApartmentList(int nbApartment) {
+	public static List<Apartment> generateRandomApartmentList(int nbApartment) {
 		if(nbApartment <=0) {
 			throw new IllegalArgumentException("You must indicate a number of apartments > 0");
 		}
-		ArrayList<Apartment> listApartment = new ArrayList<>();
+		List<Apartment> listApartment = new ArrayList<>();
 		for(int i = 0; i < nbApartment ; i++) {
 			listApartment.add(generateRandomApartment());
 		}

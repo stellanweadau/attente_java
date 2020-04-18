@@ -1,7 +1,6 @@
 package io.github.oliviercailloux.y2018.apartments.gui;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import org.eclipse.swt.*;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -12,7 +11,6 @@ import org.w3c.dom.DOMException;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.ApartmentFactory;
-import io.github.oliviercailloux.y2018.apartments.apartment.ApartmentGenerator;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunction;
 
@@ -28,9 +26,9 @@ import org.eclipse.swt.layout.*;
  */
 public class LayoutApartmentGUI {
 
-	private final static Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
 
-	ArrayList<Apartment> listApp;
+	java.util.List<Apartment> listApp;
 
 	Display display = new Display();
 	Shell shell = new Shell(display);
@@ -146,9 +144,9 @@ public class LayoutApartmentGUI {
 	 * @throws IllegalAccessException
 	 * @throws IOException
 	 */
-	private static ArrayList<Apartment> getListSorted(ApartmentValueFunction avf) {
+	private static java.util.List<Apartment> getListSorted(ApartmentValueFunction avf) {
 
-		ArrayList<Apartment> appart = ApartmentFactory.generateRandomApartmentList(50);
+		java.util.List<Apartment> appart = ApartmentFactory.generateRandomApartmentList(50);
 
 		appart.sort((Apartment c, Apartment d) -> {
 			return - Double.compare(avf.getSubjectiveValue(c), avf.getSubjectiveValue(d));
@@ -165,7 +163,7 @@ public class LayoutApartmentGUI {
 	 */
 	public void addAppinListShell() {
 		for (Apartment a : listApp) {
-			System.out.println("Appart : " + a);
+			LOGGER.info("Appart : " + a);
 			listShell.add("Titre: " + a.getTitle() + "\t" + " Adresse : " + a.getAddress());
 
 		}
