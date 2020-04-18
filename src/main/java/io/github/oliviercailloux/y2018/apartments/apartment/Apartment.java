@@ -4,6 +4,7 @@ import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class Apartment extends Object {
 
@@ -335,10 +336,9 @@ public class Apartment extends Object {
 	 * @param address is a string of characters
 	 */
 	private void setAddress(String address) {
-		if(address == null) {
-			throw new NullPointerException("The address should not be null");
-		}
+		checkNotNull(address,"The address should not be null");
 		checkArgument(!address.isEmpty(), "The address should not be empty");
+		
 		this.address = address;
 		LOGGER.info("The address has been set to " + address);
 	}
@@ -394,9 +394,7 @@ public class Apartment extends Object {
 	 * @param description is a string of characters
 	 */
 	private void setDescription(String description) {
-		if(description==null) {
-			throw new NullPointerException("The description should not be null");
-		}
+		checkNotNull(description,"The description should not be null");
 		this.description = description;
 		LOGGER.info("The description has been set to " + description);
 	}
@@ -405,9 +403,7 @@ public class Apartment extends Object {
 	 * @param title is a string of characters
 	 */
 	private void setTitle(String title) {
-		if(title == null) {
-			throw new NullPointerException("The title should not be null");
-		}
+		checkNotNull(title,"The title should not be null");
 		checkArgument(!title.isEmpty(), "The title should not be empty");
 		this.title = title;
 		LOGGER.info("The title has been set to " + floorArea);
