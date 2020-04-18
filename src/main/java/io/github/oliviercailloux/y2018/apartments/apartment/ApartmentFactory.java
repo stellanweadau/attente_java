@@ -32,46 +32,6 @@ public abstract class ApartmentFactory {
 	private static final String URL_API_ADDRESS = "https://8n8iajahab.execute-api.us-east-1.amazonaws.com/default/RealRandomAdress";
 
 	/**
-	 * The function aims to build a new apartment when all the characteristics are known.
-	 *
-	 * @param floorArea the floor area of the apartment built
-	 * @param address the address of the apartment built
-	 * @param nbBedrooms the number of bedrooms of the apartment built
-	 * @param nbSleeping the maximum number of people who can sleep in this apartment
-	 * @param nbBathrooms the number of bathrooms of the apartment built
-	 * @param terrace says whether the apartment has a terrace or not
-	 * @param floorAreaTerrace gives the size of the terrace
-	 * @param description a description of the apartment
-	 * @param title gives the title of the announce
-	 * @param wifi says whether the apartment has the wifi or not
-	 * @param pricePerNight gives the price per night spent in the apartment
-	 * @param nbMinNight indicate the number minimum of night to locate an apartment
-	 * @param tele says whether the apartment has a TV or not
-	 * 
-	 * @return <i>Apartment</i> the apartment built with the previous characteristics
-	 */
-	public static Apartment generateApartment(double floorArea, String address, int nbBedrooms, int nbSleeping, 
-			int nbBathrooms, boolean hasTerrace, double floorAreaTerrace, 
-			String description, String title, boolean wifi, 
-			double pricePerNight, int nbMinNight, boolean tele) {
-		Builder apartBuilder = new Builder();
-		return apartBuilder.setFloorArea(floorArea)
-				.setAddress(address)
-				.setNbBedrooms(nbBedrooms)
-				.setNbSleeping(nbSleeping)
-				.setNbBathrooms(nbBathrooms)
-				.setTerrace(hasTerrace)
-				.setFloorAreaTerrace(floorAreaTerrace)
-				.setDescription(description)
-				.setTitle(title)
-				.setWifi(wifi)
-				.setPricePerNight(pricePerNight)
-				.setNbMinNight(nbMinNight)
-				.setTele(tele)
-				.build();
-	}
-
-	/**
 	 * This function aims to generate a new apartment with random characteristics and a real address.
 	 * @return An Apartment with random characteristics and a real address
 	 * @throws IOException if the Address API doesn't answer
@@ -112,15 +72,27 @@ public abstract class ApartmentFactory {
 		double pricePerNight = floorArea * simulateRandomDraw(11d, 3d);
 		boolean tele = Math.random() >= 0.5;
 		int nbMinNight = rand.nextInt(700) + 1;
-		return generateApartment(floorArea, address, nbBedrooms, nbSleeping, nbBathrooms,
-				hasTerrace, floorAreaTerrace, description, title, 
-				wifi, pricePerNight, nbMinNight, tele);
+		Builder apartBuilder = new Builder();
+		return apartBuilder.setFloorArea(floorArea)
+				.setAddress(address)
+				.setNbBedrooms(nbBedrooms)
+				.setNbSleeping(nbSleeping)
+				.setNbBathrooms(nbBathrooms)
+				.setTerrace(hasTerrace)
+				.setFloorAreaTerrace(floorAreaTerrace)
+				.setDescription(description)
+				.setTitle(title)
+				.setWifi(wifi)
+				.setPricePerNight(pricePerNight)
+				.setNbMinNight(nbMinNight)
+				.setTele(tele)
+				.build();
 	}
 
 	/**
 	 * This function aims to generate a list of random apartments with real address.
 	 * @param nbApartment the number of apartments the list should contains
-	 * @return <i>List</i> a list of random apartments of size nbApartment with real Address
+	 * @return a list of random apartments of size nbApartment with real Address
 	 */
 	public static List<Apartment> generateRandomApartmentList(int nbApartment){
 		try {
@@ -134,7 +106,7 @@ public abstract class ApartmentFactory {
 	 * This function aims to generate a list of random apartments with real adrss.
 	 * 
 	 * @param nbApartment the number of apartments the list should contains
-	 * @return <i>List</i> a list of random apartments of size nbApartment with real Address
+	 * @return a list of random apartments of size nbApartment with real Address
 	 * @throws IOException if the Address API doesn't answer
 	 */
 	public static List<Apartment> generateRandomRealApartmentList(int nbApartment) throws IOException{
@@ -165,7 +137,7 @@ public abstract class ApartmentFactory {
 	 * 
 	 * @param mean gives the mathematical expectation of the variable
 	 * @param deviation is the standard deviation of the variable
-	 * @return <i>double</i> an outcome of the randomized experiment
+	 * @return an outcome of the randomized experiment
 	 */
 	private static double simulateRandomDraw(double mean, double deviation) {
 		double draw = Math.abs(rand.nextGaussian());
@@ -179,7 +151,7 @@ public abstract class ApartmentFactory {
 	 * @param retry indicates how many time the function has been called (Retry System).
 	 * It will allow us to try escaping problems while contacting API (if it fails once, we try to call it
 	 * again until the number specified in the class attribute NB_MAX_RETRY).
-	 * @return <i>String</i> the address generated.
+	 * @return the address generated.
 	 * @throws IOException if we cannot contact the API generator.
 	 */
 	private static String getRandomAddress(int retry) throws IOException {
@@ -244,7 +216,7 @@ public abstract class ApartmentFactory {
 	 * Generate a list of apartments from a json file.
 	 *
 	 * @param jsonFileAddress the address where the json with all the apartments are
-	 * @return the list <i> List </i> of apartments found in the json file.
+	 * @return the list of apartments found in the json file.
 	 * @throws IOException if we cannot have access to the json file.
 	 */
 	public static List<Apartment> generateApartmentFromJsonPath(String jsonFileAddress) throws IOException {
@@ -254,7 +226,7 @@ public abstract class ApartmentFactory {
 	/**
 	 * Generate apartment from a json file by default.
 	 *
-	 * @return the list <i> List </i> of apartments found in the json file by default.
+	 * @return the list of apartments found in the json file by default.
 	 * @throws IOException if we cannot have access to the json file.
 	 */
 	public static List<Apartment> getDefaultApartments() throws IOException {

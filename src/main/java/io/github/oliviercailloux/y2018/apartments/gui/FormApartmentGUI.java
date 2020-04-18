@@ -20,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import io.github.oliviercailloux.y2018.apartments.apartment.ApartmentFactory;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
 
@@ -159,11 +160,20 @@ public class FormApartmentGUI {
 		} else if ((terrace.getSelection() && !verificationText(floorAreaTerrace, TypeButtonText.DOUBLE))) {
 			loadMessage(MessageInfo.ERROR, "Floor Area Terrace should not be empty !");
 		} else {
-			apart = ApartmentFactory.generateApartment(Double.parseDouble(floorArea.getText()), address.getText(),
-					Integer.parseInt(nbBedrooms.getText()), Integer.parseInt(nbSleeping.getText()),
-					Integer.parseInt(nbBathrooms.getText()), terrace.getSelection(),
-					Double.parseDouble(floorAreaTerrace.getText()), description.getText(), title.getText(),
-					wifi.getSelection(), Double.parseDouble(pricePerNight.getText()), 0, tele.getSelection());
+			Builder apartBuilder = new Builder();
+			apart = apartBuilder.setFloorArea(Double.parseDouble(floorArea.getText()))
+					.setAddress(address.getText())
+					.setNbBedrooms(Integer.parseInt(nbBedrooms.getText()))
+					.setNbSleeping(Integer.parseInt(nbSleeping.getText()))
+					.setNbBathrooms(Integer.parseInt(nbBathrooms.getText()))
+					.setTerrace(terrace.getSelection())
+					.setFloorAreaTerrace(Double.parseDouble(floorAreaTerrace.getText()))
+					.setDescription(description.getText())
+					.setTitle(title.getText())
+					.setWifi(wifi.getSelection())
+					.setPricePerNight(Double.parseDouble(pricePerNight.getText()))
+					.setTele(tele.getSelection())
+					.build();
 			write(apart);
 			loadMessage(MessageInfo.SAVED, "Apartment have been saved !");
 			System.out.println("saved");
