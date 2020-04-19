@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ArrayList;
+import static com.google.common.base.Preconditions.checkArgument;
 
 import javax.json.bind.Jsonb;
 
@@ -78,7 +79,6 @@ public abstract class JsonConvert {
 
 			LOGGER.info("Apartment have been converted with success");
 		}
-
 	}
 
 	/**
@@ -89,7 +89,6 @@ public abstract class JsonConvert {
 	 * @throws IOException if the file can't be convert into JSON format.
 	 */
 	protected static String readApartmentFromJson(Path jsonPath) throws IOException {
-
 		try (BufferedReader reader = Files.newBufferedReader(jsonPath, StandardCharsets.UTF_8)) {
 			String jsonLine = reader.readLine();
 			String jsonRead = jsonLine;
@@ -117,11 +116,8 @@ public abstract class JsonConvert {
 		final LinkedHashMap<?, ?> result = jsonb.fromJson(jsonString, LinkedHashMap.class);
 		LOGGER.info("Get address");
 
-		if (result.get("address").toString().isEmpty() || !result.containsKey("address")) {
-			throw new IllegalArgumentException();
-		} else {
-			return result.get("address").toString();
-		}
+		checkArgument(!result.get("address").toString().isEmpty() && result.containsKey("address"), "There is no field adress in the JSON file.");
+		return result.get("address").toString();
 	}
 
 	/**
@@ -171,7 +167,6 @@ public abstract class JsonConvert {
 		LOGGER.info("Create Json builder");
 
 		apartmentsBuild = jsonb.fromJson(jsonString, new ArrayList<Apartment.Builder>() {
-
 			/** The Constant serialVersionUID for apartmentsBuild. */
 			private static final long serialVersionUID = 2876323727155064950L;
 		}.getClass().getGenericSuperclass());
@@ -179,7 +174,6 @@ public abstract class JsonConvert {
 		for (int i = 0; i < apartmentsBuild.size(); i++) {
 			apartments.add(apartmentsBuild.get(i).build());
 		}
-
 		return apartments;
 	}
 

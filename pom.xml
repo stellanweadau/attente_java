@@ -174,8 +174,7 @@
 			<artifactId>javax.json.bind-api</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
-		<!-- Dependency used to manipulate JSON format -->
+		<!--  https://projects.eclipse.org/projects/ee4j.yasson -->
 		<dependency>
 			<groupId>org.eclipse</groupId>
 			<artifactId>yasson</artifactId>
@@ -186,7 +185,7 @@
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.json</artifactId>
-			<version>1.1</version>
+			<version>1.1.4</version>
 			<scope>runtime</scope>
 		</dependency>
 		
