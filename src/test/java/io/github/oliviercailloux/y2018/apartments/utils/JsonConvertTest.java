@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Test class for JsonConvert
@@ -30,14 +32,14 @@ public class JsonConvertTest {
 		Apartment a = apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
 				.setTitle("Grand Igloo").setTerrace(false).setWifi(false).setTele(false).build();
 		String expectedApartment = "{\"address\":\"118 rue du père noel 77480\",\"description\":\"\",\"floorArea\":1182118.48,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Grand Igloo\",\"wifi\":false}";
-		String jsonPath = "src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json";
+		Path jsonPath = Paths.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json");
 
 		JsonConvert.apartmentToJson(a, jsonPath);
 		JsonConvert.apartmentToJson(a);
 
 		assertEquals(expectedApartment, JsonConvert.readApartmentFromJson(jsonPath));
-		assertEquals(expectedApartment, JsonConvert.readApartmentFromJson("Apartment_Json.json"));
-		assertThrows(IOException.class, () -> JsonConvert.apartmentToJson(a, ""));
+		assertEquals(expectedApartment, JsonConvert.readApartmentFromJson(Paths.get("Apartment_Json.json")));
+		assertThrows(IOException.class, () -> JsonConvert.apartmentToJson(a, Paths.get("")));
 	}
 
 	/**
@@ -74,12 +76,12 @@ public class JsonConvertTest {
 				.setTerrace(false).setWifi(false).setTele(false).build());
 
 		String expectedApartment = "[{\"address\":\"118 rue du père noel 77480\",\"description\":\"\",\"floorArea\":1182118.48,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Grand Igloo\",\"wifi\":false},{\"address\":\"123 rue du soleil\",\"description\":\"\",\"floorArea\":1234567.89,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Maison Test\",\"wifi\":false}]";
-		String jsonPath = "src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonListTest.json";
+		Path jsonPath = Paths.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonListTest.json");
 
 		JsonConvert.apartmentsToJson(apartments, jsonPath);
 
 		assertEquals(expectedApartment, JsonConvert.readApartmentFromJson(jsonPath));
-		assertThrows(IOException.class, () -> JsonConvert.apartmentsToJson(apartments, ""));
+		assertThrows(IOException.class, () -> JsonConvert.apartmentsToJson(apartments, Paths.get("")));
 	}
 
 	/**
@@ -96,7 +98,7 @@ public class JsonConvertTest {
 		Apartment apartmentRef = apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
 				.setTitle("Grand Igloo").setTerrace(false).setWifi(false).setTele(false).build();
 
-		String jsonPath = "src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json";
+		Path jsonPath = Paths.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json");
 
 		Apartment apartmentTest = JsonConvert.jsonToApartment(jsonPath);
 
@@ -121,7 +123,7 @@ public class JsonConvertTest {
 				apartBuilder.setAddress("123 rue du soleil").setFloorArea(1234567.89).setTitle("Maison Test")
 				.setTerrace(false).setWifi(false).setTele(false).build());
 
-		String jsonPath = "src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonListTest.json";
+		Path jsonPath = Paths.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonListTest.json");
 
 		List<Apartment> apartmentsTest = JsonConvert.jsonToApartments(jsonPath);
 
