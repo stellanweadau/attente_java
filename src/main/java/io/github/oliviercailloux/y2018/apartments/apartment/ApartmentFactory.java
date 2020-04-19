@@ -219,7 +219,7 @@ public abstract class ApartmentFactory {
 	 * @throws IOException if we cannot have access to the json file.
 	 */
 	public static List<Apartment> generateApartmentFromJsonPath(Path jsonFilePath) throws IOException {
-		return JsonConvert.jsonToApartments(jsonFileAddress);
+		return JsonConvert.jsonToApartments(jsonFilePath);
 	}
 
 	/**
