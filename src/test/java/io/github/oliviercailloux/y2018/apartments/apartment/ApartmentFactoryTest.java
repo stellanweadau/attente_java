@@ -3,6 +3,7 @@ package io.github.oliviercailloux.y2018.apartments.apartment;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -71,7 +72,7 @@ class ApartmentFactoryTest {
 	@Test
 	public void generateApartmentFromJsonExceptionTest() {
 		assertThrows(IOException.class,
-				()-> ApartmentFactory.generateApartmentFromJsonPath("abc"));
+				()-> ApartmentFactory.generateApartmentFromJsonPath(Path.of("abc")));
 	}
 
 }
