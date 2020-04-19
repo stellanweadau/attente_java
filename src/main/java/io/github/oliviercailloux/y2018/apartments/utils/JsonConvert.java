@@ -10,11 +10,11 @@ import javax.json.bind.JsonbBuilder;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.LinkedHashMap;
@@ -49,9 +49,11 @@ public abstract class JsonConvert {
 	 * @return <i>Path</i> where jsonToApartments will read.
 	 */
 	private static final Path startApartment() {
-	Path path = Paths.get("src/main/resources/io/github/oliviercailloux/y2018/jsonResources/defaultJsonToApartments.json");
-	return path;
-}
+		Path path = Paths
+				.get("src/main/resources/io/github/oliviercailloux/y2018/jsonResources/defaultJsonToApartments.json");
+		return path;
+	}
+
 	/**
 	 * Converts an Apartment object to a JSON file with the default path
 	 * APARTMENT_PATH_JSON.
@@ -71,15 +73,15 @@ public abstract class JsonConvert {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentToJson(Apartment a, Path jsonPath) throws IOException {
-		File jsonFile = new File(jsonPath.toString());
 		Jsonb jsonb = JsonbBuilder.create();
 
-		try (Writer jsonFilePath = new BufferedWriter(new FileWriter(jsonFile, StandardCharsets.UTF_8))) {
-			jsonFilePath.write(jsonb.toJson(a));
-			jsonFilePath.close();
+		try (BufferedWriter writer = Files.newBufferedWriter(jsonPath, StandardCharsets.UTF_8)) {
+			writer.write(jsonb.toJson(a));
+			writer.close();
 
-			LOGGER.info("Apartment has been converted with success");
+			LOGGER.info("Apartment have been converted with success");
 		}
+
 	}
 
 	/**
@@ -90,21 +92,16 @@ public abstract class JsonConvert {
 	 * @throws IOException if the file can't be convert into JSON format.
 	 */
 	protected static String readApartmentFromJson(Path jsonPath) throws IOException {
-		File jsonFile = new File(jsonPath.toString());
 
-		try (BufferedReader jsonFilePath = new BufferedReader(new FileReader(jsonFile, StandardCharsets.UTF_8))) {
-			String jsonLine = jsonFilePath.readLine();
+		try (BufferedReader reader = Files.newBufferedReader(jsonPath, StandardCharsets.UTF_8)) {
+			String jsonLine = reader.readLine();
 			String jsonRead = jsonLine;
 
-			while (true) {
-				jsonLine = jsonFilePath.readLine();
-				if (jsonLine == null) {
-					break;
-				}
+			while ((jsonLine = reader.readLine()) != null) {
 				jsonRead = jsonRead + "\n" + jsonLine;
 			}
 
-			jsonFilePath.close();
+			reader.close();
 			LOGGER.info("Apartment has been read with success");
 
 			return jsonRead;
@@ -134,7 +131,7 @@ public abstract class JsonConvert {
 	 * Converts a JSON expression to an Apartment object.
 	 *
 	 * @param jsonPath<i>Path</i> the JSON expression to convert into Apartment
-	 *                   object
+	 *                            object
 	 * @return <i>Apartment</i> the Apartment generated
 	 * @throws IOException if the file can't be red
 	 */
@@ -163,7 +160,7 @@ public abstract class JsonConvert {
 	 * Converts a JSON expression to a list of Apartments.
 	 *
 	 * @param jsonPath <i>Path</i> the JSON expression to convert into a list of
-	 *                   Apartments
+	 *                 Apartments
 	 * @return <i>List</i> the list of Apartments created
 	 * @throws IOException if the file doesn't exists
 	 */
@@ -208,12 +205,11 @@ public abstract class JsonConvert {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments, Path jsonPath) throws IOException {
-		File jsonFile = new File(jsonPath.toString());
 		Jsonb jsonb = JsonbBuilder.create();
 
-		try (Writer jsonFilePath = new BufferedWriter(new FileWriter(jsonFile, StandardCharsets.UTF_8))) {
-			jsonFilePath.write(jsonb.toJson(listApartments));
-			jsonFilePath.close();
+		try (BufferedWriter writer = Files.newBufferedWriter(jsonPath, StandardCharsets.UTF_8)) {
+			writer.write(jsonb.toJson(listApartments));
+			writer.close();
 
 			LOGGER.info("Apartment have been converted with success");
 		}

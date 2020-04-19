@@ -32,7 +32,8 @@ public class JsonConvertTest {
 		Apartment a = apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
 				.setTitle("Grand Igloo").setTerrace(false).setWifi(false).setTele(false).build();
 		String expectedApartment = "{\"address\":\"118 rue du père noel 77480\",\"description\":\"\",\"floorArea\":1182118.48,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Grand Igloo\",\"wifi\":false}";
-		Path jsonPath = Paths.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json");
+		Path jsonPath = Paths
+				.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json");
 
 		JsonConvert.apartmentToJson(a, jsonPath);
 		JsonConvert.apartmentToJson(a);
@@ -71,12 +72,12 @@ public class JsonConvertTest {
 		ArrayList<Apartment> apartments = new ArrayList<>();
 		apartments.add(apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
 				.setTitle("Grand Igloo").setTerrace(false).setWifi(false).setTele(false).build());
-		apartments.add(
-				apartBuilder.setAddress("123 rue du soleil").setFloorArea(1234567.89).setTitle("Maison Test")
+		apartments.add(apartBuilder.setAddress("123 rue du soleil").setFloorArea(1234567.89).setTitle("Maison Test")
 				.setTerrace(false).setWifi(false).setTele(false).build());
 
 		String expectedApartment = "[{\"address\":\"118 rue du père noel 77480\",\"description\":\"\",\"floorArea\":1182118.48,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Grand Igloo\",\"wifi\":false},{\"address\":\"123 rue du soleil\",\"description\":\"\",\"floorArea\":1234567.89,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Maison Test\",\"wifi\":false}]";
-		Path jsonPath = Paths.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonListTest.json");
+		Path jsonPath = Paths
+				.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonListTest.json");
 
 		JsonConvert.apartmentsToJson(apartments, jsonPath);
 
@@ -98,7 +99,8 @@ public class JsonConvertTest {
 		Apartment apartmentRef = apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
 				.setTitle("Grand Igloo").setTerrace(false).setWifi(false).setTele(false).build();
 
-		Path jsonPath = Paths.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json");
+		Path jsonPath = Paths
+				.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json");
 
 		Apartment apartmentTest = JsonConvert.jsonToApartment(jsonPath);
 
@@ -119,11 +121,11 @@ public class JsonConvertTest {
 		List<Apartment> apartmentsRef = new ArrayList<>();
 		apartmentsRef.add(apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
 				.setTitle("Grand Igloo").setTerrace(false).setWifi(false).setTele(false).build());
-		apartmentsRef.add(
-				apartBuilder.setAddress("123 rue du soleil").setFloorArea(1234567.89).setTitle("Maison Test")
+		apartmentsRef.add(apartBuilder.setAddress("123 rue du soleil").setFloorArea(1234567.89).setTitle("Maison Test")
 				.setTerrace(false).setWifi(false).setTele(false).build());
 
-		Path jsonPath = Paths.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonListTest.json");
+		Path jsonPath = Paths
+				.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonListTest.json");
 
 		List<Apartment> apartmentsTest = JsonConvert.jsonToApartments(jsonPath);
 
