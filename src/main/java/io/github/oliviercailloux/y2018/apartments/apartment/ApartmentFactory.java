@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -217,7 +218,7 @@ public abstract class ApartmentFactory {
 	 * @return the list of apartments found in the json file.
 	 * @throws IOException if we cannot have access to the json file.
 	 */
-	public static List<Apartment> generateApartmentFromJsonPath(String jsonFileAddress) throws IOException {
+	public static List<Apartment> generateApartmentFromJsonPath(Path jsonFilePath) throws IOException {
 		return JsonConvert.jsonToApartments(jsonFileAddress);
 	}
 
