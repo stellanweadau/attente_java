@@ -67,6 +67,8 @@ public class ApartmentGenerator {
 		builder.setPricePerNight(pricePerNight);
 		builder.setNbMinNight(nbMinNight);
 		builder.setFloorAreaTerrace(floorAreaTerrace);
+		builder.setWifi(Math.random()>0.5);
+		builder.setTele(Math.random()>0.5);
 
 		Apartment a = builder.build();
 
