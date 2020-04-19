@@ -15,6 +15,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -34,7 +36,10 @@ public abstract class JsonConvert {
 	/**
 	 * The Constant APARTMENT_PATH_JSON gives the default location for JSON file.
 	 */
-	private static final String APARTMENT_PATH_JSON = "Apartment_Json.json";
+	private static final String apartmentPathJson() {
+		Path path = Paths.get("Apartment_Json.json");
+		return path.toString();
+	}
 
 	/**
 	 * The Constant START_APARTMENT is a default JSON file red by jsonToApartments.
@@ -49,7 +54,7 @@ public abstract class JsonConvert {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentToJson(Apartment a) throws IOException {
-		apartmentToJson(a, APARTMENT_PATH_JSON);
+		apartmentToJson(a, apartmentPathJson());
 	}
 
 	/**
