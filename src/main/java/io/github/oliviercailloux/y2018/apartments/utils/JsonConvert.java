@@ -13,7 +13,6 @@ import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -40,7 +39,7 @@ public abstract class JsonConvert {
 	 * The method return a default JSON file read by jsonToApartments.
 	 * 
 	 * @return <i>Path</i> where jsonToApartments will read.
-	 * @throws URISyntaxException
+	 * @throws URISyntaxException if the resource cannot be found
 	 */
 	private static final Path startApartment() throws URISyntaxException {
 		URI ressource = JsonConvert.class.getResource("defaultJsonToApartments.json").toURI();
@@ -116,8 +115,13 @@ public abstract class JsonConvert {
 	 * @throws IOException        if the file doesn't exists
 	 * @throws URISyntaxException
 	 */
-	public static List<Apartment> jsonToApartments() throws IOException, URISyntaxException {
-		return jsonToApartments(startApartment());
+	public static List<Apartment> jsonToApartments() throws IOException {
+		try {
+			Path apartPath = startApartment();
+			return jsonToApartments(apartPath);
+		} catch (URISyntaxException e) {
+			throw new IllegalArgumentException("The default URI Path cannot be resolved");
+		}
 	}
 
 	/**
