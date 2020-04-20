@@ -7,12 +7,11 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
 import javax.json.bind.JsonbBuilder;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.LinkedHashMap;
@@ -73,13 +72,9 @@ public abstract class JsonConvert {
 	 */
 	public static void apartmentToJson(Apartment a, Path jsonPath) throws IOException {
 		Jsonb jsonb = JsonbBuilder.create();
-
-		try (BufferedWriter writer = Files.newBufferedWriter(jsonPath, StandardCharsets.UTF_8)) {
-			writer.write(jsonb.toJson(a));
-			writer.close();
-
-			LOGGER.info("Apartment have been converted with success");
-		}
+		Files.writeString(jsonPath,jsonb.toJson(a),StandardCharsets.UTF_8);
+		
+		LOGGER.info("Apartment have been converted with success");
 	}
 
 	/**
@@ -174,11 +169,8 @@ public abstract class JsonConvert {
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments, Path jsonPath) throws IOException {
 		Jsonb jsonb = JsonbBuilder.create();
+		Files.writeString(jsonPath,jsonb.toJson(listApartments),StandardCharsets.UTF_8);
 
-		try (BufferedWriter writer = Files.newBufferedWriter(jsonPath, StandardCharsets.UTF_8)) {
-			writer.write(jsonb.toJson(listApartments));
-
-			LOGGER.info("Apartment have been converted with success");
-		}
+		LOGGER.info("Apartment have been converted with success");
 	}
 }
