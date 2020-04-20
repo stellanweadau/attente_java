@@ -100,7 +100,7 @@ public abstract class ApartmentFactory {
 	 * @param nbApartment the number of apartments the list should contains
 	 * @return a list of random apartments of size nbApartment with real Address
 	 */
-	public static List<Apartment> generateRandomApartmentList(int nbApartment) {
+	public static List<Apartment> generateRandomApartments(int nbApartment) {
 		try {
 			return generateRandomApartmentList(nbApartment, false);
 		} catch (IOException e) {
@@ -115,7 +115,7 @@ public abstract class ApartmentFactory {
 	 * @return a list of random apartments of size nbApartment with real Address
 	 * @throws IOException if the Address API doesn't answer
 	 */
-	public static List<Apartment> generateRandomRealApartmentList(int nbApartment) throws IOException {
+	public static List<Apartment> generateRandomRealApartments(int nbApartment) throws IOException {
 		return generateRandomApartmentList(nbApartment, true);
 	}
 

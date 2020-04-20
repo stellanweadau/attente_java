@@ -146,7 +146,7 @@ public class LayoutApartmentGUI {
 	 */
 	private static java.util.List<Apartment> getListSorted(ApartmentValueFunction avf) {
 
-		java.util.List<Apartment> appart = ApartmentFactory.generateRandomApartmentList(50);
+		java.util.List<Apartment> appart = ApartmentFactory.generateRandomApartments(50);
 
 		appart.sort((Apartment c, Apartment d) -> {
 			return -Double.compare(avf.getSubjectiveValue(c), avf.getSubjectiveValue(d));
