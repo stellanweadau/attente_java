@@ -328,7 +328,7 @@ public class Apartment extends Object {
 	 * @param floorArea is a real number superior or equal to zero
 	 */
 	private void setFloorArea(double floorArea) {
-		checkArgument(floorArea >= 0, "The floor area should not be negative");
+		checkArgument(floorArea > 0, "The floor area should not be <= 0");
 		this.floorArea = floorArea;
 		LOGGER.info("The floor area has been set to " + floorArea);
 	}
