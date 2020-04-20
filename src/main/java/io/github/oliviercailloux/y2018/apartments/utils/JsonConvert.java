@@ -94,7 +94,8 @@ public abstract class JsonConvert {
 		final LinkedHashMap<?, ?> result = jsonb.fromJson(jsonString, LinkedHashMap.class);
 		LOGGER.info("Get address");
 
-		checkArgument(!result.get("address").toString().isEmpty() && result.containsKey("address"), "There is no field adress in the JSON file.");
+		checkArgument(!result.get("address").toString().isEmpty() && result.containsKey("address"),
+				"There is no field adress in the JSON file.");
 		return result.get("address").toString();
 	}
 
@@ -135,6 +136,7 @@ public abstract class JsonConvert {
 	 * @return <i>List</i> the list of Apartments created
 	 * @throws IOException if the file doesn't exists
 	 */
+	@SuppressWarnings("serial")
 	public static List<Apartment> jsonToApartments(Path jsonPath) throws IOException {
 		String jsonString = Files.readString(jsonPath, StandardCharsets.UTF_8);
 		List<Apartment.Builder> apartmentsBuild;
@@ -144,10 +146,7 @@ public abstract class JsonConvert {
 		Jsonb jsonb = JsonbBuilder.create();
 		LOGGER.info("Create Json builder");
 
-		apartmentsBuild = jsonb.fromJson(jsonString, new ArrayList<Apartment.Builder>() {
-			/** The Constant serialVersionUID for apartmentsBuild. */
-			private static final long serialVersionUID = 2876323727155064950L;
-		}.getClass().getGenericSuperclass());
+		apartmentsBuild = jsonb.fromJson(jsonString, new ArrayList<Apartment.Builder>(){}.getClass().getGenericSuperclass());
 
 		for (int i = 0; i < apartmentsBuild.size(); i++) {
 			apartments.add(apartmentsBuild.get(i).build());
