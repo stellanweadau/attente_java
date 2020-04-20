@@ -13,6 +13,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -43,8 +45,8 @@ public class JsonConvertTest {
 		JsonConvert.apartmentToJson(a, jsonPath);
 		JsonConvert.apartmentToJson(a);
 
-		assertEquals(expectedApartment, JsonConvert.readApartmentFromJson(jsonPath));
-		assertEquals(expectedApartment, JsonConvert.readApartmentFromJson(Paths.get("Apartment_Json.json")));
+		assertEquals(expectedApartment, Files.readString(jsonPath, StandardCharsets.UTF_8));
+		assertEquals(expectedApartment, Files.readString(Path.of("Apartment_Json.json"), StandardCharsets.UTF_8));
 		assertThrows(IOException.class, () -> JsonConvert.apartmentToJson(a, Paths.get("")));
 	}
 
@@ -86,7 +88,7 @@ public class JsonConvertTest {
 
 		JsonConvert.apartmentsToJson(apartments, jsonPath);
 
-		assertEquals(expectedApartment, JsonConvert.readApartmentFromJson(jsonPath));
+		assertEquals(expectedApartment, Files.readString(jsonPath, StandardCharsets.UTF_8));
 		assertThrows(IOException.class, () -> JsonConvert.apartmentsToJson(apartments, Paths.get("")));
 	}
 

@@ -10,6 +10,7 @@ import javax.json.bind.JsonbBuilder;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -82,29 +83,6 @@ public abstract class JsonConvert {
 	}
 
 	/**
-	 * Read a JSON file which contains an Apartment.
-	 *
-	 * @param jsonPath <i>Path</i> the path where the JSON file is located
-	 * @return <i>String</i> containing an Apartment into JSON format
-	 * @throws IOException if the file can't be convert into JSON format.
-	 */
-	protected static String readApartmentFromJson(Path jsonPath) throws IOException {
-		try (BufferedReader reader = Files.newBufferedReader(jsonPath, StandardCharsets.UTF_8)) {
-			String jsonLine = reader.readLine();
-			String jsonRead = jsonLine;
-
-			while ((jsonLine = reader.readLine()) != null) {
-				jsonRead = jsonRead + "\n" + jsonLine;
-			}
-
-			reader.close();
-			LOGGER.info("Apartment has been read with success");
-
-			return jsonRead;
-		}
-	}
-
-	/**
 	 * Gets the address field from an Address JSON.
 	 *
 	 * @param jsonString <i>String</i> the Address into JSON format
@@ -129,7 +107,7 @@ public abstract class JsonConvert {
 	 * @throws IOException if the file can't be red
 	 */
 	public static Apartment jsonToApartment(Path jsonPath) throws IOException {
-		String jsonString = readApartmentFromJson(jsonPath);
+		String jsonString = Files.readString(jsonPath, StandardCharsets.UTF_8);
 		Jsonb jsonb = JsonbBuilder.create();
 		LOGGER.info("Create Json builder");
 
@@ -158,7 +136,7 @@ public abstract class JsonConvert {
 	 * @throws IOException if the file doesn't exists
 	 */
 	public static List<Apartment> jsonToApartments(Path jsonPath) throws IOException {
-		String jsonString = readApartmentFromJson(jsonPath);
+		String jsonString = Files.readString(jsonPath, StandardCharsets.UTF_8);
 		List<Apartment.Builder> apartmentsBuild;
 		List<Apartment> apartments = new ArrayList<Apartment>();
 		LOGGER.info("Create ArrayList of Apartment");
