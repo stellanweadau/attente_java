@@ -8,6 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.nio.file.Path;
@@ -24,16 +27,18 @@ public class JsonConvertTest {
 	 * Tests apartmentToJson function. Verifies if the JSON file created by the
 	 * function corresponds to the expected file.
 	 * 
-	 * @throws IOException if the JSON file can't be created.
+	 * @throws IOException        if the JSON file can't be created.
+	 * @throws URISyntaxException
 	 */
 	@Test
-	void apartmentToJsonTest() throws IOException {
+	void apartmentToJsonTest() throws IOException, URISyntaxException {
 		Builder apartBuilder = new Apartment.Builder();
 		Apartment a = apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
 				.setTitle("Grand Igloo").setTerrace(false).setWifi(false).setTele(false).build();
 		String expectedApartment = "{\"address\":\"118 rue du père noel 77480\",\"description\":\"\",\"floorArea\":1182118.48,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Grand Igloo\",\"wifi\":false}";
-		Path jsonPath = Paths
-				.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json");
+
+		URI ressource = JsonConvertTest.class.getResource("jsonfileTest.json").toURI();
+		Path jsonPath = Path.of(ressource);
 
 		JsonConvert.apartmentToJson(a, jsonPath);
 		JsonConvert.apartmentToJson(a);
@@ -66,7 +71,7 @@ public class JsonConvertTest {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	@Test
-	void apartmentsToJsonTest() throws IOException {
+	void apartmentsToJsonTest() throws IOException, URISyntaxException {
 		Builder apartBuilder = new Apartment.Builder();
 		ArrayList<Apartment> apartments = new ArrayList<>();
 		apartments.add(apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
@@ -75,8 +80,9 @@ public class JsonConvertTest {
 				.setTerrace(false).setWifi(false).setTele(false).build());
 
 		String expectedApartment = "[{\"address\":\"118 rue du père noel 77480\",\"description\":\"\",\"floorArea\":1182118.48,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Grand Igloo\",\"wifi\":false},{\"address\":\"123 rue du soleil\",\"description\":\"\",\"floorArea\":1234567.89,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Maison Test\",\"wifi\":false}]";
-		Path jsonPath = Paths
-				.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonListTest.json");
+
+		URI ressource = JsonConvertTest.class.getResource("jsonListTest.json").toURI();
+		Path jsonPath = Path.of(ressource);
 
 		JsonConvert.apartmentsToJson(apartments, jsonPath);
 
@@ -92,13 +98,13 @@ public class JsonConvertTest {
 	 * @throws IOException           if the file can't be convert into JSON format.
 	 */
 	@Test
-	void jsonToApartmentTest() throws IOException {
+	void jsonToApartmentTest() throws IOException, URISyntaxException {
 		Builder apartBuilder = new Apartment.Builder();
 		Apartment apartmentRef = apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
 				.setTitle("Grand Igloo").setTerrace(false).setWifi(false).setTele(false).build();
 
-		Path jsonPath = Paths
-				.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonfileTest.json");
+		URI ressource = JsonConvertTest.class.getResource("jsonfileTest.json").toURI();
+		Path jsonPath = Path.of(ressource);
 
 		Apartment apartmentTest = JsonConvert.jsonToApartment(jsonPath);
 
@@ -114,7 +120,7 @@ public class JsonConvertTest {
 	 * @throws IOException           if the file can't be convert into JSON format.
 	 */
 	@Test
-	void jsonToApartmentsTest() throws IOException {
+	void jsonToApartmentsTest() throws IOException, URISyntaxException {
 		Builder apartBuilder = new Apartment.Builder();
 		List<Apartment> apartmentsRef = new ArrayList<>();
 		apartmentsRef.add(apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
@@ -122,8 +128,8 @@ public class JsonConvertTest {
 		apartmentsRef.add(apartBuilder.setAddress("123 rue du soleil").setFloorArea(1234567.89).setTitle("Maison Test")
 				.setTerrace(false).setWifi(false).setTele(false).build());
 
-		Path jsonPath = Paths
-				.get("src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/jsonListTest.json");
+		URI ressource = JsonConvertTest.class.getResource("jsonListTest.json").toURI();
+		Path jsonPath = Path.of(ressource);
 
 		List<Apartment> apartmentsTest = JsonConvert.jsonToApartments(jsonPath);
 
