@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 
 class ToXmlPropertiesTest {
@@ -20,17 +21,12 @@ class ToXmlPropertiesTest {
 	@Test
 	void readApartmentTest() throws IllegalArgumentException, IllegalAccessException, IOException {
 		XMLProperties j = new XMLProperties();
-		Apartment a = new Apartment(1182118.48, "118 rue du père noel 77480", "Grand Igloo");
-		a.setNbSleeping(10);
-		a.setNbMinNight(1);
-		a.setTerrace(true);
-		a.setNbBedrooms(5);
-		a.setPricePerNight(404);
-		a.setTele(false);
-		a.setWifi(true);
-		a.setNbBathrooms(1);
-		a.setDescription("Un igloo tout mignon en compagnie du père noël et de la mère noël");
-		a.setFloorAreaTerrace(8.6);
+
+		Apartment a = new Builder().setFloorArea(1182118.48).setAddress("118 rue du père noel 77480").setNbBedrooms(5)
+				.setNbSleeping(10).setNbBathrooms(1).setTerrace(true).setFloorAreaTerrace(8.6)
+				.setDescription("Un igloo tout mignon en compagnie du père noël et de la mère noël")
+				.setTitle("Grand Igloo").setWifi(true).setPricePerNight(404).setNbMinNight(1).setTele(false).build();
+
 		File f = new File(
 				"src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/xmlfileTest.xml");
 		try (FileOutputStream s = new FileOutputStream(f.getAbsolutePath())) {
@@ -60,10 +56,10 @@ class ToXmlPropertiesTest {
 		}
 
 		ReadApartmentsXMLFormat r1 = new ReadApartmentsXMLFormat();
-		try(InputStream f1 = ReadApartmentsXMLFormat.class.getResourceAsStream("xmlfileTest.xml")){
+		try (InputStream f1 = ReadApartmentsXMLFormat.class.getResourceAsStream("xmlfileTest.xml")) {
 			Apartment a1 = r1.readApartment(f1);
 			System.out.println(a1);
-			
+
 		}
 	}
 }

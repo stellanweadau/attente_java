@@ -15,12 +15,14 @@ class ValueDistFunctionTest {
 	LatLng interest2;
 	LatLng interest3;
 	String apiKey;
-	
+
 	/**
-	 * This test does not run due to the absence of the file API_KEY.txt of Google MAps
-	 * @throws Exception 
+	 * This test does not run due to the absence of the file API_KEY.txt of Google
+	 * MAps
+	 * 
+	 * @throws Exception
 	 */
-	
+
 	void initializeValueDistFunction() throws Exception {
 		apiKey = KeyManager.getApiKey();
 		appart = Localizer.getGeometryLocation("Ville d'Avray", apiKey);
