@@ -177,7 +177,6 @@ public abstract class JsonConvert {
 
 		try (BufferedWriter writer = Files.newBufferedWriter(jsonPath, StandardCharsets.UTF_8)) {
 			writer.write(jsonb.toJson(listApartments));
-			writer.close();
 
 			LOGGER.info("Apartment have been converted with success");
 		}
