@@ -46,7 +46,7 @@ public class JsonConvertTest {
 		JsonConvert.apartmentToJson(a);
 
 		assertEquals(expectedApartment, Files.readString(jsonPath, StandardCharsets.UTF_8));
-		assertEquals(expectedApartment, Files.readString(Path.of("Apartment_Json.json"), StandardCharsets.UTF_8));
+		assertEquals(expectedApartment, Files.readString(JsonConvert.APARTMENT_PATH_JSON, StandardCharsets.UTF_8));
 		assertThrows(IOException.class, () -> JsonConvert.apartmentToJson(a, Paths.get("")));
 	}
 

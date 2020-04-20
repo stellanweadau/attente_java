@@ -7,11 +7,11 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
 import javax.json.bind.JsonbBuilder;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.LinkedHashMap;
@@ -32,24 +32,20 @@ public abstract class JsonConvert {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JsonConvert.class);
 
 	/**
-	 * The method return the default path to JSON file.
-	 * 
-	 * @return <i>Path</i> where to read and write JSON.
+	 * The default path to JSON file.
 	 */
-	private static final Path apartmentPathJson() {
-		Path path = Paths.get("Apartment_Json.json");
-		return path;
-	}
+	public static final Path APARTMENT_PATH_JSON = Path.of("Apartment_Json.json");
 
 	/**
 	 * The method return a default JSON file read by jsonToApartments.
 	 * 
 	 * @return <i>Path</i> where jsonToApartments will read.
+	 * @throws URISyntaxException
 	 */
-	private static final Path startApartment() {
-		Path path = Paths
-				.get("src/main/resources/io/github/oliviercailloux/y2018/jsonResources/defaultJsonToApartments.json");
-		return path;
+	private static final Path startApartment() throws URISyntaxException {
+		URI ressource = JsonConvert.class.getResource("defaultJsonToApartments.json").toURI();
+
+		return Path.of(ressource);
 	}
 
 	/**
@@ -60,7 +56,7 @@ public abstract class JsonConvert {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentToJson(Apartment a) throws IOException {
-		apartmentToJson(a, apartmentPathJson());
+		apartmentToJson(a, APARTMENT_PATH_JSON);
 	}
 
 	/**
@@ -72,8 +68,8 @@ public abstract class JsonConvert {
 	 */
 	public static void apartmentToJson(Apartment a, Path jsonPath) throws IOException {
 		Jsonb jsonb = JsonbBuilder.create();
-		Files.writeString(jsonPath,jsonb.toJson(a),StandardCharsets.UTF_8);
-		
+		Files.writeString(jsonPath, jsonb.toJson(a), StandardCharsets.UTF_8);
+
 		LOGGER.info("Apartment have been converted with success");
 	}
 
@@ -117,9 +113,10 @@ public abstract class JsonConvert {
 	 * Converts a JSON expression to a list of Apartments.
 	 *
 	 * @return <i>List</i> the list of Apartments created
-	 * @throws IOException if the file doesn't exists
+	 * @throws IOException        if the file doesn't exists
+	 * @throws URISyntaxException
 	 */
-	public static List<Apartment> jsonToApartments() throws IOException {
+	public static List<Apartment> jsonToApartments() throws IOException, URISyntaxException {
 		return jsonToApartments(startApartment());
 	}
 
@@ -141,7 +138,8 @@ public abstract class JsonConvert {
 		Jsonb jsonb = JsonbBuilder.create();
 		LOGGER.info("Create Json builder");
 
-		apartmentsBuild = jsonb.fromJson(jsonString, new ArrayList<Apartment.Builder>(){}.getClass().getGenericSuperclass());
+		apartmentsBuild = jsonb.fromJson(jsonString, new ArrayList<Apartment.Builder>() {
+		}.getClass().getGenericSuperclass());
 
 		for (int i = 0; i < apartmentsBuild.size(); i++) {
 			apartments.add(apartmentsBuild.get(i).build());
@@ -157,7 +155,7 @@ public abstract class JsonConvert {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments) throws IOException {
-		apartmentsToJson(listApartments, apartmentPathJson());
+		apartmentsToJson(listApartments, APARTMENT_PATH_JSON);
 	}
 
 	/**
@@ -169,7 +167,7 @@ public abstract class JsonConvert {
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments, Path jsonPath) throws IOException {
 		Jsonb jsonb = JsonbBuilder.create();
-		Files.writeString(jsonPath,jsonb.toJson(listApartments),StandardCharsets.UTF_8);
+		Files.writeString(jsonPath, jsonb.toJson(listApartments), StandardCharsets.UTF_8);
 
 		LOGGER.info("Apartment have been converted with success");
 	}
