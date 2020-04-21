@@ -3,6 +3,8 @@ package io.github.oliviercailloux.y2018.apartments.utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.VerifyException;
+
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
 import javax.json.bind.JsonbBuilder;
@@ -10,7 +12,6 @@ import javax.json.bind.JsonbBuilder;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
@@ -41,10 +42,13 @@ public abstract class JsonConvert {
 	 * @return <i>Path</i> where jsonToApartments will read.
 	 * @throws URISyntaxException if the resource cannot be found
 	 */
-	private static final Path startApartment() throws URISyntaxException {
-		URI ressource = JsonConvert.class.getResource("defaultJsonToApartments.json").toURI();
-
-		return Path.of(ressource);
+	private static final Path startApartment() {
+		try {
+			URI ressource = JsonConvert.class.getResource("defaultJsonToApartments.json").toURI();
+			return Path.of(ressource);
+		} catch (URISyntaxException e) {
+			throw new VerifyException();
+		}
 	}
 
 	/**
@@ -67,7 +71,7 @@ public abstract class JsonConvert {
 	 */
 	public static void apartmentToJson(Apartment a, Path jsonPath) throws IOException {
 		Jsonb jsonb = JsonbBuilder.create();
-		Files.writeString(jsonPath, jsonb.toJson(a), StandardCharsets.UTF_8);
+		Files.writeString(jsonPath, jsonb.toJson(a));
 
 		LOGGER.info("Apartment have been converted with success");
 	}
@@ -98,7 +102,7 @@ public abstract class JsonConvert {
 	 * @throws IOException if the file can't be red
 	 */
 	public static Apartment jsonToApartment(Path jsonPath) throws IOException {
-		String jsonString = Files.readString(jsonPath, StandardCharsets.UTF_8);
+		String jsonString = Files.readString(jsonPath);
 		Jsonb jsonb = JsonbBuilder.create();
 		LOGGER.info("Create Json builder");
 
@@ -116,12 +120,8 @@ public abstract class JsonConvert {
 	 * @throws URISyntaxException
 	 */
 	public static List<Apartment> jsonToApartments() throws IOException {
-		try {
-			Path apartPath = startApartment();
-			return jsonToApartments(apartPath);
-		} catch (URISyntaxException e) {
-			throw new IllegalArgumentException("The default URI Path cannot be resolved");
-		}
+		Path apartPath = startApartment();
+		return jsonToApartments(apartPath);
 	}
 
 	/**
@@ -134,7 +134,7 @@ public abstract class JsonConvert {
 	 */
 	@SuppressWarnings("serial")
 	public static List<Apartment> jsonToApartments(Path jsonPath) throws IOException {
-		String jsonString = Files.readString(jsonPath, StandardCharsets.UTF_8);
+		String jsonString = Files.readString(jsonPath);
 		List<Apartment.Builder> apartmentsBuild;
 		List<Apartment> apartments = new ArrayList<Apartment>();
 		LOGGER.info("Create ArrayList of Apartment");
@@ -171,7 +171,7 @@ public abstract class JsonConvert {
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments, Path jsonPath) throws IOException {
 		Jsonb jsonb = JsonbBuilder.create();
-		Files.writeString(jsonPath, jsonb.toJson(listApartments), StandardCharsets.UTF_8);
+		Files.writeString(jsonPath, jsonb.toJson(listApartments));
 
 		LOGGER.info("Apartment have been converted with success");
 	}
