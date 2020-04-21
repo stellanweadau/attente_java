@@ -3455,6 +3455,57 @@
         </packagedElement>
       </packagedElement>
     </packagedElement>
+    <packagedElement xmi:type="uml:Interaction" xmi:id="_bm_iMIPvEeqm2vrDV_e-Xg" name="Interaction10">
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_YSClUIP_Eeqm2vrDV_e-Xg" name="User" coveredBy="_PzGbYIQFEeqyTrq5oKlx7g _Py2jwIQFEeqyTrq5oKlx7g _WU24MIQFEeqyTrq5oKlx7g _u9okwIQFEeqyTrq5oKlx7g _lgMIAIQHEeqyTrq5oKlx7g _sheZcIQHEeqyTrq5oKlx7g __8EJ4IQHEeqyTrq5oKlx7g _PfYGwIQIEeqyTrq5oKlx7g _PzJesIQFEeqyTrq5oKlx7g _R4NRQIQGEeqyTrq5oKlx7g _R4ovEIQGEeqyTrq5oKlx7g _Tr8DQIQHEeqyTrq5oKlx7g _TsCJ4IQHEeqyTrq5oKlx7g"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_kOSU4IP_Eeqm2vrDV_e-Xg" name="Application" coveredBy="_WU4tYIQFEeqyTrq5oKlx7g _otCJYIQFEeqyTrq5oKlx7g _yFqlUIQIEeqyTrq5oKlx7g _abFGsIQFEeqyTrq5oKlx7g _aa_AEIQFEeqyTrq5oKlx7g"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_W2rBQIQEEeqyTrq5oKlx7g" name="GUI Recherche" coveredBy="_otDXgIQFEeqyTrq5oKlx7g _u9mvkIQFEeqyTrq5oKlx7g _lgNWIIQHEeqyTrq5oKlx7g _shdLUIQHEeqyTrq5oKlx7g __8H0QIQHEeqyTrq5oKlx7g _IVtVYIQIEeqyTrq5oKlx7g _IVt8cIQIEeqyTrq5oKlx7g _PfXfsIQIEeqyTrq5oKlx7g _yFpXMIQIEeqyTrq5oKlx7g _ELXb4IQIEeqyTrq5oKlx7g _qrAnEIQHEeqyTrq5oKlx7g _s2BYAIQFEeqyTrq5oKlx7g _R4NRQIQGEeqyTrq5oKlx7g _R4ovEIQGEeqyTrq5oKlx7g _Tr8DQIQHEeqyTrq5oKlx7g _TsCJ4IQHEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_PzGbYIQFEeqyTrq5oKlx7g" name="ActionExecutionSpecification7Start" covered="_YSClUIP_Eeqm2vrDV_e-Xg" execution="_Py2jwIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_Py2jwIQFEeqyTrq5oKlx7g" name="ActionExecutionSpecification7" covered="_YSClUIP_Eeqm2vrDV_e-Xg" finish="_PzJesIQFEeqyTrq5oKlx7g" start="_PzGbYIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_WU24MIQFEeqyTrq5oKlx7g" name="Message10SendEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg" message="_WUtuQIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_WU4tYIQFEeqyTrq5oKlx7g" name="Message10ReceiveEvent" covered="_kOSU4IP_Eeqm2vrDV_e-Xg" message="_WUtuQIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_aa_AEIQFEeqyTrq5oKlx7g" name="ActionExecutionSpecification13" covered="_kOSU4IP_Eeqm2vrDV_e-Xg" finish="_abFGsIQFEeqyTrq5oKlx7g" start="_WU4tYIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_otCJYIQFEeqyTrq5oKlx7g" name="Message15SendEvent" covered="_kOSU4IP_Eeqm2vrDV_e-Xg" message="_os_tIIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_otDXgIQFEeqyTrq5oKlx7g" name="Message15ReceiveEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_os_tIIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_s2BYAIQFEeqyTrq5oKlx7g" name="ActionExecutionSpecification18" covered="_W2rBQIQEEeqyTrq5oKlx7g" finish="_u9mvkIQFEeqyTrq5oKlx7g" start="_otDXgIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_u9mvkIQFEeqyTrq5oKlx7g" name="Message20SendEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_u9hQAIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_u9okwIQFEeqyTrq5oKlx7g" name="Message20ReceiveEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg" message="_u9hQAIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_yFpXMIQIEeqyTrq5oKlx7g" name="Message30SendEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_yFkesIQIEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_yFqlUIQIEeqyTrq5oKlx7g" name="Message30ReceiveEvent" covered="_kOSU4IP_Eeqm2vrDV_e-Xg" message="_yFkesIQIEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_abFGsIQFEeqyTrq5oKlx7g" name="ActionExecutionSpecification13Finish" covered="_kOSU4IP_Eeqm2vrDV_e-Xg" execution="_aa_AEIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_PzJesIQFEeqyTrq5oKlx7g" name="ActionExecutionSpecification7Finish" covered="_YSClUIP_Eeqm2vrDV_e-Xg" execution="_Py2jwIQFEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_R4NRQIQGEeqyTrq5oKlx7g" name="Vérification du format des données" covered="_W2rBQIQEEeqyTrq5oKlx7g _YSClUIP_Eeqm2vrDV_e-Xg" interactionOperator="loop">
+        <operand xmi:type="uml:InteractionOperand" xmi:id="_R4ovEIQGEeqyTrq5oKlx7g" name="InteractionOperand0" covered="_W2rBQIQEEeqyTrq5oKlx7g _YSClUIP_Eeqm2vrDV_e-Xg">
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="__8EJ4IQHEeqyTrq5oKlx7g" name="Message28SendEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg" message="__8BtoIQHEeqyTrq5oKlx7g"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="__8H0QIQHEeqyTrq5oKlx7g" name="Message28ReceiveEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="__8BtoIQHEeqyTrq5oKlx7g"/>
+          <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_ELXb4IQIEeqyTrq5oKlx7g" name="ActionExecutionSpecification29" covered="_W2rBQIQEEeqyTrq5oKlx7g" finish="_PfXfsIQIEeqyTrq5oKlx7g" start="__8H0QIQHEeqyTrq5oKlx7g"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_IVtVYIQIEeqyTrq5oKlx7g" name="Message29SendEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_IVrgMIQIEeqyTrq5oKlx7g"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_IVt8cIQIEeqyTrq5oKlx7g" name="Message29ReceiveEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_IVrgMIQIEeqyTrq5oKlx7g"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_PfXfsIQIEeqyTrq5oKlx7g" name="Message30SendEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_PfYGwIQIEeqyTrq5oKlx7g" name="Message30ReceiveEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg"/>
+          <guard xmi:type="uml:InteractionConstraint" xmi:id="_R4ovEYQGEeqyTrq5oKlx7g" name="Tant que les informations fournies sont au mauvais format">
+            <specification xmi:type="uml:InstanceValue" xmi:id="_Dzye0IQHEeqyTrq5oKlx7g" name="Tant que les informations renseignées sont au mauvais format"/>
+          </guard>
+        </operand>
+      </fragment>
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_Tr8DQIQHEeqyTrq5oKlx7g" name="Choix d'un profil type" covered="_W2rBQIQEEeqyTrq5oKlx7g _YSClUIP_Eeqm2vrDV_e-Xg" interactionOperator="opt">
+        <operand xmi:type="uml:InteractionOperand" xmi:id="_TsCJ4IQHEeqyTrq5oKlx7g" name="InteractionOperand0" covered="_W2rBQIQEEeqyTrq5oKlx7g _YSClUIP_Eeqm2vrDV_e-Xg">
+          <guard xmi:type="uml:InteractionConstraint" xmi:id="_TsCJ4YQHEeqyTrq5oKlx7g" name="guard"/>
+        </operand>
+      </fragment>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_lgMIAIQHEeqyTrq5oKlx7g" name="Message24SendEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg" message="_lgJrwIQHEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_lgNWIIQHEeqyTrq5oKlx7g" name="Message24ReceiveEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_lgJrwIQHEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_qrAnEIQHEeqyTrq5oKlx7g" name="ActionExecutionSpecification27" covered="_W2rBQIQEEeqyTrq5oKlx7g" finish="_shdLUIQHEeqyTrq5oKlx7g" start="_lgNWIIQHEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_shdLUIQHEeqyTrq5oKlx7g" name="Message28SendEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_shavEIQHEeqyTrq5oKlx7g"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_sheZcIQHEeqyTrq5oKlx7g" name="Message28ReceiveEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg" message="_shavEIQHEeqyTrq5oKlx7g"/>
+      <message xmi:type="uml:Message" xmi:id="_WUtuQIQFEeqyTrq5oKlx7g" name="Demande de lancement du programme" messageSort="asynchCall" receiveEvent="_WU4tYIQFEeqyTrq5oKlx7g" sendEvent="_WU24MIQFEeqyTrq5oKlx7g"/>
+      <message xmi:type="uml:Message" xmi:id="_os_tIIQFEeqyTrq5oKlx7g" name="Create GUI Recherche" receiveEvent="_otDXgIQFEeqyTrq5oKlx7g" sendEvent="_otCJYIQFEeqyTrq5oKlx7g"/>
+      <message xmi:type="uml:Message" xmi:id="_u9hQAIQFEeqyTrq5oKlx7g" name="Affiche le formulaire des caractéristiques principales" receiveEvent="_u9okwIQFEeqyTrq5oKlx7g" sendEvent="_u9mvkIQFEeqyTrq5oKlx7g"/>
+      <message xmi:type="uml:Message" xmi:id="_lgJrwIQHEeqyTrq5oKlx7g" name="Sélectionne un profil type" messageSort="asynchCall" receiveEvent="_lgNWIIQHEeqyTrq5oKlx7g" sendEvent="_lgMIAIQHEeqyTrq5oKlx7g"/>
+      <message xmi:type="uml:Message" xmi:id="_shavEIQHEeqyTrq5oKlx7g" name="Renvoi des valeurs pré-enregistrées pour le formulaire" receiveEvent="_sheZcIQHEeqyTrq5oKlx7g" sendEvent="_shdLUIQHEeqyTrq5oKlx7g"/>
+      <message xmi:type="uml:Message" xmi:id="__8BtoIQHEeqyTrq5oKlx7g" name="Saisie ou corrige les informations demandées" messageSort="asynchCall" receiveEvent="__8H0QIQHEeqyTrq5oKlx7g" sendEvent="__8EJ4IQHEeqyTrq5oKlx7g"/>
+      <message xmi:type="uml:Message" xmi:id="_IVrgMIQIEeqyTrq5oKlx7g" name="Verification du format des données" receiveEvent="_IVt8cIQIEeqyTrq5oKlx7g" sendEvent="_IVtVYIQIEeqyTrq5oKlx7g"/>
+      <message xmi:type="uml:Message" xmi:id="_yFkesIQIEeqyTrq5oKlx7g" name="Envoi des informations validées" receiveEvent="_yFqlUIQIEeqyTrq5oKlx7g" sendEvent="_yFpXMIQIEeqyTrq5oKlx7g"/>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_ZAfQAF--EeqAAb4u4HLI7w">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZAkIgF--EeqAAb4u4HLI7w" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
