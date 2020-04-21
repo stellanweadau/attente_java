@@ -180,12 +180,16 @@
 			<artifactId>yasson</artifactId>
 			<version>1.0</version>
 		</dependency>
+
+		<!-- Dependency used to manipulate JSON format -->
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.json</artifactId>
 			<version>1.1.4</version>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<!-- Dependency used to manipulate JSON format -->
 		<dependency>
 			<groupId>javax.json</groupId>
 			<artifactId>javax.json-api</artifactId>
