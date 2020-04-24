@@ -3477,7 +3477,7 @@
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9OGfgXKHEeq1kKPrsPWCsQ" id="(0.8045977011494253,1.0)"/>
     </edges>
   </notation:Diagram>
-  <notation:Diagram xmi:id="_I7NjEIPwEeqm2vrDV_e-Xg" type="PapyrusUMLSequenceDiagram" name="InterractionBetweenUsersAnd Application" measurementUnit="Pixel">
+  <notation:Diagram xmi:id="_I7NjEIPwEeqm2vrDV_e-Xg" type="PapyrusUMLSequenceDiagram" name="InterractionBetweenUsersAndApplication" measurementUnit="Pixel">
     <children xmi:type="notation:Shape" xmi:id="_I7NjEYPwEeqm2vrDV_e-Xg" type="Interaction_Shape">
       <children xmi:type="notation:DecorationNode" xmi:id="_I7NjEoPwEeqm2vrDV_e-Xg" type="Interaction_NameLabel"/>
       <children xmi:type="notation:BasicCompartment" xmi:id="_I7NjE4PwEeqm2vrDV_e-Xg" type="Interaction_SubfragmentCompartment">
@@ -3516,10 +3516,15 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ts5FgYQHEeqyTrq5oKlx7g" x="114" y="276" width="361" height="101"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_YTcTgIP_Eeqm2vrDV_e-Xg" type="Lifeline_Shape">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jDxEIIYQEeqzqeujllcwMQ" source="PapyrusHyperLink_Object" references="_OUoU0GShEeqgR6r_D9TUsQ">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jDxEIYYQEeqzqeujllcwMQ" key="tooltip_text"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jDxEIoYQEeqzqeujllcwMQ" key="pageName" value="PapyrusHyperLink_Object"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jDxEI4YQEeqzqeujllcwMQ" key="is_default_navigation" value="true"/>
+          </eAnnotations>
           <children xmi:type="notation:DecorationNode" xmi:id="_YThzEIP_Eeqm2vrDV_e-Xg" type="Lifeline_NameLabel"/>
           <children xmi:type="notation:Shape" xmi:id="_Pz0NEIQFEeqyTrq5oKlx7g" type="ActionExecutionSpecification_Shape">
             <element xmi:type="uml:ActionExecutionSpecification" href="papyrus.uml#_Py2jwIQFEeqyTrq5oKlx7g"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Pz0NEYQFEeqyTrq5oKlx7g" x="40" y="46" width="20" height="681"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Pz0NEYQFEeqyTrq5oKlx7g" x="40" y="46" width="20" height="661"/>
           </children>
           <element xmi:type="uml:Lifeline" href="papyrus.uml#_YSClUIP_Eeqm2vrDV_e-Xg"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YTdhoIP_Eeqm2vrDV_e-Xg" x="94" y="10"/>
@@ -3542,10 +3547,6 @@
           <children xmi:type="notation:Shape" xmi:id="_qsHaUIQHEeqyTrq5oKlx7g" type="ActionExecutionSpecification_Shape">
             <element xmi:type="uml:ActionExecutionSpecification" href="papyrus.uml#_qrAnEIQHEeqyTrq5oKlx7g"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qsHaUYQHEeqyTrq5oKlx7g" x="40" y="306" width="20" height="41"/>
-          </children>
-          <children xmi:type="notation:Shape" xmi:id="_EMVFMIQIEeqyTrq5oKlx7g" type="ActionExecutionSpecification_Shape">
-            <element xmi:type="uml:ActionExecutionSpecification" href="papyrus.uml#_ELXb4IQIEeqyTrq5oKlx7g"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EMVFMYQIEeqyTrq5oKlx7g" x="40" y="406" width="20" height="121"/>
           </children>
           <element xmi:type="uml:Lifeline" href="papyrus.uml#_W2rBQIQEEeqyTrq5oKlx7g"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W3mOUYQEEeqyTrq5oKlx7g" x="374" y="10"/>
@@ -3570,7 +3571,7 @@
     <styles xmi:type="notation:StringValueStyle" xmi:id="_I7NjFoPwEeqm2vrDV_e-Xg" name="diagram_compatibility_version" stringValue="1.4.0"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_I7NjF4PwEeqm2vrDV_e-Xg"/>
     <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_I7NjGIPwEeqm2vrDV_e-Xg" diagramKindId="org.eclipse.papyrus.uml.diagram.sequence">
-      <owner xmi:type="uml:Model" href="papyrus.uml#_7UbegF-3EeqrPafii89tnw"/>
+      <owner xmi:type="uml:Package" href="papyrus.uml#_UkDHsIYPEeqzqeujllcwMQ"/>
     </styles>
     <element xmi:type="uml:Interaction" href="papyrus.uml#_bm_iMIPvEeqm2vrDV_e-Xg"/>
     <edges xmi:type="notation:Connector" xmi:id="_WVgYcIQFEeqyTrq5oKlx7g" type="Message_AsynchEdge" source="_YTcTgIP_Eeqm2vrDV_e-Xg" target="_kOl24IP_Eeqm2vrDV_e-Xg">
