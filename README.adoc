@@ -90,6 +90,26 @@ The group will also have to build the Apartment factory. We will replace the fun
 - Help to test the project
 - Manage Github (Addition of collaborator, Add Collaborators, Restricting rights, Creation of necessary branches, Creation of milestones, Update Travis, ...)
 
+=== Iteration 2
+
+==== Team 1
+
+===== Members
+
+===== Realizations
+
+==== Team 2
+
+===== Members
+
+===== Realizations
+
+==== Team 3 (SM/PO)
+
+===== Members
+
+===== Realizations
+
 == Documentation
 
 - Project documentation and UML iterations can be found in the directory link:doc/README.adoc[*doc/*]

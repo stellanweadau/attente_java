@@ -1,0 +1,65 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:     
+:imagesdir: img/
+:toc:
+:toc-placement!:
+
+= Iteration 3
+
+[IMPORTANT]
+====
+
+Deadline : **26 April** 2020
+
+This file only explains the distribution of work between the two teams (and indicates through links the realizations)
+
+====
+
+toc::[]
+
+== Team 1
+
+=== Members
+
+- link:https://github.com/EtienneCartier[Etienne CARTIER]
+- link:https://github.com/GabG02[Gabriel GUISSET]
+- link:https://github.com/av1m[Avi MIMOUN]
+
+=== Realizations
+
+1. Papyrus model: 
+
+* Improved model links in papyrus
+
+2. Use case diagram:
+
+* Removal of redundancy for the link:existing-project.adoc#createapartmentgui[createApartment] usecase diagram
+
+3. Sequence diagram:
+
+* Interaction between the end user and system feedback
+
+4. Documentation:
+
+* Removal of properties link:https://github.com/oliviercailloux/UML/blob/master/Papyrus/Various.adoc#avoid-labels[labels]
+
+
+== Team 2
+
+=== Members
+
+- link:https://github.com/MorganeFt[Morgane FIOT]
+- link:https://github.com/clemencecousin[Clémence COUSIN]
+
+=== Realizations
+
+1. Class diagram:
+
+* Updated simplified general class diagram, see link:diagram.adoc#1-diagrams-showing-the-application-in-real-time[here]
+
+2. Documentation:
+
+* **Think** about a way to generate a value function for a user. "_How to write/read it? How can the user view it, modify it?_"

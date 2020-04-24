@@ -100,12 +100,15 @@ link:existing-project.adoc#askopinionforutility[Click here to see documentation 
 .see diagram
 [%collapsible]
 ====
-image::it2/it2-usecase-createapartment.png[create an apartment use case]
+image::it3/it3-usecase-createapartment.png[create an apartment use case]
 ====
 +
 .link:existing-project.adoc#createapartmentgui[see documentation]
 [%collapsible]
 ====
+
+We decided to keep this use case diagram because despite the new role of the application (just tenant), this functionality is not important but still remains existing in the application for a secondary role 
+
 link:existing-project.adoc#createapartmentgui[Click here to see documentation about CreateApartment]
 ====
 
@@ -127,4 +130,20 @@ This class diagram led us to think about some fact. First of all, we can see a l
 We also can see 3 important parts of the program. The `GUI`, `Value Fonction` and `Apartment`
 
 We had problems to display arrow in the Papyrus model. So, in the PNG file, we had manually open arrow for each dependancy. 
+====
+
+=== 3.3 Sequence
+
+* Interaction between user and application
++
+.see diagram
+[%collapsible]
+====
+
+====
++
+.see documentation
+[%collapsible]
+====
+
 ====

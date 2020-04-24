@@ -4,6 +4,11 @@
 
 For an overview of all diagrams, see link:diagram.adoc[here]
 
+== Development improvement
+
+This link:development.adoc[file] explains the decisions of development, orientation of the application. +
+It is written in parallel of iterations (Itx.adoc files often refer to this file) but is independent of an iteration &rarr; This is general documentation
+
 == Existing project (Before february 2020)
 
 A description of the project before our works can be found link:existing-project.adoc[here]
@@ -15,3 +20,7 @@ You can see a description of processes and program by following this link:It1.ad
 == Iteration 2
 
 You can see a description of processes and program by following this link:It2.adoc[link]
+
+== Iteration 3
+
+You can see a description of processes by following this link:It3.adoc[link]
