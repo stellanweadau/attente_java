@@ -1,3 +1,83 @@
 = Changelog
 
 This file notes all the modifications (a minimum important) made on the java code
+
+== *Unreleased*: Incoming changes
+
+* *_ApartmentFactory:generateApartmentFromJsonPath(Path)_*
+** The name of this function will be changed to generateApartment**s**FromJsonPath(Path)
+* *Deletion* of *_ApartmentGenerator_* class
+* *Changes :* _readApartmentXMLFormat_ will use default values set in _Apartment_ class instead of using those specified in the class.
+*** *Security :* Check if values writen without any space before and after are not empty.
+
+== First Iteration - 04/20/2020
+
+
+* Dependency changes
+** *Removed :*
+*** 1
+** *Added :*
+*** 1
+** *Updated :*
+*** 1
+
+* Package *_apartment_* 
+
+** Class *_ApartmentGenerator_ -> Depercated :* use ApartmentFactory instead.
+
+
+** Class *_Apartment_* :
+
+*** *Removed :* Deletion of Apartments constructor -> Need to use the _Apartment.Builder_ class.
+*** *Added :* _Apartment.Builder:setDescription(String description)_
+*** *Added :* _Apartment.Builder:setWifi(boolean wifi)_
+*** *Added :* _Apartment.Builder:setTele(boolean tele)_
+*** *Security :* An address cannot longer be a _null_ value.
+*** *Security :* Use of _Apartment_ checks while using Apartment.Builder's setters.
+*** *Fixed :* Apartment instances are now immutable : All setters of the Apartment class are now in private access.
+*** *Changed :* While creating a apartment using Builder class, you need to specify WIFI and TV availability.
+*** *Changed :* _getTerrace()_, _getWifi()_ & _getTele()_ return now a Boolean object and no longer a primitive java boolean type value.
+*** *Changed :* setFloorAreaTerrace(double d) --> d must be > 0.
+
+
+** Class *_ApartmentFactory_ -> Added* :
+
+*** *Added :* _generateRandomRealApartment()_ throws _IOException_ returns _Apartment_ : Get a random apartment with a real address or throws IOException if the API is not available.
+*** *Added :* _generateRandomApartment()_ returns  _Apartment_ :  Get a random apartment with a real address iff the API is available or a fake one in the other case.
+*** *Added :* _generateRandomRealApartments(int n)_ throws _IOException_ returns _List<Apartment>_ : Get a _List_ of _n_ random apartments with real addresses or throws IOException if the API is not available.
+*** *Added :* _generateRandomApartments(int n)_ returns _List<Apartment>_ : Get a _List_ of _n_ random apartments with an address really existing iff the API is available or a fake one in the other case.
+*** *Added :* _generateApartmentFromJsonPath(Path p)_ throws _IOException_ returns _List<Apartment>_ : Get a _List_ of _Apartment_ from a file Path given in argument. Throws a _IOException_ if the Path given does not point to any file.
+*** *Added :* _getDefaultApartments()_ throws _IOException_ returns _List<Apartment>_ : Get a _List_ of _Apartment_ from the default json file containing apartments.
+
+
+* Package *_utils_* 
+
+** Class *_JsonConvert_ -> Added :*
+
+*** *Added :* void _apartmentToJson(Apartment a)_ throws _IOException_  : Save an _Apartment_ to the default json file containing apartments.
+*** *Added :* void _apartmentToJson(Apartment a, Path jsonPath)_ :  Save an _Apartment_ to the default json file containing apartments.
+*** *Added :* _getAddressFromJson(String json)_ returns _String_ : Extract the "address" field from a Json string
+*** *Added :* _jsonToApartment(Path p)_ throws _IOException_ returns _Apartment_ : return an Apartment instance corresponding to the informations of the json file _p_. An IOException is thrown if Path given does not point to any file.
+*** *Added :* _jsonToApartments()_ throws _IOException_ return _List<Apartment>_ : Get a _List_ of _Apartment_ from the default json file containing apartments. An IOException is thrown if the default file does not exist.
+*** *Added :* _jsonToApartments(Path p)_ throws _IOException_ returns _List<Apartment>_ : Get a _List_ of _Apartment_ from the json file path containing apartments given.
+*** *Added :* void _apartmentsToJson(List<Apartment> l)_ throws _IOException_ : Save a _List_ of _Apartment_ to the default json recording file. Throws an IOException if the default file is not available.
+*** *Added :* void _apartmentsToJson(List<Apartment> l, Path p)_ throws _IOException_ : Save a _List_ of _Apartment_ to the json recording file _p_ given in parameters. Throws an IOException if the p does not point to any file.
+
+* Package *_readapartments_* 
+
+** Class *_readApartmentXMLFormat_ :*
+
+*** *Changes :* An apartment is build with default values if the XML content does not contains optional field.
+
+* Package *_gui_* 
+
+** Class *_LayoutApartementGUI_ :*
+
+*** *Changes :* Use _generateRandomRealApartments(int n)_ to generate a _List_ of random _Apartment_.
+
+** Class *_FormApartmentGUI_ :*
+
+*** *Changes :* Check if _int_ values without any space before and after are not empty.  
+
+
+
