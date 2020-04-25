@@ -15,11 +15,22 @@ This file notes all the modifications (a minimum important) made on the java cod
 
 * Dependency changes
 ** *Removed :*
-*** 1
+*** _com.google.code.gson_ > _gson_
+*** _com.squareup.okhttp3_ > _okhttp_
+*** _joda-time_ > _joda-time_ 
+*** _org.joda_ > _joda-convert_
+
 ** *Added :*
-*** 1
+*** _javax.json.bind_ > _javax.json.bind-api_ version *1.0* 
+*** _org.eclipse_ > _yasson_ version *1.0*
+*** _org.glassfish_ > _javax.json_ version *1.1.4*
+*** _javax.json_ > _javax.json-api version *1.1*
+
 ** *Updated :*
-*** 1
+*** _org.slf4j_ > _slf4j-api_ from *1.7.26* -> *1.7.30*
+*** _com.google.guava_ > _guava_ from *27.1-jre* -> *29.0-jre*
+*** _org.eclipse.platform_ > _org.eclipse.jface_ from *3.15.100* -> *3.19.0*
+*** _com.google.maps_ > _google-maps-services_ from *0.9.0* -> *0.11.0*
 
 * Package *_apartment_* 
 
