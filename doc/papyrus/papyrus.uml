@@ -283,24 +283,6 @@
             <message xmi:type="uml:Message" xmi:id="_nckDMIQJEeqyTrq5oKlx7g" name="Create GUI Results" receiveEvent="_ncnGgIQJEeqyTrq5oKlx7g" sendEvent="_ncl4YIQJEeqyTrq5oKlx7g"/>
             <message xmi:type="uml:Message" xmi:id="_niUF4IQJEeqyTrq5oKlx7g" name="Show apartments sorted according to their accuracy" receiveEvent="_niXwQIQJEeqyTrq5oKlx7g" sendEvent="_niWiIIQJEeqyTrq5oKlx7g"/>
           </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_lwFccIY8Eeqw9PFqD2CRLA" memberEnd="_lwGqkYY8Eeqw9PFqD2CRLA _lwPNcIY8Eeqw9PFqD2CRLA">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lwGDgIY8Eeqw9PFqD2CRLA" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lwGqkIY8Eeqw9PFqD2CRLA" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_lwPNcIY8Eeqw9PFqD2CRLA" type="_mJBTIIY3Eeqw9PFqD2CRLA" association="_lwFccIY8Eeqw9PFqD2CRLA">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1Z1jEIY9Eeqw9PFqD2CRLA"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1Z6bkIY9Eeqw9PFqD2CRLA" value="*"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_8X0B0IY9Eeqw9PFqD2CRLA" memberEnd="_8X0o4oY9Eeqw9PFqD2CRLA _8X0o5YY9Eeqw9PFqD2CRLA">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8X0o4IY9Eeqw9PFqD2CRLA" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_8X0o4YY9Eeqw9PFqD2CRLA" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_8X0o5YY9Eeqw9PFqD2CRLA" type="_kH7IoIY4Eeqw9PFqD2CRLA" association="_8X0B0IY9Eeqw9PFqD2CRLA">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__-1L0IY9Eeqw9PFqD2CRLA"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__-42MIY9Eeqw9PFqD2CRLA" value="*"/>
-            </ownedEnd>
-          </packagedElement>
         </packagedElement>
       </packagedElement>
     </packagedElement>
@@ -3520,6 +3502,24 @@
           </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_9ga9wIY_Eeqw9PFqD2CRLA" name="update" client="_72rEYF_BEeqAAb4u4HLI7w" supplier="_kH7IoIY4Eeqw9PFqD2CRLA"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_lwFccIY8Eeqw9PFqD2CRLA" memberEnd="_lwGqkYY8Eeqw9PFqD2CRLA _lwPNcIY8Eeqw9PFqD2CRLA">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lwGDgIY8Eeqw9PFqD2CRLA" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lwGqkIY8Eeqw9PFqD2CRLA" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_lwPNcIY8Eeqw9PFqD2CRLA" type="_mJBTIIY3Eeqw9PFqD2CRLA" association="_lwFccIY8Eeqw9PFqD2CRLA">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1Z1jEIY9Eeqw9PFqD2CRLA"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1Z6bkIY9Eeqw9PFqD2CRLA" value="*"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_8X0B0IY9Eeqw9PFqD2CRLA" memberEnd="_8X0o4oY9Eeqw9PFqD2CRLA _8X0o5YY9Eeqw9PFqD2CRLA">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8X0o4IY9Eeqw9PFqD2CRLA" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_8X0o4YY9Eeqw9PFqD2CRLA" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_8X0o5YY9Eeqw9PFqD2CRLA" type="_kH7IoIY4Eeqw9PFqD2CRLA" association="_8X0B0IY9Eeqw9PFqD2CRLA">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__-1L0IY9Eeqw9PFqD2CRLA"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__-42MIY9Eeqw9PFqD2CRLA" value="*"/>
+          </ownedEnd>
+        </packagedElement>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="__C89EHEuEeq9ooUMj2JdaQ" name="java">
