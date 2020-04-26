@@ -25,7 +25,6 @@ toc::[]
 === Members
 
 - link:https://github.com/EtienneCartier[Etienne CARTIER]
-- link:https://github.com/GabG02[Gabriel GUISSET]
 - link:https://github.com/av1m[Avi MIMOUN]
 
 === Realizations
@@ -47,6 +46,7 @@ toc::[]
 
 === Members
 
+- link:https://github.com/GabG02[Gabriel GUISSET]
 - link:https://github.com/MorganeFt[Morgane FIOT]
 - link:https://github.com/clemencecousin[Clémence COUSIN]
 
