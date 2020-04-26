@@ -8,7 +8,7 @@ This file notes all the modifications (a minimum important) made on the java cod
 ** The name of this function will be changed to generateApartment**s**FromJsonPath(Path)
 * *Deletion* of *_ApartmentGenerator_* class
 * *Changes :* _readApartmentXMLFormat_ will use default values set in _Apartment_ class instead of using those specified in the class.
-*** *Security :* Check if values writen without any space before and after are not empty.
+* *Security :* _formApartmentGUI_ Check if values writen without any space before and after are not empty.
 
 == First Iteration - 04/20/2020
 
@@ -19,18 +19,23 @@ This file notes all the modifications (a minimum important) made on the java cod
 *** _com.squareup.okhttp3_ > _okhttp_
 *** _joda-time_ > _joda-time_ 
 *** _org.joda_ > _joda-convert_
+*** _junit_ > _junit_
 
 ** *Added :*
 *** _javax.json.bind_ > _javax.json.bind-api_ version *1.0* 
 *** _org.eclipse_ > _yasson_ version *1.0*
 *** _org.glassfish_ > _javax.json_ version *1.1.4*
 *** _javax.json_ > _javax.json-api version *1.1*
+*** _org.junit.jupiter_ > _junit-jupiter-api_ *5.4.2*
 
 ** *Updated :*
 *** _org.slf4j_ > _slf4j-api_ from *1.7.26* -> *1.7.30*
 *** _com.google.guava_ > _guava_ from *27.1-jre* -> *29.0-jre*
 *** _org.eclipse.platform_ > _org.eclipse.jface_ from *3.15.100* -> *3.19.0*
 *** _com.google.maps_ > _google-maps-services_ from *0.9.0* -> *0.11.0*
+*** _org.eclipse.platform_ > _org.eclipse.core.commands_ from *3.9.200* -> *3.9.700*
+*** _org.eclipse.platform_ > _org.eclipse.equinox.common_ from *3.10.0* -> *3.11.0*
+*** *BUILD :* _maven-surefire-plugin_ from *2.22.1* -> *2.22.2*
 
 * Package *_apartment_* 
 
