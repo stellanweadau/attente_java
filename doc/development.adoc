@@ -44,3 +44,140 @@ These changes will be made in iteration 2 java in the `generateRandomApartment()
 First, we will implement the API expressed above. Then in a second step, we will directly implement the logic in our Java code.
 
 Indeed, the logic will be to generate a longitude/latitude as explained above. Then reverse the longitude and latitude using the link:https://geo.api.gouv.fr/adresse[government API] by calling a json parser
+
+== Value function
+
+Now that we have described what the ValueFunction package does, we can focus on how to improve it.  
+
+=== Creation of profiles
+
+These profiles could preselect some value in the GUI AskOpinionForUtilities but the user is still free to modify and adapt them. +
+This evolution could improve the search for the user by making it quicker. For the moment, we have identified 3 profiles:  
+
+* Large family 
+* Couple without child 
+* Student 
+
+=== Large family predefine option
+
+* Minimum surface: 60 m² 
+* Minimum number of bedrooms: 3 
+* Number of sleeping: 6 
+* Number of bathrooms: 2 
+* Minimum number of nights: 7 
+* Price per night: 300 
+* Wi-Fi: true 
+* Terrace: true 
+* TV: true 
+
+=== Couple without child predefine option
+
+* Minimum surface: 30 m²
+* Minimum number of bedrooms: 1
+* Number of sleeping: 2
+* Number of bathrooms: 1
+* Minimum number of nights: 2
+* Price per night: 100
+* Wi-Fi: true
+* Terrace: false
+* TV: true
+
+=== Student predefine option
+
+* Minimum surface: 16 m²
+* Minimum number of bedrooms: 1
+* Number of sleeping: 1
+* Number of bathrooms: 1
+* Minimum number of nights: 5
+* Price per night: 50
+* Wi-Fi: true
+* Terrace: false
+* TV: false
+
+=== New questions
+
+We also want to improve the way to ask the user its preferences. Currently, it looks like this:  
+
+image::it3/it3-gui-opinion-interests.png[]
+
+We think that the field are unclear, and we would like to make it more practical for the user.  
+
+The new interface could look contain these questions: 
+
+.Questions about the new interface
+[width="100%",options="header"]
+|====================
+| Question | Types of answer 
+| What are you looking to pay? | Number field 
+| What surface are you looking for this price? | Number field 
+| How many bedrooms do you want? | Number field 
+| How many bathrooms do you want? | Number field 
+| Do you need: | Checkboxes (multiple choice): W-Fi, TV, Terrace 
+| Do you care most about:  | Checkboxes (unique choice): Surface, Price, Features 
+|====================
+
+Here we have further improvement, which need more development of the application
+
+.More improvements
+[width="100%",options="header"]
+|====================
+| Question | Types of answer 
+| Where are you looking to move? | Address field 
+| Where do you work or go to school? +
+We’ll show you how far the apartment is to the places you go to the most.  | Address field 
+| Do you need to park? | Checkboxes: no, garage, parking space 
+| Do you care most about (same question but with more features):  | Air conditioning, garden, dishwasher, washing machine, elevator…
+|====================
+
+=== Q-learning
+
+In this part, we will talk about how to improve the value function of the project by using an artificial intelligence. +
+We documented ourselves to know which method could be the best to reach our goal. We found the q-learning method. 
+
+The q-learning method is a method of reinforcement learning. The letter `q` is for quality. The q-learning method consists in creating a function `Q(s,a)` where s is the state of the application at a given moment and a an action that will be made. +
+Most of the time, this function is used to determine the maximum gain a person can have. +
+For example, we have a map and a user. The user needs to move around the map to earn recompenses. The q-learning algorithm will help the user to know how to move around the map in order to earn maximum recompenses. 
+
+In our case, we can adapt this method. The state of the application will be the apartments shown to the users. The action of the user will be to choose an apartment to show to the user. Considering the apartment pick, the application will have to adapt the list of apartments shown to the user. Our goal is that the application will see which characteristics have the apartments picked and try to improve the lists shown by showing to the user similar apartments. We can also see which characteristics have the apartments which are not chosen. +
+This will allow us to determine a pattern of the apartments chosen to offer a better list of apartments. Here, the recompenses will be when the user says he likes the apartment shown. It will allow us to modify the value function according to the taste of the user. This will imply to change the application to allow a user to say if he likes or not an apartment and so create a GUI (or at first using the console).
+
+If we follow strictly the definition of q-learning, we should use the following function `Q`: 
+
+image:https://render.githubusercontent.com/render/math?math=Q(s,a)=(1-\alpha)\:Q(s,a)%2B\alpha(r%2B\beta\:max(Q(s%27,a%27))[Q(s,a) = (1- alpha)Q(s,a) + alpha (r + beta max(Q(s',a')))] +
+(the maximum is according to a’)
+
+Where: 
+
+* `s` is the state of the application at the instant `t` 
+* `a` is the chosen action 
+* `r` the recompense received by the user for doing action `a` +
+`α` a number between 0 and 1 called the learning factor: it determines how important the new information calculated is. After seeing a few implementations of q-learning, it is usually set at 0,1. 
+* `β` a number between 0 and 1 the discount factor a: it determines if the user prefers having a huge reward now or not, considering the fact that having a smaller reward now can allow the user to have a bigger one after. It is not pertinent to use this number here, as we are not following a path here. 
+* `s'` the new state of the application
+* `a'` the action realised 
+
+For us, the idea is not to use strictly this algorithm but to inspire ourselves of it in order to implement a reinforcement learning. Indeed, this algorithm lies on quite complex mathematical theory (as see link:http://researchers.lille.inria.fr/~munos/master-mva/lecture02.pdf[here]) and it might be complicated for us to define correctly all parameters.
+
+But we can think here of implementing a recompense system like in the q-learning. An idea can be to create a score for each apartment. If the characteristics of an apartment match quite well the value function, the algorithm will give a bonus for choosing it. +
+On the contrary, it can give a malus if the apartment chosen doesn’t match the characteristic. At each iteration, the value function is improve considering if the user likes or not the apartment shown. For the first iteration, the apartment will be pick according to the profile of the user.
+
+Using this principle, we can define a Q function as followed:
+
+image:https://render.githubusercontent.com/render/math?math=Q(s,a)%20=%200,9%20\times%20Q(s,a)%20%2B%200,1%20\times%20(bonusMalus%20%2B%20max(Q(s,a%27)))[Q(s,a) = 0,9 * Q(s,a) + 0,1 * (bonusMalus + max(Q(s,a’)))]
+
+Where:
+
+* `Q(s,a)` is the score of the current apartment with weighting (considering that we chose `α = 0,1`).
+* `BonusMalus` is the recompense given if the apartment matches the value function or not (maybe `-1` if the apartment doesn’t match at all the value function and `+1` if it matches exactly. I think we need to define that precisely if this option can be implemented)
+* `Q(s,a')` is the score if we had chosen the apartment `a'`
+
+Before calculating this `Q` function, we need to actualise the value function (by asking if the user likes or not the apartment shown).
+
+The score of an apartment can be computed as followed:  
+
+[source]
+----
+number of criteria matching the value function / total number of criteria 
+----
+
+This computation of a Q function is just an example. It must be thought more if the q-learning solution is chosen. 

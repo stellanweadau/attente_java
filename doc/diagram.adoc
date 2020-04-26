@@ -6,7 +6,7 @@
 :imagesdir: img/
 :toc:
 :toc-placement!:
-:lastSimplifiedDiagram: state/09-2019_class-diagram-global-simplified.png
+:lastSimplifiedDiagram: state/04-2020_class-diagram-global-simplified.png
 
 = UML Diagrams
 
@@ -57,6 +57,46 @@ This new class, JsonConvert, will allow us in the long term, when we will be sur
 But in a fisrt time, we will keep a coexistence of the XML storage and JSON storage.
 
 Finnally, the replacement of the Apartment Generator by the new Apartment Factory will force us to add the former dependencies it had with the GUI package. 
+====
+
+* User profiles (link with `value function`)
++
+.see diagram
+[%collapsible]
+====
+image:it3/it3-class-profile.png[CDProfile]
+====
++
+.link:development.adoc#value-function[see documentation]
+[%collapsible]
+====
+As you might have seen, we established a class diagram for creating the several profiles. The class `Profile` will communicate with apartment value function in order to initialize the value of it according to the profile chosen. 
+
+The class `ProfileManager` allow us to see all the profiles created and add new ones. 
+
+The class `ProfileCriteria` gives all the criteria needed for one profile. 
+
+Click link:development.adoc#value-function[here] to see the documentation on the evolutions which revolves around user profiles and value function
+====
+
+=== 2.3 Sequence
+
+* Interaction between users and application
++
+.see diagram
+[%collapsible]
+====
+image:it3/it3-sequence-interaction-users-application.png[Interaction between the end user and application]
+====
++
+.see documentation
+[%collapsible]
+====
+We want to change the form `AskOpinionForUtility`. We think that the actual form is not really optimum. These changes will be done in 2 steps. The first one is to create profiles with default values to help user to complete the form (see the sequence diagram below). The second step is to adapt the existing operations around each criteria and importance of these one depending on the profile. 
+
+To specify the operation for the user, we designed a sequence diagram.  
+
+We can see that the user launches the program. The program initializes a window with the criterion’s form. The user can select a predefined profile. In this case, the form will be automatically fill with values estimated by the program. After that, the user can customize the values before sending them. If the values do not have the good format, the user must modify his entries. When all datas have the good format, the application will display the GUI results containing apartments corresponding to the user’s criteria. 
 ====
 
 == 3. Diagrams of the existing project
@@ -130,20 +170,4 @@ This class diagram led us to think about some fact. First of all, we can see a l
 We also can see 3 important parts of the program. The `GUI`, `Value Fonction` and `Apartment`
 
 We had problems to display arrow in the Papyrus model. So, in the PNG file, we had manually open arrow for each dependancy. 
-====
-
-=== 3.3 Sequence
-
-* Interaction between user and application
-+
-.see diagram
-[%collapsible]
-====
-
-====
-+
-.see documentation
-[%collapsible]
-====
-
 ====

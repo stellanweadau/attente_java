@@ -92,23 +92,47 @@ The group will also have to build the Apartment factory. We will replace the fun
 
 === Iteration 2
 
+[NOTE]
+====
+Both teams will do their utmost to minimize the number of warnings (already present) in the packages they will touch.
+====
+
 ==== Team 1
 
 ===== Members
 
+- link:https://github.com/MorganeFt[Morgane FIOT]
+- link:https://github.com/av1m[Avi MIMOUN]
+
 ===== Realizations
+
+Random generation of an apartment :
+
+* Generate a large number of apartments in order to store the result in resources
+* Generate latitude and longitude points in the Paris area to retrieve an address using the link:https://api-adresse.data.gouv.fr/reverse/?lon=2.2712946&lat=48.869962[government API]
+* Use link:https://github.com/oliviercailloux/sample-rest-client[jax-rs client] link:https://github.com/av1m/Apartments/pull/3#discussion_r410394483[instead of InputStream] to make the HTTP GET request (link:https://github.com/av1m/Apartments/issues/5[issue #5])
+* Modify the function which converts the HTTP return from the API (concerning addresses) to a string (`getAddressFromJson`)
+* Modify the behavior of the `retry` during the API call, see link:https://github.com/av1m/Apartments/issues/7[issue #7]
+* [OPT] Implement a function/pattern to determine if an address is correct
 
 ==== Team 2
 
 ===== Members
 
+- link:https://github.com/clemencecousin[Clémence COUSIN]
+- link:https://github.com/EtienneCartier[Etienne CARTIER]
+
 ===== Realizations
+
+* Delete the `apartmentGenerator` class. Replace in `apartementFactory` (see link:https://github.com/av1m/Apartments/pull/3[PR #3])
+* Specify unit tests, mainly for the `valueFunction`. Correction of documentation
+* Warnings optimizations (package by package)
 
 ==== Team 3 (SM/PO)
 
 ===== Members
 
-===== Realizations
+- link:https://github.com/GabG02[Gabriel GUISSET]
 
 == Documentation
 

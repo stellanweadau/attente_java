@@ -41,6 +41,13 @@ Another solution would be to say that it is only a manager (who plays the role o
 image::it1/it1-usecase-askopinionforutility.png[Diagram ask opinion for utility]
 ====
 
+.see class diagram in link with `AskOpinionForUtility`
+[%collapsible]
+====
+link:diagram.adoc#2-3-sequence[see documentation]
+image:it3/it3-sequence-interaction-users-application.png[Interaction between the end user and application]
+====
+
 *Effective version:*
 
 This function runs a GUI, which asks the user his criteria of selection for choosing an apartment. The user can input the minimum surface and the minimum number of bedrooms for example. The user can also choose which criteria is the most important between Wi-Fi and a terrace and between the television and the price per night.

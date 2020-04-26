@@ -4,6 +4,13 @@
 
 For an overview of all diagrams, see link:diagram.adoc[here]
 
+[IMPORTANT]
+====
+We have detected that some themes prevent the proper functioning of papyrus (for example, transparent arrows). +
+We noticed this bug with the link:https://www.genuitec.com/products/devstyle/[DevStyle theme] +
+_Thanks link:https://github.com/GabG02[gab202]_
+====
+
 == Development improvement
 
 This link:development.adoc[file] explains the decisions of development, orientation of the application. +

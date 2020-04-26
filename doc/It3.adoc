@@ -33,6 +33,7 @@ toc::[]
 1. Papyrus model: 
 
 * Improved model links in papyrus
+* Removal of properties link:https://github.com/oliviercailloux/UML/blob/master/Papyrus/Various.adoc#avoid-labels[labels] (see link:https://github.com/av1m/apartments/commit/deb4fe398064ed038a34cd09f329bf3dff4e3b65[commit])
 
 2. Use case diagram:
 
@@ -40,12 +41,7 @@ toc::[]
 
 3. Sequence diagram:
 
-* Interaction between the end user and system feedback
-
-4. Documentation:
-
-* Removal of properties link:https://github.com/oliviercailloux/UML/blob/master/Papyrus/Various.adoc#avoid-labels[labels]
-
+* link:diagram.adoc#2-3-sequence[Interaction between the end user and system feedback]
 
 == Team 2
 
@@ -58,8 +54,10 @@ toc::[]
 
 1. Class diagram:
 
-* Updated simplified general class diagram, see link:diagram.adoc#1-diagrams-showing-the-application-in-real-time[here]
+* Fix arrows and updated simplified general class diagram, see link:diagram.adoc#1-diagrams-showing-the-application-in-real-time[here]
+* Class diagrams that deal with user profiles, see link:diagram.adoc#2-2-class[here] 
 
 2. Documentation:
 
-* **Think** about a way to generate a value function for a user. "_How to write/read it? How can the user view it, modify it?_"
+* **Think** about a way to generate a value function for a user. "_How to write/read it? How can the user view it, modify it?_" +
+link:development.adoc#value-function[See documentation here]
