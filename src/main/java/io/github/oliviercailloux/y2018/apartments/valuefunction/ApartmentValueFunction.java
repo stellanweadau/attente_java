@@ -266,8 +266,7 @@ public class ApartmentValueFunction {
 	 *                                      {@link PartialValueFunction}
 	 */
 	public void setFloorAreaTerraceValueFunction(PartialValueFunction<Double> floorAreaTerraceValueFunction) {
-		checkNotNull(floorAreaTerraceValueFunction, 
-				"The floor area of the terrace preferencies cannot be null");
+		checkNotNull(floorAreaTerraceValueFunction, "The floor area of the terrace preferencies cannot be null");
 		this.floorAreaTerraceValueFunction = floorAreaTerraceValueFunction;
 		LOGGER.info("The floor area of the terrace preferencies has been set");
 	}
@@ -340,8 +339,7 @@ public class ApartmentValueFunction {
 	 * @param nbBedroomsSubjectiveValueWeight a positive or zero double
 	 */
 	public void setNbBedroomsSubjectiveValueWeight(double nbBedroomsSubjectiveValueWeight) {
-		checkArgument(nbBedroomsSubjectiveValueWeight >= 0, 
-				"The weight of the number of bedrooms cannot be negative");
+		checkArgument(nbBedroomsSubjectiveValueWeight >= 0, "The weight of the number of bedrooms cannot be negative");
 		this.nbBedroomsSubjectiveValueWeight = nbBedroomsSubjectiveValueWeight;
 		LOGGER.info("The number of bedrooms weight has been set to {}", nbBedroomsSubjectiveValueWeight);
 	}
@@ -353,8 +351,7 @@ public class ApartmentValueFunction {
 	 * @param nbSleepingSubjectiveValueWeight a positive zero double
 	 */
 	public void setNbSleepingSubjectiveValueWeight(double nbSleepingSubjectiveValueWeight) {
-		checkArgument(nbSleepingSubjectiveValueWeight >= 0, 
-				"The weight of the sleep-in cannot be negative");
+		checkArgument(nbSleepingSubjectiveValueWeight >= 0, "The weight of the sleep-in cannot be negative");
 		this.nbSleepingSubjectiveValueWeight = nbSleepingSubjectiveValueWeight;
 		LOGGER.info("The number of sleep-in weight has been set to {}", nbSleepingSubjectiveValueWeight);
 	}
@@ -416,8 +413,7 @@ public class ApartmentValueFunction {
 	 * @param pricePerNightSubjectiveValueWeight a positive or zero double
 	 */
 	public void setPricePerNightSubjectiveValueWeight(double pricePerNightSubjectiveValueWeight) {
-		checkArgument(pricePerNightSubjectiveValueWeight >= 0, 
-				"The weight of the price per night cannot be negative");
+		checkArgument(pricePerNightSubjectiveValueWeight >= 0, "The weight of the price per night cannot be negative");
 		this.pricePerNightSubjectiveValueWeight = pricePerNightSubjectiveValueWeight;
 		LOGGER.info("The price per night weight has been set to {}", pricePerNightSubjectiveValueWeight);
 	}
@@ -444,7 +440,7 @@ public class ApartmentValueFunction {
 	public void setTeleSubjectiveValueWeight(double teleSubjectiveValueWeight) {
 		checkArgument(teleSubjectiveValueWeight >= 0, "The weight of the tele cannot be negative");
 		this.teleSubjectiveValueWeight = teleSubjectiveValueWeight;
-		LOGGER.info("The wifi weight has been set to {}", teleSubjectiveValueWeight);
+		LOGGER.info("The tele weight has been set to {}", teleSubjectiveValueWeight);
 	}
 
 	/**
@@ -473,72 +469,71 @@ public class ApartmentValueFunction {
 
 		checkArgument(
 				floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) >= 0
-				&& floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1,
+						&& floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1,
 				"The subjective value of floor area should be between 0 and 1");
 		floorAreaSubjectiveValue = floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea());
 		LOGGER.info("The floor area subjective value has been set to {}", floorAreaSubjectiveValue);
 
 		checkArgument(
 				nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) >= 0
-				&& nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1,
+						&& nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1,
 				"The subjective value of the number of bedrooms should be between 0 and 1");
 		nbBedroomsSubjectiveValue = nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms());
 		LOGGER.info("The number of bedrooms subjective value has been set to {}", nbBedroomsSubjectiveValue);
 
 		checkArgument(
 				nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) >= 0
-				&& nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1,
+						&& nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1,
 				"The subjective value of the number of sleep-in should be between 0 and 1");
 		nbSleepingSubjectiveValue = nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping());
 		LOGGER.info("The number of sleepings subjective value has been set to {}", nbSleepingSubjectiveValue);
 
 		checkArgument(
 				nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) >= 0
-				&& nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1,
+						&& nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1,
 				"The subjective value of the number of bathrooms should be between 0 and 1");
 		nbBathroomsSubjectiveValue = nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms());
 		LOGGER.info("The number of bathrooms subjective value has been set to {}", nbBathroomsSubjectiveValue);
 
 		checkArgument(
 				terraceValueFunction.getSubjectiveValue(apart.getTerrace()) >= 0
-				&& terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1,
+						&& terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1,
 				"The subjective value of the terrace should be between 0 and 1");
 		terraceSubjectiveValue = terraceValueFunction.getSubjectiveValue(apart.getTerrace());
 		LOGGER.info("The terrace subjective value has been set to {}", terraceSubjectiveValue);
 
 		checkArgument(
 				floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) >= 0
-				&& floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1,
+						&& floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1,
 				"The subjective value of the floor area of the terrace should be between 0 and 1");
-		floorAreaTerraceSubjectiveValue = floorAreaTerraceValueFunction.getSubjectiveValue(
-				apart.getFloorAreaTerrace());
+		floorAreaTerraceSubjectiveValue = floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace());
 		LOGGER.info("The floor area of the terrace subjective value has been set to {}",
 				floorAreaTerraceSubjectiveValue);
 
 		checkArgument(
 				wifiValueFunction.getSubjectiveValue(apart.getWifi()) >= 0
-				&& wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1,
+						&& wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1,
 				"The subjective value of the wifi should be between 0 and 1");
 		wifiSubjectiveValue = wifiValueFunction.getSubjectiveValue(apart.getWifi());
 		LOGGER.info("The wifi subjective value has been set to {}", wifiSubjectiveValue);
 
 		checkArgument(
 				pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) >= 0
-				&& pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1,
+						&& pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1,
 				"The subjective value of the price per night should be between 0 and 1");
 		pricePerNightSubjectiveValue = pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight());
 		LOGGER.info("the price per night subjective value has been set to {}", pricePerNightSubjectiveValue);
 
 		checkArgument(
 				nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) >= 0
-				&& nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1,
+						&& nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1,
 				"The subjective value of the minimum number of nights should be between 0 and 1");
 		nbMinNightSubjectiveValue = nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight());
 		LOGGER.info("The minimum number of nights subjective value has been set to {}", nbMinNightSubjectiveValue);
 
 		checkArgument(
 				teleValueFunction.getSubjectiveValue(apart.getTele()) >= 0
-				&& teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1,
+						&& teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1,
 				"The subjective value of the presence of a tele should be between 0 and 1");
 		teleSubjectiveValue = teleValueFunction.getSubjectiveValue(apart.getTele());
 		LOGGER.info("the tele subjective value has been set to {}", teleSubjectiveValue);
@@ -553,11 +548,11 @@ public class ApartmentValueFunction {
 				+ pricePerNightSubjectiveValue * pricePerNightSubjectiveValueWeight
 				+ nbMinNightSubjectiveValue * nbMinNightSubjectiveValueWeight
 				+ teleSubjectiveValue * teleSubjectiveValueWeight)
-				/ (floorAreaSubjectiveValueWeight + nbBedroomsSubjectiveValueWeight 
-						+ nbSleepingSubjectiveValueWeight + nbBathroomsSubjectiveValueWeight 
-						+ terraceSubjectiveValueWeight + floorAreaTerraceSubjectiveValueWeight 
-						+ wifiSubjectiveValueWeight + pricePerNightSubjectiveValueWeight 
-						+ nbMinNightSubjectiveValueWeight + teleSubjectiveValueWeight));
+				/ (floorAreaSubjectiveValueWeight + nbBedroomsSubjectiveValueWeight + nbSleepingSubjectiveValueWeight
+						+ nbBathroomsSubjectiveValueWeight + terraceSubjectiveValueWeight
+						+ floorAreaTerraceSubjectiveValueWeight + wifiSubjectiveValueWeight
+						+ pricePerNightSubjectiveValueWeight + nbMinNightSubjectiveValueWeight
+						+ teleSubjectiveValueWeight));
 
 	}
 
@@ -607,12 +602,10 @@ public class ApartmentValueFunction {
 
 		ApartmentValueFunction apartValueFunction = new ApartmentValueFunction();
 
-		DiscreteValueFunction<Double> nbBedroomsEndBoundMap = DiscreteValueFunction
-				.discreteValueFunctionBeetween(4, 6);
-		DiscreteValueFunction<Double> nbSleepingEndBoundMap = DiscreteValueFunction
-				.discreteValueFunctionBeetween(4, 6);
-		DiscreteValueFunction<Double> nbBathroomsEndBoundMap = DiscreteValueFunction
-				.discreteValueFunctionBeetween(1,3);
+		DiscreteValueFunction<Double> nbBedroomsEndBoundMap = DiscreteValueFunction.discreteValueFunctionBeetween(4, 6);
+		DiscreteValueFunction<Double> nbSleepingEndBoundMap = DiscreteValueFunction.discreteValueFunctionBeetween(4, 6);
+		DiscreteValueFunction<Double> nbBathroomsEndBoundMap = DiscreteValueFunction.discreteValueFunctionBeetween(1,
+				3);
 
 		int floorAreaEndBound = random.nextInt(80) + 21;
 		boolean terraceEndBound = (random.nextInt(2) == 1);
@@ -627,8 +620,7 @@ public class ApartmentValueFunction {
 		int pricePerNightStartBound = random.nextInt(pricePerNightEndBound);
 		int nbMinNightStartBound = random.nextInt(nbMinNightEndBound);
 
-		apartValueFunction.setFloorAreaValueFunction(
-				new LinearValueFunction(floorAreaStartBound, floorAreaEndBound));
+		apartValueFunction.setFloorAreaValueFunction(new LinearValueFunction(floorAreaStartBound, floorAreaEndBound));
 		apartValueFunction.setNbBedroomsValueFunction(nbBedroomsEndBoundMap);
 		apartValueFunction.setNbSleepingValueFunction(nbSleepingEndBoundMap);
 		apartValueFunction.setNbBathroomsValueFunction(nbBathroomsEndBoundMap);
@@ -636,10 +628,10 @@ public class ApartmentValueFunction {
 		apartValueFunction.setFloorAreaTerraceValueFunction(
 				new LinearValueFunction(floorAreaTerraceStartBound, floorAreaTerraceEndBound));
 		apartValueFunction.setWifiValueFunction(new BooleanValueFunction(wifiEndBound));
-		apartValueFunction.setPricePerNightValueFunction(
-				new LinearValueFunction(pricePerNightStartBound, pricePerNightEndBound));
-		apartValueFunction.setNbMinNightValueFunction(
-				new ReversedLinearValueFunction(nbMinNightStartBound, nbMinNightEndBound));
+		apartValueFunction
+				.setPricePerNightValueFunction(new LinearValueFunction(pricePerNightStartBound, pricePerNightEndBound));
+		apartValueFunction
+				.setNbMinNightValueFunction(new ReversedLinearValueFunction(nbMinNightStartBound, nbMinNightEndBound));
 		apartValueFunction.setTeleValueFunction(new BooleanValueFunction(teleEndBound));
 
 		List<Double> weightRange = RandomRange.weightRangeOfSum(1d, 10);
@@ -680,36 +672,36 @@ public class ApartmentValueFunction {
 
 		switch (criterion) {
 		case FLOOR_AREA:
-			avf.setFloorAreaValueFunction(avf.adaptLinearValueFunction(
-					(LinearValueFunction) avf.floorAreaValueFunction, newBound, lower));
+			avf.setFloorAreaValueFunction(
+					avf.adaptLinearValueFunction((LinearValueFunction) avf.floorAreaValueFunction, newBound, lower));
 			break;
 		case FLOOR_AREA_TERRACE:
 			avf.setFloorAreaTerraceValueFunction(avf.adaptLinearValueFunction(
 					(LinearValueFunction) avf.floorAreaTerraceValueFunction, newBound, lower));
 			break;
 		case PRICE_PER_NIGHT:
-			avf.setPricePerNightValueFunction(avf.adaptLinearValueFunction(
-					(LinearValueFunction) avf.pricePerNightValueFunction, newBound, lower));
+			avf.setPricePerNightValueFunction(avf
+					.adaptLinearValueFunction((LinearValueFunction) avf.pricePerNightValueFunction, newBound, lower));
 			break;
 		case NB_SLEEPING:
-			avf.setNbSleepingValueFunction(avf.adaptLinearValueFunction(
-					(LinearValueFunction) avf.nbSleepingValueFunction, newBound, lower));
+			avf.setNbSleepingValueFunction(
+					avf.adaptLinearValueFunction((LinearValueFunction) avf.nbSleepingValueFunction, newBound, lower));
 			break;
 		case NB_BATHROOMS:
-			avf.setNbBathroomsValueFunction(avf.adaptLinearValueFunction(
-					(LinearValueFunction) avf.nbBathroomsValueFunction, newBound, lower));
+			avf.setNbBathroomsValueFunction(
+					avf.adaptLinearValueFunction((LinearValueFunction) avf.nbBathroomsValueFunction, newBound, lower));
 			break;
 		case NB_BEDROOMS:
-			avf.setNbBedroomsValueFunction(avf.adaptLinearValueFunction(
-					(LinearValueFunction) avf.nbBedroomsValueFunction, newBound, lower));
+			avf.setNbBedroomsValueFunction(
+					avf.adaptLinearValueFunction((LinearValueFunction) avf.nbBedroomsValueFunction, newBound, lower));
 			break;
 		case NB_MIN_NIGHT:
 			avf.setNbMinNightValueFunction(
 					avf.adaptLinearValueFunction((LinearValueFunction) avf.nbMinNightValueFunction, newBound, lower));
 			break;
-			// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
-			// don't have bounds)
-			// $CASES-OMITTED$
+		// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
+		// don't have bounds)
+		// $CASES-OMITTED$
 		default:
 			throw new IllegalArgumentException();
 		}
@@ -725,8 +717,7 @@ public class ApartmentValueFunction {
 	 * @param lower    used to say whether we change the lower or upper bound
 	 * @return an new object LinearValueFunction set with new bound
 	 */
-	private LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound, 
-			boolean lower) {
+	private LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound, boolean lower) {
 		if (lower) {
 			return new LinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
 		}
@@ -751,8 +742,7 @@ public class ApartmentValueFunction {
 
 		ApartmentValueFunction avf = cloneAVF();
 
-		double weightSum = avf.getSubjectiveValueWeight(moreImportant) 
-				+ avf.getSubjectiveValueWeight(lessImportant);
+		double weightSum = avf.getSubjectiveValueWeight(moreImportant) + avf.getSubjectiveValueWeight(lessImportant);
 
 		avf.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
 		avf.setSubjectiveValueWeight(lessImportant, weightSum / 10);
@@ -775,7 +765,7 @@ public class ApartmentValueFunction {
 		case WIFI:
 			return wifiSubjectiveValueWeight;
 		case FLOOR_AREA:
-			return floorAreaTerraceSubjectiveValueWeight;
+			return floorAreaSubjectiveValueWeight;
 		case FLOOR_AREA_TERRACE:
 			return floorAreaTerraceSubjectiveValueWeight;
 		case NB_BATHROOMS:
