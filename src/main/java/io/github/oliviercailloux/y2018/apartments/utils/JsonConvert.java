@@ -107,7 +107,7 @@ public abstract class JsonConvert {
 		checkArgument(featuresMap.get("properties") != null, "Properties is null");
 		final Map<?, ?> properties = (Map<?, ?>) featuresMap.get("properties");
 		checkArgument(properties.get("label") != null, "Label field is null");
-		// TODO Implement pattern to verify the label field
+		// FOR_FUTUR Implement pattern to verify the label field
 		return properties.get("label").toString();
 	}
 
