@@ -1,21 +1,23 @@
 package io.github.oliviercailloux.y2018.apartments.apartment;
 
-import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
-import io.github.oliviercailloux.y2018.apartments.utils.JsonConvert;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.InvalidObjectException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.ws.rs.ClientErrorException;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
+import io.github.oliviercailloux.y2018.apartments.utils.JsonConvert;
 
 /**
  * A factory for creating Apartment objects.
@@ -29,7 +31,7 @@ public abstract class ApartmentFactory {
 	private static Random rand = new Random();
 
 	/** The URL of the API address. */
-	private static final String URL_API_ADDRESS = "https://8n8iajahab.execute-api.us-east-1.amazonaws.com/default/RealRandomAdress";
+	private static final String URL_API_ADDRESS = "https://api-adresse.data.gouv.fr/reverse/";
 
 	/**
 	 * This function aims to generate a new apartment with random characteristics
@@ -65,7 +67,7 @@ public abstract class ApartmentFactory {
 	 */
 	private static Apartment generateRandomApartment(boolean realAddress) throws IOException {
 		double floorArea = simulateRandomDraw(65d, 21d);
-		String address = realAddress ? getRandomAddressOnlyReal() : getRandomAddress();
+		String address = realAddress ? getOnlineRandomAddress() : getRandomAddress();
 		int averageRoomArea = 10 + rand.nextInt(20);
 		int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 1);
 		int nbSleeping = (1 + rand.nextInt(4)) * nbBedrooms;
@@ -80,18 +82,10 @@ public abstract class ApartmentFactory {
 		boolean tele = Math.random() >= 0.5;
 		int nbMinNight = rand.nextInt(700) + 1;
 		Builder apartBuilder = new Builder();
-		return apartBuilder.setFloorArea(floorArea)
-				.setAddress(address).setNbBedrooms(nbBedrooms)
-				.setNbSleeping(nbSleeping)
-				.setNbBathrooms(nbBathrooms)
-				.setTerrace(hasTerrace)
-				.setFloorAreaTerrace(floorAreaTerrace)
-				.setDescription(description)
-				.setTitle(title).setWifi(wifi)
-				.setPricePerNight(pricePerNight)
-				.setNbMinNight(nbMinNight)
-				.setTele(tele)
-				.build();
+		return apartBuilder.setFloorArea(floorArea).setAddress(address).setNbBedrooms(nbBedrooms)
+				.setNbSleeping(nbSleeping).setNbBathrooms(nbBathrooms).setTerrace(hasTerrace)
+				.setFloorAreaTerrace(floorAreaTerrace).setDescription(description).setTitle(title).setWifi(wifi)
+				.setPricePerNight(pricePerNight).setNbMinNight(nbMinNight).setTele(tele).build();
 	}
 
 	/**
@@ -142,7 +136,7 @@ public abstract class ApartmentFactory {
 	 * This function simulates a random draw of a variable, being given its
 	 * expectation and its deviation.
 	 * 
-	 * @param mean gives the mathematical expectation of the variable
+	 * @param mean      gives the mathematical expectation of the variable
 	 * @param deviation is the standard deviation of the variable
 	 * @return an outcome of the randomized experiment
 	 */
@@ -154,39 +148,51 @@ public abstract class ApartmentFactory {
 	/**
 	 * Call an API which generates a random address. This function aims at getting
 	 * the random address generated.
-	 *
-	 * @param retry indicates how many time the function has been called (Retry
-	 *              System). It will allow us to try escaping problems while
-	 *              contacting API (if it fails once, we try to call it again until
-	 *              the number specified in the class attribute NB_MAX_RETRY).
+	 * <p>
+	 * So, we generate a random latitude and a longitude and try to
+	 * {@link io.github.oliviercailloux.y2018.apartments.utils.JsonConvert#getAddressFromJson(String)
+	 * retrieve an address}
+	 * <p>
+	 * 
 	 * @return the address generated.
-	 * @throws IOException if we cannot contact the API generator.
+	 * @throws InvalidObjectException in case the API doesn't return a good format
+	 *                                after a certain number of attempts (RETRY)
 	 */
-	private static String getRandomAddress(int retry) throws IOException {
-
-		String address = "";
-		// Code from
-		// https://www.developpez.net/forums/d1354479/java/general-java/recuperer-reponse-d-adresse-http/
-		try (InputStream is = new URL(URL_API_ADDRESS).openConnection().getInputStream()) {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "utf-8"));
-			StringBuilder builder = new StringBuilder();
-			for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-				builder.append(line + "\n");
+	private static String getOnlineRandomAddress() throws InvalidObjectException {
+		/**
+		 * Maximum test value in case the API does not return the
+		 * features.properties.labels field In the case of an API error (for example
+		 * 500, or others), jax-rs throws an error of type
+		 * <code>ClientErrorException</code>
+		 */
+		final int RETRY = 5;
+		// Latitude and longitude for Ile de France
+		final double LAT_IDF = 48.8_499_198d;
+		final double LONG_IDF = 2.6_370_411d;
+		// Open a new client JAX-RS
+		final Client client = ClientBuilder.newClient();
+		for (int i = 1; i <= 5; i++) {
+			// Latitude and longitude generation
+			double lat = Math.round(LAT_IDF * 10.0d) / 10.0d;
+			double lng = Math.round(LONG_IDF * 10.0d) / 10.0d;
+			String longitude = String.valueOf(lng) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
+			String latitude = String.valueOf(lat) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
+			// Call API
+			WebTarget target = client.target(URL_API_ADDRESS).queryParam("lon", longitude).queryParam("lat", latitude);
+			LOGGER.info(target.toString());
+			String result = target.request(MediaType.TEXT_PLAIN).get(String.class);
+			try {
+				return JsonConvert.getAddressFromJson(result);
+			} catch (IllegalArgumentException e) {
+				// We do nothing because we will try again.
+				// If the error persists, we raise an error at the end of the loop
+				LOGGER.error(String.format("API returned wrong address -long=%s, -lat=%s (Round %d/%d) \n%s", longitude,
+						latitude, Integer.valueOf(i), Integer.valueOf(RETRY), e.toString()));
 			}
-			String bodyContent = builder.toString();
-			// End of code picking
-
-			return JsonConvert.getAddressFromJson(bodyContent);
-
-		} catch (MalformedURLException e) {
-			LOGGER.error("Problem while contacting address generator API", e);
-		} catch (IOException e) {
-			if (retry < NB_MAX_RETRY) {
-				return getRandomAddress(retry + 1);
-			}
-			throw e;
 		}
-		return address;
+		client.close();
+		// We were unable to retrieve a correct address
+		throw new InvalidObjectException("It appears that the API has failed to return a correct address.");
 	}
 
 	/**
@@ -198,31 +204,20 @@ public abstract class ApartmentFactory {
 	 */
 	private static String getRandomAddress() {
 		try {
-			return getRandomAddress(0);
-		} catch (IOException e) {
-			LOGGER.error("Problem while getting random address", e);
+			return ApartmentFactory.getOnlineRandomAddress();
+		} catch (ClientErrorException | InvalidObjectException e) {
+			LOGGER.error(String.format("Problem while getting random address %s", e.toString()));
 			StringBuilder sb = new StringBuilder();
-			sb.append(rand.nextInt(3000)).append(" rue de l'appel échoué ").append(rand.nextInt(19) + 75001)
-			.append(" Paris ");
+			sb.append(ApartmentFactory.rand.nextInt(3000)).append(" rue de l'appel échoué ")
+					.append(ApartmentFactory.rand.nextInt(19) + 75001).append(" Paris ");
 			return sb.toString();
 		}
 	}
 
 	/**
-	 * Call an API which generates an existing random address. This function aims at
-	 * getting the random address generated.
-	 * 
-	 * @return the random address
-	 * @throws IOException if the Address API cannot answer
-	 */
-	private static String getRandomAddressOnlyReal() throws IOException {
-		return getRandomAddress(0);
-	}
-
-	/**
 	 * Generate a list of apartments from a json file.
 	 *
-	 * @param jsonFileAddress the address where the json with all the apartments are
+	 * @param jsonFilePath the address where the json with all the apartments are
 	 * @return the list of apartments found in the json file.
 	 * @throws IOException if we cannot have access to the json file.
 	 */

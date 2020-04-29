@@ -1,25 +1,26 @@
 package io.github.oliviercailloux.y2018.apartments.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.base.VerifyException;
-
-import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
-
-import javax.json.bind.JsonbBuilder;
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.ArrayList;
-import static com.google.common.base.Preconditions.checkArgument;
+import java.util.List;
+import java.util.Map;
 
 import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.base.VerifyException;
+
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
 /**
  * The Class JsonConvert contains all function to transform Apartment object to
@@ -78,19 +79,37 @@ public abstract class JsonConvert {
 
 	/**
 	 * Gets the address field from an Address JSON.
+	 * 
+	 * We have to make sure that we have everything at every step <br>
+	 * It is for this reason that the code is filled with check
+	 * 
+	 * <p>
+	 * JsonString must be in shape
+	 * <code>{"features": ["properties":{"label": "AdressHere"}]}</code>
+	 * </p>
 	 *
 	 * @param jsonString <i>String</i> the Address into JSON format
 	 * @return <i>String</i> the address field
+	 * 
+	 * @throws IllegalArgumentException in the case where the deserialization of the
+	 *                                  JSON encounters a problem
 	 */
-	public static String getAddressFromJson(String jsonString) {
-		Jsonb jsonb = JsonbBuilder.create();
-
-		final LinkedHashMap<?, ?> result = jsonb.fromJson(jsonString, LinkedHashMap.class);
-		LOGGER.info("Get address");
-
-		checkArgument(!result.get("address").toString().isEmpty() && result.containsKey("address"),
-				"There is no field adress in the JSON file.");
-		return result.get("address").toString();
+	public static String getAddressFromJson(String jsonString) throws IllegalArgumentException {
+		checkNotNull(jsonString, "jsonString cannot be empty");
+		// Convert jsonString to a map
+		final Jsonb jsonb = JsonbBuilder.create();
+		final Map<?, ?> jsonMap = jsonb.fromJson(jsonString, Map.class);
+		// Get the features field and check that isn't null
+		final List<?> featuresList = (List<?>) jsonMap.get("features");
+		checkArgument(!featuresList.isEmpty(), "Features is empty");
+		// The features field is a List with one element, a Map [{}]
+		// So, we need to transform the List to a Map (and verify the content)
+		final Map<?, ?> featuresMap = (Map<?, ?>) featuresList.get(0);
+		checkNotNull(featuresMap.get("properties"), "Properties is null");
+		final Map<?, ?> properties = (Map<?, ?>) featuresMap.get("properties");
+		checkNotNull(properties.get("label"), "Label field is null");
+		// TODO Implement pattern to verify the label field
+		return properties.get("label").toString();
 	}
 
 	/**
