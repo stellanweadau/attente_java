@@ -66,8 +66,15 @@ class ApartmentValueFunctionTest {
 
 		valueFunction.setTeleSubjectiveValueWeight(10);
 		assertEquals(10,valueFunction.getSubjectiveValueWeight(Criterion.TELE));
+		assertThrows(IllegalArgumentException.class, () -> valueFunction.setFloorAreaSubjectiveValueWeight(-1d));
 
 		assertEquals(0.04587, valueFunction.getSubjectiveValue(a), 0.00001);
+	}
+	
+	@Test
+	void cloneAVFTest() {
+		ApartmentValueFunction valueFunction = new ApartmentValueFunction();
+		
 	}
 
 	@Test
