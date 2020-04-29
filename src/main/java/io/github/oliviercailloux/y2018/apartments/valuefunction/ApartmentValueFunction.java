@@ -7,6 +7,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
@@ -738,7 +739,9 @@ public class ApartmentValueFunction {
 	 */
 	public ApartmentValueFunction adaptWeight(Criterion moreImportant, Criterion lessImportant) {
 
-		checkArgument(!lessImportant.equals(moreImportant), "Both fields are the same.");
+		checkNotNull(lessImportant, "This criterion cannot be null");
+		checkNotNull(moreImportant, "This criterion cannot be null");
+		checkArgument(!Objects.equals(moreImportant, lessImportant), "Both fields are the same.");
 
 		ApartmentValueFunction avf = cloneAVF();
 
