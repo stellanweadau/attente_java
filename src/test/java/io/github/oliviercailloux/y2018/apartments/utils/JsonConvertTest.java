@@ -1,22 +1,22 @@
 package io.github.oliviercailloux.y2018.apartments.utils;
 
-import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
-import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
-
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 
 /**
  * Test class for JsonConvert
@@ -53,17 +53,20 @@ public class JsonConvertTest {
 	/**
 	 * Tests getAddressFromJson function. Verifies if the address extracted by the
 	 * function corresponds to the expected address.
-	 *
-	 * @throws FileNotFoundException if the file doesn't exists.
-	 * @throws IOException           if the file can't be convert into JSON format.
 	 */
 	@Test
 	void getAddressFromJsonTest() {
-		String adressJson = "{\"data\":{\"latitude\":48.91777636365895,\"longitude\":2.4954686289120067,\"formattedAddress\":\"Allée de Turenne, Nonneville, Les Pavillons-sous-Bois, Le Raincy, Seine-Saint-Denis, Île-de-France, France métropolitaine, 93320, France\",\"country\":\"France\",\"city\":\"Les Pavillons-sous-Bois\",\"state\":\"Île-de-France\",\"zipcode\":\"93320\",\"streetName\":\"Allée de Turenne\",\"countryCode\":\"FR\",\"neighbourhood\":\"\",\"provider\":\"openstreetmap\"},\"address\":\"1 Allée de Turenne, 93320 Les Pavillons-sous-Bois\"}";
-		String adressJsonWrong = "{\"data\":{\"latitude\":48.91777636365895,\"longitude\":2.4954686289120067,\"formattedAddress\":\"Allée de Turenne, Nonneville, Les Pavillons-sous-Bois, Le Raincy, Seine-Saint-Denis, Île-de-France, France métropolitaine, 93320, France\",\"country\":\"France\",\"city\":\"Les Pavillons-sous-Bois\",\"state\":\"Île-de-France\",\"zipcode\":\"93320\",\"streetName\":\"Allée de Turenne\",\"countryCode\":\"FR\",\"neighbourhood\":\"\",\"provider\":\"openstreetmap\"},\"address\":\"\"}";
-
-		assertEquals("1 Allée de Turenne, 93320 Les Pavillons-sous-Bois", JsonConvert.getAddressFromJson(adressJson));
-		assertThrows(IllegalArgumentException.class, () -> JsonConvert.getAddressFromJson(adressJsonWrong));
+		assertEquals("9 bis Rue la Fontaine 77400 Gouvernes", JsonConvert.getAddressFromJson(
+				"{\"type\": \"FeatureCollection\", \"version\": \"draft\", \"features\": [{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": [2.697788, 48.861515]}, \"properties\": {\"label\": \"9 bis Rue la Fontaine 77400 Gouvernes\", \"score\": 0.9999917537344281, \"housenumber\": \"9 bis\", \"id\": \"77209_0120_00009_bis\", \"type\": \"housenumber\", \"x\": 677827.72, \"y\": 6862429.24, \"importance\": 0.3329219426681952, \"name\": \"9 bis Rue la Fontaine\", \"postcode\": \"77400\", \"citycode\": \"77209\", \"city\": \"Gouvernes\", \"context\": \"77, Seine-et-Marne, \\u00cele-de-France\", \"street\": \"Rue la Fontaine\", \"distance\": 143}}], \"attribution\": \"BAN\", \"licence\": \"ETALAB-2.0\", \"limit\": 1}"),
+				"Good JSON, must be return 9 bis Rue la Fontaine 77400 Gouvernes");
+		assertEquals("37 Boulevard de Beaubourg 77184 Émerainville", JsonConvert.getAddressFromJson(
+				"{\"type\": \"FeatureCollection\", \"version\": \"draft\", \"features\": [{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": [2.615569, 48.817802]}, \"properties\": {\"label\": \"37 Boulevard de Beaubourg 77184 \\u00c9merainville\", \"score\": 0.9999995776812857, \"housenumber\": \"37\", \"id\": \"77169_0039_00037\", \"type\": \"housenumber\", \"x\": 671771.97, \"y\": 6857594.93, \"importance\": 0.42775013264058914, \"name\": \"37 Boulevard de Beaubourg\", \"postcode\": \"77184\", \"citycode\": \"77169\", \"city\": \"\\u00c9merainville\", \"context\": \"77, Seine-et-Marne, \\u00cele-de-France\", \"street\": \"Boulevard de Beaubourg\", \"distance\": 32}}], \"attribution\": \"BAN\", \"licence\": \"ETALAB-2.0\", \"limit\": 1}"),
+				"Good JSON, must be return 37 Boulevard de Beaubourg 77184 Émerainville");
+		assertThrows(IllegalArgumentException.class, () -> JsonConvert.getAddressFromJson(
+				"{\"type\": \"FeatureCollection\", \"version\": \"draft\", \"features\": [], \"attribution\": \"BAN\", \"licence\": \"ETALAB-2.0\", \"limit\": 1}"),
+				"features is empty, need to get IllegalArgumentException");
+		assertThrows(IllegalArgumentException.class, () -> JsonConvert.getAddressFromJson(null),
+				"null need to return IllegalArgumentException");
 	}
 
 	/**
