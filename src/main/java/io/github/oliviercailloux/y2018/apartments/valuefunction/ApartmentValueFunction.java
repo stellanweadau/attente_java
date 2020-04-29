@@ -23,146 +23,123 @@ import io.github.oliviercailloux.y2018.apartments.utils.RandomRange;
 public class ApartmentValueFunction {
 
 	/**
-	 * @floorAreaValueFunction A {@link PartialValueFunction} object on which the
-	 *                         calculation of the floor area subjective values are
-	 *                         based.
+	 *  A {@link PartialValueFunction} object on which the calculation of the floor area subjective values 
+	 *  are based.
 	 */
 	private PartialValueFunction<Double> floorAreaValueFunction;
 
 	/**
-	 * @nbBedroomsValueFunction A {@link PartialValueFunction} object on which the
-	 *                          calculation of the number of bedrooms subjective
-	 *                          value is based
+	 *  A {@link PartialValueFunction} object on which the calculation of the number of bedrooms subjective
+	 *  value is based
 	 */
 	private PartialValueFunction<Double> nbBedroomsValueFunction;
 
 	/**
-	 * @nbSleepingValueFunction A {@link PartialValueFunction} object on which the
-	 *                          calculation of the number of accommodation capacity
-	 *                          subjective values are based.
+	 * A {@link PartialValueFunction} object on which the calculation of the number of accommodation capacity
+	 * subjective values are based.
 	 */
 	private PartialValueFunction<Double> nbSleepingValueFunction;
 
 	/**
-	 * @nbBathroomsValueFunction A {@link PartialValueFunction} object on which the
+	 *  A {@link PartialValueFunction} object on which the
 	 *                           calculation of the number of bathrooms subjective
 	 *                           values are based.
 	 */
 	private PartialValueFunction<Double> nbBathroomsValueFunction;
 
 	/**
-	 * @terraceValueFunction A {@link PartialValueFunction} object on which the
-	 *                       calculation of the presence of a terrace subjective
-	 *                       values are based.
+	 *  A {@link PartialValueFunction} object on which the calculation of the 
+	 *  presence of a terrace subjective values are based.
 	 */
 	private PartialValueFunction<Boolean> terraceValueFunction;
 
 	/**
-	 * @floorAreaTerraceValueFunction A {@link PartialValueFunction} object on which
-	 *                                the calculation of the floor area of an
-	 *                                existing terrace subjective values are based.
+	 * A {@link PartialValueFunction} object on which the calculation of the floor area of an
+	 * existing terrace subjective values are based.
 	 */
 	private PartialValueFunction<Double> floorAreaTerraceValueFunction;
 
 	/**
-	 * @wifiValueFunction A {@link PartialValueFunction} object on which the
-	 *                    calculation of the wireless connection subjective values
-	 *                    are based.
+	 * A {@link PartialValueFunction} object on which the calculation 
+	 * of the wireless connection subjective values are based.
 	 */
 	private PartialValueFunction<Boolean> wifiValueFunction;
 
 	/**
-	 * @pricePerNightValueFunction A {@link PartialValueFunction} object on which
-	 *                             the calculation of the price per night subjective
-	 *                             values are based.
+	 * A {@link PartialValueFunction} object on which the calculation of the price per night subjective
+	 * values are based.
 	 */
 	private PartialValueFunction<Double> pricePerNightValueFunction;
 
 	/**
-	 * @nbMinNightValueFunction A {@link PartialValueFunction} object on which the
-	 *                          calculation of the minimum number of nights
-	 *                          subjective values are based.
+	 * A {@link PartialValueFunction} object on which the calculation of the minimum number of nights
+	 * subjective values are based.
 	 */
 	private PartialValueFunction<Double> nbMinNightValueFunction;
 
 	/**
-	 * @teleValueFunction A {@link PartialValueFunction} object on which the
-	 *                    calculation of the presence of a television subjective
-	 *                    values are based.
+	 * A {@link PartialValueFunction} object on which the calculation of the presence 
+	 * of a television subjective values are based.
 	 */
 	private PartialValueFunction<Boolean> teleValueFunction;
 
 	/**
-	 * @floorAreaSubjectiveValueWeight The weight associated to the floor area
-	 *                                 subjective value in the calculation of the
+	 * The weight associated to the floor area subjective value in the calculation of the
 	 *                                 Apartment total subjective value
 	 */
 	private double floorAreaSubjectiveValueWeight;
 
 	/**
-	 * @nbBedroomsSubjectiveValueWeight The weight associated to the number of
-	 *                                  bedrooms subjective value in the calculation
-	 *                                  of the Apartment total subjective value
+	 * The weight associated to the number of bedrooms subjective value in the calculation
+	 * of the Apartment total subjective value
 	 */
 	private double nbBedroomsSubjectiveValueWeight;
 
 	/**
-	 * @nbSleepingSubjectiveValueWeight The weight associated to the accommodation
-	 *                                  capacity subjective value in the calculation
-	 *                                  of the Apartment total subjective value
+	 * The weight associated to the accommodation capacity subjective value in the calculation
+	 * of the Apartment total subjective value
 	 */
 	private double nbSleepingSubjectiveValueWeight;
 
 	/**
-	 * @nbBathroomsSubjectiveValueWeight The weight associated to the number of
-	 *                                   bathrooms subjective value in the
-	 *                                   calculation of the Apartment total
-	 *                                   subjective value
+	 * The weight associated to the number of bathrooms subjective value in the calculation 
+	 * of the Apartment total subjective value
 	 */
 	private double nbBathroomsSubjectiveValueWeight;
 
 	/**
-	 * @terraceSubjectiveValueWeight The weight associated to the presence of a
-	 *                               terrace subjective value in the calculation of
-	 *                               the Apartment total subjective value
+	 * The weight associated to the presence of a terrace subjective value in the calculation of
+	 * the Apartment total subjective value
 	 */
 	private double terraceSubjectiveValueWeight;
 
 	/**
-	 * @floorAreaTerraceSubjectiveValueWeight The weight associated to the floor
-	 *                                        area of an existing terrace subjective
-	 *                                        value in the calculation of the
-	 *                                        Apartment total subjective value
+	 * The weight associated to the floor area of an existing terrace subjective value in 
+	 * the calculation of the Apartment total subjective value
 	 */
 	private double floorAreaTerraceSubjectiveValueWeight;
 
 	/**
-	 * @wifiSubjectiveValueWeight The weight associated to the presence of a
-	 *                            wireless connection subjective value in the
-	 *                            calculation of the Apartment total subjective
-	 *                            value
+	 * The weight associated to the presence of a wireless connection subjective value in the
+	 * calculation of the Apartment total subjective value
 	 */
 	private double wifiSubjectiveValueWeight;
 
 	/**
-	 * @pricePerNightSubjectiveValueWeight The weight associated to the price per
-	 *                                     night subjective value in the calculation
-	 *                                     of the Apartment total subjective value
+	 * The weight associated to the price per night subjective value in the calculation
+	 * of the Apartment total subjective value
 	 */
 	private double pricePerNightSubjectiveValueWeight;
 
 	/**
-	 * @nbMinNightSubjectiveValueWeight The weight associated to the minimum number
-	 *                                  of nights subjective value in the
-	 *                                  calculation of the Apartment total
-	 *                                  subjective value
+	 * The weight associated to the minimum number of nights subjective value in the
+	 * calculation of the Apartment total subjective value
 	 */
 	private double nbMinNightSubjectiveValueWeight;
 
 	/**
-	 * @teleSubjectiveValueWeight The weight associated to the presence of a
-	 *                            television subjective value in the calculation of
-	 *                            the Apartment total subjective value
+	 * The weight associated to the presence of a television subjective value in the calculation of
+	 * the Apartment total subjective value
 	 */
 	private double teleSubjectiveValueWeight;
 
@@ -470,42 +447,42 @@ public class ApartmentValueFunction {
 
 		checkArgument(
 				floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) >= 0
-						&& floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1,
+				&& floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1,
 				"The subjective value of floor area should be between 0 and 1");
 		floorAreaSubjectiveValue = floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea());
 		LOGGER.info("The floor area subjective value has been set to {}", floorAreaSubjectiveValue);
 
 		checkArgument(
 				nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) >= 0
-						&& nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1,
+				&& nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1,
 				"The subjective value of the number of bedrooms should be between 0 and 1");
 		nbBedroomsSubjectiveValue = nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms());
 		LOGGER.info("The number of bedrooms subjective value has been set to {}", nbBedroomsSubjectiveValue);
 
 		checkArgument(
 				nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) >= 0
-						&& nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1,
+				&& nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1,
 				"The subjective value of the number of sleep-in should be between 0 and 1");
 		nbSleepingSubjectiveValue = nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping());
 		LOGGER.info("The number of sleepings subjective value has been set to {}", nbSleepingSubjectiveValue);
 
 		checkArgument(
 				nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) >= 0
-						&& nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1,
+				&& nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1,
 				"The subjective value of the number of bathrooms should be between 0 and 1");
 		nbBathroomsSubjectiveValue = nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms());
 		LOGGER.info("The number of bathrooms subjective value has been set to {}", nbBathroomsSubjectiveValue);
 
 		checkArgument(
 				terraceValueFunction.getSubjectiveValue(apart.getTerrace()) >= 0
-						&& terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1,
+				&& terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1,
 				"The subjective value of the terrace should be between 0 and 1");
 		terraceSubjectiveValue = terraceValueFunction.getSubjectiveValue(apart.getTerrace());
 		LOGGER.info("The terrace subjective value has been set to {}", terraceSubjectiveValue);
 
 		checkArgument(
 				floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) >= 0
-						&& floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1,
+				&& floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1,
 				"The subjective value of the floor area of the terrace should be between 0 and 1");
 		floorAreaTerraceSubjectiveValue = floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace());
 		LOGGER.info("The floor area of the terrace subjective value has been set to {}",
@@ -513,28 +490,28 @@ public class ApartmentValueFunction {
 
 		checkArgument(
 				wifiValueFunction.getSubjectiveValue(apart.getWifi()) >= 0
-						&& wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1,
+				&& wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1,
 				"The subjective value of the wifi should be between 0 and 1");
 		wifiSubjectiveValue = wifiValueFunction.getSubjectiveValue(apart.getWifi());
 		LOGGER.info("The wifi subjective value has been set to {}", wifiSubjectiveValue);
 
 		checkArgument(
 				pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) >= 0
-						&& pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1,
+				&& pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1,
 				"The subjective value of the price per night should be between 0 and 1");
 		pricePerNightSubjectiveValue = pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight());
 		LOGGER.info("the price per night subjective value has been set to {}", pricePerNightSubjectiveValue);
 
 		checkArgument(
 				nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) >= 0
-						&& nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1,
+				&& nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1,
 				"The subjective value of the minimum number of nights should be between 0 and 1");
 		nbMinNightSubjectiveValue = nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight());
 		LOGGER.info("The minimum number of nights subjective value has been set to {}", nbMinNightSubjectiveValue);
 
 		checkArgument(
 				teleValueFunction.getSubjectiveValue(apart.getTele()) >= 0
-						&& teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1,
+				&& teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1,
 				"The subjective value of the presence of a tele should be between 0 and 1");
 		teleSubjectiveValue = teleValueFunction.getSubjectiveValue(apart.getTele());
 		LOGGER.info("the tele subjective value has been set to {}", teleSubjectiveValue);
@@ -630,9 +607,9 @@ public class ApartmentValueFunction {
 				new LinearValueFunction(floorAreaTerraceStartBound, floorAreaTerraceEndBound));
 		apartValueFunction.setWifiValueFunction(new BooleanValueFunction(wifiEndBound));
 		apartValueFunction
-				.setPricePerNightValueFunction(new LinearValueFunction(pricePerNightStartBound, pricePerNightEndBound));
+		.setPricePerNightValueFunction(new LinearValueFunction(pricePerNightStartBound, pricePerNightEndBound));
 		apartValueFunction
-				.setNbMinNightValueFunction(new ReversedLinearValueFunction(nbMinNightStartBound, nbMinNightEndBound));
+		.setNbMinNightValueFunction(new ReversedLinearValueFunction(nbMinNightStartBound, nbMinNightEndBound));
 		apartValueFunction.setTeleValueFunction(new BooleanValueFunction(teleEndBound));
 
 		List<Double> weightRange = RandomRange.weightRangeOfSum(1d, 10);
@@ -700,9 +677,9 @@ public class ApartmentValueFunction {
 			avf.setNbMinNightValueFunction(
 					avf.adaptLinearValueFunction((LinearValueFunction) avf.nbMinNightValueFunction, newBound, lower));
 			break;
-		// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
-		// don't have bounds)
-		// $CASES-OMITTED$
+			// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
+			// don't have bounds)
+			// $CASES-OMITTED$
 		default:
 			throw new IllegalArgumentException();
 		}
