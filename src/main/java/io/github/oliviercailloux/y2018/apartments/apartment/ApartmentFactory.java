@@ -171,7 +171,7 @@ public abstract class ApartmentFactory {
 		final double LONG_IDF = 2.6_370_411d;
 		// Open a new client JAX-RS
 		final Client client = ClientBuilder.newClient();
-		for (int i = 1; i <= 5; i++) {
+		for (int i = 1; i <= RETRY; i++) {
 			// Latitude and longitude generation
 			double lat = Math.round(LAT_IDF * 10.0d) / 10.0d;
 			double lng = Math.round(LONG_IDF * 10.0d) / 10.0d;
