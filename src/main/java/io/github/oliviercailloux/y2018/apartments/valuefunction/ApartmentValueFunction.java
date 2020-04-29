@@ -769,7 +769,7 @@ public class ApartmentValueFunction {
 		return avf;
 	}
 
-	private double getSubjectiveValueWeight(Criterion awt) {
+	double getSubjectiveValueWeight(Criterion awt) {
 		switch (awt) {
 		case TELE:
 			return teleSubjectiveValueWeight;
