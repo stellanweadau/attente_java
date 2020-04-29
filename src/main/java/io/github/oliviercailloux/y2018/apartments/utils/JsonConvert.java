@@ -1,7 +1,6 @@
 package io.github.oliviercailloux.y2018.apartments.utils;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.IOException;
 import java.net.URI;
@@ -95,7 +94,7 @@ public abstract class JsonConvert {
 	 *                                  JSON encounters a problem
 	 */
 	public static String getAddressFromJson(String jsonString) throws IllegalArgumentException {
-		checkNotNull(jsonString, "jsonString cannot be empty");
+		checkArgument(jsonString != null, "jsonString cannot be empty");
 		// Convert jsonString to a map
 		final Jsonb jsonb = JsonbBuilder.create();
 		final Map<?, ?> jsonMap = jsonb.fromJson(jsonString, Map.class);
@@ -105,9 +104,9 @@ public abstract class JsonConvert {
 		// The features field is a List with one element, a Map [{}]
 		// So, we need to transform the List to a Map (and verify the content)
 		final Map<?, ?> featuresMap = (Map<?, ?>) featuresList.get(0);
-		checkNotNull(featuresMap.get("properties"), "Properties is null");
+		checkArgument(featuresMap.get("properties") != null, "Properties is null");
 		final Map<?, ?> properties = (Map<?, ?>) featuresMap.get("properties");
-		checkNotNull(properties.get("label"), "Label field is null");
+		checkArgument(properties.get("label") != null, "Label field is null");
 		// TODO Implement pattern to verify the label field
 		return properties.get("label").toString();
 	}
