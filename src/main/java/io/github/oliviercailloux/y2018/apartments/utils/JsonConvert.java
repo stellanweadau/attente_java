@@ -88,18 +88,19 @@ public abstract class JsonConvert {
 	 * We have to make sure that we have everything at every step <br>
 	 * It is for this reason that the code is filled with check
 	 * <p>
-	 * The contract for this API is returned either <code>"features": []<code> if
+	 * The contract for this API is returned either <code>"features": []</code> if
 	 * the address cannot be found or in shape <code>{"features": ["properties":
-	 * {"label": "AdressHere"}]}<code>
+	 * {"label": "AdressHere"}]}</code>
 	 * </p>
 	 *
 	 * @param jsonString {@link String} the Address into JSON format
 	 * @return {@link String} the address field
 	 * 
-	 * @throws InvalidObjectException   In case the <code>features<code> field is
+	 * @throws InvalidObjectException   In case the <code>features</code> field is
 	 *                                  empty
 	 * @throws IllegalArgumentException in the case where the deserialization of the
-	 *                                  JSON encounters a problem
+	 *                                  JSON encounters a problem or if
+	 *                                  <code>jsonString</code> is blank
 	 */
 	public static String getAddressFromJson(String jsonString) throws InvalidObjectException {
 		checkNotNull(jsonString, "jsonString cannot be null");
@@ -109,7 +110,7 @@ public abstract class JsonConvert {
 			checkArgument(json.containsKey("features"),
 					"The JSON passed in parameter is not valid : we don't have \"features\" key");
 			JsonArray features = json.get("features").asJsonArray();
-			if (!features.isEmpty()) {
+			if (features.isEmpty()) {
 				throw new InvalidObjectException(
 						"The JSON passed in parameter is not valid : We got this from jsonString \"features\": []");
 			}

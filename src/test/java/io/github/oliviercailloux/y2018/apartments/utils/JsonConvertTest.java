@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InvalidObjectException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -54,20 +55,23 @@ public class JsonConvertTest {
 	/**
 	 * Tests getAddressFromJson function. Verifies if the address extracted by the
 	 * function corresponds to the expected address.
+	 * 
+	 * @throws InvalidObjectException In case the <code>features</code> field is
+	 *                                empty
 	 */
 	@Test
-	void getAddressFromJsonTest() {
+	void getAddressFromJsonTest() throws InvalidObjectException {
 		assertEquals("9 bis Rue la Fontaine 77400 Gouvernes", JsonConvert.getAddressFromJson(
 				"{\"type\": \"FeatureCollection\", \"version\": \"draft\", \"features\": [{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": [2.697788, 48.861515]}, \"properties\": {\"label\": \"9 bis Rue la Fontaine 77400 Gouvernes\", \"score\": 0.9999917537344281, \"housenumber\": \"9 bis\", \"id\": \"77209_0120_00009_bis\", \"type\": \"housenumber\", \"x\": 677827.72, \"y\": 6862429.24, \"importance\": 0.3329219426681952, \"name\": \"9 bis Rue la Fontaine\", \"postcode\": \"77400\", \"citycode\": \"77209\", \"city\": \"Gouvernes\", \"context\": \"77, Seine-et-Marne, \\u00cele-de-France\", \"street\": \"Rue la Fontaine\", \"distance\": 143}}], \"attribution\": \"BAN\", \"licence\": \"ETALAB-2.0\", \"limit\": 1}"),
 				"Good JSON, must be return 9 bis Rue la Fontaine 77400 Gouvernes");
 		assertEquals("37 Boulevard de Beaubourg 77184 Émerainville", JsonConvert.getAddressFromJson(
 				"{\"type\": \"FeatureCollection\", \"version\": \"draft\", \"features\": [{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": [2.615569, 48.817802]}, \"properties\": {\"label\": \"37 Boulevard de Beaubourg 77184 \\u00c9merainville\", \"score\": 0.9999995776812857, \"housenumber\": \"37\", \"id\": \"77169_0039_00037\", \"type\": \"housenumber\", \"x\": 671771.97, \"y\": 6857594.93, \"importance\": 0.42775013264058914, \"name\": \"37 Boulevard de Beaubourg\", \"postcode\": \"77184\", \"citycode\": \"77169\", \"city\": \"\\u00c9merainville\", \"context\": \"77, Seine-et-Marne, \\u00cele-de-France\", \"street\": \"Boulevard de Beaubourg\", \"distance\": 32}}], \"attribution\": \"BAN\", \"licence\": \"ETALAB-2.0\", \"limit\": 1}"),
 				"Good JSON, must be return 37 Boulevard de Beaubourg 77184 Émerainville");
-		assertThrows(IllegalArgumentException.class, () -> JsonConvert.getAddressFromJson(
+		assertThrows(InvalidObjectException.class, () -> JsonConvert.getAddressFromJson(
 				"{\"type\": \"FeatureCollection\", \"version\": \"draft\", \"features\": [], \"attribution\": \"BAN\", \"licence\": \"ETALAB-2.0\", \"limit\": 1}"),
 				"features is empty, need to get IllegalArgumentException");
-		assertThrows(IllegalArgumentException.class, () -> JsonConvert.getAddressFromJson(null),
-				"null need to return IllegalArgumentException");
+		assertThrows(NullPointerException.class, () -> JsonConvert.getAddressFromJson(null),
+				"null need to return NullPointerException");
 	}
 
 	/**
