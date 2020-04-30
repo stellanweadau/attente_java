@@ -736,7 +736,7 @@ public class ApartmentValueFunction {
 	 * @param awt the criterion we want to know the value
 	 * @return the subjective value weight
 	 */
-	private double getSubjectiveValueWeight(Criterion awt) {
+	double getSubjectiveValueWeight(Criterion awt) {
 		switch (awt) {
 		case TELE:
 			return teleSubjectiveValueWeight;
