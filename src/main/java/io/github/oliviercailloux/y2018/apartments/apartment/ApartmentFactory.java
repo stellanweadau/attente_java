@@ -192,8 +192,8 @@ public abstract class ApartmentFactory {
 			} catch (InvalidObjectException e) {
 				// We do nothing because we will try again.
 				// If the error persists, we raise an error at the end of the loop
-				LOGGER.error("API returned wrong address -long={}, -lat={} (Round {}/{}) \n{}", longitude, latitude,
-						Integer.valueOf(i), Integer.valueOf(RETRY), e.toString());
+				LOGGER.error("API returned wrong address -long={}, -lat={} (Round {}/{}) \n{}", longitude, latitude, i,
+						RETRY, e.toString());
 			}
 		}
 		client.close();
