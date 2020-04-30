@@ -20,6 +20,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
+import io.github.oliviercailloux.y2018.apartments.apartment.ApartmentFactory;
 import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
 
 /**
@@ -145,57 +147,37 @@ public class FormApartmentGUI {
 	 * written into the file, the field is clear and highlight in red.
 	 */
 	protected void informationToFile() {
-		boolean invalid = false;
-		if (verificationText(floorArea, TypeButtonText.DOUBLE) && verificationText(floorArea, TypeButtonText.REQUIRED)
-				&& verificationText(title, TypeButtonText.REQUIRED)
-				&& verificationText(address, TypeButtonText.REQUIRED)) {
-
-			apart = new Apartment(Double.parseDouble(floorArea.getText()), address.getText(), title.getText());
-
-			apart.setTele(tele.getSelection());
-			apart.setWifi(wifi.getSelection());
-			apart.setDescription(description.getText());
-
-			if ((verificationText(nbBedrooms, TypeButtonText.INT) == false && nbBedrooms.getText() != "")
-					|| (verificationText(nbMinNight, TypeButtonText.INT) == false && nbMinNight.getText() != "")
-					|| (verificationText(nbSleeping, TypeButtonText.INT) == false && nbSleeping.getText() != "")
-					|| (verificationText(nbBathrooms, TypeButtonText.INT) == false && nbBathrooms.getText() != "")
-					|| (verificationText(pricePerNight, TypeButtonText.DOUBLE) == false
-							&& pricePerNight.getText() != ""))
-				invalid = true;
-			if (verificationText(nbBedrooms, TypeButtonText.INT))
-				apart.setNbBedrooms(Integer.parseInt(nbBedrooms.getText()));
-			if (verificationText(nbMinNight, TypeButtonText.INT))
-				apart.setNbMinNight(Integer.parseInt(nbMinNight.getText()));
-			if (verificationText(nbSleeping, TypeButtonText.INT))
-				apart.setNbSleeping(Integer.parseInt(nbSleeping.getText()));
-			if (verificationText(nbBathrooms, TypeButtonText.INT))
-				apart.setNbBathrooms(Integer.parseInt(nbBathrooms.getText()));
-			if (verificationText(pricePerNight, TypeButtonText.DOUBLE))
-				apart.setPricePerNight(Double.parseDouble(pricePerNight.getText()));
-
-			if (terrace.getSelection() && verificationText(floorAreaTerrace, TypeButtonText.DOUBLE)) {
-				apart.setTerrace(terrace.getSelection());
-				apart.setFloorAreaTerrace(Double.parseDouble(floorAreaTerrace.getText()));
-			} else {
-				apart.setTerrace(false);
-				if (terrace.getSelection()) {
-					loadMessage(MessageInfo.ERROR, "Floor Area Terrace should not be empty !");
-					invalid = true;
-				}
-
-			}
-			if (!invalid) {
-				write(apart);
-				loadMessage(MessageInfo.SAVED, "Apartment have been saved !");
-				System.out.println("saved");
-			}
-
-		} else {
+		if (!verificationText(floorArea, TypeButtonText.DOUBLE) || !verificationText(floorArea, TypeButtonText.REQUIRED)
+				|| !verificationText(title, TypeButtonText.REQUIRED)
+				|| !verificationText(address, TypeButtonText.REQUIRED)) {
 			loadMessage(MessageInfo.REQUIRED, "Title, Address and Floor Area are required");
-
+		} else if (!verificationText(nbBedrooms, TypeButtonText.INT)
+				|| !verificationText(nbMinNight, TypeButtonText.INT)
+				|| !verificationText(nbSleeping, TypeButtonText.INT)
+				|| !verificationText(nbBathrooms, TypeButtonText.INT)
+				|| !verificationText(pricePerNight, TypeButtonText.DOUBLE)) {
+			loadMessage(MessageInfo.ERROR, "There is an error with the informations given !");
+		} else if ((terrace.getSelection() && !verificationText(floorAreaTerrace, TypeButtonText.DOUBLE))) {
+			loadMessage(MessageInfo.ERROR, "Floor Area Terrace should not be empty !");
+		} else {
+			Builder apartBuilder = new Builder();
+			apart = apartBuilder.setFloorArea(Double.parseDouble(floorArea.getText()))
+					.setAddress(address.getText())
+					.setNbBedrooms(Integer.parseInt(nbBedrooms.getText()))
+					.setNbSleeping(Integer.parseInt(nbSleeping.getText()))
+					.setNbBathrooms(Integer.parseInt(nbBathrooms.getText()))
+					.setTerrace(terrace.getSelection())
+					.setFloorAreaTerrace(Double.parseDouble(floorAreaTerrace.getText()))
+					.setDescription(description.getText())
+					.setTitle(title.getText())
+					.setWifi(wifi.getSelection())
+					.setPricePerNight(Double.parseDouble(pricePerNight.getText()))
+					.setTele(tele.getSelection())
+					.build();
+			write(apart);
+			loadMessage(MessageInfo.SAVED, "Apartment have been saved !");
+			System.out.println("saved");
 		}
-
 	}
 
 	/**
@@ -269,19 +251,18 @@ public class FormApartmentGUI {
 	 * 
 	 * @param text Text (data to analyze)
 	 * @param type TypeButtonText (type required for the @param text)
-	 * @return a boolean (true if the type is correct)
+	 * @return a boolean (true if the type is correct) false if wrong or empty
 	 */
 	private boolean verificationText(Text text, TypeButtonText type) {
 
 		switch (type) {
 		case INT:
-			if (!text.getText().equals("")) {
+			if (!text.getText().trim().equals("")) {
 				try {
 					Integer.parseInt(text.getText());
 					text.setBackground(normalColor);
 					return true;
 				} catch (NumberFormatException e) {
-
 					text.setText("");
 					text.setBackground(alertColor);
 					LOGGER.error("The argument set is not valid " + e.getMessage());

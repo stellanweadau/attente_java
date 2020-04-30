@@ -1,8 +1,29 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:imagesdir: img/
+:toc:
+:toc-placement!:
+
 = Documentation
 
 == Diagrams UML
 
 For an overview of all diagrams, see link:diagram.adoc[here]
+
+[IMPORTANT]
+====
+We have detected that some themes prevent the proper functioning of papyrus (for example, transparent arrows). +
+We noticed this bug with the link:https://www.genuitec.com/products/devstyle/[DevStyle theme] +
+_Thanks link:https://github.com/GabG02[gab202]_
+====
+
+== Development improvement
+
+This link:development.adoc[file] explains the decisions of development, orientation of the application. +
+It is written in parallel of iterations (Itx.adoc files often refer to this file) but is independent of an iteration &rarr; This is general documentation
 
 == Existing project (Before february 2020)
 
@@ -15,3 +36,7 @@ You can see a description of processes and program by following this link:It1.ad
 == Iteration 2
 
 You can see a description of processes and program by following this link:It2.adoc[link]
+
+== Iteration 3
+
+You can see a description of processes by following this link:It3.adoc[link]

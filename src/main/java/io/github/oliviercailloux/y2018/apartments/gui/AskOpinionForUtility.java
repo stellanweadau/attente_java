@@ -297,7 +297,8 @@ public class AskOpinionForUtility {
 
 		// we collect the answer of the second Question and we adapt the utility of the
 		// user
-		if (moreImportantAttributes.get(1).equals("TELE") && lessImportantAttributes.get(1).equals("PRICE_PER_NIGHT low")) {
+		if (moreImportantAttributes.get(1).equals("TELE")
+				&& lessImportantAttributes.get(1).equals("PRICE_PER_NIGHT low")) {
 			avf = avf.adaptWeight(Criterion.TELE, Criterion.PRICE_PER_NIGHT);
 		} else {
 			avf = avf.adaptWeight(Criterion.PRICE_PER_NIGHT, Criterion.TELE);

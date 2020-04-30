@@ -2,7 +2,7 @@
 :note-caption: :information_source:
 :important-caption: :heavy_exclamation_mark:
 :caution-caption: :fire:
-:warning-caption: :warning:     
+:warning-caption: :warning:
 :imagesdir: img/
 :toc:
 :toc-placement!:
@@ -35,10 +35,17 @@ Another solution would be to say that it is only a manager (who plays the role o
 
 === AskOpinionForUtility
 
-.see diagram
+.see usecase diagram
 [%collapsible]
 ====
 image::it1/it1-usecase-askopinionforutility.png[Diagram ask opinion for utility]
+====
+
+.see class diagram in link with `AskOpinionForUtility`
+[%collapsible]
+====
+link:diagram.adoc#2-3-sequence[see documentation]
+image:it3/it3-sequence-interaction-users-application.png[Interaction between the end user and application]
 ====
 
 *Effective version:*
@@ -82,10 +89,10 @@ This class allows us to create the window we previously saw, to deal with severa
 
 === CreateApartmentGUI
 
-.see diagram
+.see usecase diagram
 [%collapsible]
 ====
-image::it2/it2-usecase-createapartment.png[Diagram create apartment]
+image::it3/it3-usecase-createapartment.png[Diagram create apartment]
 ====
 
 *Effective version:*

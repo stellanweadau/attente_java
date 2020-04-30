@@ -1,0 +1,63 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:     
+:imagesdir: img/
+:toc:
+:toc-placement!:
+
+= Iteration 3
+
+[IMPORTANT]
+====
+
+Deadline : **26 April** 2020
+
+This file only explains the distribution of work between the two teams (and indicates through links the realizations)
+
+====
+
+toc::[]
+
+== Team 1
+
+=== Members
+
+- link:https://github.com/EtienneCartier[Etienne CARTIER]
+- link:https://github.com/av1m[Avi MIMOUN]
+
+=== Realizations
+
+1. Papyrus model: 
+
+* Improved model links in papyrus
+* Removal of properties link:https://github.com/oliviercailloux/UML/blob/master/Papyrus/Various.adoc#avoid-labels[labels] (see link:https://github.com/av1m/apartments/commit/deb4fe398064ed038a34cd09f329bf3dff4e3b65[commit])
+
+2. Use case diagram:
+
+* Removal of redundancy for the link:existing-project.adoc#createapartmentgui[createApartment] usecase diagram
+
+3. Sequence diagram:
+
+* link:diagram.adoc#2-3-sequence[Interaction between the end user and system feedback]
+
+== Team 2
+
+=== Members
+
+- link:https://github.com/GabG02[Gabriel GUISSET]
+- link:https://github.com/MorganeFt[Morgane FIOT]
+- link:https://github.com/clemencecousin[Clémence COUSIN]
+
+=== Realizations
+
+1. Class diagram:
+
+* Fix arrows and updated simplified general class diagram, see link:diagram.adoc#1-diagrams-showing-the-application-in-real-time[here]
+* Class diagrams that deal with user profiles, see link:diagram.adoc#2-2-class[here] 
+
+2. Documentation:
+
+* **Think** about a way to generate a value function for a user. "_How to write/read it? How can the user view it, modify it?_" +
+link:development.adoc#value-function[See documentation here]

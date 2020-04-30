@@ -2,14 +2,24 @@
 :groupId: io.github.{gitHubUserName}
 :artifactId: apartments
 :repository: Apartments
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:imagesdir: img/
 :toc:
 :toc-placement!:
 
+
 = Apartments
+
+image:https://travis-ci.com/av1m/Apartments.svg?branch=master["Build Status", link="https://travis-ci.com/av1m/Apartments"]
+image:https://www.codefactor.io/repository/github/av1m/apartments/badge["Codefactor", link="https://www.codefactor.io/repository/github/av1m/apartments/"]
 
 A Java project developed by students during the link:https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in link:http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
 
-The code is hereby published under the MIT License, with their permission.
+The code is hereby published under the [MIT License](LICENSE), with their permission.
 
 toc::[]
 
@@ -17,17 +27,22 @@ toc::[]
 
 === Iteration 1
 
-For information on team, see link:doc/It1.adoc[here]
-
-For our first run on the project, we have chosen to work on two main axis:
+For our first run on the project, we have chosen to work on two main tasks:
 
 * Adapt the program ton run with JSON stored apartments. 
 
 * Clean the project from its unneeded dependencies and create an Apartment factory that will build immutable Apartment Objects  
 
-Starting from there and because we divided our 5 persons group into 2 groups, we have decided to affect a point per group.
+From there and since we divided our group of 5 people into 2 groups, we decided to allocate one point per group (2x 2 teams for development + one for SM/PO, see `members` subparts for details)
 
 ==== Team 1
+
+===== Members
+
+- link:https://github.com/MorganeFt[Morgane FIOT]
+- link:https://github.com/EtienneCartier[Etienne CARTIER]
+
+===== Realizations
 
 The first group will oversee the JSON adaptation of the apartment storage. We are planning to use the JSON writer link:https://javaee.github.io/jsonb-spec/getting-started.html["JSON Builder"] and add the corresponding dependencies. The function will take the number of Apartment desired and the location of the JSON file it will have to write in as parameters. We will have to modify the functions that run with the XML format (the write function in the FromApartmentGUI class). +
 We will begin to change the storage place of the apartments created in the first place. When this will be ok and functional, we will dive into it to truly randomise the creation of the apartments if this is possible to randomise the generation of addresses if it adds something to the project.  
@@ -48,8 +63,16 @@ The array of Apartement is the data to store in the JSON file, and the String is
 
 ==== Team 2
 
-The second group will have to delete the Joda Time dependency. +
-Following our primary researches, it appears that this dependency is never used in the program. We will run tests to make sure of that. +
+===== Members
+
+- link:https://github.com/clemencecousin[Clémence COUSIN]
+- link:https://github.com/GabG02[Gabriel GUISSET]
+
+===== Realizations
+
+The second group will have to delete the Joda Time dependency and remove all other unnecessary dependencies. +
+Following our primary researches, it appears that this dependency is never used in the program. We will run tests to make sure of that.
+
 The group will also have to build the Apartment factory. We will replace the function ApartmentGenerator class with an ApartmentFactory class to build the immutable apartments. In Apartment Factory, we have different ways to generate one or more Apartments, we can use: 
 
 * **GenerateApartment**: Takes all the data of an Apartment as parameters and returns the Apartment Object with the corresponding data. 
@@ -60,9 +83,67 @@ The group will also have to build the Apartment factory. We will replace the fun
 
 * **GenerateApartmentFromJson**: takes an optional string as a parameter and will call the function JSONToApartment from the class JSONConvert to return the list of the apartments present in the Json file. 
 
+==== Team 3 (SM/PO)
+
+===== Members
+
+- link:https://github.com/av1m[Avi MIMOUN]
+
+===== Realizations
+
+- Check the general adequacy of the project
+- Facilitates and helps developers (Check for Github Apps and Github Actions)
+- Indicates development priorities
+- Help to test the project
+- Manage Github (Addition of collaborator, Add Collaborators, Restricting rights, Creation of necessary branches, Creation of milestones, Update Travis, ...)
+
+=== Iteration 2
+
+[NOTE]
+====
+Both teams will do their utmost to minimize the number of warnings (already present) in the packages they will touch.
+====
+
+==== Team 1
+
+===== Members
+
+- link:https://github.com/MorganeFt[Morgane FIOT]
+- link:https://github.com/av1m[Avi MIMOUN]
+
+===== Realizations
+
+Random generation of an apartment :
+
+* Generate a large number of apartments in order to store the result in resources
+* Generate latitude and longitude points in the Paris area to retrieve an address using the link:https://api-adresse.data.gouv.fr/reverse/?lon=2.2712946&lat=48.869962[government API]
+* Use link:https://github.com/oliviercailloux/sample-rest-client[jax-rs client] link:https://github.com/av1m/Apartments/pull/3#discussion_r410394483[instead of InputStream] to make the HTTP GET request (link:https://github.com/av1m/Apartments/issues/5[issue #5])
+* Modify the function which converts the HTTP return from the API (concerning addresses) to a string (`getAddressFromJson`)
+* Modify the behavior of the `retry` during the API call, see link:https://github.com/av1m/Apartments/issues/7[issue #7]
+* [OPT] Implement a function/pattern to determine if an address is correct
+
+==== Team 2
+
+===== Members
+
+- link:https://github.com/clemencecousin[Clémence COUSIN]
+- link:https://github.com/EtienneCartier[Etienne CARTIER]
+
+===== Realizations
+
+* Delete the `apartmentGenerator` class. Replace in `apartementFactory` (see link:https://github.com/av1m/Apartments/pull/3[PR #3])
+* Specify unit tests, mainly for the `valueFunction`. Correction of documentation
+* Warnings optimizations (package by package)
+
+==== Team 3 (SM/PO)
+
+===== Members
+
+- link:https://github.com/GabG02[Gabriel GUISSET]
+
 == Documentation
 
-- Project documentation can be found in the directory link:doc/README.adoc[*doc/*]
+- Project documentation and UML iterations can be found in the directory link:doc/README.adoc[*doc/*]
 
 == Changelog
 
