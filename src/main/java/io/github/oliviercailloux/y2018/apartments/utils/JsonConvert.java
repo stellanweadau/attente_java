@@ -39,7 +39,7 @@ public abstract class JsonConvert {
 	/**
 	 * The method return a default JSON file read by jsonToApartments.
 	 * 
-	 * @return <i>Path</i> where jsonToApartments will read.
+	 * @return {@link Path} where jsonToApartments will read.
 	 * @throws URISyntaxException if the resource cannot be found
 	 */
 	private static final Path startApartment() {
@@ -55,7 +55,7 @@ public abstract class JsonConvert {
 	 * Converts an Apartment object to a JSON file with the default path
 	 * APARTMENT_PATH_JSON.
 	 *
-	 * @param a <i>Apartment</i> object to convert into JSON
+	 * @param a {@link Apartment} object to convert into JSON
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentToJson(Apartment a) throws IOException {
@@ -65,8 +65,8 @@ public abstract class JsonConvert {
 	/**
 	 * Converts an Apartment object to a JSON file.
 	 *
-	 * @param a        <i>Apartment</i> object to convert into JSON
-	 * @param jsonPath <i>Path</i> the path where to create the JSON file
+	 * @param a        {@link Apartment} object to convert into JSON
+	 * @param jsonPath {@link Path} the path where to create the JSON file
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentToJson(Apartment a, Path jsonPath) throws IOException {
@@ -87,8 +87,8 @@ public abstract class JsonConvert {
 	 * <code>{"features": ["properties":{"label": "AdressHere"}]}</code>
 	 * </p>
 	 *
-	 * @param jsonString <i>String</i> the Address into JSON format
-	 * @return <i>String</i> the address field
+	 * @param jsonString {@link String} the Address into JSON format
+	 * @return {@link String} the address field
 	 * 
 	 * @throws IllegalArgumentException in the case where the deserialization of the
 	 *                                  JSON encounters a problem
@@ -114,9 +114,9 @@ public abstract class JsonConvert {
 	/**
 	 * Converts a JSON expression to an Apartment object.
 	 *
-	 * @param jsonPath<i>Path</i> the JSON expression to convert into Apartment
-	 *                            object
-	 * @return <i>Apartment</i> the Apartment generated
+	 * @param jsonPath {@link Path} the JSON expression to convert into Apartment
+	 *                 object
+	 * @return {@link Apartment} the Apartment generated
 	 * @throws IOException if the file can't be red
 	 */
 	public static Apartment jsonToApartment(Path jsonPath) throws IOException {
@@ -133,7 +133,7 @@ public abstract class JsonConvert {
 	/**
 	 * Converts a JSON expression to a list of Apartments.
 	 *
-	 * @return <i>List</i> the list of Apartments created
+	 * @return {@link List} the list of Apartments created
 	 * @throws IOException        if the file doesn't exists
 	 * @throws URISyntaxException
 	 */
@@ -145,9 +145,9 @@ public abstract class JsonConvert {
 	/**
 	 * Converts a JSON expression to a list of Apartments.
 	 *
-	 * @param jsonPath <i>Path</i> the JSON expression to convert into a list of
+	 * @param jsonPath {@link Path} the JSON expression to convert into a list of
 	 *                 Apartments
-	 * @return <i>List</i> the list of Apartments created
+	 * @return {@link List} the list of Apartments created
 	 * @throws IOException if the file doesn't exists
 	 */
 	@SuppressWarnings("serial")
@@ -184,7 +184,7 @@ public abstract class JsonConvert {
 	 * Converts a list of Apartments to a JSON file.
 	 *
 	 * @param listApartments <code>{@link List}</code> object to convert into JSON
-	 * @param jsonPath       <i>String</i> the path where to create the JSON file
+	 * @param jsonPath       {@link String} the path where to create the JSON file
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments, Path jsonPath) throws IOException {
