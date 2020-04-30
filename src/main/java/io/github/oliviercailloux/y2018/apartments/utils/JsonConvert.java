@@ -3,6 +3,7 @@ package io.github.oliviercailloux.y2018.apartments.utils;
 import static com.google.common.base.Preconditions.checkArgument;
 
 import java.io.IOException;
+import java.io.InvalidObjectException;
 import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -94,18 +95,22 @@ public abstract class JsonConvert {
 	 * @param jsonString {@link String} the Address into JSON format
 	 * @return {@link String} the address field
 	 * 
+	 * @throws InvalidObjectException   In case the <code>features<code> field is
+	 *                                  empty
 	 * @throws IllegalArgumentException in the case where the deserialization of the
 	 *                                  JSON encounters a problem
 	 */
-	public static String getAddressFromJson(String jsonString) throws IllegalArgumentException {
+	public static String getAddressFromJson(String jsonString) throws InvalidObjectException {
 		checkArgument(jsonString != null, "jsonString cannot be empty");
 		try (JsonReader jr = Json.createReader(new StringReader(jsonString))) {
 			JsonObject json = jr.readObject();
 			checkArgument(json.containsKey("features"),
 					"The JSON passed in parameter is not valid : we don't have \"features\" key");
 			JsonArray features = json.get("features").asJsonArray();
-			checkArgument(!features.isEmpty(),
-					"The JSON passed in parameter is not valid : We got this from jsonString \"features\": []");
+			if (!features.isEmpty()) {
+				throw new InvalidObjectException(
+						"The JSON passed in parameter is not valid : We got this from jsonString \\\"features\\\": []");
+			}
 			JsonObject properties = features.get(0).asJsonObject().get("properties").asJsonObject();
 			checkArgument(properties.containsKey("label"), "The field \"label\" is not here");
 			return properties.getString("label");

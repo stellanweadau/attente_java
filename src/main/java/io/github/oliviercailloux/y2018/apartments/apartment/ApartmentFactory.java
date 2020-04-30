@@ -64,7 +64,7 @@ public abstract class ApartmentFactory {
 	 *                    have an InvalidObjectException) <br>
 	 *                    False indicates that if a real address cannot be returned
 	 *                    we will have an unreal address
-	 * @see {@link getRandomAddress()}
+	 * @see io.github.oliviercailloux.y2018.apartments.utils.JsonConvert#getRandomAddress()
 	 * @return the apartment built
 	 * @throws IOException if the Address Api doesn't answer
 	 */
@@ -188,7 +188,7 @@ public abstract class ApartmentFactory {
 				result = JsonConvert.getAddressFromJson(result);
 				client.close();
 				return result;
-			} catch (IllegalArgumentException e) {
+			} catch (InvalidObjectException e) {
 				// We do nothing because we will try again.
 				// If the error persists, we raise an error at the end of the loop
 				LOGGER.error("API returned wrong address -long={}, -lat={} (Round {}/{}) \n{}", longitude, latitude,
