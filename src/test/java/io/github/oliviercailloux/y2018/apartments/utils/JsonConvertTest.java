@@ -30,7 +30,8 @@ public class JsonConvertTest {
 	 * function corresponds to the expected file.
 	 * 
 	 * @throws IOException        if the JSON file can't be created.
-	 * @throws URISyntaxException
+	 * @throws URISyntaxException if this URL is not formatted strictly according to
+	 *                            RFC2396 and cannot be converted to a URI
 	 */
 	@Test
 	void apartmentToJsonTest() throws IOException, URISyntaxException {

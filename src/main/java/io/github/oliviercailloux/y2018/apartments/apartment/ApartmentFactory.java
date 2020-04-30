@@ -24,8 +24,6 @@ import io.github.oliviercailloux.y2018.apartments.utils.JsonConvert;
  */
 public abstract class ApartmentFactory {
 
-	private static final int NB_MAX_RETRY = 5;
-
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApartmentFactory.class);
 
 	private static Random rand = new Random();
@@ -62,6 +60,11 @@ public abstract class ApartmentFactory {
 	/**
 	 * This function aims to generate a new apartment with random characteristics.
 	 *
+	 * @param realAddress - True indicates that the address is necessarily real (may
+	 *                    have an InvalidObjectException) <br>
+	 *                    False indicates that if a real address cannot be returned
+	 *                    we will have an unreal address
+	 * @see {@link getRandomAddress()}
 	 * @return the apartment built
 	 * @throws IOException if the Address Api doesn't answer
 	 */
@@ -182,12 +185,14 @@ public abstract class ApartmentFactory {
 			LOGGER.info(target.toString());
 			String result = target.request(MediaType.TEXT_PLAIN).get(String.class);
 			try {
-				return JsonConvert.getAddressFromJson(result);
+				result = JsonConvert.getAddressFromJson(result);
+				client.close();
+				return result;
 			} catch (IllegalArgumentException e) {
 				// We do nothing because we will try again.
 				// If the error persists, we raise an error at the end of the loop
-				LOGGER.error(String.format("API returned wrong address -long=%s, -lat=%s (Round %d/%d) \n%s", longitude,
-						latitude, Integer.valueOf(i), Integer.valueOf(RETRY), e.toString()));
+				LOGGER.error("API returned wrong address -long={}, -lat={} (Round {}/{}) \n{}", longitude, latitude,
+						Integer.valueOf(i), Integer.valueOf(RETRY), e.toString());
 			}
 		}
 		client.close();
@@ -206,7 +211,7 @@ public abstract class ApartmentFactory {
 		try {
 			return ApartmentFactory.getOnlineRandomAddress();
 		} catch (ClientErrorException | InvalidObjectException e) {
-			LOGGER.error(String.format("Problem while getting random address %s", e.toString()));
+			LOGGER.error("Problem while getting random address {}", e.toString());
 			StringBuilder sb = new StringBuilder();
 			sb.append(ApartmentFactory.rand.nextInt(3000)).append(" rue de l'appel échoué ")
 					.append(ApartmentFactory.rand.nextInt(19) + 75001).append(" Paris ");
