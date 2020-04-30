@@ -182,7 +182,7 @@ public abstract class ApartmentFactory {
 			String latitude = String.valueOf(lat) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
 			// Call API
 			WebTarget target = client.target(URL_API_ADDRESS).queryParam("lon", longitude).queryParam("lat", latitude);
-			LOGGER.info(target.toString());
+			LOGGER.info("Address API Call : {}", target.getUri().toString());
 			String result = target.request(MediaType.TEXT_PLAIN).get(String.class);
 			try {
 				result = JsonConvert.getAddressFromJson(result);

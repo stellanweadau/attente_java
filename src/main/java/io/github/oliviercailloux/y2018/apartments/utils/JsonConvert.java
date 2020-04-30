@@ -3,14 +3,18 @@ package io.github.oliviercailloux.y2018.apartments.utils;
 import static com.google.common.base.Preconditions.checkArgument;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 
@@ -81,10 +85,10 @@ public abstract class JsonConvert {
 	 * 
 	 * We have to make sure that we have everything at every step <br>
 	 * It is for this reason that the code is filled with check
-	 * 
 	 * <p>
-	 * JsonString must be in shape
-	 * <code>{"features": ["properties":{"label": "AdressHere"}]}</code>
+	 * The contract for this API is returned either <code>"features": []<code> if
+	 * the address cannot be found or in shape <code>{"features": ["properties":
+	 * {"label": "AdressHere"}]}<code>
 	 * </p>
 	 *
 	 * @param jsonString {@link String} the Address into JSON format
@@ -95,20 +99,17 @@ public abstract class JsonConvert {
 	 */
 	public static String getAddressFromJson(String jsonString) throws IllegalArgumentException {
 		checkArgument(jsonString != null, "jsonString cannot be empty");
-		// Convert jsonString to a map
-		final Jsonb jsonb = JsonbBuilder.create();
-		final Map<?, ?> jsonMap = jsonb.fromJson(jsonString, Map.class);
-		// Get the features field and check that isn't null
-		final List<?> featuresList = (List<?>) jsonMap.get("features");
-		checkArgument(!featuresList.isEmpty(), "Features is empty");
-		// The features field is a List with one element, a Map [{}]
-		// So, we need to transform the List to a Map (and verify the content)
-		final Map<?, ?> featuresMap = (Map<?, ?>) featuresList.get(0);
-		checkArgument(featuresMap.get("properties") != null, "Properties is null");
-		final Map<?, ?> properties = (Map<?, ?>) featuresMap.get("properties");
-		checkArgument(properties.get("label") != null, "Label field is null");
-		// FOR_FUTUR Implement pattern to verify the label field
-		return properties.get("label").toString();
+		try (JsonReader jr = Json.createReader(new StringReader(jsonString))) {
+			JsonObject json = jr.readObject();
+			checkArgument(json.containsKey("features"),
+					"The JSON passed in parameter is not valid : we don't have \"features\" key");
+			JsonArray features = json.get("features").asJsonArray();
+			checkArgument(!features.isEmpty(),
+					"The JSON passed in parameter is not valid : We got this from jsonString \"features\": []");
+			JsonObject properties = features.get(0).asJsonObject().get("properties").asJsonObject();
+			checkArgument(properties.containsKey("label"), "The field \"label\" is not here");
+			return properties.getString("label");
+		}
 	}
 
 	/**
