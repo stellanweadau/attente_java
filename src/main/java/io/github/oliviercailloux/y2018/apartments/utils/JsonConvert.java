@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.utils;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.IOException;
 import java.io.InvalidObjectException;
@@ -101,7 +102,8 @@ public abstract class JsonConvert {
 	 *                                  JSON encounters a problem
 	 */
 	public static String getAddressFromJson(String jsonString) throws InvalidObjectException {
-		checkArgument(jsonString != null, "jsonString cannot be empty");
+		checkNotNull(jsonString, "jsonString cannot be null");
+		checkArgument(!jsonString.isBlank(), "jsonString cannot be blank");
 		try (JsonReader jr = Json.createReader(new StringReader(jsonString))) {
 			JsonObject json = jr.readObject();
 			checkArgument(json.containsKey("features"),
@@ -109,7 +111,7 @@ public abstract class JsonConvert {
 			JsonArray features = json.get("features").asJsonArray();
 			if (!features.isEmpty()) {
 				throw new InvalidObjectException(
-						"The JSON passed in parameter is not valid : We got this from jsonString \\\"features\\\": []");
+						"The JSON passed in parameter is not valid : We got this from jsonString \"features\": []");
 			}
 			JsonObject properties = features.get(0).asJsonObject().get("properties").asJsonObject();
 			checkArgument(properties.containsKey("label"), "The field \"label\" is not here");
