@@ -37,7 +37,7 @@ public abstract class JsonConvert {
 	 *
 	 * @return <i>Path</i> of the JSON file at the root of the project
 	 */
-	public static final Path getUniqueExportPath() {
+	private static Path getUniqueExportPath() {
 		return Path.of("exportApartments" + System.currentTimeMillis() + ".json");
 	}
 
@@ -46,7 +46,7 @@ public abstract class JsonConvert {
 	 * 
 	 * @return <i>Path</i> where jsonToApartments will read.
 	 */
-	private static final Path startApartments() {
+	private static Path startApartments() {
 		try {
 			URI ressource = JsonConvert.class.getResource("defaultJsonToApartments.json").toURI();
 			return Path.of(ressource);
