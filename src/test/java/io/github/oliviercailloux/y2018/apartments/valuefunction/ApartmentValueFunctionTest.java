@@ -2,6 +2,8 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
@@ -14,10 +16,9 @@ class ApartmentValueFunctionTest {
 
 	ApartmentValueFunction valueFunction = new ApartmentValueFunction();
 	Apartment a;
-
-	@Test
-	void apartmentValueFunctionTest() throws NumberFormatException {
-
+	
+	@BeforeEach
+	void initEach() {
 		a = new Builder().setFloorArea(250)
 				.setAddress("108 rue de chat-ville Ville-d'Avray 92410")
 				.setNbBedrooms(1)
@@ -63,13 +64,17 @@ class ApartmentValueFunctionTest {
 
 		LinearValueFunction floorAreaTerraceV = new LinearValueFunction(30d, 50d);
 		valueFunction.setFloorAreaTerraceValueFunction(floorAreaTerraceV);
+	}
+
+	@Test
+	void apartmentValueFunctionTest() {
 
 		assertEquals(0.5, valueFunction.getSubjectiveValue(a), 0.0001);
 
 		valueFunction.setTeleSubjectiveValueWeight(10d);
 		assertEquals(10d,valueFunction.getSubjectiveValueWeight(Criterion.TELE));
-
 		assertEquals(0.04587, valueFunction.getSubjectiveValue(a), 0.00001);
+	
 	}
 
 	@Test
@@ -106,8 +111,11 @@ class ApartmentValueFunctionTest {
 	void adaptBoundsTest() {
 		
 		assertThrows(IllegalArgumentException.class, () -> valueFunction.adaptBounds(Criterion.TELE, 0d, true));
-		valueFunction = valueFunction.adaptBounds(Criterion.FLOOR_AREA_TERRACE, 45d, true);
-
+		valueFunction.adaptBounds(Criterion.FLOOR_AREA_TERRACE, 25d, true);
+		assertEquals(0.6, valueFunction.getFloorAreaTerraceValueFunction().getSubjectiveValue(a.getFloorAreaTerrace()));
+		valueFunction.adaptBounds(Criterion.NB_BEDROOMS, 8, false);
+		double nbRooms = a.getNbBedrooms();
+		assertEquals(0d,valueFunction.getNbBedroomsValueFunction().getSubjectiveValue(nbRooms));
 	}
 
 }

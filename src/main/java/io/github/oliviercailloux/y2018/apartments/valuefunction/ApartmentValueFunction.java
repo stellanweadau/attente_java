@@ -646,36 +646,43 @@ public class ApartmentValueFunction {
 	 */
 	public ApartmentValueFunction adaptBounds(Criterion criterion, double newBound, boolean lower) {
 
-		ApartmentValueFunction avf = cloneAVF();
+		LinearValueFunction lvf;
 
 		switch (criterion) {
 		case FLOOR_AREA:
-			avf.setFloorAreaValueFunction(
-					avf.adaptLinearValueFunction((LinearValueFunction) avf.floorAreaValueFunction, newBound, lower));
+			checkArgument(this.floorAreaValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) this.floorAreaValueFunction;
+			this.setFloorAreaValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case FLOOR_AREA_TERRACE:
-			avf.setFloorAreaTerraceValueFunction(avf.adaptLinearValueFunction(
-					(LinearValueFunction) avf.floorAreaTerraceValueFunction, newBound, lower));
+			checkArgument(this.floorAreaTerraceValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) this.floorAreaTerraceValueFunction;
+			this.setFloorAreaTerraceValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case PRICE_PER_NIGHT:
-			avf.setPricePerNightValueFunction(avf
-					.adaptLinearValueFunction((LinearValueFunction) avf.pricePerNightValueFunction, newBound, lower));
+			checkArgument(this.pricePerNightValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) this.pricePerNightValueFunction;
+			this.setPricePerNightValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case NB_SLEEPING:
-			avf.setNbSleepingValueFunction(
-					avf.adaptLinearValueFunction((LinearValueFunction) avf.nbSleepingValueFunction, newBound, lower));
+			checkArgument(this.nbSleepingValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) this.nbSleepingValueFunction;
+			this.setNbSleepingValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case NB_BATHROOMS:
-			avf.setNbBathroomsValueFunction(
-					avf.adaptLinearValueFunction((LinearValueFunction) avf.nbBathroomsValueFunction, newBound, lower));
+			checkArgument(this.nbBathroomsValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) this.nbBathroomsValueFunction;
+			this.setNbBathroomsValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case NB_BEDROOMS:
-			avf.setNbBedroomsValueFunction(
-					avf.adaptLinearValueFunction((LinearValueFunction) avf.nbBedroomsValueFunction, newBound, lower));
+			checkArgument(this.nbBedroomsValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) this.nbBedroomsValueFunction;
+			this.setNbBedroomsValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case NB_MIN_NIGHT:
-			avf.setNbMinNightValueFunction(
-					avf.adaptLinearValueFunction((LinearValueFunction) avf.nbMinNightValueFunction, newBound, lower));
+			checkArgument(this.nbMinNightValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) this.nbMinNightValueFunction;
+			this.setNbMinNightValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 			// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
 			// don't have bounds)
@@ -684,7 +691,7 @@ public class ApartmentValueFunction {
 			throw new IllegalArgumentException();
 		}
 
-		return avf;
+		return this;
 	}
 
 	/**
@@ -695,7 +702,7 @@ public class ApartmentValueFunction {
 	 * @param lower    used to say whether we change the lower or upper bound
 	 * @return an new object LinearValueFunction set with new bound
 	 */
-	private LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound, boolean lower) {
+	private static LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound, boolean lower) {
 		if (lower) {
 			return new LinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
 		}
@@ -720,14 +727,13 @@ public class ApartmentValueFunction {
 		checkNotNull(moreImportant, "This criterion cannot be null");
 		checkArgument(!Objects.equals(moreImportant, lessImportant), "Both fields are the same.");
 
-		ApartmentValueFunction avf = cloneAVF();
+		double weightSum = this.getSubjectiveValueWeight(moreImportant) 
+				+ this.getSubjectiveValueWeight(lessImportant);
 
-		double weightSum = avf.getSubjectiveValueWeight(moreImportant) + avf.getSubjectiveValueWeight(lessImportant);
+		this.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
+		this.setSubjectiveValueWeight(lessImportant, weightSum / 10);
 
-		avf.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
-		avf.setSubjectiveValueWeight(lessImportant, weightSum / 10);
-
-		return avf;
+		return this;
 	}
 
 	/**
@@ -772,45 +778,211 @@ public class ApartmentValueFunction {
 	 */
 	public ApartmentValueFunction setSubjectiveValueWeight(Criterion awt, double value) {
 
-		ApartmentValueFunction avf = cloneAVF();
-
 		switch (awt) {
 		case TELE:
-			avf.setTeleSubjectiveValueWeight(value);
+			this.setTeleSubjectiveValueWeight(value);
 			break;
 		case TERRACE:
-			avf.setTerraceSubjectiveValueWeight(value);
+			this.setTerraceSubjectiveValueWeight(value);
 			break;
 		case WIFI:
-			avf.setWifiSubjectiveValueWeight(value);
+			this.setWifiSubjectiveValueWeight(value);
 			break;
 		case FLOOR_AREA:
-			avf.setFloorAreaSubjectiveValueWeight(value);
+			this.setFloorAreaSubjectiveValueWeight(value);
 			break;
 		case FLOOR_AREA_TERRACE:
-			avf.setFloorAreaTerraceSubjectiveValueWeight(value);
+			this.setFloorAreaTerraceSubjectiveValueWeight(value);
 			break;
 		case NB_BATHROOMS:
-			avf.setNbBathroomsSubjectiveValueWeight(value);
+			this.setNbBathroomsSubjectiveValueWeight(value);
 			break;
 		case NB_BEDROOMS:
-			avf.setNbBedroomsSubjectiveValueWeight(value);
+			this.setNbBedroomsSubjectiveValueWeight(value);
 			break;
 		case NB_SLEEPING:
-			avf.setNbSleepingSubjectiveValueWeight(value);
+			this.setNbSleepingSubjectiveValueWeight(value);
 			break;
 		case NB_MIN_NIGHT:
-			avf.setNbMinNightSubjectiveValueWeight(value);
+			this.setNbMinNightSubjectiveValueWeight(value);
 			break;
 		case PRICE_PER_NIGHT:
-			avf.setPricePerNightSubjectiveValueWeight(value);
+			this.setPricePerNightSubjectiveValueWeight(value);
 			break;
 		default:
 			throw new IllegalArgumentException();
 		}
 
-		return avf;
+		return this;
 
 	}
 
+	/**
+	 * Gets the weight of the floor area subjective value
+	 * @return the weight of the attribute floorAreaSubjectiveValueWeight
+	 */
+	public double getFloorAreaSubjectiveValueWeight() {
+		return this.floorAreaSubjectiveValueWeight;
+	}
+	
+	/**
+	 * Gets the interval of the floor area value. This interval represents the range of floor area the
+	 * user might accept
+	 * @return the attribute floorAreaValueFunction
+	 */
+	public PartialValueFunction<Double> getFloorAreaValueFunction() {
+		return this.floorAreaValueFunction;
+	}
+
+	/**
+	 * Gets the weight of the floor area Terrace subjective value
+	 * @return the weight of the attribute floorAreaTerraceSubjectiveValueWeight
+	 */
+	public double getFloorAreaTerraceSubjectiveValueWeight() {
+		return this.floorAreaTerraceSubjectiveValueWeight;
+	}
+	
+	/**
+	 * Gets the interval of the floor area terrace value. This interval represents the range of floor area 
+	 * the user might accept
+	 * @return the attribute floorAreaTerraceValueFunction
+	 */
+	public PartialValueFunction<Double> getFloorAreaTerraceValueFunction() {
+		return this.floorAreaTerraceValueFunction;
+	}
+	
+	/**
+	 * Gets the weight of the number of bathrooms subjective value
+	 * @return the weight of the attribute nbBathroomsSubjectiveValueWeight
+	 */
+	public double getNbBathroomsSubjectiveValueWeight() {
+		return this.nbBathroomsSubjectiveValueWeight;
+	}
+	
+	/**
+	 * Gets an interval of the number of bathrooms. This interval represents the number of bathrooms the
+	 * user might accept in the apartment
+	 * @return the attribute nbBathroomsValueFunction
+	 */
+	public PartialValueFunction<Double> getNbBathroomsValueFunction() {
+		return this.nbBathroomsValueFunction;
+	}
+	
+	/**
+	 * Gets the weight of the number of bedrooms subjective value
+	 * @return the weight of the attribute nbBedroomsSubjectiveValueWeight
+	 */
+	public double getNbBedroomsSubjectiveValueWeight() {
+		return this.nbBedroomsSubjectiveValueWeight;
+	}
+	
+	/**
+	 * Gets an interval of the number of bedrooms. This interval represents the number of bedrooms the
+	 * user might accept in the apartment
+	 * @return the attribute nbBedroomsValueFunction
+	 */
+	public PartialValueFunction<Double> getNbBedroomsValueFunction() {
+		return this.nbBedroomsValueFunction;
+	}
+	
+	/**
+	 * Gets the weight of the number of minimum night the user have to stay subjective value
+	 * @return the weight of the attribute nbMinNightSubjectiveValueWeight
+	 */
+	public double getNbMinNightSubjectiveValueWeight() {
+		return this.nbMinNightSubjectiveValueWeight;
+	}
+	
+	/**
+	 * Gets an interval of the number of minimum night the user have to stay in the apartment. 
+	 * This interval represents the number of nights the user might accept to stay in the apartment
+	 * @return the attribute nbMinNightValueFunction
+	 */
+	public PartialValueFunction<Double> getNbMinNightValueFunction() {
+		return this.nbMinNightValueFunction;
+	}
+	
+	/**
+	 * Gets the weight of the number of person who can sleep in the apartment subjective value
+	 * @return the weight of the attribute nbSleepingValueWeight
+	 */
+	public double getNbSleepingSubjectiveValueWeight() {
+		return this.nbSleepingSubjectiveValueWeight;
+	}
+	
+	/**
+	 * Gets an interval of the number of person who can sleep in the apartment.
+	 * This interval represents the number of person who can sleep in the apartment the
+	 * user might accept in the apartment
+	 * @return the attribute nbSleepingValueFunction
+	 */
+	public PartialValueFunction<Double> getNbSleepingValueFunction() {
+		return this.nbSleepingValueFunction;
+	}
+	
+	/**
+	 * Gets the weight of the price per night subjective value
+	 * @return the weight of the attribute pricePerNightSubjectiveValueWeight
+	 */
+	public double getPricePerNightSubjectiveValueWeight() {
+		return this.pricePerNightSubjectiveValueWeight;
+	}
+	
+	/**
+	 * Gets an interval of the price per night. 
+	 * This interval represents the price per night the
+	 * user might accept to stay in the apartment chosen
+	 * @return the attribute pricePerNightValueFunction
+	 */
+	public PartialValueFunction<Double> getPricePerNightValueFunction() {
+		return this.pricePerNightValueFunction;
+	}
+	
+	/**
+	 * Gets the weight of the presence of a television subjective value
+	 * @return the weight of the attribute teleSubjectiveValueWeight
+	 */
+	public double getTeleSubjectiveValueWeight() {
+		return this.teleSubjectiveValueWeight;
+	}
+	
+	/**
+	 * Gets a boolean representing whether if the apartment chosen has a tele or not
+	 * @return the attribute teleValueFunction
+	 */
+	public PartialValueFunction<Boolean> getTeleValueFunction() {
+		return this.teleValueFunction;
+	}
+	
+	/**
+	 * Gets the weight of the presence of a terrace subjective value
+	 * @return the weight of the attribute terraceSubjectiveValueWeight
+	 */
+	public double getTerraceSubjectiveValueWeight() {
+		return this.terraceSubjectiveValueWeight;
+	}
+	
+	/**
+	 * Gets a boolean representing whether if the apartment chosen has a terrace or not
+	 * @return the attribute terraceValueFunction
+	 */
+	public PartialValueFunction<Boolean> getTerraceValueFunction() {
+		return this.terraceValueFunction;
+	}
+	
+	/**
+	 * Gets the weight of the presence of wifi subjective value
+	 * @return the weight of the attribute wifiSubjectiveValueWeight
+	 */
+	public double getWifiAreaSubjectiveValueWeight() {
+		return this.wifiSubjectiveValueWeight;
+	}
+	
+	/**
+	 * Gets a boolean representing whether if the apartment chosen has wifi or not
+	 * @return the attribute wifiValueFunction
+	 */
+	public PartialValueFunction<Boolean> getWifiValueFunction() {
+		return this.wifiValueFunction;
+	}
 }
