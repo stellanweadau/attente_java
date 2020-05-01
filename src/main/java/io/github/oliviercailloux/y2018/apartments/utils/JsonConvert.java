@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.VerifyException;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 
 import javax.json.bind.JsonbBuilder;
 
@@ -105,8 +106,8 @@ public abstract class JsonConvert {
 			throw new IllegalStateException(e);
 		}
 
-		for (int i = 0; i < apartmentsBuild.size(); i++) {
-			apartments.add(apartmentsBuild.get(i).build());
+		for (Builder apartmentToBuild : apartmentsBuild) {
+			apartments.add(apartmentToBuild.build());
 		}
 		return apartments;
 	}
