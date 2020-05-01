@@ -66,10 +66,10 @@ public class JsonConvertTest {
 
 		assertEquals(expectedApartment, Files.readString(jsonPath));
 		assertThrows(IOException.class, () -> JsonConvert.apartmentsToJson(apartments, Paths.get("")));
-		
+
 		Path defaultPath = JsonConvert.apartmentsToJson(apartments);
 		assertEquals(expectedApartment, Files.readString(defaultPath));
-		
+
 		Path differentDefaultPath = JsonConvert.apartmentsToJson(apartments);
 		assertEquals(expectedApartment, Files.readString(differentDefaultPath));
 		assertNotEquals(differentDefaultPath, defaultPath);

@@ -125,7 +125,8 @@ public abstract class JsonConvert {
 	}
 
 	/**
-	 * Converts a list of Apartments to a JSON file.
+	 * Converts a list of Apartments to a JSON file. If you call the function with
+	 * the same path, the data in the file will be overwritten.
 	 *
 	 * @param listApartments <code>{@link List}</code> object to convert into JSON
 	 *                       (<b>listApartments</b> could contain only one
