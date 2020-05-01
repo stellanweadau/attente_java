@@ -51,25 +51,6 @@ public abstract class JsonConvert {
 	}
 
 	/**
-	 * Converts an Apartment object to a JSON file.
-	 *
-	 * @param a        <i>Apartment</i> object to convert into JSON
-	 * @param jsonPath <i>Path</i> the path where to create the JSON file
-	 * @throws IOException if the JSON file can't be created.
-	 */
-	public static void apartmentToJson(Apartment a, Path jsonPath) throws IOException {
-		String toJson;
-		try (Jsonb jsonb = JsonbBuilder.create()) {
-			toJson = jsonb.toJson(a);
-		} catch (Exception e) {
-			throw new IllegalStateException(e);
-		}
-
-		Files.writeString(jsonPath, toJson);
-		LOGGER.info("Apartment have been converted with success");
-	}
-
-	/**
 	 * Gets the address field from an Address JSON.
 	 *
 	 * @param jsonString <i>String</i> the Address into JSON format
@@ -84,28 +65,6 @@ public abstract class JsonConvert {
 		checkArgument(!result.get("address").toString().isEmpty() && result.containsKey("address"),
 				"There is no field adress in the JSON file.");
 		return result.get("address").toString();
-	}
-
-	/**
-	 * Converts a JSON expression to an Apartment object.
-	 *
-	 * @param jsonPath<i>Path</i> the JSON expression to convert into Apartment
-	 *                            object
-	 * @return <i>Apartment</i> the Apartment generated
-	 * @throws IOException if the file can't be red
-	 */
-	public static Apartment jsonToApartment(Path jsonPath) throws IOException {
-		String jsonString = Files.readString(jsonPath);
-		Apartment.Builder apartBuild;
-		try (Jsonb jsonb = JsonbBuilder.create()) {
-			LOGGER.info("Create Json builder");
-
-			apartBuild = jsonb.fromJson(jsonString, Apartment.Builder.class);
-			LOGGER.info("Apartment created from JSON");
-		} catch (Exception e) {
-			throw new IllegalStateException(e);
-		}
-		return apartBuild.build();
 	}
 
 	/**

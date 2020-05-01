@@ -68,27 +68,6 @@ public class JsonConvertTest {
 	}
 
 	/**
-	 * Tests jsonToApartment function. Verifies if the Apartment created by the
-	 * function corresponds to the expected Apartment.
-	 *
-	 * @throws FileNotFoundException if the file doesn't exists.
-	 * @throws IOException           if the file can't be convert into JSON format.
-	 */
-	@Test
-	void jsonToApartmentTest() throws IOException, URISyntaxException {
-		Builder apartBuilder = new Apartment.Builder();
-		Apartment apartmentRef = apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
-				.setTitle("Grand Igloo").setTerrace(false).setWifi(false).setTele(false).build();
-
-		URI ressource = JsonConvertTest.class.getResource("jsonApartment.json").toURI();
-		Path jsonPath = Path.of(ressource);
-
-		Apartment apartmentTest = JsonConvert.jsonToApartment(jsonPath);
-
-		assertEquals(apartmentRef.hashCode(), apartmentTest.hashCode());
-	}
-
-	/**
 	 * Tests jsonToApartments function. Verifies if the <i>ArrayList</i> of
 	 * Apartment created by the function corresponds to the expected
 	 * <i>ArrayList</i>.
