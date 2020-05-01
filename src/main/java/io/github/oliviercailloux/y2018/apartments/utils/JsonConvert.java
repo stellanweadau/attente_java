@@ -32,9 +32,13 @@ public abstract class JsonConvert {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JsonConvert.class);
 
 	/**
-	 * The default path to JSON file.
+	 * The path to export a list of apartments in a JSON file.
+	 *
+	 * @return <i>Path</i> of the JSON file at the root of the project
 	 */
-	public static final Path APARTMENTS_PATH_JSON = Path.of("exportApartment" + System.currentTimeMillis() + ".json");
+	public static final Path exportApartments() {
+		return Path.of("exportApartments" + System.currentTimeMillis() + ".json");
+	}
 
 	/**
 	 * The method return a default JSON file read by jsonToApartments.
@@ -115,7 +119,7 @@ public abstract class JsonConvert {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments) throws IOException {
-		apartmentsToJson(listApartments, APARTMENTS_PATH_JSON);
+		apartmentsToJson(listApartments, exportApartments());
 	}
 
 	/**
