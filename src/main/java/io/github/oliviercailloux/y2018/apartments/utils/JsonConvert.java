@@ -37,7 +37,7 @@ public abstract class JsonConvert {
 	 *
 	 * @return <i>Path</i> of the JSON file at the root of the project
 	 */
-	public static final Path exportApartments() {
+	public static final Path getUniqueExportPath() {
 		return Path.of("exportApartments" + System.currentTimeMillis() + ".json");
 	}
 
@@ -120,7 +120,7 @@ public abstract class JsonConvert {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static Path apartmentsToJson(List<Apartment> listApartments) throws IOException {
-		Path defaultPath = exportApartments();
+		Path defaultPath = getUniqueExportPath();
 		apartmentsToJson(listApartments, defaultPath);
 		return defaultPath.toAbsolutePath();
 	}
