@@ -10,4 +10,5 @@ out.log
 /ApartXML/
 .idea/
 apartments.iml
-Apartment_Json.json
+
+exportApartment*.json

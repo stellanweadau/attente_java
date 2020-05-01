@@ -34,32 +34,20 @@ public abstract class JsonConvert {
 	/**
 	 * The default path to JSON file.
 	 */
-	public static final Path APARTMENT_PATH_JSON = Path.of("Apartment_Json.json");
+	public static final Path APARTMENTS_PATH_JSON = Path.of("exportApartment" + System.currentTimeMillis() + ".json");
 
 	/**
 	 * The method return a default JSON file read by jsonToApartments.
 	 * 
 	 * @return <i>Path</i> where jsonToApartments will read.
-	 * @throws URISyntaxException if the resource cannot be found
 	 */
-	private static final Path startApartment() {
+	private static final Path startApartments() {
 		try {
 			URI ressource = JsonConvert.class.getResource("defaultJsonToApartments.json").toURI();
 			return Path.of(ressource);
 		} catch (URISyntaxException e) {
-			throw new VerifyException();
+			throw new VerifyException(e);
 		}
-	}
-
-	/**
-	 * Converts an Apartment object to a JSON file with the default path
-	 * APARTMENT_PATH_JSON.
-	 *
-	 * @param a <i>Apartment</i> object to convert into JSON
-	 * @throws IOException if the JSON file can't be created.
-	 */
-	public static void apartmentToJson(Apartment a) throws IOException {
-		apartmentToJson(a, APARTMENT_PATH_JSON);
 	}
 
 	/**
@@ -70,9 +58,14 @@ public abstract class JsonConvert {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentToJson(Apartment a, Path jsonPath) throws IOException {
-		Jsonb jsonb = JsonbBuilder.create();
-		Files.writeString(jsonPath, jsonb.toJson(a));
+		String toJson;
+		try (Jsonb jsonb = JsonbBuilder.create()) {
+			toJson = jsonb.toJson(a);
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		}
 
+		Files.writeString(jsonPath, toJson);
 		LOGGER.info("Apartment have been converted with success");
 	}
 
@@ -103,12 +96,15 @@ public abstract class JsonConvert {
 	 */
 	public static Apartment jsonToApartment(Path jsonPath) throws IOException {
 		String jsonString = Files.readString(jsonPath);
-		Jsonb jsonb = JsonbBuilder.create();
-		LOGGER.info("Create Json builder");
+		Apartment.Builder apartBuild;
+		try (Jsonb jsonb = JsonbBuilder.create()) {
+			LOGGER.info("Create Json builder");
 
-		Apartment.Builder apartBuild = jsonb.fromJson(jsonString, Apartment.Builder.class);
-		LOGGER.info("Apartment created from JSON");
-
+			apartBuild = jsonb.fromJson(jsonString, Apartment.Builder.class);
+			LOGGER.info("Apartment created from JSON");
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		}
 		return apartBuild.build();
 	}
 
@@ -116,11 +112,10 @@ public abstract class JsonConvert {
 	 * Converts a JSON expression to a list of Apartments.
 	 *
 	 * @return <i>List</i> the list of Apartments created
-	 * @throws IOException        if the file doesn't exists
-	 * @throws URISyntaxException
+	 * @throws IOException if the file doesn't exists
 	 */
 	public static List<Apartment> jsonToApartments() throws IOException {
-		Path apartPath = startApartment();
+		Path apartPath = startApartments();
 		return jsonToApartments(apartPath);
 	}
 
@@ -136,14 +131,16 @@ public abstract class JsonConvert {
 	public static List<Apartment> jsonToApartments(Path jsonPath) throws IOException {
 		String jsonString = Files.readString(jsonPath);
 		List<Apartment.Builder> apartmentsBuild;
-		List<Apartment> apartments = new ArrayList<Apartment>();
+		List<Apartment> apartments = new ArrayList<>();
 		LOGGER.info("Create ArrayList of Apartment");
 
-		Jsonb jsonb = JsonbBuilder.create();
-		LOGGER.info("Create Json builder");
-
-		apartmentsBuild = jsonb.fromJson(jsonString, new ArrayList<Apartment.Builder>() {
-		}.getClass().getGenericSuperclass());
+		try (Jsonb jsonb = JsonbBuilder.create()) {
+			LOGGER.info("Create Json builder");
+			apartmentsBuild = jsonb.fromJson(jsonString, new ArrayList<Apartment.Builder>() {
+			}.getClass().getGenericSuperclass());
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		}
 
 		for (int i = 0; i < apartmentsBuild.size(); i++) {
 			apartments.add(apartmentsBuild.get(i).build());
@@ -159,20 +156,26 @@ public abstract class JsonConvert {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments) throws IOException {
-		apartmentsToJson(listApartments, APARTMENT_PATH_JSON);
+		apartmentsToJson(listApartments, APARTMENTS_PATH_JSON);
 	}
 
 	/**
 	 * Converts a list of Apartments to a JSON file.
 	 *
 	 * @param listApartments <code>{@link List}</code> object to convert into JSON
+	 *                       (<b>listApartments</b> could contain only one
+	 *                       apartment)
 	 * @param jsonPath       <i>String</i> the path where to create the JSON file
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments, Path jsonPath) throws IOException {
-		Jsonb jsonb = JsonbBuilder.create();
-		Files.writeString(jsonPath, jsonb.toJson(listApartments));
-
+		String toJson;
+		try (Jsonb jsonb = JsonbBuilder.create()) {
+			toJson = jsonb.toJson(listApartments);
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		}
+		Files.writeString(jsonPath, toJson);
 		LOGGER.info("Apartment have been converted with success");
 	}
 }
