@@ -121,16 +121,16 @@ public class Apartment extends Object {
 		this.floorArea = 0;
 		this.address = null;
 		this.title = null;
-		setNbBedrooms(0);
-		setNbSleeping(0);
-		setNbBathrooms(0);
-		setTerrace(null);
-		setFloorAreaTerrace(0);
-		setDescription("");
-		setWifi(null);
-		setPricePerNight(0);
-		setNbMinNight(0);
-		setTele(null);
+		this.nbBedrooms = 0;
+		this.nbSleeping = 0;
+		this.nbBathrooms = 0;
+		this.hasTerrace = null;
+		this.floorAreaTerrace = 0;
+		this.description = "";
+		this.wifi = null;
+		this.pricePerNight = 0;
+		this.nbMinNight = 0;
+		this.tele = null;
 	}
 
 	@Override
@@ -155,7 +155,7 @@ public class Apartment extends Object {
 	 *         area, its address and his title
 	 */
 	public String toString() {
-		String floorAreaTS = "\nFloor area : " + Double.toString(this.floorArea) + " square meters";
+		String floorAreaTS = String.format("%nFloor area : %d square meters",this.floorArea);
 		String addressTS = "\nAddress : " + this.address;
 		String titleTS = "\nTitle : " + this.title;
 		return floorAreaTS + addressTS + titleTS;
@@ -191,11 +191,11 @@ public class Apartment extends Object {
 				+ ((this.nbSleeping == 0) ? "N/A" : Integer.toString(this.nbSleeping) + " person(s)");
 		dispNbBathrooms = "\nNumber of bathrooms : "
 				+ ((this.nbBathrooms == 0) ? "N/A" : Integer.toString(this.nbBathrooms) + " bathroom(s)");
-		dispTerrace = "\nTerrace : " + ((this.hasTerrace) ? "Yes" : "No");
-		dispFloorAreaTerrace = new StringBuilder().append(!(this.hasTerrace) ? "" : "\nTerrace floor area : ")
+		dispTerrace = "\nTerrace : " + ((Boolean.TRUE.equals(this.hasTerrace)) ? "Yes" : "No");
+		dispFloorAreaTerrace = new StringBuilder().append(Boolean.FALSE.equals(this.hasTerrace) ? "" : "\nTerrace floor area : ")
 				.append((floorAreaTerrace == 0) ? "N/A" : Double.toString(this.floorAreaTerrace) + " square meters")
 				.toString();
-		dispDescription = "\nDescription : " + ((this.description == "") ? "N/A" : this.description);
+		dispDescription = "\nDescription : " + (Objects.equals(this.description,"") ? "N/A" : this.description);
 		dispWifi = "\nWifi : " + ((this.wifi) ? "Yes" : "No");
 		dispTele = "\nTelevision : " + ((this.tele) ? "Yes" : "No");
 		dispPricePerNight = "\nPrice per night : "
