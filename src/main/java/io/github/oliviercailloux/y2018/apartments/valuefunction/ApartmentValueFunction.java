@@ -206,9 +206,9 @@ public class ApartmentValueFunction {
 	 * @param nbSleepingValueFunction an object of type {@link PartialValueFunction}
 	 */
 	public void setNbSleepingValueFunction(PartialValueFunction<Double> nbSleepingValueFunction) {
-		checkNotNull(nbSleepingValueFunction, "The number of sleep-in preferencies cannot be null");
+		checkNotNull(nbSleepingValueFunction, "The number of sleeping preferencies cannot be null");
 		this.nbSleepingValueFunction = nbSleepingValueFunction;
-		LOGGER.info("The number of sleep-in preferencies has been set");
+		LOGGER.info("The number of sleeping preferencies has been set");
 	}
 
 	/**
@@ -329,9 +329,9 @@ public class ApartmentValueFunction {
 	 * @param nbSleepingSubjectiveValueWeight a positive zero double
 	 */
 	public void setNbSleepingSubjectiveValueWeight(double nbSleepingSubjectiveValueWeight) {
-		checkArgument(nbSleepingSubjectiveValueWeight >= 0, "The weight of the sleep-in cannot be negative");
+		checkArgument(nbSleepingSubjectiveValueWeight >= 0, "The weight of the sleeping cannot be negative");
 		this.nbSleepingSubjectiveValueWeight = nbSleepingSubjectiveValueWeight;
-		LOGGER.info("The number of sleep-in weight has been set to {}", nbSleepingSubjectiveValueWeight);
+		LOGGER.info("The number of sleeping weight has been set to {}", nbSleepingSubjectiveValueWeight);
 	}
 
 	/**
@@ -462,9 +462,9 @@ public class ApartmentValueFunction {
 		checkArgument(
 				nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) >= 0
 				&& nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1,
-				"The subjective value of the number of sleep-in should be between 0 and 1");
+				"The subjective value of the number of sleeping should be between 0 and 1");
 		nbSleepingSubjectiveValue = nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping());
-		LOGGER.info("The number of sleepings subjective value has been set to {}", nbSleepingSubjectiveValue);
+		LOGGER.info("The number of sleeping subjective value has been set to {}", nbSleepingSubjectiveValue);
 
 		checkArgument(
 				nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) >= 0
