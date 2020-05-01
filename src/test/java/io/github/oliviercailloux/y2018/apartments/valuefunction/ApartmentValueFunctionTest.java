@@ -6,9 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import io.github.oliviercailloux.y2018.apartments.valuefunction.ApartmentValueFunction;
-import io.github.oliviercailloux.y2018.apartments.valuefunction.BooleanValueFunction;
-import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearValueFunction;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 
@@ -23,29 +20,16 @@ class ApartmentValueFunctionTest {
 	 */
 	@BeforeEach
 	void initEach() {
-		a = new Builder().setFloorArea(250)
-				.setAddress("108 rue de chat-ville Ville-d'Avray 92410")
-				.setNbBedrooms(1)
-				.setNbSleeping(4)
-				.setNbBathrooms(1)
-				.setTerrace(true)
-				.setFloorAreaTerrace(40)
+		a = new Builder().setFloorArea(250).setAddress("108 rue de chat-ville Ville-d'Avray 92410").setNbBedrooms(1)
+				.setNbSleeping(4).setNbBathrooms(1).setTerrace(true).setFloorAreaTerrace(40)
 				.setDescription("Une ferme rustique en compagnie de Dwight Schrute, interdit à Jim Halpert")
-				.setTitle("Une ferme")
-				.setWifi(false)
-				.setPricePerNight(3.3)
-				.setNbMinNight(3)
-				.setTele(false)
-				.build();
+				.setTitle("Une ferme").setWifi(false).setPricePerNight(3.3).setNbMinNight(3).setTele(false).build();
 
 		LinearValueFunction floorAreaV = new LinearValueFunction(0d, 200d);
 		valueFunction.setFloorAreaValueFunction(floorAreaV);
-		assertEquals(1d, floorAreaV.getSubjectiveValue(a.getFloorArea()));
 
 		LinearValueFunction nbSleepingV = new LinearValueFunction(3d, 5d);
 		valueFunction.setNbSleepingValueFunction(nbSleepingV);
-		nbSleepingV = (LinearValueFunction) valueFunction.getNbSleepingValueFunction();
-		assertEquals(5d, nbSleepingV.getInterval().upperEndpoint());
 
 		ReversedLinearValueFunction nbMinNightV = new ReversedLinearValueFunction(7d, 30d);
 		valueFunction.setNbMinNightValueFunction(nbMinNightV);
@@ -55,8 +39,6 @@ class ApartmentValueFunctionTest {
 
 		LinearValueFunction nbBedroomsV = new LinearValueFunction(3d, 4d);
 		valueFunction.setNbBedroomsValueFunction(nbBedroomsV);
-		nbBedroomsV = (LinearValueFunction) valueFunction.getNbSleepingValueFunction();
-		assertEquals(4d, nbBedroomsV.getInterval().upperEndpoint());
 
 		ReversedLinearValueFunction pricePerNightV = new ReversedLinearValueFunction(20d, 40d);
 		valueFunction.setPricePerNightValueFunction(pricePerNightV);
@@ -69,11 +51,24 @@ class ApartmentValueFunctionTest {
 
 		LinearValueFunction nbBathroomsV = new LinearValueFunction(2d, 3d);
 		valueFunction.setNbBathroomsValueFunction(nbBathroomsV);
-		nbBathroomsV = (LinearValueFunction) valueFunction.getNbSleepingValueFunction();
-		assertEquals(3d, nbBathroomsV.getInterval().upperEndpoint());
 
 		LinearValueFunction floorAreaTerraceV = new LinearValueFunction(30d, 50d);
 		valueFunction.setFloorAreaTerraceValueFunction(floorAreaTerraceV);
+	}
+
+	/**
+	 * Function to test the some setters
+	 */
+	@Test
+	void checkValue() {
+
+		LinearValueFunction lvf = (LinearValueFunction) valueFunction.getNbSleepingValueFunction();
+		assertEquals(5d, lvf.getInterval().upperEndpoint());
+		lvf = (LinearValueFunction) valueFunction.getNbBedroomsValueFunction();
+		assertEquals(4d, lvf.getInterval().upperEndpoint());
+		lvf = (LinearValueFunction) valueFunction.getNbBathroomsValueFunction();
+		assertEquals(3d, lvf.getInterval().upperEndpoint());
+
 	}
 
 	/**
@@ -85,7 +80,7 @@ class ApartmentValueFunctionTest {
 		assertEquals(0.5, valueFunction.getSubjectiveValue(a), 0.0001);
 
 		valueFunction.setTeleSubjectiveValueWeight(10d);
-		assertEquals(10d,valueFunction.getSubjectiveValueWeight(Criterion.TELE));
+		assertEquals(10d, valueFunction.getSubjectiveValueWeight(Criterion.TELE));
 		assertEquals(0.04587, valueFunction.getSubjectiveValue(a), 0.00001);
 
 	}
@@ -115,14 +110,14 @@ class ApartmentValueFunctionTest {
 	@Test
 	void adaptWeightTest() {
 
-		assertThrows(IllegalArgumentException.class, () -> valueFunction.adaptWeight(Criterion.TELE,Criterion.TELE));
+		assertThrows(IllegalArgumentException.class, () -> valueFunction.adaptWeight(Criterion.TELE, Criterion.TELE));
 		valueFunction.setTeleSubjectiveValueWeight(7d);
 		valueFunction.setTerraceSubjectiveValueWeight(3d);
 		assertEquals(7d, valueFunction.getSubjectiveValueWeight(Criterion.TELE));
 		assertEquals(3d, valueFunction.getSubjectiveValueWeight(Criterion.TERRACE));
 		valueFunction = valueFunction.adaptWeight(Criterion.TERRACE, Criterion.TELE);
-		assertEquals(9d,valueFunction.getSubjectiveValueWeight(Criterion.TERRACE));
-		assertEquals(1d,valueFunction.getSubjectiveValueWeight(Criterion.TELE));
+		assertEquals(9d, valueFunction.getSubjectiveValueWeight(Criterion.TERRACE));
+		assertEquals(1d, valueFunction.getSubjectiveValueWeight(Criterion.TELE));
 
 	}
 
@@ -135,13 +130,13 @@ class ApartmentValueFunctionTest {
 		assertThrows(IllegalArgumentException.class, () -> valueFunction.adaptBounds(Criterion.TELE, 0d, true));
 		valueFunction.adaptBounds(Criterion.FLOOR_AREA_TERRACE, 25d, true);
 		LinearValueFunction lvf = (LinearValueFunction) valueFunction.getFloorAreaTerraceValueFunction();
-		assertEquals(25d,lvf.getInterval().lowerEndpoint());
+		assertEquals(25d, lvf.getInterval().lowerEndpoint());
 		assertEquals(0.6, valueFunction.getFloorAreaTerraceValueFunction().getSubjectiveValue(a.getFloorAreaTerrace()));
 		valueFunction.adaptBounds(Criterion.NB_BEDROOMS, 8, false);
 		double nbRooms = a.getNbBedrooms();
-		assertEquals(0d,valueFunction.getNbBedroomsValueFunction().getSubjectiveValue(nbRooms));
+		assertEquals(0d, valueFunction.getNbBedroomsValueFunction().getSubjectiveValue(nbRooms));
 		lvf = (LinearValueFunction) valueFunction.getNbBedroomsValueFunction();
-		assertEquals(8,lvf.getInterval().upperEndpoint());
+		assertEquals(8, lvf.getInterval().upperEndpoint());
 	}
 
 	/**
@@ -149,22 +144,17 @@ class ApartmentValueFunctionTest {
 	 */
 	@Test
 	void getRandomApartmentValueFunctionTest() {
-		
+
 		ApartmentValueFunction apart = ApartmentValueFunction.getRandomApartmentValueFunction();
 		assertEquals(1d, apart.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea()));
 		LinearValueFunction lvf = (LinearValueFunction) apart.getFloorAreaTerraceValueFunction();
 		assertEquals(true, lvf.getInterval().upperEndpoint() <= 101d);
 		assertEquals(true, apart.getTeleSubjectiveValueWeight() <= 1d);
-		double sum = apart.getTeleSubjectiveValueWeight() 
-				+ apart.getFloorAreaSubjectiveValueWeight() 
-				+ apart.getFloorAreaTerraceSubjectiveValueWeight()
-				+ apart.getNbBathroomsSubjectiveValueWeight() 
-				+ apart.getNbBedroomsSubjectiveValueWeight() 
-				+ apart.getNbSleepingSubjectiveValueWeight() 
-				+ apart.getNbMinNightSubjectiveValueWeight()
-				+ apart.getPricePerNightSubjectiveValueWeight() 
-				+ apart.getTerraceSubjectiveValueWeight() 
-				+ apart.getWifiSubjectiveValueWeight();
+		double sum = apart.getTeleSubjectiveValueWeight() + apart.getFloorAreaSubjectiveValueWeight()
+				+ apart.getFloorAreaTerraceSubjectiveValueWeight() + apart.getNbBathroomsSubjectiveValueWeight()
+				+ apart.getNbBedroomsSubjectiveValueWeight() + apart.getNbSleepingSubjectiveValueWeight()
+				+ apart.getNbMinNightSubjectiveValueWeight() + apart.getPricePerNightSubjectiveValueWeight()
+				+ apart.getTerraceSubjectiveValueWeight() + apart.getWifiSubjectiveValueWeight();
 		assertEquals(1d, sum, 0.00001);
 	}
 

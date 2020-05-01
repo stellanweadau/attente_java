@@ -535,41 +535,6 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * This function allows the user to clone an object ApartmentValueFunction
-	 *
-	 * @return an object ApartmentValueFunction
-	 */
-	private ApartmentValueFunction cloneAVF() {
-
-		ApartmentValueFunction avf = new ApartmentValueFunction();
-
-		avf.setFloorAreaValueFunction(this.floorAreaValueFunction);
-		avf.setNbBedroomsValueFunction(this.nbBedroomsValueFunction);
-		avf.setNbSleepingValueFunction(this.nbSleepingValueFunction);
-		avf.setNbBathroomsValueFunction(this.nbBathroomsValueFunction);
-		avf.setTerraceValueFunction(this.terraceValueFunction);
-		avf.setFloorAreaTerraceValueFunction(this.floorAreaTerraceValueFunction);
-		avf.setWifiValueFunction(this.wifiValueFunction);
-		avf.setPricePerNightValueFunction(this.pricePerNightValueFunction);
-		avf.setNbMinNightValueFunction(this.nbMinNightValueFunction);
-		avf.setTeleValueFunction(this.teleValueFunction);
-
-		avf.floorAreaSubjectiveValueWeight = this.floorAreaSubjectiveValueWeight;
-		avf.nbBedroomsSubjectiveValueWeight = this.nbBedroomsSubjectiveValueWeight;
-		avf.nbSleepingSubjectiveValueWeight = this.nbSleepingSubjectiveValueWeight;
-		avf.nbBathroomsSubjectiveValueWeight = this.nbBathroomsSubjectiveValueWeight;
-		avf.terraceSubjectiveValueWeight = this.terraceSubjectiveValueWeight;
-		avf.floorAreaTerraceSubjectiveValueWeight = this.floorAreaTerraceSubjectiveValueWeight;
-		avf.wifiSubjectiveValueWeight = this.wifiSubjectiveValueWeight;
-		avf.pricePerNightSubjectiveValueWeight = this.pricePerNightSubjectiveValueWeight;
-		avf.nbMinNightSubjectiveValueWeight = this.nbMinNightSubjectiveValueWeight;
-		avf.teleSubjectiveValueWeight = this.teleSubjectiveValueWeight;
-
-		return avf;
-
-	}
-
-	/**
 	 * Allows us to create a ApartmentValueFunction object with random values
 	 *
 	 * @return A randomized instance of an ApartmentValueFunction
@@ -636,7 +601,9 @@ public class ApartmentValueFunction {
 	 * would be a discrete criteria (e.g. the number of bedrooms)
 	 * 
 	 * The goal is to replace a LinearValueFunction's bound by a new bound
-	 *
+	 * Warning : The values of the object should be instanciate before using this function 
+	 * or an error will appear
+	 * 
 	 * @param criterion the criterion to adapt. This criterion should not be a
 	 *                  boolean as TV for example.
 	 * @param newBound  the new bound to define
