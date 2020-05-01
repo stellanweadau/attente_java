@@ -11,42 +11,36 @@ public class Apartment extends Object {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Apartment.class);
 
 	/**
-	 * @param a real number it represents the floor area of the apartment in square
-	 *          meters. Has to be initialized, if not, the apartment can't be
-	 *          created without a floor area.
+	 * A real number representing the floor area of the apartment in square meters. 
+	 * Has to be initialized, if not, the apartment can't be created without a floor area.
 	 */
 	private double floorArea;
 
 	/**
-	 * @param a String of characters that gives the full location of the apartment
-	 *          (number, street name, ZIP code, city, country), has to initialized
-	 *          Has to be initialized, if not, the apartment can't be created
-	 *          without an address.
+	 * A String of characters that gives the full location of the apartment (number, street name,
+	 * ZIP code, city, country)
+	 * Has to be initialized, if not, the apartment can't be created without an address.
 	 */
 	private String address;
 
 	/**
-	 * @param an integer superior or equal to zero, it is the number of bedrooms
-	 *           available of use in the apartment. if not initialized, the
-	 *           parameter will have a default value of <code>0</code> which mean
-	 *           the apartment doesn't have any bedroom.
+	 * An integer superior or equal to zero, it is the number of bedrooms available of use in the apartment. 
+	 * If not initialized, the parameter will have a default value of <code>0</code> which mean
+	 * the apartment doesn't have any bedroom.
 	 */
 	private int nbBedrooms;
 
 	/**
-	 * @param an integer superior or equal to zero corresponding of the
-	 *           accommodation capacity of the apartment (nb of people that can
-	 *           sleep in the apartment). If not initialized, the parameter will
-	 *           have a default value of <code>0</code> which mean the apartment
-	 *           doesn't have any place to sleep.
+	 * An integer superior or equal to zero corresponding of the accommodation capacity of the apartment (nb
+	 * of people that can sleep in the apartment). If not initialized, the parameter will
+	 * have a default value of <code>0</code> which mean the apartment doesn't have any place to sleep.
 	 */
 	private int nbSleeping;
 
 	/**
-	 * @param an integer superior or equal to zero which corresponds to the number
-	 *           of bathrooms. If not initialized, the parameter will have a default
-	 *           value set of <code>0</code> which mean the apartment doesn't have
-	 *           any bathroom.
+	 * an integer superior or equal to zero which corresponds to the number of bathrooms. 
+	 * If not initialized, the parameter will have a default value set of <code>0</code> which mean 
+	 * the apartment doesn't have any bathroom.
 	 */
 	private int nbBathrooms;
 
