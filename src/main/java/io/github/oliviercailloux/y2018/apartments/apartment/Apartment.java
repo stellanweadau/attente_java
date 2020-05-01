@@ -53,58 +53,50 @@ public class Apartment extends Object {
 	private Boolean hasTerrace;
 
 	/**
-	 * @param a real number superior or equal to zero it represents the floor area
-	 *          of the terrace of the apartment if there's any. If not initialized,
-	 *          the parameter will have a default value set of <code>0</code> which
-	 *          mean the apartment have a floor area of terrace of zero, whether it
-	 *          has or not a terrace.
+	 * A real number superior or equal to zero it represents the floor area of the terrace 
+	 * of the apartment if there's any. If not initialized, the parameter will have a default value set of <code>0</code> which
+	 * mean the apartment have a floor area of terrace of zero, whether it has or not a terrace.
 	 */
 	private double floorAreaTerrace;
 
 	/**
-	 * @param a string of characters that describe the apartment and the offer (its
-	 *          accommodations). If not initialized, the parameter will have a
-	 *          default value set of <code>""</code> which mean the announcement
-	 *          doesn't have a description.
+	 * A string of characters that describe the apartment and the offer (its accommodations). 
+	 * If not initialized, the parameter will have a default value set of <code>""</code> which mean 
+	 * the announcement doesn't have a description.
 	 */
 	private String description;
 
 	/**
-	 * @param a string of characters that represents the title of the announcement.
-	 *          It has to be initialized, if not, the apartment can't be created
-	 *          without a <code>title</code>.
+	 * A string of characters that represents the title of the announcement.
+	 * It has to be initialized, if not, the apartment can't be created without a <code>title</code>.
 	 */
 	private String title;
 
 	/**
-	 * @param a boolean (true/false) which indicates if there is wireless connection
-	 *          to Internet or not can be interpreted as hasWifi. If not
-	 *          initialized, the parameter will have a default value of
-	 *          <code>false</code> which mean the apartment doesn't have wifi.
+	 * A boolean (true/false) which indicates if there is wireless connection to Internet or not 
+	 * can be interpreted as hasWifi. If not initialized, the parameter will have a default value of
+	 * <code>false</code> which mean the apartment doesn't have wifi.
 	 */
 	private Boolean wifi;
 
 	/**
-	 * @param a real number superior or equal to zero, how much it cost (before any
-	 *          fees) to stay per night in euros. If not initialized, the parameter
-	 *          will have a default value of <code>0</code> which mean the apartment
-	 *          doesn't have a price per night.
+	 * A real number superior or equal to zero, how much it cost (before any fees) to stay per night in euros. 
+	 * If not initialized, the parameter will have a default value of <code>0</code> which mean the apartment
+	 * doesn't have a price per night.
 	 */
 	private double pricePerNight;
 
 	/**
-	 * @param an integer superior or equal to zero, indicates how long in nights the
-	 *           customer have to stay. If not initialized, the parameter will have
-	 *           a default value of <code>0</code> which mean the apartment doesn't
-	 *           have a minimum of night to stay-in.
+	 * an integer superior or equal to zero, indicates how long in nights the customer have to stay. 
+	 * If not initialized, the parameter will have a default value of <code>0</code> which mean the apartment doesn't
+	 * have a minimum of night to stay-in.
 	 */
 	private int nbMinNight;
 
 	/**
-	 * @param a boolean (true/false) which indicates if there's a television or not
-	 *          can be interpreted as hasTelevision. If not initialized, the
-	 *          parameter will have a default set value of <code>false</code> which
-	 *          mean the apartment doesn't have a tele.
+	 * A boolean (true/false) which indicates if there's a television or not can be interpreted as 
+	 * hasTelevision. If not initialized, the parameter will have a default set value of <code>false</code> 
+	 * which mean the apartment doesn't have a tele.
 	 */
 	private Boolean tele;
 
@@ -190,8 +182,8 @@ public class Apartment extends Object {
 				.append((floorAreaTerrace == 0) ? "N/A" : Double.toString(this.floorAreaTerrace) + " square meters")
 				.toString();
 		dispDescription = "\nDescription : " + (Objects.equals(this.description,"") ? "N/A" : this.description);
-		dispWifi = "\nWifi : " + ((this.wifi) ? "Yes" : "No");
-		dispTele = "\nTelevision : " + ((this.tele) ? "Yes" : "No");
+		dispWifi = "\nWifi : " + ((Boolean.TRUE.equals(this.wifi)) ? "Yes" : "No");
+		dispTele = "\nTelevision : " + ((Boolean.TRUE.equals(this.tele)) ? "Yes" : "No");
 		dispPricePerNight = "\nPrice per night : "
 				+ ((this.pricePerNight == 0) ? "N/A" : Double.toString(this.pricePerNight) + "€");
 		dispNbMinNight = "\nNumber of night minimum to rent this apartment : "
@@ -202,7 +194,7 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * get the value of the floor area
+	 * Gets the value of the floor area
 	 * 
 	 * @return a double positive or equal to zero
 	 */
@@ -211,16 +203,16 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * get the value of the address
+	 * Gets the address
 	 * 
-	 * @return a String of characters
+	 * @return a String
 	 */
 	public String getAddress() {
 		return this.address;
 	}
 
 	/**
-	 * get the number of bedrooms, 0 if missing
+	 * Gets the number of bedrooms, 0 if missing
 	 * 
 	 * @return an integer positive or equal to zero
 	 */
@@ -229,7 +221,7 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * get the number of sleeping, 0 if missing
+	 * Gets the number of sleeping, 0 if missing
 	 * 
 	 * @return an integer positive or equal to zero
 	 */
@@ -238,7 +230,7 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * get the number of bathrooms, 0 if missing
+	 * Gets the number of bathrooms, 0 if missing
 	 * 
 	 * @return an integer positive or equal to zero
 	 */
@@ -247,16 +239,16 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * get the presence (or absence) of a terrace
+	 * Gets the presence (or absence) of a terrace
 	 * 
-	 * @return a boolean
+	 * @return a Boolean
 	 */
 	public Boolean getTerrace() {
 		return this.hasTerrace;
 	}
 
 	/**
-	 * get the value of the floor area of the terrace (0 if there is no terrace)
+	 * Gets the value of the floor area of the terrace (0 if there is no terrace)
 	 * 
 	 * @return a double positive or equal to zero
 	 */
@@ -265,34 +257,34 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * get the description of the apartment, "" if missing
+	 * Gets the description of the apartment, "" if missing
 	 * 
-	 * @return a string of characters
+	 * @return a String
 	 */
 	public String getDescription() {
 		return this.description;
 	}
 
 	/**
-	 * get the title of the announcement
+	 * Gets the title of the announcement
 	 * 
-	 * @return a string of characters
+	 * @return a String
 	 */
 	public String getTitle() {
 		return this.title;
 	}
 
 	/**
-	 * get the presence (or absence) of WiFi
+	 * Gets the presence (or absence) of WiFi
 	 * 
-	 * @return a boolean
+	 * @return a Boolean
 	 */
 	public Boolean getWifi() {
 		return this.wifi;
 	}
 
 	/**
-	 * get the price for one night, 0 if missing
+	 * Gets the price for one night, 0 if missing
 	 * 
 	 * @return a double positive or equal to zero
 	 */
@@ -301,7 +293,7 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * get the minimum number of nights, 0 if missing
+	 * Gets the minimum number of nights, 0 if missing
 	 * 
 	 * @return an integer positive or equal to zero
 	 */
@@ -310,7 +302,7 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * get the presence (or absence) of a TV
+	 * Gets the presence (or absence) of a TV
 	 * 
 	 * @return a boolean
 	 */
@@ -324,7 +316,7 @@ public class Apartment extends Object {
 	private void setFloorArea(double floorArea) {
 		checkArgument(floorArea > 0, "The floor area should not be <= 0");
 		this.floorArea = floorArea;
-		LOGGER.info("The floor area has been set to " + floorArea);
+		LOGGER.info("The floor area has been set to {}", floorArea);
 	}
 
 	/**
@@ -335,7 +327,7 @@ public class Apartment extends Object {
 		checkArgument(!address.isEmpty(), "The address should not be empty");
 
 		this.address = address;
-		LOGGER.info("The address has been set to " + address);
+		LOGGER.info("The address has been set to {}", address);
 	}
 
 	/**
@@ -344,7 +336,7 @@ public class Apartment extends Object {
 	private void setNbBedrooms(int nbBedrooms) {
 		checkArgument(nbBedrooms >= 0, "The number of Bedrooms can not be negative");
 		this.nbBedrooms = nbBedrooms;
-		LOGGER.info("The number of bathrooms has been set to " + nbBedrooms);
+		LOGGER.info("The number of bathrooms has been set to {}", nbBedrooms);
 	}
 
 	/**
@@ -353,7 +345,7 @@ public class Apartment extends Object {
 	private void setNbSleeping(int nbSleeping) {
 		checkArgument(nbSleeping >= 0, "The accomodation capacity can not be negative");
 		this.nbSleeping = nbSleeping;
-		LOGGER.info("The number of sleepings has been set to " + nbSleeping);
+		LOGGER.info("The number of sleepings has been set to {}", nbSleeping);
 	}
 
 	/**
@@ -362,7 +354,7 @@ public class Apartment extends Object {
 	private void setNbBathrooms(int nbBathrooms) {
 		checkArgument(nbBathrooms >= 0, "The number of bathrooms can not be negative");
 		this.nbBathrooms = nbBathrooms;
-		LOGGER.info("The number of bathrooms has been set to " + nbBathrooms);
+		LOGGER.info("The number of bathrooms has been set to {}", nbBathrooms);
 	}
 
 	/**
@@ -370,7 +362,7 @@ public class Apartment extends Object {
 	 */
 	private void setTerrace(Boolean terrace) {
 		this.hasTerrace = terrace;
-		LOGGER.info("terrace has been set to " + terrace);
+		LOGGER.info("terrace has been set to {}", terrace);
 	}
 
 	/**
@@ -379,7 +371,7 @@ public class Apartment extends Object {
 	 */
 	private void setFloorAreaTerrace(double floorAreaTerrace) {
 		this.floorAreaTerrace = floorAreaTerrace;
-		LOGGER.info("The floor area of the terrace has been set to " + floorAreaTerrace);
+		LOGGER.info("The floor area of the terrace has been set to {}", floorAreaTerrace);
 	}
 
 	/**
@@ -388,7 +380,7 @@ public class Apartment extends Object {
 	private void setDescription(String description) {
 		checkNotNull(description, "The description should not be null");
 		this.description = description;
-		LOGGER.info("The description has been set to " + description);
+		LOGGER.info("The description has been set to {}", description);
 	}
 
 	/**
@@ -398,7 +390,7 @@ public class Apartment extends Object {
 		checkNotNull(title, "The title should not be null");
 		checkArgument(!title.isEmpty(), "The title should not be empty");
 		this.title = title;
-		LOGGER.info("The title has been set to " + floorArea);
+		LOGGER.info("The title has been set to {}", floorArea);
 	}
 
 	/**
@@ -406,7 +398,7 @@ public class Apartment extends Object {
 	 */
 	private void setWifi(Boolean wifi) {
 		this.wifi = wifi;
-		LOGGER.info("The wifi has been set to " + wifi);
+		LOGGER.info("The wifi has been set to {}", wifi);
 	}
 
 	/**
@@ -415,7 +407,7 @@ public class Apartment extends Object {
 	private void setPricePerNight(double pricePerNight) {
 		checkArgument(pricePerNight >= 0, "The price per night can not be negative");
 		this.pricePerNight = pricePerNight;
-		LOGGER.info("The price per night has been set to " + pricePerNight);
+		LOGGER.info("The price per night has been set to {}", pricePerNight);
 	}
 
 	/**
@@ -424,7 +416,7 @@ public class Apartment extends Object {
 	private void setNbMinNight(int nbMinNight) {
 		checkArgument(nbMinNight >= 0, "The minimum number of nights can not be negative");
 		this.nbMinNight = nbMinNight;
-		LOGGER.info("The number minimum of night has been set to " + nbMinNight);
+		LOGGER.info("The number minimum of night has been set to {}", nbMinNight);
 	}
 
 	/**
@@ -432,7 +424,7 @@ public class Apartment extends Object {
 	 */
 	private void setTele(Boolean tele) {
 		this.tele = tele;
-		LOGGER.info("The tele has been set to " + tele);
+		LOGGER.info("The tele has been set to {}", tele);
 	}
 
 	@Override
@@ -471,8 +463,8 @@ public class Apartment extends Object {
 			} else if (apartmentToBuild.getTerrace().equals(Boolean.TRUE) && apartmentToBuild.getFloorAreaTerrace()<=0){
 				throw new IllegalStateException("The existing terrace can not have a floor area  <= 0");
 			}
-			Apartment buildApartment = apartmentToBuild;
-			apartmentToBuild = new Apartment();
+			Apartment buildApartment = this.apartmentToBuild;
+			this.apartmentToBuild = new Apartment();
 			return buildApartment;
 		}
 
