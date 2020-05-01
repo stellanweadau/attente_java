@@ -824,7 +824,7 @@ public class ApartmentValueFunction {
 	public double getFloorAreaSubjectiveValueWeight() {
 		return this.floorAreaSubjectiveValueWeight;
 	}
-	
+
 	/**
 	 * Gets the interval of the floor area value. This interval represents the range of floor area the
 	 * user might accept
@@ -841,7 +841,7 @@ public class ApartmentValueFunction {
 	public double getFloorAreaTerraceSubjectiveValueWeight() {
 		return this.floorAreaTerraceSubjectiveValueWeight;
 	}
-	
+
 	/**
 	 * Gets the interval of the floor area terrace value. This interval represents the range of floor area 
 	 * the user might accept
@@ -850,7 +850,7 @@ public class ApartmentValueFunction {
 	public PartialValueFunction<Double> getFloorAreaTerraceValueFunction() {
 		return this.floorAreaTerraceValueFunction;
 	}
-	
+
 	/**
 	 * Gets the weight of the number of bathrooms subjective value
 	 * @return the weight of the attribute nbBathroomsSubjectiveValueWeight
@@ -858,7 +858,7 @@ public class ApartmentValueFunction {
 	public double getNbBathroomsSubjectiveValueWeight() {
 		return this.nbBathroomsSubjectiveValueWeight;
 	}
-	
+
 	/**
 	 * Gets an interval of the number of bathrooms. This interval represents the number of bathrooms the
 	 * user might accept in the apartment
@@ -867,7 +867,7 @@ public class ApartmentValueFunction {
 	public PartialValueFunction<Double> getNbBathroomsValueFunction() {
 		return this.nbBathroomsValueFunction;
 	}
-	
+
 	/**
 	 * Gets the weight of the number of bedrooms subjective value
 	 * @return the weight of the attribute nbBedroomsSubjectiveValueWeight
@@ -875,7 +875,7 @@ public class ApartmentValueFunction {
 	public double getNbBedroomsSubjectiveValueWeight() {
 		return this.nbBedroomsSubjectiveValueWeight;
 	}
-	
+
 	/**
 	 * Gets an interval of the number of bedrooms. This interval represents the number of bedrooms the
 	 * user might accept in the apartment
@@ -884,7 +884,7 @@ public class ApartmentValueFunction {
 	public PartialValueFunction<Double> getNbBedroomsValueFunction() {
 		return this.nbBedroomsValueFunction;
 	}
-	
+
 	/**
 	 * Gets the weight of the number of minimum night the user have to stay subjective value
 	 * @return the weight of the attribute nbMinNightSubjectiveValueWeight
@@ -892,7 +892,7 @@ public class ApartmentValueFunction {
 	public double getNbMinNightSubjectiveValueWeight() {
 		return this.nbMinNightSubjectiveValueWeight;
 	}
-	
+
 	/**
 	 * Gets an interval of the number of minimum night the user have to stay in the apartment. 
 	 * This interval represents the number of nights the user might accept to stay in the apartment
@@ -901,7 +901,7 @@ public class ApartmentValueFunction {
 	public PartialValueFunction<Double> getNbMinNightValueFunction() {
 		return this.nbMinNightValueFunction;
 	}
-	
+
 	/**
 	 * Gets the weight of the number of person who can sleep in the apartment subjective value
 	 * @return the weight of the attribute nbSleepingValueWeight
@@ -909,7 +909,7 @@ public class ApartmentValueFunction {
 	public double getNbSleepingSubjectiveValueWeight() {
 		return this.nbSleepingSubjectiveValueWeight;
 	}
-	
+
 	/**
 	 * Gets an interval of the number of person who can sleep in the apartment.
 	 * This interval represents the number of person who can sleep in the apartment the
@@ -919,7 +919,7 @@ public class ApartmentValueFunction {
 	public PartialValueFunction<Double> getNbSleepingValueFunction() {
 		return this.nbSleepingValueFunction;
 	}
-	
+
 	/**
 	 * Gets the weight of the price per night subjective value
 	 * @return the weight of the attribute pricePerNightSubjectiveValueWeight
@@ -927,7 +927,7 @@ public class ApartmentValueFunction {
 	public double getPricePerNightSubjectiveValueWeight() {
 		return this.pricePerNightSubjectiveValueWeight;
 	}
-	
+
 	/**
 	 * Gets an interval of the price per night. 
 	 * This interval represents the price per night the
@@ -937,7 +937,7 @@ public class ApartmentValueFunction {
 	public PartialValueFunction<Double> getPricePerNightValueFunction() {
 		return this.pricePerNightValueFunction;
 	}
-	
+
 	/**
 	 * Gets the weight of the presence of a television subjective value
 	 * @return the weight of the attribute teleSubjectiveValueWeight
@@ -945,7 +945,7 @@ public class ApartmentValueFunction {
 	public double getTeleSubjectiveValueWeight() {
 		return this.teleSubjectiveValueWeight;
 	}
-	
+
 	/**
 	 * Gets a boolean representing whether if the apartment chosen has a tele or not
 	 * @return the attribute teleValueFunction
@@ -953,7 +953,7 @@ public class ApartmentValueFunction {
 	public PartialValueFunction<Boolean> getTeleValueFunction() {
 		return this.teleValueFunction;
 	}
-	
+
 	/**
 	 * Gets the weight of the presence of a terrace subjective value
 	 * @return the weight of the attribute terraceSubjectiveValueWeight
@@ -961,7 +961,7 @@ public class ApartmentValueFunction {
 	public double getTerraceSubjectiveValueWeight() {
 		return this.terraceSubjectiveValueWeight;
 	}
-	
+
 	/**
 	 * Gets a boolean representing whether if the apartment chosen has a terrace or not
 	 * @return the attribute terraceValueFunction
@@ -969,15 +969,15 @@ public class ApartmentValueFunction {
 	public PartialValueFunction<Boolean> getTerraceValueFunction() {
 		return this.terraceValueFunction;
 	}
-	
+
 	/**
 	 * Gets the weight of the presence of wifi subjective value
 	 * @return the weight of the attribute wifiSubjectiveValueWeight
 	 */
-	public double getWifiAreaSubjectiveValueWeight() {
+	public double getWifiSubjectiveValueWeight() {
 		return this.wifiSubjectiveValueWeight;
 	}
-	
+
 	/**
 	 * Gets a boolean representing whether if the apartment chosen has wifi or not
 	 * @return the attribute wifiValueFunction

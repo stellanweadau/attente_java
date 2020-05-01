@@ -16,7 +16,7 @@ class ApartmentValueFunctionTest {
 
 	ApartmentValueFunction valueFunction = new ApartmentValueFunction();
 	Apartment a;
-	
+
 	@BeforeEach
 	void initEach() {
 		a = new Builder().setFloorArea(250)
@@ -74,7 +74,7 @@ class ApartmentValueFunctionTest {
 		valueFunction.setTeleSubjectiveValueWeight(10d);
 		assertEquals(10d,valueFunction.getSubjectiveValueWeight(Criterion.TELE));
 		assertEquals(0.04587, valueFunction.getSubjectiveValue(a), 0.00001);
-	
+
 	}
 
 	@Test
@@ -109,13 +109,38 @@ class ApartmentValueFunctionTest {
 
 	@Test
 	void adaptBoundsTest() {
-		
+
 		assertThrows(IllegalArgumentException.class, () -> valueFunction.adaptBounds(Criterion.TELE, 0d, true));
 		valueFunction.adaptBounds(Criterion.FLOOR_AREA_TERRACE, 25d, true);
+		LinearValueFunction lvf = (LinearValueFunction) valueFunction.getFloorAreaTerraceValueFunction();
+		assertEquals(25d,lvf.getInterval().lowerEndpoint());
 		assertEquals(0.6, valueFunction.getFloorAreaTerraceValueFunction().getSubjectiveValue(a.getFloorAreaTerrace()));
 		valueFunction.adaptBounds(Criterion.NB_BEDROOMS, 8, false);
 		double nbRooms = a.getNbBedrooms();
 		assertEquals(0d,valueFunction.getNbBedroomsValueFunction().getSubjectiveValue(nbRooms));
+		lvf = (LinearValueFunction) valueFunction.getNbBedroomsValueFunction();
+		assertEquals(8,lvf.getInterval().upperEndpoint());
+	}
+
+	@Test
+	void getRandomApartmentValueFunctionTest() {
+		
+		ApartmentValueFunction apart = ApartmentValueFunction.getRandomApartmentValueFunction();
+		assertEquals(1d, apart.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea()));
+		LinearValueFunction lvf = (LinearValueFunction) apart.getFloorAreaTerraceValueFunction();
+		assertEquals(true, lvf.getInterval().upperEndpoint() <= 101d);
+		assertEquals(true, apart.getTeleSubjectiveValueWeight() <= 1d);
+		double sum = apart.getTeleSubjectiveValueWeight() 
+				+ apart.getFloorAreaSubjectiveValueWeight() 
+				+ apart.getFloorAreaTerraceSubjectiveValueWeight()
+				+ apart.getNbBathroomsSubjectiveValueWeight() 
+				+ apart.getNbBedroomsSubjectiveValueWeight() 
+				+ apart.getNbSleepingSubjectiveValueWeight() 
+				+ apart.getNbMinNightSubjectiveValueWeight()
+				+ apart.getPricePerNightSubjectiveValueWeight() 
+				+ apart.getTerraceSubjectiveValueWeight() 
+				+ apart.getWifiSubjectiveValueWeight();
+		assertEquals(1d,sum);
 	}
 
 }
