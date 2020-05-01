@@ -118,8 +118,10 @@ public abstract class JsonConvert {
 	 * @param listApartments <code>{@link List}</code> object to convert into JSON
 	 * @throws IOException if the JSON file can't be created.
 	 */
-	public static void apartmentsToJson(List<Apartment> listApartments) throws IOException {
-		apartmentsToJson(listApartments, exportApartments());
+	public static Path apartmentsToJson(List<Apartment> listApartments) throws IOException {
+		Path defaultPath = exportApartments();
+		apartmentsToJson(listApartments, defaultPath);
+		return defaultPath.toAbsolutePath();
 	}
 
 	/**

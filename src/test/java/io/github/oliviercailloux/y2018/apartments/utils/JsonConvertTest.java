@@ -5,6 +5,7 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
@@ -65,6 +66,13 @@ public class JsonConvertTest {
 
 		assertEquals(expectedApartment, Files.readString(jsonPath));
 		assertThrows(IOException.class, () -> JsonConvert.apartmentsToJson(apartments, Paths.get("")));
+		
+		Path defaultPath = JsonConvert.apartmentsToJson(apartments);
+		assertEquals(expectedApartment, Files.readString(defaultPath));
+		
+		Path differentDefaultPath = JsonConvert.apartmentsToJson(apartments);
+		assertEquals(expectedApartment, Files.readString(differentDefaultPath));
+		assertNotEquals(differentDefaultPath, defaultPath);
 	}
 
 	/**
