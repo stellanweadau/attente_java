@@ -15,8 +15,12 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 class ApartmentValueFunctionTest {
 
 	ApartmentValueFunction valueFunction = new ApartmentValueFunction();
+
 	Apartment a;
 
+	/**
+	 * Inits the apartmentValueFunction object and the apartment before each tests
+	 */
 	@BeforeEach
 	void initEach() {
 		a = new Builder().setFloorArea(250)
@@ -40,6 +44,8 @@ class ApartmentValueFunctionTest {
 
 		LinearValueFunction nbSleepingV = new LinearValueFunction(3d, 5d);
 		valueFunction.setNbSleepingValueFunction(nbSleepingV);
+		nbSleepingV = (LinearValueFunction) valueFunction.getNbSleepingValueFunction();
+		assertEquals(5d, nbSleepingV.getInterval().upperEndpoint());
 
 		ReversedLinearValueFunction nbMinNightV = new ReversedLinearValueFunction(7d, 30d);
 		valueFunction.setNbMinNightValueFunction(nbMinNightV);
@@ -49,6 +55,8 @@ class ApartmentValueFunctionTest {
 
 		LinearValueFunction nbBedroomsV = new LinearValueFunction(3d, 4d);
 		valueFunction.setNbBedroomsValueFunction(nbBedroomsV);
+		nbBedroomsV = (LinearValueFunction) valueFunction.getNbSleepingValueFunction();
+		assertEquals(4d, nbBedroomsV.getInterval().upperEndpoint());
 
 		ReversedLinearValueFunction pricePerNightV = new ReversedLinearValueFunction(20d, 40d);
 		valueFunction.setPricePerNightValueFunction(pricePerNightV);
@@ -61,11 +69,16 @@ class ApartmentValueFunctionTest {
 
 		LinearValueFunction nbBathroomsV = new LinearValueFunction(2d, 3d);
 		valueFunction.setNbBathroomsValueFunction(nbBathroomsV);
+		nbBathroomsV = (LinearValueFunction) valueFunction.getNbSleepingValueFunction();
+		assertEquals(3d, nbBathroomsV.getInterval().upperEndpoint());
 
 		LinearValueFunction floorAreaTerraceV = new LinearValueFunction(30d, 50d);
 		valueFunction.setFloorAreaTerraceValueFunction(floorAreaTerraceV);
 	}
 
+	/**
+	 * Function to test the computing of the subjective value of an apartment
+	 */
 	@Test
 	void apartmentValueFunctionTest() {
 
@@ -77,6 +90,9 @@ class ApartmentValueFunctionTest {
 
 	}
 
+	/**
+	 * Test if the weight setter throw a Illegal Argument Exception when needed
+	 */
 	@Test
 	void exceptionIllegalArgWeightSetter() {
 
@@ -93,6 +109,9 @@ class ApartmentValueFunctionTest {
 
 	}
 
+	/**
+	 * Function to test the adaptation to the subjective value weight of a criteria
+	 */
 	@Test
 	void adaptWeightTest() {
 
@@ -107,6 +126,9 @@ class ApartmentValueFunctionTest {
 
 	}
 
+	/**
+	 * Function to test if the bounds of an interval adapt well when needed
+	 */
 	@Test
 	void adaptBoundsTest() {
 
@@ -122,6 +144,9 @@ class ApartmentValueFunctionTest {
 		assertEquals(8,lvf.getInterval().upperEndpoint());
 	}
 
+	/**
+	 * Function to test if a random apartment generated respects some criteria
+	 */
 	@Test
 	void getRandomApartmentValueFunctionTest() {
 		
@@ -140,7 +165,7 @@ class ApartmentValueFunctionTest {
 				+ apart.getPricePerNightSubjectiveValueWeight() 
 				+ apart.getTerraceSubjectiveValueWeight() 
 				+ apart.getWifiSubjectiveValueWeight();
-		assertEquals(1d,sum);
+		assertEquals(1d, sum, 0.00001);
 	}
 
 }
