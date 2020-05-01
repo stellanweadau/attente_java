@@ -227,7 +227,7 @@ public abstract class ApartmentFactory {
 	 * @return the list of apartments found in the json file.
 	 * @throws IOException if we cannot have access to the json file.
 	 */
-	public static List<Apartment> generateApartmentFromJsonPath(Path jsonFilePath) throws IOException {
+	public static List<Apartment> generateApartmentsFromJsonPath(Path jsonFilePath) throws IOException {
 		return JsonConvert.jsonToApartments(jsonFilePath);
 	}
 
