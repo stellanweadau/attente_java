@@ -25,4 +25,4 @@ jobs:
         with:
           java-version: 11
       - name: Verify maven
-        run: mvn -B clean verify --file pom.xml
+        run: mvn -B verify --file pom.xml
