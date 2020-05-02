@@ -78,7 +78,7 @@ public abstract class JsonConvert {
 	 * @return <i>List</i> the list of Apartments created
 	 * @throws IOException if the file doesn't exists
 	 */
-	public static List<Apartment> jsonToApartments() throws IOException {
+	public static List<Apartment> getDefaultApartments() throws IOException {
 		Path apartPath = startApartments();
 		return jsonToApartments(apartPath);
 	}
