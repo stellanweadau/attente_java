@@ -17,117 +17,115 @@ import io.github.oliviercailloux.y2018.apartments.utils.RandomRange;
  * The public class ApartmentValueFunction enables to compute the subjective
  * values of apartments. This is provided by the creation of an object
  * ApartmentValueFunction which contains for each valuable attribute of an
- * apartment : An object of {@link PartialValueFunction} and an associated
- * weight.
+ * apartment : An object of and an associated weight.
  */
 public class ApartmentValueFunction {
 
 	/**
-	 *  A {@link PartialValueFunction} object on which the calculation of the floor area subjective values 
-	 *  are based.
+	 * An object on which the calculation of the floor area subjective values are
+	 * based.
 	 */
 	private PartialValueFunction<Double> floorAreaValueFunction;
 
 	/**
-	 *  A {@link PartialValueFunction} object on which the calculation of the number of bedrooms subjective
-	 *  value is based
+	 * An object on which the calculation of the number of bedrooms subjective value
+	 * is based
 	 */
 	private PartialValueFunction<Double> nbBedroomsValueFunction;
 
 	/**
-	 * A {@link PartialValueFunction} object on which the calculation of the number of accommodation capacity
+	 * An object on which the calculation of the number of accommodation capacity
 	 * subjective values are based.
 	 */
 	private PartialValueFunction<Double> nbSleepingValueFunction;
 
 	/**
-	 *  A {@link PartialValueFunction} object on which the
-	 *                           calculation of the number of bathrooms subjective
-	 *                           values are based.
+	 * An object on which the calculation of the number of bathrooms subjective
+	 * values are based.
 	 */
 	private PartialValueFunction<Double> nbBathroomsValueFunction;
 
 	/**
-	 *  A {@link PartialValueFunction} object on which the calculation of the 
-	 *  presence of a terrace subjective values are based.
+	 * An object on which the calculation of the presence of a terrace subjective
+	 * values are based.
 	 */
 	private PartialValueFunction<Boolean> terraceValueFunction;
 
 	/**
-	 * A {@link PartialValueFunction} object on which the calculation of the floor area of an
-	 * existing terrace subjective values are based.
+	 * An object on which the calculation of the floor area of an existing terrace
+	 * subjective values are based.
 	 */
 	private PartialValueFunction<Double> floorAreaTerraceValueFunction;
 
 	/**
-	 * A {@link PartialValueFunction} object on which the calculation 
-	 * of the wireless connection subjective values are based.
+	 * An object on which the calculation of the wireless connection subjective
+	 * values are based.
 	 */
 	private PartialValueFunction<Boolean> wifiValueFunction;
 
 	/**
-	 * A {@link PartialValueFunction} object on which the calculation of the price per night subjective
-	 * values are based.
+	 * A object on which the calculation of the price per night subjective values
+	 * are based.
 	 */
 	private PartialValueFunction<Double> pricePerNightValueFunction;
 
 	/**
-	 * A {@link PartialValueFunction} object on which the calculation of the minimum number of nights
-	 * subjective values are based.
+	 * An object on which the calculation of the minimum number of nights subjective
+	 * values are based.
 	 */
 	private PartialValueFunction<Double> nbMinNightValueFunction;
 
 	/**
-	 * A {@link PartialValueFunction} object on which the calculation of the presence 
-	 * of a television subjective values are based.
+	 * An object on which the calculation of the presence of a television subjective
+	 * values are based.
 	 */
 	private PartialValueFunction<Boolean> teleValueFunction;
 
 	/**
-	 * The weight associated to the floor area subjective value in the calculation of the
-	 *                                 Apartment total subjective value
+	 * The weight associated to the floor area subjective value in the calculation
+	 * of the Apartment total subjective value
 	 */
 	private double floorAreaSubjectiveValueWeight;
 
 	/**
-	 * The weight associated to the number of bedrooms subjective value in the calculation
-	 * of the Apartment total subjective value
+	 * The weight associated to the number of bedrooms subjective value in the
+	 * calculation of the Apartment total subjective value
 	 */
 	private double nbBedroomsSubjectiveValueWeight;
 
 	/**
-	 * The weight associated to the accommodation capacity subjective value in the calculation
-	 * of the Apartment total subjective value
+	 * The weight associated to the accommodation capacity subjective value in the
+	 * calculation of the Apartment total subjective value
 	 */
 	private double nbSleepingSubjectiveValueWeight;
 
 	/**
-	 * The weight associated to the number of bathrooms subjective value in the calculation 
-	 * of the Apartment total subjective value
+	 * The weight associated to the number of bathrooms subjective value in the
+	 * calculation of the Apartment total subjective value
 	 */
 	private double nbBathroomsSubjectiveValueWeight;
 
 	/**
-	 * The weight associated to the presence of a terrace subjective value in the calculation of
-	 * the Apartment total subjective value
+	 * The weight associated to the presence of a terrace subjective value in the
+	 * calculation of the Apartment total subjective value
 	 */
 	private double terraceSubjectiveValueWeight;
 
 	/**
-	 * The weight associated to the floor area of an existing terrace subjective value in 
-	 * the calculation of the Apartment total subjective value
+	 * The weight associated to the floor area of an existing terrace subjective
+	 * value in the calculation of the Apartment total subjective value
 	 */
 	private double floorAreaTerraceSubjectiveValueWeight;
 
 	/**
-	 * The weight associated to the presence of a wireless connection subjective value in the
-	 * calculation of the Apartment total subjective value
+	 * The weight associated to the presence of a wireless connection subjective
+	 * value in the calculation of the Apartment total subjective value
 	 */
 	private double wifiSubjectiveValueWeight;
 
 	/**
-	 * The weight associated to the price per night subjective value in the calculation
-	 * of the Apartment total subjective value
+	 * The weight associated to the price per night subjective value in the
+	 * calculation of the Apartment total subjective value
 	 */
 	private double pricePerNightSubjectiveValueWeight;
 
@@ -138,8 +136,8 @@ public class ApartmentValueFunction {
 	private double nbMinNightSubjectiveValueWeight;
 
 	/**
-	 * The weight associated to the presence of a television subjective value in the calculation of
-	 * the Apartment total subjective value
+	 * The weight associated to the presence of a television subjective value in the
+	 * calculation of the Apartment total subjective value
 	 */
 	private double teleSubjectiveValueWeight;
 
@@ -447,42 +445,42 @@ public class ApartmentValueFunction {
 
 		checkArgument(
 				floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) >= 0
-				&& floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1,
+						&& floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1,
 				"The subjective value of floor area should be between 0 and 1");
 		floorAreaSubjectiveValue = floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea());
 		LOGGER.info("The floor area subjective value has been set to {}", floorAreaSubjectiveValue);
 
 		checkArgument(
 				nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) >= 0
-				&& nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1,
+						&& nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1,
 				"The subjective value of the number of bedrooms should be between 0 and 1");
 		nbBedroomsSubjectiveValue = nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms());
 		LOGGER.info("The number of bedrooms subjective value has been set to {}", nbBedroomsSubjectiveValue);
 
 		checkArgument(
 				nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) >= 0
-				&& nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1,
+						&& nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1,
 				"The subjective value of the number of sleeping should be between 0 and 1");
 		nbSleepingSubjectiveValue = nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping());
 		LOGGER.info("The number of sleeping subjective value has been set to {}", nbSleepingSubjectiveValue);
 
 		checkArgument(
 				nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) >= 0
-				&& nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1,
+						&& nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1,
 				"The subjective value of the number of bathrooms should be between 0 and 1");
 		nbBathroomsSubjectiveValue = nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms());
 		LOGGER.info("The number of bathrooms subjective value has been set to {}", nbBathroomsSubjectiveValue);
 
 		checkArgument(
 				terraceValueFunction.getSubjectiveValue(apart.getTerrace()) >= 0
-				&& terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1,
+						&& terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1,
 				"The subjective value of the terrace should be between 0 and 1");
 		terraceSubjectiveValue = terraceValueFunction.getSubjectiveValue(apart.getTerrace());
 		LOGGER.info("The terrace subjective value has been set to {}", terraceSubjectiveValue);
 
 		checkArgument(
 				floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) >= 0
-				&& floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1,
+						&& floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1,
 				"The subjective value of the floor area of the terrace should be between 0 and 1");
 		floorAreaTerraceSubjectiveValue = floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace());
 		LOGGER.info("The floor area of the terrace subjective value has been set to {}",
@@ -490,28 +488,28 @@ public class ApartmentValueFunction {
 
 		checkArgument(
 				wifiValueFunction.getSubjectiveValue(apart.getWifi()) >= 0
-				&& wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1,
+						&& wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1,
 				"The subjective value of the wifi should be between 0 and 1");
 		wifiSubjectiveValue = wifiValueFunction.getSubjectiveValue(apart.getWifi());
 		LOGGER.info("The wifi subjective value has been set to {}", wifiSubjectiveValue);
 
 		checkArgument(
 				pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) >= 0
-				&& pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1,
+						&& pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1,
 				"The subjective value of the price per night should be between 0 and 1");
 		pricePerNightSubjectiveValue = pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight());
 		LOGGER.info("the price per night subjective value has been set to {}", pricePerNightSubjectiveValue);
 
 		checkArgument(
 				nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) >= 0
-				&& nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1,
+						&& nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1,
 				"The subjective value of the minimum number of nights should be between 0 and 1");
 		nbMinNightSubjectiveValue = nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight());
 		LOGGER.info("The minimum number of nights subjective value has been set to {}", nbMinNightSubjectiveValue);
 
 		checkArgument(
 				teleValueFunction.getSubjectiveValue(apart.getTele()) >= 0
-				&& teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1,
+						&& teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1,
 				"The subjective value of the presence of a tele should be between 0 and 1");
 		teleSubjectiveValue = teleValueFunction.getSubjectiveValue(apart.getTele());
 		LOGGER.info("the tele subjective value has been set to {}", teleSubjectiveValue);
@@ -572,9 +570,9 @@ public class ApartmentValueFunction {
 				new LinearValueFunction(floorAreaTerraceStartBound, floorAreaTerraceEndBound));
 		apartValueFunction.setWifiValueFunction(new BooleanValueFunction(wifiEndBound));
 		apartValueFunction
-		.setPricePerNightValueFunction(new LinearValueFunction(pricePerNightStartBound, pricePerNightEndBound));
+				.setPricePerNightValueFunction(new LinearValueFunction(pricePerNightStartBound, pricePerNightEndBound));
 		apartValueFunction
-		.setNbMinNightValueFunction(new ReversedLinearValueFunction(nbMinNightStartBound, nbMinNightEndBound));
+				.setNbMinNightValueFunction(new ReversedLinearValueFunction(nbMinNightStartBound, nbMinNightEndBound));
 		apartValueFunction.setTeleValueFunction(new BooleanValueFunction(teleEndBound));
 
 		List<Double> weightRange = RandomRange.weightRangeOfSum(1d, 10);
@@ -600,9 +598,9 @@ public class ApartmentValueFunction {
 	 * associated to criteria is a LinearValueFunction, even if in real life it
 	 * would be a discrete criteria (e.g. the number of bedrooms)
 	 * 
-	 * The goal is to replace a LinearValueFunction's bound by a new bound
-	 * Warning : The values of the object should be instanciate before using this function 
-	 * or an error will appear
+	 * The goal is to replace a LinearValueFunction's bound by a new bound Warning :
+	 * The values of the object should be instanciate before using this function or
+	 * an error will appear
 	 * 
 	 * @param criterion the criterion to adapt. This criterion should not be a
 	 *                  boolean as TV for example.
@@ -651,9 +649,9 @@ public class ApartmentValueFunction {
 			lvf = (LinearValueFunction) this.nbMinNightValueFunction;
 			this.setNbMinNightValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
-			// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
-			// don't have bounds)
-			// $CASES-OMITTED$
+		// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
+		// don't have bounds)
+		// $CASES-OMITTED$
 		default:
 			throw new IllegalArgumentException();
 		}
@@ -669,7 +667,8 @@ public class ApartmentValueFunction {
 	 * @param lower    used to say whether we change the lower or upper bound
 	 * @return an new object LinearValueFunction set with new bound
 	 */
-	private static LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound, boolean lower) {
+	private static LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound,
+			boolean lower) {
 		if (lower) {
 			return new LinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
 		}
@@ -694,8 +693,7 @@ public class ApartmentValueFunction {
 		checkNotNull(moreImportant, "This criterion cannot be null");
 		checkArgument(!Objects.equals(moreImportant, lessImportant), "Both fields are the same.");
 
-		double weightSum = this.getSubjectiveValueWeight(moreImportant) 
-				+ this.getSubjectiveValueWeight(lessImportant);
+		double weightSum = this.getSubjectiveValueWeight(moreImportant) + this.getSubjectiveValueWeight(lessImportant);
 
 		this.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
 		this.setSubjectiveValueWeight(lessImportant, weightSum / 10);
@@ -786,6 +784,7 @@ public class ApartmentValueFunction {
 
 	/**
 	 * Gets the weight of the floor area subjective value
+	 * 
 	 * @return the weight of the attribute floorAreaSubjectiveValueWeight
 	 */
 	public double getFloorAreaSubjectiveValueWeight() {
@@ -793,8 +792,9 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets the interval of the floor area value. This interval represents the range of floor area the
-	 * user might accept
+	 * Gets the interval of the floor area value. This interval represents the range
+	 * of floor area the user might accept
+	 * 
 	 * @return the attribute floorAreaValueFunction
 	 */
 	public PartialValueFunction<Double> getFloorAreaValueFunction() {
@@ -803,6 +803,7 @@ public class ApartmentValueFunction {
 
 	/**
 	 * Gets the weight of the floor area Terrace subjective value
+	 * 
 	 * @return the weight of the attribute floorAreaTerraceSubjectiveValueWeight
 	 */
 	public double getFloorAreaTerraceSubjectiveValueWeight() {
@@ -810,8 +811,9 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets the interval of the floor area terrace value. This interval represents the range of floor area 
-	 * the user might accept
+	 * Gets the interval of the floor area terrace value. This interval represents
+	 * the range of floor area the user might accept
+	 * 
 	 * @return the attribute floorAreaTerraceValueFunction
 	 */
 	public PartialValueFunction<Double> getFloorAreaTerraceValueFunction() {
@@ -820,6 +822,7 @@ public class ApartmentValueFunction {
 
 	/**
 	 * Gets the weight of the number of bathrooms subjective value
+	 * 
 	 * @return the weight of the attribute nbBathroomsSubjectiveValueWeight
 	 */
 	public double getNbBathroomsSubjectiveValueWeight() {
@@ -827,8 +830,9 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets an interval of the number of bathrooms. This interval represents the number of bathrooms the
-	 * user might accept in the apartment
+	 * Gets an interval of the number of bathrooms. This interval represents the
+	 * number of bathrooms the user might accept in the apartment
+	 * 
 	 * @return the attribute nbBathroomsValueFunction
 	 */
 	public PartialValueFunction<Double> getNbBathroomsValueFunction() {
@@ -837,6 +841,7 @@ public class ApartmentValueFunction {
 
 	/**
 	 * Gets the weight of the number of bedrooms subjective value
+	 * 
 	 * @return the weight of the attribute nbBedroomsSubjectiveValueWeight
 	 */
 	public double getNbBedroomsSubjectiveValueWeight() {
@@ -844,8 +849,9 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets an interval of the number of bedrooms. This interval represents the number of bedrooms the
-	 * user might accept in the apartment
+	 * Gets an interval of the number of bedrooms. This interval represents the
+	 * number of bedrooms the user might accept in the apartment
+	 * 
 	 * @return the attribute nbBedroomsValueFunction
 	 */
 	public PartialValueFunction<Double> getNbBedroomsValueFunction() {
@@ -853,7 +859,9 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets the weight of the number of minimum night the user have to stay subjective value
+	 * Gets the weight of the number of minimum night the user have to stay
+	 * subjective value
+	 * 
 	 * @return the weight of the attribute nbMinNightSubjectiveValueWeight
 	 */
 	public double getNbMinNightSubjectiveValueWeight() {
@@ -861,8 +869,10 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets an interval of the number of minimum night the user have to stay in the apartment. 
-	 * This interval represents the number of nights the user might accept to stay in the apartment
+	 * Gets an interval of the number of minimum night the user have to stay in the
+	 * apartment. This interval represents the number of nights the user might
+	 * accept to stay in the apartment
+	 * 
 	 * @return the attribute nbMinNightValueFunction
 	 */
 	public PartialValueFunction<Double> getNbMinNightValueFunction() {
@@ -870,7 +880,9 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets the weight of the number of person who can sleep in the apartment subjective value
+	 * Gets the weight of the number of person who can sleep in the apartment
+	 * subjective value
+	 * 
 	 * @return the weight of the attribute nbSleepingValueWeight
 	 */
 	public double getNbSleepingSubjectiveValueWeight() {
@@ -878,9 +890,10 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets an interval of the number of person who can sleep in the apartment.
-	 * This interval represents the number of person who can sleep in the apartment the
+	 * Gets an interval of the number of person who can sleep in the apartment. This
+	 * interval represents the number of person who can sleep in the apartment the
 	 * user might accept in the apartment
+	 * 
 	 * @return the attribute nbSleepingValueFunction
 	 */
 	public PartialValueFunction<Double> getNbSleepingValueFunction() {
@@ -889,6 +902,7 @@ public class ApartmentValueFunction {
 
 	/**
 	 * Gets the weight of the price per night subjective value
+	 * 
 	 * @return the weight of the attribute pricePerNightSubjectiveValueWeight
 	 */
 	public double getPricePerNightSubjectiveValueWeight() {
@@ -896,9 +910,9 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets an interval of the price per night. 
-	 * This interval represents the price per night the
-	 * user might accept to stay in the apartment chosen
+	 * Gets an interval of the price per night. This interval represents the price
+	 * per night the user might accept to stay in the apartment chosen
+	 * 
 	 * @return the attribute pricePerNightValueFunction
 	 */
 	public PartialValueFunction<Double> getPricePerNightValueFunction() {
@@ -907,6 +921,7 @@ public class ApartmentValueFunction {
 
 	/**
 	 * Gets the weight of the presence of a television subjective value
+	 * 
 	 * @return the weight of the attribute teleSubjectiveValueWeight
 	 */
 	public double getTeleSubjectiveValueWeight() {
@@ -915,6 +930,7 @@ public class ApartmentValueFunction {
 
 	/**
 	 * Gets a boolean representing whether if the apartment chosen has a tele or not
+	 * 
 	 * @return the attribute teleValueFunction
 	 */
 	public PartialValueFunction<Boolean> getTeleValueFunction() {
@@ -923,6 +939,7 @@ public class ApartmentValueFunction {
 
 	/**
 	 * Gets the weight of the presence of a terrace subjective value
+	 * 
 	 * @return the weight of the attribute terraceSubjectiveValueWeight
 	 */
 	public double getTerraceSubjectiveValueWeight() {
@@ -930,7 +947,9 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets a boolean representing whether if the apartment chosen has a terrace or not
+	 * Gets a boolean representing whether if the apartment chosen has a terrace or
+	 * not
+	 * 
 	 * @return the attribute terraceValueFunction
 	 */
 	public PartialValueFunction<Boolean> getTerraceValueFunction() {
@@ -939,6 +958,7 @@ public class ApartmentValueFunction {
 
 	/**
 	 * Gets the weight of the presence of wifi subjective value
+	 * 
 	 * @return the weight of the attribute wifiSubjectiveValueWeight
 	 */
 	public double getWifiSubjectiveValueWeight() {
@@ -947,6 +967,7 @@ public class ApartmentValueFunction {
 
 	/**
 	 * Gets a boolean representing whether if the apartment chosen has wifi or not
+	 * 
 	 * @return the attribute wifiValueFunction
 	 */
 	public PartialValueFunction<Boolean> getWifiValueFunction() {
