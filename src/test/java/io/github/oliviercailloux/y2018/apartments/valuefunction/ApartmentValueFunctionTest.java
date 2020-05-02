@@ -2,6 +2,7 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -148,8 +149,8 @@ class ApartmentValueFunctionTest {
 		ApartmentValueFunction apart = ApartmentValueFunction.getRandomApartmentValueFunction();
 		assertEquals(1d, apart.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea()));
 		LinearValueFunction lvf = (LinearValueFunction) apart.getFloorAreaTerraceValueFunction();
-		assertEquals(true, lvf.getInterval().upperEndpoint() <= 101d);
-		assertEquals(true, apart.getTeleSubjectiveValueWeight() <= 1d);
+		assertTrue(lvf.getInterval().upperEndpoint() <= 101d);
+		assertTrue(apart.getTeleSubjectiveValueWeight() <= 1d);
 		double sum = apart.getTeleSubjectiveValueWeight() + apart.getFloorAreaSubjectiveValueWeight()
 				+ apart.getFloorAreaTerraceSubjectiveValueWeight() + apart.getNbBathroomsSubjectiveValueWeight()
 				+ apart.getNbBedroomsSubjectiveValueWeight() + apart.getNbSleepingSubjectiveValueWeight()
