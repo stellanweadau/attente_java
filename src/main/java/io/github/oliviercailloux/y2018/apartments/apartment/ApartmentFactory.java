@@ -46,7 +46,7 @@ public abstract class ApartmentFactory {
 	 * This function aims to generate a new apartment with random characteristics
 	 * and a real address if the Address Api answer.
 	 * 
-	 * @return An {@link Apartment} with random characteristics and a real address
+	 * @return An Apartment with random characteristics and a real address
 	 *         if the Address Api answer
 	 */
 	public static Apartment generateRandomApartment() {
@@ -110,7 +110,7 @@ public abstract class ApartmentFactory {
 	 * This function aims to generate a list of random apartments with real address.
 	 * 
 	 * @param nbApartment the number of apartments the list should contains
-	 * @return a {@link List} of random apartments of size nbApartment with real
+	 * @return a List of random apartments of size nbApartment with real
 	 *         Address
 	 * @throws IOException if the Address API doesn't answer
 	 */
@@ -122,7 +122,7 @@ public abstract class ApartmentFactory {
 	 * This function aims to generate a list of random apartments.
 	 *
 	 * @param nbApartment the number of apartments the list should contains
-	 * @return a {@link List} of random apartments of size nbApartment
+	 * @return a List of random apartments of size nbApartment
 	 * @throws IOException if the Address API doesn't answer
 	 */
 	private static List<Apartment> generateRandomApartmentList(int nbApartment, boolean realAddress)

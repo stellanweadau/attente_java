@@ -45,7 +45,7 @@ public abstract class JsonConvert {
 	/**
 	 * The method return a default JSON file read by jsonToApartments.
 	 * 
-	 * @return {@link Path} where jsonToApartments will read.
+	 * @return Path where jsonToApartments will read.
 	 * @throws URISyntaxException if the resource cannot be found
 	 */
 	private static final Path startApartment() {
@@ -94,7 +94,7 @@ public abstract class JsonConvert {
 	 * </p>
 	 *
 	 * @param jsonString {@link String} the Address into JSON format
-	 * @return {@link String} the address field
+	 * @return the address field
 	 * 
 	 * @throws InvalidObjectException   In case the <code>features</code> field is
 	 *                                  empty
@@ -125,7 +125,7 @@ public abstract class JsonConvert {
 	 *
 	 * @param jsonPath {@link Path} the JSON expression to convert into Apartment
 	 *                 object
-	 * @return {@link Apartment} the Apartment generated
+	 * @return the Apartment generated
 	 * @throws IOException if the file can't be red
 	 */
 	public static Apartment jsonToApartment(Path jsonPath) throws IOException {
@@ -142,7 +142,7 @@ public abstract class JsonConvert {
 	/**
 	 * Converts a JSON expression to a list of Apartments.
 	 *
-	 * @return {@link List} the list of Apartments created
+	 * @return the list of Apartments created
 	 * @throws IOException        if the file doesn't exists
 	 * @throws URISyntaxException
 	 */
@@ -156,7 +156,7 @@ public abstract class JsonConvert {
 	 *
 	 * @param jsonPath {@link Path} the JSON expression to convert into a list of
 	 *                 Apartments
-	 * @return {@link List} the list of Apartments created
+	 * @return the list of Apartments created
 	 * @throws IOException if the file doesn't exists
 	 */
 	@SuppressWarnings("serial")
