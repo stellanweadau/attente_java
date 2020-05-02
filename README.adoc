@@ -14,7 +14,7 @@
 
 = Apartments
 
-image:https://travis-ci.com/av1m/Apartments.svg?branch=master["Build Status", link="https://travis-ci.com/av1m/Apartments"]
+image:https://github.com/av1m/Apartments/workflows/Java%20CI%20with%20Maven/badge.svg["Build Status", link="https://github.com/av1m/apartments/actions?query=workflow%3A%22Java+CI+with+Maven%22"]
 image:https://www.codefactor.io/repository/github/av1m/apartments/badge["Codefactor", link="https://www.codefactor.io/repository/github/av1m/apartments/"]
 
 A Java project developed by students during the link:https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in link:http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
