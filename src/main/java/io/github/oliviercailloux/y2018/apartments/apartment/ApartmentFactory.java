@@ -35,7 +35,7 @@ public abstract class ApartmentFactory {
 	 * This function aims to generate a new apartment with random characteristics
 	 * and a real address.
 	 * 
-	 * @return An {@link Apartment} with random characteristics and a real address
+	 * @return An Apartment with random characteristics and a real address
 	 * @throws IOException if the Address API doesn't answer
 	 */
 	public static Apartment generateRandomRealApartment() throws IOException {
@@ -61,7 +61,8 @@ public abstract class ApartmentFactory {
 	 * This function aims to generate a new apartment with random characteristics.
 	 *
 	 * @param realAddress - True indicates that the address is necessarily real (may
-	 *                    have an {@link InvalidObjectException}) <br>
+	 *                    have an {@link InvalidObjectException}) in case the API
+	 *                    does not return a good address format <br>
 	 *                    False indicates that if a real address cannot be returned
 	 *                    we will have an unreal address
 	 * @see #getRandomAddress()
@@ -161,8 +162,11 @@ public abstract class ApartmentFactory {
 	 * @return the address generated.
 	 * @throws InvalidObjectException in case the API doesn't return a good format
 	 *                                after a certain number of attempts (RETRY)
+	 * @throws ClientErrorException   in case the jax-rs call fails, for example
+	 *                                because of no connection or an HTTP 500, 404
+	 *                                or others
 	 */
-	private static String getOnlineRandomAddress() throws InvalidObjectException {
+	private static String getOnlineRandomAddress() throws ClientErrorException, InvalidObjectException {
 		/**
 		 * Maximum test value in case the API does not return the
 		 * features.properties.labels field In the case of an API error (for example
@@ -170,6 +174,7 @@ public abstract class ApartmentFactory {
 		 * <code>ClientErrorException</code>
 		 */
 		final int RETRY = 5;
+		String address = null;
 		// Latitude and longitude for Ile de France
 		final double LAT_IDF = 48.8_499_198d;
 		final double LONG_IDF = 2.6_370_411d;
@@ -186,9 +191,9 @@ public abstract class ApartmentFactory {
 			LOGGER.info("Address API Call : {}", target.getUri().toString());
 			String result = target.request(MediaType.TEXT_PLAIN).get(String.class);
 			try {
-				result = JsonConvert.getAddressFromJson(result);
+				address = JsonConvert.getAddressFromJson(result);
 				client.close();
-				return result;
+				break;
 			} catch (InvalidObjectException e) {
 				// We do nothing because we will try again.
 				// If the error persists, we raise an error at the end of the loop
@@ -197,6 +202,9 @@ public abstract class ApartmentFactory {
 			}
 		}
 		client.close();
+		if (address != null) {
+			return address;
+		}
 		// We were unable to retrieve a correct address
 		throw new InvalidObjectException("It appears that the API has failed to return a correct address.");
 	}

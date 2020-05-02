@@ -69,7 +69,7 @@ public class JsonConvertTest {
 				"Good JSON, must be return 37 Boulevard de Beaubourg 77184 Émerainville");
 		assertThrows(InvalidObjectException.class, () -> JsonConvert.getAddressFromJson(
 				"{\"type\": \"FeatureCollection\", \"version\": \"draft\", \"features\": [], \"attribution\": \"BAN\", \"licence\": \"ETALAB-2.0\", \"limit\": 1}"),
-				"features is empty, need to get IllegalArgumentException");
+				"features is empty, need to get InvalidObjectException");
 		assertThrows(NullPointerException.class, () -> JsonConvert.getAddressFromJson(null),
 				"null need to return NullPointerException");
 	}
