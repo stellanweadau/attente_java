@@ -60,23 +60,7 @@ public class JsonConvertTest {
 
 		String expectedApartment = "[{\"address\":\"118 rue du père noel 77480\",\"description\":\"\",\"floorArea\":1182118.48,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Grand Igloo\",\"wifi\":false},{\"address\":\"123 rue du soleil\",\"description\":\"\",\"floorArea\":1234567.89,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Maison Test\",\"wifi\":false}]";
 
-		URI ressource = JsonConvertTest.class.getResource("jsonApartments.json").toURI();
-		Path jsonPath = Path.of(ressource);
-
-		JsonConvert.apartmentsToJson(apartments, jsonPath);
-
-		assertEquals(expectedApartment, Files.readString(jsonPath));
-		assertThrows(IOException.class, () -> JsonConvert.apartmentsToJson(apartments, Paths.get("")));
-
-		Path defaultPath = JsonConvert.apartmentsToJson(apartments);
-		assertEquals(expectedApartment, Files.readString(defaultPath));
-
-		Path differentDefaultPath = JsonConvert.apartmentsToJson(apartments);
-		assertEquals(expectedApartment, Files.readString(differentDefaultPath));
-		assertNotEquals(differentDefaultPath, defaultPath);
-
-		Files.delete(defaultPath);
-		Files.delete(differentDefaultPath);
+		assertEquals(expectedApartment, JsonConvert.apartmentsToJsonString(apartments));
 	}
 
 	/**

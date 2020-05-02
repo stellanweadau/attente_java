@@ -117,6 +117,7 @@ public abstract class JsonConvert {
 	 * APARTMENT_PATH_JSON.
 	 *
 	 * @param listApartments <code>{@link List}</code> object to convert into JSON
+	 * @return <i>Path</i> of the created file
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static Path apartmentsToJson(List<Apartment> listApartments) throws IOException {
@@ -136,13 +137,23 @@ public abstract class JsonConvert {
 	 * @throws IOException if the JSON file can't be created.
 	 */
 	public static void apartmentsToJson(List<Apartment> listApartments, Path jsonPath) throws IOException {
-		String toJson;
+		Files.writeString(jsonPath, apartmentsToJsonString(listApartments));
+		LOGGER.info("Apartment have been converted with success");
+	}
+
+	/**
+	 * Converts a list of Apartments to a JSON file.
+	 * 
+	 * @param listApartments <code>{@link List}</code> object to convert into JSON
+	 *                       (<b>listApartments</b> could contain only one
+	 *                       apartment)
+	 * @return <i>String</i> containing the list of Apartments in JSON format
+	 */
+	public static String apartmentsToJsonString(List<Apartment> listApartments) {
 		try (Jsonb jsonb = JsonbBuilder.create()) {
-			toJson = jsonb.toJson(listApartments);
+			return jsonb.toJson(listApartments);
 		} catch (Exception e) {
 			throw new IllegalStateException(e);
 		}
-		Files.writeString(jsonPath, toJson);
-		LOGGER.info("Apartment have been converted with success");
 	}
 }
