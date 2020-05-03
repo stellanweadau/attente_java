@@ -103,7 +103,7 @@ public abstract class JsonConvert {
 			apartmentsBuild = jsonb.fromJson(jsonString, new ArrayList<Apartment.Builder>() {
 			}.getClass().getGenericSuperclass());
 		} catch (Exception e) {
-			throw new IllegalStateException(e);
+			throw new IllegalArgumentException(e);
 		}
 
 		for (Builder apartmentToBuild : apartmentsBuild) {
