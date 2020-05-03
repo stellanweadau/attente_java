@@ -1,11 +1,15 @@
 package io.github.oliviercailloux.y2018.apartments.apartment;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -16,7 +20,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
-import io.github.oliviercailloux.y2018.apartments.exception.AddressApiException;
 import io.github.oliviercailloux.y2018.apartments.utils.JsonConvert;
 
 /**
@@ -153,9 +156,8 @@ public abstract class ApartmentFactory {
 	 * Call an API which generates a random address. This function aims at getting
 	 * the random address generated.
 	 * <p>
-	 * So, we generate a random latitude and a longitude and try to
-	 * {@link io.github.oliviercailloux.y2018.apartments.utils.JsonConvert#getAddressFromJson(String)
-	 * retrieve an address}
+	 * So, we generate a random latitude and a longitude and try to retrive an
+	 * address
 	 * <p>
 	 * 
 	 * @return the address generated.
@@ -189,18 +191,25 @@ public abstract class ApartmentFactory {
 			WebTarget target = client.target(URL_API_ADDRESS).queryParam("lon", longitude).queryParam("lat", latitude);
 			LOGGER.info("Address API Call : {}", target.getUri().toString());
 			String result = target.request(MediaType.TEXT_PLAIN).get(String.class);
-			try {
-				address = JsonConvert.getAddressFromJson(result);
+			try (JsonReader jr = Json.createReader(new StringReader(result))) {
+				JsonObject json = jr.readObject();
+				// check if the features.properties.label field is present
+				// In case it is not present, we return to the for-loop
+				if (json.containsKey("features") && !json.get("features").asJsonArray().isEmpty()
+						&& json.get("features").asJsonArray().get(0).asJsonObject().get("properties").asJsonObject()
+								.containsKey("label")) {
+					// We have recovered a good address!
+					// we can exit the for-loop and close the client
+					address = json.get("features").asJsonArray().get(0).asJsonObject().get("properties").asJsonObject()
+							.getString("label");
+					client.close();
+					break;
+				}
+			} catch (Exception e) {
+				// We caught an exception that seems abnormal,
+				// we close the client and throw the exception again
 				client.close();
-				break;
-			} catch (AddressApiException e) {
-				// We do nothing because we will try again.
-				// If the error persists, we raise an error at the end of the loop
-				LOGGER.error("API returned wrong address -long={}, -lat={} (Round {}/{}) \n{}", longitude, latitude, i,
-						RETRY, e.toString());
-			} catch (Exception otherException) {
-				client.close();
-				throw otherException;
+				throw e;
 			}
 		}
 		client.close();

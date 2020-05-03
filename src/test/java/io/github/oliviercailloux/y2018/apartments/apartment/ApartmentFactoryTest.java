@@ -4,7 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.nio.file.Path;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 
 import org.junit.jupiter.api.Test;
 
@@ -63,6 +72,23 @@ class ApartmentFactoryTest {
 	@Test
 	public void generateApartmentFromJsonExceptionTest() {
 		assertThrows(IOException.class, () -> ApartmentFactory.generateApartmentsFromJsonPath(Path.of("abc")));
+	}
+
+	/**
+	 * Make an API call and verify that the return format of the API has not changed
+	 */
+	@Test
+	public void testRandomAddress() {
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target("https://api-adresse.data.gouv.fr/reverse/?lon=2.2712946&lat=48.869962");
+		String result = target.request(MediaType.TEXT_PLAIN).get(String.class);
+		try (JsonReader jr = Json.createReader(new StringReader(result))) {
+			JsonObject json = jr.readObject();
+			String address = json.get("features").asJsonArray().get(0).asJsonObject().get("properties").asJsonObject()
+					.getString("label");
+			assertEquals("2 Chemin des Lacs à la Porte Dauphine 75016 Paris", address,
+					"Call to the address retrieval API with a fixed longitude and attitude");
+		}
 	}
 
 }

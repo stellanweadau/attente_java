@@ -24,8 +24,8 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.VerifyException;
 
+import io.github.oliviercailloux.y2018.apartments.apartment.AddressApiException;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
-import io.github.oliviercailloux.y2018.apartments.exception.AddressApiException;
 
 /**
  * The Class JsonConvert contains all function to transform Apartment object to
@@ -80,46 +80,6 @@ public abstract class JsonConvert {
 		Files.writeString(jsonPath, jsonb.toJson(a));
 
 		LOGGER.info("Apartment have been converted with success");
-	}
-
-	/**
-	 * Gets the address field from an Address JSON.
-	 * 
-	 * We have to make sure that we have everything at every step <br>
-	 * It is for this reason that the code is filled with check
-	 * <p>
-	 * The contract for this API is returned either <code>"features": []</code> if
-	 * the address cannot be found or in shape <code>{"features": ["properties":
-	 * {"label": "AdressHere"}]}</code>
-	 * </p>
-	 *
-	 * @param jsonString {@link String} the Address into JSON format
-	 * @return the address field
-	 * 
-	 * @throws AddressApiException      In case the <code>features</code> field is
-	 *                                  empty, in other words the jsonString is
-	 *                                  equals to :
-	 *                                  <code>{"type": "FeatureCollection", "version": "draft", "features": [], "attribution": "BAN", "licence": "ETALAB-2.0", "limit": 1}</code>
-	 * @throws IllegalArgumentException in the case where the deserialization of the
-	 *                                  JSON encounters a problem or if
-	 *                                  <code>jsonString</code> is blank
-	 */
-	public static String getAddressFromJson(String jsonString) throws AddressApiException {
-		checkNotNull(jsonString, "jsonString cannot be null");
-		checkArgument(!jsonString.isBlank(), "jsonString cannot be blank");
-		try (JsonReader jr = Json.createReader(new StringReader(jsonString))) {
-			JsonObject json = jr.readObject();
-			checkArgument(json.containsKey("features"),
-					"The JSON passed in parameter is not valid : we don't have \"features\" key");
-			JsonArray features = json.get("features").asJsonArray();
-			if (features.isEmpty()) {
-				throw new AddressApiException(
-						"The JSON passed in parameter is not valid : We got this from jsonString \"features\": []");
-			}
-			JsonObject properties = features.get(0).asJsonObject().get("properties").asJsonObject();
-			checkArgument(properties.containsKey("label"), "The field \"label\" is not here");
-			return properties.getString("label");
-		}
 	}
 
 	/**

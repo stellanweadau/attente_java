@@ -1,11 +1,9 @@
-package io.github.oliviercailloux.y2018.apartments.exception;
+package io.github.oliviercailloux.y2018.apartments.apartment;
 
 /**
- * This class indicates that the address retrieved by the API is not good This
- * Exception will be thrown only if the API returns an HTTP 200 but no address
- * was found
- * 
- * 
+ * This class indicates that we can retrieve a good address by the API. <br>
+ * This Exception will be thrown only if the API returns an HTTP 200 but no
+ * address was found
  */
 public class AddressApiException extends IllegalArgumentException {
 	private static final long serialVersionUID = 8057892188727057681L;
