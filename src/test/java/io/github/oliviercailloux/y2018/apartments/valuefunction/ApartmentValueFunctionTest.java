@@ -129,11 +129,11 @@ class ApartmentValueFunctionTest {
 	void adaptBoundsTest() {
 
 		assertThrows(IllegalArgumentException.class, () -> valueFunction.adaptBounds(Criterion.TELE, 0d, true));
-		valueFunction.adaptBounds(Criterion.FLOOR_AREA_TERRACE, 25d, true);
+		valueFunction = valueFunction.adaptBounds(Criterion.FLOOR_AREA_TERRACE, 25d, true);
 		LinearValueFunction lvf = (LinearValueFunction) valueFunction.getFloorAreaTerraceValueFunction();
 		assertEquals(25d, lvf.getInterval().lowerEndpoint());
 		assertEquals(0.6, valueFunction.getFloorAreaTerraceValueFunction().getSubjectiveValue(a.getFloorAreaTerrace()));
-		valueFunction.adaptBounds(Criterion.NB_BEDROOMS, 8, false);
+		valueFunction = valueFunction.adaptBounds(Criterion.NB_BEDROOMS, 8, false);
 		double nbRooms = a.getNbBedrooms();
 		assertEquals(0d, valueFunction.getNbBedroomsValueFunction().getSubjectiveValue(nbRooms));
 		lvf = (LinearValueFunction) valueFunction.getNbBedroomsValueFunction();

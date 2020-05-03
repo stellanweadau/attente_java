@@ -597,43 +597,44 @@ public class ApartmentValueFunction {
 	 */
 	public ApartmentValueFunction adaptBounds(Criterion criterion, double newBound, boolean lower) {
 
+		ApartmentValueFunction avf = this.cloneAVF();
 		LinearValueFunction lvf;
 
 		switch (criterion) {
 		case FLOOR_AREA:
-			checkArgument(this.floorAreaValueFunction instanceof LinearValueFunction);
-			lvf = (LinearValueFunction) this.floorAreaValueFunction;
-			this.setFloorAreaValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
+			checkArgument(avf.floorAreaValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) avf.floorAreaValueFunction;
+			avf.setFloorAreaValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case FLOOR_AREA_TERRACE:
-			checkArgument(this.floorAreaTerraceValueFunction instanceof LinearValueFunction);
-			lvf = (LinearValueFunction) this.floorAreaTerraceValueFunction;
-			this.setFloorAreaTerraceValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
+			checkArgument(avf.floorAreaTerraceValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) avf.floorAreaTerraceValueFunction;
+			avf.setFloorAreaTerraceValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case PRICE_PER_NIGHT:
-			checkArgument(this.pricePerNightValueFunction instanceof LinearValueFunction);
-			lvf = (LinearValueFunction) this.pricePerNightValueFunction;
-			this.setPricePerNightValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
+			checkArgument(avf.pricePerNightValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) avf.pricePerNightValueFunction;
+			avf.setPricePerNightValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case NB_SLEEPING:
-			checkArgument(this.nbSleepingValueFunction instanceof LinearValueFunction);
-			lvf = (LinearValueFunction) this.nbSleepingValueFunction;
-			this.setNbSleepingValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
+			checkArgument(avf.nbSleepingValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) avf.nbSleepingValueFunction;
+			avf.setNbSleepingValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case NB_BATHROOMS:
-			checkArgument(this.nbBathroomsValueFunction instanceof LinearValueFunction);
-			lvf = (LinearValueFunction) this.nbBathroomsValueFunction;
-			this.setNbBathroomsValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
+			checkArgument(avf.nbBathroomsValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) avf.nbBathroomsValueFunction;
+			avf.setNbBathroomsValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case NB_BEDROOMS:
-			checkArgument(this.nbBedroomsValueFunction instanceof LinearValueFunction);
-			lvf = (LinearValueFunction) this.nbBedroomsValueFunction;
-			this.setNbBedroomsValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
+			checkArgument(avf.nbBedroomsValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) avf.nbBedroomsValueFunction;
+			avf.setNbBedroomsValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		case NB_MIN_NIGHT:
-			checkArgument(this.nbMinNightValueFunction instanceof LinearValueFunction);
-			lvf = (LinearValueFunction) this.nbMinNightValueFunction;
-			this.setNbMinNightValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
+			checkArgument(avf.nbMinNightValueFunction instanceof LinearValueFunction);
+			lvf = (LinearValueFunction) avf.nbMinNightValueFunction;
+			avf.setNbMinNightValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
 			break;
 		// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
 		// don't have bounds)
@@ -642,7 +643,7 @@ public class ApartmentValueFunction {
 			throw new IllegalArgumentException();
 		}
 
-		return this;
+		return avf;
 	}
 
 	/**
@@ -678,13 +679,13 @@ public class ApartmentValueFunction {
 		checkNotNull(lessImportant, "This criterion cannot be null");
 		checkNotNull(moreImportant, "This criterion cannot be null");
 		checkArgument(!Objects.equals(moreImportant, lessImportant), "Both fields are the same.");
+		ApartmentValueFunction avf = this.cloneAVF();
+		double weightSum = avf.getSubjectiveValueWeight(moreImportant) + avf.getSubjectiveValueWeight(lessImportant);
 
-		double weightSum = this.getSubjectiveValueWeight(moreImportant) + this.getSubjectiveValueWeight(lessImportant);
+		avf.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
+		avf.setSubjectiveValueWeight(lessImportant, weightSum / 10);
 
-		this.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
-		this.setSubjectiveValueWeight(lessImportant, weightSum / 10);
-
-		return this;
+		return avf;
 	}
 
 	/**
@@ -729,42 +730,79 @@ public class ApartmentValueFunction {
 	 */
 	public ApartmentValueFunction setSubjectiveValueWeight(Criterion awt, double value) {
 
+		ApartmentValueFunction avf = this.cloneAVF();
+
 		switch (awt) {
 		case TELE:
-			this.setTeleSubjectiveValueWeight(value);
+			avf.setTeleSubjectiveValueWeight(value);
 			break;
 		case TERRACE:
-			this.setTerraceSubjectiveValueWeight(value);
+			avf.setTerraceSubjectiveValueWeight(value);
 			break;
 		case WIFI:
-			this.setWifiSubjectiveValueWeight(value);
+			avf.setWifiSubjectiveValueWeight(value);
 			break;
 		case FLOOR_AREA:
-			this.setFloorAreaSubjectiveValueWeight(value);
+			avf.setFloorAreaSubjectiveValueWeight(value);
 			break;
 		case FLOOR_AREA_TERRACE:
-			this.setFloorAreaTerraceSubjectiveValueWeight(value);
+			avf.setFloorAreaTerraceSubjectiveValueWeight(value);
 			break;
 		case NB_BATHROOMS:
-			this.setNbBathroomsSubjectiveValueWeight(value);
+			avf.setNbBathroomsSubjectiveValueWeight(value);
 			break;
 		case NB_BEDROOMS:
-			this.setNbBedroomsSubjectiveValueWeight(value);
+			avf.setNbBedroomsSubjectiveValueWeight(value);
 			break;
 		case NB_SLEEPING:
-			this.setNbSleepingSubjectiveValueWeight(value);
+			avf.setNbSleepingSubjectiveValueWeight(value);
 			break;
 		case NB_MIN_NIGHT:
-			this.setNbMinNightSubjectiveValueWeight(value);
+			avf.setNbMinNightSubjectiveValueWeight(value);
 			break;
 		case PRICE_PER_NIGHT:
-			this.setPricePerNightSubjectiveValueWeight(value);
+			avf.setPricePerNightSubjectiveValueWeight(value);
 			break;
 		default:
 			throw new IllegalArgumentException();
 		}
 
-		return this;
+		return avf;
+
+	}
+
+	/**
+	 * This function allows the user to clone an object ApartmentValueFunction
+	 *
+	 * @return an object ApartmentValueFunction
+	 */
+	private ApartmentValueFunction cloneAVF() {
+
+		ApartmentValueFunction avf = new ApartmentValueFunction();
+
+		avf.setFloorAreaValueFunction(this.floorAreaValueFunction);
+		avf.setNbBedroomsValueFunction(this.nbBedroomsValueFunction);
+		avf.setNbSleepingValueFunction(this.nbSleepingValueFunction);
+		avf.setNbBathroomsValueFunction(this.nbBathroomsValueFunction);
+		avf.setTerraceValueFunction(this.terraceValueFunction);
+		avf.setFloorAreaTerraceValueFunction(this.floorAreaTerraceValueFunction);
+		avf.setWifiValueFunction(this.wifiValueFunction);
+		avf.setPricePerNightValueFunction(this.pricePerNightValueFunction);
+		avf.setNbMinNightValueFunction(this.nbMinNightValueFunction);
+		avf.setTeleValueFunction(this.teleValueFunction);
+
+		avf.floorAreaSubjectiveValueWeight = this.floorAreaSubjectiveValueWeight;
+		avf.nbBedroomsSubjectiveValueWeight = this.nbBedroomsSubjectiveValueWeight;
+		avf.nbSleepingSubjectiveValueWeight = this.nbSleepingSubjectiveValueWeight;
+		avf.nbBathroomsSubjectiveValueWeight = this.nbBathroomsSubjectiveValueWeight;
+		avf.terraceSubjectiveValueWeight = this.terraceSubjectiveValueWeight;
+		avf.floorAreaTerraceSubjectiveValueWeight = this.floorAreaTerraceSubjectiveValueWeight;
+		avf.wifiSubjectiveValueWeight = this.wifiSubjectiveValueWeight;
+		avf.pricePerNightSubjectiveValueWeight = this.pricePerNightSubjectiveValueWeight;
+		avf.nbMinNightSubjectiveValueWeight = this.nbMinNightSubjectiveValueWeight;
+		avf.teleSubjectiveValueWeight = this.teleSubjectiveValueWeight;
+
+		return avf;
 
 	}
 
