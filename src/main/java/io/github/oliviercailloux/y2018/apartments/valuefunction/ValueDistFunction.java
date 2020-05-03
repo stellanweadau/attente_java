@@ -26,6 +26,7 @@ public class ValueDistFunction implements PartialValueFunction<LatLng> {
 	 * Initializes the different variables of the ValueDistFunction class.
 	 * 
 	 * @param appartlocation Object LatLng which represents the apartment location.
+	 * @param apiKey string that represent the API Key used by the Google Maps Api to calculate the distances
 	 */
 	public ValueDistFunction(LatLng appartlocation, String apiKey) {
 		interestlocation = new HashMap<>();
@@ -64,12 +65,12 @@ public class ValueDistFunction implements PartialValueFunction<LatLng> {
 	 * @param interest
 	 * @return double number which corresponds to the distance (seconds) between the
 	 *         Location appartocation and the Location interest in parameter.
-	 * @throws Exception
+	 * @throws Exception if the latitude and longitude does not have the good format (com.google.maps.model.LatLng)
 	 */
 	public double calculateDistanceLocation(LatLng interest) throws Exception {
 		DistanceSubway dist = new DistanceSubway(interest, appartlocation, apiKey);
 		double currentdistance = dist.calculateDistanceAddress(DistanceMode.COORDINATE);
-		LOGGER.info("The distance between ", interest, " and ", appartlocation, " has been calculated and is equal to ", currentdistance);
+		LOGGER.debug("The distance between {} and {} has been calculated and is equal to {}", interest, appartlocation, currentdistance);
 		return currentdistance;
 
 	}
@@ -92,8 +93,8 @@ public class ValueDistFunction implements PartialValueFunction<LatLng> {
 
 	@Override
 	public double getSubjectiveValue(LatLng objectiveData) {
-		if (interestlocation.containsKey(objectiveData) == false) {
-			LOGGER.error("Impossible to return the subjective value, the map does not contain this key : ", objectiveData);
+		if (!interestlocation.containsKey(objectiveData)) {
+			LOGGER.error("Impossible to return the subjective value of the key {} because the map doestn't contain this key.", objectiveData);
 			throw new IllegalArgumentException("The map doestn't contain the key " + objectiveData);
 		}
 		return interestlocation.get(objectiveData);

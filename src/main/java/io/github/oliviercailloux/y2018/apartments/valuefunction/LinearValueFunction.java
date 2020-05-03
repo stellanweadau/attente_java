@@ -27,7 +27,7 @@ public class LinearValueFunction implements PartialValueFunction<Double> {
 			throw new IllegalArgumentException("The upper bound can't be equal to the lower bound.");
 		}
 		interval = Range.closed(min, max);
-		LOGGER.info("The interval [" + min + ", " + max + "] has been set with success in the LinearValueFunction class.");
+		LOGGER.debug("The interval [{}, {}] has been set with success in the LinearValueFunction class.", min, max);
 	}
 
 	public Range<Double> getInterval() {

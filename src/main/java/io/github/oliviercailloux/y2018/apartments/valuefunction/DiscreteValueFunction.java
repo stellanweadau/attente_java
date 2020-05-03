@@ -32,7 +32,7 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 	 * @param s3 third key not null which corresponds to the subjective value 1
 	 */
 	public DiscreteValueFunction(T s1, T s2, T s3) {
-		checkArgument(!(Objects.equals(s1,s2) && Objects.equals(s1,s3) && Objects.equals(s2,s3)), "The elements have to be different");
+		checkArgument(!(Objects.equals(s1,s2) || Objects.equals(s1,s3) || Objects.equals(s2,s3)), "The elements have to be different");
 		subjective = ImmutableMap.of(s1, 0.0, s2, 0.5, s3, 1.0);
 		LOGGER.info("The Map with the three elements have been set with success");
 	}
@@ -104,7 +104,7 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 		HashMap<Double, Double> varMap = new HashMap<>();
 		for (double i = 0; i < var; ++i) {
 			oldSubjectiveValue = newSubjectiveValue;
-			newSubjectiveValue = Double.valueOf(i) / var - oldSubjectiveValue;
+			newSubjectiveValue = i / var - oldSubjectiveValue;
 			newSubjectiveValue = random.nextDouble() * newSubjectiveValue + oldSubjectiveValue;
 			varMap.put(i, newSubjectiveValue);
 		}
