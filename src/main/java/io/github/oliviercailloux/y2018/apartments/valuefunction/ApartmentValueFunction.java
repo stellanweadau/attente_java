@@ -144,8 +144,7 @@ public class ApartmentValueFunction {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApartmentValueFunction.class);
 
 	/**
-	 * Constructor of the object {@link ApartmentValueFunction} By default, all the
-	 * {@link PartialValueFunction} objects are {@link ConstantValueFunction}. By
+	 * Constructor of the object. By default, all the objects are ConstantValueFunction objects. By
 	 * default, all the weights have the same value and their sum is 1. The setters
 	 * functions enable to set those two.
 	 */
@@ -180,8 +179,7 @@ public class ApartmentValueFunction {
 	 * @param floorAreaValueFunction an object of type {@link PartialValueFunction}
 	 */
 	public void setFloorAreaValueFunction(PartialValueFunction<Double> floorAreaValueFunction) {
-		checkNotNull(floorAreaValueFunction, "The floor area preferencies cannot be null");
-		this.floorAreaValueFunction = floorAreaValueFunction;
+		this.floorAreaValueFunction = checkNotNull(floorAreaValueFunction);
 		LOGGER.info("The floor area preferencies has been set");
 	}
 
@@ -192,8 +190,7 @@ public class ApartmentValueFunction {
 	 * @param nbBedroomsValueFunction an object of type {@link PartialValueFunction}
 	 */
 	public void setNbBedroomsValueFunction(PartialValueFunction<Double> nbBedroomsValueFunction) {
-		checkNotNull(nbBedroomsValueFunction, "The number of bedrooms preferencies cannot be null");
-		this.nbBedroomsValueFunction = nbBedroomsValueFunction;
+		this.nbBedroomsValueFunction = checkNotNull(nbBedroomsValueFunction);
 		LOGGER.info("The number of bedrooms preferencies has been set");
 	}
 
@@ -201,11 +198,10 @@ public class ApartmentValueFunction {
 	 * Set the function which will be used to calculate the subjective value of the
 	 * accommodation capacity.
 	 *
-	 * @param nbSleepingValueFunction an object of type {@link PartialValueFunction}
+	 * @param nbSleepingValueFunction
 	 */
 	public void setNbSleepingValueFunction(PartialValueFunction<Double> nbSleepingValueFunction) {
-		checkNotNull(nbSleepingValueFunction, "The number of sleeping preferencies cannot be null");
-		this.nbSleepingValueFunction = nbSleepingValueFunction;
+		this.nbSleepingValueFunction = checkNotNull(nbSleepingValueFunction);
 		LOGGER.info("The number of sleeping preferencies has been set");
 	}
 
@@ -213,12 +209,10 @@ public class ApartmentValueFunction {
 	 * Set the function which will be used to calculate the subjective value of the
 	 * number of bathrooms.
 	 *
-	 * @param nbBathroomsValueFunction an object of type
-	 *                                 {@link PartialValueFunction}
+	 * @param nbBathroomsValueFunction
 	 */
 	public void setNbBathroomsValueFunction(PartialValueFunction<Double> nbBathroomsValueFunction) {
-		checkNotNull(nbBathroomsValueFunction, "The number of bathrooms preferencies cannot be null");
-		this.nbBathroomsValueFunction = nbBathroomsValueFunction;
+		this.nbBathroomsValueFunction = checkNotNull(nbBathroomsValueFunction);
 		LOGGER.info("The number of bathrooms preferencies has been set");
 	}
 
@@ -226,11 +220,10 @@ public class ApartmentValueFunction {
 	 * Set the function which will be used to calculate the subjective value of the
 	 * presence of a terrace.
 	 *
-	 * @param terraceValueFunction an object of type {@link PartialValueFunction}
+	 * @param terraceValueFunction
 	 */
 	public void setTerraceValueFunction(PartialValueFunction<Boolean> terraceValueFunction) {
-		checkNotNull(terraceValueFunction, "The terrace preferencies cannot be null");
-		this.terraceValueFunction = terraceValueFunction;
+		this.terraceValueFunction = checkNotNull(terraceValueFunction);
 		LOGGER.info("The terrace preferencies has been set");
 	}
 
@@ -238,12 +231,10 @@ public class ApartmentValueFunction {
 	 * Set the function which will be used to calculate the subjective value of the
 	 * floor area of an existing terrace.
 	 *
-	 * @param floorAreaTerraceValueFunction an object of type
-	 *                                      {@link PartialValueFunction}
+	 * @param floorAreaTerraceValueFunction
 	 */
 	public void setFloorAreaTerraceValueFunction(PartialValueFunction<Double> floorAreaTerraceValueFunction) {
-		checkNotNull(floorAreaTerraceValueFunction, "The floor area of the terrace preferencies cannot be null");
-		this.floorAreaTerraceValueFunction = floorAreaTerraceValueFunction;
+		this.floorAreaTerraceValueFunction = checkNotNull(floorAreaTerraceValueFunction);
 		LOGGER.info("The floor area of the terrace preferencies has been set");
 	}
 
@@ -251,11 +242,10 @@ public class ApartmentValueFunction {
 	 * Set the function which will be used to calculate the subjective value of the
 	 * presence of a wireless connection.
 	 *
-	 * @param wifiValueFunction an object of type {@link PartialValueFunction}
+	 * @param wifiValueFunction
 	 */
 	public void setWifiValueFunction(PartialValueFunction<Boolean> wifiValueFunction) {
-		checkNotNull(wifiValueFunction, "The wifi preferencies cannot be null");
-		this.wifiValueFunction = wifiValueFunction;
+		this.wifiValueFunction = checkNotNull(wifiValueFunction);
 		LOGGER.info("The wifi preferencies has been set");
 	}
 
@@ -263,12 +253,10 @@ public class ApartmentValueFunction {
 	 * Set the function which will be used to calculate the subjective value of the
 	 * price per night.
 	 *
-	 * @param pricePerNightValueFunction an object of type
-	 *                                   {@link PartialValueFunction}
+	 * @param pricePerNightValueFunction
 	 */
 	public void setPricePerNightValueFunction(PartialValueFunction<Double> pricePerNightValueFunction) {
-		checkNotNull(pricePerNightValueFunction, "The price per night preferencies cannot be null");
-		this.pricePerNightValueFunction = pricePerNightValueFunction;
+		this.pricePerNightValueFunction = checkNotNull(pricePerNightValueFunction);
 		LOGGER.info("The price per night preferencies has been set");
 	}
 
@@ -276,11 +264,10 @@ public class ApartmentValueFunction {
 	 * Set the function which will be used to calculate the subjective value of the
 	 * minimum number of nights.
 	 *
-	 * @param nbMinNightValueFunction an object of type {@link PartialValueFunction}
+	 * @param nbMinNightValueFunction
 	 */
 	public void setNbMinNightValueFunction(PartialValueFunction<Double> nbMinNightValueFunction) {
-		checkNotNull(nbMinNightValueFunction, "The number of minimum night preferencies cannot be null");
-		this.nbMinNightValueFunction = nbMinNightValueFunction;
+		this.nbMinNightValueFunction = checkNotNull(nbMinNightValueFunction);
 		LOGGER.info("The number of minimum night preferencies has been set");
 	}
 
@@ -288,11 +275,10 @@ public class ApartmentValueFunction {
 	 * Set the function which will be used to calculate the subjective value of the
 	 * presence of a television.
 	 *
-	 * @param teleValueFunction an object of type {@link PartialValueFunction}
+	 * @param teleValueFunction
 	 */
 	public void setTeleValueFunction(PartialValueFunction<Boolean> teleValueFunction) {
-		checkNotNull(teleValueFunction, "The TV preferencies cannot be null");
-		this.teleValueFunction = teleValueFunction;
+		this.teleValueFunction = checkNotNull(teleValueFunction);
 		LOGGER.info("The tele preferencies has been set");
 	}
 
