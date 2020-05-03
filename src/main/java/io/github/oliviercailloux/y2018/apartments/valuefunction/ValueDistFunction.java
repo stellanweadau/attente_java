@@ -48,7 +48,7 @@ public class ValueDistFunction implements PartialValueFunction<LatLng> {
 			maxDuration = currentdistance;
 		double utility = 1 - setUtility(currentdistance);
 		interestlocation.put(interest, utility);
-		LOGGER.info("The interest location (", interest, ") with the utility ", utility, " has been added with success in the Map.");
+		LOGGER.info("The interest location ({}) with the utility {} has been added with success in the Map.", interest, utility);
 	}
 
 	/**
