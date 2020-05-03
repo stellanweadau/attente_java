@@ -46,11 +46,9 @@ public class JsonConvertTest {
 	/**
 	 * Tests apartmentsToJson function. Verifies if the JSON file created by the
 	 * function corresponds to the expected file.
-	 *
-	 * @throws IOException if the JSON file can't be created.
 	 */
 	@Test
-	void apartmentsToJsonTest() throws IOException, URISyntaxException {
+	void apartmentsToJsonTest() {
 		Builder apartBuilder = new Apartment.Builder();
 		ArrayList<Apartment> apartments = new ArrayList<>();
 		apartments.add(apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
@@ -68,7 +66,7 @@ public class JsonConvertTest {
 	 * Apartment created by the function corresponds to the expected
 	 * <i>ArrayList</i>.
 	 *
-	 * @throws FileNotFoundException if the file doesn't exists.
+	 * @throws URISyntaxException if the file doesn't exists.
 	 * @throws IOException           if the file can't be convert into JSON format.
 	 */
 	@Test
