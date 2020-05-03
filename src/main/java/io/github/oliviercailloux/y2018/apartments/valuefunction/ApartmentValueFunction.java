@@ -1,14 +1,14 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.utils.RandomRange;
@@ -144,9 +144,9 @@ public class ApartmentValueFunction {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApartmentValueFunction.class);
 
 	/**
-	 * Constructor of the object. By default, all the objects are ConstantValueFunction objects. By
-	 * default, all the weights have the same value and their sum is 1. The setters
-	 * functions enable to set those two.
+	 * Constructor of the object. By default, all the objects are
+	 * ConstantValueFunction objects. By default, all the weights have the same
+	 * value and their sum is 1. The setters functions enable to set those two.
 	 */
 	public ApartmentValueFunction() {
 		this.floorAreaValueFunction = new ConstantValueFunction<>(0d);
@@ -408,12 +408,12 @@ public class ApartmentValueFunction {
 	/**
 	 * This function return the subjective value of the Apartment in parameter. For
 	 * each valuable attribute of this apartment, the subjective value is computed
-	 * by the associated {@link PartialValueFunction}. The weighted sum of theses
-	 * subjective values is returned by the function. When the
-	 * {@link PartialValueFunction} of an attribute hasn't been set, the subjective
-	 * value given to the corresponding attribute will be 0.
+	 * by the associated PartialValueFunction object. The weighted sum of theses
+	 * subjective values is returned by the function. When the PartialValueFunction
+	 * object of an attribute hasn't been set, the subjective value given to the
+	 * corresponding attribute will be 0.
 	 * 
-	 * @param apart an object of type {@link Apartment}
+	 * @param apart an object of type Apartment
 	 * @return a double : the weighted sum of the apartment attributes subjective
 	 *         values
 	 */
@@ -585,7 +585,7 @@ public class ApartmentValueFunction {
 	 * would be a discrete criteria (e.g. the number of bedrooms)
 	 * 
 	 * The goal is to replace a LinearValueFunction's bound by a new bound Warning :
-	 * The values of the object should be instanciate before using this function or
+	 * The values of the object should be instantiate before using this function or
 	 * an error will appear
 	 * 
 	 * @param criterion the criterion to adapt. This criterion should not be a
@@ -646,7 +646,7 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Adapt linear value function by defining a new lower or upper bound o
+	 * Adapt linear value function by defining a new lower or upper bound
 	 *
 	 * @param oldLVF   the old linear value function used
 	 * @param newBound the new lower or upper bound
@@ -778,8 +778,8 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets the interval of the floor area value. This interval represents the range
-	 * of floor area the user might accept
+	 * Gets the object PartialValueFunction used to compute the subjective value of
+	 * the floor Area
 	 * 
 	 * @return the attribute floorAreaValueFunction
 	 */
@@ -797,8 +797,8 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets the interval of the floor area terrace value. This interval represents
-	 * the range of floor area the user might accept
+	 * Gets the object PartialValueFunction used to compute the subjective value of
+	 * the floor Area Terrace
 	 * 
 	 * @return the attribute floorAreaTerraceValueFunction
 	 */
@@ -816,8 +816,8 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets an interval of the number of bathrooms. This interval represents the
-	 * number of bathrooms the user might accept in the apartment
+	 * Gets the object PartialValueFunction used to compute the subjective value of
+	 * the number of bathrooms
 	 * 
 	 * @return the attribute nbBathroomsValueFunction
 	 */
@@ -835,8 +835,8 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets an interval of the number of bedrooms. This interval represents the
-	 * number of bedrooms the user might accept in the apartment
+	 * Gets the object PartialValueFunction used to compute the subjective value of
+	 * the number of bedrooms
 	 * 
 	 * @return the attribute nbBedroomsValueFunction
 	 */
@@ -855,9 +855,8 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets an interval of the number of minimum night the user have to stay in the
-	 * apartment. This interval represents the number of nights the user might
-	 * accept to stay in the apartment
+	 * Gets the object PartialValueFunction used to compute the subjective value of
+	 * the minimum number of nights the user has to stay in
 	 * 
 	 * @return the attribute nbMinNightValueFunction
 	 */
@@ -876,9 +875,8 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets an interval of the number of person who can sleep in the apartment. This
-	 * interval represents the number of person who can sleep in the apartment the
-	 * user might accept in the apartment
+	 * Gets the object PartialValueFunction used to compute the subjective value of
+	 * the number of people who can sleep in
 	 * 
 	 * @return the attribute nbSleepingValueFunction
 	 */
@@ -896,8 +894,8 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets an interval of the price per night. This interval represents the price
-	 * per night the user might accept to stay in the apartment chosen
+	 * Gets the object PartialValueFunction used to compute the subjective value of
+	 * the price per night
 	 * 
 	 * @return the attribute pricePerNightValueFunction
 	 */
@@ -915,7 +913,8 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets a boolean representing whether if the apartment chosen has a tele or not
+	 * Gets the object PartialValueFunction used to compute the subjective value of
+	 * the presence of a television
 	 * 
 	 * @return the attribute teleValueFunction
 	 */
@@ -933,8 +932,8 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets a boolean representing whether if the apartment chosen has a terrace or
-	 * not
+	 * Gets the object PartialValueFunction used to compute the subjective value of
+	 * the presence of a terrace
 	 * 
 	 * @return the attribute terraceValueFunction
 	 */
@@ -952,7 +951,8 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets a boolean representing whether if the apartment chosen has wifi or not
+	 * Gets the object PartialValueFunction used to compute the subjective value of
+	 * the presence of the wifi
 	 * 
 	 * @return the attribute wifiValueFunction
 	 */
