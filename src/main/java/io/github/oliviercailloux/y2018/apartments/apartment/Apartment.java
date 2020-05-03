@@ -151,7 +151,7 @@ public class Apartment extends Object {
 	 *         area, its address and his title
 	 */
 	public String toString() {
-		String floorAreaTS = String.format("%nFloor area : %d square meters", this.floorArea);
+		String floorAreaTS = String.format("%nFloor area : %f square meters", this.floorArea);
 		String addressTS = "\nAddress : " + this.address;
 		String titleTS = "\nTitle : " + this.title;
 		return floorAreaTS + addressTS + titleTS;
