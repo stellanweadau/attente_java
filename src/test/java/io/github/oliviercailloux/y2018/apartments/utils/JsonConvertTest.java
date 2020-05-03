@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InvalidObjectException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -14,10 +13,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
+import io.github.oliviercailloux.y2018.apartments.exception.AddressApiException;
 
 /**
  * Test class for JsonConvert
@@ -55,23 +60,27 @@ public class JsonConvertTest {
 	/**
 	 * Tests getAddressFromJson function. Verifies if the address extracted by the
 	 * function corresponds to the expected address.
-	 * 
-	 * @throws InvalidObjectException In case the <code>features</code> field is
-	 *                                empty
 	 */
 	@Test
-	void getAddressFromJsonTest() throws InvalidObjectException {
+	void getAddressFromJsonTest() {
 		assertEquals("9 bis Rue la Fontaine 77400 Gouvernes", JsonConvert.getAddressFromJson(
 				"{\"type\": \"FeatureCollection\", \"version\": \"draft\", \"features\": [{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": [2.697788, 48.861515]}, \"properties\": {\"label\": \"9 bis Rue la Fontaine 77400 Gouvernes\", \"score\": 0.9999917537344281, \"housenumber\": \"9 bis\", \"id\": \"77209_0120_00009_bis\", \"type\": \"housenumber\", \"x\": 677827.72, \"y\": 6862429.24, \"importance\": 0.3329219426681952, \"name\": \"9 bis Rue la Fontaine\", \"postcode\": \"77400\", \"citycode\": \"77209\", \"city\": \"Gouvernes\", \"context\": \"77, Seine-et-Marne, \\u00cele-de-France\", \"street\": \"Rue la Fontaine\", \"distance\": 143}}], \"attribution\": \"BAN\", \"licence\": \"ETALAB-2.0\", \"limit\": 1}"),
 				"Good JSON, must be return 9 bis Rue la Fontaine 77400 Gouvernes");
 		assertEquals("37 Boulevard de Beaubourg 77184 Émerainville", JsonConvert.getAddressFromJson(
 				"{\"type\": \"FeatureCollection\", \"version\": \"draft\", \"features\": [{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": [2.615569, 48.817802]}, \"properties\": {\"label\": \"37 Boulevard de Beaubourg 77184 \\u00c9merainville\", \"score\": 0.9999995776812857, \"housenumber\": \"37\", \"id\": \"77169_0039_00037\", \"type\": \"housenumber\", \"x\": 671771.97, \"y\": 6857594.93, \"importance\": 0.42775013264058914, \"name\": \"37 Boulevard de Beaubourg\", \"postcode\": \"77184\", \"citycode\": \"77169\", \"city\": \"\\u00c9merainville\", \"context\": \"77, Seine-et-Marne, \\u00cele-de-France\", \"street\": \"Boulevard de Beaubourg\", \"distance\": 32}}], \"attribution\": \"BAN\", \"licence\": \"ETALAB-2.0\", \"limit\": 1}"),
 				"Good JSON, must be return 37 Boulevard de Beaubourg 77184 Émerainville");
-		assertThrows(InvalidObjectException.class, () -> JsonConvert.getAddressFromJson(
+		assertThrows(AddressApiException.class, () -> JsonConvert.getAddressFromJson(
 				"{\"type\": \"FeatureCollection\", \"version\": \"draft\", \"features\": [], \"attribution\": \"BAN\", \"licence\": \"ETALAB-2.0\", \"limit\": 1}"),
-				"features is empty, need to get InvalidObjectException");
+				"features is empty, need to get AddressApiException");
 		assertThrows(NullPointerException.class, () -> JsonConvert.getAddressFromJson(null),
 				"null need to return NullPointerException");
+		// Check that the return format of the API has not changed
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target("https://api-adresse.data.gouv.fr/reverse/?lon=2.2712946&lat=48.869962");
+		String result = target.request(MediaType.TEXT_PLAIN).get(String.class);
+		assertEquals("2 Chemin des Lacs à la Porte Dauphine 75016 Paris", JsonConvert.getAddressFromJson(result),
+				"Call to the address retrieval API with a fixed longitude and attitude");
+
 	}
 
 	/**

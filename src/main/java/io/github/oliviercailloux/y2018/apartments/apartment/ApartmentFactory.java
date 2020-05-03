@@ -1,7 +1,6 @@
 package io.github.oliviercailloux.y2018.apartments.apartment;
 
 import java.io.IOException;
-import java.io.InvalidObjectException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
+import io.github.oliviercailloux.y2018.apartments.exception.AddressApiException;
 import io.github.oliviercailloux.y2018.apartments.utils.JsonConvert;
 
 /**
@@ -46,8 +46,8 @@ public abstract class ApartmentFactory {
 	 * This function aims to generate a new apartment with random characteristics
 	 * and a real address if the Address Api answer.
 	 * 
-	 * @return An Apartment with random characteristics and a real address
-	 *         if the Address Api answer
+	 * @return An Apartment with random characteristics and a real address if the
+	 *         Address Api answer
 	 */
 	public static Apartment generateRandomApartment() {
 		try {
@@ -61,8 +61,8 @@ public abstract class ApartmentFactory {
 	 * This function aims to generate a new apartment with random characteristics.
 	 *
 	 * @param realAddress - True indicates that the address is necessarily real (may
-	 *                    have an {@link InvalidObjectException}) in case the API
-	 *                    does not return a good address format <br>
+	 *                    have an {@link AddressApiException}) in case the API does
+	 *                    not return a good address format <br>
 	 *                    False indicates that if a real address cannot be returned
 	 *                    we will have an unreal address
 	 * @see #getRandomAddress()
@@ -110,8 +110,7 @@ public abstract class ApartmentFactory {
 	 * This function aims to generate a list of random apartments with real address.
 	 * 
 	 * @param nbApartment the number of apartments the list should contains
-	 * @return a List of random apartments of size nbApartment with real
-	 *         Address
+	 * @return a List of random apartments of size nbApartment with real Address
 	 * @throws IOException if the Address API doesn't answer
 	 */
 	public static List<Apartment> generateRandomRealApartments(int nbApartment) throws IOException {
@@ -160,13 +159,13 @@ public abstract class ApartmentFactory {
 	 * <p>
 	 * 
 	 * @return the address generated.
-	 * @throws InvalidObjectException in case the API doesn't return a good format
-	 *                                after a certain number of attempts (RETRY)
-	 * @throws ClientErrorException   in case the jax-rs call fails, for example
-	 *                                because of no connection or an HTTP 500, 404
-	 *                                or others
+	 * @throws AddressApiException  in case the API doesn't return a good format
+	 *                              after a certain number of attempts (RETRY)
+	 * @throws ClientErrorException in case the jax-rs call fails, for example
+	 *                              because of no connection or an HTTP 500, 404 or
+	 *                              others
 	 */
-	private static String getOnlineRandomAddress() throws ClientErrorException, InvalidObjectException {
+	private static String getOnlineRandomAddress() throws ClientErrorException, AddressApiException {
 		/**
 		 * Maximum test value in case the API does not return the
 		 * features.properties.labels field In the case of an API error (for example
@@ -194,11 +193,14 @@ public abstract class ApartmentFactory {
 				address = JsonConvert.getAddressFromJson(result);
 				client.close();
 				break;
-			} catch (InvalidObjectException e) {
+			} catch (AddressApiException e) {
 				// We do nothing because we will try again.
 				// If the error persists, we raise an error at the end of the loop
 				LOGGER.error("API returned wrong address -long={}, -lat={} (Round {}/{}) \n{}", longitude, latitude, i,
 						RETRY, e.toString());
+			} catch (Exception otherException) {
+				client.close();
+				throw otherException;
 			}
 		}
 		client.close();
@@ -206,7 +208,7 @@ public abstract class ApartmentFactory {
 			return address;
 		}
 		// We were unable to retrieve a correct address
-		throw new InvalidObjectException("It appears that the API has failed to return a correct address.");
+		throw new AddressApiException("It appears that the API has failed to return a correct address.");
 	}
 
 	/**
@@ -219,7 +221,7 @@ public abstract class ApartmentFactory {
 	private static String getRandomAddress() {
 		try {
 			return ApartmentFactory.getOnlineRandomAddress();
-		} catch (ClientErrorException | InvalidObjectException e) {
+		} catch (ClientErrorException | AddressApiException e) {
 			LOGGER.error("Problem while getting random address {}", e.toString());
 			StringBuilder sb = new StringBuilder();
 			sb.append(ApartmentFactory.rand.nextInt(3000)).append(" rue de l'appel échoué ")
