@@ -679,11 +679,11 @@ public class ApartmentValueFunction {
 		checkNotNull(lessImportant, "This criterion cannot be null");
 		checkNotNull(moreImportant, "This criterion cannot be null");
 		checkArgument(!Objects.equals(moreImportant, lessImportant), "Both fields are the same.");
-		ApartmentValueFunction avf = this.cloneAVF();
+		ApartmentValueFunction avf = cloneAVF();
 		double weightSum = avf.getSubjectiveValueWeight(moreImportant) + avf.getSubjectiveValueWeight(lessImportant);
 
-		avf.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
-		avf.setSubjectiveValueWeight(lessImportant, weightSum / 10);
+		avf =avf.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
+		avf = avf.setSubjectiveValueWeight(lessImportant, weightSum / 10);
 
 		return avf;
 	}
@@ -730,7 +730,7 @@ public class ApartmentValueFunction {
 	 */
 	public ApartmentValueFunction setSubjectiveValueWeight(Criterion awt, double value) {
 
-		ApartmentValueFunction avf = this.cloneAVF();
+		ApartmentValueFunction avf = cloneAVF();
 
 		switch (awt) {
 		case TELE:
