@@ -291,7 +291,7 @@ public abstract class ApartmentFactory {
 	 * @throws IOException if we cannot have access to the JSON file.
 	 */
 	public static List<Apartment> getDefaultApartments() throws IOException {
-		return JsonConvert.jsonToApartments();
+		return JsonConvert.getDefaultApartments();
 	}
 
 	/**

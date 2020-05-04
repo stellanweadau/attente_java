@@ -13,22 +13,20 @@ public class XMLProperties {
 
 	private Properties properties;
 
-	private final static Logger LOGGER = LoggerFactory.getLogger(XMLProperties.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(XMLProperties.class);
 
 	public XMLProperties() {
 		this.properties = new Properties();
 	}
 
 	/**
-	 * toXml transform an Apartment into an xml File. The user specify the file in
-	 * parameter
+	 * toXml transform an Apartment object into an XML File. The user specify the
+	 * file in parameter
 	 * 
-	 * @param a       the apartment to put into an xml file
-	 * @param xmlFile an file object where the apartment will be store. Warning : if
+	 * @param a       the apartment to put into an XML file
+	 * @param xmlFile a file object where the apartment will be store. Warning : if
 	 *                the file already exists, it will be erased.
 	 * @throws IOException
-	 * @throws IllegalArgumentException
-	 * @throws IllegalAccessException
 	 */
 	public void toXML(Apartment a, OutputStream xmlFile) throws IOException {
 
