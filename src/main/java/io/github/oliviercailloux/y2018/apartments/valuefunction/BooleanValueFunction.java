@@ -1,7 +1,8 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

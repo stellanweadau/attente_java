@@ -1,13 +1,15 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.Map.Entry;
 import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import static com.google.common.base.Preconditions.checkArgument;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
