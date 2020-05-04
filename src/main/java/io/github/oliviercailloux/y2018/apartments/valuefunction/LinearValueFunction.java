@@ -13,7 +13,7 @@ import com.google.common.collect.Range;
 public class LinearValueFunction implements PartialValueFunction<Double> {
 
 	private Range<Double> interval;
-	private final static Logger LOGGER = LoggerFactory.getLogger(LinearValueFunction.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(LinearValueFunction.class);
 
 	/**
 	 * Builder of the class LinearValueFunction.
@@ -27,8 +27,7 @@ public class LinearValueFunction implements PartialValueFunction<Double> {
 			throw new IllegalArgumentException("The upper bound can't be equal to the lower bound.");
 		}
 		interval = Range.closed(min, max);
-		LOGGER.info("The interval [" + min + "," + max + "] "
-				+ " has been set with success in the LinearValueFunction class.");
+		LOGGER.debug("The interval [{}, {}] has been set with success in the LinearValueFunction class.", min, max);
 	}
 
 	public Range<Double> getInterval() {

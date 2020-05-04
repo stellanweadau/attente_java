@@ -24,7 +24,7 @@ public class PieceWiseLinearValueFunction implements PartialValueFunction<Double
 	 * associated.
 	 */
 	private ImmutableSortedMap<Double, Double> utilities;
-	private final static Logger LOGGER = LoggerFactory.getLogger(PieceWiseLinearValueFunction.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(PieceWiseLinearValueFunction.class);
 
 	/**
 	 * Builder of the PieceWiseLinearValueFunction

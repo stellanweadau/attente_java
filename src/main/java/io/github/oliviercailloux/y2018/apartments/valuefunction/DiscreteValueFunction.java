@@ -1,12 +1,15 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import static com.google.common.base.Preconditions.checkArgument;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +23,7 @@ import com.google.common.collect.ImmutableMap;
 public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 
 	private ImmutableMap<T, Double> subjective;
-	private final static Logger LOGGER = LoggerFactory.getLogger(DiscreteValueFunction.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(DiscreteValueFunction.class);
 
 	/**
 	 * Create a map with 3 discrete values of the same type which are associated to
@@ -31,7 +34,7 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 	 * @param s3 third key not null which corresponds to the subjective value 1
 	 */
 	public DiscreteValueFunction(T s1, T s2, T s3) {
-		checkArgument(!(s1.equals(s2) && s1.equals(s3) && s2.equals(s3)), "The elements have to be different");
+		checkArgument(!Objects.equals(s1,s2) && !Objects.equals(s1,s3) && !Objects.equals(s2,s3), "The elements have to be different");
 		subjective = ImmutableMap.of(s1, 0.0, s2, 0.5, s3, 1.0);
 		LOGGER.info("The Map with the three elements have been set with success");
 	}
@@ -45,7 +48,7 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 	 *           value 1
 	 */
 	public DiscreteValueFunction(T s1, T s2) {
-		checkArgument(!(s1.equals(s2)), "The elements have to be different");
+		checkArgument(!(Objects.equals(s1,s2) ), "The elements have to be different");
 		subjective = ImmutableMap.of(s1, 0.0, s2, 1.0);
 		LOGGER.info("The Map with the two elements have been set with success");
 	}
@@ -78,7 +81,7 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 	}
 
 	@Override
-	public double getSubjectiveValue(T objectiveData) throws IllegalArgumentException {
+	public double getSubjectiveValue(T objectiveData) {
 		return subjective.get(objectiveData);
 	}
 
@@ -103,7 +106,7 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
 		HashMap<Double, Double> varMap = new HashMap<>();
 		for (double i = 0; i < var; ++i) {
 			oldSubjectiveValue = newSubjectiveValue;
-			newSubjectiveValue = Double.valueOf(i) / var - oldSubjectiveValue;
+			newSubjectiveValue = i / var - oldSubjectiveValue;
 			newSubjectiveValue = random.nextDouble() * newSubjectiveValue + oldSubjectiveValue;
 			varMap.put(i, newSubjectiveValue);
 		}

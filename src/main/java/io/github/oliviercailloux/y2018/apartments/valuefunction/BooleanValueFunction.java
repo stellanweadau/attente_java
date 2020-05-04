@@ -1,7 +1,8 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,14 +13,14 @@ import org.slf4j.LoggerFactory;
  */
 public class BooleanValueFunction implements PartialValueFunction<Boolean> {
 	private Map<Boolean, Double> subjective;
-	private final static Logger LOGGER = LoggerFactory.getLogger(BooleanValueFunction.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(BooleanValueFunction.class);
 
 	/**
 	 * Create a map which associate a subjective value to true and a subjective
 	 * value to false. This subjective value will take the value of 1 for the
 	 * boolean that represent the "good value" and 0 for the other.
 	 * 
-	 * @param preference a boolean that indicates whether true or false represent
+	 * @param isPrefered a boolean that indicates whether true or false represent
 	 *                   the "good" value for the corresponding attribute
 	 */
 	public BooleanValueFunction(boolean isPrefered) {
