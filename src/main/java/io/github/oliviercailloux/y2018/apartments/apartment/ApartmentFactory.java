@@ -1,13 +1,18 @@
 package io.github.oliviercailloux.y2018.apartments.apartment;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.ws.rs.ClientErrorException;
@@ -39,9 +44,11 @@ public abstract class ApartmentFactory {
 	 * and a real address.
 	 * 
 	 * @return An Apartment with random characteristics and a real address
-	 * @throws IOException if the Address API doesn't answer
+	 * @throws AddressApiException  in case the API does not return a good address
+	 *                              format
+	 * @throws ClientErrorException in case the API is unreachable (HTTP error)
 	 */
-	public static Apartment generateRandomRealApartment() throws IOException {
+	public static Apartment generateRandomRealApartment() throws ClientErrorException, AddressApiException {
 		return generateRandomApartment(true);
 	}
 
@@ -55,7 +62,11 @@ public abstract class ApartmentFactory {
 	public static Apartment generateRandomApartment() {
 		try {
 			return generateRandomApartment(false);
-		} catch (IOException e) {
+		} catch (ClientErrorException | AddressApiException e) {
+			// We call generateRandomApartment() with the parameter false.
+			// So we are not supposed to get Exceptions.
+			// In the event that an exception is thrown it is a software error, hence the
+			// IllegalStateException()
 			throw new IllegalStateException(e);
 		}
 	}
@@ -64,15 +75,17 @@ public abstract class ApartmentFactory {
 	 * This function aims to generate a new apartment with random characteristics.
 	 *
 	 * @param realAddress - True indicates that the address is necessarily real (may
-	 *                    have an {@link AddressApiException}) in case the API does
-	 *                    not return a good address format <br>
+	 *                    have an {@link AddressApiException}) <br>
 	 *                    False indicates that if a real address cannot be returned
 	 *                    we will have an unreal address
 	 * @see #getRandomAddress()
 	 * @return the apartment built
-	 * @throws IOException if the Address Api doesn't answer
+	 * @throws AddressApiException  in case the API does not return a good address
+	 *                              format
+	 * @throws ClientErrorException in case the API is unreachable (HTTP error)
 	 */
-	private static Apartment generateRandomApartment(boolean realAddress) throws IOException {
+	private static Apartment generateRandomApartment(boolean realAddress)
+			throws ClientErrorException, AddressApiException {
 		double floorArea = simulateRandomDraw(65d, 21d);
 		String address = realAddress ? getOnlineRandomAddress() : getRandomAddress();
 		int averageRoomArea = 10 + rand.nextInt(20);
@@ -104,7 +117,11 @@ public abstract class ApartmentFactory {
 	public static List<Apartment> generateRandomApartments(int nbApartment) {
 		try {
 			return generateRandomApartmentList(nbApartment, false);
-		} catch (IOException e) {
+		} catch (ClientErrorException | AddressApiException e) {
+			// We call generateRandomApartment() with the parameter false.
+			// So we are not supposed to get Exceptions.
+			// In the event that an exception is thrown it is a software error, hence the
+			// IllegalStateException()
 			throw new IllegalStateException(e);
 		}
 	}
@@ -114,9 +131,12 @@ public abstract class ApartmentFactory {
 	 * 
 	 * @param nbApartment the number of apartments the list should contains
 	 * @return a List of random apartments of size nbApartment with real Address
-	 * @throws IOException if the Address API doesn't answer
+	 * @throws AddressApiException  in case the API does not return a good address
+	 *                              format
+	 * @throws ClientErrorException in case the API is unreachable (HTTP error)
 	 */
-	public static List<Apartment> generateRandomRealApartments(int nbApartment) throws IOException {
+	public static List<Apartment> generateRandomRealApartments(int nbApartment)
+			throws ClientErrorException, AddressApiException {
 		return generateRandomApartmentList(nbApartment, true);
 	}
 
@@ -125,10 +145,12 @@ public abstract class ApartmentFactory {
 	 *
 	 * @param nbApartment the number of apartments the list should contains
 	 * @return a List of random apartments of size nbApartment
-	 * @throws IOException if the Address API doesn't answer
+	 * @throws AddressApiException  in case the API does not return a good address
+	 *                              format
+	 * @throws ClientErrorException in case the API is unreachable (HTTP error)
 	 */
 	private static List<Apartment> generateRandomApartmentList(int nbApartment, boolean realAddress)
-			throws IOException {
+			throws ClientErrorException, AddressApiException {
 		if (nbApartment <= 0) {
 			throw new IllegalArgumentException("You must indicate a number of apartments > 0");
 		}
@@ -155,15 +177,34 @@ public abstract class ApartmentFactory {
 	/**
 	 * Call an API which generates a random address. This function aims at getting
 	 * the random address generated.
+	 * 
 	 * <p>
 	 * So, we generate a random latitude and a longitude and try to retrive an
 	 * address
 	 * <p>
 	 * 
+	 * <b>Regarding the API call:</b> <br>
+	 * <p>
+	 * After a multitude of tests, we have seen that after a failure of attitude and
+	 * length, we have a good one in any case <br>
+	 * <code>AddressApiException</code> should never be thrown. <br>
+	 * The probability of getting a good answer the first time is 1/5 on average
+	 * (after a multitude of trials)
+	 * </p>
+	 * <p>
+	 * The API used:
+	 * <li>Is maintained by the interdepartmental digital department</li>
+	 * <li>Is free</li>
+	 * <li>Virtually no constraint on the number of calls (so it doesn't matter if a
+	 * call fails)</li>
+	 * <li>Does not ask for authentication (API key or others)</li>
+	 * <li>Does not depend on openstreetmap or GoogleMaps</li>
+	 * </p>
+	 * 
 	 * @return the address generated.
 	 * @throws AddressApiException  in case the API doesn't return a good format
 	 *                              after a certain number of attempts (RETRY)
-	 * @throws ClientErrorException in case the jax-rs call fails, for example
+	 * @throws ClientErrorException in case the JAX-RS call fails, for example
 	 *                              because of no connection or an HTTP 500, 404 or
 	 *                              others
 	 */
@@ -175,7 +216,7 @@ public abstract class ApartmentFactory {
 		 * <code>ClientErrorException</code>
 		 */
 		final int RETRY = 5;
-		String address = null;
+		Optional<String> address = Optional.empty();
 		// Latitude and longitude for Ile de France
 		final double LAT_IDF = 48.8_499_198d;
 		final double LONG_IDF = 2.6_370_411d;
@@ -188,33 +229,25 @@ public abstract class ApartmentFactory {
 			String longitude = String.valueOf(lng) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
 			String latitude = String.valueOf(lat) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
 			// Call API
-			WebTarget target = client.target(URL_API_ADDRESS).queryParam("lon", longitude).queryParam("lat", latitude);
-			LOGGER.info("Address API Call : {}", target.getUri().toString());
-			String result = target.request(MediaType.TEXT_PLAIN).get(String.class);
-			try (JsonReader jr = Json.createReader(new StringReader(result))) {
-				JsonObject json = jr.readObject();
-				// check if the features.properties.label field is present
-				// In case it is not present, we return to the for-loop
-				if (json.containsKey("features") && !json.get("features").asJsonArray().isEmpty()
-						&& json.get("features").asJsonArray().get(0).asJsonObject().get("properties").asJsonObject()
-								.containsKey("label")) {
-					// We have recovered a good address!
-					// we can exit the for-loop and close the client
-					address = json.get("features").asJsonArray().get(0).asJsonObject().get("properties").asJsonObject()
-							.getString("label");
-					client.close();
+			try {
+				WebTarget target = client.target(URL_API_ADDRESS).queryParam("lon", longitude).queryParam("lat",
+						latitude);
+				LOGGER.info("Address API Call : {}", target.getUri().toString());
+				String result = target.request(MediaType.TEXT_PLAIN).get(String.class);
+				address = ApartmentFactory.getAddressFromJson(result);
+				if (address.isPresent()) {
 					break;
 				}
 			} catch (Exception e) {
-				// We caught an exception that seems abnormal,
+				// We caught an exception that seems anormal,
 				// we close the client and throw the exception again
 				client.close();
 				throw e;
 			}
 		}
 		client.close();
-		if (address != null) {
-			return address;
+		if (address.isPresent()) {
+			return address.get();
 		}
 		// We were unable to retrieve a correct address
 		throw new AddressApiException("It appears that the API has failed to return a correct address.");
@@ -231,6 +264,7 @@ public abstract class ApartmentFactory {
 		try {
 			return ApartmentFactory.getOnlineRandomAddress();
 		} catch (ClientErrorException | AddressApiException e) {
+			// We return an apipa address
 			LOGGER.error("Problem while getting random address {}", e.toString());
 			StringBuilder sb = new StringBuilder();
 			sb.append(ApartmentFactory.rand.nextInt(3000)).append(" rue de l'appel échoué ")
@@ -240,24 +274,53 @@ public abstract class ApartmentFactory {
 	}
 
 	/**
-	 * Generate a list of apartments from a json file.
+	 * Generate a list of apartments from a JSON file.
 	 *
-	 * @param jsonFilePath the address where the json with all the apartments are
-	 * @return the list of apartments found in the json file.
-	 * @throws IOException if we cannot have access to the json file.
+	 * @param jsonFilePath the address where the JSON with all the apartments are
+	 * @return the list of apartments found in the JSON file.
+	 * @throws IOException if we cannot have access to the JSON file.
 	 */
 	public static List<Apartment> generateApartmentsFromJsonPath(Path jsonFilePath) throws IOException {
 		return JsonConvert.jsonToApartments(jsonFilePath);
 	}
 
 	/**
-	 * Generate apartment from a json file by default.
+	 * Generate apartment from a JSON file by default.
 	 *
-	 * @return the list of apartments found in the json file by default.
-	 * @throws IOException if we cannot have access to the json file.
+	 * @return the list of apartments found in the JSON file by default.
+	 * @throws IOException if we cannot have access to the JSON file.
 	 */
 	public static List<Apartment> getDefaultApartments() throws IOException {
 		return JsonConvert.jsonToApartments();
+	}
+
+	/**
+	 * Check if the features.properties.label field is present in
+	 * <code>jsonString</code> In case it is not present, we return an empty
+	 * optional
+	 * 
+	 * <p>
+	 * The case where the optional is empty is as follows: jsonString equals to
+	 * <code>{"type": "FeatureCollection", "version": "draft", "features": [], "attribution": "BAN", "licence": "ETALAB-2.0", "limit": 1}</code>
+	 * </p>
+	 * 
+	 * @param jsonString response to API request (HTTP GET) : not null
+	 * @return an optional which is empty if we have not managed to recover the
+	 *         field. Otherwise, it returns the address
+	 */
+	private static Optional<String> getAddressFromJson(String jsonString) {
+		checkNotNull(jsonString, "jsonString cannot be null");
+		checkArgument(!jsonString.isBlank(), "jsonString cannot be blank");
+		Optional<String> address = Optional.empty();
+		try (JsonReader jr = Json.createReader(new StringReader(jsonString))) {
+			JsonObject json = jr.readObject();
+			JsonArray features = json.get("features").asJsonArray();
+			if (!features.isEmpty()) {
+				JsonObject properties = features.get(0).asJsonObject().get("properties").asJsonObject();
+				address = Optional.ofNullable(properties.getString("label"));
+			}
+		}
+		return address;
 	}
 
 }

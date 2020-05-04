@@ -1,10 +1,6 @@
 package io.github.oliviercailloux.y2018.apartments.utils;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.IOException;
-import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -12,10 +8,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 
@@ -24,7 +16,6 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.VerifyException;
 
-import io.github.oliviercailloux.y2018.apartments.apartment.AddressApiException;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 
 /**

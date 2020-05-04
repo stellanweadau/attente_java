@@ -5,7 +5,7 @@ package io.github.oliviercailloux.y2018.apartments.apartment;
  * This Exception will be thrown only if the API returns an HTTP 200 but no
  * address was found
  */
-public class AddressApiException extends IllegalArgumentException {
+public class AddressApiException extends Exception {
 	private static final long serialVersionUID = 8057892188727057681L;
 
 	/**
