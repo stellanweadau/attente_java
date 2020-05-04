@@ -519,7 +519,8 @@ public class ApartmentValueFunction {
 	 * @param criterion the criterion to adapt. This criterion should not be a
 	 *                  boolean as TV for example.
 	 * @param newBound  the new bound to define
-	 * @param lower     true if we want to adapt the lower bound, false on the other case
+	 * @param lower     true if we want to adapt the lower bound, false on the other
+	 *                  case
 	 * @return an object ApartmentValueFunction
 	 */
 	public ApartmentValueFunction adaptBounds(Criterion criterion, double newBound, boolean lower) {
