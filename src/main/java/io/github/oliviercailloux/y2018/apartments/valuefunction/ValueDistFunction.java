@@ -94,7 +94,6 @@ public class ValueDistFunction implements PartialValueFunction<LatLng> {
 	@Override
 	public double getSubjectiveValue(LatLng objectiveData) {
 		if (!interestlocation.containsKey(objectiveData)) {
-			LOGGER.error("Impossible to return the subjective value of the key {} because the map doestn't contain this key.", objectiveData);
 			throw new IllegalArgumentException("The map doestn't contain the key " + objectiveData);
 		}
 		return interestlocation.get(objectiveData);
