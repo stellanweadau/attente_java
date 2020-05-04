@@ -55,8 +55,8 @@ public class JsonConvertTest {
 		apartments.add(apartBuilder.setAddress("123 rue du soleil").setFloorArea(1234567.89).setTitle("Maison Test")
 				.setTerrace(false).setWifi(false).setTele(false).build());
 
-		String expectedApartmentJsonString = Files.readString(Path.of("expectedApartmentsJsonString.json"));
-		assertEquals(expectedApartmentJsonString, JsonConvert.apartmentsToJsonString(apartments));
+		String expectedApartmentsJsonString = Files.readString(Path.of("expectedApartmentsJsonString.json"));
+		assertEquals(expectedApartmentsJsonString, JsonConvert.apartmentsToJsonString(apartments));
 	}
 
 	/**
