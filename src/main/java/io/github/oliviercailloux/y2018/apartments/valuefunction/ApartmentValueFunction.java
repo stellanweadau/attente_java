@@ -22,123 +22,51 @@ import io.github.oliviercailloux.y2018.apartments.utils.RandomRange;
 public class ApartmentValueFunction {
 
 	/**
-	 * An object on which the calculation of the floor area subjective values are
-	 * based.
+	 * The 10 next arguments are the objects used to compute the value function of
+	 * the characteristics of an apartment
 	 */
 	private PartialValueFunction<Double> floorAreaValueFunction;
 
-	/**
-	 * An object on which the calculation of the number of bedrooms subjective value
-	 * is based
-	 */
 	private PartialValueFunction<Double> nbBedroomsValueFunction;
 
-	/**
-	 * An object on which the calculation of the number of accommodation capacity
-	 * subjective values are based.
-	 */
 	private PartialValueFunction<Double> nbSleepingValueFunction;
 
-	/**
-	 * An object on which the calculation of the number of bathrooms subjective
-	 * values are based.
-	 */
 	private PartialValueFunction<Double> nbBathroomsValueFunction;
 
-	/**
-	 * An object on which the calculation of the presence of a terrace subjective
-	 * values are based.
-	 */
 	private PartialValueFunction<Boolean> terraceValueFunction;
 
-	/**
-	 * An object on which the calculation of the floor area of an existing terrace
-	 * subjective values are based.
-	 */
 	private PartialValueFunction<Double> floorAreaTerraceValueFunction;
 
-	/**
-	 * An object on which the calculation of the wireless connection subjective
-	 * values are based.
-	 */
 	private PartialValueFunction<Boolean> wifiValueFunction;
 
-	/**
-	 * A object on which the calculation of the price per night subjective values
-	 * are based.
-	 */
 	private PartialValueFunction<Double> pricePerNightValueFunction;
 
-	/**
-	 * An object on which the calculation of the minimum number of nights subjective
-	 * values are based.
-	 */
 	private PartialValueFunction<Double> nbMinNightValueFunction;
 
-	/**
-	 * An object on which the calculation of the presence of a television subjective
-	 * values are based.
-	 */
 	private PartialValueFunction<Boolean> teleValueFunction;
 
 	/**
-	 * The weight associated to the floor area subjective value in the calculation
-	 * of the Apartment total subjective value
+	 * The 10 next arguments gives the weight of an apartment characteristic
+	 * subjective value in the calculation of the Apartment total subjective value
 	 */
 	private double floorAreaSubjectiveValueWeight;
 
-	/**
-	 * The weight associated to the number of bedrooms subjective value in the
-	 * calculation of the Apartment total subjective value
-	 */
 	private double nbBedroomsSubjectiveValueWeight;
 
-	/**
-	 * The weight associated to the accommodation capacity subjective value in the
-	 * calculation of the Apartment total subjective value
-	 */
 	private double nbSleepingSubjectiveValueWeight;
 
-	/**
-	 * The weight associated to the number of bathrooms subjective value in the
-	 * calculation of the Apartment total subjective value
-	 */
 	private double nbBathroomsSubjectiveValueWeight;
 
-	/**
-	 * The weight associated to the presence of a terrace subjective value in the
-	 * calculation of the Apartment total subjective value
-	 */
 	private double terraceSubjectiveValueWeight;
 
-	/**
-	 * The weight associated to the floor area of an existing terrace subjective
-	 * value in the calculation of the Apartment total subjective value
-	 */
 	private double floorAreaTerraceSubjectiveValueWeight;
 
-	/**
-	 * The weight associated to the presence of a wireless connection subjective
-	 * value in the calculation of the Apartment total subjective value
-	 */
 	private double wifiSubjectiveValueWeight;
 
-	/**
-	 * The weight associated to the price per night subjective value in the
-	 * calculation of the Apartment total subjective value
-	 */
 	private double pricePerNightSubjectiveValueWeight;
 
-	/**
-	 * The weight associated to the minimum number of nights subjective value in the
-	 * calculation of the Apartment total subjective value
-	 */
 	private double nbMinNightSubjectiveValueWeight;
 
-	/**
-	 * The weight associated to the presence of a television subjective value in the
-	 * calculation of the Apartment total subjective value
-	 */
 	private double teleSubjectiveValueWeight;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApartmentValueFunction.class);
@@ -176,7 +104,7 @@ public class ApartmentValueFunction {
 	 * Set the function which will be used to calculate the subjective value of the
 	 * floor area.
 	 *
-	 * @param floorAreaValueFunction an object of type {@link PartialValueFunction}
+	 * @param floorAreaValueFunction
 	 */
 	public void setFloorAreaValueFunction(PartialValueFunction<Double> floorAreaValueFunction) {
 		this.floorAreaValueFunction = checkNotNull(floorAreaValueFunction);
@@ -187,7 +115,7 @@ public class ApartmentValueFunction {
 	 * Set the function which will be used to calculate the subjective value of the
 	 * number of bedrooms.
 	 *
-	 * @param nbBedroomsValueFunction an object of type {@link PartialValueFunction}
+	 * @param nbBedroomsValueFunction
 	 */
 	public void setNbBedroomsValueFunction(PartialValueFunction<Double> nbBedroomsValueFunction) {
 		this.nbBedroomsValueFunction = checkNotNull(nbBedroomsValueFunction);
@@ -286,7 +214,7 @@ public class ApartmentValueFunction {
 	 * Set the weight of the floor area subjective value corresponding to the
 	 * importance of the floor area criteria.
 	 *
-	 * @param floorAreaSubjectiveValueWeight a positive or zero double
+	 * @param floorAreaSubjectiveValueWeight >= 0
 	 */
 	public void setFloorAreaSubjectiveValueWeight(double floorAreaSubjectiveValueWeight) {
 		checkArgument(floorAreaSubjectiveValueWeight >= 0, "The weight of the floor area cannot be negative");
@@ -298,7 +226,7 @@ public class ApartmentValueFunction {
 	 * Set the weight of the number of bedrooms subjective value corresponding to
 	 * the importance of the number of bedrooms criteria.
 	 *
-	 * @param nbBedroomsSubjectiveValueWeight a positive or zero double
+	 * @param nbBedroomsSubjectiveValueWeight >= 0
 	 */
 	public void setNbBedroomsSubjectiveValueWeight(double nbBedroomsSubjectiveValueWeight) {
 		checkArgument(nbBedroomsSubjectiveValueWeight >= 0, "The weight of the number of bedrooms cannot be negative");
@@ -310,7 +238,7 @@ public class ApartmentValueFunction {
 	 * set the weight of the number of sleeping subjective value corresponding to
 	 * the importance of the number of sleeping criteria.
 	 *
-	 * @param nbSleepingSubjectiveValueWeight a positive zero double
+	 * @param nbSleepingSubjectiveValueWeight >= 0
 	 */
 	public void setNbSleepingSubjectiveValueWeight(double nbSleepingSubjectiveValueWeight) {
 		checkArgument(nbSleepingSubjectiveValueWeight >= 0, "The weight of the sleeping cannot be negative");
@@ -322,7 +250,7 @@ public class ApartmentValueFunction {
 	 * Set the weight of the number of bathrooms subjective value corresponding to
 	 * the importance of the number of bathrooms criteria.
 	 *
-	 * @param nbBathroomsSubjectiveValueWeight a positive or zero double
+	 * @param nbBathroomsSubjectiveValueWeight >= 0
 	 */
 	public void setNbBathroomsSubjectiveValueWeight(double nbBathroomsSubjectiveValueWeight) {
 		checkArgument(nbBathroomsSubjectiveValueWeight >= 0,
@@ -335,7 +263,7 @@ public class ApartmentValueFunction {
 	 * Set the weight of the terrace subjective value corresponding to the
 	 * importance of the terrace criteria.
 	 *
-	 * @param terraceSubjectiveValueWeight a positive zero double
+	 * @param terraceSubjectiveValueWeight >= 0
 	 */
 	public void setTerraceSubjectiveValueWeight(double terraceSubjectiveValueWeight) {
 		checkArgument(terraceSubjectiveValueWeight >= 0, "The weight of the terrace cannot be negative");
@@ -347,7 +275,7 @@ public class ApartmentValueFunction {
 	 * Set the weight of the terrace floor area subjective value corresponding to
 	 * the importance of the terrace floor area criteria.
 	 *
-	 * @param floorAreaTerraceSubjectiveValueWeight a positive or zero double
+	 * @param floorAreaTerraceSubjectiveValueWeight >= 0
 	 */
 	public void setFloorAreaTerraceSubjectiveValueWeight(double floorAreaTerraceSubjectiveValueWeight) {
 		checkArgument(floorAreaTerraceSubjectiveValueWeight >= 0,
@@ -360,7 +288,7 @@ public class ApartmentValueFunction {
 	 * Set the weight of the WiFi subjective value corresponding to the importance
 	 * of the WiFi criteria.
 	 *
-	 * @param wifiSubjectiveValueWeight a positive zero double
+	 * @param wifiSubjectiveValueWeight >= 0
 	 */
 	public void setWifiSubjectiveValueWeight(double wifiSubjectiveValueWeight) {
 		checkArgument(wifiSubjectiveValueWeight >= 0, "The weight of the wifi cannot be negative");
@@ -372,7 +300,7 @@ public class ApartmentValueFunction {
 	 * Set the weight of the price per night subjective value corresponding to the
 	 * importance of the price per night criteria.
 	 *
-	 * @param pricePerNightSubjectiveValueWeight a positive or zero double
+	 * @param pricePerNightSubjectiveValueWeight >= 0
 	 */
 	public void setPricePerNightSubjectiveValueWeight(double pricePerNightSubjectiveValueWeight) {
 		checkArgument(pricePerNightSubjectiveValueWeight >= 0, "The weight of the price per night cannot be negative");
@@ -384,7 +312,7 @@ public class ApartmentValueFunction {
 	 * Set the weight of the minimum number of nights subjective value corresponding
 	 * to the importance of the minimum number of nights criteria.
 	 *
-	 * @param nbMinNightSubjectiveValueWeight a positive or zero double
+	 * @param nbMinNightSubjectiveValueWeight >= 0
 	 */
 	public void setNbMinNightSubjectiveValueWeight(double nbMinNightSubjectiveValueWeight) {
 		checkArgument(nbMinNightSubjectiveValueWeight >= 0,
@@ -397,7 +325,7 @@ public class ApartmentValueFunction {
 	 * Set the weight of the television subjective value corresponding to the
 	 * importance of the television criteria.
 	 *
-	 * @param teleSubjectiveValueWeight a positive or zero double
+	 * @param teleSubjectiveValueWeight >= 0
 	 */
 	public void setTeleSubjectiveValueWeight(double teleSubjectiveValueWeight) {
 		checkArgument(teleSubjectiveValueWeight >= 0, "The weight of the tele cannot be negative");
@@ -408,7 +336,7 @@ public class ApartmentValueFunction {
 	/**
 	 * This function return the subjective value of the Apartment in parameter. For
 	 * each valuable attribute of this apartment, the subjective value is computed
-	 * by the associated PartialValueFunction object. The weighted sum of theses
+	 * by the associated PartialValueFunction object. The weighted sum of these
 	 * subjective values is returned by the function. When the PartialValueFunction
 	 * object of an attribute hasn't been set, the subjective value given to the
 	 * corresponding attribute will be 0.
@@ -521,7 +449,7 @@ public class ApartmentValueFunction {
 	/**
 	 * Allows us to create a ApartmentValueFunction object with random values
 	 *
-	 * @return A randomized instance of an ApartmentValueFunction
+	 * @return a randomized instance of an ApartmentValueFunction
 	 */
 	public static ApartmentValueFunction getRandomApartmentValueFunction() {
 
@@ -591,8 +519,7 @@ public class ApartmentValueFunction {
 	 * @param criterion the criterion to adapt. This criterion should not be a
 	 *                  boolean as TV for example.
 	 * @param newBound  the new bound to define
-	 * @param lower     is true when we want to adapt the lower bound, false if we
-	 *                  want to adapt the upper bound
+	 * @param lower     true if we want to adapt the lower bound, false on the other case
 	 * @return an object ApartmentValueFunction
 	 */
 	public ApartmentValueFunction adaptBounds(Criterion criterion, double newBound, boolean lower) {
@@ -682,7 +609,7 @@ public class ApartmentValueFunction {
 		ApartmentValueFunction avf = cloneAVF();
 		double weightSum = avf.getSubjectiveValueWeight(moreImportant) + avf.getSubjectiveValueWeight(lessImportant);
 
-		avf =avf.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
+		avf = avf.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
 		avf = avf.setSubjectiveValueWeight(lessImportant, weightSum / 10);
 
 		return avf;
