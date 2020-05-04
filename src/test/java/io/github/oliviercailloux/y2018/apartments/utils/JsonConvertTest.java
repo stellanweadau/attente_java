@@ -1,9 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.utils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,7 +21,7 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
  * @author Etienne CARTIER & Morgane FIOT
  */
 public class JsonConvertTest {
-	
+
 	/**
 	 * Tests apartmentsToJson function. Verifies if the JSON file created by the
 	 * function corresponds to the expected file.
