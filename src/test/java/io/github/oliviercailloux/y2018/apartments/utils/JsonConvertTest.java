@@ -46,9 +46,11 @@ public class JsonConvertTest {
 	/**
 	 * Tests apartmentsToJson function. Verifies if the JSON file created by the
 	 * function corresponds to the expected file.
+	 * 
+	 * @throws IOException if the file doesn't exist
 	 */
 	@Test
-	void apartmentsToJsonTest() {
+	void apartmentsToJsonTest() throws IOException {
 		Builder apartBuilder = new Apartment.Builder();
 		ArrayList<Apartment> apartments = new ArrayList<>();
 		apartments.add(apartBuilder.setAddress("118 rue du père noel 77480").setFloorArea(1182118.48)
@@ -56,9 +58,8 @@ public class JsonConvertTest {
 		apartments.add(apartBuilder.setAddress("123 rue du soleil").setFloorArea(1234567.89).setTitle("Maison Test")
 				.setTerrace(false).setWifi(false).setTele(false).build());
 
-		String expectedApartment = "[{\"address\":\"118 rue du père noel 77480\",\"description\":\"\",\"floorArea\":1182118.48,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Grand Igloo\",\"wifi\":false},{\"address\":\"123 rue du soleil\",\"description\":\"\",\"floorArea\":1234567.89,\"floorAreaTerrace\":0.0,\"nbBathrooms\":0,\"nbBedrooms\":0,\"nbMinNight\":0,\"nbSleeping\":0,\"pricePerNight\":0.0,\"tele\":false,\"terrace\":false,\"title\":\"Maison Test\",\"wifi\":false}]";
-
-		assertEquals(expectedApartment, JsonConvert.apartmentsToJsonString(apartments));
+		String expectedApartmentJsonString = Files.readString(Path.of("expectedApartmentsJsonString.json"));
+		assertEquals(expectedApartmentJsonString, JsonConvert.apartmentsToJsonString(apartments));
 	}
 
 	/**
@@ -67,7 +68,7 @@ public class JsonConvertTest {
 	 * <i>ArrayList</i>.
 	 *
 	 * @throws URISyntaxException if the file doesn't exists.
-	 * @throws IOException           if the file can't be convert into JSON format.
+	 * @throws IOException        if the file can't be convert into JSON format.
 	 */
 	@Test
 	void jsonToApartmentsTest() throws IOException, URISyntaxException {
