@@ -419,12 +419,15 @@ public class Apartment extends Object {
 	public static class Builder {
 
 		private Apartment apartmentToBuild;
-		private boolean wifiKnown = false;
-		private boolean teleKnown = false;
-		private boolean hasTerraceKnown = false;
+		private boolean wifiKnown;
+		private boolean teleKnown;
+		private boolean hasTerraceKnown;
 
 		public Builder() {
 			apartmentToBuild = new Apartment();
+			this.hasTerraceKnown = false;
+			this.teleKnown = false;
+			this.wifiKnown = false;
 		}
 
 		public Apartment build() {
