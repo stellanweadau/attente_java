@@ -185,25 +185,27 @@ public abstract class ApartmentFactory {
 	 * 
 	 * <b>Regarding the API call:</b> <br>
 	 * <p>
-	 * After a multitude of tests, we have seen that after a failure of attitude and
-	 * length, we have a good one in any case <br>
+	 * After a multitude of tests, we have seen that after a failure of latitude and
+	 * longitude, we have a good one in any case <br>
 	 * <code>AddressApiException</code> should never be thrown. <br>
 	 * The probability of getting a good answer the first time is 1/5 on average
 	 * (after a multitude of trials)
 	 * </p>
-	 * <p>
+	 * <br>
 	 * The API used:
+	 * <ul>
 	 * <li>Is maintained by the interdepartmental digital department</li>
 	 * <li>Is free</li>
 	 * <li>Virtually no constraint on the number of calls (so it doesn't matter if a
 	 * call fails)</li>
 	 * <li>Does not ask for authentication (API key or others)</li>
 	 * <li>Does not depend on openstreetmap or GoogleMaps</li>
-	 * </p>
+	 * </ul>
+	 * <br>
 	 * 
 	 * @return the address generated.
 	 * @throws AddressApiException  in case the API doesn't return a good format
-	 *                              after a certain number of attempts (RETRY)
+	 *                              after a certain number of attempts
 	 * @throws ClientErrorException in case the JAX-RS call fails, for example
 	 *                              because of no connection or an HTTP 500, 404 or
 	 *                              others
@@ -239,7 +241,7 @@ public abstract class ApartmentFactory {
 					break;
 				}
 			} catch (Exception e) {
-				// We caught an exception that seems anormal,
+				// We caught an exception that seems abnormal,
 				// we close the client and throw the exception again
 				client.close();
 				throw e;
