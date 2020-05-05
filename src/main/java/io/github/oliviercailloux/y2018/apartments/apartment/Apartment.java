@@ -1,136 +1,106 @@
 package io.github.oliviercailloux.y2018.apartments.apartment;
 
-import java.util.Objects;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
+
+import java.util.Objects;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Apartment extends Object {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Apartment.class);
 
 	/**
-	 * @param a real number it represents the floor area of the apartment in square
-	 *          meters. Has to be initialized, if not, the apartment can't be
-	 *          created without a floor area.
+	 * A real number representing the floor area of the apartment in square meters.
+	 * Has to be initialized
 	 */
 	private double floorArea;
 
 	/**
-	 * @param a String of characters that gives the full location of the apartment
-	 *          (number, street name, ZIP code, city, country), has to initialized
-	 *          Has to be initialized, if not, the apartment can't be created
-	 *          without an address.
+	 * A String giving the full location of the apartment (number, street name, ZIP
+	 * code, city, country). Has to be initialized
 	 */
 	private String address;
 
 	/**
-	 * @param an integer superior or equal to zero, it is the number of bedrooms
-	 *           available of use in the apartment. if not initialized, the
-	 *           parameter will have a default value of <code>0</code> which mean
-	 *           the apartment doesn't have any bedroom.
+	 * An integer >= 0 representing the number of bedrooms available default : 0
 	 */
 	private int nbBedrooms;
 
 	/**
-	 * @param an integer superior or equal to zero corresponding of the
-	 *           accommodation capacity of the apartment (nb of people that can
-	 *           sleep in the apartment). If not initialized, the parameter will
-	 *           have a default value of <code>0</code> which mean the apartment
-	 *           doesn't have any place to sleep.
+	 * An integer >= 0 corresponding of the accommodation capacity of the apartment
+	 * (nb of people that can sleep in the apartment) default : 0
 	 */
 	private int nbSleeping;
 
 	/**
-	 * @param an integer superior or equal to zero which corresponds to the number
-	 *           of bathrooms. If not initialized, the parameter will have a default
-	 *           value set of <code>0</code> which mean the apartment doesn't have
-	 *           any bathroom.
+	 * An integer >= 0 corresponding to the number of bathrooms. default : 0
 	 */
 	private int nbBathrooms;
 
 	/**
-	 * @param a boolean (true/false) which indicates if there's a terrace or not can
-	 *          be interpreted as hasTerrace. If not initialized, the parameter will
-	 *          have a default value set of <code>false</code> which mean the
-	 *          apartment doesn't have a terrace.
+	 * A boolean which indicates if there's a terrace or not. default : false
 	 */
-	private Boolean hasTerrace;
+	private boolean hasTerrace;
 
 	/**
-	 * @param a real number superior or equal to zero it represents the floor area
-	 *          of the terrace of the apartment if there's any. If not initialized,
-	 *          the parameter will have a default value set of <code>0</code> which
-	 *          mean the apartment have a floor area of terrace of zero, whether it
-	 *          has or not a terrace.
+	 * A real number >= 0 representing the floor area of the terrace of the
+	 * apartment if there's any. default : 0
 	 */
 	private double floorAreaTerrace;
 
 	/**
-	 * @param a string of characters that describe the apartment and the offer (its
-	 *          accommodations). If not initialized, the parameter will have a
-	 *          default value set of <code>""</code> which mean the announcement
-	 *          doesn't have a description.
+	 * A String describing the apartment and the offer default : ""
 	 */
 	private String description;
 
 	/**
-	 * @param a string of characters that represents the title of the announcement.
-	 *          It has to be initialized, if not, the apartment can't be created
-	 *          without a <code>title</code>.
+	 * A String representing the title of the announcement. Has to be initialized
 	 */
 	private String title;
 
 	/**
-	 * @param a boolean (true/false) which indicates if there is wireless connection
-	 *          to Internet or not can be interpreted as hasWifi. If not
-	 *          initialized, the parameter will have a default value of
-	 *          <code>false</code> which mean the apartment doesn't have wifi.
+	 * A boolean which indicates if there is wireless connection to Internet or not
+	 * default : false
 	 */
-	private Boolean wifi;
+	private boolean wifi;
 
 	/**
-	 * @param a real number superior or equal to zero, how much it cost (before any
-	 *          fees) to stay per night in euros. If not initialized, the parameter
-	 *          will have a default value of <code>0</code> which mean the apartment
-	 *          doesn't have a price per night.
+	 * A real number >= 0 how much it costs (before any fees) to stay per night in
+	 * euros. default : 0
 	 */
 	private double pricePerNight;
 
 	/**
-	 * @param an integer superior or equal to zero, indicates how long in nights the
-	 *           customer have to stay. If not initialized, the parameter will have
-	 *           a default value of <code>0</code> which mean the apartment doesn't
-	 *           have a minimum of night to stay-in.
+	 * An integer >= 0, indicates how long in nights the customer have to stay.
+	 * default : 0
 	 */
 	private int nbMinNight;
 
 	/**
-	 * @param a boolean (true/false) which indicates if there's a television or not
-	 *          can be interpreted as hasTelevision. If not initialized, the
-	 *          parameter will have a default set value of <code>false</code> which
-	 *          mean the apartment doesn't have a tele.
+	 * A boolean which indicates if there's a television or not can default : false
 	 */
-	private Boolean tele;
+	private boolean tele;
 
 	/**
-	 * Constructor by default to be used by Apartment.Builder
+	 * Constructor by default which will be used by Apartment.Builder
 	 */
 	private Apartment() {
 		this.floorArea = 0;
 		this.address = null;
 		this.title = null;
-		setNbBedrooms(0);
-		setNbSleeping(0);
-		setNbBathrooms(0);
-		setTerrace(null);
-		setFloorAreaTerrace(0);
-		setDescription("");
-		setWifi(null);
-		setPricePerNight(0);
-		setNbMinNight(0);
-		setTele(null);
+		this.nbBedrooms = 0;
+		this.nbSleeping = 0;
+		this.nbBathrooms = 0;
+		this.hasTerrace = false;
+		this.floorAreaTerrace = 0;
+		this.description = "";
+		this.wifi = false;
+		this.pricePerNight = 0;
+		this.nbMinNight = 0;
+		this.tele = false;
 	}
 
 	@Override
@@ -151,19 +121,17 @@ public class Apartment extends Object {
 	/**
 	 * A toString meant to be used while in development for the testing
 	 * 
-	 * @return only the essential information of an apartment, which are the floor
-	 *         area, its address and his title
+	 * @return only the mandatory information of an apartment
 	 */
 	public String toString() {
-		String floorAreaTS = "\nFloor area : " + Double.toString(this.floorArea) + " square meters";
+		String floorAreaTS = String.format("%nFloor area : %f square meters", this.floorArea);
 		String addressTS = "\nAddress : " + this.address;
 		String titleTS = "\nTitle : " + this.title;
 		return floorAreaTS + addressTS + titleTS;
 	}
 
 	/**
-	 * A toString based method meant to be used after the development for regular
-	 * use
+	 * A toString based method meant to be used after development for regular use
 	 * 
 	 * @return all information of an apartment
 	 */
@@ -191,13 +159,13 @@ public class Apartment extends Object {
 				+ ((this.nbSleeping == 0) ? "N/A" : Integer.toString(this.nbSleeping) + " person(s)");
 		dispNbBathrooms = "\nNumber of bathrooms : "
 				+ ((this.nbBathrooms == 0) ? "N/A" : Integer.toString(this.nbBathrooms) + " bathroom(s)");
-		dispTerrace = "\nTerrace : " + ((this.hasTerrace) ? "Yes" : "No");
-		dispFloorAreaTerrace = new StringBuilder().append(!(this.hasTerrace) ? "" : "\nTerrace floor area : ")
+		dispTerrace = "\nTerrace : " + (this.hasTerrace ? "Yes" : "No");
+		dispFloorAreaTerrace = new StringBuilder().append(!this.hasTerrace ? "" : "\nTerrace floor area : ")
 				.append((floorAreaTerrace == 0) ? "N/A" : Double.toString(this.floorAreaTerrace) + " square meters")
 				.toString();
-		dispDescription = "\nDescription : " + ((this.description == "") ? "N/A" : this.description);
-		dispWifi = "\nWifi : " + ((this.wifi) ? "Yes" : "No");
-		dispTele = "\nTelevision : " + ((this.tele) ? "Yes" : "No");
+		dispDescription = "\nDescription : " + (Objects.equals(this.description, "") ? "N/A" : this.description);
+		dispWifi = "\nWifi : " + (this.wifi ? "Yes" : "No");
+		dispTele = "\nTelevision : " + (this.tele ? "Yes" : "No");
 		dispPricePerNight = "\nPrice per night : "
 				+ ((this.pricePerNight == 0) ? "N/A" : Double.toString(this.pricePerNight) + "€");
 		dispNbMinNight = "\nNumber of night minimum to rent this apartment : "
@@ -208,237 +176,234 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * get the value of the floor area
+	 * Gets the value of the floor area
 	 * 
-	 * @return a double positive or equal to zero
+	 * @return a double >= 0
 	 */
 	public double getFloorArea() {
 		return this.floorArea;
 	}
 
 	/**
-	 * get the value of the address
+	 * Gets the address
 	 * 
-	 * @return a String of characters
+	 * @return a String
 	 */
 	public String getAddress() {
 		return this.address;
 	}
 
 	/**
-	 * get the number of bedrooms, 0 if missing
+	 * Gets the number of bedrooms
 	 * 
-	 * @return an integer positive or equal to zero
+	 * @return an integer >= 0
 	 */
 	public int getNbBedrooms() {
 		return this.nbBedrooms;
 	}
 
 	/**
-	 * get the number of sleeping, 0 if missing
+	 * Gets the number of sleeping
 	 * 
-	 * @return an integer positive or equal to zero
+	 * @return an integer >= 0
 	 */
 	public int getNbSleeping() {
 		return this.nbSleeping;
 	}
 
 	/**
-	 * get the number of bathrooms, 0 if missing
+	 * Gets the number of bathrooms
 	 * 
-	 * @return an integer positive or equal to zero
+	 * @return an integer >= 0
 	 */
 	public int getNbBathrooms() {
 		return this.nbBathrooms;
 	}
 
 	/**
-	 * get the presence (or absence) of a terrace
+	 * Gets the presence (or absence) of a terrace
 	 * 
 	 * @return a boolean
 	 */
-	public Boolean getTerrace() {
+	public boolean getTerrace() {
 		return this.hasTerrace;
 	}
 
 	/**
-	 * get the value of the floor area of the terrace (0 if there is no terrace)
+	 * Gets the value of the floor area of the terrace (0 if there is no terrace)
 	 * 
-	 * @return a double positive or equal to zero
+	 * @return a double >= 0
 	 */
 	public double getFloorAreaTerrace() {
 		return this.floorAreaTerrace;
 	}
 
 	/**
-	 * get the description of the apartment, "" if missing
+	 * Gets the description of the apartment, "" if missing
 	 * 
-	 * @return a string of characters
+	 * @return a String
 	 */
 	public String getDescription() {
 		return this.description;
 	}
 
 	/**
-	 * get the title of the announcement
+	 * Gets the title of the announcement
 	 * 
-	 * @return a string of characters
+	 * @return a String
 	 */
 	public String getTitle() {
 		return this.title;
 	}
 
 	/**
-	 * get the presence (or absence) of WiFi
+	 * Gets the presence (or absence) of WiFi
 	 * 
 	 * @return a boolean
 	 */
-	public Boolean getWifi() {
+	public boolean getWifi() {
 		return this.wifi;
 	}
 
 	/**
-	 * get the price for one night, 0 if missing
+	 * Gets the price for one night
 	 * 
-	 * @return a double positive or equal to zero
+	 * @return a double >= 0
 	 */
 	public double getPricePerNight() {
 		return this.pricePerNight;
 	}
 
 	/**
-	 * get the minimum number of nights, 0 if missing
+	 * Gets the minimum number of nights
 	 * 
-	 * @return an integer positive or equal to zero
+	 * @return an integer >= 0
 	 */
 	public int getNbMinNight() {
 		return this.nbMinNight;
 	}
 
 	/**
-	 * get the presence (or absence) of a TV
+	 * Gets the presence (or absence) of a TV
 	 * 
 	 * @return a boolean
 	 */
-	public Boolean getTele() {
+	public boolean getTele() {
 		return this.tele;
 	}
 
 	/**
-	 * @param floorArea is a real number superior or equal to zero
+	 * @param floorArea a real number >= 0
 	 */
 	private void setFloorArea(double floorArea) {
 		checkArgument(floorArea > 0, "The floor area should not be <= 0");
 		this.floorArea = floorArea;
-		LOGGER.info("The floor area has been set to " + floorArea);
+		LOGGER.info("The floor area has been set to {}", floorArea);
 	}
 
 	/**
-	 * @param address is a string of characters
+	 * @param address a String
 	 */
 	private void setAddress(String address) {
-		checkNotNull(address, "The address should not be null");
 		checkArgument(!address.isEmpty(), "The address should not be empty");
-
-		this.address = address;
-		LOGGER.info("The address has been set to " + address);
+		this.address = checkNotNull(address, "The address should not be null");
+		LOGGER.info("The address has been set to {}", address);
 	}
 
 	/**
-	 * @param nbBedrooms is an integer superior or equal to zero
+	 * @param nbBedrooms an integer >= 0
 	 */
 	private void setNbBedrooms(int nbBedrooms) {
 		checkArgument(nbBedrooms >= 0, "The number of Bedrooms can not be negative");
 		this.nbBedrooms = nbBedrooms;
-		LOGGER.info("The number of bathrooms has been set to " + nbBedrooms);
+		LOGGER.info("The number of bathrooms has been set to {}", nbBedrooms);
 	}
 
 	/**
-	 * @param nbSleepings is an integer superior or equal to zero
+	 * @param nbSleeping an integer >= 0
 	 */
 	private void setNbSleeping(int nbSleeping) {
 		checkArgument(nbSleeping >= 0, "The accomodation capacity can not be negative");
 		this.nbSleeping = nbSleeping;
-		LOGGER.info("The number of sleepings has been set to " + nbSleeping);
+		LOGGER.info("The number of sleepings has been set to {}", nbSleeping);
 	}
 
 	/**
-	 * @param nbBathrooms is an integer superior or equal to zero
+	 * @param nbBathrooms an integer >= 0
 	 */
 	private void setNbBathrooms(int nbBathrooms) {
 		checkArgument(nbBathrooms >= 0, "The number of bathrooms can not be negative");
 		this.nbBathrooms = nbBathrooms;
-		LOGGER.info("The number of bathrooms has been set to " + nbBathrooms);
+		LOGGER.info("The number of bathrooms has been set to {}", nbBathrooms);
 	}
 
 	/**
-	 * @param terrace is a boolean (true/false)
+	 * @param terrace a boolean
 	 */
-	private void setTerrace(Boolean terrace) {
+	private void setTerrace(boolean terrace) {
 		this.hasTerrace = terrace;
-		LOGGER.info("terrace has been set to " + terrace);
+		LOGGER.info("terrace has been set to {}", terrace);
 	}
 
 	/**
-	 * @param floorAreaTerrace is a real number superior or equal to zero, it only
-	 *                         works if terrace = true (use setTerrace)
+	 * @param floorAreaTerrace a real number >= 0, it only works if terrace = true
+	 *                         (use setTerrace)
 	 */
 	private void setFloorAreaTerrace(double floorAreaTerrace) {
+		checkArgument(floorAreaTerrace >= 0, "The floor area of the terrace cannot be negative");
 		this.floorAreaTerrace = floorAreaTerrace;
-		LOGGER.info("The floor area of the terrace has been set to " + floorAreaTerrace);
+		LOGGER.info("The floor area of the terrace has been set to {}", floorAreaTerrace);
 	}
 
 	/**
-	 * @param description is a string of characters
+	 * @param description a String
 	 */
 	private void setDescription(String description) {
-		checkNotNull(description, "The description should not be null");
-		this.description = description;
-		LOGGER.info("The description has been set to " + description);
+		this.description = checkNotNull(description, "The description should not be null");
+		LOGGER.info("The description has been set to {}", description);
 	}
 
 	/**
-	 * @param title is a string of characters
+	 * @param title a String
 	 */
 	private void setTitle(String title) {
-		checkNotNull(title, "The title should not be null");
 		checkArgument(!title.isEmpty(), "The title should not be empty");
-		this.title = title;
-		LOGGER.info("The title has been set to " + floorArea);
+		this.title = checkNotNull(title, "The title should not be null");
+		LOGGER.info("The title has been set to {}", floorArea);
 	}
 
 	/**
-	 * @param wifi is a boolean (true/false)
+	 * @param wifi a boolean
 	 */
-	private void setWifi(Boolean wifi) {
+	private void setWifi(boolean wifi) {
 		this.wifi = wifi;
-		LOGGER.info("The wifi has been set to " + wifi);
+		LOGGER.info("The wifi has been set to {}", wifi);
 	}
 
 	/**
-	 * @param pricePerNight is a real number superior or equal to zero
+	 * @param pricePerNight a real number >= 0
 	 */
 	private void setPricePerNight(double pricePerNight) {
-		checkArgument(pricePerNight >= 0, "The price per night can not be negative");
+		checkArgument(pricePerNight >= 0, "The price per night cannot be negative");
 		this.pricePerNight = pricePerNight;
-		LOGGER.info("The price per night has been set to " + pricePerNight);
+		LOGGER.info("The price per night has been set to {}", pricePerNight);
 	}
 
 	/**
-	 * @param nbMinNight is an integer superior or equal to zero
+	 * @param nbMinNight an integer >= 0
 	 */
 	private void setNbMinNight(int nbMinNight) {
-		checkArgument(nbMinNight >= 0, "The minimum number of nights can not be negative");
+		checkArgument(nbMinNight >= 0, "The minimum number of nights cannot be negative");
 		this.nbMinNight = nbMinNight;
-		LOGGER.info("The number minimum of night has been set to " + nbMinNight);
+		LOGGER.info("The number minimum of night has been set to {}", nbMinNight);
 	}
 
 	/**
-	 * @param tele is a boolean (true/false)
+	 * @param tele a boolean
 	 */
-	private void setTele(Boolean tele) {
+	private void setTele(boolean tele) {
 		this.tele = tele;
-		LOGGER.info("The tele has been set to " + tele);
+		LOGGER.info("The tele has been set to {}", tele);
 	}
 
 	@Override
@@ -454,9 +419,15 @@ public class Apartment extends Object {
 	public static class Builder {
 
 		private Apartment apartmentToBuild;
+		private boolean wifiKnown;
+		private boolean teleKnown;
+		private boolean hasTerraceKnown;
 
 		public Builder() {
 			apartmentToBuild = new Apartment();
+			this.hasTerraceKnown = false;
+			this.teleKnown = false;
+			this.wifiKnown = false;
 		}
 
 		public Apartment build() {
@@ -466,19 +437,22 @@ public class Apartment extends Object {
 				throw new IllegalStateException("The address of the apartment must be specified");
 			} else if (apartmentToBuild.getTitle() == null) {
 				throw new IllegalStateException("The title of the apartment must be specified");
-			} else if (apartmentToBuild.getTele() == null){
-				throw new IllegalStateException("You must specify if the apartment has WIFI");
-			} else if (apartmentToBuild.getWifi() == null){
-				throw new IllegalStateException("You must specify if the apartment has TV");
-			} else if (apartmentToBuild.getTerrace() == null){
-				throw new IllegalStateException("You must specify if the apartment has a Terrace");
-			} else if (apartmentToBuild.getTerrace().equals(Boolean.FALSE) && apartmentToBuild.getFloorAreaTerrace()>0){
+			} else if(!this.hasTerraceKnown) {
+				throw new IllegalStateException("The terrace must be specified");
+			} else if (!this.teleKnown) {
+				throw new IllegalStateException("The presence of TV must be specified");
+			} else if (!this.wifiKnown) {
+				throw new IllegalStateException("The presence of wifi must be specified");
+			} else if (!(apartmentToBuild.getTerrace()) && apartmentToBuild.getFloorAreaTerrace() > 0) {
 				throw new IllegalStateException("The terrace can not have a floor area if it doesn't exists");
-			} else if (apartmentToBuild.getTerrace().equals(Boolean.TRUE) && apartmentToBuild.getFloorAreaTerrace()<=0){
+			} else if (apartmentToBuild.getTerrace() && apartmentToBuild.getFloorAreaTerrace() <= 0) {
 				throw new IllegalStateException("The existing terrace can not have a floor area  <= 0");
 			}
-			Apartment buildApartment = apartmentToBuild;
-			apartmentToBuild = new Apartment();
+			Apartment buildApartment = this.apartmentToBuild;
+			this.apartmentToBuild = new Apartment();
+			this.hasTerraceKnown = false;
+			this.teleKnown = false;
+			this.wifiKnown = false;
 			return buildApartment;
 		}
 
@@ -528,6 +502,7 @@ public class Apartment extends Object {
 		}
 
 		public Builder setTerrace(boolean terrace) {
+			this.hasTerraceKnown = true;
 			this.apartmentToBuild.setTerrace(terrace);
 			return this;
 		}
@@ -538,11 +513,13 @@ public class Apartment extends Object {
 		}
 
 		public Builder setWifi(boolean wifi) {
+			this.wifiKnown = true;
 			this.apartmentToBuild.setWifi(wifi);
 			return this;
 		}
 
 		public Builder setTele(boolean tele) {
+			this.teleKnown = true;
 			this.apartmentToBuild.setTele(tele);
 			return this;
 		}
