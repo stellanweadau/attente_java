@@ -232,11 +232,7 @@ public abstract class ApartmentFactory {
 			String latitude = String.valueOf(lat) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
 			// Call API
 			try {
-				WebTarget target = client.target(URL_API_ADDRESS).queryParam("lon", longitude).queryParam("lat",
-						latitude);
-				LOGGER.info("Address API Call : {}", target.getUri().toString());
-				String result = target.request(MediaType.TEXT_PLAIN).get(String.class);
-				address = ApartmentFactory.getAddressFromJson(result);
+				address = tryToGetOnlineRandomAddress(Optional.of(client), longitude, latitude);
 				if (address.isPresent()) {
 					break;
 				}
@@ -297,23 +293,38 @@ public abstract class ApartmentFactory {
 	}
 
 	/**
-	 * Check if the features.properties.label field is present in
-	 * <code>jsonString</code> In case it is not present, we return an empty
-	 * optional
+	 * Make an HTTP call and check if the features.properties.label field is present
+	 * in In case it is not present, we return an empty <code>Optional</code>
 	 * 
 	 * <p>
 	 * The case where the optional is empty is as follows: jsonString equals to
 	 * <code>{"type": "FeatureCollection", "version": "draft", "features": [], "attribution": "BAN", "licence": "ETALAB-2.0", "limit": 1}</code>
 	 * </p>
 	 * 
-	 * @param jsonString response to API request (HTTP GET) : not null
+	 * @see #getOnlineRandomAddress() For more information about the used API
+	 * @param client    jax-rs to make the HTTP call. It is Optional because the
+	 *                  caller can already use a Client. This avoids creating a
+	 *                  multitude of unnecessary instances. If a Client has passed,
+	 *                  we do not close the Client. Otherwise do not create a Client
+	 *                  then close it
+	 * @param longitude corresponds to the longitude which will be passed in API
+	 *                  parameter. Cannot be null
+	 * @param latitude  corresponds to the latitude which will be passed in API
+	 *                  parameter. Cannot be null
 	 * @return an optional which is empty if we have not managed to recover the
 	 *         field. Otherwise, it returns the address
 	 */
-	private static Optional<String> getAddressFromJson(String jsonString) {
+	public static Optional<String> tryToGetOnlineRandomAddress(Optional<Client> client, final String longitude,
+			final String latitude) {
+		checkNotNull(longitude, "longitude can't be null");
+		checkNotNull(latitude, "latitude can't be null");
+		Optional<String> address = Optional.empty();
+		Client c = client.isEmpty() ? ClientBuilder.newClient() : client.get();
+		WebTarget target = c.target(URL_API_ADDRESS).queryParam("lon", longitude).queryParam("lat", latitude);
+		LOGGER.info("Address API Call : {}", target.getUri().toString());
+		String jsonString = target.request(MediaType.TEXT_PLAIN).get(String.class);
 		checkNotNull(jsonString, "jsonString cannot be null");
 		checkArgument(!jsonString.isBlank(), "jsonString cannot be blank");
-		Optional<String> address = Optional.empty();
 		try (JsonReader jr = Json.createReader(new StringReader(jsonString))) {
 			JsonObject json = jr.readObject();
 			JsonArray features = json.get("features").asJsonArray();
@@ -322,7 +333,10 @@ public abstract class ApartmentFactory {
 				address = Optional.ofNullable(properties.getString("label"));
 			}
 		}
+		// We close the client in case the client passed in parameter is empty
+		if (client.isEmpty()) {
+			c.close();
+		}
 		return address;
 	}
-
 }
