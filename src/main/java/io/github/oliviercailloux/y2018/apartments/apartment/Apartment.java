@@ -41,9 +41,9 @@ public class Apartment extends Object {
 	private int nbBathrooms;
 
 	/**
-	 * A Boolean which indicates if there's a terrace or not. default : false
+	 * A boolean which indicates if there's a terrace or not. default : false
 	 */
-	private Boolean hasTerrace;
+	private boolean hasTerrace;
 
 	/**
 	 * A real number >= 0 representing the floor area of the terrace of the
@@ -65,7 +65,7 @@ public class Apartment extends Object {
 	 * A boolean which indicates if there is wireless connection to Internet or not
 	 * default : false
 	 */
-	private Boolean wifi;
+	private boolean wifi;
 
 	/**
 	 * A real number >= 0 how much it costs (before any fees) to stay per night in
@@ -82,7 +82,7 @@ public class Apartment extends Object {
 	/**
 	 * A boolean which indicates if there's a television or not can default : false
 	 */
-	private Boolean tele;
+	private boolean tele;
 
 	/**
 	 * Constructor by default which will be used by Apartment.Builder
@@ -94,13 +94,13 @@ public class Apartment extends Object {
 		this.nbBedrooms = 0;
 		this.nbSleeping = 0;
 		this.nbBathrooms = 0;
-		this.hasTerrace = null;
+		this.hasTerrace = false;
 		this.floorAreaTerrace = 0;
 		this.description = "";
-		this.wifi = null;
+		this.wifi = false;
 		this.pricePerNight = 0;
 		this.nbMinNight = 0;
-		this.tele = null;
+		this.tele = false;
 	}
 
 	@Override
@@ -224,9 +224,9 @@ public class Apartment extends Object {
 	/**
 	 * Gets the presence (or absence) of a terrace
 	 * 
-	 * @return a Boolean
+	 * @return a boolean
 	 */
-	public Boolean getTerrace() {
+	public boolean getTerrace() {
 		return this.hasTerrace;
 	}
 
@@ -260,9 +260,9 @@ public class Apartment extends Object {
 	/**
 	 * Gets the presence (or absence) of WiFi
 	 * 
-	 * @return a Boolean
+	 * @return a boolean
 	 */
-	public Boolean getWifi() {
+	public boolean getWifi() {
 		return this.wifi;
 	}
 
@@ -289,7 +289,7 @@ public class Apartment extends Object {
 	 * 
 	 * @return a boolean
 	 */
-	public Boolean getTele() {
+	public boolean getTele() {
 		return this.tele;
 	}
 
@@ -339,10 +339,10 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * @param terrace a Boolean
+	 * @param terrace a boolean
 	 */
-	private void setTerrace(Boolean terrace) {
-		this.hasTerrace = checkNotNull(terrace, "This value cannot be null");
+	private void setTerrace(boolean terrace) {
+		this.hasTerrace = terrace;
 		LOGGER.info("terrace has been set to {}", terrace);
 	}
 
@@ -374,10 +374,10 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * @param wifi a Boolean
+	 * @param wifi a boolean
 	 */
-	private void setWifi(Boolean wifi) {
-		this.wifi = checkNotNull(wifi, "This value cannot be null");
+	private void setWifi(boolean wifi) {
+		this.wifi = wifi;
 		LOGGER.info("The wifi has been set to {}", wifi);
 	}
 
@@ -400,10 +400,10 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * @param tele a Boolean
+	 * @param tele a boolean
 	 */
-	private void setTele(Boolean tele) {
-		this.tele = checkNotNull(tele, "This value cannot be null");
+	private void setTele(boolean tele) {
+		this.tele = tele;
 		LOGGER.info("The tele has been set to {}", tele);
 	}
 
@@ -432,16 +432,10 @@ public class Apartment extends Object {
 				throw new IllegalStateException("The address of the apartment must be specified");
 			} else if (apartmentToBuild.getTitle() == null) {
 				throw new IllegalStateException("The title of the apartment must be specified");
-			} else if (apartmentToBuild.getTele() == null) {
-				throw new IllegalStateException("You must specify if the apartment has WIFI");
-			} else if (apartmentToBuild.getWifi() == null) {
-				throw new IllegalStateException("You must specify if the apartment has TV");
-			} else if (apartmentToBuild.getTerrace() == null) {
-				throw new IllegalStateException("You must specify if the apartment has a Terrace");
-			} else if (apartmentToBuild.getTerrace().equals(Boolean.FALSE)
+			} else if (!(apartmentToBuild.getTerrace())
 					&& apartmentToBuild.getFloorAreaTerrace() > 0) {
 				throw new IllegalStateException("The terrace can not have a floor area if it doesn't exists");
-			} else if (apartmentToBuild.getTerrace().equals(Boolean.TRUE)
+			} else if (apartmentToBuild.getTerrace()
 					&& apartmentToBuild.getFloorAreaTerrace() <= 0) {
 				throw new IllegalStateException("The existing terrace can not have a floor area  <= 0");
 			}
