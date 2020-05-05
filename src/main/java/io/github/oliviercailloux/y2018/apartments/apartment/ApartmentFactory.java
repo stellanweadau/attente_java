@@ -185,11 +185,11 @@ public abstract class ApartmentFactory {
 	 * 
 	 * <b>Regarding the API call:</b> <br>
 	 * <p>
-	 * After a multitude of tests, we have seen that after a failure of latitude and
-	 * longitude, we have a good one in any case <br>
-	 * <code>AddressApiException</code> should never be thrown. <br>
-	 * The probability of getting a good answer the first time is 1/5 on average
-	 * (after a multitude of trials)
+	 * This method is designed so that its probability of failing to return an
+	 * address (i.e throw AddressApiException) is at most 0,00032. Therefore, if
+	 * this method is called 2500 times (corresponding to five generations of 500
+	 * random apartments), the probability of failing at least once is no greater
+	 * than 0.2 which seems acceptable.
 	 * </p>
 	 * <br>
 	 * The API used:
@@ -212,10 +212,10 @@ public abstract class ApartmentFactory {
 	 */
 	private static String getOnlineRandomAddress() throws ClientErrorException, AddressApiException {
 		/**
-		 * Maximum test value in case the API does not return the
-		 * features.properties.labels field In the case of an API error (for example
-		 * 500, or others), jax-rs throws an error of type
-		 * <code>ClientErrorException</code>
+		 * Maximum test value in case the API does not return the address field. In the
+		 * case of an API error (for example 500, or others), jax-rs throws an error of
+		 * type <code>ClientErrorException</code> In the event that we reach beyond the
+		 * RETRY tests, and we still do not have a good address, we throw an exception
 		 */
 		final int RETRY = 5;
 		Optional<String> address = Optional.empty();
@@ -286,9 +286,8 @@ public abstract class ApartmentFactory {
 	 * Generate apartment from a JSON file by default.
 	 *
 	 * @return the list of apartments found in the JSON file by default.
-	 * @throws IOException if we cannot have access to the JSON file.
 	 */
-	public static List<Apartment> getDefaultApartments() throws IOException {
+	public static List<Apartment> getDefaultApartments() {
 		return JsonConvert.getDefaultApartments();
 	}
 

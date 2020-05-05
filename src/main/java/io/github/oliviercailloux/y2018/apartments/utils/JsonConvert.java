@@ -56,11 +56,14 @@ public abstract class JsonConvert {
 	 * Converts a JSON expression to a list of Apartments.
 	 *
 	 * @return <i>List</i> the list of Apartments created
-	 * @throws IOException if the file doesn't exists
 	 */
-	public static List<Apartment> getDefaultApartments() throws IOException {
+	public static List<Apartment> getDefaultApartments() {
 		Path apartPath = startApartments();
-		return jsonToApartments(apartPath);
+		try {
+			return jsonToApartments(apartPath);
+		} catch (IOException io) {
+			throw new IllegalStateException("We are reading a resource file, it should not have an Exception", io);
+		}
 	}
 
 	/**
@@ -98,11 +101,14 @@ public abstract class JsonConvert {
 	 *
 	 * @param listApartments <code>{@link List}</code> object to convert into JSON
 	 * @return <i>Path</i> of the created file
-	 * @throws IOException if the JSON file can't be created.
 	 */
-	public static Path apartmentsToJson(List<Apartment> listApartments) throws IOException {
+	public static Path apartmentsToJson(List<Apartment> listApartments) {
 		Path defaultPath = getUniqueExportPath();
-		apartmentsToJson(listApartments, defaultPath);
+		try {
+			apartmentsToJson(listApartments, defaultPath);
+		} catch (IOException io) {
+			throw new IllegalStateException("We write in the current file, the Path exists", io);
+		}
 		return defaultPath.toAbsolutePath();
 	}
 
