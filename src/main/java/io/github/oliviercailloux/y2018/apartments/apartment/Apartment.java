@@ -419,6 +419,9 @@ public class Apartment extends Object {
 	public static class Builder {
 
 		private Apartment apartmentToBuild;
+		private boolean wifiKnown = false;
+		private boolean teleKnown = false;
+		private boolean hasTerraceKnown = false;
 
 		public Builder() {
 			apartmentToBuild = new Apartment();
@@ -431,6 +434,12 @@ public class Apartment extends Object {
 				throw new IllegalStateException("The address of the apartment must be specified");
 			} else if (apartmentToBuild.getTitle() == null) {
 				throw new IllegalStateException("The title of the apartment must be specified");
+			} else if(!this.hasTerraceKnown) {
+				throw new IllegalStateException("The terrace must be specified");
+			} else if (!this.teleKnown) {
+				throw new IllegalStateException("The presence of TV must be specified");
+			} else if (!this.wifiKnown) {
+				throw new IllegalStateException("The presence of wifi must be specified");
 			} else if (!(apartmentToBuild.getTerrace()) && apartmentToBuild.getFloorAreaTerrace() > 0) {
 				throw new IllegalStateException("The terrace can not have a floor area if it doesn't exists");
 			} else if (apartmentToBuild.getTerrace() && apartmentToBuild.getFloorAreaTerrace() <= 0) {
@@ -487,6 +496,7 @@ public class Apartment extends Object {
 		}
 
 		public Builder setTerrace(boolean terrace) {
+			this.hasTerraceKnown = true;
 			this.apartmentToBuild.setTerrace(terrace);
 			return this;
 		}
@@ -497,11 +507,13 @@ public class Apartment extends Object {
 		}
 
 		public Builder setWifi(boolean wifi) {
+			this.wifiKnown = true;
 			this.apartmentToBuild.setWifi(wifi);
 			return this;
 		}
 
 		public Builder setTele(boolean tele) {
+			this.teleKnown = true;
 			this.apartmentToBuild.setTele(tele);
 			return this;
 		}
