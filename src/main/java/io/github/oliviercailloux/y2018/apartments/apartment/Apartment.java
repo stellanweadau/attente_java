@@ -159,14 +159,13 @@ public class Apartment extends Object {
 				+ ((this.nbSleeping == 0) ? "N/A" : Integer.toString(this.nbSleeping) + " person(s)");
 		dispNbBathrooms = "\nNumber of bathrooms : "
 				+ ((this.nbBathrooms == 0) ? "N/A" : Integer.toString(this.nbBathrooms) + " bathroom(s)");
-		dispTerrace = "\nTerrace : " + ((Boolean.TRUE.equals(this.hasTerrace)) ? "Yes" : "No");
-		dispFloorAreaTerrace = new StringBuilder()
-				.append(Boolean.FALSE.equals(this.hasTerrace) ? "" : "\nTerrace floor area : ")
+		dispTerrace = "\nTerrace : " + (this.hasTerrace ? "Yes" : "No");
+		dispFloorAreaTerrace = new StringBuilder().append(!this.hasTerrace ? "" : "\nTerrace floor area : ")
 				.append((floorAreaTerrace == 0) ? "N/A" : Double.toString(this.floorAreaTerrace) + " square meters")
 				.toString();
 		dispDescription = "\nDescription : " + (Objects.equals(this.description, "") ? "N/A" : this.description);
-		dispWifi = "\nWifi : " + ((Boolean.TRUE.equals(this.wifi)) ? "Yes" : "No");
-		dispTele = "\nTelevision : " + ((Boolean.TRUE.equals(this.tele)) ? "Yes" : "No");
+		dispWifi = "\nWifi : " + (this.wifi ? "Yes" : "No");
+		dispTele = "\nTelevision : " + (this.tele ? "Yes" : "No");
 		dispPricePerNight = "\nPrice per night : "
 				+ ((this.pricePerNight == 0) ? "N/A" : Double.toString(this.pricePerNight) + "€");
 		dispNbMinNight = "\nNumber of night minimum to rent this apartment : "
@@ -432,11 +431,9 @@ public class Apartment extends Object {
 				throw new IllegalStateException("The address of the apartment must be specified");
 			} else if (apartmentToBuild.getTitle() == null) {
 				throw new IllegalStateException("The title of the apartment must be specified");
-			} else if (!(apartmentToBuild.getTerrace())
-					&& apartmentToBuild.getFloorAreaTerrace() > 0) {
+			} else if (!(apartmentToBuild.getTerrace()) && apartmentToBuild.getFloorAreaTerrace() > 0) {
 				throw new IllegalStateException("The terrace can not have a floor area if it doesn't exists");
-			} else if (apartmentToBuild.getTerrace()
-					&& apartmentToBuild.getFloorAreaTerrace() <= 0) {
+			} else if (apartmentToBuild.getTerrace() && apartmentToBuild.getFloorAreaTerrace() <= 0) {
 				throw new IllegalStateException("The existing terrace can not have a floor area  <= 0");
 			}
 			Apartment buildApartment = this.apartmentToBuild;
