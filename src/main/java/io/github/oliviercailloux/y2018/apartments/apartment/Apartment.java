@@ -320,7 +320,7 @@ public class Apartment extends Object {
 	}
 
 	/**
-	 * @param nbSleepings an integer >= 0
+	 * @param nbSleeping an integer >= 0
 	 */
 	private void setNbSleeping(int nbSleeping) {
 		checkArgument(nbSleeping >= 0, "The accomodation capacity can not be negative");
@@ -450,6 +450,9 @@ public class Apartment extends Object {
 			}
 			Apartment buildApartment = this.apartmentToBuild;
 			this.apartmentToBuild = new Apartment();
+			this.hasTerraceKnown = false;
+			this.teleKnown = false;
+			this.wifiKnown = false;
 			return buildApartment;
 		}
 
