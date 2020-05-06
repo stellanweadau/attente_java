@@ -185,13 +185,11 @@ public abstract class ApartmentFactory {
 	 * 
 	 * <b>Regarding the API call:</b> <br>
 	 * <p>
-	 * This method is designed so that its probability of failing to return an
-	 * address (i.e throw AddressApiException) is at most 0,00032. Therefore, if
-	 * this method is called 2500 times (corresponding to five generations of 500
-	 * random apartments), the probability of failing at least once is no greater
-	 * than 0.2 which seems acceptable.
+	 * An API call has an average 20% chance of failing. Given this high
+	 * probability, we iterate until we get a correct result (a good address). <br>
+	 * Furthermore, we cannot iterate endlessly, that is why the probability that
+	 * this function will return an exception of type AddressApiException is 0.032%
 	 * </p>
-	 * <br>
 	 * The API used:
 	 * <ul>
 	 * <li>Is maintained by the interdepartmental digital department</li>
