@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
@@ -74,10 +77,14 @@ class ApartmentFactoryTest {
 	public void testRandomAddress() {
 		String lontitude = "2.2712946";
 		String latitude = "48.869962";
-		Optional<String> address = ApartmentFactory.tryToGetOnlineRandomAddress(Optional.empty(), lontitude, latitude);
-		assertTrue(address.isPresent(), "We are supposed to retrieve an address");
-		assertEquals("2 Chemin des Lacs à la Porte Dauphine 75016 Paris", address.get(),
-				"Call to the address retrieval API with a fixed longitude and attitude need to return a good result");
+		Client client = ClientBuilder.newClient();
+		try {
+			Optional<String> address = ApartmentFactory.tryToGetOnlineRandomAddress(client, lontitude, latitude);
+			assertTrue(address.isPresent(), "We are supposed to retrieve an address");
+			assertEquals("2 Chemin des Lacs à la Porte Dauphine 75016 Paris", address.get(),
+					"Call to the address retrieval API with a fixed longitude and attitude need to return a good result");
+		} finally {
+			client.close();
+		}
 	}
-
 }

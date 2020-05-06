@@ -223,7 +223,6 @@ public abstract class ApartmentFactory {
 		final double LAT_IDF = 48.8_499_198d;
 		final double LONG_IDF = 2.6_370_411d;
 		// Open a new client JAX-RS
-		final Client client = ClientBuilder.newClient();
 		for (int i = 1; i <= RETRY; i++) {
 			// Latitude and longitude generation
 			double lat = Math.round(LAT_IDF * 10.0d) / 10.0d;
@@ -231,19 +230,18 @@ public abstract class ApartmentFactory {
 			String longitude = String.valueOf(lng) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
 			String latitude = String.valueOf(lat) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
 			// Call API
+			final Client client = ClientBuilder.newClient();
 			try {
-				address = tryToGetOnlineRandomAddress(Optional.of(client), longitude, latitude);
+				address = tryToGetOnlineRandomAddress(client, longitude, latitude);
 				if (address.isPresent()) {
 					break;
 				}
-			} catch (Exception e) {
+			} finally {
 				// We caught an exception that seems abnormal,
 				// we close the client and throw the exception again
 				client.close();
-				throw e;
 			}
 		}
-		client.close();
 		if (address.isPresent()) {
 			return address.get();
 		}
@@ -301,11 +299,9 @@ public abstract class ApartmentFactory {
 	 * </p>
 	 * 
 	 * @see #getOnlineRandomAddress() For more information about the used API
-	 * @param client    jax-rs to make the HTTP call. It is Optional because the
-	 *                  caller can already use a Client. This avoids creating a
-	 *                  multitude of unnecessary instances. If a Client has passed,
-	 *                  we do not close the Client. Otherwise do not create a Client
-	 *                  then close it
+	 * @param client    jax-rs to make the HTTP call. This function do not close the
+	 *                  Client! In case an Exception is thrown, it will return to
+	 *                  the caller
 	 * @param longitude corresponds to the longitude which will be passed in API
 	 *                  parameter. Cannot be null
 	 * @param latitude  corresponds to the latitude which will be passed in API
@@ -313,13 +309,12 @@ public abstract class ApartmentFactory {
 	 * @return an optional which is empty if we have not managed to recover the
 	 *         field. Otherwise, it returns the address
 	 */
-	public static Optional<String> tryToGetOnlineRandomAddress(Optional<Client> client, final String longitude,
-			final String latitude) {
+	static Optional<String> tryToGetOnlineRandomAddress(Client client, final String longitude, final String latitude) {
+		checkNotNull(client, "client can't be null");
 		checkNotNull(longitude, "longitude can't be null");
 		checkNotNull(latitude, "latitude can't be null");
 		Optional<String> address = Optional.empty();
-		Client c = client.isEmpty() ? ClientBuilder.newClient() : client.get();
-		WebTarget target = c.target(URL_API_ADDRESS).queryParam("lon", longitude).queryParam("lat", latitude);
+		WebTarget target = client.target(URL_API_ADDRESS).queryParam("lon", longitude).queryParam("lat", latitude);
 		LOGGER.info("Address API Call : {}", target.getUri().toString());
 		String jsonString = target.request(MediaType.TEXT_PLAIN).get(String.class);
 		checkNotNull(jsonString, "jsonString cannot be null");
@@ -331,10 +326,6 @@ public abstract class ApartmentFactory {
 				JsonObject properties = features.get(0).asJsonObject().get("properties").asJsonObject();
 				address = Optional.ofNullable(properties.getString("label"));
 			}
-		}
-		// We close the client in case the client passed in parameter is empty
-		if (client.isEmpty()) {
-			c.close();
 		}
 		return address;
 	}
