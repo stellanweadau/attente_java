@@ -283,6 +283,13 @@
             <message xmi:type="uml:Message" xmi:id="_nckDMIQJEeqyTrq5oKlx7g" name="Create GUI Results" receiveEvent="_ncnGgIQJEeqyTrq5oKlx7g" sendEvent="_ncl4YIQJEeqyTrq5oKlx7g"/>
             <message xmi:type="uml:Message" xmi:id="_niUF4IQJEeqyTrq5oKlx7g" name="Show apartments sorted according to their accuracy" receiveEvent="_niXwQIQJEeqyTrq5oKlx7g" sendEvent="_niWiIIQJEeqyTrq5oKlx7g"/>
           </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_mnqTUJBxEeql4KIh5Ckynw" memberEnd="_mnq6YpBxEeql4KIh5Ckynw _mnrhcJBxEeql4KIh5Ckynw">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mnq6YJBxEeql4KIh5Ckynw" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mnq6YZBxEeql4KIh5Ckynw" key="nature" value="UML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_mnq6YpBxEeql4KIh5Ckynw" name="profile" type="_kH7IoIY4Eeqw9PFqD2CRLA" association="_mnqTUJBxEeql4KIh5Ckynw"/>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_mnrhcJBxEeql4KIh5Ckynw" name="apartmentvaluefunction" type="_72rEYF_BEeqAAb4u4HLI7w" association="_mnqTUJBxEeql4KIh5Ckynw"/>
+          </packagedElement>
         </packagedElement>
       </packagedElement>
     </packagedElement>
@@ -2434,6 +2441,10 @@
               <body>LoggerFactory.getLogger(ApartmentValueFunction.class)</body>
             </defaultValue>
           </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_kSDG0JBxEeql4KIh5Ckynw" name="profile" type="_kH7IoIY4Eeqw9PFqD2CRLA">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kSDt4JBxEeql4KIh5Ckynw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kSEU8JBxEeql4KIh5Ckynw" value="1"/>
+          </ownedAttribute>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_73BpsF_BEeqAAb4u4HLI7w" name="ApartmentValueFunction" specification="_729_UF_BEeqAAb4u4HLI7w">
             <language>JAVA</language>
             <body>&#xD;
@@ -3484,7 +3495,7 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_lwGqkYY8Eeqw9PFqD2CRLA" type="_kH7IoIY4Eeqw9PFqD2CRLA" aggregation="composite" association="_lwFccIY8Eeqw9PFqD2CRLA">
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5wR-4IY9Eeqw9PFqD2CRLA" value="*"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uWEekJBzEeql4KIh5Ckynw" value="*"/>
           </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_kH7IoIY4Eeqw9PFqD2CRLA" name="Profile">
@@ -3501,15 +3512,11 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
           </ownedAttribute>
         </packagedElement>
-        <packagedElement xmi:type="uml:Dependency" xmi:id="_9ga9wIY_Eeqw9PFqD2CRLA" name="update" client="_72rEYF_BEeqAAb4u4HLI7w" supplier="_kH7IoIY4Eeqw9PFqD2CRLA"/>
         <packagedElement xmi:type="uml:Association" xmi:id="_lwFccIY8Eeqw9PFqD2CRLA" memberEnd="_lwGqkYY8Eeqw9PFqD2CRLA _lwPNcIY8Eeqw9PFqD2CRLA">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lwGDgIY8Eeqw9PFqD2CRLA" source="org.eclipse.papyrus">
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lwGqkIY8Eeqw9PFqD2CRLA" key="nature" value="UML_Nature"/>
           </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_lwPNcIY8Eeqw9PFqD2CRLA" type="_mJBTIIY3Eeqw9PFqD2CRLA" association="_lwFccIY8Eeqw9PFqD2CRLA">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1Z1jEIY9Eeqw9PFqD2CRLA"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1Z6bkIY9Eeqw9PFqD2CRLA" value="*"/>
-          </ownedEnd>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_lwPNcIY8Eeqw9PFqD2CRLA" type="_mJBTIIY3Eeqw9PFqD2CRLA" association="_lwFccIY8Eeqw9PFqD2CRLA"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_8X0B0IY9Eeqw9PFqD2CRLA" memberEnd="_8X0o4oY9Eeqw9PFqD2CRLA _8X0o5YY9Eeqw9PFqD2CRLA">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8X0o4IY9Eeqw9PFqD2CRLA" source="org.eclipse.papyrus">
