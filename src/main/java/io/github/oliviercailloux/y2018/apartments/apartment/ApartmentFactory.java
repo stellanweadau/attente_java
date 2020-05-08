@@ -221,24 +221,24 @@ public abstract class ApartmentFactory {
 		final double LAT_IDF = 48.8_499_198d;
 		final double LONG_IDF = 2.6_370_411d;
 		// Open a new client JAX-RS
-		for (int i = 1; i <= RETRY; i++) {
-			// Latitude and longitude generation
-			double lat = Math.round(LAT_IDF * 10.0d) / 10.0d;
-			double lng = Math.round(LONG_IDF * 10.0d) / 10.0d;
-			String longitude = String.valueOf(lng) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
-			String latitude = String.valueOf(lat) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
-			// Call API
-			final Client client = ClientBuilder.newClient();
-			try {
+		final Client client = ClientBuilder.newClient();
+		try {
+			for (int i = 1; i <= RETRY; i++) {
+				// Latitude and longitude generation
+				double lat = Math.round(LAT_IDF * 10.0d) / 10.0d;
+				double lng = Math.round(LONG_IDF * 10.0d) / 10.0d;
+				String longitude = String.valueOf(lng) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
+				String latitude = String.valueOf(lat) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);
+				// Call API
 				address = tryToGetOnlineRandomAddress(client, longitude, latitude);
 				if (address.isPresent()) {
 					break;
 				}
-			} finally {
-				// We caught an exception that seems abnormal,
-				// we close the client and throw the exception again
-				client.close();
 			}
+		} finally {
+			// We caught an exception that seems abnormal,
+			// we close the client and throw the exception again
+			client.close();
 		}
 		if (address.isPresent()) {
 			return address.get();
