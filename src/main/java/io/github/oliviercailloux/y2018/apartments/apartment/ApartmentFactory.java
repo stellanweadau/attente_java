@@ -185,10 +185,10 @@ public abstract class ApartmentFactory {
 	 * 
 	 * <b>Regarding the API call:</b> <br>
 	 * <p>
-	 * An API call has an average 20% chance of failing. Given this high
-	 * probability, we iterate until we get a correct result (a good address). <br>
-	 * Furthermore, we cannot iterate endlessly, that is why the probability that
-	 * this function will return an exception of type AddressApiException is 0.032%
+	 * The probability that this function will return an exception of type
+	 * AddressApiException is 0.032% <br>
+	 * Empirically, the probability that we get a possible failure of the
+	 * application is around 0.0533%
 	 * </p>
 	 * The API used:
 	 * <ul>
@@ -201,6 +201,9 @@ public abstract class ApartmentFactory {
 	 * </ul>
 	 * <br>
 	 * 
+	 * @see #getRandomAddress() <code>getRandomAddress()</code> calls
+	 *      <code>getOnlineRandomAddress()</code> but return an apipa address in
+	 *      case an Exception is thrown
 	 * @return the address generated.
 	 * @throws AddressApiException  in case the API doesn't return a good format
 	 *                              after a certain number of attempts
@@ -210,10 +213,13 @@ public abstract class ApartmentFactory {
 	 */
 	private static String getOnlineRandomAddress() throws ClientErrorException, AddressApiException {
 		/**
-		 * Maximum test value in case the API does not return the address field. In the
-		 * case of an API error (for example 500, or others), jax-rs throws an error of
-		 * type <code>ClientErrorException</code> In the event that we reach beyond the
-		 * RETRY tests, and we still do not have a good address, we throw an exception
+		 * An API call has an average 20% chance of failing. Given this highprobability,
+		 * we iterate until we get a correct result (a good address). RETRY corresponds
+		 * to the maximum test value in case the API does not return the address field.
+		 * In the case of an API error (for example 500, or others), jax-rs throws an
+		 * error of type <code>ClientErrorException</code> In the event that we reach
+		 * beyond the RETRY tests, and we still do not have a good address, we throw an
+		 * exception
 		 */
 		final int RETRY = 5;
 		Optional<String> address = Optional.empty();
