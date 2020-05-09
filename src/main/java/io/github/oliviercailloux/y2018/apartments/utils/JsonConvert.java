@@ -1,14 +1,11 @@
 package io.github.oliviercailloux.y2018.apartments.utils;
 
-import static com.google.common.base.Preconditions.checkArgument;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.json.bind.Jsonb;
@@ -56,39 +53,25 @@ public abstract class JsonConvert {
 	}
 
 	/**
-	 * Gets the address field from an Address JSON.
-	 *
-	 * @param jsonString <i>String</i> the Address into JSON format
-	 * @return <i>String</i> the address field
-	 */
-	public static String getAddressFromJson(String jsonString) {
-		Jsonb jsonb = JsonbBuilder.create();
-
-		final LinkedHashMap<?, ?> result = jsonb.fromJson(jsonString, LinkedHashMap.class);
-		LOGGER.info("Get address");
-
-		checkArgument(!result.get("address").toString().isEmpty() && result.containsKey("address"),
-				"There is no field adress in the JSON file.");
-		return result.get("address").toString();
-	}
-
-	/**
 	 * Converts a JSON expression to a list of Apartments.
 	 *
 	 * @return <i>List</i> the list of Apartments created
-	 * @throws IOException if the file doesn't exists
 	 */
-	public static List<Apartment> getDefaultApartments() throws IOException {
+	public static List<Apartment> getDefaultApartments() {
 		Path apartPath = startApartments();
-		return jsonToApartments(apartPath);
+		try {
+			return jsonToApartments(apartPath);
+		} catch (IOException io) {
+			throw new IllegalStateException("We are reading a resource file, it should not have an Exception", io);
+		}
 	}
 
 	/**
 	 * Converts a JSON expression to a list of Apartments.
 	 *
-	 * @param jsonPath <i>Path</i> the JSON expression to convert into a list of
+	 * @param jsonPath {@link Path} the JSON expression to convert into a list of
 	 *                 Apartments
-	 * @return <i>List</i> the list of Apartments created
+	 * @return the list of Apartments created
 	 * @throws IOException if the file doesn't exists
 	 */
 	@SuppressWarnings("serial")
@@ -118,11 +101,14 @@ public abstract class JsonConvert {
 	 *
 	 * @param listApartments <code>{@link List}</code> object to convert into JSON
 	 * @return <i>Path</i> of the created file
-	 * @throws IOException if the JSON file can't be created.
 	 */
-	public static Path apartmentsToJson(List<Apartment> listApartments) throws IOException {
+	public static Path apartmentsToJson(List<Apartment> listApartments) {
 		Path defaultPath = getUniqueExportPath();
-		apartmentsToJson(listApartments, defaultPath);
+		try {
+			apartmentsToJson(listApartments, defaultPath);
+		} catch (IOException io) {
+			throw new IllegalStateException("We write in the current file, the Path exists", io);
+		}
 		return defaultPath.toAbsolutePath();
 	}
 
