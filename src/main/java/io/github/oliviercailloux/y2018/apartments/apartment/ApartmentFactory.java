@@ -25,7 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
-import io.github.oliviercailloux.y2018.apartments.utils.JsonConvert;
+import io.github.oliviercailloux.y2018.apartments.apartment.json.JsonConvert;
 
 /**
  * A factory for creating Apartment objects.

@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.apartments.utils;
+package io.github.oliviercailloux.y2018.apartments.apartment.json;
 
 import java.io.IOException;
 import java.net.URI;

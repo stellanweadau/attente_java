@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.apartments.utils;
+package io.github.oliviercailloux.y2018.apartments.apartment.json;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
+import io.github.oliviercailloux.y2018.apartments.apartment.json.JsonConvert;
 
 /**
  * Test class for JsonConvert
