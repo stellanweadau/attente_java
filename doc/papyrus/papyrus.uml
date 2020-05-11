@@ -892,7 +892,7 @@
             </ownedOperation>
           </nestedClassifier>
         </packagedElement>
-        <packagedElement xmi:type="uml:Class" xmi:id="_cISsEGbdEeqYDoGRuvwelQ" name="ApartmentFactory" isAbstract="true">
+        <packagedElement xmi:type="uml:Class" xmi:id="_cISsEGbdEeqYDoGRuvwelQ" name="ApartmentFactory" visibility="public" isAbstract="true">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_1RC7kF--EeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
             <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_1REwwF--EeqAAb4u4HLI7w" name="defaultValue">
               <language>JAVA</language>
