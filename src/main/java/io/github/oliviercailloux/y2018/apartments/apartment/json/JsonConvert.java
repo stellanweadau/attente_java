@@ -1,5 +1,13 @@
 package io.github.oliviercailloux.y2018.apartments.apartment.json;
 
+import com.google.common.base.VerifyException;
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -7,17 +15,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.json.bind.Jsonb;
-import javax.json.bind.JsonbBuilder;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.base.VerifyException;
-
-import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
-import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 
 /**
  * The Class JsonConvert contains all function to transform Apartment object to
