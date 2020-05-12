@@ -1,0 +1,45 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:     
+:imagesdir: https://raw.githubusercontent.com/av1m/Apartments/master/Doc/img/
+:toc:
+:toc-placement!:
+
+= Iteration 4
+
+[IMPORTANT]
+====
+
+Deadline : **24 May** 2020
+
+This file only explains the distribution of work between the two teams (and indicates through links the realizations)
+
+====
+
+toc::[]
+
+== Team 1
+=== Members
+=== Realizations
+
+== Team 2
+=== Members
+=== Realizations
+
+== Team 3
+
+We saw with you, we make exceptionally 3 teams in order to allow Avi to be able to work on the file "CI - Github Actions"
+
+=== Member
+
+- link:https://github.com/av1m[Avi MIMOUN]
+
+=== Realizations
+
+* Improved documentation (removal of obsolete content, updated architecture)
+* Updated links for images (link directly to the image and not on a Github page)
+* Renaming of the `doc` folder to `Doc`
+* Fixed other small issues in the documentation
+* (Writing - CI Github Actions)

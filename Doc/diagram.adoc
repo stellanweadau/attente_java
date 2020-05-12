@@ -12,11 +12,17 @@
 
 toc::[]
 
-NOTE: Some "Open Arrow" arrows appear in white in diagrams
+[WARNING]
+====
+*Diagrams listed in link:papyrus/[`papyrus`] and not documented in this file are obsolete.*
 
-== 1. Diagrams showing the application in real time
+To see the old project states, you can navigate through the old commits. +
+However, we left the old diagram photos in the link:img/[`img/`] folder
+====
 
-* link:img/{lastSimplifiedDiagram}[Last **Simplified** class diagram] 
+== Class diagrams
+
+* General : simplified
 +
 .see diagram
 [%collapsible]
@@ -24,62 +30,74 @@ NOTE: Some "Open Arrow" arrows appear in white in diagrams
 image::{lastSimplifiedDiagram}[Last simplified class diagram]
 ====
 
-* Older versions are available in  link:img/state/[this directory]
-
-== 2. Diagrams documenting future improvements
-
-=== 2.1 Uses cases
-
-=== 2.2 Class
-
-* "Before/After" between the existing project and iteration 1 : simplified diagram
+* General : not simplified
 +
 .see diagram
 [%collapsible]
 ====
-*BEFORE*
-
-image::it2/it2-class-diagram-before-first-iteration.png[Before IT1 - JAVA]
-
-*AFTER*
-
-image::it2/it2-class-diagram-after-first-iteration.png[AFTER IT1 - JAVA]
+image::it1/it1-class-diagram.png[general class diagram (not simplified)]
 ====
 +
 .see documentation
 [%collapsible]
 ====
-Just above is a view of the current state of the Apartment Class that will be modified during the first iteration. +
-The goal of this iteration is to implement an Apartment Factory that will be able to generate Apartment from scratch randomly or not, and it will also be able to generate Apartments form JSON files.
+This class diagram led us to think about some fact. First of all, we can see a lot of packages containing only one class. These classes are used once or twice in the program. A first idea can be to join all these classes into the `utils` package and make them abstract with static operation if it’s possible. 
 
-In order to add this compatibility with JSON files, we will add a new class in the Utils package to deal with the parsing end conversion to JSON. +
-This new class, JsonConvert, will allow us in the long term, when we will be sure of the strength of the JSON storage of the Apartment, to get rid of the storage of Apartments with properties files that is currently used by the application. +
-But in a fisrt time, we will keep a coexistence of the XML storage and JSON storage.
-
-Finnally, the replacement of the Apartment Generator by the new Apartment Factory will force us to add the former dependencies it had with the GUI package. 
+We also can see 3 important parts of the program. The `GUI`, `Value Fonction` and `Apartment` 
 ====
 
-* User profiles (link with `value function`)
+== Uses cases diagrams
+
+* General : Use of an apartment rental platform
 +
 .see diagram
 [%collapsible]
 ====
-image:it3/it3-class-profile.png[CDProfile]
+image::it2/it2-usecase-global.png[General use cases IT 1]
 ====
 +
-.link:development.adoc#value-function[see documentation]
+.see documentation
 [%collapsible]
 ====
-As you might have seen, we established a class diagram for creating the several profiles. The class `Profile` will communicate with apartment value function in order to initialize the value of it according to the profile chosen. 
+As the main user of the application will be the tenants (see link:overview.adoc#users-roles[users roles]), we have identified several actions that the tenants will be able to do. 
 
-The class `ProfileManager` allow us to see all the profiles created and add new ones. 
+The main use case of the application will then be to look for an apartment that the user of the app will rent for a long period of time. The user, during his/her research, will be able to indicate his/her preferences (for example, the user is looking for an apartment with a terrace) and to obtain a sorted list of apartments after filling all the criteria. The first apartment in the list will be the best match between the characteristics of the location and the user’s criteria. 
 
-The class `ProfileCriteria` gives all the criteria needed for one profile. 
-
-Click link:development.adoc#value-function[here] to see the documentation on the evolutions which revolves around user profiles and value function
+We can also imagine other general use case such as saving the user’s favourite apartments in a list and consult them or a chat functionality which will allow the users to talk with the manager and to ask questions about the apartments.
 ====
 
-=== 2.3 Sequence
+* Ask opinion for utility
++
+.see diagram
+[%collapsible]
+====
+image::it1/it1-usecase-askopinionforutility.png[AskOpinionForUtility use case]
+====
++
+.see documentation
+[%collapsible]
+====
+link:overview.adoc#askopinionforutility[Click here to see documentation about AskOpinionForUtity]
+====
+
+* Creation of an apartment
++
+.see diagram
+[%collapsible]
+====
+image::it3/it3-usecase-createapartment.png[create an apartment use case]
+====
++
+.see documentation
+[%collapsible]
+====
+
+We decided to keep this use case diagram because despite the new role of the application (just tenant), this functionality is not important but still remains existing in the application for a secondary role 
+
+link:overview.adoc#createapartmentgui[Click here to see documentation about CreateApartment]
+====
+
+== Sequence diagram
 
 * Interaction between users and application
 +
@@ -99,75 +117,26 @@ To specify the operation for the user, we designed a sequence diagram.
 We can see that the user launches the program. The program initializes a window with the criterion’s form. The user can select a predefined profile. In this case, the form will be automatically fill with values estimated by the program. After that, the user can customize the values before sending them. If the values do not have the good format, the user must modify his entries. When all datas have the good format, the application will display the GUI results containing apartments corresponding to the user’s criteria. 
 ====
 
-== 3. Diagrams of the existing project
+== Idea
 
-=== 3.1 Uses cases
+WARNING: These are design ideas, which are not yet integrated into the application
 
-* General : Use of an apartment rental platform
+* User profiles (link with `value function`)
 +
 .see diagram
 [%collapsible]
 ====
-image::it2/it2-usecase-global.png[General use cases IT 1]
+image:it3/it3-class-profile.png[CDProfile]
 ====
 +
 .see documentation
 [%collapsible]
 ====
-As the main user of the application will be the tenants (see link:development.adoc#users-roles[users roles]), we have identified several actions that the tenants will be able to do. 
+As you might have seen, we established a class diagram for creating the several profiles. The class `Profile` will communicate with apartment value function in order to initialize the value of it according to the profile chosen. 
 
-The main use case of the application will then be to look for an apartment that the user of the app will rent for a long period of time. The user, during his/her research, will be able to indicate his/her preferences (for example, the user is looking for an apartment with a terrace) and to obtain a sorted list of apartments after filling all the criteria. The first apartment in the list will be the best match between the characteristics of the location and the user’s criteria. 
+The class `ProfileManager` allow us to see all the profiles created and add new ones. 
 
-We can also imagine other general use case such as saving the user’s favourite apartments in a list and consult them or a chat functionality which will allow the users to talk with the manager and to ask questions about the apartments.
-====
+The class `ProfileCriteria` gives all the criteria needed for one profile. 
 
-* link:existing-project.adoc#askopinionforutility[Ask opinion for utility]
-+
-.see diagram
-[%collapsible]
-====
-image::it1/it1-usecase-askopinionforutility.png[AskOpinionForUtility use case]
-====
-+
-.link:existing-project.adoc#askopinionforutility[see documentation]
-[%collapsible]
-====
-link:existing-project.adoc#askopinionforutility[Click here to see documentation about AskOpinionForUtity]
-====
-
-* link:existing-project.adoc#createapartmentgui[Creation of an apartment]
-+
-.see diagram
-[%collapsible]
-====
-image::it3/it3-usecase-createapartment.png[create an apartment use case]
-====
-+
-.link:existing-project.adoc#createapartmentgui[see documentation]
-[%collapsible]
-====
-
-We decided to keep this use case diagram because despite the new role of the application (just tenant), this functionality is not important but still remains existing in the application for a secondary role 
-
-link:existing-project.adoc#createapartmentgui[Click here to see documentation about CreateApartment]
-====
-
-=== 3.2 Class
-
-* General : not simplified
-+
-.see diagram
-[%collapsible]
-====
-image::it1/it1-class-diagram.png[general class diagram (not simplified)]
-====
-+
-.see documentation
-[%collapsible]
-====
-This class diagram led us to think about some fact. First of all, we can see a lot of packages containing only one class. These classes are used once or twice in the program. A first idea can be to join all these classes into the `utils` package and make them abstract with static operation if it’s possible. 
-
-We also can see 3 important parts of the program. The `GUI`, `Value Fonction` and `Apartment`
-
-We had problems to display arrow in the Papyrus model. So, in the PNG file, we had manually open arrow for each dependancy. 
+Click link:idea.adoc#value-function[here] to see the documentation on the evolutions which revolves around user profiles and value function
 ====

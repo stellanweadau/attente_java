@@ -7,7 +7,19 @@
 :toc:
 :toc-placement!:
 
-= Documentation
+= Documentation 📙
+
+toc::[]
+
+== Overview
+
+In order to have a global vision of the application, you can start by reading this link:overview.adoc[file].
+
+> To see the old project states, you can navigate through the old commits.
+
+== Packages 📦
+
+A package-by-package explanation is available, see the documentation link:packages.adoc[here]
 
 == Diagrams UML
 
@@ -20,23 +32,24 @@ We noticed this bug with the link:https://www.genuitec.com/products/devstyle/[De
 _Thanks link:https://github.com/GabG02[gab202]_
 ====
 
-== Development improvement
+== Idea 💡
 
-This link:development.adoc[file] explains the decisions of development, orientation of the application. +
-It is written in parallel of iterations (Itx.adoc files often refer to this file) but is independent of an iteration &rarr; This is general documentation
+For all ideas under development and not integrated into the application, please refer to link:idea.adoc[this documentation].
 
-== Existing project (Before february 2020)
+== Iterations 🏃
 
-A description of the project before our works can be found link:existing-project.adoc[here]
-
-== Iteration 1
+=== Iteration 1
 
 You can see a description of processes and program by following this link:It1.adoc[link]
 
-== Iteration 2
+=== Iteration 2
 
 You can see a description of processes and program by following this link:It2.adoc[link]
 
-== Iteration 3
+=== Iteration 3
 
 You can see a description of processes by following this link:It3.adoc[link]
+
+=== Iteration 4
+
+You can see the breakdown of members and breakdowns for iteration 4 link:It4.adoc[here]

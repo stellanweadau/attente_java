@@ -1,8 +1,17 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:     
+:imagesdir: img/
+:toc:
+:toc-placement!:
+
 = Changelog
 
+toc::[]
+
 This file notes all the modifications (a minimum important) made on the java code
-
-
 
 * link:changelog.adoc#unreleased-incoming-changes[Unreleased] : Incoming changes
 * link:changelog.adoc#first-iteration---04202020[Iteration 1] : Changes done in the first iteration

@@ -19,7 +19,7 @@ image:https://www.codefactor.io/repository/github/av1m/apartments/badge["Codefac
 
 A Java project developed by students during the link:https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in link:http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
 
-The code is hereby published under the [MIT License](LICENSE), with their permission.
+The code is hereby published under the link:LICENSE[MIT License], with their permission.
 
 toc::[]
 
@@ -141,15 +141,42 @@ Random generation of an apartment :
 
 - link:https://github.com/GabG02[Gabriel GUISSET]
 
-== Documentation
+== Get started ✨
 
-- Project documentation and UML iterations can be found in the directory link:doc/README.adoc[*doc/*]
+Make sure you have installed link:https://openjdk.java.net/projects/jdk/11/[java 11], link:https://git-scm.com/[git] and  link:https://maven.apache.org/[maven]
 
-== Changelog
+[TIP]
+====
+Useful links:
 
-- Link of link:doc/changelog.adoc[changelog]
+* link:https://github.com/oliviercailloux/java-course/blob/master/Best%20practices/Various.adoc#installing-the-jdk[JDK]
+* link:https://github.com/oliviercailloux/java-course/blob/master/Maven/README.adoc[Maven]
+====
 
-== Repository available on Github
+1. Clone the application
++
+[source,bash]
+----
+git clone https://github.com/oliviercailloux/Apartments.git
+----
+
+2. Run unit tests
++
+[source,bash]
+----
+cd Apartments/
+mvn test 
+----
+
+== Documentation 📙
+
+- Project documentation and UML iterations can be found in the directory link:Doc/README.adoc[*Doc/*]
+
+== Changelog 
+
+- Link of link:Doc/changelog.adoc[changelog]
+
+== Repository available on Github 
 
 - Link of this link:https://github.com/av1m/Apartments[repository]
 
@@ -166,16 +193,12 @@ Random generation of an apartment :
 - link:https://github.com/av1m[av1m]
 ====
 
-=== Old
+=== 2019
 
 .See contributors
 [%collapsible]
 ====
-- link:https://github.com/DAYAUX[DAYAUX]
-- link:https://github.com/Deeplygends[Deeplygends]
 - link:https://github.com/Amioplk[Amioplk]
-- link:https://github.com/SlowVirtuousGiant[SlowVirtuousGiant]
-- link:https://github.com/marccohen92[marccohen92]
 - link:https://github.com/LaurenceTsizaza[LaurenceTsizaza]
 - link:https://github.com/zeinaalwazzan[zeinaalwazzan]
 - link:https://github.com/alexisperdereau[alexisperdereau]
@@ -183,6 +206,17 @@ Random generation of an apartment :
 - link:https://github.com/SandraSalame[SandraSalame]
 - link:https://github.com/aitalibraham[aitalibraham]
 - link:https://github.com/oliviercailloux[oliviercailloux]
+====
+
+=== 2018
+
+.See contributors
+[%collapsible]
+====
+- link:https://github.com/marccohen92[marccohen92]
+- link:https://github.com/SlowVirtuousGiant[SlowVirtuousGiant]
+- link:https://github.com/Deeplygends[Deeplygends]
+- link:https://github.com/DAYAUX[DAYAUX]
 ====
 
 == License
