@@ -292,6 +292,7 @@
           </packagedElement>
         </packagedElement>
       </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_-FOsoJU1Eeqfq4Pvb_wd9Q" name="Class Diagrams"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_VlcsAGrAEeqG6NsufvOKcA" name="io.github.oliviercailloux.y2018">
       <packagedElement xmi:type="uml:Package" xmi:id="_1QqroF-_EeqAAb4u4HLI7w" name="apartment">
