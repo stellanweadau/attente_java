@@ -43,3 +43,6 @@ We saw with you, we make exceptionally 3 teams in order to allow Avi to be able 
 * Renaming of the `doc` folder to `Doc`
 * Fixed other small issues in the documentation
 * (Writing - CI Github Actions)
+
+[%hardbreaks]
+link:#toc[⬆ back to top]

@@ -76,3 +76,6 @@ Additional documentation would be unnecessary
 
 * link:diagram.adoc#31-uses-cases[Writing documentation for the general use case]
 * link:development.adoc#users-roles[General orientation of the application] (updated)
+
+[%hardbreaks]
+link:#toc[⬆ back to top]

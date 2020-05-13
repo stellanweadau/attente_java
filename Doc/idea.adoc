@@ -149,4 +149,7 @@ The score of an apartment can be computed as followed:
 number of criteria matching the value function / total number of criteria 
 ----
 
-This computation of a Q function is just an example. It must be thought more if the q-learning solution is chosen. 
+This computation of a Q function is just an example. It must be thought more if the q-learning solution is chosen.
+
+[%hardbreaks]
+link:#toc[⬆ back to top]

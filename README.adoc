@@ -222,3 +222,6 @@ mvn test
 == License
 
 * link:LICENSE[MIT]
+
+[%hardbreaks]
+link:#toc[⬆ back to top]

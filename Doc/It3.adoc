@@ -61,3 +61,6 @@ toc::[]
 
 * **Think** about a way to generate a value function for a user. "_How to write/read it? How can the user view it, modify it?_" +
 link:development.adoc#value-function[See documentation here]
+
+[%hardbreaks]
+link:#toc[⬆ back to top]

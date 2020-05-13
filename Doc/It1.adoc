@@ -70,3 +70,5 @@ Finally, a last part which deals with the general functioning of users in the ap
 * link:existing-project.adoc#code-structure[Code structure]
 * link:existing-project.adoc#use-of-code[Use of code]
 
+[%hardbreaks]
+link:#toc[⬆ back to top]

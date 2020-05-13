@@ -140,3 +140,6 @@ The class `ProfileCriteria` gives all the criteria needed for one profile.
 
 Click link:idea.adoc#value-function[here] to see the documentation on the evolutions which revolves around user profiles and value function
 ====
+
+[%hardbreaks]
+link:#toc[⬆ back to top]
