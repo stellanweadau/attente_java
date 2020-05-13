@@ -200,18 +200,29 @@
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xRRkAWVIEeq0U8CyxWHVBA" value="2"/>
               </ownedEnd>
             </packagedElement>
-            <packagedElement xmi:type="uml:Association" xmi:id="_fAj5YGXPEeqLXLaj_4v3Nw" name="↑ enregistre " visibility="protected" memberEnd="_fBLkcGXPEeqLXLaj_4v3Nw _fBNZoGXPEeqLXLaj_4v3Nw" navigableOwnedEnd="_fBNZoGXPEeqLXLaj_4v3Nw">
+            <packagedElement xmi:type="uml:Association" xmi:id="_fAj5YGXPEeqLXLaj_4v3Nw" name="↑ enregistre " visibility="protected" memberEnd="_fBLkcGXPEeqLXLaj_4v3Nw _fBNZoGXPEeqLXLaj_4v3Nw">
               <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fBIhIGXPEeqLXLaj_4v3Nw" source="org.eclipse.papyrus">
                 <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fBJIMGXPEeqLXLaj_4v3Nw" key="nature" value="UML_Nature"/>
               </eAnnotations>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_fBNZoGXPEeqLXLaj_4v3Nw" name="apart" type="_VLMukF_AEeqAAb4u4HLI7w" aggregation="composite" association="_fAj5YGXPEeqLXLaj_4v3Nw">
+              <ownedEnd xmi:type="uml:Property" xmi:id="_fBNZoGXPEeqLXLaj_4v3Nw" name="apart" type="_VLMukF_AEeqAAb4u4HLI7w" association="_fAj5YGXPEeqLXLaj_4v3Nw">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vM2ygIY0Eeqk76wXlGQtaA"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2qot4JU2Eeqfq4Pvb_wd9Q" value="*"/>
+              </ownedEnd>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_fBLkcGXPEeqLXLaj_4v3Nw" type="_1N7WIF--EeqAAb4u4HLI7w" aggregation="composite" association="_fAj5YGXPEeqLXLaj_4v3Nw">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yi8fwJU2Eeqfq4Pvb_wd9Q"/>
               </ownedEnd>
             </packagedElement>
             <packagedElement xmi:type="uml:Association" xmi:id="_odBscGXSEeqLXLaj_4v3Nw" memberEnd="_odEvwmXSEeqLXLaj_4v3Nw _odFW0mXSEeqLXLaj_4v3Nw">
               <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_odEvwGXSEeqLXLaj_4v3Nw" source="org.eclipse.papyrus">
                 <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_odEvwWXSEeqLXLaj_4v3Nw" key="nature" value="UML_Nature"/>
               </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_odFW0mXSEeqLXLaj_4v3Nw" name="listApp" type="_VKBp4F_AEeqAAb4u4HLI7w" association="_odBscGXSEeqLXLaj_4v3Nw">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2XFzkGXSEeqLXLaj_4v3Nw"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_46c0YJU2Eeqfq4Pvb_wd9Q" value="*"/>
+              </ownedEnd>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_odEvwmXSEeqLXLaj_4v3Nw" type="_1N7WIF--EeqAAb4u4HLI7w" aggregation="composite" association="_odBscGXSEeqLXLaj_4v3Nw">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1X_HAGXSEeqLXLaj_4v3Nw"/>
+              </ownedEnd>
             </packagedElement>
             <packagedElement xmi:type="uml:Association" xmi:id="_MT4ToGXWEeqLXLaj_4v3Nw" visibility="private" memberEnd="_MT5hwGXWEeqLXLaj_4v3Nw _MT5hw2XWEeqLXLaj_4v3Nw">
               <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MT46sGXWEeqLXLaj_4v3Nw" source="org.eclipse.papyrus">
@@ -335,9 +346,6 @@
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_1OAOoV--EeqAAb4u4HLI7w" name="tele" visibility="private" isUnique="false">
             <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_odFW0mXSEeqLXLaj_4v3Nw" name="listApp" type="_VKBp4F_AEeqAAb4u4HLI7w" aggregation="composite" association="_odBscGXSEeqLXLaj_4v3Nw">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2XFzkGXSEeqLXLaj_4v3Nw"/>
           </ownedAttribute>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_1OFHIF--EeqAAb4u4HLI7w" name="Apartment" specification="_1OCq4F--EeqAAb4u4HLI7w">
             <language>JAVA</language>
@@ -1334,10 +1342,6 @@
               <body>new List(shell, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL)</body>
             </defaultValue>
           </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_odEvwmXSEeqLXLaj_4v3Nw" type="_1N7WIF--EeqAAb4u4HLI7w" association="_odBscGXSEeqLXLaj_4v3Nw">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1X_HAGXSEeqLXLaj_4v3Nw"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_M0n-EIY0Eeqk76wXlGQtaA" value="*"/>
-          </ownedAttribute>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VKeV0F_AEeqAAb4u4HLI7w" name="LayoutApartmentGUI" specification="_VKbSgF_AEeqAAb4u4HLI7w">
             <language>JAVA</language>
             <body>&#xD;
@@ -1662,7 +1666,6 @@
               <body>LoggerFactory.getLogger(FormApartmentGUI.class)</body>
             </defaultValue>
           </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_fBLkcGXPEeqLXLaj_4v3Nw" type="_1N7WIF--EeqAAb4u4HLI7w" association="_fAj5YGXPEeqLXLaj_4v3Nw"/>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VMo5AF_AEeqAAb4u4HLI7w" name="createForm" specification="_VMoR8F_AEeqAAb4u4HLI7w">
             <language>JAVA</language>
             <body>&#xD;
