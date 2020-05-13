@@ -35,12 +35,12 @@
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_gpoyMGrAEeqG6NsufvOKcA" name="diagrams">
-      <packagedElement xmi:type="uml:Package" xmi:id="_i7vXsGrAEeqG6NsufvOKcA" name="September 2019">
+      <packagedElement xmi:type="uml:Package" xmi:id="_i7vXsGrAEeqG6NsufvOKcA" name="UCD">
         <ownedComment xmi:type="uml:Comment" xmi:id="_jcwzEG6PEeqeldpgC1RaSg" annotatedElement="_72rEYF_BEeqAAb4u4HLI7w">
           <body>ApartmentValueFunction uses all PartialValueFunction implementations and all enumerations&#xD;
 </body>
         </ownedComment>
-        <packagedElement xmi:type="uml:Package" xmi:id="_2RqOEGrBEeqG6NsufvOKcA" name="UCD CreateApartment">
+        <packagedElement xmi:type="uml:Package" xmi:id="_2RqOEGrBEeqG6NsufvOKcA" name="UCD_CreateApartment">
           <packagedElement xmi:type="uml:Interaction" xmi:id="_osnYYGSlEeqldqZ7K2B8Ig" name="CreateApartment">
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_ttc1AGSlEeqldqZ7K2B8Ig" name="Fill fields">
               <ownedUseCase xmi:type="uml:UseCase" xmi:id="_wQhOsGSlEeqldqZ7K2B8Ig" name="Fill the mandatory fields">
@@ -69,7 +69,7 @@
           <packagedElement xmi:type="uml:Usage" xmi:id="_6vst4GSmEeqldqZ7K2B8Ig" client="_5Cv5UGSlEeqldqZ7K2B8Ig" supplier="_wQhOsGSlEeqldqZ7K2B8Ig"/>
           <packagedElement xmi:type="uml:Usage" xmi:id="__Vdw4GrBEeqG6NsufvOKcA" client="_8pc6QGSlEeqldqZ7K2B8Ig" supplier="_wQhOsGSlEeqldqZ7K2B8Ig"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Package" xmi:id="_FaoYUGrCEeqG6NsufvOKcA" name="UCD AskOpinionForUtility">
+        <packagedElement xmi:type="uml:Package" xmi:id="_FaoYUGrCEeqG6NsufvOKcA" name="UCD_AskOpinionForUtility">
           <packagedElement xmi:type="uml:Interaction" xmi:id="_Pt_w8GSgEeqgR6r_D9TUsQ" name="AskOpinionForUtility">
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_gesG8GSgEeqgR6r_D9TUsQ" name="Find an apartment">
               <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_s0UKYGShEeqgR6r_D9TUsQ" name="ExtensionPoint1"/>
@@ -103,7 +103,7 @@
             <ownedEnd xmi:type="uml:Property" xmi:id="_QMwUEGShEeqgR6r_D9TUsQ" name="locator" type="_ZaRpAGSgEeqgR6r_D9TUsQ" association="_QMvF8GShEeqgR6r_D9TUsQ"/>
           </packagedElement>
         </packagedElement>
-        <packagedElement xmi:type="uml:Package" xmi:id="_RYNkoGrCEeqG6NsufvOKcA" name="UCD Use of an apartment rental platform">
+        <packagedElement xmi:type="uml:Package" xmi:id="_RYNkoGrCEeqG6NsufvOKcA" name="UCD_UseApartmentRentalPlatform">
           <packagedElement xmi:type="uml:Interaction" xmi:id="_TPRn4GS3EeqTxqp8Bmjtjg" name="GlobalUseCase" useCase="_oWFpkGS3EeqTxqp8Bmjtjg _mgI0kGS3EeqTxqp8Bmjtjg _jJ2OMGS3EeqTxqp8Bmjtjg _gumTwGS3EeqTxqp8Bmjtjg _fIsF4GS3EeqTxqp8Bmjtjg _czcs0GS3EeqTxqp8Bmjtjg">
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_czcs0GS3EeqTxqp8Bmjtjg" name="Filter the apartments" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
               <include xmi:type="uml:Include" xmi:id="_wZGy4GS5EeqTxqp8Bmjtjg" addition="_fIsF4GS3EeqTxqp8Bmjtjg"/>
@@ -171,9 +171,9 @@
           </packagedElement>
         </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_p_uX0GrAEeqG6NsufvOKcA" name="2020">
-        <packagedElement xmi:type="uml:Package" xmi:id="_uGGXUGrAEeqG6NsufvOKcA" name="Iteration1">
-          <packagedElement xmi:type="uml:Package" xmi:id="_DFOKsGrDEeqG6NsufvOKcA" name="CD Global Iteration 1">
+      <packagedElement xmi:type="uml:Package" xmi:id="_p_uX0GrAEeqG6NsufvOKcA" name="JavaIteration">
+        <packagedElement xmi:type="uml:Package" xmi:id="_uGGXUGrAEeqG6NsufvOKcA" name="Iteration1Java">
+          <packagedElement xmi:type="uml:Package" xmi:id="_DFOKsGrDEeqG6NsufvOKcA" name="CD_GlobalIteration1">
             <packagedElement xmi:type="uml:Association" xmi:id="_rrSy8GVIEeq0U8CyxWHVBA" name="&lt; a choisi" visibility="private" memberEnd="_rrjRoGVIEeq0U8CyxWHVBA _rrkfwGVIEeq0U8CyxWHVBA">
               <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rrg1YGVIEeq0U8CyxWHVBA" source="org.eclipse.papyrus">
                 <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rrhccGVIEeq0U8CyxWHVBA" key="nature" value="UML_Nature"/>
@@ -238,7 +238,7 @@
             </packagedElement>
           </packagedElement>
         </packagedElement>
-        <packagedElement xmi:type="uml:Package" xmi:id="_UkDHsIYPEeqzqeujllcwMQ" name="Iteration 3">
+        <packagedElement xmi:type="uml:Package" xmi:id="_UkDHsIYPEeqzqeujllcwMQ" name="Iteration3Java">
           <packagedElement xmi:type="uml:Interaction" xmi:id="_bm_iMIPvEeqm2vrDV_e-Xg" name="InterractionBetweenUsersAndApplication">
             <lifeline xmi:type="uml:Lifeline" xmi:id="_YSClUIP_Eeqm2vrDV_e-Xg" name="Tenant" coveredBy="_PzGbYIQFEeqyTrq5oKlx7g _Py2jwIQFEeqyTrq5oKlx7g _WU24MIQFEeqyTrq5oKlx7g _u9okwIQFEeqyTrq5oKlx7g _R4NRQIQGEeqyTrq5oKlx7g _R4ovEIQGEeqyTrq5oKlx7g _Tr8DQIQHEeqyTrq5oKlx7g _TsCJ4IQHEeqyTrq5oKlx7g _lgMIAIQHEeqyTrq5oKlx7g _sheZcIQHEeqyTrq5oKlx7g __8EJ4IQHEeqyTrq5oKlx7g _niXwQIQJEeqyTrq5oKlx7g _PzJesIQFEeqyTrq5oKlx7g"/>
             <lifeline xmi:type="uml:Lifeline" xmi:id="_kOSU4IP_Eeqm2vrDV_e-Xg" name="Application" coveredBy="_WU4tYIQFEeqyTrq5oKlx7g _otCJYIQFEeqyTrq5oKlx7g _yFqlUIQIEeqyTrq5oKlx7g _ncl4YIQJEeqyTrq5oKlx7g _aa_AEIQFEeqyTrq5oKlx7g"/>
@@ -246,18 +246,18 @@
             <lifeline xmi:type="uml:Lifeline" xmi:id="_i8tzwIQJEeqyTrq5oKlx7g" name="GUI Results" coveredBy="_ncnGgIQJEeqyTrq5oKlx7g _niWiIIQJEeqyTrq5oKlx7g _nh_80IQJEeqyTrq5oKlx7g"/>
             <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_PzGbYIQFEeqyTrq5oKlx7g" name="ActionExecutionSpecification7Start" covered="_YSClUIP_Eeqm2vrDV_e-Xg" execution="_Py2jwIQFEeqyTrq5oKlx7g"/>
             <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_Py2jwIQFEeqyTrq5oKlx7g" name="ActionExecutionSpecification Tenant" covered="_YSClUIP_Eeqm2vrDV_e-Xg" finish="_PzJesIQFEeqyTrq5oKlx7g" start="_PzGbYIQFEeqyTrq5oKlx7g"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_WU24MIQFEeqyTrq5oKlx7g" name="Ask to the program to launch itself SendEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg" message="_WUtuQIQFEeqyTrq5oKlx7g"/>
             <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_WU4tYIQFEeqyTrq5oKlx7g" name="Ask to the program to launch itself ReceiveEvent" covered="_kOSU4IP_Eeqm2vrDV_e-Xg" message="_WUtuQIQFEeqyTrq5oKlx7g"/>
             <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_aa_AEIQFEeqyTrq5oKlx7g" name="ActionExecutionSpecification Application " covered="_kOSU4IP_Eeqm2vrDV_e-Xg" finish="_ncl4YIQJEeqyTrq5oKlx7g" start="_WU4tYIQFEeqyTrq5oKlx7g"/>
-            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_WU24MIQFEeqyTrq5oKlx7g" name="Ask to the program to launch itself SendEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg" message="_WUtuQIQFEeqyTrq5oKlx7g"/>
             <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_otCJYIQFEeqyTrq5oKlx7g" name="Create GUI Research SendEvent" covered="_kOSU4IP_Eeqm2vrDV_e-Xg" message="_os_tIIQFEeqyTrq5oKlx7g"/>
             <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_otDXgIQFEeqyTrq5oKlx7g" name="Create GUI Research ReceiveEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_os_tIIQFEeqyTrq5oKlx7g"/>
             <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_s2BYAIQFEeqyTrq5oKlx7g" name="ActionExecutionSpecification Show the forms for the main caracteristics" covered="_W2rBQIQEEeqyTrq5oKlx7g" finish="_u9mvkIQFEeqyTrq5oKlx7g" start="_otDXgIQFEeqyTrq5oKlx7g"/>
             <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_u9mvkIQFEeqyTrq5oKlx7g" name="Show the forms for the main caracteristics SendEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_u9hQAIQFEeqyTrq5oKlx7g"/>
             <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_u9okwIQFEeqyTrq5oKlx7g" name="Show the forms for the main caracteristics ReceiveEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg" message="_u9hQAIQFEeqyTrq5oKlx7g"/>
-            <fragment xmi:type="uml:CombinedFragment" xmi:id="_R4NRQIQGEeqyTrq5oKlx7g" name="While informations's formats are not allowed" covered="_YSClUIP_Eeqm2vrDV_e-Xg _W2rBQIQEEeqyTrq5oKlx7g" interactionOperator="loop">
-              <operand xmi:type="uml:InteractionOperand" xmi:id="_R4ovEIQGEeqyTrq5oKlx7g" name="While informations's formats are not allowed InteractionOperand" covered="_YSClUIP_Eeqm2vrDV_e-Xg _W2rBQIQEEeqyTrq5oKlx7g">
-                <fragment xmi:type="uml:CombinedFragment" xmi:id="_Tr8DQIQHEeqyTrq5oKlx7g" name="Choose profile as reference" covered="_YSClUIP_Eeqm2vrDV_e-Xg _W2rBQIQEEeqyTrq5oKlx7g" interactionOperator="opt">
-                  <operand xmi:type="uml:InteractionOperand" xmi:id="_TsCJ4IQHEeqyTrq5oKlx7g" name="Optional Select Profile InteractionOperand" covered="_YSClUIP_Eeqm2vrDV_e-Xg _W2rBQIQEEeqyTrq5oKlx7g">
+            <fragment xmi:type="uml:CombinedFragment" xmi:id="_R4NRQIQGEeqyTrq5oKlx7g" name="While informations's formats are not allowed" covered="_W2rBQIQEEeqyTrq5oKlx7g _YSClUIP_Eeqm2vrDV_e-Xg" interactionOperator="loop">
+              <operand xmi:type="uml:InteractionOperand" xmi:id="_R4ovEIQGEeqyTrq5oKlx7g" name="While informations's formats are not allowed InteractionOperand" covered="_W2rBQIQEEeqyTrq5oKlx7g _YSClUIP_Eeqm2vrDV_e-Xg">
+                <fragment xmi:type="uml:CombinedFragment" xmi:id="_Tr8DQIQHEeqyTrq5oKlx7g" name="Choose profile as reference" covered="_W2rBQIQEEeqyTrq5oKlx7g _YSClUIP_Eeqm2vrDV_e-Xg" interactionOperator="opt">
+                  <operand xmi:type="uml:InteractionOperand" xmi:id="_TsCJ4IQHEeqyTrq5oKlx7g" name="Optional Select Profile InteractionOperand" covered="_W2rBQIQEEeqyTrq5oKlx7g _YSClUIP_Eeqm2vrDV_e-Xg">
                     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_lgMIAIQHEeqyTrq5oKlx7g" name="Select a typical profile SendEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg" message="_lgJrwIQHEeqyTrq5oKlx7g"/>
                     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_lgNWIIQHEeqyTrq5oKlx7g" name="Select a typical profile ReceiveEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_lgJrwIQHEeqyTrq5oKlx7g"/>
                     <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_qrAnEIQHEeqyTrq5oKlx7g" name="ActionExecutionSpecification Fill form with profile's statistics" covered="_W2rBQIQEEeqyTrq5oKlx7g" finish="_shdLUIQHEeqyTrq5oKlx7g" start="_lgNWIIQHEeqyTrq5oKlx7g"/>
@@ -303,7 +303,7 @@
           </packagedElement>
         </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_-FOsoJU1Eeqfq4Pvb_wd9Q" name="Class Diagrams"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_-FOsoJU1Eeqfq4Pvb_wd9Q" name="CD_CurrentApplication"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_VlcsAGrAEeqG6NsufvOKcA" name="io.github.oliviercailloux.y2018">
       <packagedElement xmi:type="uml:Package" xmi:id="_1QqroF-_EeqAAb4u4HLI7w" name="apartment">
