@@ -27,7 +27,7 @@ However, we left the old diagram photos in the link:img/[`img/`] folder
 .see diagram
 [%collapsible]
 ====
-image::{lastSimplifiedDiagram}[Last simplified class diagram]
+image::{lastSimplifiedDiagram}?raw=true[Last simplified class diagram]
 ====
 
 * General : not simplified
@@ -35,7 +35,7 @@ image::{lastSimplifiedDiagram}[Last simplified class diagram]
 .see diagram
 [%collapsible]
 ====
-image::it1/it1-class-diagram.png[general class diagram (not simplified)]
+image::it1/it1-class-diagram.png?raw=true[general class diagram (not simplified)]
 ====
 +
 .see documentation
@@ -53,7 +53,7 @@ We also can see 3 important parts of the program. The `GUI`, `Value Fonction` an
 .see diagram
 [%collapsible]
 ====
-image::it2/it2-usecase-global.png[General use cases IT 1]
+image::it2/it2-usecase-global.png?raw=true[General use cases IT 1]
 ====
 +
 .see documentation
@@ -71,7 +71,7 @@ We can also imagine other general use case such as saving the user’s favourite
 .see diagram
 [%collapsible]
 ====
-image::it1/it1-usecase-askopinionforutility.png[AskOpinionForUtility use case]
+image::it1/it1-usecase-askopinionforutility.png?raw=true[AskOpinionForUtility use case]
 ====
 +
 .see documentation
@@ -85,7 +85,7 @@ link:overview.adoc#askopinionforutility[Click here to see documentation about As
 .see diagram
 [%collapsible]
 ====
-image::it3/it3-usecase-createapartment.png[create an apartment use case]
+image::it3/it3-usecase-createapartment.png?raw=true[create an apartment use case]
 ====
 +
 .see documentation
@@ -104,7 +104,7 @@ link:overview.adoc#createapartmentgui[Click here to see documentation about Crea
 .see diagram
 [%collapsible]
 ====
-image:it3/it3-sequence-interaction-users-application.png[Interaction between the end user and application]
+image::it3/it3-sequence-interaction-users-application.png?raw=true[Interaction between the end user and application]
 ====
 +
 .see documentation
@@ -126,7 +126,7 @@ WARNING: These are design ideas, which are not yet integrated into the applicati
 .see diagram
 [%collapsible]
 ====
-image:it3/it3-class-profile.png[CDProfile]
+image::it3/it3-class-profile.png?raw=true[CDProfile]
 ====
 +
 .see documentation

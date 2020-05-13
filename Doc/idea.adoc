@@ -67,7 +67,7 @@ This evolution could improve the search for the user by making it quicker. For t
 
 We also want to improve the way to ask the user its preferences. Currently, it looks like this:  
 
-image::it3/it3-gui-opinion-interests.png[]
+image::it3/it3-gui-opinion-interests.png?raw=true["Gui opinion interests"]
 
 We think that the field are unclear, and we would like to make it more practical for the user.  
 

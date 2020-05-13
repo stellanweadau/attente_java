@@ -45,14 +45,14 @@ We are concentrating our efforts on improving the project in general, the implem
 .See usecase diagram
 [%collapsible]
 ====
-image::it1/it1-usecase-askopinionforutility.png[Diagram ask opinion for utility]
+image::it1/it1-usecase-askopinionforutility.png?raw=true[Diagram ask opinion for utility]
 ====
 
 .See sequence diagram in link with `AskOpinionForUtility`
 [%collapsible]
 ====
 link:diagram.adoc#sequence-diagram[see documentation]
-image:it3/it3-sequence-interaction-users-application.png[Interaction between the end user and application]
+image:it3/it3-sequence-interaction-users-application.png?raw=true[Interaction between the end user and application]
 ====
 
 .Effective version
@@ -111,7 +111,7 @@ This class allows us to create the window we previously saw, to deal with severa
 .See usecase diagram
 [%collapsible]
 ====
-image::it3/it3-usecase-createapartment.png[Diagram create apartment]
+image::it3/it3-usecase-createapartment.png?raw=true[Diagram create apartment]
 ====
 
 .Effective version
