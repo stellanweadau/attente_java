@@ -224,18 +224,6 @@
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1X_HAGXSEeqLXLaj_4v3Nw"/>
               </ownedEnd>
             </packagedElement>
-            <packagedElement xmi:type="uml:Association" xmi:id="_MT4ToGXWEeqLXLaj_4v3Nw" visibility="private" memberEnd="_MT5hwGXWEeqLXLaj_4v3Nw _MT5hw2XWEeqLXLaj_4v3Nw">
-              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MT46sGXWEeqLXLaj_4v3Nw" source="org.eclipse.papyrus">
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MT46sWXWEeqLXLaj_4v3Nw" key="nature" value="UML_Nature"/>
-              </eAnnotations>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_MT5hw2XWEeqLXLaj_4v3Nw" name="XValueFunction" type="_72rEYF_BEeqAAb4u4HLI7w" association="_MT4ToGXWEeqLXLaj_4v3Nw">
-                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rNfFEGXWEeqLXLaj_4v3Nw"/>
-              </ownedEnd>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_MT5hwGXWEeqLXLaj_4v3Nw" type="_siBZIF_CEeqAAb4u4HLI7w" association="_MT4ToGXWEeqLXLaj_4v3Nw">
-                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MT5hwWXWEeqLXLaj_4v3Nw" value="8"/>
-                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MT5hwmXWEeqLXLaj_4v3Nw" value="8"/>
-              </ownedEnd>
-            </packagedElement>
           </packagedElement>
         </packagedElement>
         <packagedElement xmi:type="uml:Package" xmi:id="_UkDHsIYPEeqzqeujllcwMQ" name="Iteration3Java">
@@ -3529,6 +3517,18 @@
           <ownedEnd xmi:type="uml:Property" xmi:id="_8X0o5YY9Eeqw9PFqD2CRLA" type="_kH7IoIY4Eeqw9PFqD2CRLA" association="_8X0B0IY9Eeqw9PFqD2CRLA">
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__-1L0IY9Eeqw9PFqD2CRLA"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__-42MIY9Eeqw9PFqD2CRLA" value="*"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_MT4ToGXWEeqLXLaj_4v3Nw" visibility="private" memberEnd="_MT5hwGXWEeqLXLaj_4v3Nw _MT5hw2XWEeqLXLaj_4v3Nw">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MT46sGXWEeqLXLaj_4v3Nw" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MT46sWXWEeqLXLaj_4v3Nw" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_MT5hw2XWEeqLXLaj_4v3Nw" name="XValueFunction" type="_72rEYF_BEeqAAb4u4HLI7w" association="_MT4ToGXWEeqLXLaj_4v3Nw">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rNfFEGXWEeqLXLaj_4v3Nw"/>
+          </ownedEnd>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_MT5hwGXWEeqLXLaj_4v3Nw" type="_siBZIF_CEeqAAb4u4HLI7w" association="_MT4ToGXWEeqLXLaj_4v3Nw">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MT5hwWXWEeqLXLaj_4v3Nw" value="8"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MT5hwmXWEeqLXLaj_4v3Nw" value="8"/>
           </ownedEnd>
         </packagedElement>
       </packagedElement>
