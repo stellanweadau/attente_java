@@ -18,12 +18,9 @@ This file notes all the modifications (a minimum important) made on the java cod
 
 == *Unreleased*: Incoming changes
 
-* *Changes :* _ApartmentFactory:generateApartmentFromJsonPath(Path)_ : The name of this function will be changed to generateApartment**s**FromJsonPath(Path)
-* *Deletion* of *_ApartmentGenerator_* class
-* *Changes :* _readApartmentXMLFormat_ will use default values set in _Apartment_ class instead of using those specified in the class.
-* *Security :* _formApartmentGUI_ Checks if values writen in the form, without any spaces before and after, are not empty.
+To see all incoming changes, please refer to the link:idea.adoc[idea] file
 
-== First Iteration - 04/20/2020
+== 04/20/2020
 
 
 * Dependency changes

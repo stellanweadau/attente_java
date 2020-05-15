@@ -14,6 +14,8 @@
 
 Deadline : **30 March** 2020
 
+All the documentation for this iteration is in link:https://github.com/av1m/Apartments/tree/55038caa08307ae6bb67c3008a06d43277e7b9ad/doc[this commit]
+
 This file only explains the distribution of work between the two teams (and indicates through links the realizations)
 
 ====

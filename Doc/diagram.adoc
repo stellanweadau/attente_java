@@ -30,22 +30,6 @@ However, we left the old diagram photos in the link:img/[`img/`] folder
 image::{lastSimplifiedDiagram}?raw=true[Last simplified class diagram]
 ====
 
-* General : not simplified
-+
-.see diagram
-[%collapsible]
-====
-image::it1/it1-class-diagram.png?raw=true[general class diagram (not simplified)]
-====
-+
-.see documentation
-[%collapsible]
-====
-This class diagram led us to think about some fact. First of all, we can see a lot of packages containing only one class. These classes are used once or twice in the program. A first idea can be to join all these classes into the `utils` package and make them abstract with static operation if it’s possible. 
-
-We also can see 3 important parts of the program. The `GUI`, `Value Fonction` and `Apartment` 
-====
-
 == Uses cases diagrams
 
 * General : Use of an apartment rental platform
@@ -99,24 +83,6 @@ link:overview.adoc#createapartmentgui[Click here to see documentation about Crea
 
 == Sequence diagram
 
-* Interaction between users and application
-+
-.see diagram
-[%collapsible]
-====
-image::it3/it3-sequence-interaction-users-application.png?raw=true[Interaction between the end user and application]
-====
-+
-.see documentation
-[%collapsible]
-====
-We want to change the form `AskOpinionForUtility`. We think that the actual form is not really optimum. These changes will be done in 2 steps. The first one is to create profiles with default values to help user to complete the form (see the sequence diagram below). The second step is to adapt the existing operations around each criteria and importance of these one depending on the profile. 
-
-To specify the operation for the user, we designed a sequence diagram.  
-
-We can see that the user launches the program. The program initializes a window with the criterion’s form. The user can select a predefined profile. In this case, the form will be automatically fill with values estimated by the program. After that, the user can customize the values before sending them. If the values do not have the good format, the user must modify his entries. When all datas have the good format, the application will display the GUI results containing apartments corresponding to the user’s criteria. 
-====
-
 == Idea
 
 WARNING: These are design ideas, which are not yet integrated into the application
@@ -139,6 +105,24 @@ The class `ProfileManager` allow us to see all the profiles created and add new 
 The class `ProfileCriteria` gives all the criteria needed for one profile. 
 
 Click link:idea.adoc#value-function[here] to see the documentation on the evolutions which revolves around user profiles and value function
+====
+
+* Interaction between users and application
++
+.see diagram
+[%collapsible]
+====
+image::it3/it3-sequence-interaction-users-application.png?raw=true[Interaction between the end user and application]
+====
++
+.see documentation
+[%collapsible]
+====
+We want to change the form `AskOpinionForUtility`. We think that the actual form is not really optimum. These changes will be done in 2 steps. The first one is to create profiles with default values to help user to complete the form (see the sequence diagram below). The second step is to adapt the existing operations around each criteria and importance of these one depending on the profile. 
+
+To specify the operation for the user, we designed a sequence diagram.  
+
+We can see that the user launches the program. The program initializes a window with the criterion’s form. The user can select a predefined profile. In this case, the form will be automatically fill with values estimated by the program. After that, the user can customize the values before sending them. If the values do not have the good format, the user must modify his entries. When all datas have the good format, the application will display the GUI results containing apartments corresponding to the user’s criteria. 
 ====
 
 [%hardbreaks]

@@ -153,3 +153,32 @@ This computation of a Q function is just an example. It must be thought more if 
 
 [%hardbreaks]
 link:#toc[⬆ back to top]
+
+== Main classes
+
+=== AskOpinionForUtility
+
+For the moment, all questions are in French and unwell worded. One objective could be translating these sentences and reformulating them to precisely guide the user.
+
+The preference function must also be improved in order to present the user more pertinent results.
+
+=== LayoutApartmentGUI
+
+The field which displays details is too small to read them completely. A first improvement could be to enlarge them.
+
+We could also add more details such as the number of bathrooms or if the apartment has Wi-Fi or television. In fact, we could add all the information we have on the apartment.
+
+=== CreateApartmentGUI
+
+In order to improve and make this window match with our ambitions, we might add or modify the following fields (non-exhaustive list):
+
+* Improve the « design » of some error messages. Actually, some of them are cut and we can only see the beginning of the displayed message. 
+* Add options. For example, we can add a field which indicates if the apartment is furnished or not or if the animals are allowed in the building.
+
+This class belongs to the `apartments.gui`  package and extends the class `FormApartmentGUI`.
+
+=== ReadTwoApartmentsTest
+
+This class will evolve because the apartments are stored in XML format, and one of the needs is to migrate from XML format to JSON format.
+
+The main method should be removed as it is a class of tests. We also need to add JUnit

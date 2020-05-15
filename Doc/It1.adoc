@@ -14,7 +14,7 @@
 
 Deadline : **16 March** 2020
 
-All the documentation for this iteration is in the link:existing-project.adoc[existing-project] file
+All the documentation for this iteration is in link:https://github.com/av1m/Apartments/tree/fadab79e465f36ad562e7ecec569871ddf0d3452/doc[this commit]
 
 This file only explains the distribution of work between the two teams (and indicates through links the realizations)
 
