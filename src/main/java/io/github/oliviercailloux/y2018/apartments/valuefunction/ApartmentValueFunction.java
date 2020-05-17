@@ -735,15 +735,6 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets the weight of the floor area subjective value
-	 * 
-	 * @return the weight of the attribute floorAreaSubjectiveValueWeight
-	 */
-	public double getFloorAreaSubjectiveValueWeight() {
-		return this.floorAreaSubjectiveValueWeight;
-	}
-
-	/**
 	 * Gets the object PartialValueFunction used to compute the subjective value of
 	 * the floor Area
 	 * 
@@ -751,15 +742,6 @@ public class ApartmentValueFunction {
 	 */
 	public PartialValueFunction<Double> getFloorAreaValueFunction() {
 		return this.floorAreaValueFunction;
-	}
-
-	/**
-	 * Gets the weight of the floor area Terrace subjective value
-	 * 
-	 * @return the weight of the attribute floorAreaTerraceSubjectiveValueWeight
-	 */
-	public double getFloorAreaTerraceSubjectiveValueWeight() {
-		return this.floorAreaTerraceSubjectiveValueWeight;
 	}
 
 	/**
@@ -773,15 +755,6 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets the weight of the number of bathrooms subjective value
-	 * 
-	 * @return the weight of the attribute nbBathroomsSubjectiveValueWeight
-	 */
-	public double getNbBathroomsSubjectiveValueWeight() {
-		return this.nbBathroomsSubjectiveValueWeight;
-	}
-
-	/**
 	 * Gets the object PartialValueFunction used to compute the subjective value of
 	 * the number of bathrooms
 	 * 
@@ -789,15 +762,6 @@ public class ApartmentValueFunction {
 	 */
 	public PartialValueFunction<Double> getNbBathroomsValueFunction() {
 		return this.nbBathroomsValueFunction;
-	}
-
-	/**
-	 * Gets the weight of the number of bedrooms subjective value
-	 * 
-	 * @return the weight of the attribute nbBedroomsSubjectiveValueWeight
-	 */
-	public double getNbBedroomsSubjectiveValueWeight() {
-		return this.nbBedroomsSubjectiveValueWeight;
 	}
 
 	/**
@@ -811,16 +775,6 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets the weight of the number of minimum night the user have to stay
-	 * subjective value
-	 * 
-	 * @return the weight of the attribute nbMinNightSubjectiveValueWeight
-	 */
-	public double getNbMinNightSubjectiveValueWeight() {
-		return this.nbMinNightSubjectiveValueWeight;
-	}
-
-	/**
 	 * Gets the object PartialValueFunction used to compute the subjective value of
 	 * the minimum number of nights the user has to stay in
 	 * 
@@ -828,16 +782,6 @@ public class ApartmentValueFunction {
 	 */
 	public PartialValueFunction<Double> getNbMinNightValueFunction() {
 		return this.nbMinNightValueFunction;
-	}
-
-	/**
-	 * Gets the weight of the number of person who can sleep in the apartment
-	 * subjective value
-	 * 
-	 * @return the weight of the attribute nbSleepingValueWeight
-	 */
-	public double getNbSleepingSubjectiveValueWeight() {
-		return this.nbSleepingSubjectiveValueWeight;
 	}
 
 	/**
@@ -851,15 +795,6 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets the weight of the price per night subjective value
-	 * 
-	 * @return the weight of the attribute pricePerNightSubjectiveValueWeight
-	 */
-	public double getPricePerNightSubjectiveValueWeight() {
-		return this.pricePerNightSubjectiveValueWeight;
-	}
-
-	/**
 	 * Gets the object PartialValueFunction used to compute the subjective value of
 	 * the price per night
 	 * 
@@ -867,15 +802,6 @@ public class ApartmentValueFunction {
 	 */
 	public PartialValueFunction<Double> getPricePerNightValueFunction() {
 		return this.pricePerNightValueFunction;
-	}
-
-	/**
-	 * Gets the weight of the presence of a television subjective value
-	 * 
-	 * @return the weight of the attribute teleSubjectiveValueWeight
-	 */
-	public double getTeleSubjectiveValueWeight() {
-		return this.teleSubjectiveValueWeight;
 	}
 
 	/**
@@ -889,15 +815,6 @@ public class ApartmentValueFunction {
 	}
 
 	/**
-	 * Gets the weight of the presence of a terrace subjective value
-	 * 
-	 * @return the weight of the attribute terraceSubjectiveValueWeight
-	 */
-	public double getTerraceSubjectiveValueWeight() {
-		return this.terraceSubjectiveValueWeight;
-	}
-
-	/**
 	 * Gets the object PartialValueFunction used to compute the subjective value of
 	 * the presence of a terrace
 	 * 
@@ -905,15 +822,6 @@ public class ApartmentValueFunction {
 	 */
 	public PartialValueFunction<Boolean> getTerraceValueFunction() {
 		return this.terraceValueFunction;
-	}
-
-	/**
-	 * Gets the weight of the presence of wifi subjective value
-	 * 
-	 * @return the weight of the attribute wifiSubjectiveValueWeight
-	 */
-	public double getWifiSubjectiveValueWeight() {
-		return this.wifiSubjectiveValueWeight;
 	}
 
 	/**
