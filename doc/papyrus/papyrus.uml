@@ -986,6 +986,14 @@
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_jRnIYHHDEeq5FbnHuCmiFw" client="_i_F0QHEvEeq9ooUMj2JdaQ" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_YnGHoJjtEeqYCK4Btw7kWQ" client="_cISsEGbdEeqYDoGRuvwelQ" supplier="_P1sxsGbgEeqYDoGRuvwelQ"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_bC6CwJjtEeqYCK4Btw7kWQ" name="json">
+          <packagedElement xmi:type="uml:Class" xmi:id="_P1sxsGbgEeqYDoGRuvwelQ" name="JsonConvert" isAbstract="true">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_rL8KEGbgEeqYDoGRuvwelQ" name="apartmentToJson" isStatic="true"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_RQ_OgGbhEeqYDoGRuvwelQ" name="apartmentsToJson" isStatic="true"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_qt8KAGbhEeqYDoGRuvwelQ" name="jsonToApartments" isStatic="true"/>
+          </packagedElement>
+        </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_JAqEUF_AEeqAAb4u4HLI7w" name="distance">
         <packagedElement xmi:type="uml:Class" xmi:id="_ESBK8F_AEeqAAb4u4HLI7w" name="DistanceSubway" visibility="public">
@@ -2051,7 +2059,6 @@
         <packagedElement xmi:type="uml:Dependency" xmi:id="_pVlZMGXfEeqLXLaj_4v3Nw" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_VP_vAF_AEeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_vAkuwGbfEeqYDoGRuvwelQ" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_cISsEGbdEeqYDoGRuvwelQ"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_xM_jAGbfEeqYDoGRuvwelQ" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_cISsEGbdEeqYDoGRuvwelQ"/>
-        <packagedElement xmi:type="uml:Dependency" xmi:id="_H4F6kGbjEeqYDoGRuvwelQ" client="_VLK5YF_AEeqAAb4u4HLI7w" supplier="_P1sxsGbgEeqYDoGRuvwelQ"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_7dzmkHKHEeq1kKPrsPWCsQ" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_9M8B4HKHEeq1kKPrsPWCsQ" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_2rQboJjpEeqYCK4Btw7kWQ" client="_-FOsoJU1Eeqfq4Pvb_wd9Q" supplier="_-FOsoJU1Eeqfq4Pvb_wd9Q"/>
@@ -2224,12 +2231,6 @@
         <packagedElement xmi:type="uml:Dependency" xmi:id="_QDfPMJjqEeqYCK4Btw7kWQ" client="_A3YaoF_BEeqAAb4u4HLI7w" supplier="_1QqroF-_EeqAAb4u4HLI7w"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_QgD_sF_BEeqAAb4u4HLI7w" name="utils">
-        <packagedElement xmi:type="uml:Class" xmi:id="_P1sxsGbgEeqYDoGRuvwelQ" name="JsonConvert" isAbstract="true">
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_rL8KEGbgEeqYDoGRuvwelQ" name="apartmentToJson" isStatic="true"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_RQ_OgGbhEeqYDoGRuvwelQ" name="apartmentsToJson" isStatic="true"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_qt8KAGbhEeqYDoGRuvwelQ" name="jsonToApartments" isStatic="true"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Dependency" xmi:id="_9nbYgGbhEeqYDoGRuvwelQ" name="" client="_cISsEGbdEeqYDoGRuvwelQ" supplier="_P1sxsGbgEeqYDoGRuvwelQ"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_WcYNIF_BEeqAAb4u4HLI7w" name="KeyManager" visibility="public">
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WccekF_BEeqAAb4u4HLI7w" name="getApiKey" specification="_WcY0MF_BEeqAAb4u4HLI7w">
             <language>JAVA</language>
@@ -2304,6 +2305,7 @@
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_OfX7oJjrEeqYCK4Btw7kWQ" client="_QgD_sF_BEeqAAb4u4HLI7w" supplier="_1QqroF-_EeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_XgxYwJjtEeqYCK4Btw7kWQ" client="_rL8KEGbgEeqYDoGRuvwelQ" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_d2M6YF_BEeqAAb4u4HLI7w" name="valuefunction">
         <packagedElement xmi:type="uml:Class" xmi:id="_d19NUF_CEeqAAb4u4HLI7w" name="PieceWiseLinearValueFunction" visibility="public">
