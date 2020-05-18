@@ -33,6 +33,16 @@
           </packagedElement>
         </packagedElement>
       </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_UBv2sJj5EeqYP-aD6j0wRg" name="javax">
+        <packagedElement xmi:type="uml:Package" xmi:id="_UBwdwJj5EeqYP-aD6j0wRg" name="ws">
+          <packagedElement xmi:type="uml:Package" xmi:id="_UBwdwZj5EeqYP-aD6j0wRg" name="rs">
+            <packagedElement xmi:type="uml:Class" xmi:id="_UBwdwpj5EeqYP-aD6j0wRg" name="ClientErrorException"/>
+            <packagedElement xmi:type="uml:Package" xmi:id="_UCrq0Jj5EeqYP-aD6j0wRg" name="client">
+              <packagedElement xmi:type="uml:Class" xmi:id="_UCsR4Jj5EeqYP-aD6j0wRg" name="Client"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_gpoyMGrAEeqG6NsufvOKcA" name="diagrams">
       <packagedElement xmi:type="uml:Package" xmi:id="_i7vXsGrAEeqG6NsufvOKcA" name="UCD">
@@ -340,7 +350,7 @@
             <body>&#xD;
 </body>
           </ownedBehavior>
-          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_1OJ_oF--EeqAAb4u4HLI7w" name="Apartment" specification="_1OFuMF--EeqAAb4u4HLI7w">
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_1OJ_oF--EeqAAb4u4HLI7w" name="Apartment">
             <language>JAVA</language>
             <body>&#xD;
     this.floorArea = floorArea;&#xD;
@@ -598,13 +608,6 @@
 </body>
           </ownedBehavior>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_1OCq4F--EeqAAb4u4HLI7w" name="Apartment" visibility="private" method="_1OFHIF--EeqAAb4u4HLI7w"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1OFuMF--EeqAAb4u4HLI7w" name="Apartment" visibility="public" method="_1OJ_oF--EeqAAb4u4HLI7w">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_1OIKcF--EeqAAb4u4HLI7w" name="floorArea">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
-            </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_1OIxgF--EeqAAb4u4HLI7w" name="address"/>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_1OJYkF--EeqAAb4u4HLI7w" name="title"/>
-          </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_1OJ_oV--EeqAAb4u4HLI7w" name="equals" visibility="public" method="_1OL00F--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1OKmsF--EeqAAb4u4HLI7w" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
@@ -676,61 +679,61 @@
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1O4_cF--EeqAAb4u4HLI7w" name="setFloorArea" visibility="public" method="_1O60oF--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1O4_cF--EeqAAb4u4HLI7w" name="setFloorArea" visibility="private" method="_1O60oF--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1O6NkF--EeqAAb4u4HLI7w" name="floorArea">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1O8p0F--EeqAAb4u4HLI7w" name="setAddress" visibility="public" method="_1O_GEF--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1O8p0F--EeqAAb4u4HLI7w" name="setAddress" visibility="private" method="_1O_GEF--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1O9Q4F--EeqAAb4u4HLI7w" name="address"/>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PAUMF--EeqAAb4u4HLI7w" name="setNbBedrooms" visibility="public" method="_1PEloF--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PAUMF--EeqAAb4u4HLI7w" name="setNbBedrooms" visibility="private" method="_1PEloF--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PCJYF--EeqAAb4u4HLI7w" name="nbBedrooms">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PKsQF--EeqAAb4u4HLI7w" name="setNbSleeping" visibility="public" method="_1PO9sF--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PKsQF--EeqAAb4u4HLI7w" name="setNbSleeping" visibility="private" method="_1PO9sF--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PNIgF--EeqAAb4u4HLI7w" name="nbSleeping">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PQy4F--EeqAAb4u4HLI7w" name="setNbBathrooms" visibility="public" method="_1PTPIF--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PQy4F--EeqAAb4u4HLI7w" name="setNbBathrooms" visibility="private" method="_1PTPIF--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PRZ8F--EeqAAb4u4HLI7w" name="nbBathrooms">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PVrYF--EeqAAb4u4HLI7w" name="setTerrace" visibility="public" method="_1Paj4F--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PVrYF--EeqAAb4u4HLI7w" name="setTerrace" visibility="private" method="_1Paj4F--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PYusF--EeqAAb4u4HLI7w" name="terrace">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PdnMF--EeqAAb4u4HLI7w" name="setFloorAreaTerrace" visibility="public" method="_1PgqgF--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PdnMF--EeqAAb4u4HLI7w" name="setFloorAreaTerrace" visibility="private" method="_1PgqgF--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PfcYF--EeqAAb4u4HLI7w" name="floorAreaTerrace">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PjGwF--EeqAAb4u4HLI7w" name="setDescription" visibility="public" method="_1PljAF--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PjGwF--EeqAAb4u4HLI7w" name="setDescription" visibility="private" method="_1PljAF--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1Pk78F--EeqAAb4u4HLI7w" name="description"/>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1Pn_QF--EeqAAb4u4HLI7w" name="setTitle" visibility="public" method="_1PqbgF--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1Pn_QF--EeqAAb4u4HLI7w" name="setTitle" visibility="private" method="_1PqbgF--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1Pp0cF--EeqAAb4u4HLI7w" name="title"/>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PsQsF--EeqAAb4u4HLI7w" name="setWifi" visibility="public" method="_1Ps3wV--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PsQsF--EeqAAb4u4HLI7w" name="setWifi" visibility="private" method="_1Ps3wV--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1Ps3wF--EeqAAb4u4HLI7w" name="wifi">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1Pte0F--EeqAAb4u4HLI7w" name="setPricePerNight" visibility="public" method="_1PuF4F--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1Pte0F--EeqAAb4u4HLI7w" name="setPricePerNight" visibility="private" method="_1PuF4F--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1Pte0V--EeqAAb4u4HLI7w" name="pricePerNight">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1Pus8F--EeqAAb4u4HLI7w" name="setNbMinNight" visibility="public" method="_1Pv7EF--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1Pus8F--EeqAAb4u4HLI7w" name="setNbMinNight" visibility="private" method="_1Pv7EF--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PvUAF--EeqAAb4u4HLI7w" name="nbMinNight">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PwiIF--EeqAAb4u4HLI7w" name="setTele" visibility="public" method="_1PyXUF--EeqAAb4u4HLI7w">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1PwiIF--EeqAAb4u4HLI7w" name="setTele" visibility="private" method="_1PyXUF--EeqAAb4u4HLI7w">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PxJMF--EeqAAb4u4HLI7w" name="tele">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
             </ownedParameter>
@@ -889,18 +892,6 @@
             </ownedOperation>
           </nestedClassifier>
         </packagedElement>
-        <packagedElement xmi:type="uml:Class" xmi:id="_cISsEGbdEeqYDoGRuvwelQ" name="ApartmentFactory" visibility="public" isAbstract="true">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_1RC7kF--EeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
-            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_1REwwF--EeqAAb4u4HLI7w" name="defaultValue">
-              <language>JAVA</language>
-              <body>LoggerFactory.getLogger(ApartmentGenerator.class)</body>
-            </defaultValue>
-          </ownedAttribute>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_G0HHUGbeEeqYDoGRuvwelQ" name="generateApartment" isStatic="true"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_zQorMGbeEeqYDoGRuvwelQ" name="generateRandomApartment" isStatic="true"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_KlG3QGbfEeqYDoGRuvwelQ" name="generateApartmentFromJson" isStatic="true"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Dependency" xmi:id="_ivplIGbeEeqYDoGRuvwelQ" client="_cISsEGbdEeqYDoGRuvwelQ" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_i_F0QHEvEeq9ooUMj2JdaQ" name="ApartmentGenerator" visibility="public">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_i_xJsXEvEeq9ooUMj2JdaQ" name="random" visibility="private" type="_i_F0QnEvEeq9ooUMj2JdaQ" isUnique="false"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_i_3QUHEvEeq9ooUMj2JdaQ" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
@@ -986,6 +977,301 @@
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_jRnIYHHDEeq5FbnHuCmiFw" client="_i_F0QHEvEeq9ooUMj2JdaQ" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_UBdi0Jj5EeqYP-aD6j0wRg" name="ApartmentFactory" visibility="public" isAbstract="true">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_UBeJ4Jj5EeqYP-aD6j0wRg" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_UBew8Jj5EeqYP-aD6j0wRg" name="defaultValue">
+              <language>JAVA</language>
+              <body>LoggerFactory.getLogger(ApartmentFactory.class)</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_UBew8Zj5EeqYP-aD6j0wRg" name="rand" visibility="private" isStatic="true" type="_i_F0QnEvEeq9ooUMj2JdaQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_UBfYAJj5EeqYP-aD6j0wRg" name="defaultValue">
+              <language>JAVA</language>
+              <body>new Random()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_UBk3kJj5EeqYP-aD6j0wRg" name="URL_API_ADDRESS" visibility="private" isLeaf="true" isStatic="true" type="__EuesHEuEeq9ooUMj2JdaQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_UBleoJj5EeqYP-aD6j0wRg" name="defaultValue">
+              <language>JAVA</language>
+              <body>&quot;https://api-adresse.data.gouv.fr/reverse/&quot;</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UB8rAJj5EeqYP-aD6j0wRg" name="generateRandomRealApartment" specification="_UBmswJj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    return generateRandomApartment(true);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UB9SEJj5EeqYP-aD6j0wRg" name="generateRandomApartment" specification="_UB8rAZj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    try {&#xD;
+        return generateRandomApartment(false);&#xD;
+    } catch (ClientErrorExceptionAddressApiException |  e) {&#xD;
+        throw new IllegalStateException(e);&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UCGcAJj5EeqYP-aD6j0wRg" name="generateRandomApartment" specification="_UB9SEZj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    double floorArea = simulateRandomDraw(65d, 21d);&#xD;
+    String address = realAddress ? getOnlineRandomAddress() : getRandomAddress();&#xD;
+    int averageRoomArea = 10 + rand.nextInt(20);&#xD;
+    int nbBedrooms = Math.max(((int) (floorArea / averageRoomArea)) - 1, 1);&#xD;
+    int nbSleeping = (1 + rand.nextInt(4)) * nbBedrooms;&#xD;
+    int nbBathrooms = 1 + rand.nextInt(nbBedrooms);&#xD;
+    boolean hasTerrace = Math.random() >= 0.5;&#xD;
+    double floorAreaTerrace = (hasTerrace) ? simulateRandomDraw(15d, 2d) : 0;&#xD;
+    String title = &quot;Location Apartement &quot; + rand.nextInt(10000);&#xD;
+    String description = &quot;This apartment has &quot; + nbBedrooms + &quot; bedrooms and a size of &quot; + floorArea + &quot;square meters&quot;;&#xD;
+    boolean wifi = Math.random() >= 0.5;&#xD;
+    double pricePerNight = floorArea * simulateRandomDraw(11d, 3d);&#xD;
+    boolean tele = Math.random() >= 0.5;&#xD;
+    int nbMinNight = rand.nextInt(700) + 1;&#xD;
+    Builder apartBuilder = new Builder();&#xD;
+    return apartBuilder.setFloorArea(floorArea).setAddress(address).setNbBedrooms(nbBedrooms).setNbSleeping(nbSleeping).setNbBathrooms(nbBathrooms).setTerrace(hasTerrace).setFloorAreaTerrace(floorAreaTerrace).setDescription(description).setTitle(title).setWifi(wifi).setPricePerNight(pricePerNight).setNbMinNight(nbMinNight).setTele(tele).build();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UCJfUJj5EeqYP-aD6j0wRg" name="generateRandomApartments" specification="_UCHDEJj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    try {&#xD;
+        return generateRandomApartmentList(nbApartment, false);&#xD;
+    } catch (ClientErrorExceptionAddressApiException |  e) {&#xD;
+        throw new IllegalStateException(e);&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UCL7kJj5EeqYP-aD6j0wRg" name="generateRandomRealApartments" specification="_UCJfUZj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    return generateRandomApartmentList(nbApartment, true);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UCNwwJj5EeqYP-aD6j0wRg" name="generateRandomApartmentList" specification="_UCL7kZj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    if (nbApartment &lt;= 0) {&#xD;
+        throw new IllegalArgumentException(&quot;You must indicate a number of apartments > 0&quot;);&#xD;
+    }&#xD;
+    List&lt;Apartment> listApartment = new ArrayList&lt;>();&#xD;
+    for (int i = 0; i &lt; nbApartment; i++) {&#xD;
+        listApartment.add(realAddress ? generateRandomRealApartment() : generateRandomApartment());&#xD;
+    }&#xD;
+    return listApartment;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UCO-4Zj5EeqYP-aD6j0wRg" name="simulateRandomDraw" specification="_UCNwwZj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    double draw = Math.abs(rand.nextGaussian());&#xD;
+    return deviation * draw + mean;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UCQNAJj5EeqYP-aD6j0wRg" name="getOnlineRandomAddress" specification="_UCO-4pj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    /**
+		 * An API call has an average 20% chance of failing. Given this highprobability,
+		 * we iterate until we get a correct result (a good address). RETRY corresponds
+		 * to the maximum test value in case the API does not return the address field.
+		 * In the case of an API error (for example 500, or others), jax-rs throws an
+		 * error of type &lt;code>ClientErrorException&lt;/code> In the event that we reach
+		 * beyond the RETRY tests, and we still do not have a good address, we throw an
+		 * exception
+		 */&#xD;
+    final int RETRY = 5;&#xD;
+    Optional&lt;String> address = Optional.empty();&#xD;
+    // Latitude and longitude for Ile de France&#xD;
+    final double LAT_IDF = 48.8_499_198d;&#xD;
+    final double LONG_IDF = 2.6_370_411d;&#xD;
+    // Open a new client JAX-RS&#xD;
+    final Client client = ClientBuilder.newClient();&#xD;
+    try {&#xD;
+        for (int i = 1; i &lt;= RETRY; i++) {&#xD;
+            // Latitude and longitude generation&#xD;
+            double lat = Math.round(LAT_IDF * 10.0d) / 10.0d;&#xD;
+            double lng = Math.round(LONG_IDF * 10.0d) / 10.0d;&#xD;
+            String longitude = String.valueOf(lng) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);&#xD;
+            String latitude = String.valueOf(lat) + String.valueOf(rand.nextInt((99_999 - 10000) + 1) + 10_000);&#xD;
+            // Call API&#xD;
+            address = tryToGetOnlineRandomAddress(client, longitude, latitude);&#xD;
+            if (address.isPresent()) {&#xD;
+                break;&#xD;
+            }&#xD;
+        }&#xD;
+    } finally {&#xD;
+        // We caught an exception that seems abnormal,&#xD;
+        // we close the client and throw the exception again&#xD;
+        client.close();&#xD;
+    }&#xD;
+    if (address.isPresent()) {&#xD;
+        return address.get();&#xD;
+    }&#xD;
+    // We were unable to retrieve a correct address&#xD;
+    throw new AddressApiException(&quot;It appears that the API has failed to return a correct address.&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UCSCMJj5EeqYP-aD6j0wRg" name="getRandomAddress" specification="_UCQNAZj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    try {&#xD;
+        return ApartmentFactory.getOnlineRandomAddress();&#xD;
+    } catch (ClientErrorExceptionAddressApiException |  e) {&#xD;
+        LOGGER.error(&quot;Problem while getting random address {}&quot;, e.toString());&#xD;
+        StringBuilder sb = new StringBuilder();&#xD;
+        sb.append(ApartmentFactory.rand.nextInt(3000)).append(&quot; rue de l'appel échoué &quot;).append(ApartmentFactory.rand.nextInt(19) + 75001).append(&quot; Paris &quot;);&#xD;
+        return sb.toString();&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UCmLQJj5EeqYP-aD6j0wRg" name="generateApartmentsFromJsonPath" specification="_UCSpQJj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    return JsonConvert.jsonToApartments(jsonFilePath);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UCrDwJj5EeqYP-aD6j0wRg" name="getDefaultApartments" specification="_UCmyUJj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    return JsonConvert.getDefaultApartments();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_UDSu0Jj5EeqYP-aD6j0wRg" name="tryToGetOnlineRandomAddress" specification="_UCuuIZj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkNotNull(client, &quot;client can't be null&quot;);&#xD;
+    checkNotNull(longitude, &quot;longitude can't be null&quot;);&#xD;
+    checkNotNull(latitude, &quot;latitude can't be null&quot;);&#xD;
+    Optional&lt;String> address = Optional.empty();&#xD;
+    WebTarget target = client.target(URL_API_ADDRESS).queryParam(&quot;lon&quot;, longitude).queryParam(&quot;lat&quot;, latitude);&#xD;
+    LOGGER.info(&quot;Address API Call : {}&quot;, target.getUri().toString());&#xD;
+    String jsonString = target.request(MediaType.TEXT_PLAIN).get(String.class);&#xD;
+    checkNotNull(jsonString, &quot;jsonString cannot be null&quot;);&#xD;
+    checkArgument(!jsonString.isBlank(), &quot;jsonString cannot be blank&quot;);&#xD;
+    try (JsonReader jr = Json.createReader(new StringReader(jsonString))) {&#xD;
+        JsonObject json = jr.readObject();&#xD;
+        JsonArray features = json.get(&quot;features&quot;).asJsonArray();&#xD;
+        if (!features.isEmpty()) {&#xD;
+            JsonObject properties = features.get(0).asJsonObject().get(&quot;properties&quot;).asJsonObject();&#xD;
+            address = Optional.ofNullable(properties.getString(&quot;label&quot;));&#xD;
+        }&#xD;
+    }&#xD;
+    return address;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UBmswJj5EeqYP-aD6j0wRg" name="generateRandomRealApartment" visibility="public" isStatic="true" method="_UB8rAJj5EeqYP-aD6j0wRg" raisedException="_UBwdwpj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UBvPoJj5EeqYP-aD6j0wRg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UB8rAZj5EeqYP-aD6j0wRg" name="generateRandomApartment" visibility="public" isStatic="true" method="_UB9SEJj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UB8rApj5EeqYP-aD6j0wRg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UB9SEZj5EeqYP-aD6j0wRg" name="generateRandomApartment" visibility="private" isStatic="true" method="_UCGcAJj5EeqYP-aD6j0wRg" raisedException="_UBwdwpj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCCKkJj5EeqYP-aD6j0wRg" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCDYsJj5EeqYP-aD6j0wRg" name="realAddress">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UCHDEJj5EeqYP-aD6j0wRg" name="generateRandomApartments" visibility="public" isStatic="true" method="_UCJfUJj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCHqIJj5EeqYP-aD6j0wRg" direction="return">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UCHqIZj5EeqYP-aD6j0wRg"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UCHqIpj5EeqYP-aD6j0wRg" value="*"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCI4QJj5EeqYP-aD6j0wRg" name="nbApartment">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UCJfUZj5EeqYP-aD6j0wRg" name="generateRandomRealApartments" visibility="public" isStatic="true" method="_UCL7kJj5EeqYP-aD6j0wRg" raisedException="_UBwdwpj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCKGYJj5EeqYP-aD6j0wRg" direction="return">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UCKGYZj5EeqYP-aD6j0wRg"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UCKGYpj5EeqYP-aD6j0wRg" value="*"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCKtcJj5EeqYP-aD6j0wRg" name="nbApartment">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UCL7kZj5EeqYP-aD6j0wRg" name="generateRandomApartmentList" visibility="private" isStatic="true" method="_UCNwwJj5EeqYP-aD6j0wRg" raisedException="_UBwdwpj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCMioJj5EeqYP-aD6j0wRg" direction="return">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UCMioZj5EeqYP-aD6j0wRg"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UCMiopj5EeqYP-aD6j0wRg" value="*"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCMio5j5EeqYP-aD6j0wRg" name="nbApartment">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCNJsJj5EeqYP-aD6j0wRg" name="realAddress">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UCNwwZj5EeqYP-aD6j0wRg" name="simulateRandomDraw" visibility="private" isStatic="true" method="_UCO-4Zj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCOX0Jj5EeqYP-aD6j0wRg" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCOX0Zj5EeqYP-aD6j0wRg" name="mean">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCO-4Jj5EeqYP-aD6j0wRg" name="deviation">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UCO-4pj5EeqYP-aD6j0wRg" name="getOnlineRandomAddress" visibility="private" isStatic="true" method="_UCQNAJj5EeqYP-aD6j0wRg" raisedException="_UBwdwpj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCPl8Jj5EeqYP-aD6j0wRg" type="__EuesHEuEeq9ooUMj2JdaQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UCQNAZj5EeqYP-aD6j0wRg" name="getRandomAddress" visibility="private" isStatic="true" method="_UCSCMJj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCRbIJj5EeqYP-aD6j0wRg" type="__EuesHEuEeq9ooUMj2JdaQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UCSpQJj5EeqYP-aD6j0wRg" name="generateApartmentsFromJsonPath" visibility="public" isStatic="true" method="_UCmLQJj5EeqYP-aD6j0wRg" raisedException="_jhOesHE0Eeq9ooUMj2JdaQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCTQUJj5EeqYP-aD6j0wRg" direction="return">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UCT3YJj5EeqYP-aD6j0wRg"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UClkMJj5EeqYP-aD6j0wRg" value="*"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UClkMZj5EeqYP-aD6j0wRg" name="jsonFilePath" type="_OIsDgJj3EeqYP-aD6j0wRg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UCmyUJj5EeqYP-aD6j0wRg" name="getDefaultApartments" visibility="public" isStatic="true" method="_UCrDwJj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCoAcJj5EeqYP-aD6j0wRg" direction="return">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UCqcsJj5EeqYP-aD6j0wRg"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UCqcsZj5EeqYP-aD6j0wRg" value="*"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UCuuIZj5EeqYP-aD6j0wRg" name="tryToGetOnlineRandomAddress" visibility="private" isStatic="true" method="_UDSu0Jj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UCy_kJj5EeqYP-aD6j0wRg" type="_UCvVMJj5EeqYP-aD6j0wRg" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UC0NsJj5EeqYP-aD6j0wRg" name="client" type="_UCsR4Jj5EeqYP-aD6j0wRg"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UC0NsZj5EeqYP-aD6j0wRg" name="longitude" type="__EuesHEuEeq9ooUMj2JdaQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UDBpEJj5EeqYP-aD6j0wRg" name="latitude" type="__EuesHEuEeq9ooUMj2JdaQ"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_yaPfIJj5EeqYP-aD6j0wRg" client="_UBdi0Jj5EeqYP-aD6j0wRg" supplier="_t0NIIJj5EeqYP-aD6j0wRg"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_z7RNAJj5EeqYP-aD6j0wRg" client="_UBdi0Jj5EeqYP-aD6j0wRg" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_t0NIIJj5EeqYP-aD6j0wRg" name="AddressApiException" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_t0cYsJj5EeqYP-aD6j0wRg" general="_t0QygJj5EeqYP-aD6j0wRg"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_t0fcAJj5EeqYP-aD6j0wRg" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_8heigBydEduyofBvg4RL2w"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_t0gDEJj5EeqYP-aD6j0wRg" name="defaultValue">
+              <language>JAVA</language>
+              <body>8057892188727057681L</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_t01aQJj5EeqYP-aD6j0wRg" name="AddressApiException" specification="_t0gqIJj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    super(message);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_t1s88Jj5EeqYP-aD6j0wRg" name="AddressApiException" specification="_t1TUUJj5EeqYP-aD6j0wRg">
+            <language>JAVA</language>
+            <body>&#xD;
+    super(message, cause);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_t0gqIJj5EeqYP-aD6j0wRg" name="AddressApiException" visibility="public" method="_t01aQJj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_t0zlEJj5EeqYP-aD6j0wRg" name="message" type="__EuesHEuEeq9ooUMj2JdaQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_t1TUUJj5EeqYP-aD6j0wRg" name="AddressApiException" visibility="public" method="_t1s88Jj5EeqYP-aD6j0wRg">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_t1loMJj5EeqYP-aD6j0wRg" name="message" type="__EuesHEuEeq9ooUMj2JdaQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_t1oEcJj5EeqYP-aD6j0wRg" name="cause" type="_t0_yUJj5EeqYP-aD6j0wRg"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_P7aeAJj6EeqYP-aD6j0wRg" client="_UBdi0Jj5EeqYP-aD6j0wRg" supplier="_OIB8MJj3EeqYP-aD6j0wRg"/>
         <packagedElement xmi:type="uml:Package" xmi:id="_bC6CwJjtEeqYCK4Btw7kWQ" name="json">
           <packagedElement xmi:type="uml:Class" xmi:id="_OIB8MJj3EeqYP-aD6j0wRg" name="JsonConvert" visibility="public" isAbstract="true">
             <ownedAttribute xmi:type="uml:Property" xmi:id="_OILGIJj3EeqYP-aD6j0wRg" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
@@ -1114,7 +1400,6 @@
           </packagedElement>
           <packagedElement xmi:type="uml:Dependency" xmi:id="_ZVIt0Jj3EeqYP-aD6j0wRg" client="_OIB8MJj3EeqYP-aD6j0wRg" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Dependency" xmi:id="_YCmu8Jj3EeqYP-aD6j0wRg" client="_cISsEGbdEeqYDoGRuvwelQ" supplier="_OIB8MJj3EeqYP-aD6j0wRg"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_JAqEUF_AEeqAAb4u4HLI7w" name="distance">
         <packagedElement xmi:type="uml:Class" xmi:id="_ESBK8F_AEeqAAb4u4HLI7w" name="DistanceSubway" visibility="public">
@@ -2178,8 +2463,6 @@
         <packagedElement xmi:type="uml:Dependency" xmi:id="_6ZTOUGXeEeqLXLaj_4v3Nw" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_G6iP4F_BEeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_msGOcGXfEeqLXLaj_4v3Nw" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_72rEYF_BEeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_pVlZMGXfEeqLXLaj_4v3Nw" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_VP_vAF_AEeqAAb4u4HLI7w"/>
-        <packagedElement xmi:type="uml:Dependency" xmi:id="_vAkuwGbfEeqYDoGRuvwelQ" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_cISsEGbdEeqYDoGRuvwelQ"/>
-        <packagedElement xmi:type="uml:Dependency" xmi:id="_xM_jAGbfEeqYDoGRuvwelQ" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_cISsEGbdEeqYDoGRuvwelQ"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_7dzmkHKHEeq1kKPrsPWCsQ" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_9M8B4HKHEeq1kKPrsPWCsQ" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_2rQboJjpEeqYCK4Btw7kWQ" client="_-FOsoJU1Eeqfq4Pvb_wd9Q" supplier="_-FOsoJU1Eeqfq4Pvb_wd9Q"/>
@@ -3672,9 +3955,12 @@
         <packagedElement xmi:type="uml:Package" xmi:id="__DER0XEuEeq9ooUMj2JdaQ" name="lang">
           <packagedElement xmi:type="uml:Class" xmi:id="__DK_gHEuEeq9ooUMj2JdaQ" name="Object"/>
           <packagedElement xmi:type="uml:Class" xmi:id="__EuesHEuEeq9ooUMj2JdaQ" name="String"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_t0QygJj5EeqYP-aD6j0wRg" name="Exception"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_t0_yUJj5EeqYP-aD6j0wRg" name="Throwable"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Package" xmi:id="_i_F0QXEvEeq9ooUMj2JdaQ" name="util">
           <packagedElement xmi:type="uml:Class" xmi:id="_i_F0QnEvEeq9ooUMj2JdaQ" name="Random"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_UCvVMJj5EeqYP-aD6j0wRg" name="Optional"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Package" xmi:id="_Y7Pz8HEzEeq9ooUMj2JdaQ" name="io">
           <packagedElement xmi:type="uml:Class" xmi:id="_Y7Pz8XEzEeq9ooUMj2JdaQ" name="File"/>
@@ -3705,7 +3991,6 @@
         </packagedElement>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_OFN4wJj3EeqYP-aD6j0wRg" name="Apartments"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_ZAfQAF--EeqAAb4u4HLI7w">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZAkIgF--EeqAAb4u4HLI7w" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
@@ -3727,7 +4012,6 @@
   </uml:Model>
   <PapyrusJava:External xmi:id="_ZC1ZYF--EeqAAb4u4HLI7w" name="org.slf4j.Logger" base_Classifier="_ZCxH8F--EeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_1OD5AF--EeqAAb4u4HLI7w" base_BehavioralFeature="_1OCq4F--EeqAAb4u4HLI7w"/>
-  <standard:Create xmi:id="_1OG8UF--EeqAAb4u4HLI7w" base_BehavioralFeature="_1OFuMF--EeqAAb4u4HLI7w"/>
   <PapyrusJava:StaticClassifier xmi:id="_1P6TIF--EeqAAb4u4HLI7w" base_Classifier="_1P324F--EeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_1P_LoF--EeqAAb4u4HLI7w" base_BehavioralFeature="_1P99gF--EeqAAb4u4HLI7w"/>
   <PapyrusJava:External xmi:id="_1QHugF--EeqAAb4u4HLI7w" name="Builder" base_Classifier="_1P324F--EeqAAb4u4HLI7w"/>
@@ -3781,4 +4065,13 @@
   <PapyrusJava:External xmi:id="_Y8yFAHEzEeq9ooUMj2JdaQ" name="org.eclipse.swt.graphics.Color" base_Classifier="_Y8g_QHEzEeq9ooUMj2JdaQ"/>
   <PapyrusJava:External xmi:id="_jhgykHE0Eeq9ooUMj2JdaQ" name="java.io.IOException" base_Classifier="_jhOesHE0Eeq9ooUMj2JdaQ"/>
   <PapyrusJava:External xmi:id="_OJDP4Jj3EeqYP-aD6j0wRg" name="java.nio.file.Path" base_Classifier="_OIsDgJj3EeqYP-aD6j0wRg"/>
+  <PapyrusJava:External xmi:id="_UB1WQJj5EeqYP-aD6j0wRg" name="javax.ws.rs.ClientErrorException" base_Classifier="_UBwdwpj5EeqYP-aD6j0wRg"/>
+  <PapyrusJava:External xmi:id="_UCuuIJj5EeqYP-aD6j0wRg" name="javax.ws.rs.client.Client" base_Classifier="_UCsR4Jj5EeqYP-aD6j0wRg"/>
+  <PapyrusJava:External xmi:id="_UCxxcJj5EeqYP-aD6j0wRg" name="java.util.Optional" base_Classifier="_UCvVMJj5EeqYP-aD6j0wRg"/>
+  <PapyrusJava:Final xmi:id="_UC_z4Jj5EeqYP-aD6j0wRg" base_Parameter="_UC0NsZj5EeqYP-aD6j0wRg"/>
+  <PapyrusJava:Final xmi:id="_UDQ5oJj5EeqYP-aD6j0wRg" base_Parameter="_UDBpEJj5EeqYP-aD6j0wRg"/>
+  <PapyrusJava:External xmi:id="_t0W5IJj5EeqYP-aD6j0wRg" name="java.lang.Exception" base_Classifier="_t0QygJj5EeqYP-aD6j0wRg"/>
+  <standard:Create xmi:id="_t0ol8Jj5EeqYP-aD6j0wRg" base_BehavioralFeature="_t0gqIJj5EeqYP-aD6j0wRg"/>
+  <PapyrusJava:External xmi:id="_t1I8QJj5EeqYP-aD6j0wRg" name="java.lang.Throwable" base_Classifier="_t0_yUJj5EeqYP-aD6j0wRg"/>
+  <standard:Create xmi:id="_t1apEJj5EeqYP-aD6j0wRg" base_BehavioralFeature="_t1TUUJj5EeqYP-aD6j0wRg"/>
 </xmi:XMI>
