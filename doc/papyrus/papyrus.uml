@@ -1067,7 +1067,7 @@
         </packagedElement>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_W5LIQGXfEeqLXLaj_4v3Nw" client="_ESBK8F_AEeqAAb4u4HLI7w" supplier="_ByP4cGVIEeq0U8CyxWHVBA"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_S32y8F_AEeqAAb4u4HLI7w" name="GUI">
+      <packagedElement xmi:type="uml:Package" xmi:id="_S32y8F_AEeqAAb4u4HLI7w" name="gui">
         <packagedElement xmi:type="uml:Class" xmi:id="_VP_vAF_AEeqAAb4u4HLI7w" name="AskOpinionForUtility" visibility="public">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_VQCyUF_AEeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
             <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_VQKHEF_AEeqAAb4u4HLI7w" name="defaultValue">
@@ -2054,6 +2054,11 @@
         <packagedElement xmi:type="uml:Dependency" xmi:id="_H4F6kGbjEeqYDoGRuvwelQ" client="_VLK5YF_AEeqAAb4u4HLI7w" supplier="_P1sxsGbgEeqYDoGRuvwelQ"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_7dzmkHKHEeq1kKPrsPWCsQ" client="_VLMukF_AEeqAAb4u4HLI7w" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_9M8B4HKHEeq1kKPrsPWCsQ" client="_VKBp4F_AEeqAAb4u4HLI7w" supplier="_1N7WIF--EeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_2rQboJjpEeqYCK4Btw7kWQ" client="_-FOsoJU1Eeqfq4Pvb_wd9Q" supplier="_-FOsoJU1Eeqfq4Pvb_wd9Q"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_9yrKQJjpEeqYCK4Btw7kWQ" client="_S32y8F_AEeqAAb4u4HLI7w" supplier="_1bkeoF_AEeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_IpdtoJjqEeqYCK4Btw7kWQ" client="_S32y8F_AEeqAAb4u4HLI7w" supplier="_A3YaoF_BEeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_hRfMQJjqEeqYCK4Btw7kWQ" client="_S32y8F_AEeqAAb4u4HLI7w" supplier="_1QqroF-_EeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_uoqBsJjqEeqYCK4Btw7kWQ" client="_S32y8F_AEeqAAb4u4HLI7w" supplier="_d2M6YF_BEeqAAb4u4HLI7w"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_bL8JAF_AEeqAAb4u4HLI7w" name="iconDisplay">
         <packagedElement xmi:type="uml:Class" xmi:id="_ck78QF_AEeqAAb4u4HLI7w" name="DisplayIcon" visibility="public">
@@ -2097,7 +2102,7 @@
           </ownedOperation>
         </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_m5QrwF_AEeqAAb4u4HLI7w" name="Localize">
+      <packagedElement xmi:type="uml:Package" xmi:id="_m5QrwF_AEeqAAb4u4HLI7w" name="localize">
         <packagedElement xmi:type="uml:Class" xmi:id="_tRpKIF_AEeqAAb4u4HLI7w" name="Localizer" visibility="public">
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_tRziMF_AEeqAAb4u4HLI7w" name="getGeometryLocation" specification="_tRpxMF_AEeqAAb4u4HLI7w">
             <language>JAVA</language>
@@ -2115,7 +2120,7 @@
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_tRv30F_AEeqAAb4u4HLI7w" name="InterruptedException"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_1bkeoF_AEeqAAb4u4HLI7w" name="Readapartments">
+      <packagedElement xmi:type="uml:Package" xmi:id="_1bkeoF_AEeqAAb4u4HLI7w" name="readapartments">
         <packagedElement xmi:type="uml:Class" xmi:id="_4qWHwF_AEeqAAb4u4HLI7w" name="ReadApartmentsXMLFormat" visibility="public">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_4qZLEF_AEeqAAb4u4HLI7w" name="prop" visibility="private" isUnique="false"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_4qbAQF_AEeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
@@ -2173,8 +2178,9 @@
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_4qfRsF_AEeqAAb4u4HLI7w" name="NumberFormatException"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_VtMpsJjqEeqYCK4Btw7kWQ" client="_1bkeoF_AEeqAAb4u4HLI7w" supplier="_-FOsoJU1Eeqfq4Pvb_wd9Q"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_A3YaoF_BEeqAAb4u4HLI7w" name="Toxmlproperties">
+      <packagedElement xmi:type="uml:Package" xmi:id="_A3YaoF_BEeqAAb4u4HLI7w" name="toxmlproperties">
         <packagedElement xmi:type="uml:Class" xmi:id="_G6iP4F_BEeqAAb4u4HLI7w" name="XMLProperties" visibility="public">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_G6i28F_BEeqAAb4u4HLI7w" name="properties" visibility="private" isUnique="false"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_G6jeAF_BEeqAAb4u4HLI7w" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
@@ -2215,8 +2221,9 @@
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_G6oWgl_BEeqAAb4u4HLI7w" name="xmlFile"/>
           </ownedOperation>
         </packagedElement>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_QDfPMJjqEeqYCK4Btw7kWQ" client="_A3YaoF_BEeqAAb4u4HLI7w" supplier="_1QqroF-_EeqAAb4u4HLI7w"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_QgD_sF_BEeqAAb4u4HLI7w" name="Utils">
+      <packagedElement xmi:type="uml:Package" xmi:id="_QgD_sF_BEeqAAb4u4HLI7w" name="utils">
         <packagedElement xmi:type="uml:Class" xmi:id="_P1sxsGbgEeqYDoGRuvwelQ" name="JsonConvert" isAbstract="true">
           <ownedOperation xmi:type="uml:Operation" xmi:id="_rL8KEGbgEeqYDoGRuvwelQ" name="apartmentToJson" isStatic="true"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_RQ_OgGbhEeqYDoGRuvwelQ" name="apartmentsToJson" isStatic="true"/>
@@ -2296,8 +2303,9 @@
             </ownedParameter>
           </ownedOperation>
         </packagedElement>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_OfX7oJjrEeqYCK4Btw7kWQ" client="_QgD_sF_BEeqAAb4u4HLI7w" supplier="_1QqroF-_EeqAAb4u4HLI7w"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_d2M6YF_BEeqAAb4u4HLI7w" name="Valuefunction">
+      <packagedElement xmi:type="uml:Package" xmi:id="_d2M6YF_BEeqAAb4u4HLI7w" name="valuefunction">
         <packagedElement xmi:type="uml:Class" xmi:id="_d19NUF_CEeqAAb4u4HLI7w" name="PieceWiseLinearValueFunction" visibility="public">
           <generalization xmi:type="uml:Generalization" xmi:id="_d1-bcF_CEeqAAb4u4HLI7w"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_d2AQoF_CEeqAAb4u4HLI7w" name="utilities" visibility="private" type="_d1-bcV_CEeqAAb4u4HLI7w" isUnique="false"/>
@@ -3531,6 +3539,10 @@
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MT5hwmXWEeqLXLaj_4v3Nw" value="8"/>
           </ownedEnd>
         </packagedElement>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_daH18JjmEeqYCK4Btw7kWQ" client="_pKHpMF_CEeqAAb4u4HLI7w" supplier="_ESBK8F_AEeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_0ZZGsJjpEeqYCK4Btw7kWQ" client="_d2M6YF_BEeqAAb4u4HLI7w" supplier="_JAqEUF_AEeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_K7CHoJjqEeqYCK4Btw7kWQ" client="_d2M6YF_BEeqAAb4u4HLI7w" supplier="_QgD_sF_BEeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_B48moJjrEeqYCK4Btw7kWQ" client="_d2M6YF_BEeqAAb4u4HLI7w" supplier="_1QqroF-_EeqAAb4u4HLI7w"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="__C89EHEuEeq9ooUMj2JdaQ" name="java">
