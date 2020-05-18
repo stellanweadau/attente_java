@@ -1,9 +1,7 @@
-package io.github.oliviercailloux.y2018.apartments.utils;
+package io.github.oliviercailloux.y2018.apartments.apartment.json;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,22 +21,6 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
  * @author Etienne CARTIER & Morgane FIOT
  */
 public class JsonConvertTest {
-
-	/**
-	 * Tests getAddressFromJson function. Verifies if the address extracted by the
-	 * function corresponds to the expected address.
-	 *
-	 * @throws FileNotFoundException if the file doesn't exists.
-	 * @throws IOException           if the file can't be convert into JSON format.
-	 */
-	@Test
-	void getAddressFromJsonTest() {
-		String adressJson = "{\"data\":{\"latitude\":48.91777636365895,\"longitude\":2.4954686289120067,\"formattedAddress\":\"Allée de Turenne, Nonneville, Les Pavillons-sous-Bois, Le Raincy, Seine-Saint-Denis, Île-de-France, France métropolitaine, 93320, France\",\"country\":\"France\",\"city\":\"Les Pavillons-sous-Bois\",\"state\":\"Île-de-France\",\"zipcode\":\"93320\",\"streetName\":\"Allée de Turenne\",\"countryCode\":\"FR\",\"neighbourhood\":\"\",\"provider\":\"openstreetmap\"},\"address\":\"1 Allée de Turenne, 93320 Les Pavillons-sous-Bois\"}";
-		String adressJsonWrong = "{\"data\":{\"latitude\":48.91777636365895,\"longitude\":2.4954686289120067,\"formattedAddress\":\"Allée de Turenne, Nonneville, Les Pavillons-sous-Bois, Le Raincy, Seine-Saint-Denis, Île-de-France, France métropolitaine, 93320, France\",\"country\":\"France\",\"city\":\"Les Pavillons-sous-Bois\",\"state\":\"Île-de-France\",\"zipcode\":\"93320\",\"streetName\":\"Allée de Turenne\",\"countryCode\":\"FR\",\"neighbourhood\":\"\",\"provider\":\"openstreetmap\"},\"address\":\"\"}";
-
-		assertEquals("1 Allée de Turenne, 93320 Les Pavillons-sous-Bois", JsonConvert.getAddressFromJson(adressJson));
-		assertThrows(IllegalArgumentException.class, () -> JsonConvert.getAddressFromJson(adressJsonWrong));
-	}
 
 	/**
 	 * Tests apartmentsToJson function. Verifies if the JSON file created by the
