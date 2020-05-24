@@ -52,6 +52,7 @@
                   <packagedElement xmi:type="uml:Package" xmi:id="_epOdkJwsEeqGkeU796yVmw" name="Apartment">
                     <packagedElement xmi:type="uml:Class" xmi:id="_epPEoJwsEeqGkeU796yVmw" name="Builder"/>
                   </packagedElement>
+                  <packagedElement xmi:type="uml:Class" xmi:id="_rBU6AJ2dEeq5UMfZ1C8e7g" name="Apartment"/>
                 </packagedElement>
               </packagedElement>
             </packagedElement>
@@ -272,6 +273,15 @@
               <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MX3cQZy_Eeqv_texJXdVtQ" key="nature" value="UML_Nature"/>
             </eAnnotations>
             <ownedEnd xmi:type="uml:Property" xmi:id="_MYDpgZy_Eeqv_texJXdVtQ" name="question" type="_LbxAkJpzEeqmHpvW7B5p3g" association="_MX2OIJy_Eeqv_texJXdVtQ"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_xllbwJ2eEeq5UMfZ1C8e7g" memberEnd="_xlq7UJ2eEeq5UMfZ1C8e7g _xlriYp2eEeq5UMfZ1C8e7g">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xlptMJ2eEeq5UMfZ1C8e7g" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xlptMZ2eEeq5UMfZ1C8e7g" key="nature" value="UML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_xlriYp2eEeq5UMfZ1C8e7g" name="profile" type="_sCMNUJwtEeqGkeU796yVmw" association="_xllbwJ2eEeq5UMfZ1C8e7g">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0DWesJ2eEeq5UMfZ1C8e7g"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0Dhd0J2eEeq5UMfZ1C8e7g" value="*"/>
+            </ownedEnd>
           </packagedElement>
         </packagedElement>
         <packagedElement xmi:type="uml:Package" xmi:id="_kG1I8JpvEeqmHpvW7B5p3g" name="Iteration4Java">
@@ -3644,9 +3654,6 @@
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_YZOMMJw5EeqGkeU796yVmw" name="ApartmentValueFunction" visibility="public">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_dYI9QJw5EeqGkeU796yVmw" name="profile" type="_sCMNUJwtEeqGkeU796yVmw"/>
-          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Interface" xmi:id="_siBZIF_CEeqAAb4u4HLI7w" name="PartialValueFunction" visibility="public">
           <ownedOperation xmi:type="uml:Operation" xmi:id="_siONcV_CEeqAAb4u4HLI7w" name="getSubjectiveValue" visibility="public" raisedException="_73FUEF_BEeqAAb4u4HLI7w">
@@ -4135,6 +4142,737 @@
         </packagedElement>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_daH18JjmEeqYCK4Btw7kWQ" client="_pKHpMF_CEeqAAb4u4HLI7w" supplier="_ESBK8F_AEeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_0ZZGsJjpEeqYCK4Btw7kWQ" client="_d2M6YF_BEeqAAb4u4HLI7w" supplier="_JAqEUF_AEeqAAb4u4HLI7w"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_q-Zh0J2dEeq5UMfZ1C8e7g" name="LinearApartmentValueFunction" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-irwJ2dEeq5UMfZ1C8e7g" name="floorAreaValueFunction" visibility="private" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-m9MJ2dEeq5UMfZ1C8e7g" name="nbBedroomsValueFunction" visibility="private" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-oLUJ2dEeq5UMfZ1C8e7g" name="nbSleepingValueFunction" visibility="private" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-oyYJ2dEeq5UMfZ1C8e7g" name="nbBathroomsValueFunction" visibility="private" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-tD0J2dEeq5UMfZ1C8e7g" name="terraceValueFunction" visibility="private" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-u5AJ2dEeq5UMfZ1C8e7g" name="floorAreaTerraceValueFunction" visibility="private" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-wuMJ2dEeq5UMfZ1C8e7g" name="wifiValueFunction" visibility="private" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-0_oJ2dEeq5UMfZ1C8e7g" name="pricePerNightValueFunction" visibility="private" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-1msJ2dEeq5UMfZ1C8e7g" name="nbMinNightValueFunction" visibility="private" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-2NwJ2dEeq5UMfZ1C8e7g" name="teleValueFunction" visibility="private" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-200J2dEeq5UMfZ1C8e7g" name="floorAreaSubjectiveValueWeight" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-4C8J2dEeq5UMfZ1C8e7g" name="nbBedroomsSubjectiveValueWeight" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-7GQJ2dEeq5UMfZ1C8e7g" name="nbSleepingSubjectiveValueWeight" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q-87cJ2dEeq5UMfZ1C8e7g" name="nbBathroomsSubjectiveValueWeight" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q_Bz8J2dEeq5UMfZ1C8e7g" name="terraceSubjectiveValueWeight" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q_Bz8Z2dEeq5UMfZ1C8e7g" name="floorAreaTerraceSubjectiveValueWeight" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q_Bz8p2dEeq5UMfZ1C8e7g" name="wifiSubjectiveValueWeight" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q_DpIJ2dEeq5UMfZ1C8e7g" name="pricePerNightSubjectiveValueWeight" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q_FeUJ2dEeq5UMfZ1C8e7g" name="nbMinNightSubjectiveValueWeight" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q_HTgJ2dEeq5UMfZ1C8e7g" name="teleSubjectiveValueWeight" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q_Lk8J2dEeq5UMfZ1C8e7g" name="LOGGER" visibility="private" isLeaf="true" isStatic="true" type="_ZCxH8F--EeqAAb4u4HLI7w" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_q_P2YJ2dEeq5UMfZ1C8e7g" name="defaultValue">
+              <language>JAVA</language>
+              <body>LoggerFactory.getLogger(LinearApartmentValueFunction.class)</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_q_gVEJ2dEeq5UMfZ1C8e7g" name="LinearApartmentValueFunction" specification="_q_Uu4J2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.floorAreaValueFunction = new LinearValueFunction(0d, 0d);&#xD;
+    this.nbBedroomsValueFunction = new LinearValueFunction(0d, 0d);&#xD;
+    this.nbSleepingValueFunction = new LinearValueFunction(0d, 0d);&#xD;
+    this.nbBathroomsValueFunction = new LinearValueFunction(0d, 0d);&#xD;
+    this.terraceValueFunction = new BooleanValueFunction(false);&#xD;
+    this.floorAreaTerraceValueFunction = new LinearValueFunction(0d, 0d);&#xD;
+    this.wifiValueFunction = new BooleanValueFunction(false);&#xD;
+    this.pricePerNightValueFunction = new ReversedLinearValueFunction(0d, 0d);&#xD;
+    this.nbMinNightValueFunction = new ReversedLinearValueFunction(0d, 0d);&#xD;
+    this.teleValueFunction = new BooleanValueFunction(false);&#xD;
+    this.floorAreaSubjectiveValueWeight = 0.1;&#xD;
+    this.nbBedroomsSubjectiveValueWeight = 0.1;&#xD;
+    this.nbSleepingSubjectiveValueWeight = 0.1;&#xD;
+    this.nbBathroomsSubjectiveValueWeight = 0.1;&#xD;
+    this.terraceSubjectiveValueWeight = 0.1;&#xD;
+    this.floorAreaTerraceSubjectiveValueWeight = 0.1;&#xD;
+    this.wifiSubjectiveValueWeight = 0.1;&#xD;
+    this.pricePerNightSubjectiveValueWeight = 0.1;&#xD;
+    this.nbMinNightSubjectiveValueWeight = 0.1;&#xD;
+    this.teleSubjectiveValueWeight = 0.1;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_q_oQ4J2dEeq5UMfZ1C8e7g" name="setFloorAreaValueFunction" specification="_q_l0oJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.floorAreaValueFunction = checkNotNull(floorAreaValueFunction);&#xD;
+    LOGGER.info(&quot;The floor area preferencies has been set&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_q_siUJ2dEeq5UMfZ1C8e7g" name="setNbBedroomsValueFunction" specification="_q_rUMJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.nbBedroomsValueFunction = checkNotNull(nbBedroomsValueFunction);&#xD;
+    LOGGER.info(&quot;The number of bedrooms preferencies has been set&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_q_vloJ2dEeq5UMfZ1C8e7g" name="setNbSleepingValueFunction" specification="_q_tJYJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.nbSleepingValueFunction = checkNotNull(nbSleepingValueFunction);&#xD;
+    LOGGER.info(&quot;The number of sleeping preferencies has been set&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_q_0eIJ2dEeq5UMfZ1C8e7g" name="setNbBathroomsValueFunction" specification="_q_yB4J2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.nbBathroomsValueFunction = checkNotNull(nbBathroomsValueFunction);&#xD;
+    LOGGER.info(&quot;The number of bathrooms preferencies has been set&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_q_6kwJ2dEeq5UMfZ1C8e7g" name="setTerraceValueFunction" specification="_q_1FMJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.terraceValueFunction = checkNotNull(terraceValueFunction);&#xD;
+    LOGGER.info(&quot;The terrace preferencies has been set&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rAEVwJ2dEeq5UMfZ1C8e7g" name="setFloorAreaTerraceValueFunction" specification="_rAB5gJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.floorAreaTerraceValueFunction = checkNotNull(floorAreaTerraceValueFunction);&#xD;
+    LOGGER.info(&quot;The floor area of the terrace preferencies has been set&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rAInMJ2dEeq5UMfZ1C8e7g" name="setWifiValueFunction" specification="_rAGyAJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.wifiValueFunction = checkNotNull(wifiValueFunction);&#xD;
+    LOGGER.info(&quot;The wifi preferencies has been set&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rAP78J2dEeq5UMfZ1C8e7g" name="setPricePerNightValueFunction" specification="_rAM4oJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.pricePerNightValueFunction = checkNotNull(pricePerNightValueFunction);&#xD;
+    LOGGER.info(&quot;The price per night preferencies has been set&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rATmUZ2dEeq5UMfZ1C8e7g" name="setNbMinNightValueFunction" specification="_rARxIJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.nbMinNightValueFunction = checkNotNull(nbMinNightValueFunction);&#xD;
+    LOGGER.info(&quot;The number of minimum night preferencies has been set&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rAWpoJ2dEeq5UMfZ1C8e7g" name="setTeleValueFunction" specification="_rAUNYJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.teleValueFunction = checkNotNull(teleValueFunction);&#xD;
+    LOGGER.info(&quot;The tele preferencies has been set&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rAZs8J2dEeq5UMfZ1C8e7g" name="setFloorAreaSubjectiveValueWeight" specification="_rAX3wJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkArgument(floorAreaSubjectiveValueWeight >= 0, &quot;The weight of the floor area cannot be negative&quot;);&#xD;
+    this.floorAreaSubjectiveValueWeight = floorAreaSubjectiveValueWeight;&#xD;
+    LOGGER.info(&quot;The floor area weight has been set to {}&quot;, floorAreaSubjectiveValueWeight);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rAd-YJ2dEeq5UMfZ1C8e7g" name="setNbBedroomsSubjectiveValueWeight" specification="_rAbiIJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkArgument(nbBedroomsSubjectiveValueWeight >= 0, &quot;The weight of the number of bedrooms cannot be negative&quot;);&#xD;
+    this.nbBedroomsSubjectiveValueWeight = nbBedroomsSubjectiveValueWeight;&#xD;
+    LOGGER.info(&quot;The number of bedrooms weight has been set to {}&quot;, nbBedroomsSubjectiveValueWeight);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rAlTIJ2dEeq5UMfZ1C8e7g" name="setNbSleepingSubjectiveValueWeight" specification="_rAiP0J2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkArgument(nbSleepingSubjectiveValueWeight >= 0, &quot;The weight of the sleeping cannot be negative&quot;);&#xD;
+    this.nbSleepingSubjectiveValueWeight = nbSleepingSubjectiveValueWeight;&#xD;
+    LOGGER.info(&quot;The number of sleeping weight has been set to {}&quot;, nbSleepingSubjectiveValueWeight);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rApkkJ2dEeq5UMfZ1C8e7g" name="setNbBathroomsSubjectiveValueWeight" specification="_rAnvYJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkArgument(nbBathroomsSubjectiveValueWeight >= 0, &quot;The weight of the number of bathrooms cannot be negative&quot;);&#xD;
+    this.nbBathroomsSubjectiveValueWeight = nbBathroomsSubjectiveValueWeight;&#xD;
+    LOGGER.info(&quot;The number of bathrooms weight has been set to {}&quot;, nbBathroomsSubjectiveValueWeight);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rAvrMJ2dEeq5UMfZ1C8e7g" name="setTerraceSubjectiveValueWeight" specification="_rAsn4J2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkArgument(terraceSubjectiveValueWeight >= 0, &quot;The weight of the terrace cannot be negative&quot;);&#xD;
+    this.terraceSubjectiveValueWeight = terraceSubjectiveValueWeight;&#xD;
+    LOGGER.info(&quot;The terrace weight has been set to {}&quot;, terraceSubjectiveValueWeight);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rA5cMJ2dEeq5UMfZ1C8e7g" name="setFloorAreaTerraceSubjectiveValueWeight" specification="_rA0jsJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkArgument(floorAreaTerraceSubjectiveValueWeight >= 0, &quot;The weight of the floor area terrace cannot be negative&quot;);&#xD;
+    this.floorAreaTerraceSubjectiveValueWeight = floorAreaTerraceSubjectiveValueWeight;&#xD;
+    LOGGER.info(&quot;The floor area of the terrace weight has been set to {}&quot;, floorAreaTerraceSubjectiveValueWeight);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rBAJ4J2dEeq5UMfZ1C8e7g" name="setWifiSubjectiveValueWeight" specification="_rA9GkJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkArgument(wifiSubjectiveValueWeight >= 0, &quot;The weight of the wifi cannot be negative&quot;);&#xD;
+    this.wifiSubjectiveValueWeight = wifiSubjectiveValueWeight;&#xD;
+    LOGGER.info(&quot;The wifi weight has been set to {}&quot;, wifiSubjectiveValueWeight);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rBGQgJ2dEeq5UMfZ1C8e7g" name="setPricePerNightSubjectiveValueWeight" specification="_rBEbUJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkArgument(pricePerNightSubjectiveValueWeight >= 0, &quot;The weight of the price per night cannot be negative&quot;);&#xD;
+    this.pricePerNightSubjectiveValueWeight = pricePerNightSubjectiveValueWeight;&#xD;
+    LOGGER.info(&quot;The price per night weight has been set to {}&quot;, pricePerNightSubjectiveValueWeight);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rBOMUJ2dEeq5UMfZ1C8e7g" name="setNbMinNightSubjectiveValueWeight" specification="_rBKh8J2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkArgument(nbMinNightSubjectiveValueWeight >= 0, &quot;The weight of the minimum number of nights cannot be negative&quot;);&#xD;
+    this.nbMinNightSubjectiveValueWeight = nbMinNightSubjectiveValueWeight;&#xD;
+    LOGGER.info(&quot;The number of minimum night weight has been set to {}&quot;, nbMinNightSubjectiveValueWeight);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rBTE0J2dEeq5UMfZ1C8e7g" name="setTeleSubjectiveValueWeight" specification="_rBRPoJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkArgument(teleSubjectiveValueWeight >= 0, &quot;The weight of the tele cannot be negative&quot;);&#xD;
+    this.teleSubjectiveValueWeight = teleSubjectiveValueWeight;&#xD;
+    LOGGER.info(&quot;The tele weight has been set to {}&quot;, teleSubjectiveValueWeight);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rBiVYJ2dEeq5UMfZ1C8e7g" name="getSubjectiveValue" specification="_rBZLcJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    double floorAreaSubjectiveValue;&#xD;
+    double nbBedroomsSubjectiveValue;&#xD;
+    double nbSleepingSubjectiveValue;&#xD;
+    double nbBathroomsSubjectiveValue;&#xD;
+    double terraceSubjectiveValue;&#xD;
+    double floorAreaTerraceSubjectiveValue;&#xD;
+    double wifiSubjectiveValue;&#xD;
+    double pricePerNightSubjectiveValue;&#xD;
+    double nbMinNightSubjectiveValue;&#xD;
+    double teleSubjectiveValue;&#xD;
+    checkArgument(floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) >= 0 &amp;&amp; floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) &lt;= 1, &quot;The subjective value of floor area should be between 0 and 1&quot;);&#xD;
+    floorAreaSubjectiveValue = floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea());&#xD;
+    LOGGER.info(&quot;The floor area subjective value has been set to {}&quot;, floorAreaSubjectiveValue);&#xD;
+    checkArgument(nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) >= 0 &amp;&amp; nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) &lt;= 1, &quot;The subjective value of the number of bedrooms should be between 0 and 1&quot;);&#xD;
+    nbBedroomsSubjectiveValue = nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms());&#xD;
+    LOGGER.info(&quot;The number of bedrooms subjective value has been set to {}&quot;, nbBedroomsSubjectiveValue);&#xD;
+    checkArgument(nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) >= 0 &amp;&amp; nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) &lt;= 1, &quot;The subjective value of the number of sleeping should be between 0 and 1&quot;);&#xD;
+    nbSleepingSubjectiveValue = nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping());&#xD;
+    LOGGER.info(&quot;The number of sleeping subjective value has been set to {}&quot;, nbSleepingSubjectiveValue);&#xD;
+    checkArgument(nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) >= 0 &amp;&amp; nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) &lt;= 1, &quot;The subjective value of the number of bathrooms should be between 0 and 1&quot;);&#xD;
+    nbBathroomsSubjectiveValue = nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms());&#xD;
+    LOGGER.info(&quot;The number of bathrooms subjective value has been set to {}&quot;, nbBathroomsSubjectiveValue);&#xD;
+    checkArgument(terraceValueFunction.getSubjectiveValue(apart.getTerrace()) >= 0 &amp;&amp; terraceValueFunction.getSubjectiveValue(apart.getTerrace()) &lt;= 1, &quot;The subjective value of the terrace should be between 0 and 1&quot;);&#xD;
+    terraceSubjectiveValue = terraceValueFunction.getSubjectiveValue(apart.getTerrace());&#xD;
+    LOGGER.info(&quot;The terrace subjective value has been set to {}&quot;, terraceSubjectiveValue);&#xD;
+    checkArgument(floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) >= 0 &amp;&amp; floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) &lt;= 1, &quot;The subjective value of the floor area of the terrace should be between 0 and 1&quot;);&#xD;
+    floorAreaTerraceSubjectiveValue = floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace());&#xD;
+    LOGGER.info(&quot;The floor area of the terrace subjective value has been set to {}&quot;, floorAreaTerraceSubjectiveValue);&#xD;
+    checkArgument(wifiValueFunction.getSubjectiveValue(apart.getWifi()) >= 0 &amp;&amp; wifiValueFunction.getSubjectiveValue(apart.getWifi()) &lt;= 1, &quot;The subjective value of the wifi should be between 0 and 1&quot;);&#xD;
+    wifiSubjectiveValue = wifiValueFunction.getSubjectiveValue(apart.getWifi());&#xD;
+    LOGGER.info(&quot;The wifi subjective value has been set to {}&quot;, wifiSubjectiveValue);&#xD;
+    checkArgument(pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) >= 0 &amp;&amp; pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) &lt;= 1, &quot;The subjective value of the price per night should be between 0 and 1&quot;);&#xD;
+    pricePerNightSubjectiveValue = pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight());&#xD;
+    LOGGER.info(&quot;the price per night subjective value has been set to {}&quot;, pricePerNightSubjectiveValue);&#xD;
+    checkArgument(nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) >= 0 &amp;&amp; nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) &lt;= 1, &quot;The subjective value of the minimum number of nights should be between 0 and 1&quot;);&#xD;
+    nbMinNightSubjectiveValue = nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight());&#xD;
+    LOGGER.info(&quot;The minimum number of nights subjective value has been set to {}&quot;, nbMinNightSubjectiveValue);&#xD;
+    checkArgument(teleValueFunction.getSubjectiveValue(apart.getTele()) >= 0 &amp;&amp; teleValueFunction.getSubjectiveValue(apart.getTele()) &lt;= 1, &quot;The subjective value of the presence of a tele should be between 0 and 1&quot;);&#xD;
+    teleSubjectiveValue = teleValueFunction.getSubjectiveValue(apart.getTele());&#xD;
+    LOGGER.info(&quot;the tele subjective value has been set to {}&quot;, teleSubjectiveValue);&#xD;
+    return ((floorAreaSubjectiveValue * floorAreaSubjectiveValueWeight + nbBedroomsSubjectiveValue * nbBedroomsSubjectiveValueWeight + nbSleepingSubjectiveValue * nbSleepingSubjectiveValueWeight + nbBathroomsSubjectiveValue * nbBathroomsSubjectiveValueWeight + terraceSubjectiveValue * terraceSubjectiveValueWeight + floorAreaTerraceSubjectiveValue * floorAreaTerraceSubjectiveValueWeight + wifiSubjectiveValue * wifiSubjectiveValueWeight + pricePerNightSubjectiveValue * pricePerNightSubjectiveValueWeight + nbMinNightSubjectiveValue * nbMinNightSubjectiveValueWeight + teleSubjectiveValue * teleSubjectiveValueWeight) / (floorAreaSubjectiveValueWeight + nbBedroomsSubjectiveValueWeight + nbSleepingSubjectiveValueWeight + nbBathroomsSubjectiveValueWeight + terraceSubjectiveValueWeight + floorAreaTerraceSubjectiveValueWeight + wifiSubjectiveValueWeight + pricePerNightSubjectiveValueWeight + nbMinNightSubjectiveValueWeight + teleSubjectiveValueWeight));&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rBpDEJ2dEeq5UMfZ1C8e7g" name="getRandomApartmentValueFunction" specification="_rBl_wJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    Random random = new Random();&#xD;
+    LinearApartmentValueFunction apartValueFunction = new LinearApartmentValueFunction();&#xD;
+    int floorAreaEndBound = random.nextInt(80) + 21;&#xD;
+    boolean terraceEndBound = (random.nextInt(2) == 1);&#xD;
+    int floorAreaTerraceEndBound = random.nextInt(80) + 21;&#xD;
+    boolean wifiEndBound = (random.nextInt(2) == 1);&#xD;
+    int pricePerNightEndBound = random.nextInt(180) + 21;&#xD;
+    int nbMinNightEndBound = random.nextInt(7) + 3;&#xD;
+    boolean teleEndBound = (random.nextInt(2) == 1);&#xD;
+    int floorAreaStartBound = random.nextInt(floorAreaEndBound);&#xD;
+    int floorAreaTerraceStartBound = random.nextInt(floorAreaTerraceEndBound);&#xD;
+    int pricePerNightStartBound = random.nextInt(pricePerNightEndBound);&#xD;
+    int nbMinNightStartBound = random.nextInt(nbMinNightEndBound);&#xD;
+    apartValueFunction.setFloorAreaValueFunction(new LinearValueFunction(floorAreaStartBound, floorAreaEndBound));&#xD;
+    apartValueFunction.setNbBedroomsValueFunction(new LinearValueFunction(4d, 6d));&#xD;
+    apartValueFunction.setNbSleepingValueFunction(new LinearValueFunction(4d, 6d));&#xD;
+    apartValueFunction.setNbBathroomsValueFunction(new LinearValueFunction(1d, 3d));&#xD;
+    apartValueFunction.setTerraceValueFunction(new BooleanValueFunction(terraceEndBound));&#xD;
+    apartValueFunction.setFloorAreaTerraceValueFunction(new LinearValueFunction(floorAreaTerraceStartBound, floorAreaTerraceEndBound));&#xD;
+    apartValueFunction.setWifiValueFunction(new BooleanValueFunction(wifiEndBound));&#xD;
+    apartValueFunction.setPricePerNightValueFunction(new ReversedLinearValueFunction((double) pricePerNightStartBound, (double) pricePerNightEndBound));&#xD;
+    apartValueFunction.setNbMinNightValueFunction(new ReversedLinearValueFunction(nbMinNightStartBound, nbMinNightEndBound));&#xD;
+    apartValueFunction.setTeleValueFunction(new BooleanValueFunction(teleEndBound));&#xD;
+    List&lt;Double> weightRange = RandomRange.weightRangeOfSum(1d, 10);&#xD;
+    LOGGER.info(&quot;Weight has been set to : {}&quot;, weightRange);&#xD;
+    apartValueFunction.floorAreaSubjectiveValueWeight = weightRange.get(0);&#xD;
+    apartValueFunction.nbBedroomsSubjectiveValueWeight = weightRange.get(1);&#xD;
+    apartValueFunction.nbSleepingSubjectiveValueWeight = weightRange.get(2);&#xD;
+    apartValueFunction.nbBathroomsSubjectiveValueWeight = weightRange.get(3);&#xD;
+    apartValueFunction.terraceSubjectiveValueWeight = weightRange.get(4);&#xD;
+    apartValueFunction.floorAreaTerraceSubjectiveValueWeight = weightRange.get(5);&#xD;
+    apartValueFunction.wifiSubjectiveValueWeight = weightRange.get(6);&#xD;
+    apartValueFunction.pricePerNightSubjectiveValueWeight = weightRange.get(7);&#xD;
+    apartValueFunction.nbMinNightSubjectiveValueWeight = weightRange.get(8);&#xD;
+    apartValueFunction.teleSubjectiveValueWeight = weightRange.get(9);&#xD;
+    return apartValueFunction;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rB5hwJ2dEeq5UMfZ1C8e7g" name="adaptWeight" specification="_rBy0EJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    checkNotNull(lessImportant, &quot;This criterion cannot be null&quot;);&#xD;
+    checkNotNull(moreImportant, &quot;This criterion cannot be null&quot;);&#xD;
+    checkArgument(!Objects.equals(moreImportant, lessImportant), &quot;Both fields are the same.&quot;);&#xD;
+    LinearApartmentValueFunction avf = cloneAVF();&#xD;
+    double weightSum = avf.getSubjectiveValueWeight(moreImportant) + avf.getSubjectiveValueWeight(lessImportant);&#xD;
+    avf = avf.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);&#xD;
+    avf = avf.setSubjectiveValueWeight(lessImportant, weightSum / 10);&#xD;
+    return avf;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rCBdkJ2dEeq5UMfZ1C8e7g" name="getSubjectiveValueWeight" specification="_rB8lEJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    switch(awt) {&#xD;
+        case TELE:&#xD;
+            return teleSubjectiveValueWeight;&#xD;
+        case TERRACE:&#xD;
+            return terraceSubjectiveValueWeight;&#xD;
+        case WIFI:&#xD;
+            return wifiSubjectiveValueWeight;&#xD;
+        case FLOOR_AREA:&#xD;
+            return floorAreaSubjectiveValueWeight;&#xD;
+        case FLOOR_AREA_TERRACE:&#xD;
+            return floorAreaTerraceSubjectiveValueWeight;&#xD;
+        case NB_BATHROOMS:&#xD;
+            return nbBathroomsSubjectiveValueWeight;&#xD;
+        case NB_BEDROOMS:&#xD;
+            return nbBedroomsSubjectiveValueWeight;&#xD;
+        case NB_SLEEPING:&#xD;
+            return nbSleepingSubjectiveValueWeight;&#xD;
+        case NB_MIN_NIGHT:&#xD;
+            return nbMinNightSubjectiveValueWeight;&#xD;
+        case PRICE_PER_NIGHT:&#xD;
+            return pricePerNightSubjectiveValueWeight;&#xD;
+        default:&#xD;
+            throw new IllegalArgumentException();&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rCOR4J2dEeq5UMfZ1C8e7g" name="setSubjectiveValueWeight" specification="_rCCrsJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    LinearApartmentValueFunction avf = cloneAVF();&#xD;
+    switch(awt) {&#xD;
+        case TELE:&#xD;
+            avf.setTeleSubjectiveValueWeight(value);&#xD;
+            break;&#xD;
+        case TERRACE:&#xD;
+            avf.setTerraceSubjectiveValueWeight(value);&#xD;
+            break;&#xD;
+        case WIFI:&#xD;
+            avf.setWifiSubjectiveValueWeight(value);&#xD;
+            break;&#xD;
+        case FLOOR_AREA:&#xD;
+            avf.setFloorAreaSubjectiveValueWeight(value);&#xD;
+            break;&#xD;
+        case FLOOR_AREA_TERRACE:&#xD;
+            avf.setFloorAreaTerraceSubjectiveValueWeight(value);&#xD;
+            break;&#xD;
+        case NB_BATHROOMS:&#xD;
+            avf.setNbBathroomsSubjectiveValueWeight(value);&#xD;
+            break;&#xD;
+        case NB_BEDROOMS:&#xD;
+            avf.setNbBedroomsSubjectiveValueWeight(value);&#xD;
+            break;&#xD;
+        case NB_SLEEPING:&#xD;
+            avf.setNbSleepingSubjectiveValueWeight(value);&#xD;
+            break;&#xD;
+        case NB_MIN_NIGHT:&#xD;
+            avf.setNbMinNightSubjectiveValueWeight(value);&#xD;
+            break;&#xD;
+        case PRICE_PER_NIGHT:&#xD;
+            avf.setPricePerNightSubjectiveValueWeight(value);&#xD;
+            break;&#xD;
+        default:&#xD;
+            throw new IllegalArgumentException();&#xD;
+    }&#xD;
+    return avf;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rCR8QJ2dEeq5UMfZ1C8e7g" name="cloneAVF" specification="_rCQHEJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    LinearApartmentValueFunction avf = new LinearApartmentValueFunction();&#xD;
+    avf.setFloorAreaValueFunction(this.floorAreaValueFunction);&#xD;
+    avf.setNbBedroomsValueFunction(this.nbBedroomsValueFunction);&#xD;
+    avf.setNbSleepingValueFunction(this.nbSleepingValueFunction);&#xD;
+    avf.setNbBathroomsValueFunction(this.nbBathroomsValueFunction);&#xD;
+    avf.setTerraceValueFunction(this.terraceValueFunction);&#xD;
+    avf.setFloorAreaTerraceValueFunction(this.floorAreaTerraceValueFunction);&#xD;
+    avf.setWifiValueFunction(this.wifiValueFunction);&#xD;
+    avf.setPricePerNightValueFunction(this.pricePerNightValueFunction);&#xD;
+    avf.setNbMinNightValueFunction(this.nbMinNightValueFunction);&#xD;
+    avf.setTeleValueFunction(this.teleValueFunction);&#xD;
+    avf.floorAreaSubjectiveValueWeight = this.floorAreaSubjectiveValueWeight;&#xD;
+    avf.nbBedroomsSubjectiveValueWeight = this.nbBedroomsSubjectiveValueWeight;&#xD;
+    avf.nbSleepingSubjectiveValueWeight = this.nbSleepingSubjectiveValueWeight;&#xD;
+    avf.nbBathroomsSubjectiveValueWeight = this.nbBathroomsSubjectiveValueWeight;&#xD;
+    avf.terraceSubjectiveValueWeight = this.terraceSubjectiveValueWeight;&#xD;
+    avf.floorAreaTerraceSubjectiveValueWeight = this.floorAreaTerraceSubjectiveValueWeight;&#xD;
+    avf.wifiSubjectiveValueWeight = this.wifiSubjectiveValueWeight;&#xD;
+    avf.pricePerNightSubjectiveValueWeight = this.pricePerNightSubjectiveValueWeight;&#xD;
+    avf.nbMinNightSubjectiveValueWeight = this.nbMinNightSubjectiveValueWeight;&#xD;
+    avf.teleSubjectiveValueWeight = this.teleSubjectiveValueWeight;&#xD;
+    return avf;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rCU_kJ2dEeq5UMfZ1C8e7g" name="getFloorAreaSubjectiveValueWeight" specification="_rCTKYJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.floorAreaSubjectiveValueWeight;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rCXb0J2dEeq5UMfZ1C8e7g" name="getFloorAreaValueFunction" specification="_rCWNsJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.floorAreaValueFunction;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rCcUUJ2dEeq5UMfZ1C8e7g" name="getFloorAreaTerraceSubjectiveValueWeight" specification="_rCafIJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.floorAreaTerraceSubjectiveValueWeight;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rCf-sJ2dEeq5UMfZ1C8e7g" name="getFloorAreaTerraceValueFunction" specification="_rCeJgJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.floorAreaTerraceValueFunction;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rCjpEJ2dEeq5UMfZ1C8e7g" name="getNbBathroomsSubjectiveValueWeight" specification="_rChz4J2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.nbBathroomsSubjectiveValueWeight;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rCohkJ2dEeq5UMfZ1C8e7g" name="getNbBathroomsValueFunction" specification="_rCmsYJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.nbBathroomsValueFunction;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rCszAJ2dEeq5UMfZ1C8e7g" name="getNbBedroomsSubjectiveValueWeight" specification="_rCpvsJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.nbBedroomsSubjectiveValueWeight;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rC0u0J2dEeq5UMfZ1C8e7g" name="getNbBedroomsValueFunction" specification="_rCv2UJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.nbBedroomsValueFunction;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rC61cJ2dEeq5UMfZ1C8e7g" name="getNbMinNightSubjectiveValueWeight" specification="_rC4ZMJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.nbMinNightSubjectiveValueWeight;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rC_t8J2dEeq5UMfZ1C8e7g" name="getNbMinNightValueFunction" specification="_rC8qoJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.nbMinNightValueFunction;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rDF0kJ2dEeq5UMfZ1C8e7g" name="getNbSleepingSubjectiveValueWeight" specification="_rDCKMJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.nbSleepingSubjectiveValueWeight;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rDNJUJ2dEeq5UMfZ1C8e7g" name="getNbSleepingValueFunction" specification="_rDKGAJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.nbSleepingValueFunction;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rDRawJ2dEeq5UMfZ1C8e7g" name="getPricePerNightSubjectiveValueWeight" specification="_rDOXcJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.pricePerNightSubjectiveValueWeight;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rDVsMJ2dEeq5UMfZ1C8e7g" name="getPricePerNightValueFunction" specification="_rDTP8J2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.pricePerNightValueFunction;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rDbLwZ2dEeq5UMfZ1C8e7g" name="getTeleSubjectiveValueWeight" specification="_rDZ9oJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.teleSubjectiveValueWeight;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rDgEQJ2dEeq5UMfZ1C8e7g" name="getTeleValueFunction" specification="_rDdA8J2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.teleValueFunction;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rDlj0J2dEeq5UMfZ1C8e7g" name="getTerraceSubjectiveValueWeight" specification="_rDjuoJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.terraceSubjectiveValueWeight;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rDrqcJ2dEeq5UMfZ1C8e7g" name="getTerraceValueFunction" specification="_rDmx8J2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.terraceValueFunction;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rDy_MJ2dEeq5UMfZ1C8e7g" name="getWifiSubjectiveValueWeight" specification="_rDxKAJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.wifiSubjectiveValueWeight;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_rD33sJ2dEeq5UMfZ1C8e7g" name="getWifiValueFunction" specification="_rD2CgJ2dEeq5UMfZ1C8e7g">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.wifiValueFunction;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_q_Uu4J2dEeq5UMfZ1C8e7g" name="LinearApartmentValueFunction" visibility="public" method="_q_gVEJ2dEeq5UMfZ1C8e7g"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_q_l0oJ2dEeq5UMfZ1C8e7g" name="setFloorAreaValueFunction" visibility="public" method="_q_oQ4J2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_q_nCwJ2dEeq5UMfZ1C8e7g" name="floorAreaValueFunction"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_q_rUMJ2dEeq5UMfZ1C8e7g" name="setNbBedroomsValueFunction" visibility="public" method="_q_siUJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_q_r7QJ2dEeq5UMfZ1C8e7g" name="nbBedroomsValueFunction"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_q_tJYJ2dEeq5UMfZ1C8e7g" name="setNbSleepingValueFunction" visibility="public" method="_q_vloJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_q_u-kJ2dEeq5UMfZ1C8e7g" name="nbSleepingValueFunction"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_q_yB4J2dEeq5UMfZ1C8e7g" name="setNbBathroomsValueFunction" visibility="public" method="_q_0eIJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_q_zQAJ2dEeq5UMfZ1C8e7g" name="nbBathroomsValueFunction"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_q_1FMJ2dEeq5UMfZ1C8e7g" name="setTerraceValueFunction" visibility="public" method="_q_6kwJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_q_4vkJ2dEeq5UMfZ1C8e7g" name="terraceValueFunction"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rAB5gJ2dEeq5UMfZ1C8e7g" name="setFloorAreaTerraceValueFunction" visibility="public" method="_rAEVwJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rADHoJ2dEeq5UMfZ1C8e7g" name="floorAreaTerraceValueFunction"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rAGyAJ2dEeq5UMfZ1C8e7g" name="setWifiValueFunction" visibility="public" method="_rAInMJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rAHZEJ2dEeq5UMfZ1C8e7g" name="wifiValueFunction"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rAM4oJ2dEeq5UMfZ1C8e7g" name="setPricePerNightValueFunction" visibility="public" method="_rAP78J2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rAOGwJ2dEeq5UMfZ1C8e7g" name="pricePerNightValueFunction"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rARxIJ2dEeq5UMfZ1C8e7g" name="setNbMinNightValueFunction" visibility="public" method="_rATmUZ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rATmUJ2dEeq5UMfZ1C8e7g" name="nbMinNightValueFunction"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rAUNYJ2dEeq5UMfZ1C8e7g" name="setTeleValueFunction" visibility="public" method="_rAWpoJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rAVbgJ2dEeq5UMfZ1C8e7g" name="teleValueFunction"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rAX3wJ2dEeq5UMfZ1C8e7g" name="setFloorAreaSubjectiveValueWeight" visibility="public" method="_rAZs8J2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rAZF4J2dEeq5UMfZ1C8e7g" name="floorAreaSubjectiveValueWeight">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rAbiIJ2dEeq5UMfZ1C8e7g" name="setNbBedroomsSubjectiveValueWeight" visibility="public" method="_rAd-YJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rAcwQJ2dEeq5UMfZ1C8e7g" name="nbBedroomsSubjectiveValueWeight">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rAiP0J2dEeq5UMfZ1C8e7g" name="setNbSleepingSubjectiveValueWeight" visibility="public" method="_rAlTIJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rAjd8J2dEeq5UMfZ1C8e7g" name="nbSleepingSubjectiveValueWeight">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rAnvYJ2dEeq5UMfZ1C8e7g" name="setNbBathroomsSubjectiveValueWeight" visibility="public" method="_rApkkJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rAo9gJ2dEeq5UMfZ1C8e7g" name="nbBathroomsSubjectiveValueWeight">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rAsn4J2dEeq5UMfZ1C8e7g" name="setTerraceSubjectiveValueWeight" visibility="public" method="_rAvrMJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rAvEIJ2dEeq5UMfZ1C8e7g" name="terraceSubjectiveValueWeight">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rA0jsJ2dEeq5UMfZ1C8e7g" name="setFloorAreaTerraceSubjectiveValueWeight" visibility="public" method="_rA5cMJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rA3nAJ2dEeq5UMfZ1C8e7g" name="floorAreaTerraceSubjectiveValueWeight">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rA9GkJ2dEeq5UMfZ1C8e7g" name="setWifiSubjectiveValueWeight" visibility="public" method="_rBAJ4J2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rA-7wJ2dEeq5UMfZ1C8e7g" name="wifiSubjectiveValueWeight">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rBEbUJ2dEeq5UMfZ1C8e7g" name="setPricePerNightSubjectiveValueWeight" visibility="public" method="_rBGQgJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rBFCYJ2dEeq5UMfZ1C8e7g" name="pricePerNightSubjectiveValueWeight">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rBKh8J2dEeq5UMfZ1C8e7g" name="setNbMinNightSubjectiveValueWeight" visibility="public" method="_rBOMUJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rBM-MJ2dEeq5UMfZ1C8e7g" name="nbMinNightSubjectiveValueWeight">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rBRPoJ2dEeq5UMfZ1C8e7g" name="setTeleSubjectiveValueWeight" visibility="public" method="_rBTE0J2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rBR2sJ2dEeq5UMfZ1C8e7g" name="teleSubjectiveValueWeight">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rBZLcJ2dEeq5UMfZ1C8e7g" name="getSubjectiveValue" visibility="public" method="_rBiVYJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rBZygJ2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rBbnsJ2dEeq5UMfZ1C8e7g" name="apart" type="_rBU6AJ2dEeq5UMfZ1C8e7g"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rBl_wJ2dEeq5UMfZ1C8e7g" name="getRandomApartmentValueFunction" visibility="public" isStatic="true" method="_rBpDEJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rBnN4J2dEeq5UMfZ1C8e7g" type="_q-Zh0J2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rBy0EJ2dEeq5UMfZ1C8e7g" name="adaptWeight" visibility="public" method="_rB5hwJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rB1QUJ2dEeq5UMfZ1C8e7g" type="_q-Zh0J2dEeq5UMfZ1C8e7g" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rB3skJ2dEeq5UMfZ1C8e7g" name="moreImportant"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rB46sJ2dEeq5UMfZ1C8e7g" name="lessImportant"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rB8lEJ2dEeq5UMfZ1C8e7g" name="getSubjectiveValueWeight" visibility="private" method="_rCBdkJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rB9zMJ2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rB_BUJ2dEeq5UMfZ1C8e7g" name="awt"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rCCrsJ2dEeq5UMfZ1C8e7g" name="setSubjectiveValueWeight" visibility="public" method="_rCOR4J2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCFvAJ2dEeq5UMfZ1C8e7g" type="_q-Zh0J2dEeq5UMfZ1C8e7g" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCKngJ2dEeq5UMfZ1C8e7g" name="awt"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCL1oJ2dEeq5UMfZ1C8e7g" name="value">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rCQHEJ2dEeq5UMfZ1C8e7g" name="cloneAVF" visibility="private" method="_rCR8QJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCQuIJ2dEeq5UMfZ1C8e7g" type="_q-Zh0J2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rCTKYJ2dEeq5UMfZ1C8e7g" name="getFloorAreaSubjectiveValueWeight" visibility="public" method="_rCU_kJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCTxcJ2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rCWNsJ2dEeq5UMfZ1C8e7g" name="getFloorAreaValueFunction" visibility="public" method="_rCXb0J2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCW0wJ2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rCafIJ2dEeq5UMfZ1C8e7g" name="getFloorAreaTerraceSubjectiveValueWeight" visibility="public" method="_rCcUUJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCbGMJ2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rCeJgJ2dEeq5UMfZ1C8e7g" name="getFloorAreaTerraceValueFunction" visibility="public" method="_rCf-sJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCfXoJ2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rChz4J2dEeq5UMfZ1C8e7g" name="getNbBathroomsSubjectiveValueWeight" visibility="public" method="_rCjpEJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCia8J2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rCmsYJ2dEeq5UMfZ1C8e7g" name="getNbBathroomsValueFunction" visibility="public" method="_rCohkJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCnTcJ2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rCpvsJ2dEeq5UMfZ1C8e7g" name="getNbBedroomsSubjectiveValueWeight" visibility="public" method="_rCszAJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCqWwJ2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rCv2UJ2dEeq5UMfZ1C8e7g" name="getNbBedroomsValueFunction" visibility="public" method="_rC0u0J2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCy5oJ2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rC4ZMJ2dEeq5UMfZ1C8e7g" name="getNbMinNightSubjectiveValueWeight" visibility="public" method="_rC61cJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rC5nUJ2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rC8qoJ2dEeq5UMfZ1C8e7g" name="getNbMinNightValueFunction" visibility="public" method="_rC_t8J2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rC_G4J2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rDCKMJ2dEeq5UMfZ1C8e7g" name="getNbSleepingSubjectiveValueWeight" visibility="public" method="_rDF0kJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rDCxQJ2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rDKGAJ2dEeq5UMfZ1C8e7g" name="getNbSleepingValueFunction" visibility="public" method="_rDNJUJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rDLUIJ2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rDOXcJ2dEeq5UMfZ1C8e7g" name="getPricePerNightSubjectiveValueWeight" visibility="public" method="_rDRawJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rDO-gJ2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rDTP8J2dEeq5UMfZ1C8e7g" name="getPricePerNightValueFunction" visibility="public" method="_rDVsMJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rDUeEJ2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rDZ9oJ2dEeq5UMfZ1C8e7g" name="getTeleSubjectiveValueWeight" visibility="public" method="_rDbLwZ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rDbLwJ2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rDdA8J2dEeq5UMfZ1C8e7g" name="getTeleValueFunction" visibility="public" method="_rDgEQJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rDfdMJ2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rDjuoJ2dEeq5UMfZ1C8e7g" name="getTerraceSubjectiveValueWeight" visibility="public" method="_rDlj0J2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rDkVsJ2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rDmx8J2dEeq5UMfZ1C8e7g" name="getTerraceValueFunction" visibility="public" method="_rDrqcJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rDpOMJ2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rDxKAJ2dEeq5UMfZ1C8e7g" name="getWifiSubjectiveValueWeight" visibility="public" method="_rDy_MJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rDyYIJ2dEeq5UMfZ1C8e7g" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rD2CgJ2dEeq5UMfZ1C8e7g" name="getWifiValueFunction" visibility="public" method="_rD33sJ2dEeq5UMfZ1C8e7g">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rD2pkJ2dEeq5UMfZ1C8e7g" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_K7CHoJjqEeqYCK4Btw7kWQ" client="_d2M6YF_BEeqAAb4u4HLI7w" supplier="_QgD_sF_BEeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Dependency" xmi:id="_B48moJjrEeqYCK4Btw7kWQ" client="_d2M6YF_BEeqAAb4u4HLI7w" supplier="_1QqroF-_EeqAAb4u4HLI7w"/>
         <packagedElement xmi:type="uml:Package" xmi:id="_tDXmIJpvEeqmHpvW7B5p3g" name="profile">
@@ -4160,20 +4898,10 @@
           <packagedElement xmi:type="uml:Dependency" xmi:id="_PN-OQJpwEeqmHpvW7B5p3g" client="_mJBTIIY3Eeqw9PFqD2CRLA" supplier="_G02nMJpwEeqmHpvW7B5p3g"/>
           <packagedElement xmi:type="uml:Class" xmi:id="_LbxAkJpzEeqmHpvW7B5p3g" name="Question">
             <ownedAttribute xmi:type="uml:Property" xmi:id="_oF7JoJy9Eeqv_texJXdVtQ" name="question" visibility="private" type="_jCLbwJp0EeqmHpvW7B5p3g"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_FXwE8Jy-Eeqv_texJXdVtQ" name="questionParams" visibility="public">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-            </ownedAttribute>
             <ownedAttribute xmi:type="uml:Property" xmi:id="_MYDCcJy_Eeqv_texJXdVtQ" name="questiontype" type="_jCLbwJp0EeqmHpvW7B5p3g" association="_MX2OIJy_Eeqv_texJXdVtQ">
               <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYDCcZy_Eeqv_texJXdVtQ"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYDpgJy_Eeqv_texJXdVtQ" value="*"/>
             </ownedAttribute>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_mIfh4JpzEeqmHpvW7B5p3g" name="resolve" isStatic="true">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_7mMZkJpzEeqmHpvW7B5p3g" name="avf" visibility="public" type="_72rEYF_BEeqAAb4u4HLI7w" effect="update"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_B9mnkJp0EeqmHpvW7B5p3g" name="answers" visibility="public" effect="read">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-              </ownedParameter>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_BtFz0J08EeqrpIrBsKzVRw" name="updatedAVF" visibility="public" type="_72rEYF_BEeqAAb4u4HLI7w" direction="return" effect="create"/>
-            </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_30oowJy-Eeqv_texJXdVtQ" name="getChoices"/>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_DsoKcJy_Eeqv_texJXdVtQ" name="resolve_" isStatic="true">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_DsoKcZy_Eeqv_texJXdVtQ" name="avf" visibility="public" type="_72rEYF_BEeqAAb4u4HLI7w" effect="update"/>
@@ -4274,7 +5002,11 @@
             </ownedAttribute>
             <ownedAttribute xmi:type="uml:Property" xmi:id="_sy-7opwuEeqGkeU796yVmw" name="question" type="_LbxAkJpzEeqmHpvW7B5p3g" aggregation="composite" association="_sy-UkJwuEeqGkeU796yVmw">
               <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sy-7o5wuEeqGkeU796yVmw"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sy_isJwuEeqGkeU796yVmw" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sy_isJwuEeqGkeU796yVmw" value="*"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_xlq7UJ2eEeq5UMfZ1C8e7g" name="linearapartmentvaluefunction" type="_q-Zh0J2dEeq5UMfZ1C8e7g" association="_xllbwJ2eEeq5UMfZ1C8e7g">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xlriYJ2eEeq5UMfZ1C8e7g"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xlriYZ2eEeq5UMfZ1C8e7g" value="1"/>
             </ownedAttribute>
             <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_sCpgUJwtEeqGkeU796yVmw" name="Profile" specification="_sCkAwZwtEeqGkeU796yVmw">
               <language>JAVA</language>
@@ -4729,8 +5461,39 @@
               </ownedOperation>
             </nestedClassifier>
           </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_TpE60J2VEeq5UMfZ1C8e7g" name="QuestionDoubleBoolean">
+            <generalization xmi:type="uml:Generalization" xmi:id="_maEs8J2bEeq5UMfZ1C8e7g" general="_LbxAkJpzEeqmHpvW7B5p3g"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_n9w8AJ2VEeq5UMfZ1C8e7g" name="pairParam1" visibility="public"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_xSz_0J2VEeq5UMfZ1C8e7g" name="pairParam2" visibility="public"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_mIfh4JpzEeqmHpvW7B5p3g" name="resolve" isStatic="true" isAbstract="true">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_7mMZkJpzEeqmHpvW7B5p3g" name="avf" visibility="public" type="_72rEYF_BEeqAAb4u4HLI7w" effect="update"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_B9mnkJp0EeqmHpvW7B5p3g" name="answerPair" visibility="public" effect="read"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_BtFz0J08EeqrpIrBsKzVRw" name="updatedAVF" visibility="public" type="_72rEYF_BEeqAAb4u4HLI7w" direction="return" effect="create"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_g0UNEJ2VEeq5UMfZ1C8e7g" name="QuestionBestCriteria">
+            <generalization xmi:type="uml:Generalization" xmi:id="_nRW6QJ2bEeq5UMfZ1C8e7g" general="_LbxAkJpzEeqmHpvW7B5p3g"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_Bv5n4J2XEeq5UMfZ1C8e7g" name="criterias" visibility="public">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+            </ownedAttribute>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_dAcn8J2XEeq5UMfZ1C8e7g" name="resolve" isStatic="true" isAbstract="true">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_dAcn8Z2XEeq5UMfZ1C8e7g" name="avf" visibility="public" type="_72rEYF_BEeqAAb4u4HLI7w" effect="update"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_dAcn8p2XEeq5UMfZ1C8e7g" name="criteria" visibility="public" type="__lgUEGVHEeq0U8CyxWHVBA" effect="read"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_dAcn852XEeq5UMfZ1C8e7g" name="updatedAVF" visibility="public" type="_72rEYF_BEeqAAb4u4HLI7w" direction="return" effect="create"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_XHabMJ2bEeq5UMfZ1C8e7g" name="QuestionDoubleDouble">
+            <generalization xmi:type="uml:Generalization" xmi:id="_ocDLwJ2bEeq5UMfZ1C8e7g" general="_LbxAkJpzEeqmHpvW7B5p3g"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_XHabMZ2bEeq5UMfZ1C8e7g" name="pairParam1" visibility="public"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_XHabMp2bEeq5UMfZ1C8e7g" name="pairParam2" visibility="public"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_XHabM52bEeq5UMfZ1C8e7g" name="resolve" isStatic="true" isAbstract="true">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_XHabNJ2bEeq5UMfZ1C8e7g" name="avf" visibility="public" type="_72rEYF_BEeqAAb4u4HLI7w" effect="update"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_XHabNZ2bEeq5UMfZ1C8e7g" name="answerPair" visibility="public" effect="read"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_XHabNp2bEeq5UMfZ1C8e7g" name="updatedAVF" visibility="public" type="_72rEYF_BEeqAAb4u4HLI7w" direction="return" effect="create"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Dependency" xmi:id="_f3tr0J2eEeq5UMfZ1C8e7g" client="_LbxAkJpzEeqmHpvW7B5p3g" supplier="_q-Zh0J2dEeq5UMfZ1C8e7g"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Dependency" xmi:id="_yudz4Jw0EeqGkeU796yVmw" client="_72rEYF_BEeqAAb4u4HLI7w" supplier="_sCMNUJwtEeqGkeU796yVmw"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="__C89EHEuEeq9ooUMj2JdaQ" name="java">
@@ -4867,6 +5630,7 @@
   <standard:Create xmi:id="_sCoSMJwtEeqGkeU796yVmw" base_BehavioralFeature="_sCkAwZwtEeqGkeU796yVmw"/>
   <PapyrusJava:StaticClassifier xmi:id="_sCu_4JwtEeqGkeU796yVmw" base_Classifier="_sCqHYJwtEeqGkeU796yVmw"/>
   <standard:Create xmi:id="_sC0fcJwtEeqGkeU796yVmw" base_BehavioralFeature="_sCyqQJwtEeqGkeU796yVmw"/>
-  <standard:Create xmi:id="_YZYkQJw5EeqGkeU796yVmw" base_BehavioralFeature="_YZOMMJw5EeqGkeU796yVmw"/>
   <standard:Create xmi:id="_yp1HUJw7EeqGkeU796yVmw" base_BehavioralFeature="_yptykJw7EeqGkeU796yVmw"/>
+  <standard:Create xmi:id="_q_ZnYJ2dEeq5UMfZ1C8e7g" base_BehavioralFeature="_q_Uu4J2dEeq5UMfZ1C8e7g"/>
+  <PapyrusJava:External xmi:id="_rBX9UJ2dEeq5UMfZ1C8e7g" name="io.github.oliviercailloux.y2018.apartments.apartment.Apartment" base_Classifier="_rBU6AJ2dEeq5UMfZ1C8e7g"/>
 </xmi:XMI>
