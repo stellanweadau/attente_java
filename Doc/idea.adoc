@@ -27,19 +27,73 @@ This evolution could improve the search for the user by making it quicker. For t
 * Couple without child 
 * Student 
 
-=== Large family predefine option
+=== Criteria
+
+==== Student predefine option
+
+* Minimum surface: 16 m²
+* Minimum number of bedrooms: 1
+* Number of sleeping: 1
+* Number of bathrooms: 1
+* Minimum number of nights: 5
+* Price per night: 50
+* Wi-Fi: true
+* Terrace: false
+* TV: false 
+* Maximum surface: 70 m2
+* Maximum number of bedrooms: 2
+* Maximum number of nights: 14
+
+.Student criteria
+[width="100%",options="header"]
+|====================
+| Major (25% per argument) | Neutral (7,5% per argument) | Minor (5% per argument) 
+| Price +
+Wifi | Terrace +
+TV +
+NbSleeping +
+FloorArea
+| NbBedrooms +
+NbBathrooms +
+NbMinNight +
+FloorAreaTerrace
+|====================
+
+image::it4/it4-chart-student-criteria.png[Chart Student criteria]
+
+==== Large family predefine option
 
 * Minimum surface: 60 m² 
-* Minimum number of bedrooms: 3 
-* Number of sleeping: 6 
-* Number of bathrooms: 2 
-* Minimum number of nights: 7 
-* Price per night: 300 
-* Wi-Fi: true 
-* Terrace: true 
-* TV: true 
+* Minimum number of bedrooms: 3
+* Number of sleeping: 6
+* Number of bathrooms: 2
+* Minimum number of nights: 7
+* Price per night: 300
+* Wi-Fi: true
+* Terrace: true
+* TV: true
+* Maximum surface: 200 m2
+* Maximum number of bedrooms: 6
+* Maximum number of nights: 28
 
-=== Couple without child predefine option
+.Family Criterias
+[width="100%",options="header"]
+|====================
+| Major (12,5% per argument) | Neutral (10% per argument) | Minor (5% per argument)
+| NbBedrooms +
+NbBathrooms +
+NbSleeping +
+FloorArea | Wifi  +
+Tele +
+Price +
+Terrace
+| NbMinNight +
+FloorAreaTerrace
+|====================
+
+image::it4/it4-chart-family-criteria.png[Chart Family Criterias]
+
+==== Couple without child predefine option
 
 * Minimum surface: 30 m²
 * Minimum number of bedrooms: 1
@@ -50,18 +104,26 @@ This evolution could improve the search for the user by making it quicker. For t
 * Wi-Fi: true
 * Terrace: false
 * TV: true
+* Maximum surface: 100 m2
+* Maximum number of bedrooms: 3
+* Maximum number of nights: 21
 
-=== Student predefine option
+.Young Couple Criterias
+[width="100%",options="header"]
+|====================
+| Major (16% per argument) | Neutral (10% per argument) | Minor (5,5% per argument)
+| Price +
+Wifi +
+Terrace | NbBedrooms +
+FloorArea +
+Tele
+| NbSleeping +
+NbBathrooms +
+FloorAreaTerrace +
+NbMinNight
+|====================
 
-* Minimum surface: 16 m²
-* Minimum number of bedrooms: 1
-* Number of sleeping: 1
-* Number of bathrooms: 1
-* Minimum number of nights: 5
-* Price per night: 50
-* Wi-Fi: true
-* Terrace: false
-* TV: false
+image::it4/it4-chart-young-couple-criterias.png[Young Couple Criterias]
 
 === New questions
 
@@ -76,13 +138,13 @@ The new interface could look contain these questions:
 .Questions about the new interface
 [width="100%",options="header"]
 |====================
-| Question | Types of answer 
-| What are you looking to pay? | Number field 
-| What surface are you looking for this price? | Number field 
-| How many bedrooms do you want? | Number field 
-| How many bathrooms do you want? | Number field 
-| Do you need: | Checkboxes (multiple choice): W-Fi, TV, Terrace 
-| Do you care most about:  | Checkboxes (unique choice): Surface, Price, Features 
+| Question | Weight impacted | Calcul 
+| Do you prefer paying X€ for Y m² or X+100€ for Y+10m² ? | We need to add an argument pricePerSquareMeters which will be modified. See below tabs for more details. | PricePerSquareMeters = X/Y or X+100/Y+10 (depends on the choice of the user 
+| Do you prefer having X bedrooms and a terrace or X+1 bedrooms and no terrace ? | NbBedroom, terrace | If second choice, +10% on NbBedroom 
+| Do you prefer having X bathrooms and Wifi or X+1 bathroom and no Wifi ? | NbBathroom, wifi | If second choice, +10% on NbBathrooms
+| Do you care most about FloorArea, Price per night or Features ? | FloorArea, PricePerNight, wifi, tele, terrace | If choice 1: +10% on FloorArea +
+If choice 2: + 10% on PricePerNight +
+If choice 3 : +5% on wifi, tele and terrace
 |====================
 
 Here we have further improvement, which need more development of the application
@@ -97,6 +159,30 @@ We’ll show you how far the apartment is to the places you go to the most.  | A
 | Do you need to park? | Checkboxes: no, garage, parking space 
 | Do you care most about (same question but with more features):  | Air conditioning, garden, dishwasher, washing machine, elevator…
 |====================
+
+Here, X and Y are the default value set in the profile selected.
+The new argument pricePerSquareMeters gives an idea of how much the user is able to pay per square meters. It has no weight, but is a bonus or malus to add in the apartment subjective value. +
+This bonus or malus will be calculated as followed
+
+`pricePerSquareMeters – pricePerNightOfTheApartmentConsidered/surfaceOfTheApartmentConsidered`
+
+Then, it will be add in the method `getSubjectiveValue()` on the class ApartmentValueFunction. In the return statement, we will have to add the result of the previous computation in order to modify the subjective value of an apartment. This guarantee that the apartment offer has a good rapport price/floorArea knowing the preference of the user.
+
+=== Profile selection interface
+
+image::it4/it4-gui-select-profile.png[GUI - Select profile]
+
+The goal of these new interfaces is to allow the user to select a profile that suits him. +
+By choosing such a profil, he will initiate his ValueFunction. +
+For the moment, the ValueFunction is setted with binary or random values that does not correspond to any user.
+
+When the user has selected his profile, the ValueFunction is initiated following the presetted values corresponding to the profile he choosed. +
+The parameters of the ValueFunction have their weight tweaked thanks to the user answers to the form. +
+It is important to notice that the questions answered to the user are adapted to its profile with the variables X and Y that you can see on the following picture. +
+We use these variables to get the most relevance from each answer. +
+A student would never need a fourth bedroom and will always chose the terrace over the extra bedroom on the question bellow for example.
+
+image::it4/it4-gui-questions.png[GUI - questions]
 
 === Q-learning
 
@@ -151,9 +237,6 @@ number of criteria matching the value function / total number of criteria
 
 This computation of a Q function is just an example. It must be thought more if the q-learning solution is chosen.
 
-[%hardbreaks]
-link:#toc[⬆ back to top]
-
 == Main classes
 
 === AskOpinionForUtility
@@ -182,3 +265,6 @@ This class belongs to the `apartments.gui`  package and extends the class `FormA
 This class will evolve because the apartments are stored in XML format, and one of the needs is to migrate from XML format to JSON format.
 
 The main method should be removed as it is a class of tests. We also need to add JUnit
+
+[%hardbreaks]
+link:#toc[⬆ back to top]

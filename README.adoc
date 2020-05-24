@@ -11,11 +11,11 @@
 :toc:
 :toc-placement!:
 
-
 = Apartments
 
 image:https://github.com/av1m/Apartments/workflows/Java%20CI%20with%20Maven/badge.svg["Build Status", link="https://github.com/av1m/apartments/actions?query=workflow%3A%22Java+CI+with+Maven%22"]
 image:https://www.codefactor.io/repository/github/av1m/apartments/badge["Codefactor", link="https://www.codefactor.io/repository/github/av1m/apartments/"]
+image:https://img.shields.io/badge/License-MIT-color["License MIT]
 
 A Java project developed by students during the link:https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in link:http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
 
@@ -141,6 +141,54 @@ Random generation of an apartment :
 
 - link:https://github.com/GabG02[Gabriel GUISSET]
 
+=== Iteration 3
+
+==== Team 1
+
+===== Members
+
+- link:https://github.com/GabG02[Gabriel GUISSET]
+- link:https://github.com/EtienneCartier[Etienne CARTIER]
+
+===== Realizations
+
+* Creation of everything related to the Profile:
+* Creation of ProfileType enumeration which contains our 3 types of Profile: student, family and couple.
+* Creation of the Profile class. This class contains the min, max and weight value for every parameters of the value function according to the parameters selected by the user. The Profile is also convert into an AVF.
+* Creation of the ProfileManager class which initialize all Profile.
+* Fixing issue #23
+
+==== Team 2
+
+===== Members
+
+- link:https://github.com/clemencecousin[Clémence COUSIN]
+- link:https://github.com/av1m[Avi MIMOUN]
+
+===== Realizations
+
+* Creation of everything related to the Question:
+* Creation of QuestionType enumeration which contains our 4 questions to better adapt the ValueFunction.
+* Creation of the Question class which gather the question from QuestionType
+* Creation of 3 distinct classes for the 3 types of question we ask the user: 
+    - QuestionDoubleDouble class
+    - QuestionBestCriteria class
+    - QuestionDoubleBoolean class
+
+This 3 classes will contain the different possibility of answers and a resolve function which will adapt the AVF according to the user answer.
+* Implementation of the google java format
+* Fixing issue #20 by the creation of an adapter 
+
+==== Team 3 (SM/PO)
+
+===== Members
+
+- link:https://github.com/MorganeFt[Morgane FIOT]
+
+===== Realizations
+
+* Changelog
+
 == Get started ✨
 
 Make sure you have installed link:https://openjdk.java.net/projects/jdk/11/[java 11], link:https://git-scm.com/[git] and  link:https://maven.apache.org/[maven]
@@ -182,6 +230,8 @@ mvn test
 
 == Contributors
 
+- link:https://github.com/oliviercailloux[oliviercailloux]
+
 === 2020
 .See contributors
 [%collapsible]
@@ -205,7 +255,6 @@ mvn test
 - link:https://github.com/Aichaaa[Aichaaa]
 - link:https://github.com/SandraSalame[SandraSalame]
 - link:https://github.com/aitalibraham[aitalibraham]
-- link:https://github.com/oliviercailloux[oliviercailloux]
 ====
 
 === 2018

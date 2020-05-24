@@ -21,12 +21,36 @@ This file only explains the distribution of work between the two teams (and indi
 toc::[]
 
 == Team 1
+
 === Members
+
+- link:https://github.com/EtienneCartier[Etienne CARTIER]
+- link:https://github.com/MorganeFt[Morgane FIOT]
+
 === Realizations
 
+* Reflection on Questions
+* Correction and modification of the InterractionBetweenUsersAndApplication Sequence diagram
+* Modification on the simplified diagram
+* Reflection on issue 20 &rarr; solution found
+* Benchmark API for address generation
+* GUI modeling for Profile
+
 == Team 2
+
 === Members
+
+- link:https://github.com/GabG02[Gabriel GUISSET]
+- link:https://github.com/clemencecousin[Clémence COUSIN]
+
 === Realizations
+
+* Reflection and conception of the management of profiles and questions
+* Doc on the functioning of the future of the AVF
+* Diagrams for the application showcase
+* Reflection and conception of the management of profiles and questions
+* Doc on the current value function and on its future
+* Renaming of packages
 
 == Team 3
 
@@ -38,11 +62,15 @@ We saw with you, we make exceptionally 3 teams in order to allow Avi to be able 
 
 === Realizations
 
-* Improved documentation (removal of obsolete content, updated architecture)
-* Updated links for images (link directly to the image and not on a Github page)
-* Renaming of the `doc` folder to `Doc`
+* Documentation
+    - Removal of obsolete content
+    - Architecture update
+    - Updated links for images (link directly to the image and not on a Github page)
+    - Renaming of the `doc` folder to `Doc`
+    - Add commits associated with Iterations x
 * Fixed other small issues in the documentation
-* (Writing - CI Github Actions)
+* Help the other two teams
+* (Writing - link:https://github.com/oliviercailloux/java-course/blob/master/DevOps/CI-github-actions.adoc[CI Github Actions])
 
 [%hardbreaks]
 link:#toc[⬆ back to top]

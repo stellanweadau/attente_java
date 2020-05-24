@@ -11,7 +11,7 @@
 
 toc::[]
 
-== Overview
+== Overview 👀
 
 In order to have a global vision of the application, you can start by reading this link:overview.adoc[file].
 
@@ -31,6 +31,12 @@ We have detected that some themes prevent the proper functioning of papyrus (for
 We noticed this bug with the link:https://www.genuitec.com/products/devstyle/[DevStyle theme] +
 _Thanks link:https://github.com/GabG02[gab202]_
 ====
+
+== Convention for naming packages (for papyrus)
+
+* The name of a package must start with the type of diagram he contains (CD, UCD, ID) and should look like this: “TypeOfDiagram_Description”. +
+The only exception is for the JavaIteration package as it may contain different type of diagram.tr
+* When you create a new child such as a use case or a new class, the name of it should finish with “UC” if it is a use case, “CD” if it is for a class diagram or “I” for an interaction diagram.
 
 == Idea 💡
 
