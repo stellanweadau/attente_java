@@ -29,12 +29,12 @@ toc::[]
 
 === Realizations
 
-* Reflection on Questions
-* Correction and modification of the InterractionBetweenUsersAndApplication Sequence diagram
-* Modification on the simplified diagram
-* Reflection on issue 20 &rarr; solution found
-* Benchmark API for address generation
-* GUI modeling for Profile
+* Reflection on questions
+* Correction and modification of the link:diagram.adoc#interaction-between-users-and-application[InterractionBetweenUsersAndApplication Sequence diagram]
+* Modification on the link:diagram.adoc#class-diagrams[simplified diagram]
+* Reflection on link:https://github.com/av1m/Apartments/issues/20[issue 20] &rarr; solution found
+* link:packages.adoc#address-generation-for-random-apartment[Benchmark API for address generation]
+* link:idea.adoc#profile-selection-interface[GUI modeling for Profile]
 
 == Team 2
 
@@ -45,12 +45,10 @@ toc::[]
 
 === Realizations
 
-* Reflection and conception of the management of profiles and questions
-* Doc on the functioning of the future of the AVF
-* Diagrams for the application showcase
-* Reflection and conception of the management of profiles and questions
-* Doc on the current value function and on its future
-* Renaming of packages
+* Reflection and conception of the management of profiles and questions, see link:idea.adoc#value-function[here]
+* link:diagram.adoc#profiles-link-with-value-function[Diagrams] for the application showcase
+* Doc on the link:packages.adoc#value-function[current value function] and on link:idea.adoc#value-function[its future]
+* Renaming of packages (and add link:README.adoc#convention-for-naming-packages-for-papyrus[convention])
 
 == Team 3
 
@@ -64,10 +62,11 @@ We saw with you, we make exceptionally 3 teams in order to allow Avi to be able 
 
 * Documentation
     - Removal of obsolete content
-    - Architecture update
-    - Updated links for images (link directly to the image and not on a Github page)
+    - Full architecture update
+    - Updated links for images (link directly to the image and not on a Github page) using `?raw=true`
     - Renaming of the `doc` folder to `Doc`
-    - Add commits associated with Iterations x
+    - Add commits associated with Iterations x, see link:It3.adoc[It3.adoc], link:It2.adoc[It2.adoc] and link:It1.adoc[It1.adoc]
+    - link:link:packages.adoc#address-generation-for-random-apartment[Addition of the documentation concerning the failure of the `getOnlineRandomAddress()` function]
 * Fixed other small issues in the documentation
 * Help the other two teams
 * (Writing - link:https://github.com/oliviercailloux/java-course/blob/master/DevOps/CI-github-actions.adoc[CI Github Actions])

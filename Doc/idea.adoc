@@ -59,7 +59,7 @@ NbMinNight +
 FloorAreaTerrace
 |====================
 
-image::it4/it4-chart-student-criteria.png[Chart Student criteria]
+image::it4/it4-chart-student-criteria.png?raw=true[Chart Student criteria]
 
 ==== Large family predefine option
 
@@ -91,7 +91,7 @@ Terrace
 FloorAreaTerrace
 |====================
 
-image::it4/it4-chart-family-criteria.png[Chart Family Criterias]
+image::it4/it4-chart-family-criteria.png?raw=true[Chart Family Criterias]
 
 ==== Couple without child predefine option
 
@@ -123,7 +123,7 @@ FloorAreaTerrace +
 NbMinNight
 |====================
 
-image::it4/it4-chart-young-couple-criterias.png[Young Couple Criterias]
+image::it4/it4-chart-young-couple-criterias.png?raw=true[Young Couple Criterias]
 
 === New questions
 
@@ -170,7 +170,7 @@ Then, it will be add in the method `getSubjectiveValue()` on the class Apartment
 
 === Profile selection interface
 
-image::it4/it4-gui-select-profile.png[GUI - Select profile]
+image::it4/it4-gui-select-profile.png?raw=true[GUI - Select profile]
 
 The goal of these new interfaces is to allow the user to select a profile that suits him. +
 By choosing such a profil, he will initiate his ValueFunction. +
@@ -182,7 +182,7 @@ It is important to notice that the questions answered to the user are adapted to
 We use these variables to get the most relevance from each answer. +
 A student would never need a fourth bedroom and will always chose the terrace over the extra bedroom on the question bellow for example.
 
-image::it4/it4-gui-questions.png[GUI - questions]
+image::it4/it4-gui-questions.png?raw=true[GUI - questions]
 
 === Q-learning
 

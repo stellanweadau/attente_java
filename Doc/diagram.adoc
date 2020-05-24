@@ -119,13 +119,13 @@ Click link:idea.adoc#value-function[here] to see the documentation on the evolut
 .Package value function
 [%collapsible]
 ====
-image::it4/it4-class-package-value-function.png[Class diagram : Package value function]
+image::it4/it4-class-package-value-function.png?raw=true[Class diagram : Package value function]
 ====
 
 .Profile
 [%collapsible]
 ====
-image::it4/it4-class-profile.png[Class diagram : Profile]
+image::it4/it4-class-profile.png?raw=true[Class diagram : Profile]
 ====
 
 ==== Sequence
@@ -133,13 +133,13 @@ image::it4/it4-class-profile.png[Class diagram : Profile]
 .see diagram
 [%collapsible]
 ====
-image::it4-sequence-adapt-avf-using-profile.png[Sequence : Adapt ApartmentVaueFunction with Profile]
+image::it4-sequence-adapt-avf-using-profile.png?raw=true[Sequence : Adapt ApartmentVaueFunction with Profile]
 ====
 
 .see diagram
 [%collapsible]
 ====
-image::it4-sequence-generate-avf-profile.png[Sequence : Generate ApartmentValueFunction using Profile]
+image::it4-sequence-generate-avf-profile.png?raw=true[Sequence : Generate ApartmentValueFunction using Profile]
 ====
 
 === Interaction between users and application
