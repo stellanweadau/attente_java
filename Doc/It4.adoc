@@ -32,7 +32,7 @@ toc::[]
 * Reflection on questions
 * Correction and modification of the link:diagram.adoc#interaction-between-users-and-application[InterractionBetweenUsersAndApplication Sequence diagram]
 * Modification on the link:diagram.adoc#class-diagrams[simplified diagram]
-* Reflection on link:https://github.com/av1m/Apartments/issues/20[issue 20] &rarr; solution found
+* Reflection on issue #20 &rarr; solution found (see link:https://github.com/av1m/Apartments/issues/20[issue 20])
 * link:packages.adoc#address-generation-for-random-apartment[Benchmark API for address generation]
 * link:idea.adoc#profile-selection-interface[GUI modeling for Profile]
 

@@ -153,9 +153,9 @@ Random generation of an apartment :
 ===== Realizations
 
 * Creation of everything related to the Profile:
-* Creation of ProfileType enumeration which contains our 3 types of Profile: student, family and couple.
-* Creation of the Profile class. This class contains the min, max and weight value for every parameters of the value function according to the parameters selected by the user. The Profile is also convert into an AVF.
-* Creation of the ProfileManager class which initialize all Profile.
+    - Creation of ProfileType enumeration which contains our 3 types of Profile: student, family and couple.
+    - Creation of the Profile class. This class contains the min, max and weight value for every parameters of the value function according to the parameters selected by the user. The Profile is also convert into an AVF.
+    - Creation of the ProfileManager class which initialize all Profile.
 * Fixing issue #23
 
 ==== Team 2
@@ -168,16 +168,17 @@ Random generation of an apartment :
 ===== Realizations
 
 * Creation of everything related to the Question:
-* Creation of QuestionType enumeration which contains our 4 questions to better adapt the ValueFunction.
-* Creation of the Question class which gather the question from QuestionType
-* Creation of 3 distinct classes for the 3 types of question we ask the user: 
-    - QuestionDoubleDouble class
-    - QuestionBestCriteria class
-    - QuestionDoubleBoolean class
+** Creation of QuestionType enumeration which contains our 4 questions to better adapt the ValueFunction.
+** Creation of the Question class which gather the question from QuestionType
+** Creation of 3 distinct classes for the 3 types of question we ask the user:
+    *** QuestionDoubleDouble class
+    *** QuestionBestCriteria class
+    *** QuestionDoubleBoolean class
 
++
 This 3 classes will contain the different possibility of answers and a resolve function which will adapt the AVF according to the user answer.
-* Implementation of the google java format
-* Fixing issue #20 by the creation of an adapter 
+* Implementation of the link:https://github.com/google/google-java-format[google java format]
+* Fixing link:https://github.com/av1m/Apartments/issues/7[issue #20] by the creation of an adapter 
 
 ==== Team 3 (SM/PO)
 
