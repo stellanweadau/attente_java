@@ -29,7 +29,7 @@ toc::[]
 
 === Realizations
 
-* Reflection on questions
+* Reflection on different questions
 * Correction and modification of the link:diagram.adoc#interaction-between-users-and-application[InterractionBetweenUsersAndApplication Sequence diagram]
 * Modification on the link:diagram.adoc#class-diagrams[simplified diagram]
 * Reflection on issue #20 &rarr; solution found (see link:https://github.com/av1m/Apartments/issues/20[issue 20])
@@ -46,13 +46,16 @@ toc::[]
 === Realizations
 
 * Reflection and conception of the management of profiles and questions, see link:idea.adoc#value-function[here]
-* link:diagram.adoc#profiles-link-with-value-function[Diagrams] for the application showcase
-* Doc on the link:packages.adoc#value-function[current value function] and on link:idea.adoc#value-function[its future]
-* Renaming of packages (and add link:README.adoc#convention-for-naming-packages-for-papyrus[convention])
+* link:diagram.adoc#profiles-link-with-value-function[Diagrams] for the application
+    ** link:img/it4/it4-class-package-apartment.png?raw=true[Class diagram : package apartment]
+    ** link:img/it4/it4-class-package-value-function.png?raw=true[Class diagram : package value function]
+    ** link:img/it4/it4-communication-interpackage.png?raw=true[Communication diagram : interpackage]
+* Document on the link:packages.adoc#valuefunction[current value function] and on link:idea.adoc#value-function[its future]
+* Renaming of packages on papyrus (and adding a link:README.adoc#convention-for-naming-packages-for-papyrus[naming convention])
 
 == Team 3
 
-We saw with you, we make exceptionally 3 teams in order to allow Avi to be able to work on the file "CI - Github Actions"
+We saw with you, we make exceptionally 3 teams in order to allow Avi to be able to work on the file link:https://github.com/oliviercailloux/java-course/blob/master/DevOps/CI-github-actions.adoc["CI - Github Actions"]
 
 === Member
 
@@ -60,7 +63,7 @@ We saw with you, we make exceptionally 3 teams in order to allow Avi to be able 
 
 === Realizations
 
-* Documentation
+* Documentation:
     - Removal of obsolete content
     - Full architecture update
     - Updated links for images (link directly to the image and not on a Github page) using `?raw=true`

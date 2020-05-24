@@ -16,11 +16,11 @@ toc::[]
 
 == Value function
 
-Now that we have described what the ValueFunction package does, we can focus on how to improve it.  
+Now that we have described what the link:packages.adoc#valuefunction[`ValueFunction`] package does, we can focus on how to improve it.  
 
 === Creation of profiles
 
-These profiles could preselect some value in the GUI AskOpinionForUtilities but the user is still free to modify and adapt them. +
+These profiles could preselect some value in the GUI `AskOpinionForUtilities` but the user is still free to modify and adapt them. +
 This evolution could improve the search for the user by making it quicker. For the moment, we have identified 3 profiles:  
 
 * Large family 
@@ -166,18 +166,18 @@ This bonus or malus will be calculated as followed
 
 `pricePerSquareMeters – pricePerNightOfTheApartmentConsidered/surfaceOfTheApartmentConsidered`
 
-Then, it will be add in the method `getSubjectiveValue()` on the class ApartmentValueFunction. In the return statement, we will have to add the result of the previous computation in order to modify the subjective value of an apartment. This guarantee that the apartment offer has a good rapport price/floorArea knowing the preference of the user.
+Then, it will be add in the method `getSubjectiveValue()` on the class `ApartmentValueFunction`. In the return statement, we will have to add the result of the previous computation in order to modify the subjective value of an apartment. This guarantee that the apartment offer has a good rapport `price/floorArea` knowing the preference of the user.
 
 === Profile selection interface
 
 image::it4/it4-gui-select-profile.png?raw=true[GUI - Select profile]
 
 The goal of these new interfaces is to allow the user to select a profile that suits him. +
-By choosing such a profil, he will initiate his ValueFunction. +
-For the moment, the ValueFunction is setted with binary or random values that does not correspond to any user.
+By choosing such a profil, he will initiate his `ValueFunction`. +
+For the moment, the `ValueFunction` is setted with binary or random values that does not correspond to any user.
 
-When the user has selected his profile, the ValueFunction is initiated following the presetted values corresponding to the profile he choosed. +
-The parameters of the ValueFunction have their weight tweaked thanks to the user answers to the form. +
+When the user has selected his profile, the `ValueFunction` is initiated following the presetted values corresponding to the profile he choosed. +
+The parameters of the `ValueFunction` have their weight tweaked thanks to the user answers to the form. +
 It is important to notice that the questions answered to the user are adapted to its profile with the variables X and Y that you can see on the following picture. +
 We use these variables to get the most relevance from each answer. +
 A student would never need a fourth bedroom and will always chose the terrace over the extra bedroom on the question bellow for example.
@@ -258,7 +258,7 @@ In order to improve and make this window match with our ambitions, we might add 
 * Improve the « design » of some error messages. Actually, some of them are cut and we can only see the beginning of the displayed message. 
 * Add options. For example, we can add a field which indicates if the apartment is furnished or not or if the animals are allowed in the building.
 
-This class belongs to the `apartments.gui`  package and extends the class `FormApartmentGUI`.
+This class belongs to the link:packages.adoc#gui[`apartments.gui`] package and extends the class `FormApartmentGUI`.
 
 === ReadTwoApartmentsTest
 

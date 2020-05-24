@@ -13,18 +13,15 @@ toc::[]
 
 == Users roles
 
-The general use case has been designed in such a way that there is an owner and a tenant. In this sense, during the realization of this one we found that there was no real actor in this application
-
-In other words, the current application has no real user. These are just features developed with no real link yet.
-
 We decided to give a goal to our app and to define clearly the users of it. +
-Indeed, the current state of the application is not obvious: it is difficult to see who will use the app and the uses of it.  
+Indeed, the current state of the application is not obvious: it is difficult to see who will use the app and the uses of it. +
+In other words, the current application has no real user. These are just features developed with no real link yet.
 
 So, we decided to clarify these points. +
 First, let’s talk about the goal of the app. We will try to develop this app so that it will be used for long-term apartment’s rental. +
 Users will be able to see the different apartments and to select them according to the most important criteria for them. That led us to the second point: for whom will be this app designed. +
-We decided that the main users of this app will be the tenants. The apartment’s owner won’t interact with the app. To put the apartments online and eventually to modify them, we add a second actor in our model : a manager. +
-The role of this actor is basically to put the apartments online, to modify them if needed and to delete them if a place is rented for example.
+We decided that the main users of this app will be the tenants. The apartment’s owner won’t interact with the app. +
+To put the apartments online and eventually to modify them, we add a second actor in our model : a manager. The role of this actor is basically to put the apartments online, to modify them if needed and to delete them if a place is rented for example.
 
 == Run - Executable classes
 
@@ -59,19 +56,12 @@ The title of the GUI is “Votre avis nous intéresse” which could mislead the
 image::it1/it1-usecase-askopinionforutility.png?raw=true[Diagram ask opinion for utility]
 ====
 
-.See sequence diagram in link with `AskOpinionForUtility`
-[%collapsible]
-====
-link:diagram.adoc#sequence-diagram[see documentation]
-image:it3/it3-sequence-interaction-users-application.png?raw=true[Interaction between the end user and application]
-====
-
 === LayoutApartmentGUI
 
 .See description
 [%collapsible]
 ====
-This function runs a GUI, which displays all the apartments in the database. If you select an apartment in the list, multiple details are displayed:
+This function runs a GUI, which displays all the apartments. If you select an apartment in the list, multiple details are displayed:
 
 * The address
 * The surfaces
@@ -84,7 +74,7 @@ This function runs a GUI, which displays all the apartments in the database. If 
 .See description
 [%collapsible]
 ====
-This class initialize an interface in order to modify an existing apartment. When the graphic interface has been launched, a window with the last apartment created pops up. We can then modify the diverse characteristics of the apartment such as the number of bedrooms... + 
+This class initialize an interface in order to modify an existing apartment. When the graphic interface has been launched, a window with the last apartment created pops up. We can then modify the diverse characteristics of the apartment such as the number of bedrooms...
 
 This class belongs to the `apartments.gui` package and extends the class `FormApartmentGUI`. +
 This class allows us to create the window we previously saw, to deal with several mistakes we could have and to save the created and modified apartments.
@@ -95,6 +85,8 @@ This class allows us to create the window we previously saw, to deal with severa
 .See usecase diagram
 [%collapsible]
 ====
+We decided to keep this use case diagram because despite the new role of the application (just tenant), this functionality is not important but still remains existing in the application for a secondary role
+
 image::it3/it3-usecase-createapartment.png?raw=true[Diagram create apartment]
 ====
 

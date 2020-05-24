@@ -37,7 +37,7 @@ image::it4/it4-class-package-global-simplified.png?raw=true[Last simplified clas
 image::it4/it4-class-package-global-details.png?raw=true[Last simplified class diagram]
 ====
 
-* Package `apartment`
+* Package link:packages.adoc#apartment[`apartment`]
 +
 .see diagram
 [%collapsible]
@@ -108,7 +108,7 @@ link:overview.adoc#createapartmentgui[Click here to see documentation about Crea
 
 == Idea
 
-WARNING: These are design ideas, which are not yet integrated into the application
+WARNING: This section are linked with the link:idea.adoc[idea documentation]. In this sense, these are design ideas, which are not yet integrated into the application.
 
 === Profiles (link with `value function`)
 
@@ -133,13 +133,13 @@ image::it4/it4-class-profile.png?raw=true[Class diagram : Profile]
 .see diagram
 [%collapsible]
 ====
-image::it4-sequence-adapt-avf-using-profile.png?raw=true[Sequence : Adapt ApartmentVaueFunction with Profile]
+image::it4/it4-sequence-adapt-avf-using-profile.png?raw=true[Sequence : Adapt ApartmentVaueFunction with Profile]
 ====
 
 .see diagram
 [%collapsible]
 ====
-image::it4-sequence-generate-avf-profile.png?raw=true[Sequence : Generate ApartmentValueFunction using Profile]
+image::it4/it4-sequence-generate-avf-profile.png?raw=true[Sequence : Generate ApartmentValueFunction using Profile]
 ====
 
 === Interaction between users and application

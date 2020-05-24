@@ -84,8 +84,11 @@ Indeed, the logic is to generate a longitude/latitude as explained above. Then r
 
 In order to solve the problem concerning the API used, we decided to carry out a benchmark to compare different solutions.
 
+.show benchmark
+[%collapsible]
+====
 .Benchmark : Comparison of different solutions for address recovery by API
-[width="100%",options="header"]
+[cols="^,<,<,<", width="100%",options="header"]
 |====================
 | API | https://opencagedata.com | https://adresse.data.gouv.fr/ | https://nominatim.openstreetmap.org/ 
 | Country | Germain | French | United Kingdom 
@@ -101,10 +104,11 @@ In order to solve the problem concerning the API used, we decided to carry out a
 | Exemple with a forest  | `{ "documentation": "https://opencagedata.com/api", "licenses": [ { "name": "see attribution guide", "url": "https://opencagedata.com/credits" } ], "rate": { "limit": 2500, "remaining": 2089, "reset": 1590192000 }, "results": [ { "bounds": { "northeast": { "lat": 48.679308, "lng": 2.4829574 }, "southwest": { "lat": 48.66184, "lng": 2.4645371 } }, "components": { "ISO_3166-1_alpha-2": "FR", "ISO_3166-1_alpha-3": "FRA", "_category": "road", "_type": "road", "continent": "Europe", "country": "France", "country_code": "fr", "county": "Arrondissement d'Évry", "political_union": "European Union", "postcode": "91450", "road": "Route Forestière du Beau Chêne", "road_type": "track", "state": "Île-de-France", "state_code": "IDF", "state_district": "Essonne", "village": "Étiolles" }, "confidence": 8, "formatted": "Route Forestière du Beau Chêne, 91450 Étiolles, France", "geometry": { "lat": 48.6730359, "lng": 2.4710991 } } ], "status": { "code": 200, "message": "OK" }, "stay_informed": { "blog": "https://blog.opencagedata.com", "twitter": "https://twitter.com/OpenCage" }, "thanks": "For using an OpenCage API", "timestamp": { "created_http": "Fri, 22 May 2020 18:27:38 GMT", "created_unix": 1590172058 }, "total_results": 1 }` | `{"type": "FeatureCollection", "version": "draft", "features": [], "attribution": "BAN", "licence": "ETALAB-2.0", "limit": 1}` | `{"place_id":97264752,"licence":"Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright","osm_type":"way","osm_id":41962949,"lat":"48.66810181787006","lon":"2.4724962806018893","place_rank":26,"category":"highway","type":"track","importance":0.09999999999999998,"addresstype":"road","name":"Route Forestière d'Antin","display_name":"Route Forestière d'Antin, Soisy-sur-Seine, Arrondissement d'Évry, Essonne, Île-de-France, France métropolitaine, 91450, France","address":{"road":"Route Forestière d'Antin","village":"Soisy-sur-Seine","municipality":"Arrondissement d'Évry","county":"Essonne","state":"Île-de-France","country":"France","postcode":"91450","country_code":"fr"},"boundingbox":["48.6678252","48.6732843","2.4713466","2.4941192"]}` 
 | API error | `{ "documentation": "https://opencagedata.com/api", "licenses": [ { "name": "see attribution guide", "url": "https://opencagedata.com/credits" } ], "rate": { "limit": 2500, "remaining": 2082, "reset": 1590192000 }, "results": [ ], "status": { "code": 400, "message": "missing or bad query" }, "stay_informed": { "blog": "https://blog.opencagedata.com", "twitter": "https://twitter.com/OpenCage" }, "thanks": "For using an OpenCage API", "timestamp": { "created_http": "Fri, 22 May 2020 18:29:22 GMT", "created_unix": 1590172162 }, "total_results": 0 }` | `{"type": "FeatureCollection", "version": "draft", "features": [], "attribution": "BAN", "licence": "ETALAB-2.0", "limit": 1}` | `{"error":"Unable to geocode"}` 
 |====================
+====
 
 == distance
 
-Yhe only class we can find in this package is used to calculate distance between 2 points of a map. +
+The only class we can find in this package is used to calculate distance between 2 points of a map. +
 We can use it with 2 modes:
 
 - *Address Mode*: To build distance between 2 addresses given to the constructor. 
@@ -119,11 +123,11 @@ It’s very important for this package to do minimum operations linked to the th
 
 This package contains a class getting the logo of the application. +
 This class is used by some of GUI package classes. +
-We can imagine moving this class in the `utils` package. 
+We can imagine moving this class in the `utils` package.
 
 == localize 
 
-Inside, we can find a class which allows the program to get *the location of* an address using GoogleMaps’ API. +
+Inside, we can find a class which allows the program to get *the location of* an address using GoogleMaps API. +
 This class is used only in test part.
 
 == readapartments 
@@ -139,25 +143,26 @@ We can also imagine moving it in the `utils` package.
 == utils
 
 This package combines all functionality which can help all classes of the program. +
-All classes, global logic method and helper class, are organized in this packages package. In fact, if we want to change well-known method (like a date comparator) to adapt it to our needs, we can do it here.
+All classes, global logic method and helper class, are organized in this packages package. +
+In fact, if we want to change well-known method (like a date comparator) to adapt it to our needs, we can do it here.
 
 == valuefunction
 
 This package includes thoughts about calculating the satisfaction of a property's criteria for a customer
 
 The valueFunction package gathers all the functions which attribute a value to each apartment according to some criteria. +
-The functions of this package are called by AskOpinionForUtilities class. Apartments are sorted by value to show the user the apartments which are the most likely to suit them.
+The functions of this package are called by `AskOpinionForUtilities` class. Apartments are sorted by value to show the user the apartments which are the most likely to suit them.
 
 * *`PartialValueFunction<T>` interface*
 +
-This interface attributes a subjective value to a parameter. This is interface extends the class Function<T, Double> which transform the generic type in input to a double: see link:https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html[here]
+This interface attributes a subjective value to a parameter. This is interface extends the class `Function<T, Double>` which transform the generic type in input to a double: see link:https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html[here]
 +
-This interface uses a getSubjectiveValue(T objectiveData) method and can throws an IllegalArgumentException. objectiveData is the parameter on which we want to get the subjective value between 0 and 1.
+This interface uses a `getSubjectiveValue(T objectiveData)` method and can throws an `IllegalArgumentException`. `objectiveData` is the parameter on which we want to get the subjective value between 0 and 1.
 
 * *`ApartmentValueFunction` class*
 +
 This class create an object `ApartmentValueFunction` from the different classes in the package. Every criterion, such as the number of bedrooms, the presence of a terrace or the TV, etc., is associated to a value and a weight. +
-The default value for the criterion is 0 and its default weight is 0.1. At the end, the ApartmentValueFunction method returns the value of the apartment, that is the weighted sum of all criterion value divided by the sum of all weight. It’s a basic weighted average. 
+The default value for the criterion is 0 and its default weight is 0.1. At the end, the `ApartmentValueFunction` method returns the value of the apartment, that is the weighted sum of all criterion value divided by the sum of all weight. It’s a basic weighted average. 
 
 * *`LinearValueFunction` class & `ReversedLinearValueFunction` class* 
 +
@@ -182,31 +187,36 @@ If this value is below the referential interval, the subjective value will be 0,
 If this value is above the referential interval, the subjective value will be 1, indicating that the criteria in a certain apartment match perfectly or is better than expected by the user. +
 The more the value is close to 1, the better the value is. For the Boolean attributes, the only possible values are 0 and 1.
 
-To compute the subjective value, a few objects had been defined by the former team: BooleanValueFunction, LinearValueFunction, ConstantValueFunction and ReversedLinearValueFunction. +
-By default, in ApartmentValueFunction, we use the ConstantValueFunction object, which sets all the subjective value to 0. +
-But, if we want to be more rigorous, we should define a Builder in ApartmentValueFunction in order to initialize more specifically the objects used to compute the valueFunction. +
+To compute the subjective value, a few objects had been defined by the former team: `BooleanValueFunction`, `LinearValueFunction`, `ConstantValueFunction` and `ReversedLinearValueFunction`. +
+By default, in `ApartmentValueFunction`, we use the `ConstantValueFunction` object, which sets all the subjective value to 0. +
+But, if we want to be more rigorous, we should define a Builder in `ApartmentValueFunction` in order to initialize more specifically the objects used to compute the `valueFunction`. +
 Here is a tab which gives which object can be used for a criterion and why.
 
-[width="100%",options="header"]
+[cols="^,<,<,<", width="100%",options="header"]
 |====================
 | Object | Criterion associated | Why | How is the subjective value computed? 
-| LinearValueFunction | floorArea, floorAreaTerrace, nbBathrooms, nbBedrooms, nbSleeping | The value of this criterion can be associated with a linear function. For example, the more surface we have, the better it is. A big house will often satisfy more the user than a tiny apartment. So, these are the criteria for which the more we have, the higher will be the value. | o compute the subjective value, we first need an objective data and to initialize the object with a range of value (to create an interval). +
-Then we have 3 cases: +
+| `LinearValueFunction` | floorArea, floorAreaTerrace, nbBathrooms, nbBedrooms, nbSleeping | The value of this criterion can be associated with a linear function. For example, the more surface we have, the better it is. A big house will often satisfy more the user than a tiny apartment. So, these are the criteria for which the more we have, the higher will be the value. a| To compute the subjective value, we first need an objective data and to initialize the object with a range of value (to create an interval).
+
+Then we have 3 cases: 
+
 * Objective value < min of the range. Then subjective value = 0;
 * Objective value > max of the range. Then subjective value = 1;
 * Else: subjective value = (min – objective data)/(max – min)
-| ReversedLinearValueFunction | pricePerNight, nbMinNight | These are the criteria for which the less we have, the better it is. +
-For example, for the price, the cheaper it is, the best the apartment is for us. Same for the minimum nights to stay, it is less restrictive to have a small number of mandatory nights to stay than the contrary. | To compute the subjective value, we first need an objective data and to initialize the object with a range of value (to create an interval). +
-Then we have 3 cases: +
+
+| `ReversedLinearValueFunction` | pricePerNight, nbMinNight | These are the criteria for which the less we have, the better it is. +
+For example, for the price, the cheaper it is, the best the apartment is for us. Same for the minimum nights to stay, it is less restrictive to have a small number of mandatory nights to stay than the contrary. a| To compute the subjective value, we first need an objective data and to initialize the object with a range of value (to create an interval).
+
+Then we have 3 cases:
+
 * Objective value < min of the range. Then subjective value = 1;
 * Objective value > max of the range. Then subjective value = 0;
 * Else: subjective value = 1 - (min – objective data)/(max – min)
-| BooleanValueFunction | Tele, wifi, terrace | Here are the criteria for which we can't associate a value. We cannot say this apartment has half a tele for example. We only have two choices: the element is whether present or absent (so the value is 1 or 0) | To compute the subjective value, we first need a Boolean which will be our objective data. We also need to initialize a map. Then we just look into the map whether the value associated to our objective data is true or false
+| `BooleanValueFunction` | Tele, wifi, terrace | Here are the criteria for which we can't associate a value. We cannot say this apartment has half a tele for example. We only have two choices: the element is whether present or absent (so the value is 1 or 0) | To compute the subjective value, we first need a Boolean which will be our objective data. We also need to initialize a map. Then we just look into the map whether the value associated to our objective data is true or false
 |====================
 
 The weight of an attribute is the importance given by the user to a certain aspect of the apartment. +
 The higher the weight is, the more this criterion is important. It allows us to choose between two apartments as we know what the user “wants” more: a terrace or a wireless connection? With this weight, we can know how much a criterion is important and choose an apartment according to his or her priorities. +
-By default, in ApartmentValueFunction constructors, all the weights are set to 0,1. A good idea can be to add in a Builder a section to set the weight according to the profile selected (we will detail this later).
+By default, in `ApartmentValueFunction` constructors, all the weights are set to 0,1. A good idea can be to add in a Builder a section to set the weight according to the profile selected (we will detail this later).
 
 To compute the subjective value of an apartment, you then must multiply each attribute subjective value with its weight. Then you sum all the results obtained and divide the result by the sum of each attribute weight.
 
