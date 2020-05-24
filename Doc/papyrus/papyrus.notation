@@ -3782,7 +3782,7 @@
           <children xmi:type="notation:DecorationNode" xmi:id="_YThzEIP_Eeqm2vrDV_e-Xg" type="Lifeline_NameLabel"/>
           <children xmi:type="notation:Shape" xmi:id="_Pz0NEIQFEeqyTrq5oKlx7g" type="ActionExecutionSpecification_Shape">
             <element xmi:type="uml:ActionExecutionSpecification" href="papyrus.uml#_Py2jwIQFEeqyTrq5oKlx7g"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Pz0NEYQFEeqyTrq5oKlx7g" x="40" y="66" width="20" height="660"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Pz0NEYQFEeqyTrq5oKlx7g" x="40" y="46" width="20" height="680"/>
           </children>
           <element xmi:type="uml:Lifeline" href="papyrus.uml#_YSClUIP_Eeqm2vrDV_e-Xg"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YTdhoIP_Eeqm2vrDV_e-Xg" x="94" y="10" height="732"/>
