@@ -403,8 +403,8 @@
             <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_efVn4ZzTEeqv_texJXdVtQ" name="Message53ReceiveEvent" covered="_dy06cJzDEeqv_texJXdVtQ" message="_efVA0JzTEeqv_texJXdVtQ"/>
             <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_o3BAoJzDEeqv_texJXdVtQ" name="ActionExecutionSpecification11Finish" covered="_dy06cJzDEeqv_texJXdVtQ" execution="_o2_ygJzDEeqv_texJXdVtQ"/>
             <message xmi:type="uml:Message" xmi:id="_EBibwJzFEeqv_texJXdVtQ" name="getQuestions()" receiveEvent="_EBjp4JzFEeqv_texJXdVtQ" sendEvent="_EBjC0JzFEeqv_texJXdVtQ"/>
-            <message xmi:type="uml:Message" xmi:id="_JNaqwJzFEeqv_texJXdVtQ" name="return List of Questions" messageSort="reply" receiveEvent="_JNbR0ZzFEeqv_texJXdVtQ" sendEvent="_JNbR0JzFEeqv_texJXdVtQ"/>
-            <message xmi:type="uml:Message" xmi:id="_by0zwJzSEeqv_texJXdVtQ" name="display questions" receiveEvent="_bzEEUJzSEeqv_texJXdVtQ" sendEvent="_bzC2MJzSEeqv_texJXdVtQ"/>
+            <message xmi:type="uml:Message" xmi:id="_JNaqwJzFEeqv_texJXdVtQ" name=" " messageSort="reply" receiveEvent="_JNbR0ZzFEeqv_texJXdVtQ" sendEvent="_JNbR0JzFEeqv_texJXdVtQ"/>
+            <message xmi:type="uml:Message" xmi:id="_by0zwJzSEeqv_texJXdVtQ" name="getAnswers" receiveEvent="_bzEEUJzSEeqv_texJXdVtQ" sendEvent="_bzC2MJzSEeqv_texJXdVtQ"/>
             <message xmi:type="uml:Message" xmi:id="_kuvl4JzSEeqv_texJXdVtQ" name="answers" messageSort="asynchCall" receiveEvent="_kuwM8ZzSEeqv_texJXdVtQ" sendEvent="_kuwM8JzSEeqv_texJXdVtQ"/>
             <message xmi:type="uml:Message" xmi:id="_qy5gsJzSEeqv_texJXdVtQ" name="resolve(reponse,AVF)" receiveEvent="_qy6HwZzSEeqv_texJXdVtQ" sendEvent="_qy6HwJzSEeqv_texJXdVtQ"/>
             <message xmi:type="uml:Message" xmi:id="_yOGG8JzSEeqv_texJXdVtQ" name="setWeightCRITERIA" receiveEvent="_yOHVEJzSEeqv_texJXdVtQ" sendEvent="_yOGuAJzSEeqv_texJXdVtQ"/>
@@ -465,13 +465,13 @@
             <message xmi:type="uml:Message" xmi:id="_saTbAJzgEequha_I2gW97w" name="Launch Program" messageSort="createMessage" receiveEvent="_saXFYJzgEequha_I2gW97w" sendEvent="_saUCEJzgEequha_I2gW97w"/>
             <message xmi:type="uml:Message" xmi:id="_HkU8UJzhEequha_I2gW97w" name="getProfileTypes" receiveEvent="_HkWxgJzhEequha_I2gW97w" sendEvent="_HkWKcJzhEequha_I2gW97w"/>
             <message xmi:type="uml:Message" xmi:id="_TqNwEJzhEequha_I2gW97w" name="get or generate profiles" receiveEvent="_TqQMUJzhEequha_I2gW97w" sendEvent="_TqO-MJzhEequha_I2gW97w"/>
-            <message xmi:type="uml:Message" xmi:id="_eez7EJzhEequha_I2gW97w" name="return all existing profile types" messageSort="reply" receiveEvent="_ee2-YJzhEequha_I2gW97w" sendEvent="_eez7EZzhEequha_I2gW97w"/>
-            <message xmi:type="uml:Message" xmi:id="_l7CcEJzhEequha_I2gW97w" name="display all available profiles" receiveEvent="_l7H7oJzhEequha_I2gW97w" sendEvent="_l7HUkJzhEequha_I2gW97w"/>
+            <message xmi:type="uml:Message" xmi:id="_eez7EJzhEequha_I2gW97w" name=" " messageSort="reply" receiveEvent="_ee2-YJzhEequha_I2gW97w" sendEvent="_eez7EZzhEequha_I2gW97w"/>
+            <message xmi:type="uml:Message" xmi:id="_l7CcEJzhEequha_I2gW97w" name="selectProfileType()" receiveEvent="_l7H7oJzhEequha_I2gW97w" sendEvent="_l7HUkJzhEequha_I2gW97w"/>
             <message xmi:type="uml:Message" xmi:id="_p7DU4JzhEequha_I2gW97w" name="select a profile" receiveEvent="_p7EjAJzhEequha_I2gW97w" sendEvent="_p7D78JzhEequha_I2gW97w"/>
             <message xmi:type="uml:Message" xmi:id="_xZD-kJzhEequha_I2gW97w" name="getProfile(ProfileType selected)" receiveEvent="_xZHo8JzhEequha_I2gW97w" sendEvent="_xZD-kZzhEequha_I2gW97w"/>
-            <message xmi:type="uml:Message" xmi:id="__JJqUJzhEequha_I2gW97w" name="return profile instance of selected type" messageSort="reply" receiveEvent="__JK4cJzhEequha_I2gW97w" sendEvent="__JKRYJzhEequha_I2gW97w"/>
-            <message xmi:type="uml:Message" xmi:id="_Ah_PcJ04EeqrpIrBsKzVRw" name="toAVF( )" receiveEvent="_AiGkMJ04EeqrpIrBsKzVRw" sendEvent="_AiF9IJ04EeqrpIrBsKzVRw"/>
-            <message xmi:type="uml:Message" xmi:id="_Aj57AJ04EeqrpIrBsKzVRw" name="return Generated AVF" messageSort="reply" receiveEvent="_Aj7JIZ04EeqrpIrBsKzVRw"/>
+            <message xmi:type="uml:Message" xmi:id="__JJqUJzhEequha_I2gW97w" name=" " messageSort="reply" receiveEvent="__JK4cJzhEequha_I2gW97w" sendEvent="__JKRYJzhEequha_I2gW97w"/>
+            <message xmi:type="uml:Message" xmi:id="_Ah_PcJ04EeqrpIrBsKzVRw" name="getAVF( )" receiveEvent="_AiGkMJ04EeqrpIrBsKzVRw" sendEvent="_AiF9IJ04EeqrpIrBsKzVRw"/>
+            <message xmi:type="uml:Message" xmi:id="_Aj57AJ04EeqrpIrBsKzVRw" name=" " messageSort="reply" receiveEvent="_Aj7JIZ04EeqrpIrBsKzVRw"/>
             <message xmi:type="uml:Message" xmi:id="_J8Eu0J05EeqrpIrBsKzVRw" name="Message56" receiveEvent="_J8FV4J05EeqrpIrBsKzVRw" sendEvent="_J8Eu0Z05EeqrpIrBsKzVRw"/>
             <message xmi:type="uml:Message" xmi:id="_gHj5kJ05EeqrpIrBsKzVRw" name="new AVF()" messageSort="createMessage" sendEvent="_gHj5kZ05EeqrpIrBsKzVRw"/>
             <message xmi:type="uml:Message" xmi:id="_26oowJ05EeqrpIrBsKzVRw" name="setValueFunction" receiveEvent="_26pP0Z05EeqrpIrBsKzVRw" sendEvent="_26pP0J05EeqrpIrBsKzVRw"/>
