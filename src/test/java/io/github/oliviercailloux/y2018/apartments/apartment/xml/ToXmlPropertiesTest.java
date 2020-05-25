@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.apartments.toxmlproperties;
+package io.github.oliviercailloux.y2018.apartments.apartment.xml;
 
 import java.io.File;
 
@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import io.github.oliviercailloux.y2018.apartments.apartment.xml.XMLProperties;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,12 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
-import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
+import io.github.oliviercailloux.y2018.apartments.apartment.xml.ReadApartmentsXMLFormat;
 
 class ToXmlPropertiesTest {
 
 	@Test
-	void readApartmentTest() throws IllegalArgumentException, IllegalAccessException, IOException {
+	void readApartmentTest() throws Exception {
 		XMLProperties j = new XMLProperties();
 
 		Apartment a = new Builder().setFloorArea(1182118.48).setAddress("118 rue du père noel 77480").setNbBedrooms(5)
@@ -28,7 +29,7 @@ class ToXmlPropertiesTest {
 				.setTitle("Grand Igloo").setWifi(true).setPricePerNight(404).setNbMinNight(1).setTele(false).build();
 
 		File f = new File(
-				"src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/xmlfileTest.xml");
+				"src/test/resources/io/github/oliviercailloux/y2018/apartments/apartment/xml/xmlfileTest.xml");
 		try (FileOutputStream s = new FileOutputStream(f.getAbsolutePath())) {
 			j.toXML(a, s);
 		}

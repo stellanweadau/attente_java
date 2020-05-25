@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.io.Files;
 
 import io.github.oliviercailloux.y2018.apartments.iconDisplay.DisplayIcon;
-import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
+import io.github.oliviercailloux.y2018.apartments.apartment.xml.ReadApartmentsXMLFormat;
 
 /**
  * This class initializes a GUI for modifying an apartment object from an XML

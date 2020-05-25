@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.apartments.readapartments;
+package io.github.oliviercailloux.y2018.apartments.apartment.xml;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

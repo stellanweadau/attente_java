@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.apartments.toxmlproperties;
+package io.github.oliviercailloux.y2018.apartments.apartment.xml;
 
 import java.io.IOException;
 import java.io.OutputStream;

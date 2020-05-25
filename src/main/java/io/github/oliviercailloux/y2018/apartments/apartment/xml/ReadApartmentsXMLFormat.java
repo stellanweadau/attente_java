@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.apartments.readapartments;
+package io.github.oliviercailloux.y2018.apartments.apartment.xml;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
-import io.github.oliviercailloux.y2018.apartments.apartment.ApartmentFactory;
 
 /**
  * 
