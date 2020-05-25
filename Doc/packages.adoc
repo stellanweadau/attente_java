@@ -31,6 +31,17 @@ The creation of an apartment is done using a builder.
 
 The `ApartmentFactory` class allows you to manage the creation of an apartment
 
+=== apartment.xml
+
+This package is made up of two classes:
+
+* `ReadApartmentsXMLFormat` : allows to get an apartment form an XML file. We can imagine making this class an abstract and the operations static because we don’t have to keep in memory immediately treated data.
+* `XMLProperties` : allows to export apartment’s informations in a XML file.
+
+=== apartment.json
+
+This package contains only one class: `JsonConvert` which allows reciprocal conversions between the Apartment class and the JSON file format
+
 === Address generation for random apartment
 
 This section deals with the generation of random apartments.
@@ -129,16 +140,6 @@ We can imagine moving this class in the `utils` package.
 
 Inside, we can find a class which allows the program to get *the location of* an address using GoogleMaps API. +
 This class is used only in test part.
-
-== readapartments 
-
-The class which compose this package is `ReadApartmentsXMLFormat` and allows us to get an apartment form an XML file. We can imagine making this class an abstract and the operations static because we don’t have to keep in memory immediately treated data. +
-Another improvement idea can be to move this class in the `utils` package. 
-
-== toxmlproperties 
-
-This package has a class called `XMLProperties` which allows us to export apartment’s informations in a XML file. +
-We can also imagine moving it in the `utils` package. 
 
 == utils
 
