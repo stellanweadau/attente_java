@@ -3,10 +3,8 @@ package io.github.oliviercailloux.y2018.apartments.apartment.xml;
 import java.io.File;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
-import io.github.oliviercailloux.y2018.apartments.apartment.xml.XMLProperties;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
-import io.github.oliviercailloux.y2018.apartments.apartment.xml.ReadApartmentsXMLFormat;
 
 class ToXmlPropertiesTest {
 
