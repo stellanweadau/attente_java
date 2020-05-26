@@ -26,3 +26,6 @@ jobs:
           java-version: 11
       - name: Verify maven
         run: mvn -B verify --file pom.xml
+      - uses: axel-op/googlejavaformat-action@v3.0.0
+        with:
+          args: "--replace"
