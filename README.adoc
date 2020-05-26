@@ -23,7 +23,7 @@ The code is hereby published under the link:LICENSE[MIT License], with their per
 
 toc::[]
 
-== Java iteration
+== Java iteration 🏃
 
 === Iteration 1
 
@@ -227,15 +227,36 @@ mvn test
 
 - Project documentation and UML iterations can be found in the directory link:Doc/README.adoc[*Doc/*]
 
-== Changelog 
+== Code style 📄
+
+In order to meet the greatest needs and not to restrict development to a common IDE, we have integrated link:https://github.com/google/google-java-format#google-java-format[google-java-format]
+
+In this sense, link:https://github.com/google/google-java-format#google-java-format[google-java-format] is a program that reformats Java source code to comply with link:https://google.github.io/styleguide/javaguide.html[Google Java Style Guide].
+
+The advantage of using this program is that it can be integrated as:
+
+* CLI command
+* IDE plugin (Jetrains IDEs, Eclipse, etc.)
+* Third Party
+* Github Actions
+* Library (dependencies)
+
+In this project, we have integrated:
+
+* a link:.github/workflows/maven.yml[Github Actions] : allows to format the code at each push (if ever a person has forgotten)
+* a maven plugin (in the link:pom.xml[pom] file): link:https://github.com/coveo/fmt-maven-plugin[coveo/fmt-maven-plugin] : allows you to format the code for each build with `mvn` of the application (locally). For example, by performing a `mvn test`, you will have the return of your tests as well as your formatted code
+
+I personally don't recommend the use of plugins for IDE because it requires user configuration, those which can cause problems (import optimizations and others). However, the use of plugins for IDE remains completely personal to each developer 👨‍💻.
+
+== Changelog 🆕
 
 - Link of link:Doc/changelog.adoc[changelog]
 
-== Repository available on Github 
+== Repository available on Github :octocat:
 
 - Link of this link:https://github.com/av1m/Apartments[repository]
 
-== Contributors
+== Contributors 👨‍💻
 
 - link:https://github.com/oliviercailloux[oliviercailloux]
 
@@ -275,7 +296,7 @@ mvn test
 - link:https://github.com/DAYAUX[DAYAUX]
 ====
 
-== License
+== License 📝
 
 * link:LICENSE[MIT]
 
