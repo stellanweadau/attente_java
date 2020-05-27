@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
+import javax.json.bind.JsonbConfig;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,21 +77,17 @@ public abstract class JsonConvert {
 	 */
 	@SuppressWarnings("serial")
 	public static List<Apartment> jsonToApartments(Path jsonPath) throws IOException {
+		JsonbConfig config = new JsonbConfig().withAdapters(new ApartmentAdapter());
+		Jsonb jsonb = JsonbBuilder.create(config);
 		String jsonString = Files.readString(jsonPath);
-		List<Apartment.Builder> apartmentsBuild;
 		List<Apartment> apartments = new ArrayList<>();
 		LOGGER.info("Create ArrayList of Apartment");
 
-		try (Jsonb jsonb = JsonbBuilder.create()) {
+		try (jsonb) {
 			LOGGER.info("Create Json builder");
-			apartmentsBuild = jsonb.fromJson(jsonString, new ArrayList<Apartment.Builder>() {
-			}.getClass().getGenericSuperclass());
+			apartments = jsonb.fromJson(jsonString, new ArrayList<Apartment>() {}.getClass().getGenericSuperclass());
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e);
-		}
-
-		for (Builder apartmentToBuild : apartmentsBuild) {
-			apartments.add(apartmentToBuild.build());
 		}
 		return apartments;
 	}
