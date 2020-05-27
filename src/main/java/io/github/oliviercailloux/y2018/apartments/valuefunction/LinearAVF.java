@@ -77,10 +77,46 @@ public class LinearAVF {
         this.teleSubjectiveValueWeight = null;
     }
 
-    private static double getMiddleOfRange(Range<Double> range) {
-        return range.lowerEndpoint() + ((range.upperEndpoint() - range.lowerEndpoint()) / 2);
+    /**
+     * Adapt linear value function by defining a new lower or upper bound
+     *
+     * @param oldLVF   the old linear value function used
+     * @param newBound the new lower or upper bound
+     * @param lower    used to say whether we change the lower or upper bound
+     * @return an new object LinearValueFunction set with new bound
+     */
+    private static LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound,
+                                                                boolean lower) {
+        if (lower) {
+            return new LinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
+        }
+
+        return new LinearValueFunction(oldLVF.getInterval().lowerEndpoint(), newBound);
+
     }
 
+    /**
+     * Adapt linear value function by defining a new lower or upper bound
+     *
+     * @param oldLVF   the old linear value function used
+     * @param newBound the new lower or upper bound
+     * @param lower    used to say whether we change the lower or upper bound
+     * @return an new object LinearValueFunction set with new bound
+     */
+    private static ReversedLinearValueFunction adaptReversedLinearValueFunction(ReversedLinearValueFunction oldLVF, double newBound,
+                                                                                boolean lower) {
+        if (lower) {
+            return new ReversedLinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
+        }
+        return new ReversedLinearValueFunction(oldLVF.getInterval().lowerEndpoint(), newBound);
+
+    }
+
+    /**
+     * check if the given range is valid for this context
+     * @param value the Range to check
+     * @throws IllegalArgumentException when doubles contained are < 0 or if there are only 1 value in the range
+     */
     private void checkRangeValidity(Range<Double> value) {
         checkArgument(value.hasLowerBound() && value.hasUpperBound(), "The given range is not valid");
         checkArgument(value.lowerEndpoint() > 0 && value.upperEndpoint() > 0, "The weight of the tele cannot be negative");
@@ -320,12 +356,22 @@ public class LinearAVF {
     }
 
     /**
+     * Get the middle of the given Range
+     * @param range the Range
+     * @return the middle of the given Range of Doubles
+     */
+    private static double getMiddleOfRange(Range<Double> range) {
+        return range.lowerEndpoint() + ((range.upperEndpoint() - range.lowerEndpoint()) / 2);
+    }
+
+
+    /**
      * Gives the subjective value weight of a criterion awt
      *
      * @param crit the criterion we want to know the value
      * @return the subjective value weight
      */
-    public Range getWeightRange(Criterion crit) {
+    public Range<Double> getWeightRange(Criterion crit) {
         switch (crit) {
             case TELE:
                 return teleSubjectiveValueWeight;
@@ -351,109 +397,74 @@ public class LinearAVF {
                 throw new IllegalArgumentException();
         }
     }
-	/**
-	 * We make the assumption (by casting), that the runtime associated to criteria is a
-	 * LinearValueFunction or a ReversedLinearValueFunction, even if in real life it
-	 * would be a discrete criteria (e.g. the number of bedrooms)
-	 *
-	 * The goal is to replace a LinearValueFunction's bound by a new bound Warning :
-	 * The values of the object should be instantiate before using this function or
-	 * an error will appear
-	 *
-	 * @param criterion the criterion to adapt. This criterion should not be a
-	 *                  boolean as TV for example.
-	 * @param newBound  the new bound to define
-	 * @param lower     true if we want to adapt the lower bound, false on the other
-	 *                  case
-	 * @return an object LinearAVF
-	 */
-	public LinearAVF adaptBounds(Criterion criterion, double newBound, boolean lower) {
 
-		LinearAVF avf = this.cloneLinearAVF();
+    /**
+     * We make the assumption (by casting), that the runtime associated to criteria is a
+     * LinearValueFunction or a ReversedLinearValueFunction, even if in real life it
+     * would be a discrete criteria (e.g. the number of bedrooms)
+     * <p>
+     * The goal is to replace a LinearValueFunction's bound by a new bound Warning :
+     * The values of the object should be instantiate before using this function or
+     * an error will appear
+     *
+     * @param criterion the criterion to adapt. This criterion should not be a
+     *                  boolean as TV for example.
+     * @param newBound  the new bound to define
+     * @param lower     true if we want to adapt the lower bound, false on the other
+     *                  case
+     * @return an object LinearAVF
+     */
+    public LinearAVF adaptBounds(Criterion criterion, double newBound, boolean lower) {
 
-		switch (criterion) {
-			case FLOOR_AREA:
-				avf.setFloorAreaValueFunction(adaptLinearValueFunction(avf.floorAreaValueFunction, newBound, lower));
-				break;
-			case FLOOR_AREA_TERRACE:
-				avf.setFloorAreaTerraceValueFunction(adaptLinearValueFunction(avf.floorAreaTerraceValueFunction, newBound, lower));
-				break;
-			case PRICE_PER_NIGHT:
-				avf.setPricePerNightValueFunction(adaptReversedLinearValueFunction(avf.pricePerNightValueFunction, newBound, lower));
-				break;
-			case NB_SLEEPING:
-				avf.setNbSleepingValueFunction(adaptLinearValueFunction(avf.nbSleepingValueFunction, newBound, lower));
-				break;
-			case NB_BATHROOMS:
-				avf.setNbBathroomsValueFunction(adaptLinearValueFunction(avf.nbBathroomsValueFunction, newBound, lower));
-				break;
-			case NB_BEDROOMS:
-				avf.setNbBedroomsValueFunction(adaptLinearValueFunction( avf.nbBedroomsValueFunction, newBound, lower));
-				break;
-			case NB_MIN_NIGHT:
-				avf.setNbMinNightValueFunction(adaptReversedLinearValueFunction(avf.nbMinNightValueFunction, newBound, lower));
-				break;
-			// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
-			// don't have bounds)
-			// $CASES-OMITTED$
-			default:
-				throw new IllegalArgumentException();
-		}
+        LinearAVF avf = this.cloneLinearAVF();
 
-		return avf;
-	}
+        switch (criterion) {
+            case FLOOR_AREA:
+                avf.setFloorAreaValueFunction(adaptLinearValueFunction(avf.floorAreaValueFunction, newBound, lower));
+                break;
+            case FLOOR_AREA_TERRACE:
+                avf.setFloorAreaTerraceValueFunction(adaptLinearValueFunction(avf.floorAreaTerraceValueFunction, newBound, lower));
+                break;
+            case PRICE_PER_NIGHT:
+                avf.setPricePerNightValueFunction(adaptReversedLinearValueFunction(avf.pricePerNightValueFunction, newBound, lower));
+                break;
+            case NB_SLEEPING:
+                avf.setNbSleepingValueFunction(adaptLinearValueFunction(avf.nbSleepingValueFunction, newBound, lower));
+                break;
+            case NB_BATHROOMS:
+                avf.setNbBathroomsValueFunction(adaptLinearValueFunction(avf.nbBathroomsValueFunction, newBound, lower));
+                break;
+            case NB_BEDROOMS:
+                avf.setNbBedroomsValueFunction(adaptLinearValueFunction(avf.nbBedroomsValueFunction, newBound, lower));
+                break;
+            case NB_MIN_NIGHT:
+                avf.setNbMinNightValueFunction(adaptReversedLinearValueFunction(avf.nbMinNightValueFunction, newBound, lower));
+                break;
+            // Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
+            // don't have bounds)
+            // $CASES-OMITTED$
+            default:
+                throw new IllegalArgumentException("Cannot adapt the valueFunction linked to the given Criterion");
+        }
 
-	/**
-	 * Adapt linear value function by defining a new lower or upper bound
-	 *
-	 * @param oldLVF   the old linear value function used
-	 * @param newBound the new lower or upper bound
-	 * @param lower    used to say whether we change the lower or upper bound
-	 * @return an new object LinearValueFunction set with new bound
-	 */
-	private static LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound,
-																boolean lower) {
-		if (lower) {
-			return new LinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
-		}
+        return avf;
+    }
 
-		return new LinearValueFunction(oldLVF.getInterval().lowerEndpoint(), newBound);
-
-	}
-
-	/**
-	 * Adapt linear value function by defining a new lower or upper bound
-	 *
-	 * @param oldLVF   the old linear value function used
-	 * @param newBound the new lower or upper bound
-	 * @param lower    used to say whether we change the lower or upper bound
-	 * @return an new object LinearValueFunction set with new bound
-	 */
-	private static ReversedLinearValueFunction adaptReversedLinearValueFunction(ReversedLinearValueFunction oldLVF, double newBound,
-																boolean lower) {
-		if (lower) {
-			return new ReversedLinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
-		}
-		return new ReversedLinearValueFunction(oldLVF.getInterval().lowerEndpoint(), newBound);
-
-	}
-
-
-	public LinearAVF adaptWeightRange(Criterion crit, boolean upper) {
-		LinearAVF avf = cloneLinearAVF();
-		Range w = avf.getWeightRange(crit);
-		Double min = Double.valueOf(upper ? getMiddleOfRange(w): Double.parseDouble(w.lowerEndpoint().toString()));
-		Double max = Double.valueOf(upper ? Double.parseDouble(w.upperEndpoint().toString()):getMiddleOfRange(w));
-		avf.setWeightRange(crit,Range.closed(min,max));
-		return avf;
-	}
+    public LinearAVF adaptWeightRange(Criterion crit, boolean upper) {
+        LinearAVF avf = cloneLinearAVF();
+        Range<Double> w = avf.getWeightRange(crit);
+        Double min = upper ? getMiddleOfRange(w) : w.lowerEndpoint();
+        Double max = upper ? w.upperEndpoint() : getMiddleOfRange(w);
+        avf.setWeightRange(crit, Range.closed(min, max));
+        return avf;
+    }
 
     /**
      * Sets the subjective value weight of a criterion
      *
      * @param awt   the criterion we want to set
      * @param value the value we want to assign at this criterion
-     * @return an object ApartmentValueFunction with the modified criterion
+     * @return an object LinearAVF with the modified criterion
      */
     public LinearAVF setWeightRange(Criterion awt, Range<Double> value) {
 
@@ -498,9 +509,9 @@ public class LinearAVF {
     }
 
     /**
-     * This function allows the user to clone an object ApartmentValueFunction
+     * This function allows the user to clone an object LinearAVF
      *
-     * @return an object ApartmentValueFunction
+     * @return an object LinearAVF
      */
     private LinearAVF cloneLinearAVF() {
 
@@ -546,7 +557,7 @@ public class LinearAVF {
      * Set the function which will be used to calculate the subjective value of the
      * floor area.
      *
-     * @param floorAreaValueFunction
+     * @param floorAreaValueFunction the new LinearValueFunction for FloorArea
      */
     private void setFloorAreaValueFunction(LinearValueFunction floorAreaValueFunction) {
         this.floorAreaValueFunction = checkNotNull(floorAreaValueFunction);
@@ -567,7 +578,7 @@ public class LinearAVF {
      * Set the function which will be used to calculate the subjective value of the
      * floor area of an existing terrace.
      *
-     * @param floorAreaTerraceValueFunction
+     * @param floorAreaTerraceValueFunction the new LinearValueFunction for FloorAreaTerrace
      */
     private void setFloorAreaTerraceValueFunction(LinearValueFunction floorAreaTerraceValueFunction) {
         this.floorAreaTerraceValueFunction = checkNotNull(floorAreaTerraceValueFunction);
@@ -588,7 +599,7 @@ public class LinearAVF {
      * Set the function which will be used to calculate the subjective value of the
      * number of bathrooms.
      *
-     * @param nbBathroomsValueFunction
+     * @param nbBathroomsValueFunction the new LinearValueFunction for NbBathrooms
      */
     private void setNbBathroomsValueFunction(LinearValueFunction nbBathroomsValueFunction) {
         this.nbBathroomsValueFunction = checkNotNull(nbBathroomsValueFunction);
@@ -609,7 +620,7 @@ public class LinearAVF {
      * Set the function which will be used to calculate the subjective value of the
      * number of bedrooms.
      *
-     * @param nbBedroomsValueFunction
+     * @param nbBedroomsValueFunction the new LinearValueFunction for NbBedrooms
      */
     private void setNbBedroomsValueFunction(LinearValueFunction nbBedroomsValueFunction) {
         this.nbBedroomsValueFunction = checkNotNull(nbBedroomsValueFunction);
@@ -630,7 +641,7 @@ public class LinearAVF {
      * Set the function which will be used to calculate the subjective value of the
      * minimum number of nights.
      *
-     * @param nbMinNightValueFunction
+     * @param nbMinNightValueFunction the new ReversedLinearValueFunction for NbMinNight
      */
     private void setNbMinNightValueFunction(ReversedLinearValueFunction nbMinNightValueFunction) {
         this.nbMinNightValueFunction = checkNotNull(nbMinNightValueFunction);
@@ -651,7 +662,7 @@ public class LinearAVF {
      * Set the function which will be used to calculate the subjective value of the
      * accommodation capacity.
      *
-     * @param nbSleepingValueFunction
+     * @param nbSleepingValueFunction the new LinearValueFunction for NbSleeping
      */
     private void setNbSleepingValueFunction(LinearValueFunction nbSleepingValueFunction) {
         this.nbSleepingValueFunction = checkNotNull(nbSleepingValueFunction);
@@ -672,7 +683,7 @@ public class LinearAVF {
      * Set the function which will be used to calculate the subjective value of the
      * price per night.
      *
-     * @param pricePerNightValueFunction
+     * @param pricePerNightValueFunction the new ReversedLinearValueFunction for PricePerNight
      */
     private void setPricePerNightValueFunction(ReversedLinearValueFunction pricePerNightValueFunction) {
         this.pricePerNightValueFunction = checkNotNull(pricePerNightValueFunction);
@@ -693,7 +704,7 @@ public class LinearAVF {
      * Set the function which will be used to calculate the subjective value of the
      * presence of a television.
      *
-     * @param teleValueFunction
+     * @param teleValueFunction the new BooleanValueFunction for Tele
      */
     private void setTeleValueFunction(BooleanValueFunction teleValueFunction) {
         this.teleValueFunction = checkNotNull(teleValueFunction);
@@ -714,7 +725,7 @@ public class LinearAVF {
      * Set the function which will be used to calculate the subjective value of the
      * presence of a terrace.
      *
-     * @param terraceValueFunction
+     * @param terraceValueFunction the new BooleanValueFunction for Terrace
      */
     private void setTerraceValueFunction(BooleanValueFunction terraceValueFunction) {
         this.terraceValueFunction = checkNotNull(terraceValueFunction);
@@ -735,7 +746,7 @@ public class LinearAVF {
      * Set the function which will be used to calculate the subjective value of the
      * presence of a wireless connection.
      *
-     * @param wifiValueFunction
+     * @param wifiValueFunction the new BooleanValueFunction for Wifi
      */
     private void setWifiValueFunction(BooleanValueFunction wifiValueFunction) {
         this.wifiValueFunction = checkNotNull(wifiValueFunction);
@@ -757,6 +768,9 @@ public class LinearAVF {
             checkNotNull(toBuild.getNbMinNightValueFunction());
             checkNotNull(toBuild.getNbSleepingValueFunction());
             checkNotNull(toBuild.getPricePerNightValueFunction());
+            checkNotNull(toBuild.getWifiValueFunction());
+            checkNotNull(toBuild.getTeleValueFunction());
+            checkNotNull(toBuild.getTerraceValueFunction());
             checkNotNull(toBuild.floorAreaWeightRange);
             checkNotNull(toBuild.nbBedroomsWeightRange);
             checkNotNull(toBuild.nbSleepingWeightRange);
@@ -778,6 +792,14 @@ public class LinearAVF {
             return this;
         }
 
+        /**
+         * Set the range of weight for the criterion given in parameters.
+         *
+         * @param crit       the criterion concerned
+         * @param lowerValue the minimal value possible for this weight
+         * @param upperValue the maximal value possible for this weight
+         * @return the current instance of Builder
+         */
         public Builder setWeightRange(Criterion crit, double lowerValue, double upperValue) {
             toBuild.setWeightRange(crit, Range.range(lowerValue, BoundType.CLOSED, upperValue, BoundType.CLOSED));
             return this;
@@ -788,13 +810,24 @@ public class LinearAVF {
          * floor area.
          *
          * @param floorAreaValueFunction a LinearValueFunction
+         * @return the current instance of Builder
          */
-        public void setFloorAreaValueFunction(LinearValueFunction floorAreaValueFunction) {
+        public Builder setFloorAreaValueFunction(LinearValueFunction floorAreaValueFunction) {
             toBuild.setFloorAreaValueFunction(floorAreaValueFunction);
+            return this;
         }
 
-        public void setFloorAreaValueFunction(double lowerValue, double upperValue) {
+        /**
+         * Set the function which will be used to calculate the subjective value of the
+         * floor area.
+         *
+         * @param lowerValue the min value for this LinearValueFunction
+         * @param upperValue the max value for this LinearValueFunction
+         * @return the current instance of Builder
+         */
+        public Builder setFloorAreaValueFunction(double lowerValue, double upperValue) {
             toBuild.setFloorAreaValueFunction(new LinearValueFunction(lowerValue, upperValue));
+            return this;
         }
 
         /**
@@ -802,13 +835,24 @@ public class LinearAVF {
          * number of bedrooms.
          *
          * @param nbBedroomsValueFunction a LinearValueFunction
+         * @return the current instance of Builder
          */
-        public void setNbBedroomsValueFunction(LinearValueFunction nbBedroomsValueFunction) {
+        public Builder setNbBedroomsValueFunction(LinearValueFunction nbBedroomsValueFunction) {
             toBuild.setNbBedroomsValueFunction(nbBedroomsValueFunction);
+            return this;
         }
 
-        public void setNbBedroomsValueFunction(double lowerValue, double upperValue) {
+        /**
+         * Set the function which will be used to calculate the subjective value of the
+         * number of bedrooms.
+         *
+         * @param lowerValue the min value for this LinearValueFunction
+         * @param upperValue the max value for this LinearValueFunction
+         * @return the current instance of Builder
+         */
+        public Builder setNbBedroomsValueFunction(double lowerValue, double upperValue) {
             toBuild.setNbBedroomsValueFunction(new LinearValueFunction(lowerValue, upperValue));
+            return this;
         }
 
         /**
@@ -816,13 +860,24 @@ public class LinearAVF {
          * accommodation capacity.
          *
          * @param nbSleepingValueFunction a LinearValueFunction
+         * @return the current instance of Builder
          */
-        public void setNbSleepingValueFunction(LinearValueFunction nbSleepingValueFunction) {
+        public Builder setNbSleepingValueFunction(LinearValueFunction nbSleepingValueFunction) {
             toBuild.setNbSleepingValueFunction(nbSleepingValueFunction);
+            return this;
         }
 
-        public void setNbSleepingValueFunction(double lowerValue, double upperValue) {
+        /**
+         * Set the function which will be used to calculate the subjective value of the
+         * accommodation capacity.
+         *
+         * @param lowerValue the min value for this LinearValueFunction
+         * @param upperValue the max value for this LinearValueFunction
+         * @return the current instance of Builder
+         */
+        public Builder setNbSleepingValueFunction(double lowerValue, double upperValue) {
             toBuild.setNbSleepingValueFunction(new LinearValueFunction(lowerValue, upperValue));
+            return this;
         }
 
         /**
@@ -830,13 +885,24 @@ public class LinearAVF {
          * floor area of an existing terrace.
          *
          * @param floorAreaTerraceValueFunction a LinearValueFunction
+         * @return the current instance of Builder
          */
-        public void setFloorAreaTerraceValueFunction(LinearValueFunction floorAreaTerraceValueFunction) {
+        public Builder setFloorAreaTerraceValueFunction(LinearValueFunction floorAreaTerraceValueFunction) {
             toBuild.setFloorAreaTerraceValueFunction(floorAreaTerraceValueFunction);
+            return this;
         }
 
-        public void setFloorAreaTerraceValueFunction(double lowerValue, double upperValue) {
+        /**
+         * Set the function which will be used to calculate the subjective value of the
+         * floor area of an existing terrace.
+         *
+         * @param lowerValue the min value for this LinearValueFunction
+         * @param upperValue the max value for this LinearValueFunction
+         * @return the current instance of Builder
+         */
+        public Builder setFloorAreaTerraceValueFunction(double lowerValue, double upperValue) {
             toBuild.setFloorAreaTerraceValueFunction(new LinearValueFunction(lowerValue, upperValue));
+            return this;
         }
 
         /**
@@ -844,13 +910,24 @@ public class LinearAVF {
          * number of bathrooms.
          *
          * @param nbBathroomsValueFunction a LinearValueFunction
+         * @return the current instance of Builder
          */
-        public void setNbBathroomsValueFunction(LinearValueFunction nbBathroomsValueFunction) {
+        public Builder setNbBathroomsValueFunction(LinearValueFunction nbBathroomsValueFunction) {
             toBuild.setNbBathroomsValueFunction(nbBathroomsValueFunction);
+            return this;
         }
 
-        public void setNbBathroomsValueFunction(double lowerValue, double upperValue) {
+        /**
+         * Set the function which will be used to calculate the subjective value of the
+         * number of bathrooms.
+         *
+         * @param lowerValue the min value for this LinearValueFunction
+         * @param upperValue the max value for this LinearValueFunction
+         * @return the current instance of Builder
+         */
+        public Builder setNbBathroomsValueFunction(double lowerValue, double upperValue) {
             toBuild.setNbBathroomsValueFunction(new LinearValueFunction(lowerValue, upperValue));
+            return this;
         }
 
         /**
@@ -858,13 +935,23 @@ public class LinearAVF {
          * presence of a terrace.
          *
          * @param terraceValueFunction a BooleanValueFunction
+         * @return the current instance of Builder
          */
-        public void setTerraceValueFunction(BooleanValueFunction terraceValueFunction) {
+        public Builder setTerraceValueFunction(BooleanValueFunction terraceValueFunction) {
             toBuild.setTerraceValueFunction(terraceValueFunction);
+            return this;
         }
 
-        public void setTerraceValueFunction(boolean value) {
+        /**
+         * Set the function which will be used to calculate the subjective value of the
+         * presence of a terrace.
+         *
+         * @param value boolean true iif having a Terrace is a benefit
+         * @return the current instance of Builder
+         */
+        public Builder setTerraceValueFunction(boolean value) {
             toBuild.setTerraceValueFunction(new BooleanValueFunction(value));
+            return this;
         }
 
         /**
@@ -872,13 +959,23 @@ public class LinearAVF {
          * presence of a television.
          *
          * @param teleValueFunction a BooleanValueFunction
+         * @return the current instance of Builder
          */
-        public void setTeleValueFunction(BooleanValueFunction teleValueFunction) {
+        public Builder setTeleValueFunction(BooleanValueFunction teleValueFunction) {
             toBuild.setTeleValueFunction(teleValueFunction);
+            return this;
         }
 
-        public void setTeleValueFunction(boolean value) {
+        /**
+         * Set the function which will be used to calculate the subjective value of the
+         * presence of a television.
+         *
+         * @param value boolean true iif having a TV is a benefit
+         * @return the current instance of Builder
+         */
+        public Builder setTeleValueFunction(boolean value) {
             toBuild.setTeleValueFunction(new BooleanValueFunction(value));
+            return this;
         }
 
         /**
@@ -886,13 +983,23 @@ public class LinearAVF {
          * presence of a wireless connection.
          *
          * @param wifiValueFunction a BooleanValueFunction
+         * @return the current instance of Builder
          */
-        public void setWifiValueFunction(BooleanValueFunction wifiValueFunction) {
+        public Builder setWifiValueFunction(BooleanValueFunction wifiValueFunction) {
             toBuild.setWifiValueFunction(wifiValueFunction);
+            return this;
         }
 
-        public void setWifiValueFunction(boolean value) {
+        /**
+         * Set the function which will be used to calculate the subjective value of the
+         * presence of a wireless connection.
+         *
+         * @param value boolean true iif having Wifi is a benefit
+         * @return the current instance of Builder
+         */
+        public Builder setWifiValueFunction(boolean value) {
             toBuild.setWifiValueFunction(new BooleanValueFunction(value));
+            return this;
         }
 
         /**
@@ -900,13 +1007,24 @@ public class LinearAVF {
          * price per night.
          *
          * @param pricePerNightValueFunction a ReversedLinearValueFunction
+         * @return the current instance of Builder
          */
-        public void setPricePerNightValueFunction(ReversedLinearValueFunction pricePerNightValueFunction) {
+        public Builder setPricePerNightValueFunction(ReversedLinearValueFunction pricePerNightValueFunction) {
             toBuild.setPricePerNightValueFunction(pricePerNightValueFunction);
+            return this;
         }
 
-        public void setPricePerNightValueFunction(double lowerValue, double upperValue) {
+        /**
+         * Set the function which will be used to calculate the subjective value of the
+         * price per night.
+         *
+         * @param lowerValue the min value for this ReversedLinearValueFunction
+         * @param upperValue the max value for this ReversedLinearValueFunction
+         * @return the current instance of Builder
+         */
+        public Builder setPricePerNightValueFunction(double lowerValue, double upperValue) {
             toBuild.setPricePerNightValueFunction(new ReversedLinearValueFunction(lowerValue, upperValue));
+            return this;
         }
 
         /**
@@ -914,13 +1032,24 @@ public class LinearAVF {
          * minimum number of nights.
          *
          * @param nbMinNightValueFunction a ReversedLinearValueFunction
+         * @return the current instance of Builder
          */
-        public void setNbMinNightValueFunction(ReversedLinearValueFunction nbMinNightValueFunction) {
+        public Builder setNbMinNightValueFunction(ReversedLinearValueFunction nbMinNightValueFunction) {
             toBuild.setNbMinNightValueFunction(nbMinNightValueFunction);
+            return this;
         }
 
-        public void setNbMinNightValueFunction(double lowerValue, double upperValue) {
+        /**
+         * Set the function which will be used to calculate the subjective value of the
+         * minimum number of nights.
+         *
+         * @param lowerValue the min value for this ReversedLinearValueFunction
+         * @param upperValue the max value for this ReversedLinearValueFunction
+         * @return the current instance of Builder
+         */
+        public Builder setNbMinNightValueFunction(double lowerValue, double upperValue) {
             toBuild.setNbMinNightValueFunction(new ReversedLinearValueFunction(lowerValue, upperValue));
+            return this;
         }
 
     }
