@@ -186,12 +186,12 @@ public class LinearAVF {
 				+ nbMinNightSubjectiveValue * getMiddleOfRange(nbMinNightSubjectiveValueWeight)
 				+ teleSubjectiveValue * getMiddleOfRange(teleSubjectiveValueWeight))
 				/ (getMiddleOfRange(floorAreaWeightRange) + getMiddleOfRange(nbBedroomsWeightRange)
-				+ getMiddleOfRange(nbSleepingWeightRange) + getMiddleOfRange(nbBathroomsWeightRange)
-				+ getMiddleOfRange(terraceWeightRange) + getMiddleOfRange(floorAreaTerraceWeightRange)
-				+ getMiddleOfRange(wifiSubjectiveValueWeight)
-				+ getMiddleOfRange(pricePerNightSubjectiveValueWeight)
-				+ getMiddleOfRange(nbMinNightSubjectiveValueWeight)
-				+ getMiddleOfRange(teleSubjectiveValueWeight)));
+						+ getMiddleOfRange(nbSleepingWeightRange) + getMiddleOfRange(nbBathroomsWeightRange)
+						+ getMiddleOfRange(terraceWeightRange) + getMiddleOfRange(floorAreaTerraceWeightRange)
+						+ getMiddleOfRange(wifiSubjectiveValueWeight)
+						+ getMiddleOfRange(pricePerNightSubjectiveValueWeight)
+						+ getMiddleOfRange(nbMinNightSubjectiveValueWeight)
+						+ getMiddleOfRange(teleSubjectiveValueWeight)));
 
 	}
 
@@ -230,7 +230,6 @@ public class LinearAVF {
 
 	}
 
-
 	/* Operation used for Weight */
 
 	/**
@@ -241,28 +240,28 @@ public class LinearAVF {
 	 */
 	public Range<Double> getWeightRange(Criterion crit) {
 		switch (crit) {
-			case TELE:
-				return teleSubjectiveValueWeight;
-			case TERRACE:
-				return terraceWeightRange;
-			case WIFI:
-				return wifiSubjectiveValueWeight;
-			case FLOOR_AREA:
-				return floorAreaWeightRange;
-			case FLOOR_AREA_TERRACE:
-				return floorAreaTerraceWeightRange;
-			case NB_BATHROOMS:
-				return nbBathroomsWeightRange;
-			case NB_BEDROOMS:
-				return nbBedroomsWeightRange;
-			case NB_SLEEPING:
-				return nbSleepingWeightRange;
-			case NB_MIN_NIGHT:
-				return nbMinNightSubjectiveValueWeight;
-			case PRICE_PER_NIGHT:
-				return pricePerNightSubjectiveValueWeight;
-			default:
-				throw new IllegalArgumentException();
+		case TELE:
+			return teleSubjectiveValueWeight;
+		case TERRACE:
+			return terraceWeightRange;
+		case WIFI:
+			return wifiSubjectiveValueWeight;
+		case FLOOR_AREA:
+			return floorAreaWeightRange;
+		case FLOOR_AREA_TERRACE:
+			return floorAreaTerraceWeightRange;
+		case NB_BATHROOMS:
+			return nbBathroomsWeightRange;
+		case NB_BEDROOMS:
+			return nbBedroomsWeightRange;
+		case NB_SLEEPING:
+			return nbSleepingWeightRange;
+		case NB_MIN_NIGHT:
+			return nbMinNightSubjectiveValueWeight;
+		case PRICE_PER_NIGHT:
+			return pricePerNightSubjectiveValueWeight;
+		default:
+			throw new IllegalArgumentException();
 		}
 	}
 
@@ -283,38 +282,38 @@ public class LinearAVF {
 	LinearAVF setWeightRange(Criterion awt, Range<Double> value) {
 		LinearAVF avf = cloneLinearAVF();
 		switch (awt) {
-			case TELE:
-				avf.setTeleSubjectiveValueWeight(value);
-				break;
-			case TERRACE:
-				avf.setTerraceSubjectiveValueWeight(value);
-				break;
-			case WIFI:
-				avf.setWifiSubjectiveValueWeight(value);
-				break;
-			case FLOOR_AREA:
-				avf.setFloorAreaSubjectiveValueWeight(value);
-				break;
-			case FLOOR_AREA_TERRACE:
-				avf.setFloorAreaTerraceSubjectiveValueWeight(value);
-				break;
-			case NB_BATHROOMS:
-				avf.setNbBathroomsSubjectiveValueWeight(value);
-				break;
-			case NB_BEDROOMS:
-				avf.setNbBedroomsSubjectiveValueWeight(value);
-				break;
-			case NB_SLEEPING:
-				avf.setNbSleepingSubjectiveValueWeight(value);
-				break;
-			case NB_MIN_NIGHT:
-				avf.setNbMinNightSubjectiveValueWeight(value);
-				break;
-			case PRICE_PER_NIGHT:
-				avf.setPricePerNightSubjectiveValueWeight(value);
-				break;
-			default:
-				throw new IllegalArgumentException();
+		case TELE:
+			avf.setTeleSubjectiveValueWeight(value);
+			break;
+		case TERRACE:
+			avf.setTerraceSubjectiveValueWeight(value);
+			break;
+		case WIFI:
+			avf.setWifiSubjectiveValueWeight(value);
+			break;
+		case FLOOR_AREA:
+			avf.setFloorAreaSubjectiveValueWeight(value);
+			break;
+		case FLOOR_AREA_TERRACE:
+			avf.setFloorAreaTerraceSubjectiveValueWeight(value);
+			break;
+		case NB_BATHROOMS:
+			avf.setNbBathroomsSubjectiveValueWeight(value);
+			break;
+		case NB_BEDROOMS:
+			avf.setNbBedroomsSubjectiveValueWeight(value);
+			break;
+		case NB_SLEEPING:
+			avf.setNbSleepingSubjectiveValueWeight(value);
+			break;
+		case NB_MIN_NIGHT:
+			avf.setNbMinNightSubjectiveValueWeight(value);
+			break;
+		case PRICE_PER_NIGHT:
+			avf.setPricePerNightSubjectiveValueWeight(value);
+			break;
+		default:
+			throw new IllegalArgumentException();
 		}
 
 		return avf;
@@ -475,7 +474,6 @@ public class LinearAVF {
 		LOGGER.debug("The tele weight has been set to {}", value);
 	}
 
-
 	/* Operation used for ValueFunction */
 
 	/**
@@ -499,35 +497,35 @@ public class LinearAVF {
 		LinearAVF avf = this.cloneLinearAVF();
 
 		switch (criterion) {
-			case FLOOR_AREA:
-				avf.setFloorAreaValueFunction(adaptLinearValueFunction(avf.floorAreaValueFunction, newBound, lower));
-				break;
-			case FLOOR_AREA_TERRACE:
-				avf.setFloorAreaTerraceValueFunction(
-						adaptLinearValueFunction(avf.floorAreaTerraceValueFunction, newBound, lower));
-				break;
-			case PRICE_PER_NIGHT:
-				avf.setPricePerNightValueFunction(
-						adaptReversedLinearValueFunction(avf.pricePerNightValueFunction, newBound, lower));
-				break;
-			case NB_SLEEPING:
-				avf.setNbSleepingValueFunction(adaptLinearValueFunction(avf.nbSleepingValueFunction, newBound, lower));
-				break;
-			case NB_BATHROOMS:
-				avf.setNbBathroomsValueFunction(adaptLinearValueFunction(avf.nbBathroomsValueFunction, newBound, lower));
-				break;
-			case NB_BEDROOMS:
-				avf.setNbBedroomsValueFunction(adaptLinearValueFunction(avf.nbBedroomsValueFunction, newBound, lower));
-				break;
-			case NB_MIN_NIGHT:
-				avf.setNbMinNightValueFunction(
-						adaptReversedLinearValueFunction(avf.nbMinNightValueFunction, newBound, lower));
-				break;
-			// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
-			// don't have bounds)
-			// $CASES-OMITTED$
-			default:
-				throw new IllegalArgumentException("Cannot adapt the valueFunction linked to the given Criterion");
+		case FLOOR_AREA:
+			avf.setFloorAreaValueFunction(adaptLinearValueFunction(avf.floorAreaValueFunction, newBound, lower));
+			break;
+		case FLOOR_AREA_TERRACE:
+			avf.setFloorAreaTerraceValueFunction(
+					adaptLinearValueFunction(avf.floorAreaTerraceValueFunction, newBound, lower));
+			break;
+		case PRICE_PER_NIGHT:
+			avf.setPricePerNightValueFunction(
+					adaptReversedLinearValueFunction(avf.pricePerNightValueFunction, newBound, lower));
+			break;
+		case NB_SLEEPING:
+			avf.setNbSleepingValueFunction(adaptLinearValueFunction(avf.nbSleepingValueFunction, newBound, lower));
+			break;
+		case NB_BATHROOMS:
+			avf.setNbBathroomsValueFunction(adaptLinearValueFunction(avf.nbBathroomsValueFunction, newBound, lower));
+			break;
+		case NB_BEDROOMS:
+			avf.setNbBedroomsValueFunction(adaptLinearValueFunction(avf.nbBedroomsValueFunction, newBound, lower));
+			break;
+		case NB_MIN_NIGHT:
+			avf.setNbMinNightValueFunction(
+					adaptReversedLinearValueFunction(avf.nbMinNightValueFunction, newBound, lower));
+			break;
+		// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
+		// don't have bounds)
+		// $CASES-OMITTED$
+		default:
+			throw new IllegalArgumentException("Cannot adapt the valueFunction linked to the given Criterion");
 		}
 
 		return avf;
@@ -541,7 +539,8 @@ public class LinearAVF {
 	 * @param lower    used to say whether we change the lower or upper bound
 	 * @return an new object LinearValueFunction set with new bound
 	 */
-	private static LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound, boolean lower) {
+	private static LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound,
+			boolean lower) {
 		if (lower) {
 			return new LinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
 		}
@@ -558,7 +557,8 @@ public class LinearAVF {
 	 * @param lower    used to say whether we change the lower or upper bound
 	 * @return an new object LinearValueFunction set with new bound
 	 */
-	private static ReversedLinearValueFunction adaptReversedLinearValueFunction(ReversedLinearValueFunction oldLVF, double newBound, boolean lower) {
+	private static ReversedLinearValueFunction adaptReversedLinearValueFunction(ReversedLinearValueFunction oldLVF,
+			double newBound, boolean lower) {
 		if (lower) {
 			return new ReversedLinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
 		}
@@ -779,9 +779,8 @@ public class LinearAVF {
 		LOGGER.info("The wifi preferencies has been set");
 	}
 
-
 	public static class Builder {
-		private LinearAVF toBuild = null;
+		private LinearAVF toBuild;
 
 		public Builder() {
 			toBuild = new LinearAVF();
@@ -799,7 +798,7 @@ public class LinearAVF {
 			checkNotNull(toBuild.getTeleValueFunction());
 			checkNotNull(toBuild.getTerraceValueFunction());
 
-			for (Criterion c : Criterion.getCriterias()){
+			for (Criterion c : Criterion.getCriterias()) {
 				checkNotNull(toBuild.getWeightRange(c));
 			}
 
@@ -822,7 +821,8 @@ public class LinearAVF {
 		 * @return the current instance of Builder
 		 */
 		public Builder setWeightRange(Criterion crit, double lowerValue, double upperValue) {
-			this.toBuild = toBuild.setWeightRange(crit, Range.range(lowerValue, BoundType.CLOSED, upperValue, BoundType.CLOSED));
+			this.toBuild = toBuild.setWeightRange(crit,
+					Range.range(lowerValue, BoundType.CLOSED, upperValue, BoundType.CLOSED));
 			return this;
 		}
 

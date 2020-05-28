@@ -1,14 +1,18 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-import com.google.common.collect.Range;
-import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
-import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.google.common.collect.Range;
+
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 
 class LinearAVFTest {
 	private static final Logger LOGGER = LoggerFactory.getLogger(LinearAVFTest.class);
@@ -56,8 +60,8 @@ class LinearAVFTest {
 
 		LinearValueFunction floorAreaTerraceV = new LinearValueFunction(30d, 50d);
 		builderLinearAVF.setFloorAreaTerraceValueFunction(floorAreaTerraceV);
-		for (Criterion c : Criterion.getCriterias()){
-			builderLinearAVF.setWeightRange(c,Range.closed(5d,15d));
+		for (Criterion c : Criterion.getCriterias()) {
+			builderLinearAVF.setWeightRange(c, Range.closed(5d, 15d));
 		}
 		linearAVF = builderLinearAVF.build();
 
@@ -83,7 +87,7 @@ class LinearAVFTest {
 	void linearAVFTest() {
 
 		assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.0001);
-		linearAVF.setWeightRange(Criterion.TELE, Range.closed(2d,8d));
+		linearAVF.setWeightRange(Criterion.TELE, Range.closed(2d, 8d));
 		assertEquals(10d, linearAVF.getMiddleOfRange(Criterion.TELE));
 		assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.00001);
 
@@ -94,16 +98,26 @@ class LinearAVFTest {
 	 */
 	@Test
 	void exceptionIllegalArgWeightSetter() {
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.FLOOR_AREA,Range.closed(-2d,0d)));
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.NB_BEDROOMS,Range.closed(-2d,0d)));
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.NB_SLEEPING,Range.closed(-2d,0d)));
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.NB_BATHROOMS,Range.closed(-2d,0d)));
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.TERRACE,Range.closed(-2d,0d)));
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.FLOOR_AREA_TERRACE,Range.closed(-2d,0d)));
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.WIFI,Range.closed(-2d,0d)));
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.PRICE_PER_NIGHT,Range.closed(-2d,0d)));
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.NB_MIN_NIGHT,Range.closed(-2d,0d)));
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.TELE,Range.closed(-2d,0d)));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.FLOOR_AREA, Range.closed(-2d, 0d)));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.NB_BEDROOMS, Range.closed(-2d, 0d)));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.NB_SLEEPING, Range.closed(-2d, 0d)));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.NB_BATHROOMS, Range.closed(-2d, 0d)));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.TERRACE, Range.closed(-2d, 0d)));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.FLOOR_AREA_TERRACE, Range.closed(-2d, 0d)));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.WIFI, Range.closed(-2d, 0d)));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.PRICE_PER_NIGHT, Range.closed(-2d, 0d)));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.NB_MIN_NIGHT, Range.closed(-2d, 0d)));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.TELE, Range.closed(-2d, 0d)));
 	}
 
 	/**
@@ -111,17 +125,19 @@ class LinearAVFTest {
 	 */
 	@Test
 	void adaptWeightTest() {
-		LinearAVF temp;
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.TELE,Range.closed(-2d,0d)));
-		assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeightRange(Criterion.TERRACE,Range.closed(0d,0d)));
-		assertEquals(Range.closed(5d,15d), linearAVF.getWeightRange(Criterion.TELE));
-		assertEquals(Range.closed(5d,15d), linearAVF.getWeightRange(Criterion.TERRACE));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.TELE, Range.closed(-2d, 0d)));
+		assertThrows(IllegalArgumentException.class,
+				() -> linearAVF.setWeightRange(Criterion.TERRACE, Range.closed(0d, 0d)));
+		assertEquals(Range.closed(5d, 15d), linearAVF.getWeightRange(Criterion.TELE));
+		assertEquals(Range.closed(5d, 15d), linearAVF.getWeightRange(Criterion.TERRACE));
 		linearAVF = linearAVF.adaptWeightRange(Criterion.TERRACE, true);
-		LOGGER.info("************"+linearAVF.getWeightRange(Criterion.TERRACE).lowerEndpoint()+"/"+linearAVF.getWeightRange(Criterion.TERRACE).upperEndpoint());
-		assertEquals(Range.closed(10d,15d), linearAVF.getWeightRange(Criterion.TERRACE));
+		LOGGER.info("************" + linearAVF.getWeightRange(Criterion.TERRACE).lowerEndpoint() + "/"
+				+ linearAVF.getWeightRange(Criterion.TERRACE).upperEndpoint());
+		assertEquals(Range.closed(10d, 15d), linearAVF.getWeightRange(Criterion.TERRACE));
 		assertEquals(12.5d, linearAVF.getMiddleOfRange(Criterion.TERRACE));
-		linearAVF = linearAVF.adaptWeightRange(Criterion.TELE,false);
-		assertEquals(Range.closed(5d,10d), linearAVF.getWeightRange(Criterion.TELE));
+		linearAVF = linearAVF.adaptWeightRange(Criterion.TELE, false);
+		assertEquals(Range.closed(5d, 10d), linearAVF.getWeightRange(Criterion.TELE));
 		assertEquals(7.5d, linearAVF.getMiddleOfRange(Criterion.TELE));
 	}
 
@@ -153,10 +169,14 @@ class LinearAVFTest {
 		LinearValueFunction lvf = (LinearValueFunction) apart.getFloorAreaTerraceValueFunction();
 		assertTrue(lvf.getInterval().upperEndpoint() <= 101d);
 		assertTrue(apart.getSubjectiveValueWeight(Criterion.TELE) <= 1d);
-		double sum = apart.getSubjectiveValueWeight(Criterion.TELE) + apart.getSubjectiveValueWeight(Criterion.FLOOR_AREA)
-				+ apart.getSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE) + apart.getSubjectiveValueWeight(Criterion.NB_BATHROOMS)
-				+ apart.getSubjectiveValueWeight(Criterion.NB_BEDROOMS) + apart.getSubjectiveValueWeight(Criterion.NB_SLEEPING)
-				+ apart.getSubjectiveValueWeight(Criterion.NB_MIN_NIGHT) + apart.getSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT)
+		double sum = apart.getSubjectiveValueWeight(Criterion.TELE)
+				+ apart.getSubjectiveValueWeight(Criterion.FLOOR_AREA)
+				+ apart.getSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE)
+				+ apart.getSubjectiveValueWeight(Criterion.NB_BATHROOMS)
+				+ apart.getSubjectiveValueWeight(Criterion.NB_BEDROOMS)
+				+ apart.getSubjectiveValueWeight(Criterion.NB_SLEEPING)
+				+ apart.getSubjectiveValueWeight(Criterion.NB_MIN_NIGHT)
+				+ apart.getSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT)
 				+ apart.getSubjectiveValueWeight(Criterion.TERRACE) + apart.getSubjectiveValueWeight(Criterion.WIFI);
 		assertEquals(1d, sum, 0.00001);
 	}
