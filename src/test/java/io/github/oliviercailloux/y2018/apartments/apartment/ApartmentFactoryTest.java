@@ -90,7 +90,8 @@ class ApartmentFactoryTest {
       assertEquals(
           "2 Chemin des Lacs à la Porte Dauphine 75016 Paris",
           address.get(),
-          "Call to the address retrieval API with a fixed longitude and attitude need to return a good result");
+          "Call to the address retrieval API with a fixed longitude and attitude need to return a"
+              + " good result");
     } finally {
       client.close();
     }

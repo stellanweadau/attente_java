@@ -235,7 +235,8 @@ public class AskOpinionForUtility {
               unPressedButton.setEnabled(false);
 
               boo.setText(
-                  "\"Merci pour vos choix, nous allons chercher pour vous les meilleurs apartements :) ");
+                  "\"Merci pour vos choix, nous allons chercher pour vous les meilleurs"
+                      + " apartements :) ");
               boo.pack();
             } else {
 

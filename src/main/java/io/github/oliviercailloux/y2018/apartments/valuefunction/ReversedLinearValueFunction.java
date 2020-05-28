@@ -22,7 +22,8 @@ public class ReversedLinearValueFunction implements PartialValueFunction<Double>
   public ReversedLinearValueFunction(double min, double max) {
     if (min == max) {
       LOGGER.error(
-          "The upper bound is equal to the lower bound in the constructor of the LinearValueFunction.");
+          "The upper bound is equal to the lower bound in the constructor of the"
+              + " LinearValueFunction.");
       throw new IllegalArgumentException("The upper bound can't be equal to the lower bound.");
     }
     interval = Range.closed(min, max);

@@ -29,7 +29,8 @@ public class BooleanValueFunction implements PartialValueFunction<Boolean> {
     }
 
     LOGGER.info(
-        "The Map with the subjective values for true and false has been set with success in the BooleanValueFunction class.");
+        "The Map with the subjective values for true and false has been set with success in the"
+            + " BooleanValueFunction class.");
   }
 
   @Override
