@@ -8,9 +8,12 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.json.Json;
+import javax.json.JsonObject;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbConfig;
+import javax.json.bind.adapter.JsonbAdapter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +32,9 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 public abstract class JsonConvert {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(JsonConvert.class);
+
+	private JsonConvert() {
+	}
 
 	/**
 	 * The path to export a list of apartments in a JSON file.
@@ -77,19 +83,54 @@ public abstract class JsonConvert {
 	 */
 	@SuppressWarnings("serial")
 	public static List<Apartment> jsonToApartments(Path jsonPath) throws IOException {
-		JsonbConfig config = new JsonbConfig().withAdapters(new ApartmentAdapter());
+		JsonbConfig config = new JsonbConfig().withAdapters(JsonConvert.getAdapter());
 		Jsonb jsonb = JsonbBuilder.create(config);
 		String jsonString = Files.readString(jsonPath);
 		List<Apartment> apartments = new ArrayList<>();
 		LOGGER.info("Create ArrayList of Apartment");
-
 		try (jsonb) {
 			LOGGER.info("Create Json builder");
-			apartments = jsonb.fromJson(jsonString, new ArrayList<Apartment>() {}.getClass().getGenericSuperclass());
+			apartments = jsonb.fromJson(jsonString, new ArrayList<Apartment>() {
+			}.getClass().getGenericSuperclass());
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e);
 		}
 		return apartments;
+	}
+
+	/**
+	 * A method that implement a {@link JsonbAdapter} to avoid the use of
+	 * ApartmentBuilder Code inspired from the example in the course of Jean-Michel
+	 * Doudoux available
+	 * <a href="https://www.jmdoudoux.fr/java/dej/chap-json-b.htm">here</a>
+	 */
+	public static JsonbAdapter<Apartment, JsonObject> getAdapter() {
+		return new JsonbAdapter<>() {
+			@Override
+			public JsonObject adaptToJson(Apartment apart) throws Exception {
+				return Json.createObjectBuilder().add("title", apart.getTitle()).add("address", apart.getAddress())
+						.add("description", apart.getDescription()).add("floorArea", apart.getFloorArea())
+						.add("floorAreaTerrace", apart.getFloorAreaTerrace()).add("nbBedrooms", apart.getNbBedrooms())
+						.add("nbBathrooms", apart.getNbBathrooms()).add("nbMinNight", apart.getNbMinNight())
+						.add("nbSleeping", apart.getNbSleeping()).add("pricePerNight", apart.getPricePerNight())
+						.add("wifi", apart.getWifi()).add("tele", apart.getTele()).add("terrace", apart.getTerrace())
+						.build();
+			}
+
+			@Override
+			public Apartment adaptFromJson(JsonObject obj) throws Exception {
+				Builder apartToBuild = new Builder();
+				return apartToBuild.setTitle(obj.getString("title")).setAddress(obj.getString("address"))
+						.setDescription(obj.getString("description"))
+						.setFloorArea(obj.getJsonNumber("floorArea").doubleValue())
+						.setFloorAreaTerrace(obj.getJsonNumber("floorAreaTerrace").doubleValue())
+						.setNbBedrooms(obj.getInt("nbBedrooms")).setNbBathrooms(obj.getInt("nbBathrooms"))
+						.setNbMinNight(obj.getInt("nbMinNight")).setNbSleeping(obj.getInt("nbSleeping"))
+						.setPricePerNight(obj.getJsonNumber("pricePerNight").doubleValue())
+						.setTele(obj.getBoolean("tele")).setWifi(obj.getBoolean("wifi"))
+						.setTerrace(obj.getBoolean("terrace")).build();
+			}
+		};
 	}
 
 	/**
