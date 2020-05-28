@@ -21,6 +21,7 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 public class LinearAVF {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(LinearAVF.class);
+
 	/**
 	 * The 10 next arguments are the objects used to compute the value function of
 	 * the characteristics of an apartment
@@ -80,50 +81,277 @@ public class LinearAVF {
 	}
 
 	/**
-	 * Adapt linear value function by defining a new lower or upper bound
+	 * This function return the subjective value of the Apartment in parameter. For
+	 * each valuable attribute of this apartment, the subjective value is computed
+	 * by the associated PartialValueFunction object. The weighted sum of these
+	 * subjective values is returned by the function. When the PartialValueFunction
+	 * object of an attribute hasn't been set, the subjective value given to the
+	 * corresponding attribute will be 0.
 	 *
-	 * @param oldLVF   the old linear value function used
-	 * @param newBound the new lower or upper bound
-	 * @param lower    used to say whether we change the lower or upper bound
-	 * @return an new object LinearValueFunction set with new bound
+	 * @param apart an object of type Apartment
+	 * @return a double : the weighted sum of the apartment attributes subjective
+	 *         values
 	 */
-	private static LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound,
-			boolean lower) {
-		if (lower) {
-			return new LinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
-		}
+	public double getSubjectiveValue(Apartment apart) {
+		double floorAreaSubjectiveValue;
+		double nbBedroomsSubjectiveValue;
+		double nbSleepingSubjectiveValue;
+		double nbBathroomsSubjectiveValue;
+		double terraceSubjectiveValue;
+		double floorAreaTerraceSubjectiveValue;
+		double wifiSubjectiveValue;
+		double pricePerNightSubjectiveValue;
+		double nbMinNightSubjectiveValue;
+		double teleSubjectiveValue;
 
-		return new LinearValueFunction(oldLVF.getInterval().lowerEndpoint(), newBound);
+		checkArgument(
+				floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) >= 0
+						&& floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1,
+				"The subjective value of floor area should be between 0 and 1");
+		floorAreaSubjectiveValue = floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea());
+		LOGGER.debug("The floor area subjective value has been set to {}", floorAreaSubjectiveValue);
+
+		checkArgument(
+				nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) >= 0
+						&& nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1,
+				"The subjective value of the number of bedrooms should be between 0 and 1");
+		nbBedroomsSubjectiveValue = nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms());
+		LOGGER.debug("The number of bedrooms subjective value has been set to {}", nbBedroomsSubjectiveValue);
+
+		checkArgument(
+				nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) >= 0
+						&& nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1,
+				"The subjective value of the number of sleeping should be between 0 and 1");
+		nbSleepingSubjectiveValue = nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping());
+		LOGGER.debug("The number of sleeping subjective value has been set to {}", nbSleepingSubjectiveValue);
+
+		checkArgument(
+				nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) >= 0
+						&& nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1,
+				"The subjective value of the number of bathrooms should be between 0 and 1");
+		nbBathroomsSubjectiveValue = nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms());
+		LOGGER.debug("The number of bathrooms subjective value has been set to {}", nbBathroomsSubjectiveValue);
+
+		checkArgument(
+				terraceValueFunction.getSubjectiveValue(apart.getTerrace()) >= 0
+						&& terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1,
+				"The subjective value of the terrace should be between 0 and 1");
+		terraceSubjectiveValue = terraceValueFunction.getSubjectiveValue(apart.getTerrace());
+		LOGGER.debug("The terrace subjective value has been set to {}", terraceSubjectiveValue);
+
+		checkArgument(
+				floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) >= 0
+						&& floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1,
+				"The subjective value of the floor area of the terrace should be between 0 and 1");
+		floorAreaTerraceSubjectiveValue = floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace());
+		LOGGER.debug("The floor area of the terrace subjective value has been set to {}",
+				floorAreaTerraceSubjectiveValue);
+
+		checkArgument(
+				wifiValueFunction.getSubjectiveValue(apart.getWifi()) >= 0
+						&& wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1,
+				"The subjective value of the wifi should be between 0 and 1");
+		wifiSubjectiveValue = wifiValueFunction.getSubjectiveValue(apart.getWifi());
+		LOGGER.debug("The wifi subjective value has been set to {}", wifiSubjectiveValue);
+
+		checkArgument(
+				pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) >= 0
+						&& pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1,
+				"The subjective value of the price per night should be between 0 and 1");
+		pricePerNightSubjectiveValue = pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight());
+		LOGGER.debug("the price per night subjective value has been set to {}", pricePerNightSubjectiveValue);
+
+		checkArgument(
+				nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) >= 0
+						&& nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1,
+				"The subjective value of the minimum number of nights should be between 0 and 1");
+		nbMinNightSubjectiveValue = nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight());
+		LOGGER.debug("The minimum number of nights subjective value has been set to {}", nbMinNightSubjectiveValue);
+
+		checkArgument(
+				teleValueFunction.getSubjectiveValue(apart.getTele()) >= 0
+						&& teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1,
+				"The subjective value of the presence of a tele should be between 0 and 1");
+		teleSubjectiveValue = teleValueFunction.getSubjectiveValue(apart.getTele());
+		LOGGER.debug("the tele subjective value has been set to {}", teleSubjectiveValue);
+
+		return ((floorAreaSubjectiveValue * getMiddleOfRange(floorAreaWeightRange)
+				+ nbBedroomsSubjectiveValue * getMiddleOfRange(nbBedroomsWeightRange)
+				+ nbSleepingSubjectiveValue * getMiddleOfRange(nbSleepingWeightRange)
+				+ nbBathroomsSubjectiveValue * getMiddleOfRange(nbBathroomsWeightRange)
+				+ terraceSubjectiveValue * getMiddleOfRange(terraceWeightRange)
+				+ floorAreaTerraceSubjectiveValue * getMiddleOfRange(floorAreaTerraceWeightRange)
+				+ wifiSubjectiveValue * getMiddleOfRange(wifiSubjectiveValueWeight)
+				+ pricePerNightSubjectiveValue * getMiddleOfRange(pricePerNightSubjectiveValueWeight)
+				+ nbMinNightSubjectiveValue * getMiddleOfRange(nbMinNightSubjectiveValueWeight)
+				+ teleSubjectiveValue * getMiddleOfRange(teleSubjectiveValueWeight))
+				/ (getMiddleOfRange(floorAreaWeightRange) + getMiddleOfRange(nbBedroomsWeightRange)
+				+ getMiddleOfRange(nbSleepingWeightRange) + getMiddleOfRange(nbBathroomsWeightRange)
+				+ getMiddleOfRange(terraceWeightRange) + getMiddleOfRange(floorAreaTerraceWeightRange)
+				+ getMiddleOfRange(wifiSubjectiveValueWeight)
+				+ getMiddleOfRange(pricePerNightSubjectiveValueWeight)
+				+ getMiddleOfRange(nbMinNightSubjectiveValueWeight)
+				+ getMiddleOfRange(teleSubjectiveValueWeight)));
 
 	}
 
 	/**
-	 * Adapt linear value function by defining a new lower or upper bound
+	 * This function allows the user to clone an object LinearAVF
 	 *
-	 * @param oldLVF   the old linear value function used
-	 * @param newBound the new lower or upper bound
-	 * @param lower    used to say whether we change the lower or upper bound
-	 * @return an new object LinearValueFunction set with new bound
+	 * @return an object LinearAVF
 	 */
-	private static ReversedLinearValueFunction adaptReversedLinearValueFunction(ReversedLinearValueFunction oldLVF,
-			double newBound, boolean lower) {
-		if (lower) {
-			return new ReversedLinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
-		}
-		return new ReversedLinearValueFunction(oldLVF.getInterval().lowerEndpoint(), newBound);
+	private LinearAVF cloneLinearAVF() {
 
+		LinearAVF avf = new LinearAVF();
+
+		avf.setFloorAreaValueFunction(this.floorAreaValueFunction);
+		avf.setNbBedroomsValueFunction(this.nbBedroomsValueFunction);
+		avf.setNbSleepingValueFunction(this.nbSleepingValueFunction);
+		avf.setNbBathroomsValueFunction(this.nbBathroomsValueFunction);
+		avf.setTerraceValueFunction(this.terraceValueFunction);
+		avf.setFloorAreaTerraceValueFunction(this.floorAreaTerraceValueFunction);
+		avf.setWifiValueFunction(this.wifiValueFunction);
+		avf.setPricePerNightValueFunction(this.pricePerNightValueFunction);
+		avf.setNbMinNightValueFunction(this.nbMinNightValueFunction);
+		avf.setTeleValueFunction(this.teleValueFunction);
+
+		avf.floorAreaWeightRange = this.floorAreaWeightRange;
+		avf.nbBedroomsWeightRange = this.nbBedroomsWeightRange;
+		avf.nbSleepingWeightRange = this.nbSleepingWeightRange;
+		avf.nbBathroomsWeightRange = this.nbBathroomsWeightRange;
+		avf.terraceWeightRange = this.terraceWeightRange;
+		avf.floorAreaTerraceWeightRange = this.floorAreaTerraceWeightRange;
+		avf.wifiSubjectiveValueWeight = this.wifiSubjectiveValueWeight;
+		avf.pricePerNightSubjectiveValueWeight = this.pricePerNightSubjectiveValueWeight;
+		avf.nbMinNightSubjectiveValueWeight = this.nbMinNightSubjectiveValueWeight;
+		avf.teleSubjectiveValueWeight = this.teleSubjectiveValueWeight;
+
+		return avf;
+
+	}
+
+
+	/* Operation used for Weight */
+
+	/**
+	 * Gives the subjective value weight of a criterion awt
+	 *
+	 * @param crit the criterion we want to know the value
+	 * @return the subjective value weight
+	 */
+	public Range<Double> getWeightRange(Criterion crit) {
+		switch (crit) {
+			case TELE:
+				return teleSubjectiveValueWeight;
+			case TERRACE:
+				return terraceWeightRange;
+			case WIFI:
+				return wifiSubjectiveValueWeight;
+			case FLOOR_AREA:
+				return floorAreaWeightRange;
+			case FLOOR_AREA_TERRACE:
+				return floorAreaTerraceWeightRange;
+			case NB_BATHROOMS:
+				return nbBathroomsWeightRange;
+			case NB_BEDROOMS:
+				return nbBedroomsWeightRange;
+			case NB_SLEEPING:
+				return nbSleepingWeightRange;
+			case NB_MIN_NIGHT:
+				return nbMinNightSubjectiveValueWeight;
+			case PRICE_PER_NIGHT:
+				return pricePerNightSubjectiveValueWeight;
+			default:
+				throw new IllegalArgumentException();
+		}
+	}
+
+	public LinearAVF adaptWeightRange(Criterion crit, boolean upper) {
+		Range<Double> w = this.getWeightRange(crit);
+		Double min = upper ? getMiddleOfRange(w) : w.lowerEndpoint();
+		Double max = upper ? w.upperEndpoint() : getMiddleOfRange(w);
+		return this.setWeightRange(crit, Range.closed(min, max));
+	}
+
+	/**
+	 * Sets the subjective value weight of a criterion
+	 *
+	 * @param awt   the criterion we want to set
+	 * @param value the value we want to assign at this criterion
+	 * @return an object LinearAVF with the modified criterion
+	 */
+	LinearAVF setWeightRange(Criterion awt, Range<Double> value) {
+		LinearAVF avf = cloneLinearAVF();
+		switch (awt) {
+			case TELE:
+				avf.setTeleSubjectiveValueWeight(value);
+				break;
+			case TERRACE:
+				avf.setTerraceSubjectiveValueWeight(value);
+				break;
+			case WIFI:
+				avf.setWifiSubjectiveValueWeight(value);
+				break;
+			case FLOOR_AREA:
+				avf.setFloorAreaSubjectiveValueWeight(value);
+				break;
+			case FLOOR_AREA_TERRACE:
+				avf.setFloorAreaTerraceSubjectiveValueWeight(value);
+				break;
+			case NB_BATHROOMS:
+				avf.setNbBathroomsSubjectiveValueWeight(value);
+				break;
+			case NB_BEDROOMS:
+				avf.setNbBedroomsSubjectiveValueWeight(value);
+				break;
+			case NB_SLEEPING:
+				avf.setNbSleepingSubjectiveValueWeight(value);
+				break;
+			case NB_MIN_NIGHT:
+				avf.setNbMinNightSubjectiveValueWeight(value);
+				break;
+			case PRICE_PER_NIGHT:
+				avf.setPricePerNightSubjectiveValueWeight(value);
+				break;
+			default:
+				throw new IllegalArgumentException();
+		}
+
+		return avf;
+
+	}
+
+	/**
+	 * Get the middle of the given Range
+	 *
+	 * @param range the Range
+	 * @return the middle of the given Range of Doubles
+	 */
+	static double getMiddleOfRange(Range<Double> range) {
+		checkNotNull(range);
+		return range.lowerEndpoint() + ((range.upperEndpoint() - range.lowerEndpoint()) / 2);
+	}
+
+	/**
+	 * Get the middle of the range of the given criterion
+	 *
+	 * @param crit the Criterion
+	 * @return the middle of the Range of the given Criterion
+	 */
+	double getMiddleOfRange(Criterion crit) {
+		return getMiddleOfRange(this.getWeightRange(crit));
 	}
 
 	/**
 	 * check if the given range is valid for this context
-	 * 
+	 *
 	 * @param value the Range to check
 	 * @throws IllegalArgumentException when doubles contained are < 0 or if there
 	 *                                  are only 1 value in the range
 	 */
 	private void checkRangeValidity(Range<Double> value) {
 		checkArgument(value.hasLowerBound() && value.hasUpperBound(), "The given range is not valid");
-		checkArgument(value.lowerEndpoint() > 0 && value.upperEndpoint() > 0,
+		checkArgument(value.lowerEndpoint() >= 0 && value.upperEndpoint() > 0,
 				"The weight of the tele cannot be negative");
 	}
 
@@ -247,163 +475,8 @@ public class LinearAVF {
 		LOGGER.debug("The tele weight has been set to {}", value);
 	}
 
-	/**
-	 * This function return the subjective value of the Apartment in parameter. For
-	 * each valuable attribute of this apartment, the subjective value is computed
-	 * by the associated PartialValueFunction object. The weighted sum of these
-	 * subjective values is returned by the function. When the PartialValueFunction
-	 * object of an attribute hasn't been set, the subjective value given to the
-	 * corresponding attribute will be 0.
-	 *
-	 * @param apart an object of type Apartment
-	 * @return a double : the weighted sum of the apartment attributes subjective
-	 *         values
-	 */
-	public double getSubjectiveValue(Apartment apart) {
-		double floorAreaSubjectiveValue;
-		double nbBedroomsSubjectiveValue;
-		double nbSleepingSubjectiveValue;
-		double nbBathroomsSubjectiveValue;
-		double terraceSubjectiveValue;
-		double floorAreaTerraceSubjectiveValue;
-		double wifiSubjectiveValue;
-		double pricePerNightSubjectiveValue;
-		double nbMinNightSubjectiveValue;
-		double teleSubjectiveValue;
 
-		checkArgument(
-				floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) >= 0
-						&& floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1,
-				"The subjective value of floor area should be between 0 and 1");
-		floorAreaSubjectiveValue = floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea());
-		LOGGER.debug("The floor area subjective value has been set to {}", floorAreaSubjectiveValue);
-
-		checkArgument(
-				nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) >= 0
-						&& nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1,
-				"The subjective value of the number of bedrooms should be between 0 and 1");
-		nbBedroomsSubjectiveValue = nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms());
-		LOGGER.debug("The number of bedrooms subjective value has been set to {}", nbBedroomsSubjectiveValue);
-
-		checkArgument(
-				nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) >= 0
-						&& nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1,
-				"The subjective value of the number of sleeping should be between 0 and 1");
-		nbSleepingSubjectiveValue = nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping());
-		LOGGER.debug("The number of sleeping subjective value has been set to {}", nbSleepingSubjectiveValue);
-
-		checkArgument(
-				nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) >= 0
-						&& nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1,
-				"The subjective value of the number of bathrooms should be between 0 and 1");
-		nbBathroomsSubjectiveValue = nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms());
-		LOGGER.debug("The number of bathrooms subjective value has been set to {}", nbBathroomsSubjectiveValue);
-
-		checkArgument(
-				terraceValueFunction.getSubjectiveValue(apart.getTerrace()) >= 0
-						&& terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1,
-				"The subjective value of the terrace should be between 0 and 1");
-		terraceSubjectiveValue = terraceValueFunction.getSubjectiveValue(apart.getTerrace());
-		LOGGER.debug("The terrace subjective value has been set to {}", terraceSubjectiveValue);
-
-		checkArgument(
-				floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) >= 0
-						&& floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1,
-				"The subjective value of the floor area of the terrace should be between 0 and 1");
-		floorAreaTerraceSubjectiveValue = floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace());
-		LOGGER.debug("The floor area of the terrace subjective value has been set to {}",
-				floorAreaTerraceSubjectiveValue);
-
-		checkArgument(
-				wifiValueFunction.getSubjectiveValue(apart.getWifi()) >= 0
-						&& wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1,
-				"The subjective value of the wifi should be between 0 and 1");
-		wifiSubjectiveValue = wifiValueFunction.getSubjectiveValue(apart.getWifi());
-		LOGGER.debug("The wifi subjective value has been set to {}", wifiSubjectiveValue);
-
-		checkArgument(
-				pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) >= 0
-						&& pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1,
-				"The subjective value of the price per night should be between 0 and 1");
-		pricePerNightSubjectiveValue = pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight());
-		LOGGER.debug("the price per night subjective value has been set to {}", pricePerNightSubjectiveValue);
-
-		checkArgument(
-				nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) >= 0
-						&& nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1,
-				"The subjective value of the minimum number of nights should be between 0 and 1");
-		nbMinNightSubjectiveValue = nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight());
-		LOGGER.debug("The minimum number of nights subjective value has been set to {}", nbMinNightSubjectiveValue);
-
-		checkArgument(
-				teleValueFunction.getSubjectiveValue(apart.getTele()) >= 0
-						&& teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1,
-				"The subjective value of the presence of a tele should be between 0 and 1");
-		teleSubjectiveValue = teleValueFunction.getSubjectiveValue(apart.getTele());
-		LOGGER.debug("the tele subjective value has been set to {}", teleSubjectiveValue);
-
-		return ((floorAreaSubjectiveValue * getMiddleOfRange(floorAreaWeightRange)
-				+ nbBedroomsSubjectiveValue * getMiddleOfRange(nbBedroomsWeightRange)
-				+ nbSleepingSubjectiveValue * getMiddleOfRange(nbSleepingWeightRange)
-				+ nbBathroomsSubjectiveValue * getMiddleOfRange(nbBathroomsWeightRange)
-				+ terraceSubjectiveValue * getMiddleOfRange(terraceWeightRange)
-				+ floorAreaTerraceSubjectiveValue * getMiddleOfRange(floorAreaTerraceWeightRange)
-				+ wifiSubjectiveValue * getMiddleOfRange(wifiSubjectiveValueWeight)
-				+ pricePerNightSubjectiveValue * getMiddleOfRange(pricePerNightSubjectiveValueWeight)
-				+ nbMinNightSubjectiveValue * getMiddleOfRange(nbMinNightSubjectiveValueWeight)
-				+ teleSubjectiveValue * getMiddleOfRange(teleSubjectiveValueWeight))
-				/ (getMiddleOfRange(floorAreaWeightRange) + getMiddleOfRange(nbBedroomsWeightRange)
-						+ getMiddleOfRange(nbSleepingWeightRange) + getMiddleOfRange(nbBathroomsWeightRange)
-						+ getMiddleOfRange(terraceWeightRange) + getMiddleOfRange(floorAreaTerraceWeightRange)
-						+ getMiddleOfRange(wifiSubjectiveValueWeight)
-						+ getMiddleOfRange(pricePerNightSubjectiveValueWeight)
-						+ getMiddleOfRange(nbMinNightSubjectiveValueWeight)
-						+ getMiddleOfRange(teleSubjectiveValueWeight)));
-
-	}
-
-	/**
-	 * Get the middle of the given Range
-	 * 
-	 * @param range the Range
-	 * @return the middle of the given Range of Doubles
-	 */
-	private static double getMiddleOfRange(Range<Double> range) {
-		return range.lowerEndpoint() + ((range.upperEndpoint() - range.lowerEndpoint()) / 2);
-	}
-
-	/**
-	 * Gives the subjective value weight of a criterion awt
-	 *
-	 * @param crit the criterion we want to know the value
-	 * @return the subjective value weight
-	 */
-	public Range<Double> getWeightRange(Criterion crit) {
-		switch (crit) {
-		case TELE:
-			return teleSubjectiveValueWeight;
-		case TERRACE:
-			return terraceWeightRange;
-		case WIFI:
-			return wifiSubjectiveValueWeight;
-		case FLOOR_AREA:
-			return floorAreaWeightRange;
-		case FLOOR_AREA_TERRACE:
-			return floorAreaTerraceWeightRange;
-		case NB_BATHROOMS:
-			return nbBathroomsWeightRange;
-		case NB_BEDROOMS:
-			return nbBedroomsWeightRange;
-		case NB_SLEEPING:
-			return nbSleepingWeightRange;
-		case NB_MIN_NIGHT:
-			return nbMinNightSubjectiveValueWeight;
-		case PRICE_PER_NIGHT:
-			return pricePerNightSubjectiveValueWeight;
-		default:
-			throw new IllegalArgumentException();
-		}
-	}
+	/* Operation used for ValueFunction */
 
 	/**
 	 * We make the assumption (by casting), that the runtime associated to criteria
@@ -426,130 +499,70 @@ public class LinearAVF {
 		LinearAVF avf = this.cloneLinearAVF();
 
 		switch (criterion) {
-		case FLOOR_AREA:
-			avf.setFloorAreaValueFunction(adaptLinearValueFunction(avf.floorAreaValueFunction, newBound, lower));
-			break;
-		case FLOOR_AREA_TERRACE:
-			avf.setFloorAreaTerraceValueFunction(
-					adaptLinearValueFunction(avf.floorAreaTerraceValueFunction, newBound, lower));
-			break;
-		case PRICE_PER_NIGHT:
-			avf.setPricePerNightValueFunction(
-					adaptReversedLinearValueFunction(avf.pricePerNightValueFunction, newBound, lower));
-			break;
-		case NB_SLEEPING:
-			avf.setNbSleepingValueFunction(adaptLinearValueFunction(avf.nbSleepingValueFunction, newBound, lower));
-			break;
-		case NB_BATHROOMS:
-			avf.setNbBathroomsValueFunction(adaptLinearValueFunction(avf.nbBathroomsValueFunction, newBound, lower));
-			break;
-		case NB_BEDROOMS:
-			avf.setNbBedroomsValueFunction(adaptLinearValueFunction(avf.nbBedroomsValueFunction, newBound, lower));
-			break;
-		case NB_MIN_NIGHT:
-			avf.setNbMinNightValueFunction(
-					adaptReversedLinearValueFunction(avf.nbMinNightValueFunction, newBound, lower));
-			break;
-		// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
-		// don't have bounds)
-		// $CASES-OMITTED$
-		default:
-			throw new IllegalArgumentException("Cannot adapt the valueFunction linked to the given Criterion");
+			case FLOOR_AREA:
+				avf.setFloorAreaValueFunction(adaptLinearValueFunction(avf.floorAreaValueFunction, newBound, lower));
+				break;
+			case FLOOR_AREA_TERRACE:
+				avf.setFloorAreaTerraceValueFunction(
+						adaptLinearValueFunction(avf.floorAreaTerraceValueFunction, newBound, lower));
+				break;
+			case PRICE_PER_NIGHT:
+				avf.setPricePerNightValueFunction(
+						adaptReversedLinearValueFunction(avf.pricePerNightValueFunction, newBound, lower));
+				break;
+			case NB_SLEEPING:
+				avf.setNbSleepingValueFunction(adaptLinearValueFunction(avf.nbSleepingValueFunction, newBound, lower));
+				break;
+			case NB_BATHROOMS:
+				avf.setNbBathroomsValueFunction(adaptLinearValueFunction(avf.nbBathroomsValueFunction, newBound, lower));
+				break;
+			case NB_BEDROOMS:
+				avf.setNbBedroomsValueFunction(adaptLinearValueFunction(avf.nbBedroomsValueFunction, newBound, lower));
+				break;
+			case NB_MIN_NIGHT:
+				avf.setNbMinNightValueFunction(
+						adaptReversedLinearValueFunction(avf.nbMinNightValueFunction, newBound, lower));
+				break;
+			// Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
+			// don't have bounds)
+			// $CASES-OMITTED$
+			default:
+				throw new IllegalArgumentException("Cannot adapt the valueFunction linked to the given Criterion");
 		}
 
 		return avf;
 	}
 
-	public LinearAVF adaptWeightRange(Criterion crit, boolean upper) {
-		LinearAVF avf = cloneLinearAVF();
-		Range<Double> w = avf.getWeightRange(crit);
-		Double min = upper ? getMiddleOfRange(w) : w.lowerEndpoint();
-		Double max = upper ? w.upperEndpoint() : getMiddleOfRange(w);
-		avf.setWeightRange(crit, Range.closed(min, max));
-		return avf;
-	}
-
 	/**
-	 * Sets the subjective value weight of a criterion
+	 * Adapt linear value function by defining a new lower or upper bound
 	 *
-	 * @param awt   the criterion we want to set
-	 * @param value the value we want to assign at this criterion
-	 * @return an object LinearAVF with the modified criterion
+	 * @param oldLVF   the old linear value function used
+	 * @param newBound the new lower or upper bound
+	 * @param lower    used to say whether we change the lower or upper bound
+	 * @return an new object LinearValueFunction set with new bound
 	 */
-	public LinearAVF setWeightRange(Criterion awt, Range<Double> value) {
-
-		LinearAVF avf = cloneLinearAVF();
-		switch (awt) {
-		case TELE:
-			avf.setTeleSubjectiveValueWeight(value);
-			break;
-		case TERRACE:
-			avf.setTerraceSubjectiveValueWeight(value);
-			break;
-		case WIFI:
-			avf.setWifiSubjectiveValueWeight(value);
-			break;
-		case FLOOR_AREA:
-			avf.setFloorAreaSubjectiveValueWeight(value);
-			break;
-		case FLOOR_AREA_TERRACE:
-			avf.setFloorAreaTerraceSubjectiveValueWeight(value);
-			break;
-		case NB_BATHROOMS:
-			avf.setNbBathroomsSubjectiveValueWeight(value);
-			break;
-		case NB_BEDROOMS:
-			avf.setNbBedroomsSubjectiveValueWeight(value);
-			break;
-		case NB_SLEEPING:
-			avf.setNbSleepingSubjectiveValueWeight(value);
-			break;
-		case NB_MIN_NIGHT:
-			avf.setNbMinNightSubjectiveValueWeight(value);
-			break;
-		case PRICE_PER_NIGHT:
-			avf.setPricePerNightSubjectiveValueWeight(value);
-			break;
-		default:
-			throw new IllegalArgumentException();
+	private static LinearValueFunction adaptLinearValueFunction(LinearValueFunction oldLVF, double newBound, boolean lower) {
+		if (lower) {
+			return new LinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
 		}
 
-		return avf;
+		return new LinearValueFunction(oldLVF.getInterval().lowerEndpoint(), newBound);
 
 	}
 
 	/**
-	 * This function allows the user to clone an object LinearAVF
+	 * Adapt linear value function by defining a new lower or upper bound
 	 *
-	 * @return an object LinearAVF
+	 * @param oldLVF   the old linear value function used
+	 * @param newBound the new lower or upper bound
+	 * @param lower    used to say whether we change the lower or upper bound
+	 * @return an new object LinearValueFunction set with new bound
 	 */
-	private LinearAVF cloneLinearAVF() {
-
-		LinearAVF avf = new LinearAVF();
-
-		avf.setFloorAreaValueFunction(this.floorAreaValueFunction);
-		avf.setNbBedroomsValueFunction(this.nbBedroomsValueFunction);
-		avf.setNbSleepingValueFunction(this.nbSleepingValueFunction);
-		avf.setNbBathroomsValueFunction(this.nbBathroomsValueFunction);
-		avf.setTerraceValueFunction(this.terraceValueFunction);
-		avf.setFloorAreaTerraceValueFunction(this.floorAreaTerraceValueFunction);
-		avf.setWifiValueFunction(this.wifiValueFunction);
-		avf.setPricePerNightValueFunction(this.pricePerNightValueFunction);
-		avf.setNbMinNightValueFunction(this.nbMinNightValueFunction);
-		avf.setTeleValueFunction(this.teleValueFunction);
-
-		avf.floorAreaWeightRange = this.floorAreaWeightRange;
-		avf.nbBedroomsWeightRange = this.nbBedroomsWeightRange;
-		avf.nbSleepingWeightRange = this.nbSleepingWeightRange;
-		avf.nbBathroomsWeightRange = this.nbBathroomsWeightRange;
-		avf.terraceWeightRange = this.terraceWeightRange;
-		avf.floorAreaTerraceWeightRange = this.floorAreaTerraceWeightRange;
-		avf.wifiSubjectiveValueWeight = this.wifiSubjectiveValueWeight;
-		avf.pricePerNightSubjectiveValueWeight = this.pricePerNightSubjectiveValueWeight;
-		avf.nbMinNightSubjectiveValueWeight = this.nbMinNightSubjectiveValueWeight;
-		avf.teleSubjectiveValueWeight = this.teleSubjectiveValueWeight;
-
-		return avf;
+	private static ReversedLinearValueFunction adaptReversedLinearValueFunction(ReversedLinearValueFunction oldLVF, double newBound, boolean lower) {
+		if (lower) {
+			return new ReversedLinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
+		}
+		return new ReversedLinearValueFunction(oldLVF.getInterval().lowerEndpoint(), newBound);
 
 	}
 
@@ -766,6 +779,7 @@ public class LinearAVF {
 		LOGGER.info("The wifi preferencies has been set");
 	}
 
+
 	public static class Builder {
 		private LinearAVF toBuild = null;
 
@@ -784,16 +798,10 @@ public class LinearAVF {
 			checkNotNull(toBuild.getWifiValueFunction());
 			checkNotNull(toBuild.getTeleValueFunction());
 			checkNotNull(toBuild.getTerraceValueFunction());
-			checkNotNull(toBuild.floorAreaWeightRange);
-			checkNotNull(toBuild.nbBedroomsWeightRange);
-			checkNotNull(toBuild.nbSleepingWeightRange);
-			checkNotNull(toBuild.nbBathroomsWeightRange);
-			checkNotNull(toBuild.terraceWeightRange);
-			checkNotNull(toBuild.floorAreaTerraceWeightRange);
-			checkNotNull(toBuild.wifiSubjectiveValueWeight);
-			checkNotNull(toBuild.pricePerNightSubjectiveValueWeight);
-			checkNotNull(toBuild.nbMinNightSubjectiveValueWeight);
-			checkNotNull(toBuild.teleSubjectiveValueWeight);
+
+			for (Criterion c : Criterion.getCriterias()){
+				checkNotNull(toBuild.getWeightRange(c));
+			}
 
 			LinearAVF temp = toBuild;
 			toBuild = new LinearAVF();
@@ -801,7 +809,7 @@ public class LinearAVF {
 		}
 
 		public Builder setWeightRange(Criterion crit, Range<Double> value) {
-			toBuild.setWeightRange(crit, value);
+			this.toBuild = toBuild.setWeightRange(crit, value);
 			return this;
 		}
 
@@ -814,7 +822,7 @@ public class LinearAVF {
 		 * @return the current instance of Builder
 		 */
 		public Builder setWeightRange(Criterion crit, double lowerValue, double upperValue) {
-			toBuild.setWeightRange(crit, Range.range(lowerValue, BoundType.CLOSED, upperValue, BoundType.CLOSED));
+			this.toBuild = toBuild.setWeightRange(crit, Range.range(lowerValue, BoundType.CLOSED, upperValue, BoundType.CLOSED));
 			return this;
 		}
 
