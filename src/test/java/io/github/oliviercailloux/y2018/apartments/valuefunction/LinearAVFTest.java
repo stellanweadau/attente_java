@@ -15,9 +15,10 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 
 class LinearAVFTest {
+	
 	private static final Logger LOGGER = LoggerFactory.getLogger(LinearAVFTest.class);
+	
 	LinearAVF linearAVF;
-
 	Apartment a;
 
 	/**
@@ -64,7 +65,6 @@ class LinearAVFTest {
 			builderLinearAVF.setWeightRange(c, Range.closed(5d, 15d));
 		}
 		linearAVF = builderLinearAVF.build();
-
 	}
 
 	/**
@@ -85,7 +85,6 @@ class LinearAVFTest {
 	 */
 	@Test
 	void linearAVFTest() {
-
 		assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.0001);
 		linearAVF.setWeightRange(Criterion.TELE, Range.closed(2d, 8d));
 		assertEquals(10d, linearAVF.getMiddleOfRange(Criterion.TELE));
@@ -163,7 +162,6 @@ class LinearAVFTest {
 	 */
 	@Test
 	void getRandomApartmentValueFunctionTest() {
-
 		ApartmentValueFunction apart = ApartmentValueFunction.getRandomApartmentValueFunction();
 		assertEquals(1d, apart.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea()));
 		LinearValueFunction lvf = (LinearValueFunction) apart.getFloorAreaTerraceValueFunction();
@@ -180,5 +178,4 @@ class LinearAVFTest {
 				+ apart.getSubjectiveValueWeight(Criterion.TERRACE) + apart.getSubjectiveValueWeight(Criterion.WIFI);
 		assertEquals(1d, sum, 0.00001);
 	}
-
 }
