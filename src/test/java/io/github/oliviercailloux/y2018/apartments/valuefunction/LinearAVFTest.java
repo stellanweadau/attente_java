@@ -89,7 +89,6 @@ class LinearAVFTest {
 		linearAVF.setWeightRange(Criterion.TELE, Range.closed(2d, 8d));
 		assertEquals(10d, linearAVF.getMiddleOfRange(Criterion.TELE));
 		assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.00001);
-
 	}
 
 	/**
