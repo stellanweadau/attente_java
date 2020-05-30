@@ -245,7 +245,6 @@ In this project, we have integrated:
 
 * CLI, I recommand this command : `java -jar /putYourPath/toFile.jar --replace $(git ls-files *.java)`. +
 It works on Windows (PowerShell), Linux and MacOS
-* a link:.github/workflows/maven.yml[Github Actions] : allows to format the code at each push (if ever a person has forgotten) or for all other types of events
 * a maven plugin (in the link:pom.xml[pom] file): link:https://github.com/coveo/fmt-maven-plugin[coveo/fmt-maven-plugin] : allows you to format the code for each build with `mvn` of the application (locally). For example, by performing a `mvn test`, you will have the return of your tests as well as your formatted code. see on link:https://search.maven.org/artifact/com.coveo/fmt-maven-plugin[maven central]
 +
 TIP: You can use `mvn fmt:format`, `mvn compile`, `mvn build`, `mvn test` or any command who calls `build` (`mvn fmt:check` allows to check if files are to be formatted)
@@ -260,7 +259,7 @@ Moreover, you can also use link:https://git-scm.com/book/en/v2/Customizing-Git-G
 [CAUTION]
 ====
 * Executing a `main` method or unit tests from an IDE does not involve calling maven. On some IDEs, it's possible to specify that you want to use maven (instead of the internal IDE system), but this is not the case by default.
-* Control that the version on Github actions, on fmt-maven-plugin and on the other integrations still the same!
+* Check that the version of fmt-maven-plugin and other integrations remains the same!
 ====
 
 == Changelog 🆕
