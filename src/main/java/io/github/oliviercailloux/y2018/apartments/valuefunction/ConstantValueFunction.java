@@ -5,23 +5,21 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
  *
  * @param <T> the type of the parameter
  */
-
 public class ConstantValueFunction<T> implements PartialValueFunction<T> {
 
-	double subjectiveValue;
+  double subjectiveValue;
 
-	public ConstantValueFunction(double d) {
-		this.subjectiveValue = d;
-	}
+  public ConstantValueFunction(double d) {
+    this.subjectiveValue = d;
+  }
 
-	@Override
-	public Double apply(T objectiveData) {
-		return getSubjectiveValue(objectiveData);
-	}
+  @Override
+  public Double apply(T objectiveData) {
+    return getSubjectiveValue(objectiveData);
+  }
 
-	@Override
-	public double getSubjectiveValue(T objectiveData) throws IllegalArgumentException {
-		return this.subjectiveValue;
-	}
-
+  @Override
+  public double getSubjectiveValue(T objectiveData) throws IllegalArgumentException {
+    return this.subjectiveValue;
+  }
 }

@@ -1,85 +1,79 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-import java.util.Comparator;
-import java.util.Map;
-import java.util.stream.Stream;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.common.base.Verify;
 import com.google.common.collect.Comparators;
 import com.google.common.collect.ImmutableSortedMap;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * A class that allows the user to determinate the subjective value of a double
- * given in argument, according to two or more known values.
- * 
+ * A class that allows the user to determinate the subjective value of a double given in argument,
+ * according to two or more known values.
  */
 public class PieceWiseLinearValueFunction implements PartialValueFunction<Double> {
 
-	/**
-	 * The map is composed of all known utilities. For each entry, the Key
-	 * represents the value taken by the attribute and the Value is the grade
-	 * associated.
-	 */
-	private ImmutableSortedMap<Double, Double> utilities;
-	private static final Logger LOGGER = LoggerFactory.getLogger(PieceWiseLinearValueFunction.class);
+  /**
+   * The map is composed of all known utilities. For each entry, the Key represents the value taken
+   * by the attribute and the Value is the grade associated.
+   */
+  private ImmutableSortedMap<Double, Double> utilities;
 
-	/**
-	 * Builder of the PieceWiseLinearValueFunction
-	 * 
-	 * @param utilParameters is the dictionary of all values along with the grades
-	 *                       associated to them, In this map, if the collection of
-	 *                       keys was sorted, then the collection of grades would
-	 *                       also have to be sorted. There has to be a value
-	 *                       associated to the grade 0, and another value associated
-	 *                       to the grade 1.
-	 */
-	public PieceWiseLinearValueFunction(Map<Double, Double> utilParameters) {
+  private static final Logger LOGGER = LoggerFactory.getLogger(PieceWiseLinearValueFunction.class);
 
-		if (!utilParameters.containsValue(0d) || !utilParameters.containsValue(1d)) {
-			throw new IllegalArgumentException("The value associated to the grade 0 or 1 is missing.");
-		}
+  /**
+   * Builder of the PieceWiseLinearValueFunction
+   *
+   * @param utilParameters is the dictionary of all values along with the grades associated to them,
+   *     In this map, if the collection of keys was sorted, then the collection of grades would also
+   *     have to be sorted. There has to be a value associated to the grade 0, and another value
+   *     associated to the grade 1.
+   */
+  public PieceWiseLinearValueFunction(Map<Double, Double> utilParameters) {
 
-		Stream<Double> error = utilParameters.values().stream().filter(v -> v > 1d || v < 0d);
-		if (error.count() > 0) {
-			throw new IllegalArgumentException("The grades have to be between 0 and 1.");
-		}
+    if (!utilParameters.containsValue(0d) || !utilParameters.containsValue(1d)) {
+      throw new IllegalArgumentException("The value associated to the grade 0 or 1 is missing.");
+    }
 
-		utilities = ImmutableSortedMap.copyOf(utilParameters);
-		if (!Comparators.isInOrder(this.utilities.values(), Comparator.naturalOrder())) {
-			throw new IllegalArgumentException(
-					"A grade cannot be greater than another if its value associated is lower.");
-		}
-		LOGGER.info("The map of data has been successfully instantiated.");
-	}
+    Stream<Double> error = utilParameters.values().stream().filter(v -> v > 1d || v < 0d);
+    if (error.count() > 0) {
+      throw new IllegalArgumentException("The grades have to be between 0 and 1.");
+    }
 
-	@Override
-	public double getSubjectiveValue(Double objectiveData) {
+    utilities = ImmutableSortedMap.copyOf(utilParameters);
+    if (!Comparators.isInOrder(this.utilities.values(), Comparator.naturalOrder())) {
+      throw new IllegalArgumentException(
+          "A grade cannot be greater than another if its value associated is lower.");
+    }
+    LOGGER.info("The map of data has been successfully instantiated.");
+  }
 
-		Verify.verify(utilities.size() >= 2);
+  @Override
+  public double getSubjectiveValue(Double objectiveData) {
 
-		if (objectiveData <= utilities.firstKey()) {
-			return 0d;
-		}
-		if (objectiveData >= utilities.lastKey()) {
-			return 1d;
-		}
+    Verify.verify(utilities.size() >= 2);
 
-		Map.Entry<Double, Double> minEntry = utilities.floorEntry(objectiveData);
-		Map.Entry<Double, Double> maxEntry = utilities.ceilingEntry(objectiveData);
-		Double minKey = minEntry.getKey();
-		Double maxKey = maxEntry.getKey();
-		Double minValue = minEntry.getValue();
-		Double maxValue = maxEntry.getValue();
+    if (objectiveData <= utilities.firstKey()) {
+      return 0d;
+    }
+    if (objectiveData >= utilities.lastKey()) {
+      return 1d;
+    }
 
-		return ((objectiveData - minKey) * (maxValue - minValue) / (maxKey - minKey)) + minValue;
-	}
+    Map.Entry<Double, Double> minEntry = utilities.floorEntry(objectiveData);
+    Map.Entry<Double, Double> maxEntry = utilities.ceilingEntry(objectiveData);
+    Double minKey = minEntry.getKey();
+    Double maxKey = maxEntry.getKey();
+    Double minValue = minEntry.getValue();
+    Double maxValue = maxEntry.getValue();
 
-	@Override
-	public Double apply(Double t) {
-		return getSubjectiveValue(t);
-	}
+    return ((objectiveData - minKey) * (maxValue - minValue) / (maxKey - minKey)) + minValue;
+  }
 
+  @Override
+  public Double apply(Double t) {
+    return getSubjectiveValue(t);
+  }
 }
