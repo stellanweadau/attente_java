@@ -50,21 +50,13 @@ public class ReadApartmentsXMLFormat {
           "Capital information left for the creation of an Apartment Object");
     }
 
-    Builder apartBuilder = new Builder();
-    if (prop.containsKey("floorArea")) {
-      apartBuilder.setFloorArea(Double.parseDouble(prop.getProperty("floorArea")));
-    }
+    Builder apartBuilder = setObligatoryValues(new Builder());
+
     if (prop.containsKey("floorAreaTerrace")) {
       apartBuilder.setFloorAreaTerrace(Double.parseDouble(prop.getProperty("floorAreaTerrace")));
     }
     if (prop.containsKey("pricePerNight")) {
       apartBuilder.setPricePerNight(Double.parseDouble(prop.getProperty("pricePerNight")));
-    }
-    if (prop.containsKey("address")) {
-      apartBuilder.setAddress(prop.getProperty("address"));
-    }
-    if (prop.containsKey("title")) {
-      apartBuilder.setTitle(prop.getProperty("title"));
     }
     if (prop.containsKey("description")) {
       apartBuilder.setDescription(prop.getProperty("description"));
@@ -81,6 +73,30 @@ public class ReadApartmentsXMLFormat {
     if (prop.containsKey("nbMinNight")) {
       apartBuilder.setNbMinNight(Integer.parseInt(prop.getProperty("nbMinNight")));
     }
+
+    apartBuilder = setBooleanValues(apartBuilder);
+    Apartment apartment = apartBuilder.build();
+
+    LOGGER.info("Parameters inserted with success in the Apartment Object");
+    LOGGER.info("Leave readApartment method");
+
+    return apartment;
+  }
+
+  public Builder setObligatoryValues(Builder apartBuilder) {
+    if (prop.containsKey("address")) {
+      apartBuilder.setAddress(prop.getProperty("address"));
+    }
+    if (prop.containsKey("title")) {
+      apartBuilder.setTitle(prop.getProperty("title"));
+    }
+    if (prop.containsKey("floorArea")) {
+      apartBuilder.setFloorArea(Double.parseDouble(prop.getProperty("floorArea")));
+    }
+    return apartBuilder;
+  }
+
+  public Builder setBooleanValues(Builder apartBuilder) {
     if (prop.containsKey("terrace")) {
       apartBuilder.setTerrace(Boolean.valueOf(prop.getProperty("terrace")));
     }
@@ -90,11 +106,6 @@ public class ReadApartmentsXMLFormat {
     if (prop.containsKey("tele")) {
       apartBuilder.setTele(Boolean.valueOf(prop.getProperty("tele")));
     }
-    Apartment apartment = apartBuilder.build();
-
-    LOGGER.info("Parameters inserted with success in the Apartment Object");
-    LOGGER.info("Leave readApartment method");
-
-    return apartment;
+    return apartBuilder;
   }
 }
