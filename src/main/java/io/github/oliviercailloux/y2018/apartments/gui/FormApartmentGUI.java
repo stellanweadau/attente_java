@@ -2,7 +2,7 @@ package io.github.oliviercailloux.y2018.apartments.gui;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
-import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
+import io.github.oliviercailloux.y2018.apartments.apartment.xml.XMLProperties;
 import java.io.File;
 import java.io.FileOutputStream;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -93,7 +93,6 @@ public class FormApartmentGUI {
   private void validationField() {
     Listener textVerification =
         new Listener() {
-
           @Override
           public void handleEvent(Event e) {
             Text t = (Text) e.widget;
@@ -369,9 +368,7 @@ public class FormApartmentGUI {
     lb.setText("Everything is loaded !");
     lb.setBackground(okColor);
     lb.setLayoutData(a);
-
     shell.pack();
-
     return compo;
   }
 }

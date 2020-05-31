@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.apartments.toxmlproperties;
+package io.github.oliviercailloux.y2018.apartments.apartment.xml;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -6,17 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
-import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import org.junit.jupiter.api.Test;
 
 class ToXmlPropertiesTest {
 
   @Test
-  void readApartmentTest() throws IllegalArgumentException, IllegalAccessException, IOException {
+  void readApartmentTest() throws Exception {
     XMLProperties j = new XMLProperties();
 
     Apartment a =
@@ -38,7 +36,7 @@ class ToXmlPropertiesTest {
 
     File f =
         new File(
-            "src/test/resources/io/github/oliviercailloux/y2018/apartments/readapartments/xmlfileTest.xml");
+            "src/test/resources/io/github/oliviercailloux/y2018/apartments/apartment/xml/xmlfileTest.xml");
     try (FileOutputStream s = new FileOutputStream(f.getAbsolutePath())) {
       j.toXML(a, s);
     }

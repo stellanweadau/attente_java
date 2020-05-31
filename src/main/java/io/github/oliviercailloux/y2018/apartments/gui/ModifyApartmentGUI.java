@@ -1,8 +1,8 @@
 package io.github.oliviercailloux.y2018.apartments.gui;
 
 import com.google.common.io.Files;
+import io.github.oliviercailloux.y2018.apartments.apartment.xml.ReadApartmentsXMLFormat;
 import io.github.oliviercailloux.y2018.apartments.iconDisplay.DisplayIcon;
-import io.github.oliviercailloux.y2018.apartments.readapartments.ReadApartmentsXMLFormat;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
