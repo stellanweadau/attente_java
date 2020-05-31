@@ -33,8 +33,7 @@ public class ReadApartmentsXMLFormat {
    *     values for the other parameters.
    * @throws IOException, NumberFormatException, InvalidPropertiesFormatException
    */
-  public Apartment readApartment(InputStream input)
-      throws IOException, NumberFormatException, InvalidPropertiesFormatException {
+  public Apartment readApartment(InputStream input) throws IOException {
 
     LOGGER.info("Enter readApartment method");
 
@@ -42,9 +41,9 @@ public class ReadApartmentsXMLFormat {
 
     LOGGER.info("XML Files loaded with success");
 
-    if (prop.containsKey("floorArea") == false
-        || prop.containsKey("address") == false
-        || prop.containsKey("title") == false) {
+    if (!prop.containsKey("floorArea")
+        || !prop.containsKey("address")
+        || !prop.containsKey("title")) {
       LOGGER.error(
           "Impossible to create an apartment if a floor Area, a title or an address is missing.");
       throw new InvalidPropertiesFormatException(
@@ -52,40 +51,46 @@ public class ReadApartmentsXMLFormat {
     }
 
     Builder apartBuilder = new Builder();
-    Apartment apartment =
-        apartBuilder
-            .setFloorArea(Double.parseDouble(prop.getProperty("floorArea")))
-            .setAddress(prop.getProperty("address"))
-            .setNbBedrooms(
-                prop.containsKey("nbBedrooms")
-                    ? Integer.parseInt(prop.getProperty("nbBedrooms"))
-                    : 0)
-            .setNbSleeping(
-                prop.containsKey("nbSleeping")
-                    ? Integer.parseInt(prop.getProperty("nbSleeping"))
-                    : 0)
-            .setNbBathrooms(
-                prop.containsKey("nbBathrooms")
-                    ? Integer.parseInt(prop.getProperty("nbBathrooms"))
-                    : 0)
-            .setTerrace(prop.containsKey("terrace") && Boolean.valueOf(prop.getProperty("terrace")))
-            .setFloorAreaTerrace(
-                prop.containsKey("floorAreaTerrace")
-                    ? Double.parseDouble(prop.getProperty("floorAreaTerrace"))
-                    : 0)
-            .setDescription(prop.containsKey("description") ? prop.getProperty("description") : "")
-            .setTitle(prop.getProperty("title"))
-            .setWifi(prop.containsKey("wifi") ? Boolean.valueOf(prop.getProperty("wifi")) : false)
-            .setPricePerNight(
-                prop.containsKey("pricePerNight")
-                    ? Double.parseDouble(prop.getProperty("pricePerNight"))
-                    : 0)
-            .setNbMinNight(
-                prop.containsKey("nbMinNight")
-                    ? Integer.parseInt(prop.getProperty("nbMinNight"))
-                    : 0)
-            .setTele(prop.containsKey("tele") && Boolean.valueOf(prop.getProperty("tele")))
-            .build();
+    if (prop.containsKey("floorArea")) {
+      apartBuilder.setFloorArea(Double.parseDouble(prop.getProperty("floorArea")));
+    }
+    if (prop.containsKey("floorAreaTerrace")) {
+      apartBuilder.setFloorAreaTerrace(Double.parseDouble(prop.getProperty("floorAreaTerrace")));
+    }
+    if (prop.containsKey("pricePerNight")) {
+      apartBuilder.setPricePerNight(Double.parseDouble(prop.getProperty("pricePerNight")));
+    }
+    if (prop.containsKey("address")) {
+      apartBuilder.setAddress(prop.getProperty("address"));
+    }
+    if (prop.containsKey("title")) {
+      apartBuilder.setTitle(prop.getProperty("title"));
+    }
+    if (prop.containsKey("description")) {
+      apartBuilder.setDescription(prop.getProperty("description"));
+    }
+    if (prop.containsKey("nbBedrooms")) {
+      apartBuilder.setNbBedrooms(Integer.parseInt(prop.getProperty("nbBedrooms")));
+    }
+    if (prop.containsKey("nbSleeping")) {
+      apartBuilder.setNbSleeping(Integer.parseInt(prop.getProperty("nbSleeping")));
+    }
+    if (prop.containsKey("nbBathrooms")) {
+      apartBuilder.setNbBathrooms(Integer.parseInt(prop.getProperty("nbBathrooms")));
+    }
+    if (prop.containsKey("nbMinNight")) {
+      apartBuilder.setNbMinNight(Integer.parseInt(prop.getProperty("nbMinNight")));
+    }
+    if (prop.containsKey("terrace")) {
+      apartBuilder.setTerrace(Boolean.valueOf(prop.getProperty("terrace")));
+    }
+    if (prop.containsKey("wifi")) {
+      apartBuilder.setWifi(Boolean.valueOf(prop.getProperty("wifi")));
+    }
+    if (prop.containsKey("tele")) {
+      apartBuilder.setTele(Boolean.valueOf(prop.getProperty("tele")));
+    }
+    Apartment apartment = apartBuilder.build();
 
     LOGGER.info("Parameters inserted with success in the Apartment Object");
     LOGGER.info("Leave readApartment method");
