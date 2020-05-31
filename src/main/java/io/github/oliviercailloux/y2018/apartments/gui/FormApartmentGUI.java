@@ -21,8 +21,7 @@ import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
-import io.github.oliviercailloux.y2018.apartments.apartment.ApartmentFactory;
-import io.github.oliviercailloux.y2018.apartments.toxmlproperties.XMLProperties;
+import io.github.oliviercailloux.y2018.apartments.apartment.xml.XMLProperties;
 
 /**
  * This class enables the user to create a form for creating/modifying an

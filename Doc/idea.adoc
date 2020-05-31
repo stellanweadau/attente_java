@@ -260,11 +260,5 @@ In order to improve and make this window match with our ambitions, we might add 
 
 This class belongs to the link:packages.adoc#gui[`apartments.gui`] package and extends the class `FormApartmentGUI`.
 
-=== ReadTwoApartmentsTest
-
-This class will evolve because the apartments are stored in XML format, and one of the needs is to migrate from XML format to JSON format.
-
-The main method should be removed as it is a class of tests. We also need to add JUnit
-
 [%hardbreaks]
 link:#toc[⬆ back to top]

@@ -113,26 +113,6 @@ Once the mandatory fields filled, the apartment is automatically saved and updat
 As we have the ambition to transform our software into a long-term apartment rental platform, some fields such as the minimum number of nights might be deleted in the next iterations.
 ====
 
-=== ReadTwoApartmentsTest
-
-.See description
-[%collapsible]
-====
-This class belongs to the link:packages.adoc#readapartments[`readapartments`] package +
-We are looking here to create instances of `Apartments` from resources (example: file)
-
-`ReadTwoApartmentsTest` is a test code for reading apartments from an XML file.
-
-There are two ways to retrieve information stored in an XML file:
-
-1. Using a `FileInputStream`: Opens a connection to a real file (the name of the file is passed in parameters). +
-This creates a `FileDescriptor` which represents the file in the application (pay attention to the exception `FileNotFound`)
-2. Using `getResourceAsStream`: Allows you to search for a resource by name (pay attention to the exception `NullPointerException`)
-
-In both cases, we use an `InputStream` because it is external resources. +
-In this sense, we call a method of the class `ReadApartmentsXMLFormat` which converts the XML file into an `Apartment` object.
-====
-
 == Next Steps
 
 You can see the file dealing with the organization of link:packages.adoc[packages] or a global vision of the link:diagram.adoc[application diagrams]

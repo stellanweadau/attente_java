@@ -7,4 +7,6 @@
 	<entry key="floorArea">15</entry>
 	<entry key="nbBathrooms">16</entry>
 	<entry key="wifi">false</entry>
+	<entry key="terrace">false</entry>
+	<entry key="tele">false</entry>
 </properties>
