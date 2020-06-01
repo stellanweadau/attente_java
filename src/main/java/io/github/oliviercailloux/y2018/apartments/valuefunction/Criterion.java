@@ -26,6 +26,6 @@ public enum Criterion {
         Criterion.NB_BATHROOMS,
         Criterion.WIFI,
         Criterion.NB_SLEEPING,
-        NB_MIN_NIGHT);
+        Criterion.NB_MIN_NIGHT);
   }
 }
