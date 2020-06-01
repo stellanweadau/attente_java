@@ -95,7 +95,7 @@ public abstract class JsonConvert {
 
   /**
    * A method that implement a {@link JsonbAdapter} to avoid the use of ApartmentBuilder Code
-   * inspired from the example in the course of Jean-Michel Doudoux available <a
+   * inspired from the example in the course of Jean-Michel Doudoux available <a>
    * href="https://www.jmdoudoux.fr/java/dej/chap-json-b.htm">here</a>
    */
   public static JsonbAdapter<Apartment, JsonObject> getAdapter() {
