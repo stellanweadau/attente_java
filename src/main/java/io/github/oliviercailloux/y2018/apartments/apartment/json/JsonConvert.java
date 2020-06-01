@@ -86,7 +86,10 @@ public abstract class JsonConvert {
       LOGGER.info("Create Json builder");
       apartments =
           jsonb.fromJson(
-              jsonString, new ArrayList<Apartment>() {}.getClass().getGenericSuperclass());
+              jsonString,
+              new ArrayList<Apartment>() {
+                /**/
+              }.getClass().getGenericSuperclass());
     } catch (Exception e) {
       throw new IllegalArgumentException(e);
     }
