@@ -23,7 +23,7 @@ The code is hereby published under the link:LICENSE[MIT License], with their per
 
 toc::[]
 
-== Java iteration
+== Java iteration 🏃
 
 === Iteration 1
 
@@ -227,15 +227,50 @@ mvn test
 
 - Project documentation and UML iterations can be found in the directory link:Doc/README.adoc[*Doc/*]
 
-== Changelog 
+== Code style 📄
+
+In order to meet the greatest needs and not to restrict development to a common IDE, we have integrated link:https://github.com/google/google-java-format/blob/master/README.md[google-java-format]
+
+In this sense, link:https://github.com/google/google-java-format/blob/master/README.md[google-java-format] is a program that reformats Java source code to comply with link:https://google.github.io/styleguide/javaguide.html[Google Java Style Guide].
+
+The advantage of using this program is that it can be integrated as:
+
+* link:https://github.com/google/google-java-format/blob/master/README.md#from-the-command-line[CLI command]
+* IDE plugin (link:https://github.com/google/google-java-format/#intellij-android-studio-and-other-jetbrains-ides[Jetrains IDEs], link:https://github.com/google/google-java-format/#eclipse[Eclipse], etc.)
+* link:https://github.com/google/google-java-format/blob/master/README.md#third-party-integrations[Third Party]
+* link:https://github.com/google/google-java-format/blob/master/README.md#third-party-integrations[Github Actions]
+* link:https://github.com/google/google-java-format/blob/master/README.md#as-a-library[Library (dependencies)]
+
+In this project, we have integrated:
+
+* CLI, I recommand this command : `java -jar /putYourPath/toFile.jar --replace $(git ls-files *.java)`. +
+It works on Windows (PowerShell), Linux and MacOS
+* a maven plugin (in the link:pom.xml[pom] file): link:https://github.com/coveo/fmt-maven-plugin[coveo/fmt-maven-plugin] : allows you to format the code for each build with `mvn` of the application (locally). For example, by performing a `mvn test`, you will have the return of your tests as well as your formatted code. see on link:https://search.maven.org/artifact/com.coveo/fmt-maven-plugin[maven central]
++
+TIP: You can use `mvn fmt:format`, `mvn compile`, `mvn build`, `mvn test` or any command who calls `build` (`mvn fmt:check` allows to check if files are to be formatted)
+
+We also assume that formatting is done with the optimization of imports
+
+I personally don't recommend the use of plugins for IDE because it requires user configuration, those which can cause problems (import optimizations and others). However, the use of plugins for IDE remains completely personal to each developer 👨‍💻.
+
+Moreover, you can also use link:https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks[Git Hooks] by configuring the use of pre-commit so that your code is directly formatted with each commit.
+
+.Be careful of :
+[CAUTION]
+====
+* Executing a `main` method or unit tests from an IDE does not involve calling maven. On some IDEs, it's possible to specify that you want to use maven (instead of the internal IDE system), but this is not the case by default.
+* Check that the version of fmt-maven-plugin and other integrations remains the same!
+====
+
+== Changelog 🆕
 
 - Link of link:Doc/changelog.adoc[changelog]
 
-== Repository available on Github 
+== Repository available on Github :octocat:
 
 - Link of this link:https://github.com/av1m/Apartments[repository]
 
-== Contributors
+== Contributors 👨‍💻
 
 - link:https://github.com/oliviercailloux[oliviercailloux]
 
@@ -275,7 +310,7 @@ mvn test
 - link:https://github.com/DAYAUX[DAYAUX]
 ====
 
-== License
+== License 📝
 
 * link:LICENSE[MIT]
 
