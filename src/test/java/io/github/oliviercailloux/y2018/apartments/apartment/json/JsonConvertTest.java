@@ -2,6 +2,7 @@ package io.github.oliviercailloux.y2018.apartments.apartment.json;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
@@ -12,7 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import javax.json.JsonObject;
 import javax.json.bind.JsonbConfig;
+import javax.json.bind.adapter.JsonbAdapter;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -97,9 +100,38 @@ public class JsonConvertTest {
 
   /** Test if the adapter method works */
   @Test
-  void getAdapterTest() {
+  void getAdapterTest() throws Exception {
     JsonbConfig defaultConfig = new JsonbConfig();
-    JsonbConfig config = new JsonbConfig().withAdapters(JsonConvert.getAdapter());
+    JsonbAdapter<Apartment, JsonObject> adapter = JsonConvert.getAdapter();
+    JsonbConfig config = new JsonbConfig().withAdapters(adapter);
     assertNotEquals(defaultConfig, config);
+    // Verification of recovered fields
+    Builder apartBuilder = new Apartment.Builder();
+    Apartment a =
+        apartBuilder
+            .setAddress("Place du Maréchal de Lattre de Tassigny, 75016 Paris")
+            .setFloorArea(1234567.89)
+            .setTitle("Paris-Dauphine - PSL")
+            .setTerrace(false)
+            .setWifi(true)
+            .setTele(true)
+            .build();
+    JsonObject json = adapter.adaptToJson(a);
+    // We are only testing a string field, a boolean field, a double field
+    assertEquals(
+        json.get("title").toString(),
+        "\"" + a.getTitle() + "\"",
+        "Title need to be Paris-Dauphine - PSL");
+    assertEquals(
+        json.get("wifi").toString(),
+        String.valueOf(a.getWifi()),
+        "The wifi has been set to 'true'");
+    assertEquals(
+        json.get("floorArea").toString(),
+        String.valueOf(a.getFloorArea()),
+        "Floor area need to be 99999.99");
+    // Test adaptFromJson
+    Apartment b = adapter.adaptFromJson(json);
+    assertTrue(a.equals(b), "Error comes from the adapter (function adaptFromJson)");
   }
 }
