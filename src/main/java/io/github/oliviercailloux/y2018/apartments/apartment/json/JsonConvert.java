@@ -78,11 +78,10 @@ public abstract class JsonConvert {
   @SuppressWarnings("serial")
   public static List<Apartment> jsonToApartments(Path jsonPath) throws IOException {
     JsonbConfig config = new JsonbConfig().withAdapters(JsonConvert.getAdapter());
-    Jsonb jsonb = JsonbBuilder.create(config);
     String jsonString = Files.readString(jsonPath);
     List<Apartment> apartments = new ArrayList<>();
     LOGGER.info("Create ArrayList of Apartment");
-    try (jsonb) {
+    try (Jsonb jsonb = JsonbBuilder.create(config)) {
       LOGGER.info("Create Json builder");
       apartments =
           jsonb.fromJson(
@@ -104,7 +103,7 @@ public abstract class JsonConvert {
   public static JsonbAdapter<Apartment, JsonObject> getAdapter() {
     return new JsonbAdapter<>() {
       @Override
-      public JsonObject adaptToJson(Apartment apart) throws Exception {
+      public JsonObject adaptToJson(Apartment apart) {
         return Json.createObjectBuilder()
             .add("title", apart.getTitle())
             .add("address", apart.getAddress())
@@ -123,7 +122,7 @@ public abstract class JsonConvert {
       }
 
       @Override
-      public Apartment adaptFromJson(JsonObject obj) throws Exception {
+      public Apartment adaptFromJson(JsonObject obj) {
         Builder apartToBuild = new Builder();
         return apartToBuild
             .setTitle(obj.getString("title"))
