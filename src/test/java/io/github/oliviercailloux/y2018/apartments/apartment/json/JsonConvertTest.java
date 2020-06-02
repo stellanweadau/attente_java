@@ -2,18 +2,21 @@ package io.github.oliviercailloux.y2018.apartments.apartment.json;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import javax.json.Json;
 import javax.json.JsonObject;
+import javax.json.JsonReader;
 import javax.json.bind.JsonbConfig;
 import javax.json.bind.adapter.JsonbAdapter;
 import org.junit.jupiter.api.Test;
@@ -24,6 +27,12 @@ import org.junit.jupiter.api.Test;
  * @author Etienne CARTIER & Morgane FIOT
  */
 public class JsonConvertTest {
+  Path jsonTestPath;
+
+  public JsonConvertTest() throws Exception {
+    URI ressource = JsonConvertTest.class.getResource("jsonApartments.json").toURI();
+    this.jsonTestPath = Path.of(ressource);
+  }
 
   /**
    * Tests apartmentsToJson function. Verifies if the JSON file created by the function corresponds
@@ -89,10 +98,7 @@ public class JsonConvertTest {
             .setTele(false)
             .build());
 
-    URI ressource = JsonConvertTest.class.getResource("jsonApartments.json").toURI();
-    Path jsonPath = Path.of(ressource);
-
-    List<Apartment> apartmentsTest = JsonConvert.jsonToApartments(jsonPath);
+    List<Apartment> apartmentsTest = JsonConvert.jsonToApartments(this.jsonTestPath);
 
     assertEquals(apartmentsRef.get(0).hashCode(), apartmentsTest.get(0).hashCode());
     assertEquals(apartmentsRef.get(1).hashCode(), apartmentsTest.get(1).hashCode());
@@ -105,33 +111,23 @@ public class JsonConvertTest {
     JsonbAdapter<Apartment, JsonObject> adapter = JsonConvert.getAdapter();
     JsonbConfig config = new JsonbConfig().withAdapters(adapter);
     assertNotEquals(defaultConfig, config);
-    // Verification of recovered fields
-    Builder apartBuilder = new Apartment.Builder();
+    assertThrows(
+        UnsupportedOperationException.class,
+        () -> adapter.adaptToJson(null),
+        "The function should not be implemented");
+    String jsonString = Files.readString(this.jsonTestPath);
+    JsonReader jsonApartments = Json.createReader(new StringReader(jsonString));
+    JsonObject jsonApartment = jsonApartments.readArray().getJsonObject(0);
+    Apartment b = adapter.adaptFromJson(jsonApartment);
     Apartment a =
-        apartBuilder
-            .setAddress("Place du Maréchal de Lattre de Tassigny, 75016 Paris")
-            .setFloorArea(1234567.89)
-            .setTitle("Paris-Dauphine - PSL")
+        new Apartment.Builder()
+            .setAddress("118 rue du père noel 77480")
+            .setFloorArea(1182118.48)
+            .setTitle("Grand Igloo")
             .setTerrace(false)
-            .setWifi(true)
-            .setTele(true)
+            .setWifi(false)
+            .setTele(false)
             .build();
-    JsonObject json = adapter.adaptToJson(a);
-    // We are only testing a string field, a boolean field, a double field
-    assertEquals(
-        json.get("title").toString(),
-        "\"" + a.getTitle() + "\"",
-        "Title need to be Paris-Dauphine - PSL");
-    assertEquals(
-        json.get("wifi").toString(),
-        String.valueOf(a.getWifi()),
-        "The wifi has been set to 'true'");
-    assertEquals(
-        json.get("floorArea").toString(),
-        String.valueOf(a.getFloorArea()),
-        "Floor area need to be 99999.99");
-    // Test adaptFromJson
-    Apartment b = adapter.adaptFromJson(json);
-    assertTrue(a.equals(b), "Error comes from the adapter (function adaptFromJson)");
+    assertEquals(a, b, "Apartment a and Apartment b must be equals");
   }
 }
