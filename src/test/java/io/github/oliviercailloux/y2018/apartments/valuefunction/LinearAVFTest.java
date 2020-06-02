@@ -70,7 +70,7 @@ class LinearAVFTest {
 
     LinearValueFunction floorAreaTerraceV = new LinearValueFunction(30d, 50d);
     builderLinearAVF.setFloorAreaTerraceValueFunction(floorAreaTerraceV);
-    for (Criterion c : Criterion.getCriterias()) {
+    for (Criterion c : Criterion.values()) {
       builderLinearAVF.setWeightRange(c, Range.closed(5d, 15d));
     }
     linearAVF = builderLinearAVF.build();

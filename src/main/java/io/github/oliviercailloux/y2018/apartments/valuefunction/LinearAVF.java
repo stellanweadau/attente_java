@@ -805,7 +805,7 @@ public class LinearAVF {
       checkNotNull(toBuild.getTeleValueFunction());
       checkNotNull(toBuild.getTerraceValueFunction());
 
-      for (Criterion c : Criterion.getCriterias()) {
+      for (Criterion c : Criterion.values()) {
         checkNotNull(toBuild.getWeightRange(c));
       }
 
