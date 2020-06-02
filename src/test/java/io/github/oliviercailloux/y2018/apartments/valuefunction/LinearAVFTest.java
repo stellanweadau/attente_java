@@ -2,15 +2,12 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class LinearAVFTest {
 
@@ -130,5 +127,4 @@ class LinearAVFTest {
     lvf = linearAVF.getNbBedroomsValueFunction();
     assertEquals(8, lvf.getInterval().upperEndpoint());
   }
-
 }

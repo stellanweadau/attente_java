@@ -35,8 +35,8 @@ public class LinearAVF {
   private ReversedLinearValueFunction nbMinNightValueFunction;
   private BooleanValueFunction teleValueFunction;
   /**
-   * The 10 next arguments gives the Range of apartment characteristic subjective value weight in the
-   * calculation of the Apartment total subjective value
+   * The 10 next arguments gives the Range of apartment characteristic subjective value weight in
+   * the calculation of the Apartment total subjective value
    */
   private Range<Double> floorAreaWeightRange;
 
@@ -101,87 +101,96 @@ public class LinearAVF {
     double nbMinNightSubjectiveValue;
     double teleSubjectiveValue;
 
-    checkArgument(
-        floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) >= 0
-            && floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) <= 1,
-        "The subjective value of floor area should be between 0 and 1");
+    if (floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) < 0
+        && floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) > 1) {
+      throw new IllegalStateException(
+          "The subjective value of floor area should be between 0 and 1");
+    }
     floorAreaSubjectiveValue = floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea());
     LOGGER.debug("The floor area subjective value has been set to {}", floorAreaSubjectiveValue);
 
-    checkArgument(
-        nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) >= 0
-            && nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) <= 1,
-        "The subjective value of the number of bedrooms should be between 0 and 1");
+    if (nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) < 0
+        && nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()) > 1) {
+      throw new IllegalStateException(
+          "The subjective value of the number of bedrooms should be between 0 and 1");
+    }
     nbBedroomsSubjectiveValue =
         nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms());
     LOGGER.debug(
         "The number of bedrooms subjective value has been set to {}", nbBedroomsSubjectiveValue);
 
-    checkArgument(
-        nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) >= 0
-            && nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) <= 1,
-        "The subjective value of the number of sleeping should be between 0 and 1");
+    if (nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) < 0
+        && nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()) > 1) {
+      throw new IllegalStateException(
+          "The subjective value of the number of sleeping should be between 0 and 1");
+    }
     nbSleepingSubjectiveValue =
         nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping());
     LOGGER.debug(
         "The number of sleeping subjective value has been set to {}", nbSleepingSubjectiveValue);
 
-    checkArgument(
-        nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) >= 0
-            && nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) <= 1,
-        "The subjective value of the number of bathrooms should be between 0 and 1");
+    if (nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) < 0
+        && nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()) > 1) {
+      throw new IllegalStateException(
+          "The subjective value of the number of bathrooms should be between 0 and 1");
+    }
     nbBathroomsSubjectiveValue =
         nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms());
     LOGGER.debug(
         "The number of bathrooms subjective value has been set to {}", nbBathroomsSubjectiveValue);
 
-    checkArgument(
-        terraceValueFunction.getSubjectiveValue(apart.getTerrace()) >= 0
-            && terraceValueFunction.getSubjectiveValue(apart.getTerrace()) <= 1,
-        "The subjective value of the terrace should be between 0 and 1");
+    if (terraceValueFunction.getSubjectiveValue(apart.getTerrace()) < 0
+        && terraceValueFunction.getSubjectiveValue(apart.getTerrace()) > 1) {
+      throw new IllegalStateException(
+          "The subjective value of the terrace should be between 0 and 1");
+    }
     terraceSubjectiveValue = terraceValueFunction.getSubjectiveValue(apart.getTerrace());
     LOGGER.debug("The terrace subjective value has been set to {}", terraceSubjectiveValue);
 
-    checkArgument(
-        floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) >= 0
-            && floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) <= 1,
-        "The subjective value of the floor area of the terrace should be between 0 and 1");
+    if (floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) < 0
+        && floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()) > 1) {
+      throw new IllegalStateException(
+          "The subjective value of the floor area of the terrace should be between 0 and 1");
+    }
     floorAreaTerraceSubjectiveValue =
         floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace());
     LOGGER.debug(
         "The floor area of the terrace subjective value has been set to {}",
         floorAreaTerraceSubjectiveValue);
 
-    checkArgument(
-        wifiValueFunction.getSubjectiveValue(apart.getWifi()) >= 0
-            && wifiValueFunction.getSubjectiveValue(apart.getWifi()) <= 1,
-        "The subjective value of the wifi should be between 0 and 1");
+    if (wifiValueFunction.getSubjectiveValue(apart.getWifi()) < 0
+        && wifiValueFunction.getSubjectiveValue(apart.getWifi()) > 1) {
+      throw new IllegalStateException("The subjective value of the wifi should be between 0 and 1");
+    }
     wifiSubjectiveValue = wifiValueFunction.getSubjectiveValue(apart.getWifi());
     LOGGER.debug("The wifi subjective value has been set to {}", wifiSubjectiveValue);
 
-    checkArgument(
-        pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) >= 0
-            && pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) <= 1,
-        "The subjective value of the price per night should be between 0 and 1");
+    if (pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) < 0
+        && pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()) > 1) {
+      throw new IllegalStateException(
+          "The subjective value of the price per night should be between 0 and 1");
+    }
     pricePerNightSubjectiveValue =
         pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight());
     LOGGER.debug(
         "the price per night subjective value has been set to {}", pricePerNightSubjectiveValue);
 
-    checkArgument(
-        nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) >= 0
-            && nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) <= 1,
-        "The subjective value of the minimum number of nights should be between 0 and 1");
+    if (nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) < 0
+        && nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()) > 1) {
+      throw new IllegalStateException(
+          "The subjective value of the minimum number of nights should be between 0 and 1");
+    }
     nbMinNightSubjectiveValue =
         nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight());
     LOGGER.debug(
         "The minimum number of nights subjective value has been set to {}",
         nbMinNightSubjectiveValue);
 
-    checkArgument(
-        teleValueFunction.getSubjectiveValue(apart.getTele()) >= 0
-            && teleValueFunction.getSubjectiveValue(apart.getTele()) <= 1,
-        "The subjective value of the presence of a tele should be between 0 and 1");
+    if (teleValueFunction.getSubjectiveValue(apart.getTele()) < 0
+        && teleValueFunction.getSubjectiveValue(apart.getTele()) > 1) {
+      throw new IllegalStateException(
+          "The subjective value of the presence of a tele should be between 0 and 1");
+    }
     teleSubjectiveValue = teleValueFunction.getSubjectiveValue(apart.getTele());
     LOGGER.debug("the tele subjective value has been set to {}", teleSubjectiveValue);
 
