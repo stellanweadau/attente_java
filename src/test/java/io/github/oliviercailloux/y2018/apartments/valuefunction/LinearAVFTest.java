@@ -94,41 +94,6 @@ class LinearAVFTest {
     assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.00001);
   }
 
-  /** Test if the weight setter throw a Illegal Argument Exception when needed */
-  @Test
-  void exceptionIllegalArgWeightSetter() {
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.FLOOR_AREA, Range.closed(-2d, 0d)));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.NB_BEDROOMS, Range.closed(-2d, 0d)));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.NB_SLEEPING, Range.closed(-2d, 0d)));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.NB_BATHROOMS, Range.closed(-2d, 0d)));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.TERRACE, Range.closed(-2d, 0d)));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.FLOOR_AREA_TERRACE, Range.closed(-2d, 0d)));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.WIFI, Range.closed(-2d, 0d)));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.PRICE_PER_NIGHT, Range.closed(-2d, 0d)));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.NB_MIN_NIGHT, Range.closed(-2d, 0d)));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.TELE, Range.closed(-2d, 0d)));
-  }
-
   /** Function to test the adaptation to the subjective value weight of a criteria */
   @Test
   void adaptWeightTest() {
