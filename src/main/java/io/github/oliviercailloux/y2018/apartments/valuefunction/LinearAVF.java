@@ -35,7 +35,7 @@ public class LinearAVF {
   private ReversedLinearValueFunction nbMinNightValueFunction;
   private BooleanValueFunction teleValueFunction;
   /**
-   * The 10 next arguments gives the weight of an apartment characteristic subjective value in the
+   * The 10 next arguments gives the Range of apartment characteristic subjective value weight in the
    * calculation of the Apartment total subjective value
    */
   private Range<Double> floorAreaWeightRange;
