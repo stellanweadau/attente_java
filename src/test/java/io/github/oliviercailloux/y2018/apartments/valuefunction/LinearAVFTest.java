@@ -173,25 +173,4 @@ class LinearAVFTest {
     assertEquals(8, lvf.getInterval().upperEndpoint());
   }
 
-  /** Function to test if a random apartment generated respects some criteria */
-  @Test
-  void getRandomApartmentValueFunctionTest() {
-    ApartmentValueFunction apart = ApartmentValueFunction.getRandomApartmentValueFunction();
-    assertEquals(1d, apart.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea()));
-    LinearValueFunction lvf = (LinearValueFunction) apart.getFloorAreaTerraceValueFunction();
-    assertTrue(lvf.getInterval().upperEndpoint() <= 101d);
-    assertTrue(apart.getSubjectiveValueWeight(Criterion.TELE) <= 1d);
-    double sum =
-        apart.getSubjectiveValueWeight(Criterion.TELE)
-            + apart.getSubjectiveValueWeight(Criterion.FLOOR_AREA)
-            + apart.getSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE)
-            + apart.getSubjectiveValueWeight(Criterion.NB_BATHROOMS)
-            + apart.getSubjectiveValueWeight(Criterion.NB_BEDROOMS)
-            + apart.getSubjectiveValueWeight(Criterion.NB_SLEEPING)
-            + apart.getSubjectiveValueWeight(Criterion.NB_MIN_NIGHT)
-            + apart.getSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT)
-            + apart.getSubjectiveValueWeight(Criterion.TERRACE)
-            + apart.getSubjectiveValueWeight(Criterion.WIFI);
-    assertEquals(1d, sum, 0.00001);
-  }
 }
