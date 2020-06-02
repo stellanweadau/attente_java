@@ -1,8 +1,9 @@
 package io.github.oliviercailloux.y2018.apartments.apartment.json;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import com.google.common.base.VerifyException;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
-import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -10,7 +11,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
@@ -95,50 +95,27 @@ public abstract class JsonConvert {
     return apartments;
   }
 
-  /**
-   * A method that implement a {@link JsonbAdapter} to avoid the use of ApartmentBuilder Code
-   * inspired from the example in the course of Jean-Michel Doudoux available <a>
-   * href="https://www.jmdoudoux.fr/java/dej/chap-json-b.htm">here</a>
-   */
+  /** A method that implement a {@link JsonbAdapter} to avoid the use of ApartmentBuilder Code */
   public static JsonbAdapter<Apartment, JsonObject> getAdapter() {
     return new JsonbAdapter<>() {
       @Override
-      public JsonObject adaptToJson(Apartment apart) {
-        return Json.createObjectBuilder()
-            .add("title", apart.getTitle())
-            .add("address", apart.getAddress())
-            .add("description", apart.getDescription())
-            .add("floorArea", apart.getFloorArea())
-            .add("floorAreaTerrace", apart.getFloorAreaTerrace())
-            .add("nbBedrooms", apart.getNbBedrooms())
-            .add("nbBathrooms", apart.getNbBathrooms())
-            .add("nbMinNight", apart.getNbMinNight())
-            .add("nbSleeping", apart.getNbSleeping())
-            .add("pricePerNight", apart.getPricePerNight())
-            .add("wifi", apart.getWifi())
-            .add("tele", apart.getTele())
-            .add("terrace", apart.getTerrace())
-            .build();
+      public JsonObject adaptToJson(Apartment obj) {
+        throw new UnsupportedOperationException("This function should not be called");
       }
 
+      /**
+       * Convert an Apartment json into an Apartment object
+       *
+       * @param obj Apartment json content
+       * @return the Apartment built using <code>obj</code>
+       * @throws Exception raises an Exception thrown by JsonBuilder
+       */
       @Override
-      public Apartment adaptFromJson(JsonObject obj) {
-        Builder apartToBuild = new Builder();
-        return apartToBuild
-            .setTitle(obj.getString("title"))
-            .setAddress(obj.getString("address"))
-            .setDescription(obj.getString("description"))
-            .setFloorArea(obj.getJsonNumber("floorArea").doubleValue())
-            .setFloorAreaTerrace(obj.getJsonNumber("floorAreaTerrace").doubleValue())
-            .setNbBedrooms(obj.getInt("nbBedrooms"))
-            .setNbBathrooms(obj.getInt("nbBathrooms"))
-            .setNbMinNight(obj.getInt("nbMinNight"))
-            .setNbSleeping(obj.getInt("nbSleeping"))
-            .setPricePerNight(obj.getJsonNumber("pricePerNight").doubleValue())
-            .setTele(obj.getBoolean("tele"))
-            .setWifi(obj.getBoolean("wifi"))
-            .setTerrace(obj.getBoolean("terrace"))
-            .build();
+      public Apartment adaptFromJson(JsonObject obj) throws Exception {
+        checkNotNull(obj, "The JsonObject 'obj' can't be null");
+        try (Jsonb jsonb = JsonbBuilder.create()) {
+          return jsonb.fromJson(obj.toString(), Apartment.Builder.class).build();
+        }
       }
     };
   }
