@@ -41,7 +41,7 @@ public class JsonConvertTest {
    * @throws IOException if the file doesn't exist
    */
   @Test
-  void apartmentsToJsonTest() throws IOException {
+  void apartmentsToJsonTest() throws Exception {
     Builder apartBuilder = new Apartment.Builder();
     ArrayList<Apartment> apartments = new ArrayList<>();
     apartments.add(
@@ -76,7 +76,7 @@ public class JsonConvertTest {
    * @throws IOException if the file can't be convert into JSON format.
    */
   @Test
-  void jsonToApartmentsTest() throws IOException, URISyntaxException {
+  void jsonToApartmentsTest() throws Exception {
     Builder apartBuilder = new Apartment.Builder();
     List<Apartment> apartmentsRef = new ArrayList<>();
     apartmentsRef.add(
@@ -116,18 +116,19 @@ public class JsonConvertTest {
         () -> adapter.adaptToJson(null),
         "The function should not be implemented");
     String jsonString = Files.readString(this.jsonTestPath);
-    JsonReader jsonApartments = Json.createReader(new StringReader(jsonString));
-    JsonObject jsonApartment = jsonApartments.readArray().getJsonObject(0);
-    Apartment b = adapter.adaptFromJson(jsonApartment);
-    Apartment a =
-        new Apartment.Builder()
-            .setAddress("118 rue du père noel 77480")
-            .setFloorArea(1182118.48)
-            .setTitle("Grand Igloo")
-            .setTerrace(false)
-            .setWifi(false)
-            .setTele(false)
-            .build();
-    assertEquals(a, b, "Apartment a and Apartment b must be equals");
+    try (JsonReader jsonApartments = Json.createReader(new StringReader(jsonString))) {
+      JsonObject jsonApartment = jsonApartments.readArray().getJsonObject(0);
+      Apartment b = adapter.adaptFromJson(jsonApartment);
+      Apartment a =
+          new Apartment.Builder()
+              .setAddress("118 rue du père noel 77480")
+              .setFloorArea(1182118.48)
+              .setTitle("Grand Igloo")
+              .setTerrace(false)
+              .setWifi(false)
+              .setTele(false)
+              .build();
+      assertEquals(a, b, "Apartment a and Apartment b must be equals");
+    }
   }
 }
