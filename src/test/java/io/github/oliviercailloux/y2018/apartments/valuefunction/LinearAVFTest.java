@@ -14,8 +14,6 @@ import org.slf4j.LoggerFactory;
 
 class LinearAVFTest {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(LinearAVFTest.class);
-
   LinearAVF linearAVF;
   Apartment a;
 
@@ -143,11 +141,6 @@ class LinearAVFTest {
     assertEquals(Range.closed(5d, 15d), linearAVF.getWeightRange(Criterion.TELE));
     assertEquals(Range.closed(5d, 15d), linearAVF.getWeightRange(Criterion.TERRACE));
     linearAVF = linearAVF.adaptWeightRange(Criterion.TERRACE, true);
-    LOGGER.info(
-        "************"
-            + linearAVF.getWeightRange(Criterion.TERRACE).lowerEndpoint()
-            + "/"
-            + linearAVF.getWeightRange(Criterion.TERRACE).upperEndpoint());
     assertEquals(Range.closed(10d, 15d), linearAVF.getWeightRange(Criterion.TERRACE));
     assertEquals(12.5d, linearAVF.getMiddleOfRange(Criterion.TERRACE));
     linearAVF = linearAVF.adaptWeightRange(Criterion.TELE, false);
