@@ -40,7 +40,7 @@ public abstract class JsonConvert {
    */
   private static Path startApartments() {
     try {
-      URI ressource = JsonConvert.class.getResource("defaultJsonToApartments.json").toURI();
+      URI ressource = JsonConvert.class.getResource("defaultApartments.json").toURI();
       return Path.of(ressource);
     } catch (URISyntaxException e) {
       throw new VerifyException(e);
