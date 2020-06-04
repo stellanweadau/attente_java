@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ReadApartmentsXMLFormat {
 
-  private Properties prop;
+  private final Properties prop;
 
   private static final Logger LOGGER = LoggerFactory.getLogger(ReadApartmentsXMLFormat.class);
 
@@ -34,7 +34,6 @@ public class ReadApartmentsXMLFormat {
    * @throws IOException, NumberFormatException, InvalidPropertiesFormatException
    */
   public Apartment readApartment(InputStream input) throws IOException {
-
     LOGGER.info("Enter readApartment method");
 
     prop.loadFromXML(input);
