@@ -98,13 +98,13 @@ public class ReadApartmentsXMLFormat {
 
   public Builder setBooleanValues(Builder apartBuilder) {
     if (prop.containsKey("terrace")) {
-      apartBuilder.setTerrace(Boolean.valueOf(prop.getProperty("terrace")));
+      apartBuilder.setTerrace(Boolean.parseBoolean(prop.getProperty("terrace")));
     }
     if (prop.containsKey("wifi")) {
-      apartBuilder.setWifi(Boolean.valueOf(prop.getProperty("wifi")));
+      apartBuilder.setWifi(Boolean.parseBoolean(prop.getProperty("wifi")));
     }
     if (prop.containsKey("tele")) {
-      apartBuilder.setTele(Boolean.valueOf(prop.getProperty("tele")));
+      apartBuilder.setTele(Boolean.parseBoolean(prop.getProperty("tele")));
     }
     return apartBuilder;
   }
