@@ -3,7 +3,6 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import org.junit.jupiter.api.BeforeEach;
@@ -66,7 +65,7 @@ class LinearAVFTest {
     LinearValueFunction floorAreaTerraceV = new LinearValueFunction(30d, 50d);
     builderLinearAVF.setFloorAreaTerraceValueFunction(floorAreaTerraceV);
     for (Criterion c : Criterion.values()) {
-      builderLinearAVF.setWeightRange(c, Range.closed(5d, 15d));
+      builderLinearAVF.setWeight(c, 10d);
     }
     linearAVF = builderLinearAVF.build();
   }
@@ -86,28 +85,15 @@ class LinearAVFTest {
   @Test
   void linearAVFTest() {
     assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.0001);
-    linearAVF.setWeightRange(Criterion.TELE, Range.closed(2d, 8d));
-    assertEquals(10d, linearAVF.getMiddleOfRange(Criterion.TELE));
+    linearAVF.setWeight(Criterion.TELE, 5d);
+    assertEquals(10d, linearAVF.getWeightRange(Criterion.TELE));
     assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.00001);
   }
 
   /** Function to test the adaptation to the subjective value weight of a criteria */
   @Test
   void adaptWeightTest() {
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.TELE, Range.closed(-2d, 0d)));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> linearAVF.setWeightRange(Criterion.TERRACE, Range.closed(0d, 0d)));
-    assertEquals(Range.closed(5d, 15d), linearAVF.getWeightRange(Criterion.TELE));
-    assertEquals(Range.closed(5d, 15d), linearAVF.getWeightRange(Criterion.TERRACE));
-    linearAVF = linearAVF.adaptWeightRange(Criterion.TERRACE, true);
-    assertEquals(Range.closed(10d, 15d), linearAVF.getWeightRange(Criterion.TERRACE));
-    assertEquals(12.5d, linearAVF.getMiddleOfRange(Criterion.TERRACE));
-    linearAVF = linearAVF.adaptWeightRange(Criterion.TELE, false);
-    assertEquals(Range.closed(5d, 10d), linearAVF.getWeightRange(Criterion.TELE));
-    assertEquals(7.5d, linearAVF.getMiddleOfRange(Criterion.TELE));
+    assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeight(Criterion.TELE, -1d));
   }
 
   /** Function to test if the bounds of an interval adapt well when needed */

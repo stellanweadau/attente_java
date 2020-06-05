@@ -3,8 +3,6 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.google.common.collect.BoundType;
-import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,17 +36,17 @@ public class LinearAVF {
    * The 10 next arguments gives the Range of apartment characteristic subjective value weight in
    * the calculation of the Apartment total subjective value
    */
-  private Range<Double> floorAreaWeightRange;
+  private double floorAreaWeightRange;
 
-  private Range<Double> nbBedroomsWeightRange;
-  private Range<Double> nbSleepingWeightRange;
-  private Range<Double> nbBathroomsWeightRange;
-  private Range<Double> terraceWeightRange;
-  private Range<Double> floorAreaTerraceWeightRange;
-  private Range<Double> wifiSubjectiveValueWeight;
-  private Range<Double> pricePerNightSubjectiveValueWeight;
-  private Range<Double> nbMinNightSubjectiveValueWeight;
-  private Range<Double> teleSubjectiveValueWeight;
+  private double nbBedroomsWeightRange;
+  private double nbSleepingWeightRange;
+  private double nbBathroomsWeightRange;
+  private double terraceWeightRange;
+  private double floorAreaTerraceWeightRange;
+  private double wifiSubjectiveValueWeight;
+  private double pricePerNightSubjectiveValueWeight;
+  private double nbMinNightSubjectiveValueWeight;
+  private double teleSubjectiveValueWeight;
 
   /**
    * Constructor of the object. By default, all the objects are ConstantValueFunction objects. By
@@ -67,16 +65,16 @@ public class LinearAVF {
     this.nbMinNightValueFunction = null;
     this.teleValueFunction = new BooleanValueFunction(true);
 
-    this.floorAreaWeightRange = null;
-    this.nbBedroomsWeightRange = null;
-    this.nbSleepingWeightRange = null;
-    this.nbBathroomsWeightRange = null;
-    this.terraceWeightRange = null;
-    this.floorAreaTerraceWeightRange = null;
-    this.wifiSubjectiveValueWeight = null;
-    this.pricePerNightSubjectiveValueWeight = null;
-    this.nbMinNightSubjectiveValueWeight = null;
-    this.teleSubjectiveValueWeight = null;
+    this.floorAreaWeightRange = 0;
+    this.nbBedroomsWeightRange = 0;
+    this.nbSleepingWeightRange = 0;
+    this.nbBathroomsWeightRange = 0;
+    this.terraceWeightRange = 0;
+    this.floorAreaTerraceWeightRange = 0;
+    this.wifiSubjectiveValueWeight = 0;
+    this.pricePerNightSubjectiveValueWeight = 0;
+    this.nbMinNightSubjectiveValueWeight = 0;
+    this.teleSubjectiveValueWeight = 0;
   }
 
   /**
@@ -194,26 +192,26 @@ public class LinearAVF {
     teleSubjectiveValue = teleValueFunction.getSubjectiveValue(apart.getTele());
     LOGGER.debug("the tele subjective value has been set to {}", teleSubjectiveValue);
 
-    return ((floorAreaSubjectiveValue * getMiddleOfRange(floorAreaWeightRange)
-            + nbBedroomsSubjectiveValue * getMiddleOfRange(nbBedroomsWeightRange)
-            + nbSleepingSubjectiveValue * getMiddleOfRange(nbSleepingWeightRange)
-            + nbBathroomsSubjectiveValue * getMiddleOfRange(nbBathroomsWeightRange)
-            + terraceSubjectiveValue * getMiddleOfRange(terraceWeightRange)
-            + floorAreaTerraceSubjectiveValue * getMiddleOfRange(floorAreaTerraceWeightRange)
-            + wifiSubjectiveValue * getMiddleOfRange(wifiSubjectiveValueWeight)
-            + pricePerNightSubjectiveValue * getMiddleOfRange(pricePerNightSubjectiveValueWeight)
-            + nbMinNightSubjectiveValue * getMiddleOfRange(nbMinNightSubjectiveValueWeight)
-            + teleSubjectiveValue * getMiddleOfRange(teleSubjectiveValueWeight))
-        / (getMiddleOfRange(floorAreaWeightRange)
-            + getMiddleOfRange(nbBedroomsWeightRange)
-            + getMiddleOfRange(nbSleepingWeightRange)
-            + getMiddleOfRange(nbBathroomsWeightRange)
-            + getMiddleOfRange(terraceWeightRange)
-            + getMiddleOfRange(floorAreaTerraceWeightRange)
-            + getMiddleOfRange(wifiSubjectiveValueWeight)
-            + getMiddleOfRange(pricePerNightSubjectiveValueWeight)
-            + getMiddleOfRange(nbMinNightSubjectiveValueWeight)
-            + getMiddleOfRange(teleSubjectiveValueWeight)));
+    return ((floorAreaSubjectiveValue * floorAreaWeightRange
+            + nbBedroomsSubjectiveValue * nbBedroomsWeightRange
+            + nbSleepingSubjectiveValue * nbSleepingWeightRange
+            + nbBathroomsSubjectiveValue * nbBathroomsWeightRange
+            + terraceSubjectiveValue * terraceWeightRange
+            + floorAreaTerraceSubjectiveValue * floorAreaTerraceWeightRange
+            + wifiSubjectiveValue * wifiSubjectiveValueWeight
+            + pricePerNightSubjectiveValue * pricePerNightSubjectiveValueWeight
+            + nbMinNightSubjectiveValue * nbMinNightSubjectiveValueWeight
+            + teleSubjectiveValue * teleSubjectiveValueWeight)
+        / (floorAreaWeightRange
+            + nbBedroomsWeightRange
+            + nbSleepingWeightRange
+            + nbBathroomsWeightRange
+            + terraceWeightRange
+            + floorAreaTerraceWeightRange
+            + wifiSubjectiveValueWeight
+            + pricePerNightSubjectiveValueWeight
+            + nbMinNightSubjectiveValueWeight
+            + teleSubjectiveValueWeight));
   }
 
   /**
@@ -258,7 +256,7 @@ public class LinearAVF {
    * @param crit the criterion we want to know the value
    * @return the subjective value weight
    */
-  public Range<Double> getWeightRange(Criterion crit) {
+  public double getWeightRange(Criterion crit) {
     switch (crit) {
       case TELE:
         return teleSubjectiveValueWeight;
@@ -285,13 +283,6 @@ public class LinearAVF {
     }
   }
 
-  public LinearAVF adaptWeightRange(Criterion crit, boolean upper) {
-    Range<Double> w = this.getWeightRange(crit);
-    Double min = upper ? getMiddleOfRange(w) : w.lowerEndpoint();
-    Double max = upper ? w.upperEndpoint() : getMiddleOfRange(w);
-    return this.setWeightRange(crit, Range.closed(min, max));
-  }
-
   /**
    * Sets the subjective value weight of a criterion
    *
@@ -299,7 +290,8 @@ public class LinearAVF {
    * @param value the value we want to assign at this criterion
    * @return an object LinearAVF with the modified criterion
    */
-  LinearAVF setWeightRange(Criterion awt, Range<Double> value) {
+  LinearAVF setWeight(Criterion awt, double value) {
+    checkArgument(value >= 0, "The given weight cannot be negative");
     LinearAVF avf = cloneLinearAVF();
     switch (awt) {
       case TELE:
@@ -340,48 +332,12 @@ public class LinearAVF {
   }
 
   /**
-   * Get the middle of the given Range
-   *
-   * @param range the Range
-   * @return the middle of the given Range of Doubles
-   */
-  static double getMiddleOfRange(Range<Double> range) {
-    checkNotNull(range);
-    return range.lowerEndpoint() + ((range.upperEndpoint() - range.lowerEndpoint()) / 2);
-  }
-
-  /**
-   * Get the middle of the range of the given criterion
-   *
-   * @param crit the Criterion
-   * @return the middle of the Range of the given Criterion
-   */
-  double getMiddleOfRange(Criterion crit) {
-    return getMiddleOfRange(this.getWeightRange(crit));
-  }
-
-  /**
-   * check if the given range is valid for this context
-   *
-   * @param value the Range to check
-   * @throws IllegalArgumentException when doubles contained are < 0 or if there are only 1 value in
-   *     the range
-   */
-  private void checkRangeValidity(Range<Double> value) {
-    checkArgument(value.hasLowerBound() && value.hasUpperBound(), "The given range is not valid");
-    checkArgument(
-        value.lowerEndpoint() >= 0 && value.upperEndpoint() > 0,
-        "The weight of the tele cannot be negative");
-  }
-
-  /**
    * Set the weight of the floor area subjective value corresponding to the importance of the floor
    * area criteria.
    *
    * @param value >= 0
    */
-  private void setFloorAreaSubjectiveValueWeight(Range<Double> value) {
-    checkRangeValidity(value);
+  private void setFloorAreaSubjectiveValueWeight(double value) {
     this.floorAreaWeightRange = value;
     LOGGER.debug("The floor area weight has been set to {}", value);
   }
@@ -392,8 +348,7 @@ public class LinearAVF {
    *
    * @param value >= 0
    */
-  private void setNbBedroomsSubjectiveValueWeight(Range<Double> value) {
-    checkRangeValidity(value);
+  private void setNbBedroomsSubjectiveValueWeight(double value) {
     this.nbBedroomsWeightRange = value;
     LOGGER.debug("The number of bedrooms weight has been set to {}", value);
   }
@@ -404,8 +359,7 @@ public class LinearAVF {
    *
    * @param value >= 0
    */
-  private void setNbSleepingSubjectiveValueWeight(Range<Double> value) {
-    checkRangeValidity(value);
+  private void setNbSleepingSubjectiveValueWeight(double value) {
     this.nbSleepingWeightRange = value;
     LOGGER.debug("The number of sleeping weight has been set to {}", value);
   }
@@ -416,8 +370,7 @@ public class LinearAVF {
    *
    * @param value >= 0
    */
-  private void setNbBathroomsSubjectiveValueWeight(Range<Double> value) {
-    checkRangeValidity(value);
+  private void setNbBathroomsSubjectiveValueWeight(double value) {
     this.nbBathroomsWeightRange = value;
     LOGGER.debug("The number of bathrooms weight has been set to {}", value);
   }
@@ -428,8 +381,7 @@ public class LinearAVF {
    *
    * @param value >= 0
    */
-  private void setTerraceSubjectiveValueWeight(Range<Double> value) {
-    checkRangeValidity(value);
+  private void setTerraceSubjectiveValueWeight(double value) {
     this.terraceWeightRange = value;
     LOGGER.debug("The terrace weight has been set to {}", value);
   }
@@ -440,8 +392,7 @@ public class LinearAVF {
    *
    * @param value >= 0
    */
-  private void setFloorAreaTerraceSubjectiveValueWeight(Range<Double> value) {
-    checkRangeValidity(value);
+  private void setFloorAreaTerraceSubjectiveValueWeight(double value) {
     this.floorAreaTerraceWeightRange = value;
     LOGGER.debug("The floor area of the terrace weight has been set to {}", value);
   }
@@ -452,8 +403,7 @@ public class LinearAVF {
    *
    * @param value >= 0
    */
-  private void setWifiSubjectiveValueWeight(Range<Double> value) {
-    checkRangeValidity(value);
+  private void setWifiSubjectiveValueWeight(double value) {
     this.wifiSubjectiveValueWeight = value;
     LOGGER.debug("The wifi weight has been set to {}", value);
   }
@@ -464,8 +414,7 @@ public class LinearAVF {
    *
    * @param value >= 0
    */
-  private void setPricePerNightSubjectiveValueWeight(Range<Double> value) {
-    checkRangeValidity(value);
+  private void setPricePerNightSubjectiveValueWeight(double value) {
     this.pricePerNightSubjectiveValueWeight = value;
     LOGGER.debug("The price per night weight has been set to {}", value);
   }
@@ -476,8 +425,7 @@ public class LinearAVF {
    *
    * @param value >= 0
    */
-  private void setNbMinNightSubjectiveValueWeight(Range<Double> value) {
-    checkRangeValidity(value);
+  private void setNbMinNightSubjectiveValueWeight(double value) {
     this.nbMinNightSubjectiveValueWeight = value;
     LOGGER.debug("The number of minimum night weight has been set to {}", value);
   }
@@ -488,8 +436,7 @@ public class LinearAVF {
    *
    * @param value >= 0
    */
-  private void setTeleSubjectiveValueWeight(Range<Double> value) {
-    checkRangeValidity(value);
+  private void setTeleSubjectiveValueWeight(double value) {
     this.teleSubjectiveValueWeight = value;
     LOGGER.debug("The tele weight has been set to {}", value);
   }
@@ -822,24 +769,15 @@ public class LinearAVF {
       toBuild = new LinearAVF();
       return temp;
     }
-
-    public Builder setWeightRange(Criterion crit, Range<Double> value) {
-      this.toBuild = toBuild.setWeightRange(crit, value);
-      return this;
-    }
-
     /**
      * Set the range of weight for the criterion given in parameters.
      *
      * @param crit the criterion concerned
-     * @param lowerValue the minimal value possible for this weight
-     * @param upperValue the maximal value possible for this weight
+     * @param value the value possible for this weight
      * @return the current instance of Builder
      */
-    public Builder setWeightRange(Criterion crit, double lowerValue, double upperValue) {
-      this.toBuild =
-          toBuild.setWeightRange(
-              crit, Range.range(lowerValue, BoundType.CLOSED, upperValue, BoundType.CLOSED));
+    public Builder setWeight(Criterion crit, double value) {
+      this.toBuild = toBuild.setWeight(crit, value);
       return this;
     }
 
