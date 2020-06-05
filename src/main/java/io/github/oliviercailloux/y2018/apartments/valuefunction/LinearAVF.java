@@ -769,6 +769,7 @@ public class LinearAVF {
       toBuild = new LinearAVF();
       return temp;
     }
+
     /**
      * Set the range of weight for the criterion given in parameters.
      *
