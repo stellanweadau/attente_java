@@ -70,23 +70,12 @@ class LinearAVFTest {
     linearAVF = builderLinearAVF.build();
   }
 
-  /** Function to test the some setters */
-  @Test
-  void checkValue() {
-    LinearValueFunction lvf = linearAVF.getNbSleepingValueFunction();
-    assertEquals(5d, lvf.getInterval().upperEndpoint());
-    lvf = linearAVF.getNbBedroomsValueFunction();
-    assertEquals(4d, lvf.getInterval().upperEndpoint());
-    lvf = linearAVF.getNbBathroomsValueFunction();
-    assertEquals(3d, lvf.getInterval().upperEndpoint());
-  }
-
   /** Function to test the computing of the subjective value of an apartment */
   @Test
   void linearAVFTest() {
     assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.0001);
     linearAVF.setWeight(Criterion.TELE, 5d);
-    assertEquals(10d, linearAVF.getWeightRange(Criterion.TELE));
+    assertEquals(10d, linearAVF.getWeight(Criterion.TELE));
     assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.00001);
   }
 
@@ -94,6 +83,9 @@ class LinearAVFTest {
   @Test
   void adaptWeightTest() {
     assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeight(Criterion.TELE, -1d));
+
+    assertEquals(0.5506, linearAVF.setWeight(Criterion.TELE, 0.8).getSubjectiveValue(a), 0.0001);
+    assertEquals(0.5524, linearAVF.setWeight(Criterion.TELE, 0.5).getSubjectiveValue(a), 0.0001);
   }
 
   /** Function to test if the bounds of an interval adapt well when needed */
