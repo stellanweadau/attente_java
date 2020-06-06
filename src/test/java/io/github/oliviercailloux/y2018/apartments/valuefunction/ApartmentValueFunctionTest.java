@@ -79,15 +79,19 @@ class ApartmentValueFunctionTest {
     assertEquals(3d, lvf.getInterval().upperEndpoint());
   }
 
-  /** Function to test the computing of the subjective value of an apartment */
+  /**
+   * Function to test the computing of the subjective value of an apartment To compute the
+   * subjective value of an apartment, here is the formula : sum(attributeSubjectiveValue *
+   * attributeWeight)/sum(weight)
+   */
   @Test
   void apartmentValueFunctionTest() {
 
     assertEquals(0.5, valueFunction.getSubjectiveValue(a), 0.0001);
 
-    valueFunction.setTeleSubjectiveValueWeight(10d);
-    assertEquals(10d, valueFunction.getSubjectiveValueWeight(Criterion.TELE));
-    assertEquals(0.04587, valueFunction.getSubjectiveValue(a), 0.00001);
+    valueFunction.setTeleSubjectiveValueWeight(4.1d);
+    assertEquals(4.1d, valueFunction.getSubjectiveValueWeight(Criterion.TELE));
+    assertEquals(0.1, valueFunction.getSubjectiveValue(a), 0.0001);
   }
 
   /** Test if the weight setter throw a Illegal Argument Exception when needed */
