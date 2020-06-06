@@ -105,6 +105,6 @@ public class DiscreteValueFunction<T> implements PartialValueFunction<T> {
       varMap.put(i, newSubjectiveValue);
     }
 
-    return new DiscreteValueFunction<Double>(varMap);
+    return new DiscreteValueFunction<>(varMap);
   }
 }
