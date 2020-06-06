@@ -40,7 +40,7 @@ class ApartmentTest {
             .setNbMinNight(nbMinNight)
             .setTele(tele)
             .build();
-
+    apartBuilder = new Builder();
     Apartment a2 =
         apartBuilder
             .setFloorArea(floorArea)
@@ -80,7 +80,7 @@ class ApartmentTest {
             .setNbMinNight(nbMinNight)
             .setTele(tele)
             .build();
-
+    apartBuilder = new Builder();
     Apartment a2 =
         apartBuilder
             .setFloorArea(floorArea)
@@ -120,7 +120,7 @@ class ApartmentTest {
             .setNbMinNight(nbMinNight)
             .setTele(tele)
             .build();
-
+    apartBuilder = new Builder();
     Apartment a2 =
         apartBuilder
             .setFloorArea(floorArea)
@@ -161,7 +161,7 @@ class ApartmentTest {
             .setNbMinNight(nbMinNight)
             .setTele(tele)
             .build();
-
+    apartBuilder = new Builder();
     Apartment a2 =
         apartBuilder
             .setFloorArea(floorArea)

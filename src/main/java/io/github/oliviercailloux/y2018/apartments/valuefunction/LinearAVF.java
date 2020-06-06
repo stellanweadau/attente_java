@@ -760,9 +760,7 @@ public class LinearAVF {
         checkNotNull(toBuild.getWeight(c));
       }
 
-      LinearAVF temp = toBuild;
-      toBuild = new LinearAVF();
-      return temp;
+      return toBuild;
     }
 
     /**
