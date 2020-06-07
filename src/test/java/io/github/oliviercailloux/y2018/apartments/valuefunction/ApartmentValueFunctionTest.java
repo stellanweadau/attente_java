@@ -90,7 +90,7 @@ class ApartmentValueFunctionTest {
     assertEquals(0.5, valueFunction.getSubjectiveValue(a), 0.0001);
 
     valueFunction.setTeleSubjectiveValueWeight(4.1d);
-    assertEquals(4.1d, valueFunction.getSubjectiveValueWeight(Criterion.TELE));
+
     assertEquals(0.1, valueFunction.getSubjectiveValue(a), 0.0001);
   }
 
