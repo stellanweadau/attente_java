@@ -33,6 +33,10 @@ public class ReversedLinearValueFunction implements PartialValueFunction<Double>
         max);
   }
 
+  public Range<Double> getInterval() {
+    return this.interval;
+  }
+
   @Override
   public double getSubjectiveValue(Double objectiveData) throws IllegalArgumentException {
     if (interval.lowerEndpoint() > objectiveData) {
