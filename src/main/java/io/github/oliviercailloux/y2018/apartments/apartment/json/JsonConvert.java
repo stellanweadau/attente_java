@@ -11,7 +11,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import javax.json.JsonObject;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbConfig;
@@ -96,26 +95,23 @@ public abstract class JsonConvert {
   }
 
   /** A method that implement a {@link JsonbAdapter} to avoid the use of ApartmentBuilder Code */
-  public static JsonbAdapter<Apartment, JsonObject> getAdapter() {
+  public static JsonbAdapter<Apartment, Apartment.Builder> getAdapter() {
     return new JsonbAdapter<>() {
       @Override
-      public JsonObject adaptToJson(Apartment obj) {
+      public Apartment.Builder adaptToJson(Apartment obj) {
         throw new UnsupportedOperationException("This function should not be called");
       }
 
       /**
-       * Convert an Apartment json into an Apartment object
+       * Build an Apartment with Apartment.Builder
        *
-       * @param obj Apartment json content
-       * @return the Apartment built using <code>obj</code>
-       * @throws Exception raises an Exception thrown by JsonBuilder
+       * @param obj the Apartment to build
+       * @return the Apartment build from <code>obj</code>
        */
       @Override
-      public Apartment adaptFromJson(JsonObject obj) throws Exception {
-        checkNotNull(obj, "The JsonObject 'obj' can't be null");
-        try (Jsonb jsonb = JsonbBuilder.create()) {
-          return jsonb.fromJson(obj.toString(), Apartment.Builder.class).build();
-        }
+      public Apartment adaptFromJson(Apartment.Builder obj) {
+        checkNotNull(obj, "The Apartment.Builder 'obj' can't be null");
+        return obj.build();
       }
     };
   }

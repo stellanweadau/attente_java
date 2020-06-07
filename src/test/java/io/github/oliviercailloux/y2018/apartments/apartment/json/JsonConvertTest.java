@@ -1,23 +1,16 @@
 package io.github.oliviercailloux.y2018.apartments.apartment.json;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import java.io.IOException;
-import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-import javax.json.bind.JsonbConfig;
 import javax.json.bind.adapter.JsonbAdapter;
 import org.junit.jupiter.api.Test;
 
@@ -107,28 +100,17 @@ public class JsonConvertTest {
   /** Test if the adapter method works */
   @Test
   void getAdapterTest() throws Exception {
-    JsonbConfig defaultConfig = new JsonbConfig();
-    JsonbAdapter<Apartment, JsonObject> adapter = JsonConvert.getAdapter();
-    JsonbConfig config = new JsonbConfig().withAdapters(adapter);
-    assertNotEquals(defaultConfig, config);
-    assertThrows(
-        UnsupportedOperationException.class,
-        () -> adapter.adaptToJson(null),
-        "The function should not be implemented");
-    String jsonString = Files.readString(this.jsonTestPath);
-    try (JsonReader jsonApartments = Json.createReader(new StringReader(jsonString))) {
-      JsonObject jsonApartment = jsonApartments.readArray().getJsonObject(0);
-      Apartment b = adapter.adaptFromJson(jsonApartment);
-      Apartment a =
-          new Apartment.Builder()
-              .setAddress("118 rue du père noel 77480")
-              .setFloorArea(1182118.48)
-              .setTitle("Grand Igloo")
-              .setTerrace(false)
-              .setWifi(false)
-              .setTele(false)
-              .build();
-      assertEquals(a, b, "Apartment a and Apartment b must be equals");
-    }
+    JsonbAdapter<Apartment, Apartment.Builder> adapter = JsonConvert.getAdapter();
+    Apartment.Builder builder =
+        new Apartment.Builder()
+            .setAddress("118 rue du père noel 77480")
+            .setFloorArea(1182118.48)
+            .setTitle("Grand Igloo")
+            .setTerrace(false)
+            .setWifi(false)
+            .setTele(false);
+    Apartment a = adapter.adaptFromJson(builder);
+    Apartment b = builder.build();
+    assertEquals(a, b);
   }
 }
