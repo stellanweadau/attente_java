@@ -101,7 +101,7 @@ public class JsonConvertTest {
   @Test
   void getAdapterTest() throws Exception {
     JsonbAdapter<Apartment, Apartment.Builder> adapter = JsonConvert.getAdapter();
-    Apartment.Builder builder =
+    Apartment.Builder builder1 =
         new Apartment.Builder()
             .setAddress("118 rue du père noel 77480")
             .setFloorArea(1182118.48)
@@ -109,8 +109,16 @@ public class JsonConvertTest {
             .setTerrace(false)
             .setWifi(false)
             .setTele(false);
-    Apartment a = adapter.adaptFromJson(builder);
-    Apartment b = builder.build();
+    Apartment.Builder builder2 =
+        new Apartment.Builder()
+            .setAddress("118 rue du père noel 77480")
+            .setFloorArea(1182118.48)
+            .setTitle("Grand Igloo")
+            .setTerrace(false)
+            .setWifi(false)
+            .setTele(false);
+    Apartment a = adapter.adaptFromJson(builder1);
+    Apartment b = builder2.build();
     assertEquals(a, b);
   }
 }
