@@ -39,6 +39,7 @@ public class JsonConvertTest {
             .setWifi(false)
             .setTele(false)
             .build());
+    apartBuilder = new Apartment.Builder();
     apartments.add(
         apartBuilder
             .setAddress("123 rue du soleil")
@@ -74,6 +75,7 @@ public class JsonConvertTest {
             .setWifi(false)
             .setTele(false)
             .build());
+    apartBuilder = new Apartment.Builder();
     apartmentsRef.add(
         apartBuilder
             .setAddress("123 rue du soleil")

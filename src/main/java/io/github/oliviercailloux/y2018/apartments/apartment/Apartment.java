@@ -445,12 +445,7 @@ public class Apartment extends Object {
       } else if (apartmentToBuild.getTerrace() && apartmentToBuild.getFloorAreaTerrace() <= 0) {
         throw new IllegalStateException("The existing terrace can not have a floor area  <= 0");
       }
-      Apartment buildApartment = this.apartmentToBuild;
-      this.apartmentToBuild = new Apartment();
-      this.hasTerraceKnown = false;
-      this.teleKnown = false;
-      this.wifiKnown = false;
-      return buildApartment;
+      return this.apartmentToBuild;
     }
 
     public Builder setFloorArea(double floorArea) {
