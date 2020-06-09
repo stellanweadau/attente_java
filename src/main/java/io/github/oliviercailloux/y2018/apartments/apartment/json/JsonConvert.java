@@ -1,8 +1,9 @@
 package io.github.oliviercailloux.y2018.apartments.apartment.json;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import com.google.common.base.VerifyException;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
-import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
+import javax.json.bind.JsonbConfig;
+import javax.json.bind.adapter.JsonbAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +26,8 @@ import org.slf4j.LoggerFactory;
 public abstract class JsonConvert {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(JsonConvert.class);
+
+  private JsonConvert() {}
 
   /**
    * The path to export a list of apartments in a JSON file.
@@ -71,24 +76,44 @@ public abstract class JsonConvert {
    */
   @SuppressWarnings("serial")
   public static List<Apartment> jsonToApartments(Path jsonPath) throws IOException {
+    JsonbConfig config = new JsonbConfig().withAdapters(JsonConvert.getAdapter());
     String jsonString = Files.readString(jsonPath);
-    List<Apartment.Builder> apartmentsBuild;
     List<Apartment> apartments = new ArrayList<>();
     LOGGER.info("Create ArrayList of Apartment");
-
-    try (Jsonb jsonb = JsonbBuilder.create()) {
+    try (Jsonb jsonb = JsonbBuilder.create(config)) {
       LOGGER.info("Create Json builder");
-      apartmentsBuild =
+      apartments =
           jsonb.fromJson(
-              jsonString, new ArrayList<Apartment.Builder>() {}.getClass().getGenericSuperclass());
+              jsonString,
+              new ArrayList<Apartment>() {
+                /**/
+              }.getClass().getGenericSuperclass());
     } catch (Exception e) {
       throw new IllegalArgumentException(e);
     }
-
-    for (Builder apartmentToBuild : apartmentsBuild) {
-      apartments.add(apartmentToBuild.build());
-    }
     return apartments;
+  }
+
+  /** A method that implement a {@link JsonbAdapter} to avoid the use of ApartmentBuilder Code */
+  public static JsonbAdapter<Apartment, Apartment.Builder> getAdapter() {
+    return new JsonbAdapter<>() {
+      @Override
+      public Apartment.Builder adaptToJson(Apartment obj) {
+        throw new UnsupportedOperationException("This function should not be called");
+      }
+
+      /**
+       * Build an Apartment with Apartment.Builder
+       *
+       * @param obj the Apartment to build
+       * @return the Apartment build from <code>obj</code>
+       */
+      @Override
+      public Apartment adaptFromJson(Apartment.Builder obj) {
+        checkNotNull(obj, "The Apartment.Builder 'obj' can't be null");
+        return obj.build();
+      }
+    };
   }
 
   /**
