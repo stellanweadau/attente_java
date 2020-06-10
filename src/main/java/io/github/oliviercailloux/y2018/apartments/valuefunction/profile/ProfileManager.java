@@ -14,11 +14,24 @@ public class ProfileManager {
 	
 	private static ProfileManager INSTANCE = null;
 	
-	public static ProfileManager gatInstance() {
+	public static ProfileManager getInstance() {
 		if (INSTANCE == null) {
 			INSTANCE = new ProfileManager();
 		}
 		
 		return INSTANCE;
+	}
+	
+	public Profile getProfile(ProfileType profType) {
+		switch(profType) {
+		case STUDENT:
+			return getInstance().mapProfile.get(ProfileType.STUDENT);
+		case FAMILY:
+			return getInstance().mapProfile.get(ProfileType.FAMILY);
+		case COUPLE:
+			return getInstance().mapProfile.get(ProfileType.COUPLE);
+		default:
+			throw new IllegalArgumentException();
+		}
 	}
 }
