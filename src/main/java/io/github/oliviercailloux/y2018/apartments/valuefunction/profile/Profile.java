@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.apartments.profile;
+package io.github.oliviercailloux.y2018.apartments.valuefunction.profile;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -6,12 +6,16 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.google.common.collect.Range;
 import com.google.common.collect.BoundType;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
+import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Profile {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(Profile.class);
+	
+	private LinearAVF linearAvf;
 	
 	/**
 	 * The 10 next arguments gives the Range of apartment characteristic subjective value weight in
@@ -30,27 +34,29 @@ public class Profile {
 	private Range<Double> teleSubjectiveValueWeight;
 	  
 	private Profile() {
-		 this.floorAreaWeightRange = null;
-		 this.nbBedroomsWeightRange = null;
-		 this.nbSleepingWeightRange = null;
-		 this.nbBathroomsWeightRange = null;
-		 this.terraceWeightRange = null;
-		 this.floorAreaTerraceWeightRange = null;
-		 this.wifiSubjectiveValueWeight = null;
-		 this.pricePerNightSubjectiveValueWeight = null;
-		 this.nbMinNightSubjectiveValueWeight = null;
-		 this.teleSubjectiveValueWeight = null;
+		this.linearAvf = null;
+		this.floorAreaWeightRange = null;
+		this.nbBedroomsWeightRange = null;
+		this.nbSleepingWeightRange = null;
+		this.nbBathroomsWeightRange = null;
+		this.terraceWeightRange = null;
+		this.floorAreaTerraceWeightRange = null;
+		this.wifiSubjectiveValueWeight = null;
+		this.pricePerNightSubjectiveValueWeight = null;
+		this.nbMinNightSubjectiveValueWeight = null;
+		this.teleSubjectiveValueWeight = null;
 	}
 
 	/**
 	 * This function allows the user to clone an object LinearAVF
 	 *
-	 * @return an object LinearAVF
+	 * @return an object Profile
 	 */
 	private Profile cloneProfile() {
 
 	    Profile prof = new Profile();
 	    
+	    prof.linearAvf = this.linearAvf;
 	    prof.floorAreaWeightRange = this.floorAreaWeightRange;
 	    prof.nbBedroomsWeightRange = this.nbBedroomsWeightRange;
 	    prof.nbSleepingWeightRange = this.nbSleepingWeightRange;
@@ -63,6 +69,15 @@ public class Profile {
 	    prof.teleSubjectiveValueWeight = this.teleSubjectiveValueWeight;
 	    
 	    return prof;
+	}
+	
+	/**
+	 * Gives the linearAVF of a Profile
+	 * 
+	 * @return the LinearAVF of the Profile
+	 */
+	public LinearAVF getLinearAVF() {
+		return this.linearAvf;
 	}
 	
 	/**
@@ -126,6 +141,19 @@ public class Profile {
 		 return getMiddleOfRange(this.getWeightRange(crit));
 	 }
 	
+	 /**
+		 * Sets the linearAVF of a Profile
+		 * 
+		 * @return Profile with its LinearAVF set
+		 */
+		public Profile setLinearAVF(LinearAVF newLinearAvf) {
+			Profile prof = cloneProfile();
+			
+			prof.linearAvf = newLinearAvf;
+			
+			return prof;
+		} 
+	 
 	/**
 	 * Sets the subjective value weight of a criterion 
 	 *
@@ -195,6 +223,7 @@ public class Profile {
 	 private void setFloorAreaSubjectiveValueWeight(Range<Double> value) {
 		 checkRangeValidity(value);
 		 this.floorAreaWeightRange = value;
+		 this.linearAvf.setFloorAreaSubjectiveValueWeight(getMiddleOfRange(value));
 		 LOGGER.debug("The floor area weight has been set to {}", value);
 	 }
 
@@ -207,6 +236,7 @@ public class Profile {
 	 private void setNbBedroomsSubjectiveValueWeight(Range<Double> value) {
 		 checkRangeValidity(value);
 		 this.nbBedroomsWeightRange = value;
+		 this.linearAvf.setNbBedroomsSubjectiveValueWeight(getMiddleOfRange(value));
 		 LOGGER.debug("The number of bedrooms weight has been set to {}", value);
 	 }
 	 
@@ -219,6 +249,7 @@ public class Profile {
 	private void setNbSleepingSubjectiveValueWeight(Range<Double> value) {
 		 checkRangeValidity(value);
 		 this.nbSleepingWeightRange = value;
+		 this.linearAvf.setNbSleepingSubjectiveValueWeight(getMiddleOfRange(value));
 		 LOGGER.debug("The number of sleeping weight has been set to {}", value);
 	}
 
@@ -231,6 +262,7 @@ public class Profile {
 	private void setNbBathroomsSubjectiveValueWeight(Range<Double> value) {
 		 checkRangeValidity(value);
 		 this.nbBathroomsWeightRange = value;
+		 this.linearAvf.setNbBathroomsSubjectiveValueWeight(getMiddleOfRange(value));
 		 LOGGER.debug("The number of bathrooms weight has been set to {}", value);
 	}
 	 
@@ -243,6 +275,7 @@ public class Profile {
 	private void setTerraceSubjectiveValueWeight(Range<Double> value) {
 		 checkRangeValidity(value);
 		 this.terraceWeightRange = value;
+		 this.linearAvf.setTerraceSubjectiveValueWeight(getMiddleOfRange(value));
 		 LOGGER.debug("The terrace weight has been set to {}", value);
 	}
 
@@ -255,6 +288,7 @@ public class Profile {
 	private void setFloorAreaTerraceSubjectiveValueWeight(Range<Double> value) {
 		 checkRangeValidity(value);
 		 this.floorAreaTerraceWeightRange = value;
+		 this.linearAvf.setFloorAreaTerraceSubjectiveValueWeight(getMiddleOfRange(value));
 		 LOGGER.debug("The floor area of the terrace weight has been set to {}", value);
 	}
 	 
@@ -267,6 +301,7 @@ public class Profile {
 	private void setWifiSubjectiveValueWeight(Range<Double> value) {
 	    checkRangeValidity(value);
 	    this.wifiSubjectiveValueWeight = value;
+	    this.linearAvf.setWifiSubjectiveValueWeight(getMiddleOfRange(value));
 	    LOGGER.debug("The wifi weight has been set to {}", value);
 	}
 
@@ -279,6 +314,7 @@ public class Profile {
 	private void setPricePerNightSubjectiveValueWeight(Range<Double> value) {
 	    checkRangeValidity(value);
 	    this.pricePerNightSubjectiveValueWeight = value;
+	    this.linearAvf.setPricePerNightSubjectiveValueWeight(getMiddleOfRange(value));
 	    LOGGER.debug("The price per night weight has been set to {}", value);
 	}
 	
@@ -291,6 +327,7 @@ public class Profile {
 	 private void setNbMinNightSubjectiveValueWeight(Range<Double> value) {
 		 checkRangeValidity(value);
 		 this.nbMinNightSubjectiveValueWeight = value;
+		 this.linearAvf.setNbMinNightSubjectiveValueWeight(getMiddleOfRange(value));
 		 LOGGER.debug("The number of minimum night weight has been set to {}", value);
 	 }
 
@@ -303,6 +340,7 @@ public class Profile {
 	 private void setTeleSubjectiveValueWeight(Range<Double> value) {
 		 checkRangeValidity(value);
 		 this.teleSubjectiveValueWeight = value;
+		 this.linearAvf.setTeleSubjectiveValueWeight(getMiddleOfRange(value));
 		 LOGGER.debug("The tele weight has been set to {}", value);
 	 }
 	 
@@ -320,6 +358,11 @@ public class Profile {
 				checkNotNull(toBuild.getWeightRange(c));
 			}
 			return builtProfile;
+		}
+		
+		public Builder setLinearAVF(LinearAVF newLinearAvf) {
+			this.toBuild = toBuild.setLinearAVF(newLinearAvf);
+			return this;
 		}
 		
 		/**
