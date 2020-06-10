@@ -98,6 +98,13 @@ public class Profile {
 	   	}
 	}
 	
+	/*public LinearAVF adaptWeightRange(Criterion crit, boolean upper) {
+	    Range<Double> w = this.getWeightRange(crit);
+	    Double min = upper ? getMiddleOfRange(w) : w.lowerEndpoint();
+	    Double max = upper ? w.upperEndpoint() : getMiddleOfRange(w);
+	    return this.setWeightRange(crit, Range.closed(min, max));
+	}*/
+	
 	/**
 	 * Get the middle of the given Range
 	 *
