@@ -6,11 +6,8 @@ import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 
 public class QuestionPriceArea {
-
   int price;
-
   int surface;
-
   private final String question = "Would you pay %d€ more for %d m2 more?";
 
   /**
@@ -37,14 +34,29 @@ public class QuestionPriceArea {
     return new QuestionPriceArea(price, surface);
   }
 
+  /**
+   * Getter for attribute price
+   *
+   * @return the price : question parameter
+   */
   public int getPrice() {
     return this.price;
   }
 
+  /**
+   * Getter for attribute surface
+   *
+   * @return the surface : question parameter
+   */
   public int getSurface() {
     return this.surface;
   }
 
+  /**
+   * Build the question according to parameters emitted during class creation
+   *
+   * @return the question constructed
+   */
   public String getQuestion() {
     return String.format(this.question, this.getPrice(), this.getSurface());
   }
@@ -56,53 +68,42 @@ public class QuestionPriceArea {
    * @param response the response of the user
    */
   public void resolve(Profile p, boolean response) {
-
     checkNotNull(p);
-    Range<Double> floorAreaWeight = p.getWeightRange(Criterion.FLOOR_AREA);
-    Range<Double> priceWeight = p.getWeightRange(Criterion.PRICE_PER_NIGHT);
+    checkNotNull(response);
+    Criterion firstCriterion;
+    Criterion secondCriterion;
+    Range<Double> closedRange;
 
+    /**
+     * The code is very similar if the boolean response is true or false. The only factor that
+     * changes is the criteria. Thus, one seeks to know which criterion is given to which range. So
+     * we check this based on the boolean
+     */
     if (response) {
-
-      double min =
-          floorAreaWeight.lowerEndpoint() + Profile.getMiddleOfRange(floorAreaWeight) * 0.2;
-      double max = priceWeight.upperEndpoint() - Profile.getMiddleOfRange(priceWeight) * 0.1;
-
-      if (min >= floorAreaWeight.upperEndpoint()) {
-        Range<Double> r =
-            Range.closed(floorAreaWeight.upperEndpoint(), floorAreaWeight.upperEndpoint());
-        p.setWeightRange(Criterion.FLOOR_AREA, r);
-      } else {
-        Range<Double> r = Range.closed(min, floorAreaWeight.upperEndpoint());
-        p.setWeightRange(Criterion.FLOOR_AREA, r);
-      }
-      if (max <= priceWeight.lowerEndpoint()) {
-        Range<Double> r = Range.closed(priceWeight.lowerEndpoint(), priceWeight.lowerEndpoint());
-        p.setWeightRange(Criterion.PRICE_PER_NIGHT, r);
-      } else {
-        Range<Double> r = Range.closed(priceWeight.lowerEndpoint(), max);
-        p.setWeightRange(Criterion.PRICE_PER_NIGHT, r);
-      }
+      firstCriterion = Criterion.FLOOR_AREA;
+      secondCriterion = Criterion.PRICE_PER_NIGHT;
     } else {
-
-      double min = priceWeight.lowerEndpoint() + Profile.getMiddleOfRange(priceWeight) * 0.2;
-      double max =
-          floorAreaWeight.upperEndpoint() - Profile.getMiddleOfRange(floorAreaWeight) * 0.1;
-
-      if (min >= priceWeight.upperEndpoint()) {
-        Range<Double> r = Range.closed(priceWeight.upperEndpoint(), priceWeight.upperEndpoint());
-        p.setWeightRange(Criterion.PRICE_PER_NIGHT, r);
-      } else {
-        Range<Double> r = Range.closed(min, priceWeight.upperEndpoint());
-        p.setWeightRange(Criterion.PRICE_PER_NIGHT, r);
-      }
-      if (max <= floorAreaWeight.lowerEndpoint()) {
-        Range<Double> r =
-            Range.closed(floorAreaWeight.lowerEndpoint(), floorAreaWeight.lowerEndpoint());
-        p.setWeightRange(Criterion.FLOOR_AREA, r);
-      } else {
-        Range<Double> r = Range.closed(floorAreaWeight.lowerEndpoint(), max);
-        p.setWeightRange(Criterion.FLOOR_AREA, r);
-      }
+      secondCriterion = Criterion.FLOOR_AREA;
+      firstCriterion = Criterion.PRICE_PER_NIGHT;
     }
+
+    final Range<Double> firstRange = p.getWeightRange(firstCriterion);
+    final Range<Double> secondRange = p.getWeightRange(secondCriterion);
+
+    final double min = firstRange.lowerEndpoint() + Profile.getMiddleOfRange(firstRange) * 0.2;
+    if (min >= firstRange.upperEndpoint()) {
+      closedRange = Range.closed(firstRange.upperEndpoint(), firstRange.upperEndpoint());
+    } else {
+      closedRange = Range.closed(min, firstRange.upperEndpoint());
+    }
+    p.setWeightRange(firstCriterion, closedRange);
+
+    final double max = secondRange.upperEndpoint() - Profile.getMiddleOfRange(secondRange) * 0.1;
+    if (max <= secondRange.lowerEndpoint()) {
+      closedRange = Range.closed(secondRange.lowerEndpoint(), secondRange.lowerEndpoint());
+    } else {
+      closedRange = Range.closed(secondRange.lowerEndpoint(), max);
+    }
+    p.setWeightRange(secondCriterion, closedRange);
   }
 }
