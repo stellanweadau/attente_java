@@ -27,7 +27,7 @@ public class QuestionPriceArea {
   }
 
   /**
-   * Creates the question.
+   * Creates the object question.
    *
    * @param price the price
    * @param surface the surface
@@ -56,6 +56,8 @@ public class QuestionPriceArea {
    * @param response the response of the user
    */
   public void resolve(Profile p, boolean response) {
+
+    checkNotNull(p);
     Range<Double> floorAreaWeight = p.getWeightRange(Criterion.FLOOR_AREA);
     Range<Double> priceWeight = p.getWeightRange(Criterion.PRICE_PER_NIGHT);
 
