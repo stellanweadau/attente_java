@@ -153,6 +153,7 @@ public class Profile {
    * @return the subjective value weight
    */
   public Profile setWeightRange(Criterion crit, Range<Double> value) {
+    checkRangeValidity(value);
     Profile prof = cloneProfile();
     switch (crit) {
       case TELE:
@@ -200,6 +201,7 @@ public class Profile {
    *     the range
    */
   private void checkRangeValidity(Range<Double> value) {
+    checkNotNull(value, "The rage cannot be null");
     checkArgument(value.hasLowerBound() && value.hasUpperBound(), "The given range is not valid");
     checkArgument(
         value.lowerEndpoint() >= 0 && value.upperEndpoint() > 0,
@@ -215,7 +217,7 @@ public class Profile {
   private void setFloorAreaSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.floorAreaWeightRange = value;
-    this.linearAvf.setWeight(Criterion.FLOOR_AREA, getMiddleOfRange(value));
+    this.linearAvf = this.linearAvf.setWeight(Criterion.FLOOR_AREA, getMiddleOfRange(value));
     LOGGER.debug("The floor area weight has been set to {}", value);
   }
 
@@ -228,7 +230,7 @@ public class Profile {
   private void setNbBedroomsSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.nbBedroomsWeightRange = value;
-    this.linearAvf.setWeight(Criterion.NB_BEDROOMS, getMiddleOfRange(value));
+    this.linearAvf = this.linearAvf.setWeight(Criterion.NB_BEDROOMS, getMiddleOfRange(value));
     LOGGER.debug("The number of bedrooms weight has been set to {}", value);
   }
 
@@ -241,7 +243,7 @@ public class Profile {
   private void setNbSleepingSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.nbSleepingWeightRange = value;
-    this.linearAvf.setWeight(Criterion.NB_SLEEPING, getMiddleOfRange(value));
+    this.linearAvf = this.linearAvf.setWeight(Criterion.NB_SLEEPING, getMiddleOfRange(value));
     LOGGER.debug("The number of sleeping weight has been set to {}", value);
   }
 
@@ -254,7 +256,7 @@ public class Profile {
   private void setNbBathroomsSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.nbBathroomsWeightRange = value;
-    this.linearAvf.setWeight(Criterion.NB_BATHROOMS, getMiddleOfRange(value));
+    this.linearAvf = this.linearAvf.setWeight(Criterion.NB_BATHROOMS, getMiddleOfRange(value));
     LOGGER.debug("The number of bathrooms weight has been set to {}", value);
   }
 
@@ -267,7 +269,7 @@ public class Profile {
   private void setTerraceSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.terraceWeightRange = value;
-    this.linearAvf.setWeight(Criterion.TERRACE, getMiddleOfRange(value));
+    this.linearAvf = this.linearAvf.setWeight(Criterion.TERRACE, getMiddleOfRange(value));
     LOGGER.debug("The terrace weight has been set to {}", value);
   }
 
@@ -280,7 +282,8 @@ public class Profile {
   private void setFloorAreaTerraceSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.floorAreaTerraceWeightRange = value;
-    this.linearAvf.setWeight(Criterion.FLOOR_AREA_TERRACE, getMiddleOfRange(value));
+    this.linearAvf =
+        this.linearAvf.setWeight(Criterion.FLOOR_AREA_TERRACE, getMiddleOfRange(value));
     LOGGER.debug("The floor area of the terrace weight has been set to {}", value);
   }
 
@@ -293,7 +296,7 @@ public class Profile {
   private void setWifiSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.wifiSubjectiveValueWeightRange = value;
-    this.linearAvf.setWeight(Criterion.WIFI, getMiddleOfRange(value));
+    this.linearAvf = this.linearAvf.setWeight(Criterion.WIFI, getMiddleOfRange(value));
     LOGGER.debug("The wifi weight has been set to {}", value);
   }
 
@@ -306,7 +309,7 @@ public class Profile {
   private void setPricePerNightSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.pricePerNightSubjectiveValueWeightRange = value;
-    this.linearAvf.setWeight(Criterion.PRICE_PER_NIGHT, getMiddleOfRange(value));
+    this.linearAvf = this.linearAvf.setWeight(Criterion.PRICE_PER_NIGHT, getMiddleOfRange(value));
     LOGGER.debug("The price per night weight has been set to {}", value);
   }
 
@@ -319,7 +322,7 @@ public class Profile {
   private void setNbMinNightSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.nbMinNightSubjectiveValueWeightRange = value;
-    this.linearAvf.setWeight(Criterion.NB_MIN_NIGHT, getMiddleOfRange(value));
+    this.linearAvf = this.linearAvf.setWeight(Criterion.NB_MIN_NIGHT, getMiddleOfRange(value));
     LOGGER.debug("The number of minimum night weight has been set to {}", value);
   }
 
@@ -332,7 +335,7 @@ public class Profile {
   private void setTeleSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.teleSubjectiveValueWeightRange = value;
-    this.linearAvf.setWeight(Criterion.TELE, getMiddleOfRange(value));
+    this.linearAvf = this.linearAvf.setWeight(Criterion.TELE, getMiddleOfRange(value));
     LOGGER.debug("The tele weight has been set to {}", value);
   }
 
@@ -341,15 +344,14 @@ public class Profile {
 
     public Builder() {
       toBuild = new Profile();
+      LinearAVF.Builder lavf = new LinearAVF.Builder();
     }
 
     public Profile build() {
-      Profile builtProfile = this.toBuild;
-      this.toBuild = new Profile();
       for (Criterion c : Criterion.values()) {
-        checkNotNull(toBuild.getWeightRange(c));
+        checkNotNull(toBuild.getWeightRange(c), c.name() + " is null");
       }
-      return builtProfile;
+      return toBuild;
     }
 
     public Builder setLinearAVF(LinearAVF newLinearAvf) {
@@ -368,7 +370,12 @@ public class Profile {
     public Builder setWeightRange(Criterion crit, double lowerValue, double upperValue) {
       this.toBuild =
           toBuild.setWeightRange(
-              crit, Range.range(Double.valueOf(lowerValue), BoundType.CLOSED, Double.valueOf(upperValue), BoundType.CLOSED));
+              crit,
+              Range.range(
+                  Double.valueOf(lowerValue),
+                  BoundType.CLOSED,
+                  Double.valueOf(upperValue),
+                  BoundType.CLOSED));
       return this;
     }
 
