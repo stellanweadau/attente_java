@@ -31,7 +31,6 @@ public class QuestionPriceArea {
   }
 
   public void resolve(Profile p, boolean response) {
-    // RETURN LAVF
-    // p.adaptWeightRange(new range)
+    // p.setWeightRange()
   }
 }
