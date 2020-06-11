@@ -27,10 +27,10 @@ public class Profile {
   private Range<Double> nbBathroomsWeightRange;
   private Range<Double> terraceWeightRange;
   private Range<Double> floorAreaTerraceWeightRange;
-  private Range<Double> wifiSubjectiveValueWeight;
-  private Range<Double> pricePerNightSubjectiveValueWeight;
-  private Range<Double> nbMinNightSubjectiveValueWeight;
-  private Range<Double> teleSubjectiveValueWeight;
+  private Range<Double> wifiSubjectiveValueWeightRange;
+  private Range<Double> pricePerNightSubjectiveValueWeightRange;
+  private Range<Double> nbMinNightSubjectiveValueWeightRange;
+  private Range<Double> teleSubjectiveValueWeightRange;
 
   private Profile() {
     this.linearAvf = null;
@@ -40,10 +40,10 @@ public class Profile {
     this.nbBathroomsWeightRange = null;
     this.terraceWeightRange = null;
     this.floorAreaTerraceWeightRange = null;
-    this.wifiSubjectiveValueWeight = null;
-    this.pricePerNightSubjectiveValueWeight = null;
-    this.nbMinNightSubjectiveValueWeight = null;
-    this.teleSubjectiveValueWeight = null;
+    this.wifiSubjectiveValueWeightRange = null;
+    this.pricePerNightSubjectiveValueWeightRange = null;
+    this.nbMinNightSubjectiveValueWeightRange = null;
+    this.teleSubjectiveValueWeightRange = null;
   }
 
   /**
@@ -62,10 +62,10 @@ public class Profile {
     prof.nbBathroomsWeightRange = this.nbBathroomsWeightRange;
     prof.terraceWeightRange = this.terraceWeightRange;
     prof.floorAreaTerraceWeightRange = this.floorAreaTerraceWeightRange;
-    prof.wifiSubjectiveValueWeight = this.wifiSubjectiveValueWeight;
-    prof.pricePerNightSubjectiveValueWeight = this.pricePerNightSubjectiveValueWeight;
-    prof.nbMinNightSubjectiveValueWeight = this.nbMinNightSubjectiveValueWeight;
-    prof.teleSubjectiveValueWeight = this.teleSubjectiveValueWeight;
+    prof.wifiSubjectiveValueWeightRange = this.wifiSubjectiveValueWeightRange;
+    prof.pricePerNightSubjectiveValueWeightRange = this.pricePerNightSubjectiveValueWeightRange;
+    prof.nbMinNightSubjectiveValueWeightRange = this.nbMinNightSubjectiveValueWeightRange;
+    prof.teleSubjectiveValueWeightRange = this.teleSubjectiveValueWeightRange;
 
     return prof;
   }
@@ -88,11 +88,11 @@ public class Profile {
   public Range<Double> getWeightRange(Criterion crit) {
     switch (crit) {
       case TELE:
-        return teleSubjectiveValueWeight;
+        return teleSubjectiveValueWeightRange;
       case TERRACE:
         return terraceWeightRange;
       case WIFI:
-        return wifiSubjectiveValueWeight;
+        return wifiSubjectiveValueWeightRange;
       case FLOOR_AREA:
         return floorAreaWeightRange;
       case FLOOR_AREA_TERRACE:
@@ -104,9 +104,9 @@ public class Profile {
       case NB_SLEEPING:
         return nbSleepingWeightRange;
       case NB_MIN_NIGHT:
-        return nbMinNightSubjectiveValueWeight;
+        return nbMinNightSubjectiveValueWeightRange;
       case PRICE_PER_NIGHT:
-        return pricePerNightSubjectiveValueWeight;
+        return pricePerNightSubjectiveValueWeightRange;
       default:
         throw new IllegalArgumentException();
     }
@@ -299,7 +299,7 @@ public class Profile {
    */
   private void setWifiSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
-    this.wifiSubjectiveValueWeight = value;
+    this.wifiSubjectiveValueWeightRange = value;
     this.linearAvf.setWeight(Criterion.WIFI, getMiddleOfRange(value));
     LOGGER.debug("The wifi weight has been set to {}", value);
   }
@@ -312,7 +312,7 @@ public class Profile {
    */
   private void setPricePerNightSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
-    this.pricePerNightSubjectiveValueWeight = value;
+    this.pricePerNightSubjectiveValueWeightRange = value;
     this.linearAvf.setWeight(Criterion.PRICE_PER_NIGHT, getMiddleOfRange(value));
     LOGGER.debug("The price per night weight has been set to {}", value);
   }
@@ -325,7 +325,7 @@ public class Profile {
    */
   private void setNbMinNightSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
-    this.nbMinNightSubjectiveValueWeight = value;
+    this.nbMinNightSubjectiveValueWeightRange = value;
     this.linearAvf.setWeight(Criterion.NB_MIN_NIGHT, getMiddleOfRange(value));
     LOGGER.debug("The number of minimum night weight has been set to {}", value);
   }
@@ -338,7 +338,7 @@ public class Profile {
    */
   private void setTeleSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
-    this.teleSubjectiveValueWeight = value;
+    this.teleSubjectiveValueWeightRange = value;
     this.linearAvf.setWeight(Criterion.TELE, getMiddleOfRange(value));
     LOGGER.debug("The tele weight has been set to {}", value);
   }
