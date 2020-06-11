@@ -6,10 +6,19 @@ import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 
 public class QuestionPriceArea {
+
   int price;
+
   int surface;
+
   private final String question = "Would you pay %d€ more for %d m2 more?";
 
+  /**
+   * Instantiates a new question price/area.
+   *
+   * @param price the price shown to the user according to his/her profile
+   * @param surface the surface shown to the user according to his/her profile
+   */
   private QuestionPriceArea(int price, int surface) {
     checkNotNull(price);
     checkNotNull(surface);
@@ -17,6 +26,13 @@ public class QuestionPriceArea {
     this.surface = surface;
   }
 
+  /**
+   * Creates the.
+   *
+   * @param price the price
+   * @param surface the surface
+   * @return the question price area
+   */
   public static QuestionPriceArea create(int price, int surface) {
     return new QuestionPriceArea(price, surface);
   }
@@ -33,6 +49,12 @@ public class QuestionPriceArea {
     return String.format(this.question, this.getPrice(), this.getSurface());
   }
 
+  /**
+   * Adapt the interval of weight contained in a profile depending on his response
+   *
+   * @param p the profile we need to modify
+   * @param response the response of the user
+   */
   public void resolve(Profile p, boolean response) {
     Range<Double> floorAreaWeight = p.getWeightRange(Criterion.FLOOR_AREA);
     Range<Double> priceWeight = p.getWeightRange(Criterion.PRICE_PER_NIGHT);
