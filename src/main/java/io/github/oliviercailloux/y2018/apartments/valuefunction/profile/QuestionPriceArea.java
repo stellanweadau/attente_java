@@ -27,7 +27,7 @@ public class QuestionPriceArea {
   }
 
   /**
-   * Creates the.
+   * Creates the question.
    *
    * @param price the price
    * @param surface the surface
