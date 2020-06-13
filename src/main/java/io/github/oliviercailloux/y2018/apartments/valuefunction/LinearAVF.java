@@ -5,7 +5,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
-import java.util.function.BiConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -123,17 +122,30 @@ public class LinearAVF {
             .put(Criterion.NB_MIN_NIGHT, nbMinNightValueFunction)
             .build();
 
-    BiConsumer<Criterion, PartialValueFunction<?>> criterionReversedLVFBiConsumer =
-        (Criterion c, PartialValueFunction<?> vf) -> {
+    linearVF.forEach(
+        (c, vf) -> {
           if (floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) < 0
               && floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) > 1) {
             throw new IllegalStateException(
                 "The subjective value of " + c.name() + " must be between 0 and 1");
           }
-        };
-    linearVF.forEach(criterionReversedLVFBiConsumer);
-    booleanVF.forEach(criterionReversedLVFBiConsumer);
-    reveredLinearVF.forEach(criterionReversedLVFBiConsumer);
+        });
+    booleanVF.forEach(
+        (c, vf) -> {
+          if (floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) < 0
+              && floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) > 1) {
+            throw new IllegalStateException(
+                "The subjective value of " + c.name() + " must be between 0 and 1");
+          }
+        });
+    reveredLinearVF.forEach(
+        (c, vf) -> {
+          if (floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) < 0
+              && floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) > 1) {
+            throw new IllegalStateException(
+                "The subjective value of " + c.name() + " must be between 0 and 1");
+          }
+        });
 
     floorAreaSubjectiveValue = floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea());
     LOGGER.debug("The floor area subjective value has been set to {}", floorAreaSubjectiveValue);
