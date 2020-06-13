@@ -3,6 +3,7 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction.profile;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import com.google.common.base.VerifyException;
 import com.google.common.collect.BoundType;
 import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
@@ -123,7 +124,7 @@ public class Profile {
       case PRICE_PER_NIGHT:
         return pricePerNightSubjectiveValueWeightRange;
       default:
-        throw new IllegalArgumentException();
+        throw new VerifyException();
     }
   }
 
@@ -247,7 +248,7 @@ public class Profile {
         LOGGER.debug("The price per night weight has been set to {}", value);
         break;
       default:
-        throw new IllegalArgumentException();
+        throw new VerifyException();
     }
   }
 
