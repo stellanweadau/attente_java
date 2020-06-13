@@ -17,7 +17,7 @@ public class ProfileTest {
   @BeforeEach
   void initEach() {
     Profile.Builder profileBuilder = new Profile.Builder();
-    LinearAVF lavf =
+    LinearAVF.Builder blavf =
         new LinearAVF.Builder()
             .setTeleValueFunction(true)
             .setTerraceValueFunction(true)
@@ -28,12 +28,17 @@ public class ProfileTest {
             .setNbBedroomsValueFunction(2, 4)
             .setNbSleepingValueFunction(2, 4)
             .setNbMinNightValueFunction(5, 10)
-            .setPricePerNightValueFunction(30d, 60d)
-            .build();
-    profileBuilder.setLinearAVF(lavf);
+            .setPricePerNightValueFunction(30d, 60d);
+    for (Criterion c : Criterion.values()) {
+      blavf.setWeight(c, 2d);
+    }
+    LinearAVF lavf = blavf.build();
+
     for (Criterion c : Criterion.values()) {
       profileBuilder.setWeightRange(c, Range.closed(Double.valueOf(0d), Double.valueOf(10d)));
     }
+
+    profileBuilder.setLinearAVF(lavf);
 
     profile = profileBuilder.build();
   }
@@ -41,7 +46,7 @@ public class ProfileTest {
   /** Function to test the basic Profile implementation */
   @Test
   void profileTest() {
-    assertEquals(5d, profile.getLinearAVF().getWeight(Criterion.FLOOR_AREA), 0.0001);
+    assertEquals(2d, profile.getLinearAVF().getWeight(Criterion.FLOOR_AREA), 0.0001);
     assertEquals(
         Range.closed(Double.valueOf(0d), Double.valueOf(10d)),
         profile.getWeightRange(Criterion.NB_BEDROOMS));

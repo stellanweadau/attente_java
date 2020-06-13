@@ -33,7 +33,22 @@ public class Profile {
   private Range<Double> teleSubjectiveValueWeightRange;
 
   private Profile() {
-    this.linearAvf = null;
+    LinearAVF.Builder blavf =
+        new LinearAVF.Builder()
+            .setTeleValueFunction(true)
+            .setTerraceValueFunction(true)
+            .setWifiValueFunction(true)
+            .setFloorAreaTerraceValueFunction(1d, 50d)
+            .setFloorAreaValueFunction(9d, 200d)
+            .setNbBathroomsValueFunction(1, 10)
+            .setNbBedroomsValueFunction(0, 30)
+            .setNbSleepingValueFunction(1, 30)
+            .setNbMinNightValueFunction(1, 31)
+            .setPricePerNightValueFunction(30d, 200d);
+    for (Criterion c : Criterion.values()) {
+      blavf.setWeight(c, 0d);
+    }
+    this.linearAvf = blavf.build();
     this.floorAreaWeightRange = null;
     this.nbBedroomsWeightRange = null;
     this.nbSleepingWeightRange = null;
@@ -119,7 +134,8 @@ public class Profile {
    * @return the middle of the Range of the given Criterion
    */
   double getMiddleOfRange(Criterion crit) {
-    return (this.getWeightRange(crit).upperEndpoint() + this.getWeightRange(crit).lowerEndpoint())
+    return (this.getWeightRange(crit).upperEndpoint().doubleValue()
+            + this.getWeightRange(crit).lowerEndpoint().doubleValue())
         / 2;
   }
 
@@ -131,9 +147,30 @@ public class Profile {
   public Profile setLinearAVF(LinearAVF newLinearAvf) {
     Profile prof = cloneProfile();
 
+    for (Criterion c : Criterion.values()) {
+      checkWeightInRange(c, newLinearAvf);
+    }
+
     prof.linearAvf = newLinearAvf;
 
     return prof;
+  }
+
+  /**
+   * check if the weight of the LinearAVF of the given criterion is in the profile range for this
+   * criterion
+   *
+   * @param crit the criterion to check the weight with the range
+   * @param linearAvf the LinearAVF of check if its weight is in the range
+   * @throws IllegalArgumentException when the weight of the LinearAVF is not in the range
+   */
+  public void checkWeightInRange(Criterion crit, LinearAVF linearAVF) {
+    Range<Double> range = this.getWeightRange(crit);
+    Double weight = Double.valueOf(linearAVF.getWeight(crit));
+    checkNotNull(range);
+    checkNotNull(weight);
+    checkArgument(
+        range.contains(weight), "A weight in the linear AVF is not in the targeted range");
   }
 
   /**
