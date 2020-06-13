@@ -262,12 +262,7 @@ public class Profile {
      */
     public Builder setWeightRange(Criterion crit, double lowerValue, double upperValue) {
       this.toBuild.setWeightRange(
-          crit,
-          Range.range(
-              Double.valueOf(lowerValue),
-              BoundType.CLOSED,
-              Double.valueOf(upperValue),
-              BoundType.CLOSED));
+          crit, Range.closed(Double.valueOf(lowerValue), Double.valueOf(upperValue)));
       return this;
     }
 

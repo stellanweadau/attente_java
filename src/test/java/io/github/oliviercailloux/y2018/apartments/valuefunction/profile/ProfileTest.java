@@ -3,7 +3,6 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction.profile;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.google.common.collect.BoundType;
 import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
@@ -33,9 +32,7 @@ public class ProfileTest {
             .build();
     profileBuilder.setLinearAVF(lavf);
     for (Criterion c : Criterion.values()) {
-      profileBuilder.setWeightRange(
-          c,
-          Range.range(Double.valueOf(0d), BoundType.CLOSED, Double.valueOf(10d), BoundType.CLOSED));
+      profileBuilder.setWeightRange(c, Range.closed(Double.valueOf(0d), Double.valueOf(10d)));
     }
 
     profile = profileBuilder.build();
@@ -46,7 +43,7 @@ public class ProfileTest {
   void profileTest() {
     assertEquals(5d, profile.getLinearAVF().getWeight(Criterion.FLOOR_AREA), 0.0001);
     assertEquals(
-        Range.range(Double.valueOf(0d), BoundType.CLOSED, Double.valueOf(10d), BoundType.CLOSED),
+        Range.closed(Double.valueOf(0d), Double.valueOf(10d)),
         profile.getWeightRange(Criterion.NB_BEDROOMS));
   }
 
