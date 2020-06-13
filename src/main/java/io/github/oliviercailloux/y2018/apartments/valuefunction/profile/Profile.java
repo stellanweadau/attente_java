@@ -119,7 +119,8 @@ public class Profile {
    * @return the middle of the Range of the given Criterion
    */
   double getMiddleOfRange(Criterion crit) {
-    return (this.getWeightRange(crit).upperEndpoint() + this.getWeightRange(crit).lowerEndpoint()) / 2 ;
+    return (this.getWeightRange(crit).upperEndpoint() + this.getWeightRange(crit).lowerEndpoint())
+        / 2;
   }
 
   /**
@@ -193,8 +194,12 @@ public class Profile {
     checkNotNull(value, "The rage cannot be null");
     checkArgument(value.hasLowerBound() && value.hasUpperBound(), "The given range is not valid");
     checkArgument(
+        value.lowerBoundType().equals(BoundType.CLOSED)
+            && value.upperBoundType().equals(BoundType.CLOSED),
+        "The given range must have closed bounds");
+    checkArgument(
         value.lowerEndpoint() >= 0 && value.upperEndpoint() > 0,
-        "The weight of the tele cannot be negative");
+        "The weight of the range cannot be negative");
   }
 
   /**
@@ -206,7 +211,8 @@ public class Profile {
   private void setFloorAreaSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.floorAreaWeightRange = value;
-    this.linearAvf = this.linearAvf.setWeight(Criterion.FLOOR_AREA, getMiddleOfRange(Criterion.FLOOR_AREA));
+    this.linearAvf =
+        this.linearAvf.setWeight(Criterion.FLOOR_AREA, getMiddleOfRange(Criterion.FLOOR_AREA));
     LOGGER.debug("The floor area weight has been set to {}", value);
   }
 
@@ -219,7 +225,8 @@ public class Profile {
   private void setNbBedroomsSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.nbBedroomsWeightRange = value;
-    this.linearAvf = this.linearAvf.setWeight(Criterion.NB_BEDROOMS, getMiddleOfRange(Criterion.NB_BEDROOMS));
+    this.linearAvf =
+        this.linearAvf.setWeight(Criterion.NB_BEDROOMS, getMiddleOfRange(Criterion.NB_BEDROOMS));
     LOGGER.debug("The number of bedrooms weight has been set to {}", value);
   }
 
@@ -232,7 +239,8 @@ public class Profile {
   private void setNbSleepingSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.nbSleepingWeightRange = value;
-    this.linearAvf = this.linearAvf.setWeight(Criterion.NB_SLEEPING, getMiddleOfRange(Criterion.NB_SLEEPING));
+    this.linearAvf =
+        this.linearAvf.setWeight(Criterion.NB_SLEEPING, getMiddleOfRange(Criterion.NB_SLEEPING));
     LOGGER.debug("The number of sleeping weight has been set to {}", value);
   }
 
@@ -245,7 +253,8 @@ public class Profile {
   private void setNbBathroomsSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.nbBathroomsWeightRange = value;
-    this.linearAvf = this.linearAvf.setWeight(Criterion.NB_BATHROOMS, getMiddleOfRange(Criterion.NB_BATHROOMS));
+    this.linearAvf =
+        this.linearAvf.setWeight(Criterion.NB_BATHROOMS, getMiddleOfRange(Criterion.NB_BATHROOMS));
     LOGGER.debug("The number of bathrooms weight has been set to {}", value);
   }
 
@@ -258,7 +267,8 @@ public class Profile {
   private void setTerraceSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.terraceWeightRange = value;
-    this.linearAvf = this.linearAvf.setWeight(Criterion.TERRACE, getMiddleOfRange(Criterion.TERRACE));
+    this.linearAvf =
+        this.linearAvf.setWeight(Criterion.TERRACE, getMiddleOfRange(Criterion.TERRACE));
     LOGGER.debug("The terrace weight has been set to {}", value);
   }
 
@@ -272,7 +282,8 @@ public class Profile {
     checkRangeValidity(value);
     this.floorAreaTerraceWeightRange = value;
     this.linearAvf =
-        this.linearAvf.setWeight(Criterion.FLOOR_AREA_TERRACE, getMiddleOfRange(Criterion.FLOOR_AREA_TERRACE));
+        this.linearAvf.setWeight(
+            Criterion.FLOOR_AREA_TERRACE, getMiddleOfRange(Criterion.FLOOR_AREA_TERRACE));
     LOGGER.debug("The floor area of the terrace weight has been set to {}", value);
   }
 
@@ -298,7 +309,9 @@ public class Profile {
   private void setPricePerNightSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.pricePerNightSubjectiveValueWeightRange = value;
-    this.linearAvf = this.linearAvf.setWeight(Criterion.PRICE_PER_NIGHT, getMiddleOfRange(Criterion.PRICE_PER_NIGHT));
+    this.linearAvf =
+        this.linearAvf.setWeight(
+            Criterion.PRICE_PER_NIGHT, getMiddleOfRange(Criterion.PRICE_PER_NIGHT));
     LOGGER.debug("The price per night weight has been set to {}", value);
   }
 
@@ -311,7 +324,8 @@ public class Profile {
   private void setNbMinNightSubjectiveValueWeight(Range<Double> value) {
     checkRangeValidity(value);
     this.nbMinNightSubjectiveValueWeightRange = value;
-    this.linearAvf = this.linearAvf.setWeight(Criterion.NB_MIN_NIGHT, getMiddleOfRange(Criterion.NB_MIN_NIGHT));
+    this.linearAvf =
+        this.linearAvf.setWeight(Criterion.NB_MIN_NIGHT, getMiddleOfRange(Criterion.NB_MIN_NIGHT));
     LOGGER.debug("The number of minimum night weight has been set to {}", value);
   }
 
