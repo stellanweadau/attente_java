@@ -286,7 +286,7 @@ public class Profile {
     }
 
     public Builder setLinearAVF(LinearAVF newLinearAvf) {
-      this.toBuild = toBuild.setLinearAVF(newLinearAvf);
+      this.toBuild = toBuild.withLinearAVF(newLinearAvf);
       return this;
     }
 
