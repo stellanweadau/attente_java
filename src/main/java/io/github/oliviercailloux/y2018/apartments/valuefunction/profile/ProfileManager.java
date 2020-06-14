@@ -131,14 +131,14 @@ public class ProfileManager {
     this.mapProfile.put(ProfileType.COUPLE, couple);
   }
 
-  private static ProfileManager INSTANCE = null;
+  private static ProfileManager instance = null;
 
   public static ProfileManager getInstance() {
-    if (INSTANCE == null) {
-      INSTANCE = new ProfileManager();
+    if (instance == null) {
+      instance = new ProfileManager();
     }
 
-    return INSTANCE;
+    return instance;
   }
 
   public Profile getProfile(ProfileType profType) {
