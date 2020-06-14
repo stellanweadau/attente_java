@@ -145,7 +145,7 @@ public class Profile {
    *
    * @return Profile with its LinearAVF set
    */
-  public Profile setLinearAVF(LinearAVF newLinearAvf) {
+  public Profile withLinearAVF(LinearAVF newLinearAvf) {
     Profile prof = cloneProfile();
 
     for (Criterion c : Criterion.values()) {
