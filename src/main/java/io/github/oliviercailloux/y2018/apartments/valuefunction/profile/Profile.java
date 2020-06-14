@@ -162,7 +162,7 @@ public class Profile {
    * criterion
    *
    * @param crit the criterion to check the weight with the range
-   * @param linearAvf the LinearAVF of check if its weight is in the range
+   * @param linearAVF the LinearAVF of check if its weight is in the range
    * @throws IllegalArgumentException when the weight of the LinearAVF is not in the range
    */
   public void checkWeightInRange(Criterion crit, LinearAVF linearAVF) {
