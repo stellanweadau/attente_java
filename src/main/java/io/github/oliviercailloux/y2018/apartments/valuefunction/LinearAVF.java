@@ -289,7 +289,7 @@ public class LinearAVF {
    * @param value the value we want to assign at this criterion
    * @return an object LinearAVF with the modified criterion
    */
-  LinearAVF setWeight(Criterion awt, double value) {
+  public LinearAVF setWeight(Criterion awt, double value) {
     checkArgument(value >= 0, "The given weight cannot be negative");
     LinearAVF avf = cloneLinearAVF();
     switch (awt) {
