@@ -35,7 +35,7 @@ public class ProfileTest {
     LinearAVF lavf = blavf.build();
 
     for (Criterion c : Criterion.values()) {
-      profileBuilder.setWeightRange(c, Range.closed(Double.valueOf(0d), Double.valueOf(10d)));
+      profileBuilder.setWeightRange(c, Range.closed(0d, 10d));
     }
 
     profileBuilder.setLinearAVF(lavf);
@@ -48,7 +48,7 @@ public class ProfileTest {
   void profileTest() {
     assertEquals(2d, profile.getLinearAVF().getWeight(Criterion.FLOOR_AREA), 0.0001);
     assertEquals(
-        Range.closed(Double.valueOf(0d), Double.valueOf(10d)),
+        Range.closed(0d, 10d),
         profile.getWeightRange(Criterion.NB_BEDROOMS));
   }
 
