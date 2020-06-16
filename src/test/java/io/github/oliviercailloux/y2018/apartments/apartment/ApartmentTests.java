@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import org.junit.jupiter.api.Test;
 
-class ApartmentTest {
+class ApartmentTests {
 
   private double floorArea = 456.56;
   private String address = "A Random Address";

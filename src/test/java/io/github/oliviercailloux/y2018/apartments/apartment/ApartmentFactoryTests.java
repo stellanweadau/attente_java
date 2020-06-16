@@ -13,7 +13,7 @@ import javax.ws.rs.client.ClientBuilder;
 import org.junit.jupiter.api.Test;
 
 /** Test class for ApartmentFactory. */
-class ApartmentFactoryTest {
+class ApartmentFactoryTests {
 
   /**
    * Test GenerateApartment function tests the correspondence between the results sent and those

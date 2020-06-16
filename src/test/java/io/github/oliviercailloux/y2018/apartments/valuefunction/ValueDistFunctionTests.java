@@ -6,7 +6,7 @@ import com.google.maps.model.LatLng;
 import io.github.oliviercailloux.y2018.apartments.localize.Localizer;
 import io.github.oliviercailloux.y2018.apartments.utils.KeyManager;
 
-class ValueDistFunctionTest {
+class ValueDistFunctionTests {
 
   private ValueDistFunction v;
   LatLng appart;

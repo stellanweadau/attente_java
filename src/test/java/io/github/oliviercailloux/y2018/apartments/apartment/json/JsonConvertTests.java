@@ -19,11 +19,11 @@ import org.junit.jupiter.api.Test;
  *
  * @author Etienne CARTIER & Morgane FIOT
  */
-public class JsonConvertTest {
+public class JsonConvertTests {
   Path jsonTestPath;
 
-  public JsonConvertTest() throws Exception {
-    URI ressource = JsonConvertTest.class.getResource("jsonApartments.json").toURI();
+  public JsonConvertTests() throws Exception {
+    URI ressource = JsonConvertTests.class.getResource("jsonApartments.json").toURI();
     this.jsonTestPath = Path.of(ressource);
   }
 

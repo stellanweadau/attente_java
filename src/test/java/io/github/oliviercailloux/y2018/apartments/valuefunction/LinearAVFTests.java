@@ -8,7 +8,7 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class LinearAVFTest {
+class LinearAVFTests {
 
   LinearAVF linearAVF;
   Apartment a;

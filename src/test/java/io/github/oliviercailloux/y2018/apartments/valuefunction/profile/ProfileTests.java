@@ -9,7 +9,7 @@ import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ProfileTest {
+public class ProfileTests {
 
   Profile profile;
 

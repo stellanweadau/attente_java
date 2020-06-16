@@ -265,12 +265,23 @@ Moreover, you can also use link:https://git-scm.com/book/en/v2/Customizing-Git-G
 == Convention for unit tests
 
 * The test class must be in the same package as the class it is testing.
-* The test class must have the same name as the class with the suffix `Test`
+* The test class must have the same name as the class with the suffix `Tests`
 * The annotation `@Test` must be added to the method
 * Add `test` at the beginning of the function name
 * Use static imports: Replace `import org.junit.jupiter.api.Assertions;` by `import static org.junit.jupiter.api.Assertions.assertEquals;`
 &rarr; Use `assertEquals(...)` instead of `Assertions.assertEquals(...)`
 * Tests which must raise exceptions, raise only `Exception` (because `Exception` includes all)
+
+Example (pseudo code) :
+```java
+class Apartment {}  // our java class
+class ApartmentTests {  // our java test class
+    @Test
+    void testSomething(){
+        assertEquals(1, 1)
+    }
+}
+```
 
 == Changelog 🆕
 

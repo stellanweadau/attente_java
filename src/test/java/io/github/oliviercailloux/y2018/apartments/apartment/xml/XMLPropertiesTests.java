@@ -11,7 +11,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import org.junit.jupiter.api.Test;
 
-class XMLPropertiesTest {
+class XMLPropertiesTests {
 
   @Test
   void testReadApartment() throws Exception {

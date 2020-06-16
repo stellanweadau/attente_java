@@ -9,7 +9,7 @@ import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ApartmentValueFunctionTest {
+class ApartmentValueFunctionTests {
 
   ApartmentValueFunction valueFunction = new ApartmentValueFunction();
 

@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 
 /** Test class for ReadApartmentsXMLFormat class. */
-class ReadApartmentsXMLFormatTest {
+class ReadApartmentsXMLFormatTests {
 
   /**
    * Read an apartment from an XML file which is in the resources
@@ -24,7 +24,8 @@ class ReadApartmentsXMLFormatTest {
     // Construct the apartment
     Apartment a =
         r.readApartment(
-            ReadApartmentsXMLFormatTest.class.getResourceAsStream("start-apartment-classpath.xml"));
+            ReadApartmentsXMLFormatTests.class.getResourceAsStream(
+                "start-apartment-classpath.xml"));
     assertEquals("5 avenue Roger Salengro 92370 Chaville France", a.getAddress());
     assertEquals("Villa à louer", a.getTitle());
     assertEquals("", a.getDescription());
