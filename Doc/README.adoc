@@ -34,13 +34,13 @@ _Thanks link:https://github.com/GabG02[gab202]_
 
 == Convention for naming packages (for papyrus)
 
-* The name of a package must start with the type of diagram he contains (CD, UCD, ID) and should look like this: “TypeOfDiagram_Description”. +
-The only exception is for the JavaIteration package as it may contain different type of diagram.tr
-* When you create a new child such as a use case or a new class, the name of it should finish with “UC” if it is a use case, “CD” if it is for a class diagram or “I” for an interaction diagram.
+* The name of a package must start with the type of diagram he contains (CD, UCD, ID) and should look like this: "TypeOfDiagram_Description”. +
+The only exception is for the `JavaIteration` package as it may contain different type of diagram.
+* When you create a new child such as a use case or a new class, the name of it should finish with "UC” if it is a use case, "CD” if it is for a class diagram or "I” for an interaction diagram.
 
 == Idea 💡
 
-For all ideas under development and not integrated into the application, please refer to link:idea.adoc[this documentation].
+For all ideas under development, not integrated into the application and the elements to be considered, please refer to link:idea.adoc[this documentation].
 
 == Iterations 🏃
 
@@ -59,6 +59,10 @@ You can see a description of processes by following this link:It3.adoc[link]
 === Iteration 4
 
 You can see the breakdown of members and breakdowns for iteration 4 link:It4.adoc[here]
+
+=== Iteration 5
+
+You can see the last iteration link:It5.adoc[here]
 
 [%hardbreaks]
 link:#toc[⬆ back to top]

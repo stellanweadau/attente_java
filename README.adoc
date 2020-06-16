@@ -196,6 +196,45 @@ This 3 classes will contain the different possibility of answers and a resolve f
 
 * link:Doc/changelog.adoc[Changelog]
 
+=== Iteration 4
+
+==== Team 1
+
+===== Members
+
+- link:https://github.com/EtienneCartier[Etienne CARTIER]
+- link:https://github.com/av1m[Avi MIMOUN]
+
+===== Realizations
+
+* Creation of `QuestionPriceArea` class (link:https://github.com/av1m/Apartments/pull/45[#45])
+* Reduce downloads during GH actions (Fix link:https://github.com/av1m/Apartments/issues/47[#47])
+* `LinearAVF` improvement : redundancy removal and fix bug (fix link:https://github.com/av1m/Apartments/issues/49[#49])
+* Change of `setWeight` to `withWeight` in Profile (fix link:https://github.com/av1m/Apartments/issues/50[#50])
+* Changing the clone-based approach (Fix link:https://github.com/av1m/Apartments/issues/51[#51])
+* Creation of the `ProfileType` and `ProfileManager` classes (link:https://github.com/av1m/Apartments/pull/52[#52])
+
+==== Team 2
+
+===== Members
+
+- link:https://github.com/GabG02[Gabriel GUISSET]
+- link:https://github.com/MorganeFt[Morgane FIOT]
+
+===== Realizations
+
+* TODO
+
+==== Team 3 (SM/PO)
+
+===== Members
+
+- link:https://github.com/clemencecousin[Clémence COUSIN]
+
+===== Realizations
+
+* link:Doc/changelog.adoc[Changelog]
+
 == Get started ✨
 
 Make sure you have installed link:https://openjdk.java.net/projects/jdk/11/[java 11], link:https://git-scm.com/[git] and  link:https://maven.apache.org/[maven]
@@ -268,7 +307,7 @@ Moreover, you can also use link:https://git-scm.com/book/en/v2/Customizing-Git-G
 
 == Repository available on Github :octocat:
 
-- Link of this link:https://github.com/av1m/Apartments[repository]
+- Link of this link:https://github.com/oliviercailloux/Apartments[repository]
 
 == Contributors 👨‍💻
 

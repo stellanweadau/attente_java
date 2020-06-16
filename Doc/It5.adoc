@@ -1,0 +1,42 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:     
+:imagesdir: img/
+:toc:
+:toc-placement!:
+
+= Iteration 5
+
+[IMPORTANT]
+====
+
+Deadline : **21 June** 2020
+
+This file only explains the distribution of work between the different members (and indicates through links theirs realizations)
+
+====
+
+toc::[]
+
+NOTE: As a reminder, you have authorized us to split our tasks by members instead of teams. Indeed, we cut out the tasks individually to have a "manager", but we all work together
+
+== Etienne CARTIER
+
+== Morgane FIOT
+
+== Gabriel GUISSET
+
+== Clemence COUSIN
+
+== Avi MIMOUN
+
+* Global reflection on the understanding of the documentation
+* Writing documentation
+* Delete history, `diagrams.adoc` and others contents
+* Reduction of drop-down lists.
+* Finalization and closing of the iteration
+
+[%hardbreaks]
+link:#toc[⬆ back to top]

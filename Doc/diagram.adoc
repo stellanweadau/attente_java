@@ -14,9 +14,6 @@ toc::[]
 [WARNING]
 ====
 *Diagrams listed in link:papyrus/[`papyrus`] and not documented in this file are obsolete.*
-
-To see the old project states, you can navigate through the old commits. +
-However, we left the old diagram photos in the link:img/[`img/`] folder
 ====
 
 == Class diagrams
