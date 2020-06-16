@@ -87,22 +87,4 @@ class LinearAVFTest {
     assertEquals(0.5506, linearAVF.setWeight(Criterion.TELE, 0.8).getSubjectiveValue(a), 0.0001);
     assertEquals(0.5524, linearAVF.setWeight(Criterion.TELE, 0.5).getSubjectiveValue(a), 0.0001);
   }
-
-  /** Function to test if the bounds of an interval adapt well when needed */
-  @Test
-  void adaptBoundsTest() {
-    assertThrows(
-        IllegalArgumentException.class, () -> linearAVF.adaptBounds(Criterion.TELE, 0d, true));
-    linearAVF = linearAVF.adaptBounds(Criterion.FLOOR_AREA_TERRACE, 25d, true);
-    LinearValueFunction lvf = linearAVF.getFloorAreaTerraceValueFunction();
-    assertEquals(25d, lvf.getInterval().lowerEndpoint());
-    assertEquals(
-        0.6,
-        linearAVF.getFloorAreaTerraceValueFunction().getSubjectiveValue(a.getFloorAreaTerrace()));
-    linearAVF = linearAVF.adaptBounds(Criterion.NB_BEDROOMS, 8, false);
-    double nbRooms = a.getNbBedrooms();
-    assertEquals(0d, linearAVF.getNbBedroomsValueFunction().getSubjectiveValue(nbRooms));
-    lvf = linearAVF.getNbBedroomsValueFunction();
-    assertEquals(8, lvf.getInterval().upperEndpoint());
-  }
 }

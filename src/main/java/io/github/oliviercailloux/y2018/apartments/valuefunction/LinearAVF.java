@@ -289,7 +289,7 @@ public class LinearAVF {
    * @param value the value we want to assign at this criterion
    * @return an object LinearAVF with the modified criterion
    */
-  LinearAVF setWeight(Criterion awt, double value) {
+  public LinearAVF setWeight(Criterion awt, double value) {
     checkArgument(value >= 0, "The given weight cannot be negative");
     LinearAVF avf = cloneLinearAVF();
     switch (awt) {
@@ -438,95 +438,6 @@ public class LinearAVF {
   private void setTeleSubjectiveValueWeight(double value) {
     this.teleSubjectiveValueWeight = value;
     LOGGER.debug("The tele weight has been set to {}", value);
-  }
-
-  /* Operation used for ValueFunction */
-
-  /**
-   * this function replace the lower or the upper bound of a LinearValueFunction or a
-   * ReversLinearValueFunction
-   *
-   * @param criterion the criterion to adapt. This criterion should not be a boolean as TV for
-   *     example.
-   * @param newBound the new bound to define
-   * @param lower true if we want to adapt the lower bound, false on the other case
-   * @return the new Linear AVF containing changes
-   */
-  public LinearAVF adaptBounds(Criterion criterion, double newBound, boolean lower) {
-
-    LinearAVF avf = this.cloneLinearAVF();
-
-    switch (criterion) {
-      case FLOOR_AREA:
-        avf.setFloorAreaValueFunction(
-            adaptLinearValueFunction(avf.floorAreaValueFunction, newBound, lower));
-        break;
-      case FLOOR_AREA_TERRACE:
-        avf.setFloorAreaTerraceValueFunction(
-            adaptLinearValueFunction(avf.floorAreaTerraceValueFunction, newBound, lower));
-        break;
-      case PRICE_PER_NIGHT:
-        avf.setPricePerNightValueFunction(
-            adaptReversedLinearValueFunction(avf.pricePerNightValueFunction, newBound, lower));
-        break;
-      case NB_SLEEPING:
-        avf.setNbSleepingValueFunction(
-            adaptLinearValueFunction(avf.nbSleepingValueFunction, newBound, lower));
-        break;
-      case NB_BATHROOMS:
-        avf.setNbBathroomsValueFunction(
-            adaptLinearValueFunction(avf.nbBathroomsValueFunction, newBound, lower));
-        break;
-      case NB_BEDROOMS:
-        avf.setNbBedroomsValueFunction(
-            adaptLinearValueFunction(avf.nbBedroomsValueFunction, newBound, lower));
-        break;
-      case NB_MIN_NIGHT:
-        avf.setNbMinNightValueFunction(
-            adaptReversedLinearValueFunction(avf.nbMinNightValueFunction, newBound, lower));
-        break;
-        // Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
-        // don't have bounds)
-        // $CASES-OMITTED$
-      default:
-        throw new IllegalArgumentException(
-            "Cannot adapt the valueFunction linked to the given Criterion");
-    }
-
-    return avf;
-  }
-
-  /**
-   * Adapt linear value function by defining a new lower or upper bound
-   *
-   * @param oldLVF the old linear value function used
-   * @param newBound the new lower or upper bound
-   * @param lower used to say whether we change the lower or upper bound
-   * @return an new object LinearValueFunction set with new bound
-   */
-  private LinearValueFunction adaptLinearValueFunction(
-      LinearValueFunction oldLVF, double newBound, boolean lower) {
-    if (lower) {
-      return new LinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
-    }
-
-    return new LinearValueFunction(oldLVF.getInterval().lowerEndpoint(), newBound);
-  }
-
-  /**
-   * Adapt linear value function by defining a new lower or upper bound
-   *
-   * @param oldLVF the old linear value function used
-   * @param newBound the new lower or upper bound
-   * @param lower used to say whether we change the lower or upper bound
-   * @return an new object LinearValueFunction set with new bound
-   */
-  private ReversedLinearValueFunction adaptReversedLinearValueFunction(
-      ReversedLinearValueFunction oldLVF, double newBound, boolean lower) {
-    if (lower) {
-      return new ReversedLinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
-    }
-    return new ReversedLinearValueFunction(oldLVF.getInterval().lowerEndpoint(), newBound);
   }
 
   /**
@@ -760,9 +671,7 @@ public class LinearAVF {
         checkNotNull(toBuild.getWeight(c));
       }
 
-      LinearAVF temp = toBuild;
-      toBuild = new LinearAVF();
-      return temp;
+      return toBuild;
     }
 
     /**

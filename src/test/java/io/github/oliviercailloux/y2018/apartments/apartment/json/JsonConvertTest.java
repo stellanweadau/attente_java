@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import javax.json.bind.adapter.JsonbAdapter;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -19,6 +20,12 @@ import org.junit.jupiter.api.Test;
  * @author Etienne CARTIER & Morgane FIOT
  */
 public class JsonConvertTest {
+  Path jsonTestPath;
+
+  public JsonConvertTest() throws Exception {
+    URI ressource = JsonConvertTest.class.getResource("jsonApartments.json").toURI();
+    this.jsonTestPath = Path.of(ressource);
+  }
 
   /**
    * Tests apartmentsToJson function. Verifies if the JSON file created by the function corresponds
@@ -27,7 +34,7 @@ public class JsonConvertTest {
    * @throws IOException if the file doesn't exist
    */
   @Test
-  void apartmentsToJsonTest() throws IOException {
+  void apartmentsToJsonTest() throws Exception {
     Builder apartBuilder = new Apartment.Builder();
     ArrayList<Apartment> apartments = new ArrayList<>();
     apartments.add(
@@ -39,6 +46,7 @@ public class JsonConvertTest {
             .setWifi(false)
             .setTele(false)
             .build());
+    apartBuilder = new Apartment.Builder();
     apartments.add(
         apartBuilder
             .setAddress("123 rue du soleil")
@@ -62,7 +70,7 @@ public class JsonConvertTest {
    * @throws IOException if the file can't be convert into JSON format.
    */
   @Test
-  void jsonToApartmentsTest() throws IOException, URISyntaxException {
+  void jsonToApartmentsTest() throws Exception {
     Builder apartBuilder = new Apartment.Builder();
     List<Apartment> apartmentsRef = new ArrayList<>();
     apartmentsRef.add(
@@ -74,6 +82,7 @@ public class JsonConvertTest {
             .setWifi(false)
             .setTele(false)
             .build());
+    apartBuilder = new Apartment.Builder();
     apartmentsRef.add(
         apartBuilder
             .setAddress("123 rue du soleil")
@@ -84,12 +93,34 @@ public class JsonConvertTest {
             .setTele(false)
             .build());
 
-    URI ressource = JsonConvertTest.class.getResource("jsonApartments.json").toURI();
-    Path jsonPath = Path.of(ressource);
-
-    List<Apartment> apartmentsTest = JsonConvert.jsonToApartments(jsonPath);
+    List<Apartment> apartmentsTest = JsonConvert.jsonToApartments(this.jsonTestPath);
 
     assertEquals(apartmentsRef.get(0).hashCode(), apartmentsTest.get(0).hashCode());
     assertEquals(apartmentsRef.get(1).hashCode(), apartmentsTest.get(1).hashCode());
+  }
+
+  /** Test if the adapter method works */
+  @Test
+  void getAdapterTest() throws Exception {
+    JsonbAdapter<Apartment, Apartment.Builder> adapter = JsonConvert.getAdapter();
+    Apartment.Builder builder1 =
+        new Apartment.Builder()
+            .setAddress("118 rue du père noel 77480")
+            .setFloorArea(1182118.48)
+            .setTitle("Grand Igloo")
+            .setTerrace(false)
+            .setWifi(false)
+            .setTele(false);
+    Apartment.Builder builder2 =
+        new Apartment.Builder()
+            .setAddress("118 rue du père noel 77480")
+            .setFloorArea(1182118.48)
+            .setTitle("Grand Igloo")
+            .setTerrace(false)
+            .setWifi(false)
+            .setTele(false);
+    Apartment a = adapter.adaptFromJson(builder1);
+    Apartment b = builder2.build();
+    assertEquals(a, b);
   }
 }
