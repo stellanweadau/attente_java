@@ -2,7 +2,6 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.IOException;
 import java.util.SortedMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class PieceWiseLinearValueFunctionTest {
 
   @Test
-  public void getSubjectiveValueNormalTest() throws IOException {
+  public void testGetSubjectiveValueNormal() throws Exception {
 
     PieceWiseLinearValueFunction p = initializePieceWise();
 
@@ -19,7 +18,7 @@ public class PieceWiseLinearValueFunctionTest {
   }
 
   @Test
-  public void getUtilityWithParamAboveMax() throws IOException {
+  public void testGetUtilityWithParamAboveMax() throws Exception {
 
     PieceWiseLinearValueFunction p = initializePieceWise();
 
@@ -27,7 +26,7 @@ public class PieceWiseLinearValueFunctionTest {
   }
 
   @Test
-  public void getUtilityWithParamBelowMin() throws IOException {
+  public void testGetUtilityWithParamBelowMin() throws Exception {
 
     PieceWiseLinearValueFunction p = initializePieceWise();
 

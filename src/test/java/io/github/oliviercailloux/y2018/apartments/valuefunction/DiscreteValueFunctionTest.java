@@ -10,13 +10,13 @@ import org.junit.jupiter.api.Test;
 class DiscreteValueFunctionTest {
 
   @Test
-  void getSubjectiveValueTest() {
+  void testGetSubjectiveValue() {
     DiscreteValueFunction<String> f = new DiscreteValueFunction<>("Bad", "Medium", "Good");
     assertEquals(0.5, f.getSubjectiveValue("Medium"));
   }
 
   @Test
-  void ConstructorValueTest() {
+  void testConstructorValue() {
     Map<Integer, Double> discreteMapTest = new HashMap<>();
     discreteMapTest.put(5, 0.0);
     discreteMapTest.put(10, 0.25);
@@ -26,7 +26,7 @@ class DiscreteValueFunctionTest {
   }
 
   @Test
-  void exceptionTesting() {
+  void testException() {
     assertThrows(
         IllegalArgumentException.class,
         () -> {
@@ -40,7 +40,7 @@ class DiscreteValueFunctionTest {
   }
 
   @Test
-  void exceptionDiffArgsString() {
+  void testExceptionDiffArgsString() {
     assertThrows(
         IllegalArgumentException.class,
         () -> {

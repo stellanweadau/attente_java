@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 class BooleanValueFunctionTest {
 
   @Test
-  void getSubjectiveValueOfTrueTest() {
+  void testGetSubjectiveValueOfTrue() {
     BooleanValueFunction b = new BooleanValueFunction(true);
     assertEquals(1, b.getSubjectiveValue(true));
     assertEquals(0, b.getSubjectiveValue(false));
   }
 
   @Test
-  void getSubjectiveValueOfFalseTest() {
+  void testGetSubjectiveValueOfFalse() {
     BooleanValueFunction bo = new BooleanValueFunction(false);
     assertEquals(0, bo.getSubjectiveValue(true));
     assertEquals(1, bo.getSubjectiveValue(false));

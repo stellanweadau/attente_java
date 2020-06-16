@@ -34,7 +34,7 @@ public class JsonConvertTest {
    * @throws IOException if the file doesn't exist
    */
   @Test
-  void apartmentsToJsonTest() throws Exception {
+  void testApartmentsToJson() throws Exception {
     Builder apartBuilder = new Apartment.Builder();
     ArrayList<Apartment> apartments = new ArrayList<>();
     apartments.add(
@@ -70,7 +70,7 @@ public class JsonConvertTest {
    * @throws IOException if the file can't be convert into JSON format.
    */
   @Test
-  void jsonToApartmentsTest() throws Exception {
+  void testJsonToApartments() throws Exception {
     Builder apartBuilder = new Apartment.Builder();
     List<Apartment> apartmentsRef = new ArrayList<>();
     apartmentsRef.add(
@@ -101,7 +101,7 @@ public class JsonConvertTest {
 
   /** Test if the adapter method works */
   @Test
-  void getAdapterTest() throws Exception {
+  void testGetAdapter() throws Exception {
     JsonbAdapter<Apartment, Apartment.Builder> adapter = JsonConvert.getAdapter();
     Apartment.Builder builder1 =
         new Apartment.Builder()

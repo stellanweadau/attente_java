@@ -19,7 +19,7 @@ class DistanceSubwayTest {
    *
    * @throws Exception
    */
-  void calculateDistanceAddressTest() throws Exception {
+  void testCalculateDistanceAddress() throws Exception {
 
     DistanceSubway dist = new DistanceSubway("Paris", "Ville d'Avray", KeyManager.getApiKey());
     double time = dist.calculateDistanceAddress(DistanceMode.ADDRESS);

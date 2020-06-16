@@ -11,10 +11,10 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import org.junit.jupiter.api.Test;
 
-class ToXmlPropertiesTest {
+class XMLPropertiesTest {
 
   @Test
-  void readApartmentTest() throws Exception {
+  void testReadApartment() throws Exception {
     XMLProperties j = new XMLProperties();
 
     Apartment a =

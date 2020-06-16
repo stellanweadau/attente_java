@@ -69,7 +69,7 @@ class ApartmentValueFunctionTest {
 
   /** Function to test the some setters */
   @Test
-  void checkValue() {
+  void testCheckValue() {
 
     LinearValueFunction lvf = (LinearValueFunction) valueFunction.getNbSleepingValueFunction();
     assertEquals(5d, lvf.getInterval().upperEndpoint());
@@ -85,7 +85,7 @@ class ApartmentValueFunctionTest {
    * attributeWeight)/sum(weight)
    */
   @Test
-  void apartmentValueFunctionTest() {
+  void testApartmentValueFunction() {
 
     double subjectiveValueTele =
         valueFunction.getTeleValueFunction().getSubjectiveValue(a.getTele())
@@ -148,7 +148,7 @@ class ApartmentValueFunctionTest {
 
   /** Test if the weight setter throw a Illegal Argument Exception when needed */
   @Test
-  void exceptionIllegalArgWeightSetter() {
+  void testExceptionIllegalArgWeightSetter() {
 
     assertThrows(
         IllegalArgumentException.class, () -> valueFunction.setFloorAreaSubjectiveValueWeight(-1d));
@@ -180,7 +180,7 @@ class ApartmentValueFunctionTest {
 
   /** Function to test the adaptation to the subjective value weight of a criteria */
   @Test
-  void adaptWeightTest() {
+  void testAdaptWeight() {
 
     assertThrows(
         IllegalArgumentException.class,
@@ -196,7 +196,7 @@ class ApartmentValueFunctionTest {
 
   /** Function to test if the bounds of an interval adapt well when needed */
   @Test
-  void adaptBoundsTest() {
+  void testAdaptBounds() {
 
     assertThrows(
         IllegalArgumentException.class, () -> valueFunction.adaptBounds(Criterion.TELE, 0d, true));
@@ -218,7 +218,7 @@ class ApartmentValueFunctionTest {
 
   /** Function to test if a random apartment generated respects some criteria */
   @Test
-  void getRandomApartmentValueFunctionTest() {
+  void testGetRandomApartmentValueFunction() {
 
     ApartmentValueFunction apart = ApartmentValueFunction.getRandomApartmentValueFunction();
     assertEquals(1d, apart.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea()));

@@ -72,7 +72,7 @@ class ApartmentFactoryTest {
    * argument of the method is wrong.
    */
   @Test
-  public void generateApartmentFromJsonExceptionTest() {
+  public void testGenerateApartmentFromJsonException() {
     assertThrows(
         IOException.class, () -> ApartmentFactory.generateApartmentsFromJsonPath(Path.of("abc")));
   }

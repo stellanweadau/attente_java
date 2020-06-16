@@ -8,31 +8,31 @@ import org.junit.jupiter.api.Test;
 class ReversedLinearValueFunctionTest {
 
   @Test
-  void getSubjectiveValueTest() {
+  void testGetSubjectiveValue() {
     ReversedLinearValueFunction f = new ReversedLinearValueFunction(10, 50);
     assertEquals(0.25, f.getSubjectiveValue(40.0));
   }
 
   @Test
-  void getSubjectiveValueLowerTest() {
+  void testGetSubjectiveValueLower() {
     ReversedLinearValueFunction f = new ReversedLinearValueFunction(10, 50);
     assertEquals(1, f.getSubjectiveValue(5.0));
   }
 
   @Test
-  void getSubjectiveValueUpperTest() {
+  void testGetSubjectiveValueUpper() {
     ReversedLinearValueFunction f = new ReversedLinearValueFunction(10, 50);
     assertEquals(0, f.getSubjectiveValue(55.0));
   }
 
   @Test
-  void applyTest() {
+  void testApply() {
     ReversedLinearValueFunction f = new ReversedLinearValueFunction(10, 50);
     assertEquals(0.25, f.getSubjectiveValue(40.0));
   }
 
   @Test
-  void exceptionIllegalArgEquals() {
+  void testExceptionIllegalArgEquals() {
     assertThrows(
         IllegalArgumentException.class,
         () -> {

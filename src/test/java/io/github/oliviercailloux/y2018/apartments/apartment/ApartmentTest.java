@@ -22,7 +22,7 @@ class ApartmentTest {
   private boolean tele = false;
 
   @Test
-  void equalsTestTrue() {
+  void testEqualsTrue() {
     Builder apartBuilder = new Builder();
     Apartment a1 =
         apartBuilder
@@ -62,7 +62,7 @@ class ApartmentTest {
   }
 
   @Test
-  void equalsTestFalse() {
+  void testEqualsFalse() {
     Builder apartBuilder = new Builder();
     Apartment a1 =
         apartBuilder
@@ -102,7 +102,7 @@ class ApartmentTest {
   }
 
   @Test
-  void hashCodeTestTrue() {
+  void testHashCodeTrue() {
     Builder apartBuilder = new Builder();
     Apartment a1 =
         apartBuilder
@@ -142,7 +142,7 @@ class ApartmentTest {
   }
 
   @Test
-  void hashCodeTestFalse() {
+  void testHashCodeFalse() {
 
     Builder apartBuilder = new Builder();
     Apartment a1 =

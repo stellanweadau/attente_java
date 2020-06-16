@@ -33,12 +33,12 @@ class ValueDistFunctionTest {
     v.addInterestLocation(interest3);
   }
 
-  void getSubjectiveValueTest() throws Exception {
+  void testGetSubjectiveValue() throws Exception {
     initializeValueDistFunction();
     assertEquals(0.90919444444, v.getSubjectiveValue(interest1));
   }
 
-  void getMaxDurationTest() throws Exception {
+  void testGetMaxDuration() throws Exception {
     initializeValueDistFunction();
     assertEquals(5091.0, v.getMaxDuration());
   }
