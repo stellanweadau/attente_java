@@ -30,6 +30,6 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-      - name: Verify maven
+      - name: Verify Maven
         run: mvn -B verify --file pom.xml
 
