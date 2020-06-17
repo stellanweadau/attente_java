@@ -9,7 +9,7 @@ import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ProfileTest {
+public class ProfileTests {
 
   Profile profile;
 
@@ -45,14 +45,14 @@ public class ProfileTest {
 
   /** Function to test the basic Profile implementation */
   @Test
-  void profileTest() {
+  void testProfile() {
     assertEquals(2d, profile.getLinearAVF().getWeight(Criterion.FLOOR_AREA), 0.0001);
     assertEquals(Range.closed(0d, 10d), profile.getWeightRange(Criterion.NB_BEDROOMS));
   }
 
   /** Function to test the Profile builder */
   @Test
-  void builderTest() {
+  void testBuilder() {
     Profile.Builder profileBuilder = new Profile.Builder();
     assertThrows(
         IllegalArgumentException.class,

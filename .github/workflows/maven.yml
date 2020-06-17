@@ -24,6 +24,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Verify maven
+      - uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            maven-
+      - name: Verify Maven
         run: mvn -B verify --file pom.xml
 

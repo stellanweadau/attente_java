@@ -5,28 +5,28 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-class LinearValueFunctionTest {
+class LinearValueFunctionTests {
 
   @Test
-  void getSubjectiveValueTest() {
+  void testGetSubjectiveValue() {
     LinearValueFunction f = new LinearValueFunction(10, 50);
     assertEquals(0.25, f.getSubjectiveValue(20.0));
   }
 
   @Test
-  void getSubjectiveValueLowerTest() {
+  void testSubjectiveValueLower() {
     LinearValueFunction f = new LinearValueFunction(10, 50);
     assertEquals(1, f.getSubjectiveValue(100.0));
   }
 
   @Test
-  void getSubjectiveValueUpperTest() {
+  void testSubjectiveValueUpper() {
     LinearValueFunction f = new LinearValueFunction(10, 50);
     assertEquals(0, f.getSubjectiveValue(9.0));
   }
 
   @Test
-  void exceptionIllegalArgEquals() {
+  void testExceptionIllegalArgEquals() {
     assertThrows(
         IllegalArgumentException.class,
         () -> {
