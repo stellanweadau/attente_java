@@ -35,7 +35,7 @@ public class LinearValueFunction implements PartialValueFunction<Double> {
   }
 
   @Override
-  public double getSubjectiveValue(Double objectiveData) throws IllegalStateException {
+  public double getSubjectiveValue(Double objectiveData) {
     if (interval.isEmpty()) throw new IllegalStateException();
     if (interval.lowerEndpoint() >= objectiveData) {
       return 0;

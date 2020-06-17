@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder;
 import org.junit.jupiter.api.Test;
 
-class ApartmentTest {
+class ApartmentTests {
 
   private double floorArea = 456.56;
   private String address = "A Random Address";
@@ -22,7 +22,7 @@ class ApartmentTest {
   private boolean tele = false;
 
   @Test
-  void equalsTestTrue() {
+  void testEqualsTrue() {
     Builder apartBuilder = new Builder();
     Apartment a1 =
         apartBuilder
@@ -40,7 +40,7 @@ class ApartmentTest {
             .setNbMinNight(nbMinNight)
             .setTele(tele)
             .build();
-
+    apartBuilder = new Builder();
     Apartment a2 =
         apartBuilder
             .setFloorArea(floorArea)
@@ -62,7 +62,7 @@ class ApartmentTest {
   }
 
   @Test
-  void equalsTestFalse() {
+  void testEqualsFalse() {
     Builder apartBuilder = new Builder();
     Apartment a1 =
         apartBuilder
@@ -80,7 +80,7 @@ class ApartmentTest {
             .setNbMinNight(nbMinNight)
             .setTele(tele)
             .build();
-
+    apartBuilder = new Builder();
     Apartment a2 =
         apartBuilder
             .setFloorArea(floorArea)
@@ -102,7 +102,7 @@ class ApartmentTest {
   }
 
   @Test
-  void hashCodeTestTrue() {
+  void testHashCodeTrue() {
     Builder apartBuilder = new Builder();
     Apartment a1 =
         apartBuilder
@@ -120,7 +120,7 @@ class ApartmentTest {
             .setNbMinNight(nbMinNight)
             .setTele(tele)
             .build();
-
+    apartBuilder = new Builder();
     Apartment a2 =
         apartBuilder
             .setFloorArea(floorArea)
@@ -142,7 +142,7 @@ class ApartmentTest {
   }
 
   @Test
-  void hashCodeTestFalse() {
+  void testHashCodeFalse() {
 
     Builder apartBuilder = new Builder();
     Apartment a1 =
@@ -161,7 +161,7 @@ class ApartmentTest {
             .setNbMinNight(nbMinNight)
             .setTele(tele)
             .build();
-
+    apartBuilder = new Builder();
     Apartment a2 =
         apartBuilder
             .setFloorArea(floorArea)
