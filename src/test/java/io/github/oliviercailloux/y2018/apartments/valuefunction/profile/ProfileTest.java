@@ -47,9 +47,7 @@ public class ProfileTest {
   @Test
   void profileTest() {
     assertEquals(2d, profile.getLinearAVF().getWeight(Criterion.FLOOR_AREA), 0.0001);
-    assertEquals(
-        Range.closed(0d, 10d),
-        profile.getWeightRange(Criterion.NB_BEDROOMS));
+    assertEquals(Range.closed(0d, 10d), profile.getWeightRange(Criterion.NB_BEDROOMS));
   }
 
   /** Function to test the Profile builder */

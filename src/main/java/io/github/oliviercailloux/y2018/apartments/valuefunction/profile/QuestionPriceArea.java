@@ -90,7 +90,7 @@ public class QuestionPriceArea {
     final Range<Double> firstRange = p.getWeightRange(firstCriterion);
     final Range<Double> secondRange = p.getWeightRange(secondCriterion);
 
-    final double min = firstRange.lowerEndpoint() + Profile.getMiddleOfRange(firstRange) * 0.2;
+    final double min = firstRange.lowerEndpoint() + p.getMiddleOfRange(firstCriterion) * 0.2;
     if (min >= firstRange.upperEndpoint()) {
       closedRange = Range.closed(firstRange.upperEndpoint(), firstRange.upperEndpoint());
     } else {
@@ -98,7 +98,7 @@ public class QuestionPriceArea {
     }
     p.setWeightRange(firstCriterion, closedRange);
 
-    final double max = secondRange.upperEndpoint() - Profile.getMiddleOfRange(secondRange) * 0.1;
+    final double max = secondRange.upperEndpoint() - p.getMiddleOfRange(secondCriterion) * 0.1;
     if (max <= secondRange.lowerEndpoint()) {
       closedRange = Range.closed(secondRange.lowerEndpoint(), secondRange.lowerEndpoint());
     } else {
