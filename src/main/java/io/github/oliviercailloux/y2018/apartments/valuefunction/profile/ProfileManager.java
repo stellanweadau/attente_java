@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class ProfileManager {
 
-  boolean initialized;
+	private static ProfileManager instance = null;
   HashMap<ProfileType, Profile> mapProfile;
 
   private ProfileManager() {
@@ -130,8 +130,6 @@ public class ProfileManager {
     this.mapProfile.put(ProfileType.FAMILY, family);
     this.mapProfile.put(ProfileType.COUPLE, couple);
   }
-
-  private static ProfileManager instance = null;
 
   public static ProfileManager getInstance() {
     if (instance == null) {
