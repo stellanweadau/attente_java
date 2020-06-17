@@ -1,12 +1,10 @@
-package io.github.oliviercailloux.y2018.apartments.profile;
+package io.github.oliviercailloux.y2018.apartments.valuefunction.profile;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
-import io.github.oliviercailloux.y2018.apartments.valuefunction.profile.Profile;
-import io.github.oliviercailloux.y2018.apartments.valuefunction.profile.QuestionPriceArea;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
