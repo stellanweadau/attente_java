@@ -17,8 +17,6 @@ public class QuestionPriceArea {
    * @param surface the surface shown to the user according to his/her profile
    */
   private QuestionPriceArea(int price, int surface) {
-    checkNotNull(price);
-    checkNotNull(surface);
     this.price = price;
     this.surface = surface;
   }
@@ -69,7 +67,6 @@ public class QuestionPriceArea {
    */
   public void resolve(Profile p, boolean response) {
     checkNotNull(p);
-    checkNotNull(response);
     Criterion firstCriterion;
     Criterion secondCriterion;
     Range<Double> closedRange;
