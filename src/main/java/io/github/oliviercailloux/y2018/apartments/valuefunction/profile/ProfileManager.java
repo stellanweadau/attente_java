@@ -6,11 +6,10 @@ import java.util.HashMap;
 
 public class ProfileManager {
 
-	private static ProfileManager instance = null;
+  private static ProfileManager instance = null;
   HashMap<ProfileType, Profile> mapProfile;
 
   private ProfileManager() {
-    this.initialized = false;
     this.mapProfile = new HashMap<ProfileType, Profile>();
     LinearAVF studentLavf =
         new LinearAVF.Builder()
