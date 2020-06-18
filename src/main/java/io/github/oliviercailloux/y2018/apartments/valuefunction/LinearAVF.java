@@ -7,7 +7,7 @@ import static com.google.common.base.Preconditions.checkState;
 import com.google.common.collect.ImmutableMap;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.EnumMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +41,7 @@ public class LinearAVF {
    * The next argument gives the apartment characteristic subjective value weight in the calculation
    * of the Apartment total subjective value
    */
-  private HashMap<Criterion, Double> weight;
+  private EnumMap<Criterion, Double> weight;
 
   /**
    * Constructor of the object. By default, all the objects are ConstantValueFunction objects. By
@@ -60,7 +60,7 @@ public class LinearAVF {
     this.nbMinNightValueFunction = null;
     this.teleValueFunction = new BooleanValueFunction(true);
 
-    this.weight = new HashMap<>();
+    this.weight = new EnumMap<>(Criterion.class);
     Arrays.stream(Criterion.values()).forEach(criterion -> weight.put(criterion, 0.0d));
   }
 
@@ -75,6 +75,7 @@ public class LinearAVF {
    * @return a double : the weighted sum of the apartment attributes subjective values
    */
   public double getSubjectiveValue(Apartment apart) {
+    checkNotNull(apart);
     ImmutableMap<Criterion, Double> subjectiveValue =
         new ImmutableMap.Builder<Criterion, Double>()
             .put(
@@ -212,6 +213,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setFloorAreaSubjectiveValueWeight(double value) {
+    checkArgument(value >= 0, "value must be greater than or equal to 0");
     this.weight.put(Criterion.FLOOR_AREA, value);
     LOGGER.debug("The floor area weight has been set to {}", value);
   }
@@ -223,6 +225,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setNbBedroomsSubjectiveValueWeight(double value) {
+    checkArgument(value >= 0, "value must be greater than or equal to 0");
     this.weight.put(Criterion.NB_BEDROOMS, value);
     LOGGER.debug("The number of bedrooms weight has been set to {}", value);
   }
@@ -234,6 +237,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setNbSleepingSubjectiveValueWeight(double value) {
+    checkArgument(value >= 0, "value must be greater than or equal to 0");
     this.weight.put(Criterion.NB_SLEEPING, value);
     LOGGER.debug("The number of sleeping weight has been set to {}", value);
   }
@@ -245,6 +249,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setNbBathroomsSubjectiveValueWeight(double value) {
+    checkArgument(value >= 0, "value must be greater than or equal to 0");
     this.weight.put(Criterion.NB_BATHROOMS, value);
     LOGGER.debug("The number of bathrooms weight has been set to {}", value);
   }
@@ -256,6 +261,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setTerraceSubjectiveValueWeight(double value) {
+    checkArgument(value >= 0, "value must be greater than or equal to 0");
     this.weight.put(Criterion.TERRACE, value);
     LOGGER.debug("The terrace weight has been set to {}", value);
   }
@@ -267,6 +273,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setFloorAreaTerraceSubjectiveValueWeight(double value) {
+    checkArgument(value >= 0, "value must be greater than or equal to 0");
     this.weight.put(Criterion.FLOOR_AREA_TERRACE, value);
     LOGGER.debug("The floor area of the terrace weight has been set to {}", value);
   }
@@ -278,6 +285,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setWifiSubjectiveValueWeight(double value) {
+    checkArgument(value >= 0, "value must be greater than or equal to 0");
     this.weight.put(Criterion.WIFI, value);
     LOGGER.debug("The wifi weight has been set to {}", value);
   }
@@ -289,6 +297,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setPricePerNightSubjectiveValueWeight(double value) {
+    checkArgument(value >= 0, "value must be greater than or equal to 0");
     this.weight.put(Criterion.PRICE_PER_NIGHT, value);
     LOGGER.debug("The price per night weight has been set to {}", value);
   }
@@ -300,6 +309,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setNbMinNightSubjectiveValueWeight(double value) {
+    checkArgument(value >= 0, "value must be greater than or equal to 0");
     this.weight.put(Criterion.NB_MIN_NIGHT, value);
     LOGGER.debug("The number of minimum night weight has been set to {}", value);
   }
@@ -311,6 +321,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setTeleSubjectiveValueWeight(double value) {
+    checkArgument(value >= 0, "value must be greater than or equal to 0");
     this.weight.put(Criterion.TELE, value);
     LOGGER.debug("The tele weight has been set to {}", value);
   }
