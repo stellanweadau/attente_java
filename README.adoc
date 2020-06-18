@@ -25,6 +25,49 @@ toc::[]
 
 == Java iteration 🏃
 
+=== Summary per person
+
+* Etienne CARTIER
+
+* Clémence COUSIN
+- Creation of the Apartment Factory
+- Cleaning of the value function package, designing profiles and adapting the computation of the value function
+- Contribution to the developpment of the QuestionPriceArea class (and unit tests)
+- Improving the jsonConvert class in collaboration with Avi
+- Resolving issues : on jsonConvert, apartments and value function class
+
+* Gabriel GUISSET
+- Cleaning of the project dependancies  
+- Creation of the Apartment Factory and associated tests with Clémence 
+- Cleaning of the code with sonar plug-in
+- Correction of the XML Apartment import logic 
+- Generalize the usage of `ApartmentBuilder`
+- Creation of the LinearAVF class
+- Fix the reset of each Builder on a `toBuild()` call  
+- Development of the `Profile` Selector GUI 
+
+* Morgane FIOT
+- Creation of jsonConvert class
+- Fixing issues and warning
+- Creation of a base of apartment in json
+- Working on the GUI
+
+* Avi MIMOUN
+- Github configuration (actions, travis, rights, rules, collaborator)
+- Dependencies improvement
+- Implementation of `JAX-RS`
+- Generation of random addresses : API call, json analysis and parsing, error handling, solution in case of failure, probability of failure of functions and application
+- Creation of the exception class `AddressApiException`
+- Creation of the `QuestionPriceArea` class
+- Implementation of an adapter for `JsonConvert`
+- Help to generate 500 random apartments
+- Implementation of `google-java-format`
+- Creation and organization of the `apartment.xml` package
+- There was a main class which was a test class: Removal of the hand, implementation of unit tests, deletion of the documentation attached to the hand
+- Overall improvement for maintainability of the application: comments, javadoc, redundancy removal, deleting unnecessary and unsued code, unit test
+- Help on writing comments associated with the value function
+- (Integration of a Discord bot, in order to receive notifications directly)
+
 === Iteration 1
 
 For our first run on the project, we have chosen to work on two main tasks:
@@ -223,7 +266,9 @@ This 3 classes will contain the different possibility of answers and a resolve f
 
 ===== Realizations
 
-* TODO
+* Creation of `ProfileGUI`
+* Creation of `QuestionPriceAreaGUI`
+* Use of the data entered to sort the apartments link:https://github.com/av1m/Apartments/issues/25[#25]
 
 ==== Team 3 (SM/PO)
 
@@ -233,7 +278,9 @@ This 3 classes will contain the different possibility of answers and a resolve f
 
 ===== Realizations
 
-* link:Doc/changelog.adoc[Changelog]
+* Creation of link:https://github.com/av1m/Apartments/milestone/4[milestone 4]
+* Reviews
+* Support to teams (point to develop in the iteration according to the needs of the different teams)
 
 == Get started ✨
 
@@ -300,10 +347,6 @@ Moreover, you can also use link:https://git-scm.com/book/en/v2/Customizing-Git-G
 * Executing a `main` method or unit tests from an IDE does not involve calling maven. On some IDEs, it's possible to specify that you want to use maven (instead of the internal IDE system), but this is not the case by default.
 * Check that the version of fmt-maven-plugin and other integrations remains the same!
 ====
-
-== Changelog 🆕
-
-- Link of link:Doc/changelog.adoc[changelog]
 
 == Repository available on Github :octocat:
 

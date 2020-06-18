@@ -7,7 +7,7 @@
 :toc:
 :toc-placement!:
 
-= Iteration 5
+= Iteration 5 🏃
 
 [IMPORTANT]
 ====
@@ -24,19 +24,32 @@ NOTE: As a reminder, you have authorized us to split our tasks by members instea
 
 == Etienne CARTIER
 
+* Adjusting the doc for profiles
+
 == Morgane FIOT
+
+- Adaptation of the Profile Diagramm
+- Update of the simplified global diagram
 
 == Gabriel GUISSET
 
+* Ajustement de la doc pour les profiles
+
 == Clemence COUSIN
+
+- Modification of the use cases (delete createApartment and rename AskOpinionForUtility)
+- Documentation on link:packages.adoc#questionpricearea[QuestionPriceArea]
+- Clarification on the link:packages.adoc#value-function[value function]
 
 == Avi MIMOUN
 
-* Global reflection on the understanding of the documentation
-* Writing documentation
-* Delete history, `diagrams.adoc` and others contents
-* Reduction of drop-down lists.
-* Finalization and closing of the iteration
+- Global reflection on the understanding of the documentation (for the next students)
+- Drafting of missing documentation
+- Delete history, diagrams.adoc, overview.adoc and others contents
+- Addition of link:run.adoc[run.adoc] and link:global.adoc[global.adoc]
+- Reduction of drop-down lists.
+- Remove and update obsolete content
+- Finalization and closing of the iteration and project
 
 [%hardbreaks]
 link:#toc[⬆ back to top]

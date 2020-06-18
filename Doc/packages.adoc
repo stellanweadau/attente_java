@@ -20,7 +20,7 @@ toc::[]
 .see class diagram
 [%collapsible]
 ====
-image::it4/it4-class-package-apartment.png?raw=true[Last simplified class diagram]
+image::diagram-class-package-apartment.png?raw=true[Last simplified class diagram]
 ====
 
 This is the most important package in the application
@@ -149,6 +149,17 @@ In fact, if we want to change well-known method (like a date comparator) to adap
 
 == valuefunction
 
+.See associated diagram
+[%collapsible]
+====
+
+Class diagram : `valuefunction` package
+
+image::diagram-class-value-function.png?raw=true[Class Diagram : value function package]
+====
+
+This package is fairly central to which retrieves user preferences in order to offer him a list of apartments corresponding to his needs.
+
 This package includes thoughts about calculating the satisfaction of a property's criteria for a customer
 
 The valueFunction package gathers all the functions which attribute a value to each apartment according to some criteria. +
@@ -176,7 +187,7 @@ As we saw, `AskOpinionForUtilities` only ask the user how many bedrooms he desir
 +
 `AskOpinionForUtilities` asks the user if he wants the WiFi, a TV or a terrace. According to the user responses, `BooleanValueFunction` attributes the value 1 if the user wants this 0 else.
 
-We could find a way to simplify the attribution of a value to an apartment because every time we use `AskOpinionForUtilities`, the value of each apartment is once again calculated. +
+We could find a way to simplify the attribution of a value to an apartment because every time we use `AskOpinionForUtility`, the value of each apartment is once again calculated. +
 Maybe we could also lighten the `ApartmentValueFunction` which is very long and redundant. +
 Improving our way to calculate the "value" of an apartment according to criteria could be improved to propose the user better apartments.
 
@@ -219,6 +230,161 @@ The higher the weight is, the more this criterion is important. It allows us to 
 By default, in `ApartmentValueFunction` constructors, all the weights are set to 0,1. A good idea can be to add in a Builder a section to set the weight according to the profile selected (we will detail this later).
 
 To compute the subjective value of an apartment, you then must multiply each attribute subjective value with its weight. Then you sum all the results obtained and divide the result by the sum of each attribute weight.
+
+=== valuefunction.profile
+
+.See all associated diagrams
+[%collapsible]
+====
+
+Class Diagram : `Profile` package
+
+image::diagram-class-profile.png?raw=true[Class Diagram : Profile package]
+
+Sequence diagram : Adaptation of `ApartmentValueFunction` using Profile
+
+image::diagram-sequence-adapt-avf-using-profile.png?raw=true[sequence diagram : Adaptation of ApartmentValueFunction using Profile]
+
+Sequence diagram : Interaction between user and application
+
+image::diagram-sequence-interaction-user-application.png?raw=true[sequence diagram : Interaction between user and application]
+
+Sequence diagram : generate `ApartmentValueFunction` using profile
+
+image::diagram-sequence-generate-avf-using-profile.png?raw=true[sequence diagram : generate ApartmentValueFunction using profile]
+
+====
+
+For the moment, we have identified 3 profiles:  
+
+* Large family 
+* Couple without child 
+* Student 
+
+Here is the list of criteria associated with each Profiles:
+
+**Student predefine range**
+
+* TV : true
+* Terrace : false
+* Wifi :  false
+* Floor area of the terrace : between 0m² and 10m²
+* Floor area of the apartment : between 16 m² and 70m²
+* Number of bedrooms : between 1 and 2
+* Number of bedrooms : between 1 and 2
+* Number of sleepings : between 1 and 2
+* Minimum number of nights : between 5 and 14
+* Price per night between 40€ and 60€
+
+.Student criteria
+[width="100%",options="header"]
+|====================
+| Major (25% per argument) | Neutral (7,5% per argument) | Minor (5% per argument) 
+| Price +
+Wifi | Terrace +
+TV +
+NbSleeping +
+FloorArea
+| NbBedrooms +
+NbBathrooms +
+NbMinNight +
+FloorAreaTerrace
+|====================
+
+image::chart-student-criteria.png?raw=true[Chart Student criteria]
+
+**Family predefined range**
+
+* TV : true
+* Terrace : true
+* Wifi :  true
+* Floor area of the terrace : between 10m² and 50m²
+* Floor area of the apartment : between 60 m² and 200m²
+* Number of bedrooms : between 2 and 6
+* Number of bedrooms : between 2 and 3
+* Number of sleepings : between 5 and 7
+* Minimum number of nights : between 7 and 28
+* Price per night between 200€ and 400€
+
+
+.Family Criterias
+[width="100%",options="header"]
+|====================
+| Major (12,5% per argument) | Neutral (10% per argument) | Minor (5% per argument)
+| NbBedrooms +
+NbBathrooms +
+NbSleeping +
+FloorArea | Wifi  +
+Tele +
+Price +
+Terrace
+| NbMinNight +
+FloorAreaTerrace
+|====================
+
+image::chart-family-criteria.png?raw=true[Chart Family Criterias]
+
+**Couple predefined range**
+
+* TV : true
+* Terrace : false
+* Wifi :  true
+* Floor area of the terrace : between 0m² and 10m²
+* Floor area of the apartment : between 30 m² and 100m²
+* Number of bedrooms : between 1 and 3
+* Number of bedrooms : between 1 and 2
+* Number of sleepings : between 2 and 3
+* Minimum number of nights : between 2 and 21
+* Price per night between 50€ and 150€
+
+.Young Couple Criterias
+[width="100%",options="header"]
+|====================
+| Major (16% per argument) | Neutral (10% per argument) | Minor (5,5% per argument)
+| Price +
+Wifi +
+Terrace | NbBedrooms +
+FloorArea +
+Tele
+| NbSleeping +
+NbBathrooms +
+FloorAreaTerrace +
+NbMinNight
+|====================
+
+image::chart-young-criteria.png?raw=true[Young Couple Criterias]
+
+**GUI for profiles**
+
+image::gui-select-profile.png?raw=true[GUI - Select profile]
+
+The goal of the interfaces is to allow the user to select a profile that suits him. +
+By choosing such a profil, he will initiate his `ValueFunction`. +
+For the moment, the `ValueFunction` is setted with binary or random values that does not correspond to any user.
+
+When the user has selected his profile, the `ValueFunction` is initiated following the presetted values corresponding to the profile he choosed. +
+The parameters of the `ValueFunction` have their weight tweaked thanks to the user answers to the form. +
+It is important to notice that the questions answered to the user are adapted to its profile with the variables X and Y that you can see on the following picture. +
+We use these variables to get the most relevance from each answer. +
+A student would never need a fourth bedroom and will always chose the terrace over the extra bedroom on the question bellow for example.
+
+image::gui-questions.png?raw=true[GUI - questions]
+
+Currently, only the first question is implemented (in `QuestionPriceArea`) +
+
+==== valuefunction.profile.QuestionPriceArea
+
+In fact, the `QuestionPriceArea` class allows to refine the need of the user.
+
+**Would you pay X euros more for Y square meters more ?**
+
+The weight impacted by this question will be the ones of pricePerNight and floorArea. We will get the answer thanks to a boolean: `true` means that the user is ready to pay this sum and `false` means that the user won’t pay X euros more.
+
+Depending on this boolean, we will adapt differently the range of weight contained in Profile:
+
+* If the answer is `true`, that means that floor area is more important for the user than price. In order to adapt the weight, we will increase the lower bound of the range for floor area and decrease the upper bound of the range for price. This will increase the weight of floor area and decrease the weight of price. The lower bound of the floor area is adapted as follow : lowerBoundOfFloorArea + middleOfRange * 0,2. The upper bound of price is adapted as follow: upperBoundOfPrice - middleOfRange * 0,1.
+
+* If the answer is `false`, that means that price is more important for the user than floor area. Here, the computation is the same that the precedent point except that we switch the price part and the floor area part. That gives the following computation. For the price, we adapt the lower bound of the range : lowerBoundOfPrice + middleOfRange * 0,2 and for the floor area we adapt the upper bound of the range: upperBoundOfFloorArea - middleOfRange * 0,1.
 
 
 [%hardbreaks]
