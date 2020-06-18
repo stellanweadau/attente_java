@@ -2,9 +2,12 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import java.util.Arrays;
+import java.util.HashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,20 +38,10 @@ public class LinearAVF {
   private ReversedLinearValueFunction nbMinNightValueFunction;
 
   /**
-   * The 10 next arguments gives the apartment characteristic subjective value weight in the
-   * calculation of the Apartment total subjective value
+   * The next argument gives the apartment characteristic subjective value weight in the calculation
+   * of the Apartment total subjective value
    */
-  private double floorAreaWeight;
-
-  private double nbBedroomsWeight;
-  private double nbSleepingWeight;
-  private double nbBathroomsWeight;
-  private double terraceWeight;
-  private double floorAreaTerraceWeight;
-  private double wifiSubjectiveValueWeight;
-  private double pricePerNightSubjectiveValueWeight;
-  private double nbMinNightSubjectiveValueWeight;
-  private double teleSubjectiveValueWeight;
+  private HashMap<Criterion, Double> weight;
 
   /**
    * Constructor of the object. By default, all the objects are ConstantValueFunction objects. By
@@ -67,16 +60,8 @@ public class LinearAVF {
     this.nbMinNightValueFunction = null;
     this.teleValueFunction = new BooleanValueFunction(true);
 
-    this.floorAreaWeight = 0;
-    this.nbBedroomsWeight = 0;
-    this.nbSleepingWeight = 0;
-    this.nbBathroomsWeight = 0;
-    this.terraceWeight = 0;
-    this.floorAreaTerraceWeight = 0;
-    this.wifiSubjectiveValueWeight = 0;
-    this.pricePerNightSubjectiveValueWeight = 0;
-    this.nbMinNightSubjectiveValueWeight = 0;
-    this.teleSubjectiveValueWeight = 0;
+    this.weight = new HashMap<>();
+    Arrays.stream(Criterion.values()).forEach(criterion -> weight.put(criterion, 0.0d));
   }
 
   /**
@@ -90,127 +75,49 @@ public class LinearAVF {
    * @return a double : the weighted sum of the apartment attributes subjective values
    */
   public double getSubjectiveValue(Apartment apart) {
-    double floorAreaSubjectiveValue;
-    double nbBedroomsSubjectiveValue;
-    double nbSleepingSubjectiveValue;
-    double nbBathroomsSubjectiveValue;
-    double terraceSubjectiveValue;
-    double floorAreaTerraceSubjectiveValue;
-    double wifiSubjectiveValue;
-    double pricePerNightSubjectiveValue;
-    double nbMinNightSubjectiveValue;
-    double teleSubjectiveValue;
-    ImmutableMap<Criterion, LinearValueFunction> linearVF =
-        new ImmutableMap.Builder<Criterion, LinearValueFunction>()
-            .put(Criterion.FLOOR_AREA, floorAreaValueFunction)
-            .put(Criterion.NB_BEDROOMS, nbBedroomsValueFunction)
-            .put(Criterion.NB_SLEEPING, nbSleepingValueFunction)
-            .put(Criterion.NB_BATHROOMS, nbBathroomsValueFunction)
-            .put(Criterion.FLOOR_AREA_TERRACE, floorAreaTerraceValueFunction)
+    ImmutableMap<Criterion, Double> subjectiveValue =
+        new ImmutableMap.Builder<Criterion, Double>()
+            .put(
+                Criterion.FLOOR_AREA,
+                floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()))
+            .put(
+                Criterion.NB_BEDROOMS,
+                nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms()))
+            .put(
+                Criterion.NB_SLEEPING,
+                nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping()))
+            .put(
+                Criterion.NB_BATHROOMS,
+                nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms()))
+            .put(Criterion.TERRACE, terraceValueFunction.getSubjectiveValue(apart.getTerrace()))
+            .put(
+                Criterion.FLOOR_AREA_TERRACE,
+                floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace()))
+            .put(Criterion.WIFI, wifiValueFunction.getSubjectiveValue(apart.getWifi()))
+            .put(
+                Criterion.PRICE_PER_NIGHT,
+                pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight()))
+            .put(
+                Criterion.NB_MIN_NIGHT,
+                nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight()))
+            .put(Criterion.TELE, teleValueFunction.getSubjectiveValue(apart.getTele()))
             .build();
 
-    ImmutableMap<Criterion, BooleanValueFunction> booleanVF =
-        new ImmutableMap.Builder<Criterion, BooleanValueFunction>()
-            .put(Criterion.TERRACE, terraceValueFunction)
-            .put(Criterion.WIFI, wifiValueFunction)
-            .put(Criterion.TELE, teleValueFunction)
-            .build();
-
-    ImmutableMap<Criterion, ReversedLinearValueFunction> reveredLinearVF =
-        new ImmutableMap.Builder<Criterion, ReversedLinearValueFunction>()
-            .put(Criterion.PRICE_PER_NIGHT, pricePerNightValueFunction)
-            .put(Criterion.NB_MIN_NIGHT, nbMinNightValueFunction)
-            .build();
-
-    linearVF.forEach(
-        (c, vf) -> {
-          if (floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) < 0
-              && floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) > 1) {
-            throw new IllegalStateException(
-                "The subjective value of " + c.name() + " must be between 0 and 1");
-          }
-        });
-    booleanVF.forEach(
-        (c, vf) -> {
-          if (floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) < 0
-              && floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) > 1) {
-            throw new IllegalStateException(
-                "The subjective value of " + c.name() + " must be between 0 and 1");
-          }
-        });
-    reveredLinearVF.forEach(
-        (c, vf) -> {
-          if (floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) < 0
-              && floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea()) > 1) {
-            throw new IllegalStateException(
-                "The subjective value of " + c.name() + " must be between 0 and 1");
-          }
+    // Check that the subjective values ​​do have a value between 0 and 1
+    subjectiveValue.forEach(
+        (criterion, aDouble) -> {
+          LOGGER.debug("The {} subjective value has been set to {}", criterion.name(), aDouble);
+          checkState(
+              aDouble >= 0 && aDouble <= 1,
+              "The subjective value of " + criterion.name() + "must be between 0 and 1");
         });
 
-    floorAreaSubjectiveValue = floorAreaValueFunction.getSubjectiveValue(apart.getFloorArea());
-    LOGGER.debug("The floor area subjective value has been set to {}", floorAreaSubjectiveValue);
-
-    nbBedroomsSubjectiveValue =
-        nbBedroomsValueFunction.getSubjectiveValue((double) apart.getNbBedrooms());
-    LOGGER.debug(
-        "The number of bedrooms subjective value has been set to {}", nbBedroomsSubjectiveValue);
-
-    nbSleepingSubjectiveValue =
-        nbSleepingValueFunction.getSubjectiveValue((double) apart.getNbSleeping());
-    LOGGER.debug(
-        "The number of sleeping subjective value has been set to {}", nbSleepingSubjectiveValue);
-
-    nbBathroomsSubjectiveValue =
-        nbBathroomsValueFunction.getSubjectiveValue((double) apart.getNbBathrooms());
-    LOGGER.debug(
-        "The number of bathrooms subjective value has been set to {}", nbBathroomsSubjectiveValue);
-
-    terraceSubjectiveValue = terraceValueFunction.getSubjectiveValue(apart.getTerrace());
-    LOGGER.debug("The terrace subjective value has been set to {}", terraceSubjectiveValue);
-
-    floorAreaTerraceSubjectiveValue =
-        floorAreaTerraceValueFunction.getSubjectiveValue(apart.getFloorAreaTerrace());
-    LOGGER.debug(
-        "The floor area of the terrace subjective value has been set to {}",
-        floorAreaTerraceSubjectiveValue);
-
-    wifiSubjectiveValue = wifiValueFunction.getSubjectiveValue(apart.getWifi());
-    LOGGER.debug("The wifi subjective value has been set to {}", wifiSubjectiveValue);
-
-    pricePerNightSubjectiveValue =
-        pricePerNightValueFunction.getSubjectiveValue(apart.getPricePerNight());
-    LOGGER.debug(
-        "the price per night subjective value has been set to {}", pricePerNightSubjectiveValue);
-
-    nbMinNightSubjectiveValue =
-        nbMinNightValueFunction.getSubjectiveValue((double) apart.getNbMinNight());
-    LOGGER.debug(
-        "The minimum number of nights subjective value has been set to {}",
-        nbMinNightSubjectiveValue);
-
-    teleSubjectiveValue = teleValueFunction.getSubjectiveValue(apart.getTele());
-    LOGGER.debug("the tele subjective value has been set to {}", teleSubjectiveValue);
-
-    return ((floorAreaSubjectiveValue * floorAreaWeight
-            + nbBedroomsSubjectiveValue * nbBedroomsWeight
-            + nbSleepingSubjectiveValue * nbSleepingWeight
-            + nbBathroomsSubjectiveValue * nbBathroomsWeight
-            + terraceSubjectiveValue * terraceWeight
-            + floorAreaTerraceSubjectiveValue * floorAreaTerraceWeight
-            + wifiSubjectiveValue * wifiSubjectiveValueWeight
-            + pricePerNightSubjectiveValue * pricePerNightSubjectiveValueWeight
-            + nbMinNightSubjectiveValue * nbMinNightSubjectiveValueWeight
-            + teleSubjectiveValue * teleSubjectiveValueWeight)
-        / (floorAreaWeight
-            + nbBedroomsWeight
-            + nbSleepingWeight
-            + nbBathroomsWeight
-            + terraceWeight
-            + floorAreaTerraceWeight
-            + wifiSubjectiveValueWeight
-            + pricePerNightSubjectiveValueWeight
-            + nbMinNightSubjectiveValueWeight
-            + teleSubjectiveValueWeight));
+    double sum =
+        Arrays.stream(Criterion.values())
+            .map(c -> this.weight.get(c) * subjectiveValue.get(c))
+            .reduce(0.0d, Double::sum);
+    double division = this.weight.values().stream().reduce(0.0d, Double::sum);
+    return sum / division;
   }
 
   /**
@@ -232,18 +139,8 @@ public class LinearAVF {
     avf.setPricePerNightValueFunction(this.pricePerNightValueFunction);
     avf.setNbMinNightValueFunction(this.nbMinNightValueFunction);
     avf.setTeleValueFunction(this.teleValueFunction);
-
-    avf.floorAreaWeight = this.floorAreaWeight;
-    avf.nbBedroomsWeight = this.nbBedroomsWeight;
-    avf.nbSleepingWeight = this.nbSleepingWeight;
-    avf.nbBathroomsWeight = this.nbBathroomsWeight;
-    avf.terraceWeight = this.terraceWeight;
-    avf.floorAreaTerraceWeight = this.floorAreaTerraceWeight;
-    avf.wifiSubjectiveValueWeight = this.wifiSubjectiveValueWeight;
-    avf.pricePerNightSubjectiveValueWeight = this.pricePerNightSubjectiveValueWeight;
-    avf.nbMinNightSubjectiveValueWeight = this.nbMinNightSubjectiveValueWeight;
-    avf.teleSubjectiveValueWeight = this.teleSubjectiveValueWeight;
-
+    Arrays.stream(Criterion.values())
+        .forEach(criterion -> avf.weight.put(criterion, this.weight.get(criterion)));
     return avf;
   }
 
@@ -256,30 +153,8 @@ public class LinearAVF {
    * @return the subjective value weight
    */
   public double getWeight(Criterion crit) {
-    switch (crit) {
-      case TELE:
-        return teleSubjectiveValueWeight;
-      case TERRACE:
-        return terraceWeight;
-      case WIFI:
-        return wifiSubjectiveValueWeight;
-      case FLOOR_AREA:
-        return floorAreaWeight;
-      case FLOOR_AREA_TERRACE:
-        return floorAreaTerraceWeight;
-      case NB_BATHROOMS:
-        return nbBathroomsWeight;
-      case NB_BEDROOMS:
-        return nbBedroomsWeight;
-      case NB_SLEEPING:
-        return nbSleepingWeight;
-      case NB_MIN_NIGHT:
-        return nbMinNightSubjectiveValueWeight;
-      case PRICE_PER_NIGHT:
-        return pricePerNightSubjectiveValueWeight;
-      default:
-        throw new IllegalArgumentException();
-    }
+    checkArgument(this.weight.containsKey(crit));
+    return this.weight.get(crit);
   }
 
   /**
@@ -337,7 +212,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setFloorAreaSubjectiveValueWeight(double value) {
-    this.floorAreaWeight = value;
+    this.weight.put(Criterion.FLOOR_AREA, value);
     LOGGER.debug("The floor area weight has been set to {}", value);
   }
 
@@ -348,7 +223,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setNbBedroomsSubjectiveValueWeight(double value) {
-    this.nbBedroomsWeight = value;
+    this.weight.put(Criterion.NB_BEDROOMS, value);
     LOGGER.debug("The number of bedrooms weight has been set to {}", value);
   }
 
@@ -359,7 +234,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setNbSleepingSubjectiveValueWeight(double value) {
-    this.nbSleepingWeight = value;
+    this.weight.put(Criterion.NB_SLEEPING, value);
     LOGGER.debug("The number of sleeping weight has been set to {}", value);
   }
 
@@ -370,7 +245,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setNbBathroomsSubjectiveValueWeight(double value) {
-    this.nbBathroomsWeight = value;
+    this.weight.put(Criterion.NB_BATHROOMS, value);
     LOGGER.debug("The number of bathrooms weight has been set to {}", value);
   }
 
@@ -381,7 +256,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setTerraceSubjectiveValueWeight(double value) {
-    this.terraceWeight = value;
+    this.weight.put(Criterion.TERRACE, value);
     LOGGER.debug("The terrace weight has been set to {}", value);
   }
 
@@ -392,7 +267,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setFloorAreaTerraceSubjectiveValueWeight(double value) {
-    this.floorAreaTerraceWeight = value;
+    this.weight.put(Criterion.FLOOR_AREA_TERRACE, value);
     LOGGER.debug("The floor area of the terrace weight has been set to {}", value);
   }
 
@@ -403,7 +278,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setWifiSubjectiveValueWeight(double value) {
-    this.wifiSubjectiveValueWeight = value;
+    this.weight.put(Criterion.WIFI, value);
     LOGGER.debug("The wifi weight has been set to {}", value);
   }
 
@@ -414,7 +289,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setPricePerNightSubjectiveValueWeight(double value) {
-    this.pricePerNightSubjectiveValueWeight = value;
+    this.weight.put(Criterion.PRICE_PER_NIGHT, value);
     LOGGER.debug("The price per night weight has been set to {}", value);
   }
 
@@ -425,7 +300,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setNbMinNightSubjectiveValueWeight(double value) {
-    this.nbMinNightSubjectiveValueWeight = value;
+    this.weight.put(Criterion.NB_MIN_NIGHT, value);
     LOGGER.debug("The number of minimum night weight has been set to {}", value);
   }
 
@@ -436,7 +311,7 @@ public class LinearAVF {
    * @param value >= 0
    */
   private void setTeleSubjectiveValueWeight(double value) {
-    this.teleSubjectiveValueWeight = value;
+    this.weight.put(Criterion.TELE, value);
     LOGGER.debug("The tele weight has been set to {}", value);
   }
 
