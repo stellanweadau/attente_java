@@ -6,6 +6,7 @@ import static com.google.common.base.Preconditions.checkState;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
+import io.github.oliviercailloux.y2018.apartments.valuefunction.profile.ValueFunctionType;
 import java.util.Arrays;
 import java.util.EnumMap;
 import org.slf4j.Logger;
@@ -25,7 +26,10 @@ public class LinearAVF {
    * The next argument are the objects used to compute the value function of the characteristics of
    * an apartment
    */
-  private EnumMap<Criterion, PartialValueFunction> valueFunction;
+  private EnumMap<Criterion, BooleanValueFunction> booleanValueFunctions;
+
+  private EnumMap<Criterion, LinearValueFunction> linearValueFunctions;
+  private EnumMap<Criterion, ReversedLinearValueFunction> reversedValueFunctions;
 
   /**
    * The next argument gives the apartment characteristic subjective value weight in the calculation
@@ -39,13 +43,19 @@ public class LinearAVF {
    * to set those two.
    */
   private LinearAVF() {
-    this.valueFunction = new EnumMap<>(Criterion.class);
+    this.booleanValueFunctions = new EnumMap<>(Criterion.class);
+    this.linearValueFunctions = new EnumMap<>(Criterion.class);
+    this.reversedValueFunctions = new EnumMap<>(Criterion.class);
+
     Arrays.stream(Criterion.values())
-        .filter(c -> c.getValueFunctionClass().equals(BooleanValueFunction.class))
+        .filter(c -> c.getValueFunctionType().equals(ValueFunctionType.IS_BOOLEAN_CRESCENT))
         .forEach(c -> this.setInternalValueFunction(c, new BooleanValueFunction(true)));
     Arrays.stream(Criterion.values())
-        .filter(c -> c.getValueFunctionClass().equals(LinearValueFunction.class))
-        .forEach(c -> this.setInternalValueFunction(c, null));
+        .filter(
+            c ->
+                c.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT)
+                    || c.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE))
+        .forEach(c -> this.setInternalValueFunction(c));
 
     this.weight = new EnumMap<>(Criterion.class);
     Arrays.stream(Criterion.values()).forEach(criterion -> weight.put(criterion, 0.0d));
@@ -67,48 +77,50 @@ public class LinearAVF {
         new ImmutableMap.Builder<Criterion, Double>()
             .put(
                 Criterion.FLOOR_AREA,
-                this.valueFunction
+                this.linearValueFunctions
                     .get(Criterion.FLOOR_AREA)
                     .getSubjectiveValue(apart.getFloorArea()))
             .put(
                 Criterion.NB_BEDROOMS,
-                this.valueFunction
+                this.linearValueFunctions
                     .get(Criterion.NB_BEDROOMS)
                     .getSubjectiveValue((double) apart.getNbBedrooms()))
             .put(
                 Criterion.NB_SLEEPING,
-                this.valueFunction
+                this.linearValueFunctions
                     .get(Criterion.NB_SLEEPING)
                     .getSubjectiveValue((double) apart.getNbSleeping()))
             .put(
                 Criterion.NB_BATHROOMS,
-                this.valueFunction
+                this.linearValueFunctions
                     .get(Criterion.NB_BATHROOMS)
                     .getSubjectiveValue((double) apart.getNbBathrooms()))
             .put(
                 Criterion.TERRACE,
-                this.valueFunction.get(Criterion.TERRACE).getSubjectiveValue(apart.getTerrace()))
+                this.booleanValueFunctions
+                    .get(Criterion.TERRACE)
+                    .getSubjectiveValue(apart.getTerrace()))
             .put(
                 Criterion.FLOOR_AREA_TERRACE,
-                this.valueFunction
+                this.linearValueFunctions
                     .get(Criterion.FLOOR_AREA_TERRACE)
                     .getSubjectiveValue(apart.getFloorAreaTerrace()))
             .put(
                 Criterion.WIFI,
-                this.valueFunction.get(Criterion.WIFI).getSubjectiveValue(apart.getWifi()))
+                this.booleanValueFunctions.get(Criterion.WIFI).getSubjectiveValue(apart.getWifi()))
             .put(
                 Criterion.PRICE_PER_NIGHT,
-                this.valueFunction
+                this.reversedValueFunctions
                     .get(Criterion.PRICE_PER_NIGHT)
                     .getSubjectiveValue(apart.getPricePerNight()))
             .put(
                 Criterion.NB_MIN_NIGHT,
-                this.valueFunction
+                this.reversedValueFunctions
                     .get(Criterion.NB_MIN_NIGHT)
                     .getSubjectiveValue((double) apart.getNbMinNight()))
             .put(
                 Criterion.TELE,
-                this.valueFunction.get(Criterion.TELE).getSubjectiveValue(apart.getTele()))
+                this.booleanValueFunctions.get(Criterion.TELE).getSubjectiveValue(apart.getTele()))
             .build();
 
     // Check that the subjective values ​​do have a value between 0 and 1
@@ -135,8 +147,21 @@ public class LinearAVF {
    */
   private LinearAVF cloneLinearAVF() {
     LinearAVF avf = new LinearAVF();
+    // value function
     Arrays.stream(Criterion.values())
-        .forEach(c -> avf.valueFunction.put(c, this.getInternalValueFunction(c)));
+        .forEach(
+            c -> {
+              if (c.getValueFunctionType().equals(ValueFunctionType.IS_BOOLEAN_CRESCENT)) {
+                avf.setInternalValueFunction(c, this.getInternalBooleanValueFunction(c));
+              } else if (c.getValueFunctionType()
+                  .equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT)) {
+                avf.setInternalValueFunction(c, this.getInternalLinearValueFunction(c));
+              } else if (c.getValueFunctionType()
+                  .equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE)) {
+                avf.setInternalValueFunction(c, this.getInternalReversedLinearValueFunction(c));
+              }
+            });
+    // weights
     Arrays.stream(Criterion.values())
         .forEach(criterion -> avf.weight.put(criterion, this.weight.get(criterion)));
     return avf;
@@ -177,12 +202,49 @@ public class LinearAVF {
     return avf;
   }
 
-  public void setInternalValueFunction(Criterion criterion, PartialValueFunction p) {
-    this.valueFunction.put(criterion, p);
+  public void setInternalValueFunction(Criterion criterion, BooleanValueFunction vf) {
+    checkArgument(criterion.getValueFunctionType().equals(ValueFunctionType.IS_BOOLEAN_CRESCENT));
+    this.booleanValueFunctions.put(criterion, vf);
   }
 
-  public PartialValueFunction getInternalValueFunction(Criterion criterion) {
-    return this.valueFunction.get(criterion);
+  public void setInternalValueFunction(Criterion criterion) {
+    if (criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT)) {
+      this.linearValueFunctions.put(criterion, null);
+    } else if (criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE)) {
+      this.reversedValueFunctions.put(criterion, null);
+    } else {
+      throw new IllegalArgumentException(
+          "Criterion must be IS_NOT_BOOLEAN_CRESCENT or IS_NOT_BOOLEAN_DECREASE");
+    }
+  }
+
+  public void setInternalValueFunction(Criterion criterion, LinearValueFunction vf) {
+    checkArgument(
+        criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT));
+    this.linearValueFunctions.put(criterion, vf);
+  }
+
+  public void setInternalValueFunction(Criterion criterion, ReversedLinearValueFunction vf) {
+    checkArgument(
+        criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE));
+    this.reversedValueFunctions.put(criterion, vf);
+  }
+
+  public BooleanValueFunction getInternalBooleanValueFunction(Criterion criterion) {
+    checkArgument(criterion.getValueFunctionType().equals(ValueFunctionType.IS_BOOLEAN_CRESCENT));
+    return this.booleanValueFunctions.get(criterion);
+  }
+
+  public LinearValueFunction getInternalLinearValueFunction(Criterion criterion) {
+    checkArgument(
+        criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT));
+    return this.linearValueFunctions.get(criterion);
+  }
+
+  public ReversedLinearValueFunction getInternalReversedLinearValueFunction(Criterion criterion) {
+    checkArgument(
+        criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE));
+    return this.reversedValueFunctions.get(criterion);
   }
 
   public static class Builder {
@@ -193,16 +255,16 @@ public class LinearAVF {
     }
 
     public LinearAVF build() {
-      checkNotNull(toBuild.getInternalValueFunction(Criterion.FLOOR_AREA_TERRACE));
-      checkNotNull(toBuild.getInternalValueFunction(Criterion.FLOOR_AREA));
-      checkNotNull(toBuild.getInternalValueFunction(Criterion.NB_BATHROOMS));
-      checkNotNull(toBuild.getInternalValueFunction(Criterion.NB_BEDROOMS));
-      checkNotNull(toBuild.getInternalValueFunction(Criterion.NB_MIN_NIGHT));
-      checkNotNull(toBuild.getInternalValueFunction(Criterion.NB_SLEEPING));
-      checkNotNull(toBuild.getInternalValueFunction(Criterion.PRICE_PER_NIGHT));
-      checkNotNull(toBuild.getInternalValueFunction(Criterion.WIFI));
-      checkNotNull(toBuild.getInternalValueFunction(Criterion.TELE));
-      checkNotNull(toBuild.getInternalValueFunction(Criterion.TERRACE));
+      checkNotNull(toBuild.getInternalLinearValueFunction(Criterion.FLOOR_AREA_TERRACE));
+      checkNotNull(toBuild.getInternalLinearValueFunction(Criterion.FLOOR_AREA));
+      checkNotNull(toBuild.getInternalLinearValueFunction(Criterion.NB_BATHROOMS));
+      checkNotNull(toBuild.getInternalLinearValueFunction(Criterion.NB_BEDROOMS));
+      checkNotNull(toBuild.getInternalReversedLinearValueFunction(Criterion.NB_MIN_NIGHT));
+      checkNotNull(toBuild.getInternalLinearValueFunction(Criterion.NB_SLEEPING));
+      checkNotNull(toBuild.getInternalReversedLinearValueFunction(Criterion.PRICE_PER_NIGHT));
+      checkNotNull(toBuild.getInternalBooleanValueFunction(Criterion.WIFI));
+      checkNotNull(toBuild.getInternalBooleanValueFunction(Criterion.TELE));
+      checkNotNull(toBuild.getInternalBooleanValueFunction(Criterion.TERRACE));
 
       for (Criterion c : Criterion.values()) {
         checkNotNull(toBuild.getWeight(c));
