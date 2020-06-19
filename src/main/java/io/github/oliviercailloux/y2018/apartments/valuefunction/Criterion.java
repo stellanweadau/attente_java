@@ -1,7 +1,5 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
-import io.github.oliviercailloux.y2018.apartments.valuefunction.profile.ValueFunctionType;
-
 public enum Criterion {
   TELE(ValueFunctionType.IS_BOOLEAN_CRESCENT),
   TERRACE(ValueFunctionType.IS_BOOLEAN_CRESCENT),
@@ -20,7 +18,37 @@ public enum Criterion {
     this.valueFunctionType = valueFunctionType;
   }
 
-  ValueFunctionType getValueFunctionType() {
+  public ValueFunctionType getValueFunctionType() {
     return this.valueFunctionType;
+  }
+
+  public boolean hasBooleanDomain() {
+    return this.valueFunctionType.equals(ValueFunctionType.IS_BOOLEAN_CRESCENT)
+        || this.valueFunctionType.equals(ValueFunctionType.IS_BOOLEAN_DECREASE);
+  }
+
+  public boolean hasDoubleDomain() {
+    return this.valueFunctionType.equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT)
+        || this.valueFunctionType.equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE);
+  }
+
+  public boolean isValueFunctionType(ValueFunctionType vft) {
+    return this.valueFunctionType.equals(vft);
+  }
+
+  public boolean isNotBooleanCrescent() {
+    return this.valueFunctionType.equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT);
+  }
+
+  public boolean isNotBooleanDecrease() {
+    return this.valueFunctionType.equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE);
+  }
+
+  public boolean isBooleanCrescent() {
+    return this.valueFunctionType.equals(ValueFunctionType.IS_BOOLEAN_CRESCENT);
+  }
+
+  public boolean isBooleanDecrease() {
+    return this.valueFunctionType.equals(ValueFunctionType.IS_BOOLEAN_DECREASE);
   }
 }

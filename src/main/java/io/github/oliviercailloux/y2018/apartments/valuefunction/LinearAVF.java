@@ -6,7 +6,6 @@ import static com.google.common.base.Preconditions.checkState;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
-import io.github.oliviercailloux.y2018.apartments.valuefunction.profile.ValueFunctionType;
 import java.util.Arrays;
 import java.util.EnumMap;
 import org.slf4j.Logger;
@@ -43,20 +42,17 @@ public class LinearAVF {
    * to set those two.
    */
   private LinearAVF() {
+    // value function
     this.booleanValueFunctions = new EnumMap<>(Criterion.class);
     this.linearValueFunctions = new EnumMap<>(Criterion.class);
     this.reversedValueFunctions = new EnumMap<>(Criterion.class);
-
     Arrays.stream(Criterion.values())
-        .filter(c -> c.getValueFunctionType().equals(ValueFunctionType.IS_BOOLEAN_CRESCENT))
+        .filter(c -> c.hasBooleanDomain())
         .forEach(c -> this.setInternalValueFunction(c, new BooleanValueFunction(true)));
     Arrays.stream(Criterion.values())
-        .filter(
-            c ->
-                c.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT)
-                    || c.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE))
+        .filter(c -> c.hasDoubleDomain())
         .forEach(c -> this.setInternalValueFunction(c));
-
+    // weight
     this.weight = new EnumMap<>(Criterion.class);
     Arrays.stream(Criterion.values()).forEach(criterion -> weight.put(criterion, 0.0d));
   }
@@ -151,13 +147,11 @@ public class LinearAVF {
     Arrays.stream(Criterion.values())
         .forEach(
             c -> {
-              if (c.getValueFunctionType().equals(ValueFunctionType.IS_BOOLEAN_CRESCENT)) {
+              if (c.hasBooleanDomain()) {
                 avf.setInternalValueFunction(c, this.getInternalBooleanValueFunction(c));
-              } else if (c.getValueFunctionType()
-                  .equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT)) {
+              } else if (c.isNotBooleanCrescent()) {
                 avf.setInternalValueFunction(c, this.getInternalLinearValueFunction(c));
-              } else if (c.getValueFunctionType()
-                  .equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE)) {
+              } else if (c.isNotBooleanDecrease()) {
                 avf.setInternalValueFunction(c, this.getInternalReversedLinearValueFunction(c));
               }
             });
@@ -203,14 +197,14 @@ public class LinearAVF {
   }
 
   public void setInternalValueFunction(Criterion criterion, BooleanValueFunction vf) {
-    checkArgument(criterion.getValueFunctionType().equals(ValueFunctionType.IS_BOOLEAN_CRESCENT));
+    checkArgument(criterion.hasBooleanDomain());
     this.booleanValueFunctions.put(criterion, vf);
   }
 
   public void setInternalValueFunction(Criterion criterion) {
-    if (criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT)) {
+    if (criterion.isNotBooleanCrescent()) {
       this.linearValueFunctions.put(criterion, null);
-    } else if (criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE)) {
+    } else if (criterion.isNotBooleanDecrease()) {
       this.reversedValueFunctions.put(criterion, null);
     } else {
       throw new IllegalArgumentException(
@@ -219,31 +213,27 @@ public class LinearAVF {
   }
 
   public void setInternalValueFunction(Criterion criterion, LinearValueFunction vf) {
-    checkArgument(
-        criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT));
+    checkArgument(criterion.isNotBooleanCrescent());
     this.linearValueFunctions.put(criterion, vf);
   }
 
   public void setInternalValueFunction(Criterion criterion, ReversedLinearValueFunction vf) {
-    checkArgument(
-        criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE));
+    checkArgument(criterion.isNotBooleanDecrease());
     this.reversedValueFunctions.put(criterion, vf);
   }
 
   public BooleanValueFunction getInternalBooleanValueFunction(Criterion criterion) {
-    checkArgument(criterion.getValueFunctionType().equals(ValueFunctionType.IS_BOOLEAN_CRESCENT));
+    checkArgument(criterion.hasBooleanDomain());
     return this.booleanValueFunctions.get(criterion);
   }
 
   public LinearValueFunction getInternalLinearValueFunction(Criterion criterion) {
-    checkArgument(
-        criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT));
+    checkArgument(criterion.isNotBooleanCrescent());
     return this.linearValueFunctions.get(criterion);
   }
 
   public ReversedLinearValueFunction getInternalReversedLinearValueFunction(Criterion criterion) {
-    checkArgument(
-        criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE));
+    checkArgument(criterion.isNotBooleanDecrease());
     return this.reversedValueFunctions.get(criterion);
   }
 

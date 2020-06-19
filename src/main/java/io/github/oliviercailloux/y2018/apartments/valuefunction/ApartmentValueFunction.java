@@ -7,7 +7,6 @@ import static com.google.common.base.Preconditions.checkState;
 import com.google.common.collect.ImmutableMap;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.utils.RandomRange;
-import io.github.oliviercailloux.y2018.apartments.valuefunction.profile.ValueFunctionType;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
@@ -21,18 +20,18 @@ import org.slf4j.LoggerFactory;
  * This is provided by the creation of an object ApartmentValueFunction which contains for each
  * valuable attribute of an apartment : An object of and an associated weight.
  */
-public class ApartmentValueFunction<B, D> {
+public class ApartmentValueFunction {
 
   /**
-   * The 10 next arguments are the objects used to compute the value function of the characteristics
-   * of an apartment
+   * The two nexts arguments are the objects used to compute the value function of the
+   * characteristics of an apartment
    */
   private EnumMap<Criterion, PartialValueFunction<Boolean>> booleanValueFunctions;
 
   private EnumMap<Criterion, PartialValueFunction<Double>> doubleValueFunctions;
 
   /**
-   * The 10 next argument gives the weight of an apartment characteristic subjective value in the
+   * The next argument gives the weight of an apartment characteristic subjective value in the
    * calculation of the Apartment total subjective value
    */
   private EnumMap<Criterion, Double> weight;
@@ -51,7 +50,7 @@ public class ApartmentValueFunction<B, D> {
     Arrays.stream(Criterion.values())
         .forEach(
             criterion -> {
-              if (isBooleanValueFunction(criterion)) {
+              if (criterion.hasBooleanDomain()) {
                 setInternalBooleanValueFunction(criterion, new ConstantValueFunction<>(0.0d));
               } else {
                 setInternalDoubleValueFunction(criterion, new ConstantValueFunction<>(0.0d));
@@ -60,39 +59,30 @@ public class ApartmentValueFunction<B, D> {
 
     // weight
     this.weight = new EnumMap<>(Criterion.class);
-    Arrays.stream(Criterion.values()).forEach(criterion -> this.weight.put(criterion, 0.1d));
-  }
-
-  private boolean isBooleanValueFunction(Criterion criterion) {
-    return criterion.getValueFunctionType().equals(ValueFunctionType.IS_BOOLEAN_CRESCENT)
-        || criterion.getValueFunctionType().equals(ValueFunctionType.IS_BOOLEAN_DECREASE);
-  }
-
-  private boolean isDoubleValueFunction(Criterion criterion) {
-    return criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT)
-        || criterion.getValueFunctionType().equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE);
+    Arrays.stream(Criterion.values())
+        .forEach(criterion -> setWeightSubjectiveValue(criterion, 0.1d));
   }
 
   public PartialValueFunction<Boolean> getInternalBooleanValueFunction(Criterion criterion) {
-    checkArgument(isBooleanValueFunction(criterion));
+    checkArgument(criterion.hasBooleanDomain());
     return this.booleanValueFunctions.get(criterion);
   }
 
   public PartialValueFunction<Double> getInternalDoubleValueFunction(Criterion criterion) {
-    checkArgument(isDoubleValueFunction(criterion));
+    checkArgument(criterion.hasDoubleDomain());
     return this.doubleValueFunctions.get(criterion);
   }
 
   public void setInternalDoubleValueFunction(Criterion criterion, PartialValueFunction<Double> p) {
     checkNotNull(p);
-    checkArgument(isDoubleValueFunction(criterion));
+    checkArgument(criterion.hasDoubleDomain());
     this.doubleValueFunctions.put(criterion, p);
   }
 
   public void setInternalBooleanValueFunction(
       Criterion criterion, PartialValueFunction<Boolean> p) {
     checkNotNull(p);
-    checkArgument(isBooleanValueFunction(criterion));
+    checkArgument(criterion.hasBooleanDomain());
     this.booleanValueFunctions.put(criterion, p);
   }
 
@@ -513,66 +503,10 @@ public class ApartmentValueFunction<B, D> {
    */
   public ApartmentValueFunction adaptBounds(Criterion criterion, double newBound, boolean lower) {
     ApartmentValueFunction avf = this.cloneAVF();
-    LinearValueFunction lvf;
-
-    switch (criterion) {
-      case FLOOR_AREA:
-        checkArgument(
-            avf.getInternalDoubleValueFunction(Criterion.FLOOR_AREA)
-                instanceof LinearValueFunction);
-        lvf = (LinearValueFunction) avf.getInternalDoubleValueFunction((Criterion.FLOOR_AREA));
-        avf.setFloorAreaValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
-        break;
-      case FLOOR_AREA_TERRACE:
-        checkArgument(
-            avf.getInternalDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE)
-                instanceof LinearValueFunction);
-        lvf =
-            (LinearValueFunction) avf.getInternalDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE);
-        avf.setFloorAreaTerraceValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
-        break;
-      case PRICE_PER_NIGHT:
-        checkArgument(
-            avf.getInternalDoubleValueFunction(Criterion.PRICE_PER_NIGHT)
-                instanceof LinearValueFunction);
-        lvf = (LinearValueFunction) avf.getInternalDoubleValueFunction(Criterion.PRICE_PER_NIGHT);
-        avf.setPricePerNightValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
-        break;
-      case NB_SLEEPING:
-        checkArgument(
-            avf.getInternalDoubleValueFunction(Criterion.NB_SLEEPING)
-                instanceof LinearValueFunction);
-        lvf = (LinearValueFunction) avf.getInternalDoubleValueFunction(Criterion.NB_SLEEPING);
-        avf.setNbSleepingValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
-        break;
-      case NB_BATHROOMS:
-        checkArgument(
-            avf.getInternalDoubleValueFunction(Criterion.NB_BATHROOMS)
-                instanceof LinearValueFunction);
-        lvf = (LinearValueFunction) avf.getInternalDoubleValueFunction(Criterion.NB_BATHROOMS);
-        avf.setNbBathroomsValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
-        break;
-      case NB_BEDROOMS:
-        checkArgument(
-            avf.getInternalDoubleValueFunction(Criterion.NB_BEDROOMS)
-                instanceof LinearValueFunction);
-        lvf = (LinearValueFunction) avf.getInternalDoubleValueFunction(Criterion.NB_BEDROOMS);
-        avf.setNbBedroomsValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
-        break;
-      case NB_MIN_NIGHT:
-        checkArgument(
-            avf.getInternalDoubleValueFunction(Criterion.NB_MIN_NIGHT)
-                instanceof LinearValueFunction);
-        lvf = (LinearValueFunction) avf.getInternalDoubleValueFunction(Criterion.NB_MIN_NIGHT);
-        avf.setNbMinNightValueFunction(adaptLinearValueFunction(lvf, newBound, lower));
-        break;
-        // Here, we don't look at TELE, WIFI and TERRACE as they are boolean value (so
-        // don't have bounds)
-        // $CASES-OMITTED$
-      default:
-        throw new IllegalArgumentException();
-    }
-
+    checkArgument(criterion.hasDoubleDomain());
+    checkArgument(avf.getInternalDoubleValueFunction(criterion) instanceof LinearValueFunction);
+    LinearValueFunction lvf = (LinearValueFunction) avf.getInternalDoubleValueFunction(criterion);
+    avf.setInternalDoubleValueFunction(criterion, adaptLinearValueFunction(lvf, newBound, lower));
     return avf;
   }
 
@@ -589,7 +523,6 @@ public class ApartmentValueFunction<B, D> {
     if (lower) {
       return new LinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
     }
-
     return new LinearValueFunction(oldLVF.getInterval().lowerEndpoint(), newBound);
   }
 
@@ -603,7 +536,6 @@ public class ApartmentValueFunction<B, D> {
    * @return an object ApartmentValueFunction
    */
   public ApartmentValueFunction adaptWeight(Criterion moreImportant, Criterion lessImportant) {
-
     checkNotNull(lessImportant, "This criterion cannot be null");
     checkNotNull(moreImportant, "This criterion cannot be null");
     checkArgument(!Objects.equals(moreImportant, lessImportant), "Both fields are the same.");
@@ -656,7 +588,7 @@ public class ApartmentValueFunction<B, D> {
     Arrays.stream(Criterion.values())
         .forEach(
             criterion -> {
-              if (isBooleanValueFunction(criterion)) {
+              if (criterion.hasBooleanDomain()) {
                 avf.booleanValueFunctions.put(criterion, this.booleanValueFunctions.get(criterion));
               } else {
                 avf.doubleValueFunctions.put(criterion, this.doubleValueFunctions.get(criterion));

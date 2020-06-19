@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2018.apartments.valuefunction.profile;
+package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 public enum ValueFunctionType {
   IS_BOOLEAN_CRESCENT,
