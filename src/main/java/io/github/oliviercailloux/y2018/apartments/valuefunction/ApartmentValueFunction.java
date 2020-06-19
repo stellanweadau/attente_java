@@ -44,9 +44,10 @@ public class ApartmentValueFunction {
   private PartialValueFunction<Double> nbMinNightValueFunction;
 
   private PartialValueFunction<Boolean> teleValueFunction;
+  private EnumMap<Criterion, PartialValueFunction> valueFunction;
 
   /**
-   * The 10 next arguments gives the weight of an apartment characteristic subjective value in the
+   * The 10 next argument gives the weight of an apartment characteristic subjective value in the
    * calculation of the Apartment total subjective value
    */
   private EnumMap<Criterion, Double> weight;
@@ -69,6 +70,8 @@ public class ApartmentValueFunction {
     this.pricePerNightValueFunction = new ConstantValueFunction<>(0d);
     this.nbMinNightValueFunction = new ConstantValueFunction<>(0d);
     this.teleValueFunction = new ConstantValueFunction<>(0d);
+    this.valueFunction = new EnumMap<>(Criterion.class);
+    Arrays.stream(Criterion.values()).forEach(criterion -> this.valueFunction.put(criterion, new ConstantValueFunction<>(0.0d)));
 
     this.weight = new EnumMap<>(Criterion.class);
     Arrays.stream(Criterion.values()).forEach(criterion -> this.weight.put(criterion, 0.1d));
