@@ -35,17 +35,17 @@ public class Profile {
 
   private Profile() {
     LinearAVF.Builder blavf =
-            new LinearAVF.Builder()
-                    .setTeleValueFunction(true)
-                    .setTerraceValueFunction(true)
-                    .setWifiValueFunction(true)
-                    .setFloorAreaTerraceValueFunction(1d, 50d)
-                    .setFloorAreaValueFunction(9d, 200d)
-                    .setNbBathroomsValueFunction(1, 10)
-                    .setNbBedroomsValueFunction(0, 30)
-                    .setNbSleepingValueFunction(1, 30)
-                    .setNbMinNightValueFunction(1, 31)
-                    .setPricePerNightValueFunction(30d, 200d);
+        new LinearAVF.Builder()
+            .setTeleValueFunction(true)
+            .setTerraceValueFunction(true)
+            .setWifiValueFunction(true)
+            .setFloorAreaTerraceValueFunction(1d, 50d)
+            .setFloorAreaValueFunction(9d, 200d)
+            .setNbBathroomsValueFunction(1, 10)
+            .setNbBedroomsValueFunction(0, 30)
+            .setNbSleepingValueFunction(1, 30)
+            .setNbMinNightValueFunction(1, 31)
+            .setPricePerNightValueFunction(30d, 200d);
     for (Criterion c : Criterion.values()) {
       blavf.setWeight(c, 0d);
     }
@@ -135,9 +135,8 @@ public class Profile {
    * @return the middle of the Range of the given Criterion
    */
   double getMiddleOfRange(Criterion crit) {
-    return (this.getWeightRange(crit).upperEndpoint()
-            + this.getWeightRange(crit).lowerEndpoint())
-            / 2;
+    return (this.getWeightRange(crit).upperEndpoint() + this.getWeightRange(crit).lowerEndpoint())
+        / 2;
   }
 
   /**
@@ -172,7 +171,7 @@ public class Profile {
     checkNotNull(range);
     checkNotNull(weight);
     checkArgument(
-            range.contains(weight), "A weight in the linear AVF is not in the targeted range");
+        range.contains(weight), "A weight in the linear AVF is not in the targeted range");
   }
 
   /**
@@ -191,7 +190,7 @@ public class Profile {
       case TERRACE:
         this.terraceWeightRange = value;
         this.linearAvf =
-                this.linearAvf.setWeight(Criterion.TERRACE, getMiddleOfRange(Criterion.TERRACE));
+            this.linearAvf.setWeight(Criterion.TERRACE, getMiddleOfRange(Criterion.TERRACE));
         LOGGER.debug("The terrace weight has been set to {}", value);
         break;
       case WIFI:
@@ -202,49 +201,49 @@ public class Profile {
       case FLOOR_AREA:
         this.floorAreaWeightRange = value;
         this.linearAvf =
-                this.linearAvf.setWeight(Criterion.FLOOR_AREA, getMiddleOfRange(Criterion.FLOOR_AREA));
+            this.linearAvf.setWeight(Criterion.FLOOR_AREA, getMiddleOfRange(Criterion.FLOOR_AREA));
         LOGGER.debug("The floor area weight has been set to {}", value);
         break;
       case FLOOR_AREA_TERRACE:
         this.floorAreaTerraceWeightRange = value;
         this.linearAvf =
-                this.linearAvf.setWeight(
-                        Criterion.FLOOR_AREA_TERRACE, getMiddleOfRange(Criterion.FLOOR_AREA_TERRACE));
+            this.linearAvf.setWeight(
+                Criterion.FLOOR_AREA_TERRACE, getMiddleOfRange(Criterion.FLOOR_AREA_TERRACE));
         LOGGER.debug("The floor area terrace weight has been set to {}", value);
         break;
       case NB_BATHROOMS:
         this.nbBathroomsWeightRange = value;
         this.linearAvf =
-                this.linearAvf.setWeight(
-                        Criterion.NB_BATHROOMS, getMiddleOfRange(Criterion.NB_BATHROOMS));
+            this.linearAvf.setWeight(
+                Criterion.NB_BATHROOMS, getMiddleOfRange(Criterion.NB_BATHROOMS));
         LOGGER.debug("The number of bathrooms weight has been set to {}", value);
         break;
       case NB_BEDROOMS:
         this.nbBedroomsWeightRange = value;
         this.linearAvf =
-                this.linearAvf.setWeight(
-                        Criterion.NB_BEDROOMS, getMiddleOfRange(Criterion.NB_BEDROOMS));
+            this.linearAvf.setWeight(
+                Criterion.NB_BEDROOMS, getMiddleOfRange(Criterion.NB_BEDROOMS));
         LOGGER.debug("The number of bedrooms weight has been set to {}", value);
         break;
       case NB_SLEEPING:
         this.nbSleepingWeightRange = value;
         this.linearAvf =
-                this.linearAvf.setWeight(
-                        Criterion.NB_SLEEPING, getMiddleOfRange(Criterion.NB_SLEEPING));
+            this.linearAvf.setWeight(
+                Criterion.NB_SLEEPING, getMiddleOfRange(Criterion.NB_SLEEPING));
         LOGGER.debug("The number of sleeping weight has been set to {}", value);
         break;
       case NB_MIN_NIGHT:
         this.nbMinNightSubjectiveValueWeightRange = value;
         this.linearAvf =
-                this.linearAvf.setWeight(
-                        Criterion.NB_MIN_NIGHT, getMiddleOfRange(Criterion.NB_MIN_NIGHT));
+            this.linearAvf.setWeight(
+                Criterion.NB_MIN_NIGHT, getMiddleOfRange(Criterion.NB_MIN_NIGHT));
         LOGGER.debug("The number of minimum nights weight has been set to {}", value);
         break;
       case PRICE_PER_NIGHT:
         this.pricePerNightSubjectiveValueWeightRange = value;
         this.linearAvf =
-                this.linearAvf.setWeight(
-                        Criterion.PRICE_PER_NIGHT, getMiddleOfRange(Criterion.PRICE_PER_NIGHT));
+            this.linearAvf.setWeight(
+                Criterion.PRICE_PER_NIGHT, getMiddleOfRange(Criterion.PRICE_PER_NIGHT));
         LOGGER.debug("The price per night weight has been set to {}", value);
         break;
       default:
@@ -263,12 +262,12 @@ public class Profile {
     checkNotNull(value, "The rage cannot be null");
     checkArgument(value.hasLowerBound() && value.hasUpperBound(), "The given range is not valid");
     checkArgument(
-            value.lowerBoundType().equals(BoundType.CLOSED)
-                    && value.upperBoundType().equals(BoundType.CLOSED),
-            "The given range must have closed bounds");
+        value.lowerBoundType().equals(BoundType.CLOSED)
+            && value.upperBoundType().equals(BoundType.CLOSED),
+        "The given range must have closed bounds");
     checkArgument(
-            value.lowerEndpoint() >= 0 && value.upperEndpoint() > 0,
-            "The weight of the range cannot be negative");
+        value.lowerEndpoint() >= 0 && value.upperEndpoint() > 0,
+        "The weight of the range cannot be negative");
   }
 
   public static class Builder {
@@ -282,13 +281,13 @@ public class Profile {
       checkNotNull(toBuild.linearAvf);
       for (Criterion c : Criterion.values()) {
         checkNotNull(toBuild.getWeightRange(c), c.name() + " is null");
-        this.toBuild.checkWeightInRange(c,toBuild.linearAvf);
+        this.toBuild.checkWeightInRange(c, toBuild.linearAvf);
       }
       return toBuild;
     }
 
     public Builder setLinearAVF(LinearAVF newLinearAvf) {
-      this.toBuild.linearAvf=newLinearAvf;
+      this.toBuild.linearAvf = newLinearAvf;
       return this;
     }
 
@@ -301,8 +300,7 @@ public class Profile {
      * @return the current instance of Builder
      */
     public Builder setWeightRange(Criterion crit, double lowerValue, double upperValue) {
-      this.toBuild.setWeightRange(
-              crit, Range.closed(lowerValue, upperValue));
+      this.toBuild.setWeightRange(crit, Range.closed(lowerValue, upperValue));
       return this;
     }
 
