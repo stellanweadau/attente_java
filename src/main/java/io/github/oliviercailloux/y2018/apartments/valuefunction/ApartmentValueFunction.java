@@ -50,7 +50,8 @@ public class ApartmentValueFunction {
     Arrays.stream(Criterion.values()).forEach(criterion -> this.weight.put(criterion, 0.1d));
   }
 
-  public void setOneValueFonction(Criterion criterion, PartialValueFunction p) {
+  public void setOneValueFunction(Criterion criterion, PartialValueFunction p) {
+    checkNotNull(p);
     this.valueFunction.put(criterion, p);
   }
 
@@ -64,7 +65,7 @@ public class ApartmentValueFunction {
    * @param floorAreaValueFunction
    */
   public void setFloorAreaValueFunction(PartialValueFunction<Double> floorAreaValueFunction) {
-    this.setOneValueFonction(Criterion.FLOOR_AREA, checkNotNull(floorAreaValueFunction));
+    this.setOneValueFunction(Criterion.FLOOR_AREA, checkNotNull(floorAreaValueFunction));
     LOGGER.info("The floor area preferencies has been set");
   }
 
@@ -75,7 +76,7 @@ public class ApartmentValueFunction {
    * @param nbBedroomsValueFunction
    */
   public void setNbBedroomsValueFunction(PartialValueFunction<Double> nbBedroomsValueFunction) {
-    this.setOneValueFonction(Criterion.NB_BEDROOMS, checkNotNull(nbBedroomsValueFunction));
+    this.setOneValueFunction(Criterion.NB_BEDROOMS, checkNotNull(nbBedroomsValueFunction));
     LOGGER.info("The number of bedrooms preferencies has been set");
   }
 
@@ -86,7 +87,7 @@ public class ApartmentValueFunction {
    * @param nbSleepingValueFunction
    */
   public void setNbSleepingValueFunction(PartialValueFunction<Double> nbSleepingValueFunction) {
-    this.setOneValueFonction(Criterion.NB_SLEEPING, checkNotNull(nbSleepingValueFunction));
+    this.setOneValueFunction(Criterion.NB_SLEEPING, checkNotNull(nbSleepingValueFunction));
     LOGGER.info("The number of sleeping preferencies has been set");
   }
 
@@ -97,7 +98,7 @@ public class ApartmentValueFunction {
    * @param nbBathroomsValueFunction
    */
   public void setNbBathroomsValueFunction(PartialValueFunction<Double> nbBathroomsValueFunction) {
-    this.setOneValueFonction(Criterion.NB_BATHROOMS, checkNotNull(nbBathroomsValueFunction));
+    this.setOneValueFunction(Criterion.NB_BATHROOMS, checkNotNull(nbBathroomsValueFunction));
     LOGGER.info("The number of bathrooms preferencies has been set");
   }
 
@@ -108,7 +109,7 @@ public class ApartmentValueFunction {
    * @param terraceValueFunction
    */
   public void setTerraceValueFunction(PartialValueFunction<Boolean> terraceValueFunction) {
-    this.setOneValueFonction(Criterion.TERRACE, checkNotNull(terraceValueFunction));
+    this.setOneValueFunction(Criterion.TERRACE, checkNotNull(terraceValueFunction));
     LOGGER.info("The terrace preferencies has been set");
   }
 
@@ -120,7 +121,7 @@ public class ApartmentValueFunction {
    */
   public void setFloorAreaTerraceValueFunction(
       PartialValueFunction<Double> floorAreaTerraceValueFunction) {
-    this.setOneValueFonction(
+    this.setOneValueFunction(
         Criterion.FLOOR_AREA_TERRACE, checkNotNull(floorAreaTerraceValueFunction));
     LOGGER.info("The floor area of the terrace preferencies has been set");
   }
@@ -132,7 +133,7 @@ public class ApartmentValueFunction {
    * @param wifiValueFunction
    */
   public void setWifiValueFunction(PartialValueFunction<Boolean> wifiValueFunction) {
-    this.setOneValueFonction(Criterion.WIFI, checkNotNull(wifiValueFunction));
+    this.setOneValueFunction(Criterion.WIFI, checkNotNull(wifiValueFunction));
     LOGGER.info("The wifi preferencies has been set");
   }
 
@@ -143,7 +144,7 @@ public class ApartmentValueFunction {
    */
   public void setPricePerNightValueFunction(
       PartialValueFunction<Double> pricePerNightValueFunction) {
-    this.setOneValueFonction(Criterion.PRICE_PER_NIGHT, checkNotNull(pricePerNightValueFunction));
+    this.setOneValueFunction(Criterion.PRICE_PER_NIGHT, checkNotNull(pricePerNightValueFunction));
     LOGGER.info("The price per night preferencies has been set");
   }
 
@@ -154,7 +155,7 @@ public class ApartmentValueFunction {
    * @param nbMinNightValueFunction
    */
   public void setNbMinNightValueFunction(PartialValueFunction<Double> nbMinNightValueFunction) {
-    this.setOneValueFonction(Criterion.NB_MIN_NIGHT, checkNotNull(nbMinNightValueFunction));
+    this.setOneValueFunction(Criterion.NB_MIN_NIGHT, checkNotNull(nbMinNightValueFunction));
     LOGGER.info("The number of minimum night preferencies has been set");
   }
 
@@ -165,7 +166,7 @@ public class ApartmentValueFunction {
    * @param teleValueFunction
    */
   public void setTeleValueFunction(PartialValueFunction<Boolean> teleValueFunction) {
-    this.setOneValueFonction(Criterion.TELE, checkNotNull(teleValueFunction));
+    this.setOneValueFunction(Criterion.TELE, checkNotNull(teleValueFunction));
     LOGGER.info("The tele preferencies has been set");
   }
 

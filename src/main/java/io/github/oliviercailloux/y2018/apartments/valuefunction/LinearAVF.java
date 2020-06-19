@@ -42,10 +42,10 @@ public class LinearAVF {
     this.valueFunction = new EnumMap<>(Criterion.class);
     Arrays.stream(Criterion.values())
         .filter(c -> c.getValueFunctionClass().equals(BooleanValueFunction.class))
-        .forEach(c -> this.setInternalValueFonction(c, new BooleanValueFunction(true)));
+        .forEach(c -> this.setInternalValueFunction(c, new BooleanValueFunction(true)));
     Arrays.stream(Criterion.values())
         .filter(c -> c.getValueFunctionClass().equals(LinearValueFunction.class))
-        .forEach(c -> this.setInternalValueFonction(c, null));
+        .forEach(c -> this.setInternalValueFunction(c, null));
 
     this.weight = new EnumMap<>(Criterion.class);
     Arrays.stream(Criterion.values()).forEach(criterion -> weight.put(criterion, 0.0d));
@@ -177,7 +177,7 @@ public class LinearAVF {
     return avf;
   }
 
-  public void setInternalValueFonction(Criterion criterion, PartialValueFunction p) {
+  public void setInternalValueFunction(Criterion criterion, PartialValueFunction p) {
     this.valueFunction.put(criterion, p);
   }
 
@@ -230,7 +230,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setFloorAreaValueFunction(LinearValueFunction floorAreaValueFunction) {
-      toBuild.setInternalValueFonction(Criterion.FLOOR_AREA, floorAreaValueFunction);
+      toBuild.setInternalValueFunction(Criterion.FLOOR_AREA, floorAreaValueFunction);
       return this;
     }
 
@@ -242,7 +242,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setFloorAreaValueFunction(double lowerValue, double upperValue) {
-      toBuild.setInternalValueFonction(
+      toBuild.setInternalValueFunction(
           Criterion.FLOOR_AREA, new LinearValueFunction(lowerValue, upperValue));
       return this;
     }
@@ -255,7 +255,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbBedroomsValueFunction(LinearValueFunction nbBedroomsValueFunction) {
-      toBuild.setInternalValueFonction(Criterion.NB_BEDROOMS, nbBedroomsValueFunction);
+      toBuild.setInternalValueFunction(Criterion.NB_BEDROOMS, nbBedroomsValueFunction);
       return this;
     }
 
@@ -268,7 +268,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbBedroomsValueFunction(double lowerValue, double upperValue) {
-      toBuild.setInternalValueFonction(
+      toBuild.setInternalValueFunction(
           Criterion.NB_BEDROOMS, new LinearValueFunction(lowerValue, upperValue));
       return this;
     }
@@ -281,7 +281,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbSleepingValueFunction(LinearValueFunction nbSleepingValueFunction) {
-      toBuild.setInternalValueFonction(Criterion.NB_SLEEPING, nbSleepingValueFunction);
+      toBuild.setInternalValueFunction(Criterion.NB_SLEEPING, nbSleepingValueFunction);
       return this;
     }
 
@@ -294,7 +294,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbSleepingValueFunction(double lowerValue, double upperValue) {
-      toBuild.setInternalValueFonction(
+      toBuild.setInternalValueFunction(
           Criterion.NB_SLEEPING, new LinearValueFunction(lowerValue, upperValue));
       return this;
     }
@@ -308,7 +308,7 @@ public class LinearAVF {
      */
     public Builder setFloorAreaTerraceValueFunction(
         LinearValueFunction floorAreaTerraceValueFunction) {
-      toBuild.setInternalValueFonction(Criterion.FLOOR_AREA_TERRACE, floorAreaTerraceValueFunction);
+      toBuild.setInternalValueFunction(Criterion.FLOOR_AREA_TERRACE, floorAreaTerraceValueFunction);
       return this;
     }
 
@@ -321,7 +321,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setFloorAreaTerraceValueFunction(double lowerValue, double upperValue) {
-      toBuild.setInternalValueFonction(
+      toBuild.setInternalValueFunction(
           Criterion.FLOOR_AREA_TERRACE, new LinearValueFunction(lowerValue, upperValue));
       return this;
     }
@@ -334,7 +334,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbBathroomsValueFunction(LinearValueFunction nbBathroomsValueFunction) {
-      toBuild.setInternalValueFonction(Criterion.NB_BATHROOMS, nbBathroomsValueFunction);
+      toBuild.setInternalValueFunction(Criterion.NB_BATHROOMS, nbBathroomsValueFunction);
       return this;
     }
 
@@ -347,7 +347,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbBathroomsValueFunction(double lowerValue, double upperValue) {
-      toBuild.setInternalValueFonction(
+      toBuild.setInternalValueFunction(
           Criterion.NB_BATHROOMS, new LinearValueFunction(lowerValue, upperValue));
       return this;
     }
@@ -360,7 +360,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setTerraceValueFunction(BooleanValueFunction terraceValueFunction) {
-      toBuild.setInternalValueFonction(Criterion.TERRACE, terraceValueFunction);
+      toBuild.setInternalValueFunction(Criterion.TERRACE, terraceValueFunction);
       return this;
     }
 
@@ -372,7 +372,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setTerraceValueFunction(boolean value) {
-      toBuild.setInternalValueFonction(Criterion.TERRACE, new BooleanValueFunction(value));
+      toBuild.setInternalValueFunction(Criterion.TERRACE, new BooleanValueFunction(value));
       return this;
     }
 
@@ -384,7 +384,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setTeleValueFunction(BooleanValueFunction teleValueFunction) {
-      toBuild.setInternalValueFonction(Criterion.TELE, teleValueFunction);
+      toBuild.setInternalValueFunction(Criterion.TELE, teleValueFunction);
       return this;
     }
 
@@ -396,7 +396,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setTeleValueFunction(boolean value) {
-      toBuild.setInternalValueFonction(Criterion.TELE, new BooleanValueFunction(value));
+      toBuild.setInternalValueFunction(Criterion.TELE, new BooleanValueFunction(value));
       return this;
     }
 
@@ -408,7 +408,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setWifiValueFunction(BooleanValueFunction wifiValueFunction) {
-      toBuild.setInternalValueFonction(Criterion.WIFI, wifiValueFunction);
+      toBuild.setInternalValueFunction(Criterion.WIFI, wifiValueFunction);
       return this;
     }
 
@@ -420,7 +420,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setWifiValueFunction(boolean value) {
-      toBuild.setInternalValueFonction(Criterion.WIFI, new BooleanValueFunction(value));
+      toBuild.setInternalValueFunction(Criterion.WIFI, new BooleanValueFunction(value));
       return this;
     }
 
@@ -432,7 +432,7 @@ public class LinearAVF {
      */
     public Builder setPricePerNightValueFunction(
         ReversedLinearValueFunction pricePerNightValueFunction) {
-      toBuild.setInternalValueFonction(Criterion.PRICE_PER_NIGHT, pricePerNightValueFunction);
+      toBuild.setInternalValueFunction(Criterion.PRICE_PER_NIGHT, pricePerNightValueFunction);
       return this;
     }
 
@@ -444,7 +444,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setPricePerNightValueFunction(double lowerValue, double upperValue) {
-      toBuild.setInternalValueFonction(
+      toBuild.setInternalValueFunction(
           Criterion.PRICE_PER_NIGHT, new ReversedLinearValueFunction(lowerValue, upperValue));
       return this;
     }
@@ -457,7 +457,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbMinNightValueFunction(ReversedLinearValueFunction nbMinNightValueFunction) {
-      toBuild.setInternalValueFonction(Criterion.NB_MIN_NIGHT, nbMinNightValueFunction);
+      toBuild.setInternalValueFunction(Criterion.NB_MIN_NIGHT, nbMinNightValueFunction);
       return this;
     }
 
@@ -470,7 +470,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbMinNightValueFunction(double lowerValue, double upperValue) {
-      toBuild.setInternalValueFonction(
+      toBuild.setInternalValueFunction(
           Criterion.NB_MIN_NIGHT, new ReversedLinearValueFunction(lowerValue, upperValue));
       return this;
     }
