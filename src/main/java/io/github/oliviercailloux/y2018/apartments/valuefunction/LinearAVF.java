@@ -155,6 +155,10 @@ public class LinearAVF {
     return this.weight.get(crit);
   }
 
+  public void setWeightSubjectiveValue(Criterion criterion, double value){
+    this.weight.put(criterion, value);
+  }
+
   /**
    * Sets the subjective value weight of a criterion
    *
@@ -177,338 +181,6 @@ public class LinearAVF {
     return this.valueFunction.get(criterion);
   }
 
-  public void setWeightSubjectiveValue(Criterion criterion, double value){
-    this.weight.put(criterion, value);
-  }
-
-  /**
-   * Set the weight of the floor area subjective value corresponding to the importance of the floor
-   * area criteria.
-   *
-   * @param value >= 0
-   */
-  private void setFloorAreaSubjectiveValueWeight(double value) {
-    checkArgument(value >= 0, "value must be greater than or equal to 0");
-    this.setWeightSubjectiveValue(Criterion.FLOOR_AREA, value);
-    LOGGER.debug("The floor area weight has been set to {}", value);
-  }
-
-  /**
-   * Set the weight of the number of bedrooms subjective value corresponding to the importance of
-   * the number of bedrooms criteria.
-   *
-   * @param value >= 0
-   */
-  private void setNbBedroomsSubjectiveValueWeight(double value) {
-    checkArgument(value >= 0, "value must be greater than or equal to 0");
-    this.setWeightSubjectiveValue(Criterion.NB_BEDROOMS, value);
-    LOGGER.debug("The number of bedrooms weight has been set to {}", value);
-  }
-
-  /**
-   * set the weight of the number of sleeping subjective value corresponding to the importance of
-   * the number of sleeping criteria.
-   *
-   * @param value >= 0
-   */
-  private void setNbSleepingSubjectiveValueWeight(double value) {
-    checkArgument(value >= 0, "value must be greater than or equal to 0");
-    this.setWeightSubjectiveValue(Criterion.NB_SLEEPING, value);
-    LOGGER.debug("The number of sleeping weight has been set to {}", value);
-  }
-
-  /**
-   * Set the weight of the number of bathrooms subjective value corresponding to the importance of
-   * the number of bathrooms criteria.
-   *
-   * @param value >= 0
-   */
-  private void setNbBathroomsSubjectiveValueWeight(double value) {
-    checkArgument(value >= 0, "value must be greater than or equal to 0");
-    this.setWeightSubjectiveValue(Criterion.NB_BATHROOMS, value);
-    LOGGER.debug("The number of bathrooms weight has been set to {}", value);
-  }
-
-  /**
-   * Set the weight of the terrace subjective value corresponding to the importance of the terrace
-   * criteria.
-   *
-   * @param value >= 0
-   */
-  private void setTerraceSubjectiveValueWeight(double value) {
-    checkArgument(value >= 0, "value must be greater than or equal to 0");
-    this.setWeightSubjectiveValue(Criterion.TERRACE, value);
-    LOGGER.debug("The terrace weight has been set to {}", value);
-  }
-
-  /**
-   * Set the weight of the terrace floor area subjective value corresponding to the importance of
-   * the terrace floor area criteria.
-   *
-   * @param value >= 0
-   */
-  private void setFloorAreaTerraceSubjectiveValueWeight(double value) {
-    checkArgument(value >= 0, "value must be greater than or equal to 0");
-    this.setWeightSubjectiveValue(Criterion.FLOOR_AREA_TERRACE, value);
-    LOGGER.debug("The floor area of the terrace weight has been set to {}", value);
-  }
-
-  /**
-   * Set the weight of the WiFi subjective value corresponding to the importance of the WiFi
-   * criteria.
-   *
-   * @param value >= 0
-   */
-  private void setWifiSubjectiveValueWeight(double value) {
-    checkArgument(value >= 0, "value must be greater than or equal to 0");
-    this.setWeightSubjectiveValue(Criterion.WIFI, value);
-    LOGGER.debug("The wifi weight has been set to {}", value);
-  }
-
-  /**
-   * Set the weight of the price per night subjective value corresponding to the importance of the
-   * price per night criteria.
-   *
-   * @param value >= 0
-   */
-  private void setPricePerNightSubjectiveValueWeight(double value) {
-    checkArgument(value >= 0, "value must be greater than or equal to 0");
-    this.setWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT, value);
-    LOGGER.debug("The price per night weight has been set to {}", value);
-  }
-
-  /**
-   * Set the weight of the minimum number of nights subjective value corresponding to the importance
-   * of the minimum number of nights criteria.
-   *
-   * @param value >= 0
-   */
-  private void setNbMinNightSubjectiveValueWeight(double value) {
-    checkArgument(value >= 0, "value must be greater than or equal to 0");
-    this.setWeightSubjectiveValue(Criterion.NB_MIN_NIGHT, value);
-    LOGGER.debug("The number of minimum night weight has been set to {}", value);
-  }
-
-  /**
-   * Set the weight of the television subjective value corresponding to the importance of the
-   * television criteria.
-   *
-   * @param value >= 0
-   */
-  private void setTeleSubjectiveValueWeight(double value) {
-    checkArgument(value >= 0, "value must be greater than or equal to 0");
-    this.setWeightSubjectiveValue(Criterion.TELE, value);
-    LOGGER.debug("The tele weight has been set to {}", value);
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the floor Area
-   *
-   * @return the attribute floorAreaValueFunction
-   */
-  public LinearValueFunction getFloorAreaValueFunction() {
-    return Criterion.getValueFunction(this.getInternalValueFunction(Criterion.FLOOR_AREA), Criterion.FLOOR_AREA);
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the floor area.
-   *
-   * @param floorAreaValueFunction the new LinearValueFunction for FloorArea
-   */
-  private void setFloorAreaValueFunction(LinearValueFunction floorAreaValueFunction) {
-    this.setInternalValueFonction(Criterion.FLOOR_AREA, checkNotNull(floorAreaValueFunction));
-    LOGGER.info("The floor area preferencies has been set");
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the floor Area
-   * Terrace
-   *
-   * @return the attribute floorAreaTerraceValueFunction
-   */
-  public LinearValueFunction getFloorAreaTerraceValueFunction() {
-    return Criterion.getValueFunction(this.getInternalValueFunction(Criterion.FLOOR_AREA_TERRACE), Criterion.FLOOR_AREA_TERRACE);
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the floor area of an
-   * existing terrace.
-   *
-   * @param floorAreaTerraceValueFunction the new LinearValueFunction for FloorAreaTerrace
-   */
-  private void setFloorAreaTerraceValueFunction(LinearValueFunction floorAreaTerraceValueFunction) {
-    this.setInternalValueFonction(Criterion.FLOOR_AREA_TERRACE, checkNotNull(floorAreaTerraceValueFunction));
-    LOGGER.info("The floor area of the terrace preferencies has been set");
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the number of
-   * bathrooms
-   *
-   * @return the attribute nbBathroomsValueFunction
-   */
-  public LinearValueFunction getNbBathroomsValueFunction() {
-    return Criterion.getValueFunction(this.getInternalValueFunction(Criterion.NB_BATHROOMS), Criterion.NB_BATHROOMS);
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the number of
-   * bathrooms.
-   *
-   * @param nbBathroomsValueFunction the new LinearValueFunction for NbBathrooms
-   */
-  private void setNbBathroomsValueFunction(LinearValueFunction nbBathroomsValueFunction) {
-    this.setInternalValueFonction(Criterion.NB_BATHROOMS, checkNotNull(nbBathroomsValueFunction));
-    LOGGER.info("The number of bathrooms preferencies has been set");
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the number of
-   * bedrooms
-   *
-   * @return the attribute nbBedroomsValueFunction
-   */
-  public LinearValueFunction getNbBedroomsValueFunction() {
-    return Criterion.getValueFunction(this.getInternalValueFunction(Criterion.NB_BEDROOMS), Criterion.NB_BEDROOMS);
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the number of
-   * bedrooms.
-   *
-   * @param nbBedroomsValueFunction the new LinearValueFunction for NbBedrooms
-   */
-  private void setNbBedroomsValueFunction(LinearValueFunction nbBedroomsValueFunction) {
-    this.setInternalValueFonction(Criterion.NB_BEDROOMS, checkNotNull(nbBedroomsValueFunction));
-    LOGGER.info("The number of bedrooms preferencies has been set");
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the minimum number
-   * of nights the user has to stay in
-   *
-   * @return the attribute nbMinNightValueFunction
-   */
-  public ReversedLinearValueFunction getNbMinNightValueFunction() {
-    return Criterion.getValueFunction(this.getInternalValueFunction(Criterion.NB_MIN_NIGHT), Criterion.NB_MIN_NIGHT);
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the minimum number of
-   * nights.
-   *
-   * @param nbMinNightValueFunction the new ReversedLinearValueFunction for NbMinNight
-   */
-  private void setNbMinNightValueFunction(ReversedLinearValueFunction nbMinNightValueFunction) {
-    this.setInternalValueFonction(Criterion.NB_MIN_NIGHT, checkNotNull(nbMinNightValueFunction));
-    LOGGER.info("The number of minimum night preferencies has been set");
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the number of
-   * people who can sleep in
-   *
-   * @return the attribute nbSleepingValueFunction
-   */
-  public LinearValueFunction getNbSleepingValueFunction() {
-    return Criterion.getValueFunction(this.getInternalValueFunction(Criterion.NB_SLEEPING), Criterion.NB_SLEEPING);
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the accommodation
-   * capacity.
-   *
-   * @param nbSleepingValueFunction the new LinearValueFunction for NbSleeping
-   */
-  private void setNbSleepingValueFunction(LinearValueFunction nbSleepingValueFunction) {
-    this.setInternalValueFonction(Criterion.NB_SLEEPING, checkNotNull(nbSleepingValueFunction));
-    LOGGER.info("The number of sleeping preferencies has been set");
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the price per
-   * night
-   *
-   * @return the attribute pricePerNightValueFunction
-   */
-  public ReversedLinearValueFunction getPricePerNightValueFunction() {
-    return Criterion.getValueFunction(this.getInternalValueFunction(Criterion.PRICE_PER_NIGHT), Criterion.PRICE_PER_NIGHT);
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the price per night.
-   *
-   * @param pricePerNightValueFunction the new ReversedLinearValueFunction for PricePerNight
-   */
-  private void setPricePerNightValueFunction(
-      ReversedLinearValueFunction pricePerNightValueFunction) {
-    this.setInternalValueFonction(Criterion.PRICE_PER_NIGHT, checkNotNull(pricePerNightValueFunction));
-    LOGGER.info("The price per night preferencies has been set");
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the presence of a
-   * television
-   *
-   * @return the attribute teleValueFunction
-   */
-  public BooleanValueFunction getTeleValueFunction() {
-    return Criterion.getValueFunction(this.getInternalValueFunction(Criterion.TELE), Criterion.TELE);
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the presence of a
-   * television.
-   *
-   * @param teleValueFunction the new BooleanValueFunction for Tele
-   */
-  private void setTeleValueFunction(BooleanValueFunction teleValueFunction) {
-    this.setInternalValueFonction(Criterion.TELE, checkNotNull(teleValueFunction));
-    LOGGER.info("The tele preferencies has been set");
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the presence of a
-   * terrace
-   *
-   * @return the attribute terraceValueFunction
-   */
-  public BooleanValueFunction getTerraceValueFunction() {
-    return Criterion.getValueFunction(this.getInternalValueFunction(Criterion.TERRACE), Criterion.TERRACE);
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the presence of a
-   * terrace.
-   *
-   * @param terraceValueFunction the new BooleanValueFunction for Terrace
-   */
-  private void setTerraceValueFunction(BooleanValueFunction terraceValueFunction) {
-    this.setInternalValueFonction(Criterion.TERRACE, checkNotNull(terraceValueFunction));
-    LOGGER.info("The terrace preferencies has been set");
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the presence of
-   * the wifi
-   *
-   * @return the attribute wifiValueFunction
-   */
-  public BooleanValueFunction getWifiValueFunction() {
-    return Criterion.getValueFunction(this.getInternalValueFunction(Criterion.WIFI), Criterion.WIFI);
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the presence of a
-   * wireless connection.
-   *
-   * @param wifiValueFunction the new BooleanValueFunction for Wifi
-   */
-  private void setWifiValueFunction(BooleanValueFunction wifiValueFunction) {
-    this.setInternalValueFonction(Criterion.WIFI, checkNotNull(wifiValueFunction));
-    LOGGER.info("The wifi preferencies has been set");
-  }
-
   public static class Builder {
     private LinearAVF toBuild;
 
@@ -517,16 +189,16 @@ public class LinearAVF {
     }
 
     public LinearAVF build() {
-      checkNotNull(toBuild.getFloorAreaTerraceValueFunction());
-      checkNotNull(toBuild.getFloorAreaValueFunction());
-      checkNotNull(toBuild.getNbBathroomsValueFunction());
-      checkNotNull(toBuild.getNbBedroomsValueFunction());
-      checkNotNull(toBuild.getNbMinNightValueFunction());
-      checkNotNull(toBuild.getNbSleepingValueFunction());
-      checkNotNull(toBuild.getPricePerNightValueFunction());
-      checkNotNull(toBuild.getWifiValueFunction());
-      checkNotNull(toBuild.getTeleValueFunction());
-      checkNotNull(toBuild.getTerraceValueFunction());
+      checkNotNull(toBuild.getInternalValueFunction(Criterion.FLOOR_AREA_TERRACE));
+      checkNotNull(toBuild.getInternalValueFunction(Criterion.FLOOR_AREA));
+      checkNotNull(toBuild.getInternalValueFunction(Criterion.NB_BATHROOMS));
+      checkNotNull(toBuild.getInternalValueFunction(Criterion.NB_BEDROOMS));
+      checkNotNull(toBuild.getInternalValueFunction(Criterion.NB_MIN_NIGHT));
+      checkNotNull(toBuild.getInternalValueFunction(Criterion.NB_SLEEPING));
+      checkNotNull(toBuild.getInternalValueFunction(Criterion.PRICE_PER_NIGHT));
+      checkNotNull(toBuild.getInternalValueFunction(Criterion.WIFI));
+      checkNotNull(toBuild.getInternalValueFunction(Criterion.TELE));
+      checkNotNull(toBuild.getInternalValueFunction(Criterion.TERRACE));
 
       for (Criterion c : Criterion.values()) {
         checkNotNull(toBuild.getWeightSubjectiveValue(c));
@@ -554,7 +226,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setFloorAreaValueFunction(LinearValueFunction floorAreaValueFunction) {
-      toBuild.setFloorAreaValueFunction(floorAreaValueFunction);
+      toBuild.setInternalValueFonction(Criterion.FLOOR_AREA, floorAreaValueFunction);
       return this;
     }
 
@@ -566,7 +238,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setFloorAreaValueFunction(double lowerValue, double upperValue) {
-      toBuild.setFloorAreaValueFunction(new LinearValueFunction(lowerValue, upperValue));
+      toBuild.setInternalValueFonction(Criterion.FLOOR_AREA, new LinearValueFunction(lowerValue, upperValue));
       return this;
     }
 
@@ -578,7 +250,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbBedroomsValueFunction(LinearValueFunction nbBedroomsValueFunction) {
-      toBuild.setNbBedroomsValueFunction(nbBedroomsValueFunction);
+      toBuild.setInternalValueFonction(Criterion.NB_BEDROOMS, nbBedroomsValueFunction);
       return this;
     }
 
@@ -591,7 +263,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbBedroomsValueFunction(double lowerValue, double upperValue) {
-      toBuild.setNbBedroomsValueFunction(new LinearValueFunction(lowerValue, upperValue));
+      toBuild.setInternalValueFonction(Criterion.NB_BEDROOMS, new LinearValueFunction(lowerValue, upperValue));
       return this;
     }
 
@@ -603,7 +275,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbSleepingValueFunction(LinearValueFunction nbSleepingValueFunction) {
-      toBuild.setNbSleepingValueFunction(nbSleepingValueFunction);
+      toBuild.setInternalValueFonction(Criterion.NB_SLEEPING, nbSleepingValueFunction);
       return this;
     }
 
@@ -616,7 +288,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbSleepingValueFunction(double lowerValue, double upperValue) {
-      toBuild.setNbSleepingValueFunction(new LinearValueFunction(lowerValue, upperValue));
+      toBuild.setInternalValueFonction(Criterion.NB_SLEEPING, new LinearValueFunction(lowerValue, upperValue));
       return this;
     }
 
@@ -629,7 +301,7 @@ public class LinearAVF {
      */
     public Builder setFloorAreaTerraceValueFunction(
         LinearValueFunction floorAreaTerraceValueFunction) {
-      toBuild.setFloorAreaTerraceValueFunction(floorAreaTerraceValueFunction);
+      toBuild.setInternalValueFonction(Criterion.FLOOR_AREA_TERRACE, floorAreaTerraceValueFunction);
       return this;
     }
 
@@ -642,7 +314,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setFloorAreaTerraceValueFunction(double lowerValue, double upperValue) {
-      toBuild.setFloorAreaTerraceValueFunction(new LinearValueFunction(lowerValue, upperValue));
+      toBuild.setInternalValueFonction(Criterion.FLOOR_AREA_TERRACE, new LinearValueFunction(lowerValue, upperValue));
       return this;
     }
 
@@ -654,7 +326,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbBathroomsValueFunction(LinearValueFunction nbBathroomsValueFunction) {
-      toBuild.setNbBathroomsValueFunction(nbBathroomsValueFunction);
+      toBuild.setInternalValueFonction(Criterion.NB_BATHROOMS, nbBathroomsValueFunction);
       return this;
     }
 
@@ -667,7 +339,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbBathroomsValueFunction(double lowerValue, double upperValue) {
-      toBuild.setNbBathroomsValueFunction(new LinearValueFunction(lowerValue, upperValue));
+      toBuild.setInternalValueFonction(Criterion.NB_BATHROOMS, new LinearValueFunction(lowerValue, upperValue));
       return this;
     }
 
@@ -679,7 +351,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setTerraceValueFunction(BooleanValueFunction terraceValueFunction) {
-      toBuild.setTerraceValueFunction(terraceValueFunction);
+      toBuild.setInternalValueFonction(Criterion.TERRACE, terraceValueFunction);
       return this;
     }
 
@@ -691,7 +363,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setTerraceValueFunction(boolean value) {
-      toBuild.setTerraceValueFunction(new BooleanValueFunction(value));
+      toBuild.setInternalValueFonction(Criterion.TERRACE, new BooleanValueFunction(value));
       return this;
     }
 
@@ -703,7 +375,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setTeleValueFunction(BooleanValueFunction teleValueFunction) {
-      toBuild.setTeleValueFunction(teleValueFunction);
+      toBuild.setInternalValueFonction(Criterion.TELE, teleValueFunction);
       return this;
     }
 
@@ -715,7 +387,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setTeleValueFunction(boolean value) {
-      toBuild.setTeleValueFunction(new BooleanValueFunction(value));
+      toBuild.setInternalValueFonction(Criterion.TELE, new BooleanValueFunction(value));
       return this;
     }
 
@@ -727,7 +399,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setWifiValueFunction(BooleanValueFunction wifiValueFunction) {
-      toBuild.setWifiValueFunction(wifiValueFunction);
+      toBuild.setInternalValueFonction(Criterion.WIFI, wifiValueFunction);
       return this;
     }
 
@@ -739,7 +411,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setWifiValueFunction(boolean value) {
-      toBuild.setWifiValueFunction(new BooleanValueFunction(value));
+      toBuild.setInternalValueFonction(Criterion.WIFI, new BooleanValueFunction(value));
       return this;
     }
 
@@ -751,7 +423,7 @@ public class LinearAVF {
      */
     public Builder setPricePerNightValueFunction(
         ReversedLinearValueFunction pricePerNightValueFunction) {
-      toBuild.setPricePerNightValueFunction(pricePerNightValueFunction);
+      toBuild.setInternalValueFonction(Criterion.PRICE_PER_NIGHT, pricePerNightValueFunction);
       return this;
     }
 
@@ -763,7 +435,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setPricePerNightValueFunction(double lowerValue, double upperValue) {
-      toBuild.setPricePerNightValueFunction(
+      toBuild.setInternalValueFonction(Criterion.PRICE_PER_NIGHT,
           new ReversedLinearValueFunction(lowerValue, upperValue));
       return this;
     }
@@ -776,7 +448,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbMinNightValueFunction(ReversedLinearValueFunction nbMinNightValueFunction) {
-      toBuild.setNbMinNightValueFunction(nbMinNightValueFunction);
+      toBuild.setInternalValueFonction(Criterion.NB_MIN_NIGHT, nbMinNightValueFunction);
       return this;
     }
 
@@ -789,7 +461,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setNbMinNightValueFunction(double lowerValue, double upperValue) {
-      toBuild.setNbMinNightValueFunction(new ReversedLinearValueFunction(lowerValue, upperValue));
+      toBuild.setInternalValueFonction(Criterion.NB_MIN_NIGHT, new ReversedLinearValueFunction(lowerValue, upperValue));
       return this;
     }
   }
