@@ -196,12 +196,12 @@ public class LinearAVF {
     return avf;
   }
 
-  public void setInternalValueFunction(Criterion criterion, BooleanValueFunction vf) {
+  private void setInternalValueFunction(Criterion criterion, BooleanValueFunction vf) {
     checkArgument(criterion.hasBooleanDomain());
     this.booleanValueFunctions.put(criterion, vf);
   }
 
-  public void setInternalValueFunction(Criterion criterion) {
+  private void setInternalValueFunction(Criterion criterion) {
     if (criterion.isNotBooleanCrescent()) {
       this.linearValueFunctions.put(criterion, null);
     } else if (criterion.isNotBooleanDecrease()) {
@@ -212,27 +212,27 @@ public class LinearAVF {
     }
   }
 
-  public void setInternalValueFunction(Criterion criterion, LinearValueFunction vf) {
+  private void setInternalValueFunction(Criterion criterion, LinearValueFunction vf) {
     checkArgument(criterion.isNotBooleanCrescent());
     this.linearValueFunctions.put(criterion, vf);
   }
 
-  public void setInternalValueFunction(Criterion criterion, ReversedLinearValueFunction vf) {
+  private void setInternalValueFunction(Criterion criterion, ReversedLinearValueFunction vf) {
     checkArgument(criterion.isNotBooleanDecrease());
     this.reversedValueFunctions.put(criterion, vf);
   }
 
-  public BooleanValueFunction getInternalBooleanValueFunction(Criterion criterion) {
+  private BooleanValueFunction getInternalBooleanValueFunction(Criterion criterion) {
     checkArgument(criterion.hasBooleanDomain());
     return this.booleanValueFunctions.get(criterion);
   }
 
-  public LinearValueFunction getInternalLinearValueFunction(Criterion criterion) {
+  private LinearValueFunction getInternalLinearValueFunction(Criterion criterion) {
     checkArgument(criterion.isNotBooleanCrescent());
     return this.linearValueFunctions.get(criterion);
   }
 
-  public ReversedLinearValueFunction getInternalReversedLinearValueFunction(Criterion criterion) {
+  private ReversedLinearValueFunction getInternalReversedLinearValueFunction(Criterion criterion) {
     checkArgument(criterion.isNotBooleanDecrease());
     return this.reversedValueFunctions.get(criterion);
   }

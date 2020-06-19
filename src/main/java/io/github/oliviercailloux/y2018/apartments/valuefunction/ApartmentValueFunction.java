@@ -63,23 +63,23 @@ public class ApartmentValueFunction {
         .forEach(criterion -> setWeightSubjectiveValue(criterion, 0.1d));
   }
 
-  public PartialValueFunction<Boolean> getInternalBooleanValueFunction(Criterion criterion) {
+  private PartialValueFunction<Boolean> getInternalBooleanValueFunction(Criterion criterion) {
     checkArgument(criterion.hasBooleanDomain());
     return this.booleanValueFunctions.get(criterion);
   }
 
-  public PartialValueFunction<Double> getInternalDoubleValueFunction(Criterion criterion) {
+  private PartialValueFunction<Double> getInternalDoubleValueFunction(Criterion criterion) {
     checkArgument(criterion.hasDoubleDomain());
     return this.doubleValueFunctions.get(criterion);
   }
 
-  public void setInternalDoubleValueFunction(Criterion criterion, PartialValueFunction<Double> p) {
+  private void setInternalDoubleValueFunction(Criterion criterion, PartialValueFunction<Double> p) {
     checkNotNull(p);
     checkArgument(criterion.hasDoubleDomain());
     this.doubleValueFunctions.put(criterion, p);
   }
 
-  public void setInternalBooleanValueFunction(
+  private void setInternalBooleanValueFunction(
       Criterion criterion, PartialValueFunction<Boolean> p) {
     checkNotNull(p);
     checkArgument(criterion.hasBooleanDomain());
