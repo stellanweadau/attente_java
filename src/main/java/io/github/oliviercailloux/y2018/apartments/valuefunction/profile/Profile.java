@@ -18,8 +18,8 @@ public class Profile {
   private LinearAVF linearAvf;
 
   /**
-   * rangeMap is a map of criterions containing the ranges of all the different range for these
-   * criterions
+   * rangeMap is a map of criterion containing the ranges of all the different range for these
+   * criterion
    */
   private EnumMap<Criterion, Range<Double>> rangeMap;
 
