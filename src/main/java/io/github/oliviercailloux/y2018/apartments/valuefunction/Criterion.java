@@ -23,7 +23,18 @@ public enum Criterion {
     this.valueFunctionClass = c;
   }
 
-  private Class getValueFunctionClass() {
+  public Class getValueFunctionClass() {
     return this.valueFunctionClass;
+  }
+
+  public static <E> E getValueFunction(PartialValueFunction partialValueFunction, Criterion criterion){
+    if(criterion.getValueFunctionClass().equals(LinearValueFunction.class)){
+      return (E) LinearValueFunction.class.cast(partialValueFunction);
+    } else if (criterion.getValueFunctionClass().equals(BooleanValueFunction.class)){
+      return (E) BooleanValueFunction.class.cast(partialValueFunction);
+    } else if (criterion.getValueFunctionClass().equals(ReversedLinearValueFunction.class)){
+      return (E) ReversedLinearValueFunction.class.cast(partialValueFunction);
+    }
+    throw new IllegalStateException();
   }
 }
