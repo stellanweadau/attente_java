@@ -139,15 +139,7 @@ public class ProfileManager {
   }
 
   public Profile getProfile(ProfileType profType) {
-    switch (profType) {
-      case STUDENT:
-        return getInstance().mapProfile.get(ProfileType.STUDENT);
-      case FAMILY:
-        return getInstance().mapProfile.get(ProfileType.FAMILY);
-      case COUPLE:
-        return getInstance().mapProfile.get(ProfileType.COUPLE);
-      default:
-        throw new IllegalArgumentException();
-    }
+	  checkArgument(mapProfile.containsKey(profType));
+	  return getInstance().mapProfile.get(profType);    }
   }
 }
