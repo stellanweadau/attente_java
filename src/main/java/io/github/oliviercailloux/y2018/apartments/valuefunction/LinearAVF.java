@@ -2,7 +2,9 @@ package io.github.oliviercailloux.y2018.apartments.valuefunction;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
 
+import com.google.common.collect.ImmutableMap;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -61,7 +63,69 @@ public class LinearAVF {
    */
   public double getSubjectiveValue(Apartment apart) {
     checkNotNull(apart);
-    return new ApartmentValueFunction().getSubjectiveValue(apart);
+    ImmutableMap<Criterion, Double> subjectiveValue =
+        new ImmutableMap.Builder<Criterion, Double>()
+            .put(
+                Criterion.FLOOR_AREA,
+                this.valueFunction
+                    .get(Criterion.FLOOR_AREA)
+                    .getSubjectiveValue(apart.getFloorArea()))
+            .put(
+                Criterion.NB_BEDROOMS,
+                this.valueFunction
+                    .get(Criterion.NB_BEDROOMS)
+                    .getSubjectiveValue((double) apart.getNbBedrooms()))
+            .put(
+                Criterion.NB_SLEEPING,
+                this.valueFunction
+                    .get(Criterion.NB_SLEEPING)
+                    .getSubjectiveValue((double) apart.getNbSleeping()))
+            .put(
+                Criterion.NB_BATHROOMS,
+                this.valueFunction
+                    .get(Criterion.NB_BATHROOMS)
+                    .getSubjectiveValue((double) apart.getNbBathrooms()))
+            .put(
+                Criterion.TERRACE,
+                this.valueFunction.get(Criterion.TERRACE).getSubjectiveValue(apart.getTerrace()))
+            .put(
+                Criterion.FLOOR_AREA_TERRACE,
+                this.valueFunction
+                    .get(Criterion.FLOOR_AREA_TERRACE)
+                    .getSubjectiveValue(apart.getFloorAreaTerrace()))
+            .put(
+                Criterion.WIFI,
+                this.valueFunction.get(Criterion.WIFI).getSubjectiveValue(apart.getWifi()))
+            .put(
+                Criterion.PRICE_PER_NIGHT,
+                this.valueFunction
+                    .get(Criterion.PRICE_PER_NIGHT)
+                    .getSubjectiveValue(apart.getPricePerNight()))
+            .put(
+                Criterion.NB_MIN_NIGHT,
+                this.valueFunction
+                    .get(Criterion.NB_MIN_NIGHT)
+                    .getSubjectiveValue((double) apart.getNbMinNight()))
+            .put(
+                Criterion.TELE,
+                this.valueFunction.get(Criterion.TELE).getSubjectiveValue(apart.getTele()))
+            .build();
+
+    // Check that the subjective values ​​do have a value between 0 and 1
+    subjectiveValue.forEach(
+        (criterion, aDouble) -> {
+          LOGGER.debug("The {} subjective value has been set to {}", criterion.name(), aDouble);
+          checkState(
+              aDouble >= 0 && aDouble <= 1,
+              "The subjective value of " + criterion.name() + "must be between 0 and 1");
+        });
+
+    double sum =
+        Arrays.stream(Criterion.values())
+            .map(c -> this.weight.get(c) * subjectiveValue.get(c))
+            .reduce(0.0d, Double::sum);
+    double division = this.weight.values().stream().reduce(0.0d, Double::sum);
+    return sum / division;
   }
 
   /**
