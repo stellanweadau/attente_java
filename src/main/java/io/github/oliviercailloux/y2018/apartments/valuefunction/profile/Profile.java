@@ -141,7 +141,8 @@ public class Profile {
   }
 
   /**
-   * Sets the linearAVF of a Profile
+   * Sets the linearAVF of a Profile, it needs to be the last argument setted to be able to check if
+   * the weight is in the range of all of the criterions.
    *
    * @return Profile with its LinearAVF set
    */
@@ -158,8 +159,9 @@ public class Profile {
   }
 
   /**
-   * check if the weight of the LinearAVF of the given criterion is in the profile range for this
-   * criterion
+   * Check if the weight of the LinearAVF of the given criterion is in the profile range for this
+   * criterion. Can only be used if profile Range corresponding to this criteron has been previously
+   * setted.
    *
    * @param crit the criterion to check the weight with the range
    * @param linearAVF the LinearAVF of check if its weight is in the range
