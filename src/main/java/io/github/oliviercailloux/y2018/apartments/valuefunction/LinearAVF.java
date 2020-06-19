@@ -150,6 +150,10 @@ public class LinearAVF {
    * @param crit the criterion we want to know the value
    * @return the subjective value weight
    */
+  public double getWeight(Criterion crit) {
+    return this.getWeightSubjectiveValue(crit);
+  }
+
   public double getWeightSubjectiveValue(Criterion crit) {
     checkArgument(this.weight.containsKey(crit));
     return this.weight.get(crit);
@@ -201,7 +205,7 @@ public class LinearAVF {
       checkNotNull(toBuild.getInternalValueFunction(Criterion.TERRACE));
 
       for (Criterion c : Criterion.values()) {
-        checkNotNull(toBuild.getWeightSubjectiveValue(c));
+        checkNotNull(toBuild.getWeight(c));
       }
 
       return toBuild;
