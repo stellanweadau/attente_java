@@ -7,7 +7,7 @@ import com.google.common.collect.BoundType;
 import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
-import java.util.HashMap;
+import java.util.EnumMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +21,7 @@ public class Profile {
    * rangeMap is a map of criterions containing the ranges of all the different range for these
    * criterions
    */
-  private HashMap<Criterion, Range<Double>> rangeMap;
+  private EnumMap<Criterion, Range<Double>> rangeMap;
 
   private Profile() {
     LinearAVF.Builder blavf =
@@ -41,7 +41,7 @@ public class Profile {
     }
     this.linearAvf = blavf.build();
 
-    this.rangeMap = new HashMap<Criterion, Range<Double>>();
+    this.rangeMap = new EnumMap<>(Criterion.class);
     for (Criterion c : Criterion.values()) {
       this.rangeMap.put(c, null);
     }
