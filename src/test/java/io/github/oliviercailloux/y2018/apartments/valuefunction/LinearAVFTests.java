@@ -75,7 +75,7 @@ class LinearAVFTests {
   void testLinearAVF() {
     assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.0001);
     linearAVF.setWeight(Criterion.TELE, 5d);
-    assertEquals(10d, linearAVF.getWeight(Criterion.TELE));
+    assertEquals(10d, linearAVF.getWeightSubjectiveValue(Criterion.TELE));
     assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.00001);
   }
 

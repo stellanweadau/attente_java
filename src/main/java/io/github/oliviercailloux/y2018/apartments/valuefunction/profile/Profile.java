@@ -167,7 +167,7 @@ public class Profile {
    */
   public void checkWeightInRange(Criterion crit, LinearAVF linearAVF) {
     Range<Double> range = this.getWeightRange(crit);
-    Double weight = Double.valueOf(linearAVF.getWeight(crit));
+    Double weight = Double.valueOf(linearAVF.getWeightSubjectiveValue(crit));
     checkNotNull(range);
     checkNotNull(weight);
     checkArgument(

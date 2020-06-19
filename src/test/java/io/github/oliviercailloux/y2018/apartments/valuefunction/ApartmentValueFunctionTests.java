@@ -89,58 +89,58 @@ class ApartmentValueFunctionTests {
 
     double subjectiveValueTele =
         valueFunction.getTeleValueFunction().getSubjectiveValue(a.getTele())
-            * valueFunction.getSubjectiveValueWeight(Criterion.TELE);
+            * valueFunction.getWeightSubjectiveValue(Criterion.TELE);
     assertEquals(0, subjectiveValueTele);
     double subjectiveValueFloorArea =
         valueFunction.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea())
-            * valueFunction.getSubjectiveValueWeight(Criterion.FLOOR_AREA);
+            * valueFunction.getWeightSubjectiveValue(Criterion.FLOOR_AREA);
     assertEquals(0.1, subjectiveValueFloorArea, 0.0001);
     double subjectiveValuePrice =
         valueFunction.getPricePerNightValueFunction().getSubjectiveValue(a.getPricePerNight())
-            * valueFunction.getSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT);
+            * valueFunction.getWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT);
     assertEquals(0.1, subjectiveValuePrice, 0.0001);
 
     double sumWeight =
-        valueFunction.getSubjectiveValueWeight(Criterion.FLOOR_AREA)
-            + valueFunction.getSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE)
-            + valueFunction.getSubjectiveValueWeight(Criterion.NB_BEDROOMS)
-            + valueFunction.getSubjectiveValueWeight(Criterion.NB_BATHROOMS)
-            + valueFunction.getSubjectiveValueWeight(Criterion.NB_MIN_NIGHT)
-            + valueFunction.getSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT)
-            + valueFunction.getSubjectiveValueWeight(Criterion.NB_SLEEPING)
-            + valueFunction.getSubjectiveValueWeight(Criterion.TELE)
-            + valueFunction.getSubjectiveValueWeight(Criterion.TERRACE)
-            + valueFunction.getSubjectiveValueWeight(Criterion.WIFI);
+        valueFunction.getWeightSubjectiveValue(Criterion.FLOOR_AREA)
+            + valueFunction.getWeightSubjectiveValue(Criterion.FLOOR_AREA_TERRACE)
+            + valueFunction.getWeightSubjectiveValue(Criterion.NB_BEDROOMS)
+            + valueFunction.getWeightSubjectiveValue(Criterion.NB_BATHROOMS)
+            + valueFunction.getWeightSubjectiveValue(Criterion.NB_MIN_NIGHT)
+            + valueFunction.getWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT)
+            + valueFunction.getWeightSubjectiveValue(Criterion.NB_SLEEPING)
+            + valueFunction.getWeightSubjectiveValue(Criterion.TELE)
+            + valueFunction.getWeightSubjectiveValue(Criterion.TERRACE)
+            + valueFunction.getWeightSubjectiveValue(Criterion.WIFI);
     assertEquals(1, sumWeight, 0.0001);
 
     assertEquals(0.5, valueFunction.getSubjectiveValue(a), 0.0001);
 
     sumWeight =
         sumWeight
-            - valueFunction.getSubjectiveValueWeight(Criterion.TELE)
-            - valueFunction.getSubjectiveValueWeight(Criterion.FLOOR_AREA)
-            - valueFunction.getSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT);
+            - valueFunction.getWeightSubjectiveValue(Criterion.TELE)
+            - valueFunction.getWeightSubjectiveValue(Criterion.FLOOR_AREA)
+            - valueFunction.getWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT);
     valueFunction.setTeleSubjectiveValueWeight(4.3);
     valueFunction.setFloorAreaSubjectiveValueWeight(2);
     valueFunction.setPricePerNightSubjectiveValueWeight(3);
     sumWeight =
         sumWeight
-            + valueFunction.getSubjectiveValueWeight(Criterion.TELE)
-            + valueFunction.getSubjectiveValueWeight(Criterion.FLOOR_AREA)
-            + valueFunction.getSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT);
+            + valueFunction.getWeightSubjectiveValue(Criterion.TELE)
+            + valueFunction.getWeightSubjectiveValue(Criterion.FLOOR_AREA)
+            + valueFunction.getWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT);
     assertEquals(10, sumWeight, 0.0001);
 
     subjectiveValueTele =
         valueFunction.getTeleValueFunction().getSubjectiveValue(a.getTele())
-            * valueFunction.getSubjectiveValueWeight(Criterion.TELE);
+            * valueFunction.getWeightSubjectiveValue(Criterion.TELE);
     assertEquals(0, subjectiveValueTele);
     subjectiveValueFloorArea =
         valueFunction.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea())
-            * valueFunction.getSubjectiveValueWeight(Criterion.FLOOR_AREA);
+            * valueFunction.getWeightSubjectiveValue(Criterion.FLOOR_AREA);
     assertEquals(2, subjectiveValueFloorArea, 0.0001);
     subjectiveValuePrice =
         valueFunction.getPricePerNightValueFunction().getSubjectiveValue(a.getPricePerNight())
-            * valueFunction.getSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT);
+            * valueFunction.getWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT);
     assertEquals(3, subjectiveValuePrice, 0.0001);
 
     assertEquals(0.53, valueFunction.getSubjectiveValue(a), 0.0001);
@@ -187,11 +187,11 @@ class ApartmentValueFunctionTests {
         () -> valueFunction.adaptWeight(Criterion.TELE, Criterion.TELE));
     valueFunction.setTeleSubjectiveValueWeight(7d);
     valueFunction.setTerraceSubjectiveValueWeight(3d);
-    assertEquals(7d, valueFunction.getSubjectiveValueWeight(Criterion.TELE));
-    assertEquals(3d, valueFunction.getSubjectiveValueWeight(Criterion.TERRACE));
+    assertEquals(7d, valueFunction.getWeightSubjectiveValue(Criterion.TELE));
+    assertEquals(3d, valueFunction.getWeightSubjectiveValue(Criterion.TERRACE));
     valueFunction = valueFunction.adaptWeight(Criterion.TERRACE, Criterion.TELE);
-    assertEquals(9d, valueFunction.getSubjectiveValueWeight(Criterion.TERRACE));
-    assertEquals(1d, valueFunction.getSubjectiveValueWeight(Criterion.TELE));
+    assertEquals(9d, valueFunction.getWeightSubjectiveValue(Criterion.TERRACE));
+    assertEquals(1d, valueFunction.getWeightSubjectiveValue(Criterion.TELE));
   }
 
   /** Function to test if the bounds of an interval adapt well when needed */
@@ -224,18 +224,18 @@ class ApartmentValueFunctionTests {
     assertEquals(1d, apart.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea()));
     LinearValueFunction lvf = (LinearValueFunction) apart.getFloorAreaTerraceValueFunction();
     assertTrue(lvf.getInterval().upperEndpoint() <= 101d);
-    assertTrue(apart.getSubjectiveValueWeight(Criterion.TELE) <= 1d);
+    assertTrue(apart.getWeightSubjectiveValue(Criterion.TELE) <= 1d);
     double sum =
-        apart.getSubjectiveValueWeight(Criterion.TELE)
-            + apart.getSubjectiveValueWeight(Criterion.FLOOR_AREA)
-            + apart.getSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE)
-            + apart.getSubjectiveValueWeight(Criterion.NB_BATHROOMS)
-            + apart.getSubjectiveValueWeight(Criterion.NB_BEDROOMS)
-            + apart.getSubjectiveValueWeight(Criterion.NB_SLEEPING)
-            + apart.getSubjectiveValueWeight(Criterion.NB_MIN_NIGHT)
-            + apart.getSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT)
-            + apart.getSubjectiveValueWeight(Criterion.TERRACE)
-            + apart.getSubjectiveValueWeight(Criterion.WIFI);
+        apart.getWeightSubjectiveValue(Criterion.TELE)
+            + apart.getWeightSubjectiveValue(Criterion.FLOOR_AREA)
+            + apart.getWeightSubjectiveValue(Criterion.FLOOR_AREA_TERRACE)
+            + apart.getWeightSubjectiveValue(Criterion.NB_BATHROOMS)
+            + apart.getWeightSubjectiveValue(Criterion.NB_BEDROOMS)
+            + apart.getWeightSubjectiveValue(Criterion.NB_SLEEPING)
+            + apart.getWeightSubjectiveValue(Criterion.NB_MIN_NIGHT)
+            + apart.getWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT)
+            + apart.getWeightSubjectiveValue(Criterion.TERRACE)
+            + apart.getWeightSubjectiveValue(Criterion.WIFI);
     assertEquals(1d, sum, 0.00001);
   }
 }
