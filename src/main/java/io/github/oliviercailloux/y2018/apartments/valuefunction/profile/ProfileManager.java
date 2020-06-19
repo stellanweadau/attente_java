@@ -1,5 +1,7 @@
 package io.github.oliviercailloux.y2018.apartments.valuefunction.profile;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
 import java.util.HashMap;
@@ -139,7 +141,7 @@ public class ProfileManager {
   }
 
   public Profile getProfile(ProfileType profType) {
-	  checkArgument(mapProfile.containsKey(profType));
-	  return getInstance().mapProfile.get(profType);    }
+    checkArgument(mapProfile.containsKey(profType));
+    return getInstance().mapProfile.get(profType);
   }
 }
