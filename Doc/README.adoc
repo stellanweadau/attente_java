@@ -36,7 +36,7 @@ A package-by-package explanation is available, in link:packages.adoc[packages.ad
 
 For an overview of all diagrams, you can see the link:img/[img/] folder or go directly to Papyrus.
 
-In addition, link:global.adoc[global.adoc] includes all the global diagrams of the &rarr; allows an overview.
+In addition, link:global.adoc[global.adoc] includes all the global diagrams of the application &rarr; allows an overview.
 
 [IMPORTANT]
 ====

@@ -16,6 +16,9 @@ toc::[]
 
 == To consider
 
+* Better `null` management.
+* Use `Optional`
+
 === Packages
 
 ==== apartment
