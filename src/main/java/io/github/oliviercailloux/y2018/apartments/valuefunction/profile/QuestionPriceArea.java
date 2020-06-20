@@ -63,7 +63,7 @@ public class QuestionPriceArea {
    * Adapt the interval of weight contained in a profile depending on his response
    *
    * @param p the profile we need to modify
-   * @param response the response of the user
+   * @param response the response of the user to the question
    */
   public void resolve(Profile p, boolean response) {
     checkNotNull(p);
@@ -88,19 +88,11 @@ public class QuestionPriceArea {
     final Range<Double> secondRange = p.getWeightRange(secondCriterion);
 
     final double min = firstRange.lowerEndpoint() + p.getMiddleOfRange(firstCriterion) * 0.2;
-    if (min >= firstRange.upperEndpoint()) {
-      closedRange = Range.closed(firstRange.upperEndpoint(), firstRange.upperEndpoint());
-    } else {
-      closedRange = Range.closed(min, firstRange.upperEndpoint());
-    }
+    closedRange = Range.closed(Math.min(min, firstRange.upperEndpoint()), firstRange.upperEndpoint());
     p.setWeightRange(firstCriterion, closedRange);
 
     final double max = secondRange.upperEndpoint() - p.getMiddleOfRange(secondCriterion) * 0.1;
-    if (max <= secondRange.lowerEndpoint()) {
-      closedRange = Range.closed(secondRange.lowerEndpoint(), secondRange.lowerEndpoint());
-    } else {
-      closedRange = Range.closed(secondRange.lowerEndpoint(), max);
-    }
+    closedRange = Range.closed(secondRange.lowerEndpoint(), Math.max(max, secondRange.lowerEndpoint()));
     p.setWeightRange(secondCriterion, closedRange);
   }
 }
