@@ -31,6 +31,7 @@ It would be interesting to do the same for `aparment.xml` : Make the same class 
 ==== valuefunction
 
 * Offer a feature that allows the user to say whether the list of apartments offered suits him or not. If not, ask him a series of questions to change the different weights and improve the end result.
+* Reflect on the use of inheritance
 
 ===== valuefunction.profile
 

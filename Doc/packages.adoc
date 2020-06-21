@@ -271,7 +271,7 @@ Here is the list of criteria associated with each Profiles:
 * Floor area of the terrace : between 0m² and 10m²
 * Floor area of the apartment : between 16 m² and 70m²
 * Number of bedrooms : between 1 and 2
-* Number of bedrooms : between 1 and 2
+* Number of bathrooms : between 1 and 2
 * Number of sleepings : between 1 and 2
 * Minimum number of nights : between 5 and 14
 * Price per night between 40€ and 60€
