@@ -80,12 +80,16 @@ toc::[]
 
 ===== Realizations
 
-* Creation of `QuestionPriceArea` class (link:https://github.com/av1m/Apartments/pull/45[#45])
-* Reduce downloads during GH actions (fix link:https://github.com/av1m/Apartments/issues/47[#47])
-* `LinearAVF` improvement : redundancy removal and fix bug (fix link:https://github.com/av1m/Apartments/issues/49[#49])
-* Change of `setWeight` to `withWeight` in Profile (fix link:https://github.com/av1m/Apartments/issues/50[#50])
-* Changing the clone-based approach (fix link:https://github.com/av1m/Apartments/issues/51[#51])
-* Creation of the `ProfileType` and `ProfileManager` classes (link:https://github.com/av1m/Apartments/pull/52[#52])
+* Reduce downloads during Github Actions (fix link:https://github.com/av1m/Apartments/issues/47[#47])
+* `Profile`
+- Creation of `QuestionPriceArea` class (link:https://github.com/av1m/Apartments/pull/45[#45])
+- Creation of the `ProfileType` and `ProfileManager` classes (link:https://github.com/av1m/Apartments/pull/52[#52])
+- Replacement of the 10 attributes by EnumMap (link:https://github.com/av1m/Apartments/issues/58[#58])
+* `LinearAVF` and `ApartmentValueFunction`:
+- `LinearAVF` improvement : redundancy removal and fix bug (fix link:https://github.com/av1m/Apartments/issues/49[#49])
+- Change of `setWeight` to `withWeight` in Profile (fix link:https://github.com/av1m/Apartments/issues/50[#50])
+- Changing the clone-based approach (fix link:https://github.com/av1m/Apartments/issues/51[#51])
+- Replacement of the 10 attributes by EnumMap (link:https://github.com/av1m/Apartments/issues/56[#56])
 
 ==== Team 2
 
