@@ -4,6 +4,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.utils.RandomRange;
@@ -44,7 +45,6 @@ public class ApartmentValueFunction {
    * to set those two.
    */
   public ApartmentValueFunction() {
-    // value function
     this.booleanValueFunctions = new EnumMap<>(Criterion.class);
     this.doubleValueFunctions = new EnumMap<>(Criterion.class);
     Arrays.stream(Criterion.values())
@@ -56,32 +56,66 @@ public class ApartmentValueFunction {
                 setInternalDoubleValueFunction(criterion, new ConstantValueFunction<>(0.0d));
               }
             });
-
-    // weight
     this.weight = new EnumMap<>(Criterion.class);
     Arrays.stream(Criterion.values())
         .forEach(criterion -> setWeightSubjectiveValue(criterion, 0.1d));
   }
 
+  /**
+   * Used to retrieve a partial boolean value function according to the <code>criterion</code>
+   * passed as a parameter
+   *
+   * @param criterion the criterion associated with the <code>PartialValueFunction</code> that we
+   *     want to obtain
+   * @return the partial boolean value function associated with the <code>criterion</code> parameter
+   */
   private PartialValueFunction<Boolean> getInternalBooleanValueFunction(Criterion criterion) {
+    checkNotNull(criterion);
     checkArgument(criterion.hasBooleanDomain());
     return this.booleanValueFunctions.get(criterion);
   }
 
+  /**
+   * Used to retrieve a partial double value function according to the <code>criterion</code> passed
+   * as a parameter
+   *
+   * @param criterion the criterion associated with the <code>PartialValueFunction</code> that we
+   *     want to obtain
+   * @return the partial double value function associated with the <code>criterion</code> parameter
+   */
   private PartialValueFunction<Double> getInternalDoubleValueFunction(Criterion criterion) {
+    checkNotNull(criterion);
     checkArgument(criterion.hasDoubleDomain());
     return this.doubleValueFunctions.get(criterion);
   }
 
+  /**
+   * Allows you to update the Double <code>PartialValueFunction p</code> according to the <code>
+   * criterion</code>
+   *
+   * @param criterion the criterion associated with the <code>PartialValueFunction</code> that we
+   *     want to set
+   * @param p <code>PartialValueFunction</code> to update
+   */
   private void setInternalDoubleValueFunction(Criterion criterion, PartialValueFunction<Double> p) {
     checkNotNull(p);
+    checkNotNull(criterion);
     checkArgument(criterion.hasDoubleDomain());
     this.doubleValueFunctions.put(criterion, p);
   }
 
+  /**
+   * Allows you to update the Boolean <code>PartialValueFunction p</code> according to the <code>
+   * criterion</code>
+   *
+   * @param criterion the criterion associated with the <code>PartialValueFunction</code> that we
+   *     want to obtain
+   * @param p <code>PartialValueFunction</code> to update
+   */
   private void setInternalBooleanValueFunction(
       Criterion criterion, PartialValueFunction<Boolean> p) {
     checkNotNull(p);
+    checkNotNull(criterion);
     checkArgument(criterion.hasBooleanDomain());
     this.booleanValueFunctions.put(criterion, p);
   }
@@ -92,7 +126,7 @@ public class ApartmentValueFunction {
    * @param floorAreaValueFunction
    */
   public void setFloorAreaValueFunction(PartialValueFunction<Double> floorAreaValueFunction) {
-    this.setInternalDoubleValueFunction(Criterion.FLOOR_AREA, checkNotNull(floorAreaValueFunction));
+    this.setInternalDoubleValueFunction(Criterion.FLOOR_AREA, floorAreaValueFunction);
     LOGGER.info("The floor area preferencies has been set");
   }
 
@@ -103,8 +137,7 @@ public class ApartmentValueFunction {
    * @param nbBedroomsValueFunction
    */
   public void setNbBedroomsValueFunction(PartialValueFunction<Double> nbBedroomsValueFunction) {
-    this.setInternalDoubleValueFunction(
-        Criterion.NB_BEDROOMS, checkNotNull(nbBedroomsValueFunction));
+    this.setInternalDoubleValueFunction(Criterion.NB_BEDROOMS, nbBedroomsValueFunction);
     LOGGER.info("The number of bedrooms preferencies has been set");
   }
 
@@ -115,8 +148,7 @@ public class ApartmentValueFunction {
    * @param nbSleepingValueFunction
    */
   public void setNbSleepingValueFunction(PartialValueFunction<Double> nbSleepingValueFunction) {
-    this.setInternalDoubleValueFunction(
-        Criterion.NB_SLEEPING, checkNotNull(nbSleepingValueFunction));
+    this.setInternalDoubleValueFunction(Criterion.NB_SLEEPING, nbSleepingValueFunction);
     LOGGER.info("The number of sleeping preferencies has been set");
   }
 
@@ -127,8 +159,7 @@ public class ApartmentValueFunction {
    * @param nbBathroomsValueFunction
    */
   public void setNbBathroomsValueFunction(PartialValueFunction<Double> nbBathroomsValueFunction) {
-    this.setInternalDoubleValueFunction(
-        Criterion.NB_BATHROOMS, checkNotNull(nbBathroomsValueFunction));
+    this.setInternalDoubleValueFunction(Criterion.NB_BATHROOMS, nbBathroomsValueFunction);
     LOGGER.info("The number of bathrooms preferencies has been set");
   }
 
@@ -139,7 +170,7 @@ public class ApartmentValueFunction {
    * @param terraceValueFunction
    */
   public void setTerraceValueFunction(PartialValueFunction<Boolean> terraceValueFunction) {
-    this.setInternalBooleanValueFunction(Criterion.TERRACE, checkNotNull(terraceValueFunction));
+    this.setInternalBooleanValueFunction(Criterion.TERRACE, terraceValueFunction);
     LOGGER.info("The terrace preferencies has been set");
   }
 
@@ -152,7 +183,7 @@ public class ApartmentValueFunction {
   public void setFloorAreaTerraceValueFunction(
       PartialValueFunction<Double> floorAreaTerraceValueFunction) {
     this.setInternalDoubleValueFunction(
-        Criterion.FLOOR_AREA_TERRACE, checkNotNull(floorAreaTerraceValueFunction));
+        Criterion.FLOOR_AREA_TERRACE, floorAreaTerraceValueFunction);
     LOGGER.info("The floor area of the terrace preferencies has been set");
   }
 
@@ -163,7 +194,7 @@ public class ApartmentValueFunction {
    * @param wifiValueFunction
    */
   public void setWifiValueFunction(PartialValueFunction<Boolean> wifiValueFunction) {
-    this.setInternalBooleanValueFunction(Criterion.WIFI, checkNotNull(wifiValueFunction));
+    this.setInternalBooleanValueFunction(Criterion.WIFI, wifiValueFunction);
     LOGGER.info("The wifi preferencies has been set");
   }
 
@@ -174,8 +205,7 @@ public class ApartmentValueFunction {
    */
   public void setPricePerNightValueFunction(
       PartialValueFunction<Double> pricePerNightValueFunction) {
-    this.setInternalDoubleValueFunction(
-        Criterion.PRICE_PER_NIGHT, checkNotNull(pricePerNightValueFunction));
+    this.setInternalDoubleValueFunction(Criterion.PRICE_PER_NIGHT, pricePerNightValueFunction);
     LOGGER.info("The price per night preferencies has been set");
   }
 
@@ -186,8 +216,7 @@ public class ApartmentValueFunction {
    * @param nbMinNightValueFunction
    */
   public void setNbMinNightValueFunction(PartialValueFunction<Double> nbMinNightValueFunction) {
-    this.setInternalDoubleValueFunction(
-        Criterion.NB_MIN_NIGHT, checkNotNull(nbMinNightValueFunction));
+    this.setInternalDoubleValueFunction(Criterion.NB_MIN_NIGHT, nbMinNightValueFunction);
     LOGGER.info("The number of minimum night preferencies has been set");
   }
 
@@ -198,7 +227,7 @@ public class ApartmentValueFunction {
    * @param teleValueFunction
    */
   public void setTeleValueFunction(PartialValueFunction<Boolean> teleValueFunction) {
-    this.setInternalBooleanValueFunction(Criterion.TELE, checkNotNull(teleValueFunction));
+    this.setInternalBooleanValueFunction(Criterion.TELE, teleValueFunction);
     LOGGER.info("The tele preferencies has been set");
   }
 
@@ -429,7 +458,6 @@ public class ApartmentValueFunction {
    * @return a randomized instance of an ApartmentValueFunction
    */
   public static ApartmentValueFunction getRandomApartmentValueFunction() {
-
     Random random = new Random();
 
     ApartmentValueFunction apartValueFunction = new ApartmentValueFunction();
@@ -454,36 +482,47 @@ public class ApartmentValueFunction {
     int pricePerNightStartBound = random.nextInt(pricePerNightEndBound);
     int nbMinNightStartBound = random.nextInt(nbMinNightEndBound);
 
-    apartValueFunction.setFloorAreaValueFunction(
-        new LinearValueFunction(floorAreaStartBound, floorAreaEndBound));
-    apartValueFunction.setNbBedroomsValueFunction(nbBedroomsEndBoundMap);
-    apartValueFunction.setNbSleepingValueFunction(nbSleepingEndBoundMap);
-    apartValueFunction.setNbBathroomsValueFunction(nbBathroomsEndBoundMap);
-    apartValueFunction.setTerraceValueFunction(new BooleanValueFunction(terraceEndBound));
-    apartValueFunction.setFloorAreaTerraceValueFunction(
+    apartValueFunction.setInternalDoubleValueFunction(
+        Criterion.FLOOR_AREA, new LinearValueFunction(floorAreaStartBound, floorAreaEndBound));
+    apartValueFunction.setInternalDoubleValueFunction(Criterion.NB_BEDROOMS, nbBedroomsEndBoundMap);
+    apartValueFunction.setInternalDoubleValueFunction(Criterion.NB_SLEEPING, nbSleepingEndBoundMap);
+    apartValueFunction.setInternalDoubleValueFunction(
+        Criterion.NB_BATHROOMS, nbBathroomsEndBoundMap);
+    apartValueFunction.setInternalBooleanValueFunction(
+        Criterion.TERRACE, new BooleanValueFunction(terraceEndBound));
+    apartValueFunction.setInternalDoubleValueFunction(
+        Criterion.FLOOR_AREA_TERRACE,
         new LinearValueFunction(floorAreaTerraceStartBound, floorAreaTerraceEndBound));
-    apartValueFunction.setWifiValueFunction(new BooleanValueFunction(wifiEndBound));
-    apartValueFunction.setPricePerNightValueFunction(
+    apartValueFunction.setInternalBooleanValueFunction(
+        Criterion.WIFI, new BooleanValueFunction(wifiEndBound));
+    apartValueFunction.setInternalDoubleValueFunction(
+        Criterion.PRICE_PER_NIGHT,
         new LinearValueFunction(pricePerNightStartBound, pricePerNightEndBound));
-    apartValueFunction.setNbMinNightValueFunction(
+    apartValueFunction.setInternalDoubleValueFunction(
+        Criterion.NB_MIN_NIGHT,
         new ReversedLinearValueFunction(nbMinNightStartBound, nbMinNightEndBound));
-    apartValueFunction.setTeleValueFunction(new BooleanValueFunction(teleEndBound));
+    apartValueFunction.setInternalBooleanValueFunction(
+        Criterion.TELE, new BooleanValueFunction(teleEndBound));
 
     List<Double> weightRange = RandomRange.weightRangeOfSum(1d, 10);
 
     LOGGER.info("Weight has been set to : {}", weightRange);
 
-    apartValueFunction.setWeightSubjectiveValue(Criterion.FLOOR_AREA, weightRange.get(0));
-    apartValueFunction.setWeightSubjectiveValue(Criterion.NB_BEDROOMS, weightRange.get(1));
-    apartValueFunction.setWeightSubjectiveValue(Criterion.NB_SLEEPING, weightRange.get(2));
-    apartValueFunction.setWeightSubjectiveValue(Criterion.NB_BATHROOMS, weightRange.get(3));
-    apartValueFunction.setWeightSubjectiveValue(Criterion.TERRACE, weightRange.get(4));
-    apartValueFunction.setWeightSubjectiveValue(Criterion.FLOOR_AREA_TERRACE, weightRange.get(5));
-    apartValueFunction.setWeightSubjectiveValue(Criterion.WIFI, weightRange.get(6));
-    apartValueFunction.setWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT, weightRange.get(7));
-    apartValueFunction.setWeightSubjectiveValue(Criterion.NB_MIN_NIGHT, weightRange.get(8));
-    apartValueFunction.setWeightSubjectiveValue(Criterion.TELE, weightRange.get(9));
-
+    final int[] i = {0};
+    ImmutableList.of(
+            Criterion.FLOOR_AREA,
+            Criterion.NB_BEDROOMS,
+            Criterion.NB_SLEEPING,
+            Criterion.NB_BATHROOMS,
+            Criterion.TERRACE,
+            Criterion.FLOOR_AREA_TERRACE,
+            Criterion.WIFI,
+            Criterion.PRICE_PER_NIGHT,
+            Criterion.NB_MIN_NIGHT,
+            Criterion.TELE)
+        .forEach(
+            criterion ->
+                apartValueFunction.setWeightSubjectiveValue(criterion, weightRange.get(i[0]++)));
     return apartValueFunction;
   }
 
@@ -503,7 +542,6 @@ public class ApartmentValueFunction {
    */
   public ApartmentValueFunction adaptBounds(Criterion criterion, double newBound, boolean lower) {
     ApartmentValueFunction avf = this.cloneAVF();
-    checkArgument(criterion.hasDoubleDomain());
     checkArgument(avf.getInternalDoubleValueFunction(criterion) instanceof LinearValueFunction);
     LinearValueFunction lvf = (LinearValueFunction) avf.getInternalDoubleValueFunction(criterion);
     avf.setInternalDoubleValueFunction(criterion, adaptLinearValueFunction(lvf, newBound, lower));
@@ -520,6 +558,7 @@ public class ApartmentValueFunction {
    */
   private static LinearValueFunction adaptLinearValueFunction(
       LinearValueFunction oldLVF, double newBound, boolean lower) {
+    checkNotNull(oldLVF);
     if (lower) {
       return new LinearValueFunction(newBound, oldLVF.getInterval().upperEndpoint());
     }
@@ -541,7 +580,7 @@ public class ApartmentValueFunction {
     checkArgument(!Objects.equals(moreImportant, lessImportant), "Both fields are the same.");
     ApartmentValueFunction avf = cloneAVF();
     double weightSum =
-        avf.getSubjectiveValueWeight(moreImportant) + avf.getSubjectiveValueWeight(lessImportant);
+        avf.getWeightSubjectiveValue(moreImportant) + avf.getWeightSubjectiveValue(lessImportant);
 
     avf = avf.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
     avf = avf.setSubjectiveValueWeight(lessImportant, weightSum / 10);
@@ -550,31 +589,38 @@ public class ApartmentValueFunction {
   }
 
   /**
-   * Gives the subjective value weight of a criterion awt
+   * Gives the subjective value weight of a criterion <code>criterion</code>
    *
-   * @param awt the criterion we want to know the value
+   * @param criterion the criterion we want to know the value
    * @return the subjective value weight
    */
-  double getSubjectiveValueWeight(Criterion awt) {
-    checkArgument(this.weight.containsKey(awt));
-    return this.weight.get(awt);
+  double getWeightSubjectiveValue(Criterion criterion) {
+    checkArgument(this.weight.containsKey(criterion));
+    return this.weight.get(criterion);
   }
 
-  public void setWeightSubjectiveValue(final Criterion awt, final double value) {
-    this.weight.put(awt, value);
+  /**
+   * Update the subjective value weight of a criterion <code>criterion</code>
+   *
+   * @param criterion the criterion we want to set the value
+   */
+  public void setWeightSubjectiveValue(final Criterion criterion, final double value) {
+    checkNotNull(criterion);
+    this.weight.put(criterion, value);
   }
 
   /**
    * Sets the subjective value weight of a criterion
    *
-   * @param awt the criterion we want to set
+   * @param criterion the criterion we want to set
    * @param value the value we want to assign at this criterion
    * @return an object ApartmentValueFunction with the modified criterion
    */
-  public ApartmentValueFunction setSubjectiveValueWeight(final Criterion awt, final double value) {
+  public ApartmentValueFunction setSubjectiveValueWeight(
+      final Criterion criterion, final double value) {
     ApartmentValueFunction avf = cloneAVF();
-    avf.getSubjectiveValueWeight(awt); // check awt in criterion
-    avf.setWeightSubjectiveValue(awt, value);
+    avf.getWeightSubjectiveValue(criterion);
+    avf.setWeightSubjectiveValue(criterion, value);
     return avf;
   }
 

@@ -42,17 +42,15 @@ public class LinearAVF {
    * to set those two.
    */
   private LinearAVF() {
-    // value function
     this.booleanValueFunctions = new EnumMap<>(Criterion.class);
     this.linearValueFunctions = new EnumMap<>(Criterion.class);
     this.reversedValueFunctions = new EnumMap<>(Criterion.class);
     Arrays.stream(Criterion.values())
         .filter(c -> c.hasBooleanDomain())
-        .forEach(c -> this.setInternalValueFunction(c, new BooleanValueFunction(true)));
+        .forEach(c -> this.setInternalValueFunction(c));
     Arrays.stream(Criterion.values())
         .filter(c -> c.hasDoubleDomain())
         .forEach(c -> this.setInternalValueFunction(c));
-    // weight
     this.weight = new EnumMap<>(Criterion.class);
     Arrays.stream(Criterion.values()).forEach(criterion -> weight.put(criterion, 0.0d));
   }
@@ -161,78 +159,150 @@ public class LinearAVF {
     return avf;
   }
 
-  /* Operation used for Weight */
-
   /**
-   * Gives the subjective value weight of a criterion awt
+   * Gives the subjective value weight of a criterion <code>criterion</code>
    *
-   * @param crit the criterion we want to know the value
+   * @param criterion the criterion we want to know the value
    * @return the subjective value weight
    */
-  public double getWeight(Criterion crit) {
-    return this.getWeightSubjectiveValue(crit);
+  public double getWeight(Criterion criterion) {
+    return this.getWeightSubjectiveValue(criterion);
   }
 
-  public double getWeightSubjectiveValue(Criterion crit) {
-    checkArgument(this.weight.containsKey(crit));
-    return this.weight.get(crit);
+  /**
+   * Gives the subjective value weight of a criterion <code>criterion</code>
+   *
+   * @param criterion the criterion we want to know the value
+   * @return the subjective value weight
+   */
+  public double getWeightSubjectiveValue(Criterion criterion) {
+    checkArgument(this.weight.containsKey(criterion));
+    return this.weight.get(criterion);
   }
 
+  /**
+   * Update the subjective value weight of a criterion <code>criterion</code>
+   *
+   * @param criterion the criterion we want to set the value
+   */
   public void setWeightSubjectiveValue(Criterion criterion, double value) {
+    checkNotNull(criterion);
     this.weight.put(criterion, value);
   }
 
   /**
    * Sets the subjective value weight of a criterion
    *
-   * @param awt the criterion we want to set
+   * @param criterion the criterion we want to set the value
    * @param value the value we want to assign at this criterion
    * @return an object LinearAVF with the modified criterion
    */
-  public LinearAVF setWeight(Criterion awt, double value) {
+  public LinearAVF setWeight(Criterion criterion, double value) {
     checkArgument(value >= 0, "The given weight cannot be negative");
     LinearAVF avf = cloneLinearAVF();
-    avf.setWeightSubjectiveValue(awt, value);
+    avf.setWeightSubjectiveValue(criterion, value);
     return avf;
   }
 
+  /**
+   * Allows you to update the <code>vf</code> according to the <code>criterion</code>
+   *
+   * @param criterion <code>Criterion</code> associated with the <code>BooleanValueFunction</code>
+   * @param vf <code>BooleanValueFunction</code> to update
+   */
   private void setInternalValueFunction(Criterion criterion, BooleanValueFunction vf) {
+    checkNotNull(vf);
+    checkNotNull(criterion);
     checkArgument(criterion.hasBooleanDomain());
     this.booleanValueFunctions.put(criterion, vf);
   }
 
+  /**
+   * Allows you to set a default value for the value function associated with the <code>criterion
+   * </code>
+   *
+   * @param criterion the criterion that we want to define the default value
+   */
   private void setInternalValueFunction(Criterion criterion) {
+    checkNotNull(criterion);
     if (criterion.isNotBooleanCrescent()) {
       this.linearValueFunctions.put(criterion, null);
     } else if (criterion.isNotBooleanDecrease()) {
       this.reversedValueFunctions.put(criterion, null);
+    } else if (criterion.hasBooleanDomain()) {
+      this.booleanValueFunctions.put(criterion, new BooleanValueFunction(true));
     } else {
       throw new IllegalArgumentException(
-          "Criterion must be IS_NOT_BOOLEAN_CRESCENT or IS_NOT_BOOLEAN_DECREASE");
+          "The type associated with the Criterion must be boolean or non-boolean");
     }
   }
 
+  /**
+   * Allows you to update the <code>vf</code> according to the <code>criterion</code>
+   *
+   * @param criterion the criterion associated with the <code>LinearValueFunction</code> that we
+   *     want to obtain
+   * @param vf <code>LinearValueFunction</code> to update
+   */
   private void setInternalValueFunction(Criterion criterion, LinearValueFunction vf) {
+    checkNotNull(vf);
+    checkNotNull(criterion);
     checkArgument(criterion.isNotBooleanCrescent());
     this.linearValueFunctions.put(criterion, vf);
   }
 
+  /**
+   * Allows you to update the <code>vf</code> according to the <code>criterion</code>
+   *
+   * @param criterion the criterion associated with the <code>ReversedLinearValueFunction</code>
+   *     that we want to obtain
+   * @param vf <code>ReversedLinearValueFunction</code> to update
+   */
   private void setInternalValueFunction(Criterion criterion, ReversedLinearValueFunction vf) {
+    checkNotNull(vf);
+    checkNotNull(criterion);
     checkArgument(criterion.isNotBooleanDecrease());
     this.reversedValueFunctions.put(criterion, vf);
   }
 
+  /**
+   * Used to retrieve a <code>BooleanValueFunction</code> function according to the <code>criterion
+   * </code> passed as a parameter
+   *
+   * @param criterion the criterion associated with the <code>BooleanValueFunction</code> that we
+   *     want to obtain
+   * @return the <code>BooleanValueFunction</code> associated with <code>criterion</code>
+   */
   private BooleanValueFunction getInternalBooleanValueFunction(Criterion criterion) {
+    checkNotNull(criterion);
     checkArgument(criterion.hasBooleanDomain());
     return this.booleanValueFunctions.get(criterion);
   }
 
+  /**
+   * Used to retrieve a <code>LinearValueFunction</code> function according to the <code>criterion
+   * </code> passed as a parameter
+   *
+   * @param criterion the criterion associated with the <code>LinearValueFunction</code> that we
+   *     want to obtain
+   * @return the <code>LinearValueFunction</code> associated with <code>criterion</code>
+   */
   private LinearValueFunction getInternalLinearValueFunction(Criterion criterion) {
+    checkNotNull(criterion);
     checkArgument(criterion.isNotBooleanCrescent());
     return this.linearValueFunctions.get(criterion);
   }
 
+  /**
+   * Used to retrieve a <code>ReversedLinearValueFunction</code> function according to the <code>
+   * criterion</code> passed as a parameter
+   *
+   * @param criterion the criterion associated with the <code>ReversedLinearValueFunction</code>
+   *     that we want to obtain
+   * @return the <code>ReversedLinearValueFunction</code> associated with <code>criterion</code>
+   */
   private ReversedLinearValueFunction getInternalReversedLinearValueFunction(Criterion criterion) {
+    checkNotNull(criterion);
     checkArgument(criterion.isNotBooleanDecrease());
     return this.reversedValueFunctions.get(criterion);
   }
@@ -266,12 +336,12 @@ public class LinearAVF {
     /**
      * Set the weight for the criterion given in parameters.
      *
-     * @param crit the criterion concerned
+     * @param criterion the criterion concerned
      * @param value the value possible for this weight
      * @return the current instance of Builder
      */
-    public Builder setWeight(Criterion crit, double value) {
-      this.toBuild = toBuild.setWeight(crit, value);
+    public Builder setWeight(Criterion criterion, double value) {
+      this.toBuild = toBuild.setWeight(criterion, value);
       return this;
     }
 
