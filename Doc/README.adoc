@@ -13,17 +13,30 @@ toc::[]
 
 == Overview 👀
 
-In order to have a global vision of the application, you can start by reading this link:overview.adoc[file].
+We decided to give a goal to our app and to define clearly the users of it. +
+Indeed, the current state of the application is not obvious: it is difficult to see who will use the app and the uses of it. +
+In other words, the current application has no real user. These are just features developed with no real link yet.
 
-> To see the old project states, you can navigate through the old commits.
+So, we decided to clarify these points. +
+First, let’s talk about the goal of the app. We will try to develop this app so that it will be used for long-term apartment’s rental. +
+Users will be able to see the different apartments and to select them according to the most important criteria for them. That led us to the second point: for whom will be this app designed. +
+We decided that the main users of this app will be the tenants. The apartment’s owner won’t interact with the app. +
+To put the apartments online and eventually to modify them, we add a second actor in our model : a manager. The role of this actor is basically to put the apartments online, to modify them if needed and to delete them if a place is rented for example.
+
+== Runnable class 🏃
+
+To have an overview of all executable classes, you can go to link:run.adoc[run.adoc]
 
 == Packages 📦
 
-A package-by-package explanation is available, see the documentation link:packages.adoc[here]
+A package-by-package explanation is available, in link:packages.adoc[packages.adoc]. +
+*Most of the documentation is available in this file!*
 
 == Diagrams UML
 
-For an overview of all diagrams, see link:diagram.adoc[here]
+For an overview of all diagrams, you can see the link:img/[img/] folder or go directly to Papyrus.
+
+In addition, link:global.adoc[global.adoc] includes all the global diagrams of the application &rarr; allows an overview.
 
 [IMPORTANT]
 ====
@@ -34,31 +47,13 @@ _Thanks link:https://github.com/GabG02[gab202]_
 
 == Convention for naming packages (for papyrus)
 
-* The name of a package must start with the type of diagram he contains (CD, UCD, ID) and should look like this: “TypeOfDiagram_Description”. +
-The only exception is for the JavaIteration package as it may contain different type of diagram.tr
-* When you create a new child such as a use case or a new class, the name of it should finish with “UC” if it is a use case, “CD” if it is for a class diagram or “I” for an interaction diagram.
+* The name of a package must start with the type of diagram he contains (CD, UCD, ID) and should look like this: "TypeOfDiagram_Description”. +
+The only exception is for the `JavaIteration` package as it may contain different type of diagram.
+* When you create a new child such as a use case or a new class, the name of it should finish with "UC” if it is a use case, "CD” if it is for a class diagram or "I” for an interaction diagram.
 
 == Idea 💡
 
-For all ideas under development and not integrated into the application, please refer to link:idea.adoc[this documentation].
-
-== Iterations 🏃
-
-=== Iteration 1
-
-You can see a description of processes and program by following this link:It1.adoc[link]
-
-=== Iteration 2
-
-You can see a description of processes and program by following this link:It2.adoc[link]
-
-=== Iteration 3
-
-You can see a description of processes by following this link:It3.adoc[link]
-
-=== Iteration 4
-
-You can see the breakdown of members and breakdowns for iteration 4 link:It4.adoc[here]
+For all ideas under development, not integrated into the application and the elements to be considered, please refer to link:idea.adoc[this documentation].
 
 [%hardbreaks]
 link:#toc[⬆ back to top]
