@@ -9,6 +9,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
+
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -118,20 +120,15 @@ public class Profile {
   }
 
   /**
-   * Sets the linearAVF of a Profile
-   *
+   * Sets the linearAVF of a <code>Profile</code>
+   * It's a clone of the current <code>Profile</code>, changing the <code>Profile</code> to <code> newLinearAvf </code>.
+   * 
+   * @param newLinearAvf recreate a Profile based on <code>newLinearAvf</code>.
    * @return Profile with its LinearAVF set
    */
   public Profile withLinearAVF(LinearAVF newLinearAvf) {
-    Profile prof = clone(Optional.empty(), Optional.empty());
-
-    for (Criterion c : Criterion.values()) {
-      checkWeightInRange(c, newLinearAvf);
-    }
-
-    prof.linearAvf = newLinearAvf;
-
-    return prof;
+    Arrays.stream(Criterion.values()).forEach(c -> this.checkWeightInRange(c, newLinearAvf));
+    return clone(Optional.empty(), Optional.of(newLinearAvf));
   }
 
   /**
@@ -155,7 +152,7 @@ public class Profile {
    * Sets the subjective value weight of a criterion
    *
    * @param crit the criterion we want to know the value
-   * @return the subjective value weight
+   * @param value range for the weight
    */
   private void setWeightRange(Criterion crit, Range<Double> value) {
     checkArgument(this.rangeMap.containsKey(crit));
