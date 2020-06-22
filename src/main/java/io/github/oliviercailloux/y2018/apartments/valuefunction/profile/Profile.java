@@ -4,10 +4,13 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.common.collect.BoundType;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
 import java.util.EnumMap;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,17 +51,26 @@ public class Profile {
   }
 
   /**
-   * This function allows the user to clone an object Profile
+   * This function allows the user to clone an object Profile This function allows you to indicate
+   * which value should be cloned. Thus, each parameter not present will be cloned from the current
+   * Profile To modify the profile during the clone, just give it the desired parameters
    *
-   * @return an object Profile
+   * @param rangeMap corresponds to the range associated with the <code>Profile</code>. In the case
+   *     where an <code>EnumMap</code> is present, it does not have to contain all the necessary
+   *     keys
+   * @param lavf corresponds to the LinearAVF associated with the Profile. In case it is not
+   *     present, we clone the LinearAVF from current <code>Profile</code>
+   * @return Profile modified (if Optional are present)
    */
-  private Profile cloneProfile() {
-
+  private Profile clone(
+      Optional<EnumMap<Criterion, Range<Double>>> rangeMap, Optional<LinearAVF> lavf) {
     Profile prof = new Profile();
-
-    prof.linearAvf = this.linearAvf;
-    prof.rangeMap = this.rangeMap;
-
+    EnumMap<Criterion, Range<Double>> range = rangeMap.orElse(this.rangeMap);
+    if (!range.equals(this.rangeMap)) {
+      this.rangeMap.forEach(range::putIfAbsent);
+    }
+    prof.rangeMap = range;
+    prof.linearAvf = lavf.orElse(this.linearAvf);
     return prof;
   }
 
@@ -83,6 +95,17 @@ public class Profile {
   }
 
   /**
+   * Allows you to retrieve an <code>ImmutableMap</code> containing all the <code>Range</code>
+   * (subjective value) associated with each <code>Criterion</code>
+   *
+   * @return An <code>ImmutableMap</code>, which for each <code>Criterion</code> associates its
+   *     subjective value
+   */
+  public ImmutableMap<Criterion, Range<Double>> getWeightsRange() {
+    return Maps.immutableEnumMap(this.rangeMap);
+  }
+
+  /**
    * Get the middle of the range of the given criterion
    *
    * @param crit the Criterion
@@ -100,7 +123,7 @@ public class Profile {
    * @return Profile with its LinearAVF set
    */
   public Profile withLinearAVF(LinearAVF newLinearAvf) {
-    Profile prof = cloneProfile();
+    Profile prof = clone(Optional.empty(), Optional.empty());
 
     for (Criterion c : Criterion.values()) {
       checkWeightInRange(c, newLinearAvf);
