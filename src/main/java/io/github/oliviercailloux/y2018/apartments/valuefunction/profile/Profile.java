@@ -55,7 +55,7 @@ public class Profile {
    * which value should be cloned. Thus, each parameter not present will be cloned from the current
    * Profile To modify the profile during the clone, just give it the desired parameters
    *
-   * @param rangeMap corresponds to the range associated with the <code>Profile</code>. In the case
+   * @param ranges corresponds to the range associated with the <code>Profile</code>. In the case
    *     where an <code>EnumMap</code> is present, it does not have to contain all the necessary
    *     keys
    * @param lavf corresponds to the LinearAVF associated with the Profile. In case it is not
@@ -63,9 +63,9 @@ public class Profile {
    * @return Profile modified (if Optional are present)
    */
   private Profile clone(
-      Optional<EnumMap<Criterion, Range<Double>>> rangeMap, Optional<LinearAVF> lavf) {
+      Optional<EnumMap<Criterion, Range<Double>>> ranges, Optional<LinearAVF> lavf) {
     Profile prof = new Profile();
-    EnumMap<Criterion, Range<Double>> range = rangeMap.orElse(this.rangeMap);
+    EnumMap<Criterion, Range<Double>> range = ranges.orElse(this.rangeMap);
     if (!range.equals(this.rangeMap)) {
       this.rangeMap.forEach(range::putIfAbsent);
     }
