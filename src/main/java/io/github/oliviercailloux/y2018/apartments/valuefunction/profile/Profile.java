@@ -114,8 +114,7 @@ public class Profile {
    * @return the middle of the Range of the given Criterion
    */
   double getMiddleOfRange(Criterion crit) {
-    return (this.getWeightRange(crit).upperEndpoint().doubleValue()
-            + this.getWeightRange(crit).lowerEndpoint().doubleValue())
+    return (this.getWeightRange(crit).upperEndpoint() + this.getWeightRange(crit).lowerEndpoint())
         / 2;
   }
 
@@ -132,8 +131,8 @@ public class Profile {
   }
 
   /**
-   * check if the weight of the LinearAVF of the given criterion is in the profile range for this
-   * criterion
+   * Check if the weight of the LinearAVF of the given criterion is in the profile range for this
+   * criterion.
    *
    * @param crit the criterion to check the weight with the range
    * @param linearAVF the LinearAVF of check if its weight is in the range
@@ -141,7 +140,7 @@ public class Profile {
    */
   public void checkWeightInRange(Criterion crit, LinearAVF linearAVF) {
     Range<Double> range = this.getWeightRange(crit);
-    Double weight = Double.valueOf(linearAVF.getWeight(crit));
+    Double weight = linearAVF.getWeight(crit);
     checkNotNull(range);
     checkNotNull(weight);
     checkArgument(
@@ -189,14 +188,16 @@ public class Profile {
     }
 
     public Profile build() {
+      checkNotNull(toBuild.linearAvf);
       for (Criterion c : Criterion.values()) {
         checkNotNull(toBuild.getWeightRange(c), c.name() + " is null");
+        this.toBuild.checkWeightInRange(c, toBuild.linearAvf);
       }
       return toBuild;
     }
 
     public Builder setLinearAVF(LinearAVF newLinearAvf) {
-      this.toBuild = toBuild.withLinearAVF(newLinearAvf);
+      this.toBuild.linearAvf = newLinearAvf;
       return this;
     }
 
@@ -209,8 +210,7 @@ public class Profile {
      * @return the current instance of Builder
      */
     public Builder setWeightRange(Criterion crit, double lowerValue, double upperValue) {
-      this.toBuild.setWeightRange(
-          crit, Range.closed(Double.valueOf(lowerValue), Double.valueOf(upperValue)));
+      this.toBuild.setWeightRange(crit, Range.closed(lowerValue, upperValue));
       return this;
     }
 
