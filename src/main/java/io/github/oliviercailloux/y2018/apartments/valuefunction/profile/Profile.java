@@ -155,7 +155,7 @@ public class Profile {
    * Sets the subjective value weight of a criterion
    *
    * @param crit the criterion we want to know the value
-   * @return the subjective value weight
+   * @param value range for the weight
    */
   private void setWeightRange(Criterion crit, Range<Double> value) {
     checkArgument(this.rangeMap.containsKey(crit));
