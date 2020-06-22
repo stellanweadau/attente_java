@@ -19,7 +19,7 @@ public enum Criterion {
   }
 
   /**
-   * Permet de récupérer le type associé
+   * Used to retrieve the type associated with a <code>Criterion</code>
    *
    * @return the type <code>ValueFunctionType</code> associated with the criterion.
    */
