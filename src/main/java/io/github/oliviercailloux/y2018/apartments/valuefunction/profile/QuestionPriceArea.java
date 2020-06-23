@@ -71,15 +71,37 @@ public class QuestionPriceArea {
     Criterion secondCriterion;
     Range<Double> closedRange;
 
+    double surfaceR;
+    double priceR;
+    double rate;
+
+    Range<Double> surfaceRange;
+    Range<Double> priceRange;
+
+    /** In this part we compute the different rates of increasment the question is proposing. */
+    surfaceRange = p.getLinearAVF().getFloorAreaValueFunction().getInterval();
+    surfaceR =
+        this.surface
+            / (surfaceRange.upperEndpoint().doubleValue()
+                - surfaceRange.lowerEndpoint().doubleValue());
+
+    priceRange = p.getLinearAVF().getPricePerNightValueFunction().getInterval();
+    priceR =
+        this.price
+            / (priceRange.upperEndpoint().doubleValue() - priceRange.lowerEndpoint().doubleValue());
+
     /**
      * The code is very similar if the boolean response is true or false. The only factor that
      * changes is the criteria. Thus, one seeks to know which criterion is given to which range. So
-     * we check this based on the boolean
+     * we check this based on the boolean. This also allow us to compute the rate we will be using
+     * to adapt the non-prioritized range.
      */
     if (response) {
+      rate = priceR / surfaceR;
       firstCriterion = Criterion.FLOOR_AREA;
       secondCriterion = Criterion.PRICE_PER_NIGHT;
     } else {
+      rate = surfaceR / priceR;
       secondCriterion = Criterion.FLOOR_AREA;
       firstCriterion = Criterion.PRICE_PER_NIGHT;
     }
@@ -88,11 +110,13 @@ public class QuestionPriceArea {
     final Range<Double> secondRange = p.getWeightRange(secondCriterion);
 
     final double min = firstRange.lowerEndpoint() + p.getMiddleOfRange(firstCriterion) * 0.2;
-    closedRange = Range.closed(Math.min(min, firstRange.upperEndpoint()), firstRange.upperEndpoint());
+    closedRange =
+        Range.closed(Math.min(min, firstRange.upperEndpoint()), firstRange.upperEndpoint());
     p.setWeightRange(firstCriterion, closedRange);
 
     final double max = secondRange.upperEndpoint() - p.getMiddleOfRange(secondCriterion) * 0.1;
-    closedRange = Range.closed(secondRange.lowerEndpoint(), Math.max(max, secondRange.lowerEndpoint()));
+    closedRange =
+        Range.closed(secondRange.lowerEndpoint(), Math.max(max, secondRange.lowerEndpoint()));
     p.setWeightRange(secondCriterion, closedRange);
   }
 }
