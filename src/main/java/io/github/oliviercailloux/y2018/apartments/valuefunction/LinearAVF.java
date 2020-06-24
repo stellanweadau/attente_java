@@ -147,9 +147,9 @@ public class LinearAVF {
             c -> {
               if (c.hasBooleanDomain()) {
                 avf.setInternalValueFunction(c, this.getInternalBooleanValueFunction(c));
-              } else if (c.isNotBooleanCrescent()) {
+              } else if (c.isDoubleCrescent()) {
                 avf.setInternalValueFunction(c, this.getInternalLinearValueFunction(c));
-              } else if (c.isNotBooleanDecrease()) {
+              } else if (c.isDoubleDecrease()) {
                 avf.setInternalValueFunction(c, this.getInternalReversedLinearValueFunction(c));
               }
             });
@@ -225,9 +225,9 @@ public class LinearAVF {
    */
   private void setInternalValueFunction(Criterion criterion) {
     checkNotNull(criterion);
-    if (criterion.isNotBooleanCrescent()) {
+    if (criterion.isDoubleCrescent()) {
       this.linearValueFunctions.put(criterion, null);
-    } else if (criterion.isNotBooleanDecrease()) {
+    } else if (criterion.isDoubleDecrease()) {
       this.reversedValueFunctions.put(criterion, null);
     } else if (criterion.hasBooleanDomain()) {
       this.booleanValueFunctions.put(criterion, new BooleanValueFunction(true));
@@ -247,7 +247,7 @@ public class LinearAVF {
   private void setInternalValueFunction(Criterion criterion, LinearValueFunction vf) {
     checkNotNull(vf);
     checkNotNull(criterion);
-    checkArgument(criterion.isNotBooleanCrescent());
+    checkArgument(criterion.isDoubleCrescent());
     this.linearValueFunctions.put(criterion, vf);
   }
 
@@ -261,7 +261,7 @@ public class LinearAVF {
   private void setInternalValueFunction(Criterion criterion, ReversedLinearValueFunction vf) {
     checkNotNull(vf);
     checkNotNull(criterion);
-    checkArgument(criterion.isNotBooleanDecrease());
+    checkArgument(criterion.isDoubleDecrease());
     this.reversedValueFunctions.put(criterion, vf);
   }
 
@@ -289,7 +289,7 @@ public class LinearAVF {
    */
   private LinearValueFunction getInternalLinearValueFunction(Criterion criterion) {
     checkNotNull(criterion);
-    checkArgument(criterion.isNotBooleanCrescent());
+    checkArgument(criterion.isDoubleCrescent());
     return this.linearValueFunctions.get(criterion);
   }
 
@@ -303,7 +303,7 @@ public class LinearAVF {
    */
   private ReversedLinearValueFunction getInternalReversedLinearValueFunction(Criterion criterion) {
     checkNotNull(criterion);
-    checkArgument(criterion.isNotBooleanDecrease());
+    checkArgument(criterion.isDoubleDecrease());
     return this.reversedValueFunctions.get(criterion);
   }
 

@@ -4,13 +4,13 @@ public enum Criterion {
   TELE(ValueFunctionType.IS_BOOLEAN_CRESCENT),
   TERRACE(ValueFunctionType.IS_BOOLEAN_CRESCENT),
   WIFI(ValueFunctionType.IS_BOOLEAN_CRESCENT),
-  FLOOR_AREA(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT),
-  FLOOR_AREA_TERRACE(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT),
-  NB_BATHROOMS(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT),
-  NB_BEDROOMS(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT),
-  NB_SLEEPING(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT),
-  NB_MIN_NIGHT(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE),
-  PRICE_PER_NIGHT(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE);
+  FLOOR_AREA(ValueFunctionType.IS_DOUBLE_CRESCENT),
+  FLOOR_AREA_TERRACE(ValueFunctionType.IS_DOUBLE_CRESCENT),
+  NB_BATHROOMS(ValueFunctionType.IS_DOUBLE_CRESCENT),
+  NB_BEDROOMS(ValueFunctionType.IS_DOUBLE_CRESCENT),
+  NB_SLEEPING(ValueFunctionType.IS_DOUBLE_CRESCENT),
+  NB_MIN_NIGHT(ValueFunctionType.IS_DOUBLE_DECREASE),
+  PRICE_PER_NIGHT(ValueFunctionType.IS_DOUBLE_DECREASE);
 
   private ValueFunctionType valueFunctionType;
 
@@ -43,8 +43,8 @@ public enum Criterion {
    * @return true if the Criterion is double increasing or decreasing, false otherwise
    */
   public boolean hasDoubleDomain() {
-    return this.valueFunctionType.equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT)
-        || this.valueFunctionType.equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE);
+    return this.valueFunctionType.equals(ValueFunctionType.IS_DOUBLE_CRESCENT)
+        || this.valueFunctionType.equals(ValueFunctionType.IS_DOUBLE_DECREASE);
   }
 
   /**
@@ -58,21 +58,21 @@ public enum Criterion {
   }
 
   /**
-   * Lets you know if the Criterion is an IS_NOT_BOOLEAN_CRESCENT
+   * Lets you know if the Criterion is an IS_DOUBLE_CRESCENT
    *
-   * @return true if the Criterion is IS_NOT_BOOLEAN_CRESCENT, false otherwise
+   * @return true if the Criterion is IS_DOUBLE_CRESCENT, false otherwise
    */
-  public boolean isNotBooleanCrescent() {
-    return this.valueFunctionType.equals(ValueFunctionType.IS_NOT_BOOLEAN_CRESCENT);
+  public boolean isDoubleCrescent() {
+    return this.valueFunctionType.equals(ValueFunctionType.IS_DOUBLE_CRESCENT);
   }
 
   /**
-   * Lets you know if the Criterion is an IS_NOT_BOOLEAN_DECREASE
+   * Lets you know if the Criterion is an IS_DOUBLE_DECREASE
    *
-   * @return true if the Criterion is IS_NOT_BOOLEAN_DECREASE, false otherwise
+   * @return true if the Criterion is IS_DOUBLE_DECREASE, false otherwise
    */
-  public boolean isNotBooleanDecrease() {
-    return this.valueFunctionType.equals(ValueFunctionType.IS_NOT_BOOLEAN_DECREASE);
+  public boolean isDoubleDecrease() {
+    return this.valueFunctionType.equals(ValueFunctionType.IS_DOUBLE_DECREASE);
   }
 
   /**

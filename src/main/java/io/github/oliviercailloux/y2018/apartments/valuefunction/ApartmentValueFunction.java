@@ -72,7 +72,7 @@ public class ApartmentValueFunction {
   private PartialValueFunction<Boolean> getInternalBooleanValueFunction(Criterion criterion) {
     checkNotNull(criterion);
     checkArgument(criterion.hasBooleanDomain());
-    return this.booleanValueFunctions.get(criterion);
+    return checkNotNull(this.booleanValueFunctions.get(criterion));
   }
 
   /**
@@ -86,7 +86,7 @@ public class ApartmentValueFunction {
   private PartialValueFunction<Double> getInternalDoubleValueFunction(Criterion criterion) {
     checkNotNull(criterion);
     checkArgument(criterion.hasDoubleDomain());
-    return this.doubleValueFunctions.get(criterion);
+    return checkNotNull(this.doubleValueFunctions.get(criterion));
   }
 
   /**
@@ -436,13 +436,13 @@ public class ApartmentValueFunction {
             .build();
 
     // Check that the subjective values ​​do have a value between 0 and 1
-    subjectiveValue.forEach(
-        (criterion, aDouble) -> {
-          LOGGER.debug("The {} subjective value has been set to {}", criterion.name(), aDouble);
-          checkState(
-              aDouble >= 0 && aDouble <= 1,
-              "The subjective value of " + criterion.name() + "must be between 0 and 1");
-        });
+    subjectiveValue.entrySet().stream()
+        .filter(c -> c.getValue() < 0 || c.getValue() > 1)
+        .forEach(
+            (c) ->
+                checkState(
+                    false,
+                    "The subjective value of " + c.getKey().name() + "must be between 0 and 1"));
 
     double sum =
         Arrays.stream(Criterion.values())
