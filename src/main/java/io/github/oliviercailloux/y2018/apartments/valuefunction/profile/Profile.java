@@ -9,7 +9,6 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Range;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
-
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Optional;
@@ -23,10 +22,10 @@ public class Profile {
   private LinearAVF linearAvf;
 
   /**
-   * rangeMap is a map of criterion containing the ranges of all the different range for these
+   * rangesMap is a map of criterion containing the ranges of all the different range for these
    * criterion
    */
-  private EnumMap<Criterion, Range<Double>> rangeMap;
+  private EnumMap<Criterion, Range<Double>> rangesMap;
 
   private Profile() {
     LinearAVF.Builder blavf =
@@ -46,10 +45,15 @@ public class Profile {
     }
     this.linearAvf = blavf.build();
 
-    this.rangeMap = new EnumMap<>(Criterion.class);
+    this.rangesMap = new EnumMap<>(Criterion.class);
     for (Criterion c : Criterion.values()) {
-      this.rangeMap.put(c, null);
+      this.rangesMap.put(c, Range.closed(0.0d, 0.0d));
     }
+  }
+
+  public Profile(final LinearAVF linearAvf, final EnumMap<Criterion, Range<Double>> rangesMap) {
+    this.linearAvf = linearAvf;
+    this.rangesMap = rangesMap;
   }
 
   /**
@@ -67,11 +71,11 @@ public class Profile {
   private Profile clone(
       Optional<EnumMap<Criterion, Range<Double>>> ranges, Optional<LinearAVF> lavf) {
     Profile prof = new Profile();
-    EnumMap<Criterion, Range<Double>> range = ranges.orElse(this.rangeMap);
-    if (!range.equals(this.rangeMap)) {
-      this.rangeMap.forEach(range::putIfAbsent);
+    EnumMap<Criterion, Range<Double>> criterionRanges = ranges.orElse(this.rangesMap);
+    if (!criterionRanges.equals(this.rangesMap)) {
+      this.rangesMap.forEach(criterionRanges::putIfAbsent);
     }
-    prof.rangeMap = range;
+    prof.rangesMap = criterionRanges;
     prof.linearAvf = lavf.orElse(this.linearAvf);
     return prof;
   }
@@ -92,8 +96,8 @@ public class Profile {
    * @return the range of the subjective value weight
    */
   public Range<Double> getWeightRange(Criterion crit) {
-    checkArgument(this.rangeMap.containsKey(crit));
-    return this.rangeMap.get(crit);
+    checkArgument(this.rangesMap.containsKey(crit));
+    return this.rangesMap.get(crit);
   }
 
   /**
@@ -104,7 +108,7 @@ public class Profile {
    *     subjective value
    */
   public ImmutableMap<Criterion, Range<Double>> getWeightsRange() {
-    return Maps.immutableEnumMap(this.rangeMap);
+    return Maps.immutableEnumMap(this.rangesMap);
   }
 
   /**
@@ -119,9 +123,9 @@ public class Profile {
   }
 
   /**
-   * Sets the linearAVF of a <code>Profile</code>
-   * It's a clone of the current <code>Profile</code>, changing the <code>Profile</code> to <code> newLinearAvf </code>.
-   * 
+   * Sets the linearAVF of a <code>Profile</code> It's a clone of the current <code>Profile</code>,
+   * changing the <code>Profile</code> to <code> newLinearAvf </code>.
+   *
    * @param newLinearAvf recreate a Profile based on <code>newLinearAvf</code>.
    * @return Profile with its LinearAVF set
    */
@@ -154,9 +158,9 @@ public class Profile {
    * @param value range for the weight
    */
   private void setWeightRange(Criterion crit, Range<Double> value) {
-    checkArgument(this.rangeMap.containsKey(crit));
+    checkArgument(this.rangesMap.containsKey(crit));
     checkRangeValidity(value);
-    this.rangeMap.put(crit, value);
+    this.rangesMap.put(crit, value);
     this.linearAvf = this.linearAvf.setWeight(crit, getMiddleOfRange(crit));
     LOGGER.debug("The {} weight has been set to {}", crit, value);
   }
