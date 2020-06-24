@@ -504,7 +504,7 @@ public class ApartmentValueFunction {
     apartValueFunction.setInternalBooleanValueFunction(
         Criterion.TELE, new BooleanValueFunction(teleEndBound));
 
-    List<Double> weightRange = RandomRange.weightRangeOfSum(1d, 10);
+    List<Double> weightRange = RandomRange.weightRangeOfSum(1d, Criterion.values().length);
 
     LOGGER.info("Weight has been set to : {}", weightRange);
 
@@ -604,7 +604,7 @@ public class ApartmentValueFunction {
    *
    * @param criterion the criterion we want to set the value
    */
-  public void setWeightSubjectiveValue(final Criterion criterion, final double value) {
+  public void setWeightSubjectiveValue(Criterion criterion, double value) {
     checkNotNull(criterion);
     this.weight.put(criterion, value);
   }
