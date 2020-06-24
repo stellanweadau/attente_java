@@ -11,7 +11,6 @@ import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
 import java.util.Arrays;
 import java.util.EnumMap;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,33 +50,17 @@ public class Profile {
     }
   }
 
-  public Profile(final LinearAVF linearAvf, final EnumMap<Criterion, Range<Double>> rangesMap) {
-    this.linearAvf = linearAvf;
+  private Profile(EnumMap<Criterion, Range<Double>> rangesMap, LinearAVF linearAvf) {
+    this.linearAvf = checkNotNull(linearAvf);
+    checkNotNull(rangesMap);
+    checkArgument(
+        rangesMap.keySet().containsAll(Arrays.asList(Criterion.values())),
+        "rangesMap must have all Criterion");
     this.rangesMap = rangesMap;
   }
 
-  /**
-   * This function allows the user to clone an object Profile This function allows you to indicate
-   * which value should be cloned. Thus, each parameter not present will be cloned from the current
-   * Profile To modify the profile during the clone, just give it the desired parameters
-   *
-   * @param ranges corresponds to the range associated with the <code>Profile</code>. In the case
-   *     where an <code>EnumMap</code> is present, it does not have to contain all the necessary
-   *     keys
-   * @param lavf corresponds to the LinearAVF associated with the Profile. In case it is not
-   *     present, we clone the LinearAVF from current <code>Profile</code>
-   * @return Profile modified (if Optional are present)
-   */
-  private Profile clone(
-      Optional<EnumMap<Criterion, Range<Double>>> ranges, Optional<LinearAVF> lavf) {
-    Profile prof = new Profile();
-    EnumMap<Criterion, Range<Double>> criterionRanges = ranges.orElse(this.rangesMap);
-    if (!criterionRanges.equals(this.rangesMap)) {
-      this.rangesMap.forEach(criterionRanges::putIfAbsent);
-    }
-    prof.rangesMap = criterionRanges;
-    prof.linearAvf = lavf.orElse(this.linearAvf);
-    return prof;
+  public static Profile create(EnumMap<Criterion, Range<Double>> rangesMap, LinearAVF linearAvf) {
+    return new Profile(rangesMap, linearAvf);
   }
 
   /**
@@ -131,7 +114,7 @@ public class Profile {
    */
   public Profile withLinearAVF(LinearAVF newLinearAvf) {
     Arrays.stream(Criterion.values()).forEach(c -> this.checkWeightInRange(c, newLinearAvf));
-    return clone(Optional.empty(), Optional.of(newLinearAvf));
+    return Profile.create(this.rangesMap, newLinearAvf);
   }
 
   /**
