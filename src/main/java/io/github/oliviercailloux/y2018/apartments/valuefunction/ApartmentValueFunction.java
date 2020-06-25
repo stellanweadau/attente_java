@@ -4,15 +4,17 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import io.github.oliviercailloux.y2018.apartments.apartment.Apartment;
 import io.github.oliviercailloux.y2018.apartments.utils.RandomRange;
 import java.util.Arrays;
 import java.util.EnumMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -439,7 +441,7 @@ public class ApartmentValueFunction {
     subjectiveValue.entrySet().stream()
         .filter(c -> c.getValue() < 0 || c.getValue() > 1)
         .forEach(
-            (c) ->
+            c ->
                 checkState(
                     false,
                     "The subjective value of " + c.getKey().name() + "must be between 0 and 1"));
@@ -458,71 +460,58 @@ public class ApartmentValueFunction {
    * @return a randomized instance of an ApartmentValueFunction
    */
   public static ApartmentValueFunction getRandomApartmentValueFunction() {
-    Random random = new Random();
-
     ApartmentValueFunction apartValueFunction = new ApartmentValueFunction();
+    Random random = new Random();
+    int endBoundTmp;
 
-    DiscreteValueFunction<Double> nbBedroomsEndBoundMap =
-        DiscreteValueFunction.discreteValueFunctionBeetween(4, 6);
-    DiscreteValueFunction<Double> nbSleepingEndBoundMap =
-        DiscreteValueFunction.discreteValueFunctionBeetween(4, 6);
-    DiscreteValueFunction<Double> nbBathroomsEndBoundMap =
-        DiscreteValueFunction.discreteValueFunctionBeetween(1, 3);
+    for (Criterion c : Criterion.values()) {
+      switch (c) {
+        case NB_BEDROOMS:
+        case NB_SLEEPING:
+          apartValueFunction.setInternalDoubleValueFunction(
+              c, DiscreteValueFunction.discreteValueFunctionBeetween(4, 6));
+          break;
+        case NB_BATHROOMS:
+          apartValueFunction.setInternalDoubleValueFunction(
+              c, DiscreteValueFunction.discreteValueFunctionBeetween(1, 3));
+          break;
+        case FLOOR_AREA:
+        case FLOOR_AREA_TERRACE:
+          endBoundTmp = random.nextInt(80) + 21;
+          apartValueFunction.setInternalDoubleValueFunction(
+              c, new LinearValueFunction(random.nextInt(endBoundTmp), endBoundTmp));
+          break;
+        case NB_MIN_NIGHT:
+          endBoundTmp = random.nextInt(7) + 3;
+          apartValueFunction.setInternalDoubleValueFunction(
+              c, new ReversedLinearValueFunction(random.nextInt(endBoundTmp), endBoundTmp));
+          break;
+        case PRICE_PER_NIGHT:
+          endBoundTmp = random.nextInt(180) + 21;
+          apartValueFunction.setInternalDoubleValueFunction(
+              c, new ReversedLinearValueFunction(random.nextInt(endBoundTmp), endBoundTmp));
+          break;
+        case TELE:
+        case TERRACE:
+        case WIFI:
+          apartValueFunction.setInternalBooleanValueFunction(
+              c, new BooleanValueFunction(random.nextBoolean()));
+          break;
+        default:
+          throw new IllegalStateException("A criterion was not treated!");
+      }
+    }
 
-    int floorAreaEndBound = random.nextInt(80) + 21;
-    boolean terraceEndBound = (random.nextInt(2) == 1);
-    int floorAreaTerraceEndBound = random.nextInt(80) + 21;
-    boolean wifiEndBound = (random.nextInt(2) == 1);
-    int pricePerNightEndBound = random.nextInt(180) + 21;
-    int nbMinNightEndBound = random.nextInt(7) + 3;
-    boolean teleEndBound = (random.nextInt(2) == 1);
-
-    int floorAreaStartBound = random.nextInt(floorAreaEndBound);
-    int floorAreaTerraceStartBound = random.nextInt(floorAreaTerraceEndBound);
-    int pricePerNightStartBound = random.nextInt(pricePerNightEndBound);
-    int nbMinNightStartBound = random.nextInt(nbMinNightEndBound);
-
-    apartValueFunction.setInternalDoubleValueFunction(
-        Criterion.FLOOR_AREA, new LinearValueFunction(floorAreaStartBound, floorAreaEndBound));
-    apartValueFunction.setInternalDoubleValueFunction(Criterion.NB_BEDROOMS, nbBedroomsEndBoundMap);
-    apartValueFunction.setInternalDoubleValueFunction(Criterion.NB_SLEEPING, nbSleepingEndBoundMap);
-    apartValueFunction.setInternalDoubleValueFunction(
-        Criterion.NB_BATHROOMS, nbBathroomsEndBoundMap);
-    apartValueFunction.setInternalBooleanValueFunction(
-        Criterion.TERRACE, new BooleanValueFunction(terraceEndBound));
-    apartValueFunction.setInternalDoubleValueFunction(
-        Criterion.FLOOR_AREA_TERRACE,
-        new LinearValueFunction(floorAreaTerraceStartBound, floorAreaTerraceEndBound));
-    apartValueFunction.setInternalBooleanValueFunction(
-        Criterion.WIFI, new BooleanValueFunction(wifiEndBound));
-    apartValueFunction.setInternalDoubleValueFunction(
-        Criterion.PRICE_PER_NIGHT,
-        new LinearValueFunction(pricePerNightStartBound, pricePerNightEndBound));
-    apartValueFunction.setInternalDoubleValueFunction(
-        Criterion.NB_MIN_NIGHT,
-        new ReversedLinearValueFunction(nbMinNightStartBound, nbMinNightEndBound));
-    apartValueFunction.setInternalBooleanValueFunction(
-        Criterion.TELE, new BooleanValueFunction(teleEndBound));
-
-    List<Double> weightRange = RandomRange.weightRangeOfSum(1d, Criterion.values().length);
-
+    final List<Double> weightRange = RandomRange.weightRangeOfSum(1.0d, Criterion.values().length);
     LOGGER.info("Weight has been set to : {}", weightRange);
 
-    final int[] i = {0};
-    ImmutableList.of(
-            Criterion.FLOOR_AREA,
-            Criterion.NB_BEDROOMS,
-            Criterion.NB_SLEEPING,
-            Criterion.NB_BATHROOMS,
-            Criterion.TERRACE,
-            Criterion.FLOOR_AREA_TERRACE,
-            Criterion.WIFI,
-            Criterion.PRICE_PER_NIGHT,
-            Criterion.NB_MIN_NIGHT,
-            Criterion.TELE)
-        .forEach(
-            criterion ->
-                apartValueFunction.setWeightSubjectiveValue(criterion, weightRange.get(i[0]++)));
+    // thanks https://stackoverflow.com/a/38515097
+    final Iterator<Criterion> keyIter = Arrays.asList(Criterion.values()).iterator();
+    final Iterator<Double> valIter = weightRange.iterator();
+    IntStream.range(0, Criterion.values().length)
+        .boxed()
+        .collect(Collectors.toMap(i -> keyIter.next(), i -> valIter.next()))
+        .forEach(apartValueFunction::setWeightSubjectiveValue);
     return apartValueFunction;
   }
 
