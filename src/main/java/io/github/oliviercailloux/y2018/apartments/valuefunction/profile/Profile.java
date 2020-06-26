@@ -47,7 +47,7 @@ public class Profile {
             .setNbMinNightValueFunction(1, 31)
             .setPricePerNightValueFunction(30d, 200d);
     for (Criterion c : Criterion.values()) {
-      blavf.withWeight(c, 0d);
+      blavf.setWeight(c, 0d);
     }
     this.linearAvf = blavf.build();
     this.floorAreaWeightRange = null;

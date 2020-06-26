@@ -681,7 +681,7 @@ public class LinearAVF {
      * @param value the value possible for this weight
      * @return the current instance of Builder
      */
-    public Builder withWeight(Criterion crit, double value) {
+    public Builder setWeight(Criterion crit, double value) {
       this.toBuild = toBuild.setWeight(crit, value);
       return this;
     }

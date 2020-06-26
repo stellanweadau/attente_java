@@ -30,7 +30,7 @@ public class ProfileTests {
             .setNbMinNightValueFunction(5, 10)
             .setPricePerNightValueFunction(30d, 60d);
     for (Criterion c : Criterion.values()) {
-      blavf.withWeight(c, 2d);
+      blavf.setWeight(c, 2d);
     }
     LinearAVF lavf = blavf.build();
 
