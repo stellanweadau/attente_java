@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 public class Profile {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Profile.class);
-
+  private QuestionPriceArea myQuestionPriceArea;
   private LinearAVF linearAvf;
 
   /**
@@ -204,6 +204,14 @@ public class Profile {
     public Builder setWeightRange(Criterion crit, Range<Double> value) {
       this.toBuild.setWeightRange(crit, value);
       return this;
+    }
+
+    /**
+     * Getter for the QuestionPriceArea
+     * @return the Question for the price and the floor area
+     */
+    public QuestionPriceArea getQuestionPriceArea() {
+      return this.myQuestionPriceArea;
     }
   }
 }

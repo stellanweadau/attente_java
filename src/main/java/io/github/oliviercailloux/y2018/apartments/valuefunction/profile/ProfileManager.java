@@ -4,7 +4,11 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProfileManager {
 
@@ -143,5 +147,9 @@ public class ProfileManager {
   public Profile getProfile(ProfileType profType) {
     checkArgument(mapProfile.containsKey(profType));
     return getInstance().mapProfile.get(profType);
+  }
+
+  public List<ProfileType> getAvailableProfileTypes(){
+    return new ArrayList<>(mapProfile.keySet());
   }
 }
