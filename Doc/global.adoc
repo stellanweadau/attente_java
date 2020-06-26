@@ -1,0 +1,43 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:imagesdir: img/
+:toc:
+:toc-placement!:
+
+= Global
+
+This file contains all the diagrams presenting the general functioning of the application
+
+toc::[]
+
+== Package
+
+* Global package diagram
++
+image::diagram-package-global.png?raw=true[Global package diagram]
+
+== Class
+
+* Global class diagram (simplified)
++
+image::diagram-class-global-simplified.png?raw=true[Global class diagram (simplified)]
+
+
+== Use case
+
+* Global use case diagram
++
+image::diagram-usecase-global.png?raw=true[Global use case diagram]
++
+As the main user of the application will be the tenants (see link:README.adoc#users-roles[users roles]), we have identified several actions that the tenants will be able to do.
++
+The main use case of the application will then be to look for an apartment that the user of the app will rent for a long period of time. +
+The user, during his/her research, will be able to indicate his/her preferences (for example, the user is looking for an apartment with a terrace) and to obtain a sorted list of apartments after filling all the criteria. +
+The first apartment in the list will be the best match between the characteristics of the location and the user’s criteria.
+
+
+[%hardbreaks]
+link:#toc[⬆ back to top]

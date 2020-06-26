@@ -1,0 +1,88 @@
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:imagesdir: img/
+:toc:
+:toc-placement!:
+
+== Run 🏃 - Executable classes
+
+This section explains the different entry points of the application
+
+We put this part because we think it can be interesting to see what the entry points of the application look like to start having more ideas on the general functioning of the application
+
+toc::[]
+
+[NOTE]
+====
+As mentioned above, this application currently has no real graphical interface. They are just small bricks.
+
+We are concentrating our efforts on improving the project in general, the implementation of a graphical interface will be done in a second step
+
+So, for the advancement of the program we simulate user responses
+====
+
+=== AskOpinionForUtility
+
+This function runs a GUI, which asks the user his criteria of selection for choosing an apartment. +
+The user can input the minimum surface and the minimum number of bedrooms for example. +
+The user can also choose which criteria is the most important between Wi-Fi and a terrace and between the television and the price per night.
+
+This answer seems to order the apartment results but not efficiently. To display results, our function calls `LayoutApartmentGUI`.
+
+The title of the GUI is "Votre avis nous intéresse" which could mislead the user by making him think that’s just an opinion pool.
+
+.See usecase diagram
+[%collapsible]
+====
+image::diagram-usecase-setpreferences.png?raw=true[Diagram set preferences]
+====
+
+.See GUI
+[%collapsible]
+====
+image::gui-askopinionforutility.png?raw=true[GUI ask opinion for utility]
+====
+
+=== LayoutApartmentGUI
+
+This function runs a GUI, which displays all the apartments. If you select an apartment in the list, multiple details are displayed:
+
+* The address
+* The surfaces
+* The price
+* The number of bedrooms
+
+=== ModifyApartmentGUI
+
+This class initialize an interface in order to modify an existing apartment. When the graphic interface has been launched, a window with the last apartment created pops up. +
+We can then modify the diverse characteristics of the apartment such as the number of bedrooms...
+
+This class belongs to the `apartments.gui` package and extends the class `FormApartmentGUI`. +
+This class allows us to create the window we previously saw, to deal with several mistakes we could have and to save the created and modified apartments.
+
+=== CreateApartmentGUI
+
+Graphic interface which enables the user to create a new apartment. When this class is run, it launches a graphic interface with fields to fill in order to define the characteristics of the created apartment.
+
+Three fields must be filled in order to create the apartment: the title (of the ad), the address and the floor to know where the apartment is located.
+
+We can also add details to our ad such as:
+
+* The number of bedrooms
+* The number of people who can sleep in the apartment
+* If the apartment has a terrace or no
+* The location of the terrace if existing (which floor)
+* The price per night
+* The minimum number of nights the tenants have to stay in the house
+* If the apartment has Wi-Fi and television
+* A brief description.
+
+Once the mandatory fields filled, the apartment is automatically saved and updated with the optional information in an XML file.
+
+As we have the ambition to transform our software into a long-term apartment rental platform, some fields such as the minimum number of nights might be deleted in the next iterations.
+
+[%hardbreaks]
+link:#toc[⬆ back to top]
