@@ -144,7 +144,7 @@ public class Profile {
     checkArgument(this.rangesMap.containsKey(crit));
     checkRangeValidity(value);
     this.rangesMap.put(crit, value);
-    this.linearAvf = this.linearAvf.setWeight(crit, getMiddleOfRange(crit));
+    this.linearAvf = this.linearAvf.withWeight(crit, getMiddleOfRange(crit));
     LOGGER.debug("The {} weight has been set to {}", crit, value);
   }
 
