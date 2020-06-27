@@ -52,6 +52,7 @@ public class ProfileManager {
             .setWeightRange(Criterion.NB_BATHROOMS, 0d, 10d)
             .setWeightRange(Criterion.NB_MIN_NIGHT, 0d, 10d)
             .setWeightRange(Criterion.FLOOR_AREA_TERRACE, 0d, 10d)
+                //TODO .setQuestionPriceArea(QuestionPriceArea)
             .setLinearAVF(studentLavf)
             .build();
 
@@ -90,6 +91,7 @@ public class ProfileManager {
             .setWeightRange(Criterion.NB_BATHROOMS, 2.5d, 22.5d)
             .setWeightRange(Criterion.NB_MIN_NIGHT, 0d, 10d)
             .setWeightRange(Criterion.FLOOR_AREA_TERRACE, 0d, 10d)
+                //TODO .setQuestionPriceArea(QuestionPriceArea)
             .setLinearAVF(familyLavf)
             .build();
 
@@ -128,6 +130,7 @@ public class ProfileManager {
             .setWeightRange(Criterion.NB_BATHROOMS, 0d, 11d)
             .setWeightRange(Criterion.NB_MIN_NIGHT, 0d, 11d)
             .setWeightRange(Criterion.FLOOR_AREA_TERRACE, 0d, 11d)
+                //TODO .setQuestionPriceArea(QuestionPriceArea)
             .setLinearAVF(coupleLavf)
             .build();
 

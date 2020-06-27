@@ -103,48 +103,52 @@ public class ProfileQuestionGUI {
         buttonGroup.setLayout(gridLayout);
         buttonGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
-        Label label = new Label(buttonGroup, SWT.NONE);
-        label.setText(profileSelected.getQuestionPriceArea());
+        //TODO : UTILISER QuestionPriceArea
+        Object question = profileSelected.getQuestionPriceArea();
+        if(question!=null) {
+            Label label = new Label(buttonGroup, SWT.NONE);
+            //TODO CHANGER L'AFFECTATION DE LA STRING DE LA QUESTION
+            label.setText((String) profileSelected.getQuestionPriceArea()/*TODO : .getQuestion()*/);
 
-        // buttonchoix1 and buttonchoix2 are two radio buttons, to let the user chose
-        // between two options
-        Button buttonchoix1 = new Button(buttonGroup, SWT.RADIO);
-        buttonchoix1.setText(trueQuestionPriceArea);
-        buttonchoix1.setSelection(false);
+            // buttonchoix1 and buttonchoix2 are two radio buttons, to let the user chose
+            // between two options
+            Button buttonchoix1 = new Button(buttonGroup, SWT.RADIO);
+            buttonchoix1.setText(trueQuestionPriceArea);
+            buttonchoix1.setSelection(false);
 
-        Button buttonchoix2 = new Button(buttonGroup, SWT.RADIO);
-        buttonchoix2.setText(falseQuestionPriceArea);
-        buttonchoix2.setSelection(false);
-        final boolean[] result1 = new boolean[1];
-        buttonchoix1.addSelectionListener(
-                new SelectionAdapter() {
+            Button buttonchoix2 = new Button(buttonGroup, SWT.RADIO);
+            buttonchoix2.setText(falseQuestionPriceArea);
+            buttonchoix2.setSelection(false);
+            final boolean[] result1 = new boolean[1];
+            buttonchoix1.addSelectionListener(
+                    new SelectionAdapter() {
 
-                    @Override
-                    public void widgetSelected(SelectionEvent e) {
-                        Button source = (Button) e.widget;
+                        @Override
+                        public void widgetSelected(SelectionEvent e) {
+                            Button source = (Button) e.widget;
 
-                        if (source.getSelection()) {
-                            result1[0] = true;
+                            if (source.getSelection()) {
+                                result1[0] = true;
+                            }
                         }
-                    }
-                });
+                    });
 
-        buttonchoix2.addSelectionListener(
-                new SelectionAdapter() {
-                    @Override
-                    public void widgetSelected(SelectionEvent e) {
-                        Button source = (Button) e.getSource();
-                        if (source.getSelection()) {
-                            result1[0] = false;
+            buttonchoix2.addSelectionListener(
+                    new SelectionAdapter() {
+                        @Override
+                        public void widgetSelected(SelectionEvent e) {
+                            Button source = (Button) e.getSource();
+                            if (source.getSelection()) {
+                                result1[0] = false;
+                            }
                         }
-                    }
-                });
-
+                    });
+        }
         // the listener when we click on finish
         Listener finishlistener =
                 event -> {
                     shell.close();
-                    profileSelected.getMyQuestionPriceArea().resolve(profileSelected, result1[0]);
+                    //TODO question.resolve(profileSelected, result1[0]);
                     LOGGER.info("ProfileQuestionGUI closed");
                 };
 
