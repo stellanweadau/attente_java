@@ -61,8 +61,9 @@ public class Profile {
 
   /**
    * Getter for the QuestionPriceArea
-   * @return the Question for the price and the floor area
-   * TODO CHANGER LE TYPE DE RETOUR ET UTILISER LA VARIABLE STOCKÉE
+   *
+   * @return the Question for the price and the floor area TODO CHANGER LE TYPE DE RETOUR ET
+   *     UTILISER LA VARIABLE STOCKÉE
    */
   public Object getQuestionPriceArea() {
     return null;
@@ -190,7 +191,7 @@ public class Profile {
         this.toBuild.checkWeightInRange(c, toBuild.linearAvf);
       }
 
-      //TODO checkNotNull(toBuild.getQuestionPriceArea());
+      // TODO checkNotNull(toBuild.getQuestionPriceArea());
       return toBuild;
     }
 
@@ -217,7 +218,7 @@ public class Profile {
       return this;
     }
 
-    //TODO : USE QUESTIONPRICEAREA
+    // TODO : USE QUESTIONPRICEAREA
     public Builder setQuestionPriceArea(Object o) {
       this.toBuild.questionPriceArea = o;
       return this;
