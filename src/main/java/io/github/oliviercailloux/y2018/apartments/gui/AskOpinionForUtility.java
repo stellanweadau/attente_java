@@ -90,16 +90,16 @@ public class AskOpinionForUtility {
 
     avf = asker.adaptAnswers(avf);
 
-    avf = avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA, 0.5);
-    avf = avf.setSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE, 0);
-    avf = avf.setSubjectiveValueWeight(Criterion.NB_BATHROOMS, 0);
-    avf = avf.setSubjectiveValueWeight(Criterion.NB_BEDROOMS, 0.5);
-    avf = avf.setSubjectiveValueWeight(Criterion.NB_MIN_NIGHT, 0);
-    avf = avf.setSubjectiveValueWeight(Criterion.NB_SLEEPING, 0);
-    avf = avf.setSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT, 0);
-    avf = avf.setSubjectiveValueWeight(Criterion.TELE, 0);
-    avf = avf.setSubjectiveValueWeight(Criterion.TERRACE, 0);
-    avf = avf.setSubjectiveValueWeight(Criterion.WIFI, 0);
+    avf = avf.withSubjectiveValueWeight(Criterion.FLOOR_AREA, 0.5);
+    avf = avf.withSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE, 0);
+    avf = avf.withSubjectiveValueWeight(Criterion.NB_BATHROOMS, 0);
+    avf = avf.withSubjectiveValueWeight(Criterion.NB_BEDROOMS, 0.5);
+    avf = avf.withSubjectiveValueWeight(Criterion.NB_MIN_NIGHT, 0);
+    avf = avf.withSubjectiveValueWeight(Criterion.NB_SLEEPING, 0);
+    avf = avf.withSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT, 0);
+    avf = avf.withSubjectiveValueWeight(Criterion.TELE, 0);
+    avf = avf.withSubjectiveValueWeight(Criterion.TERRACE, 0);
+    avf = avf.withSubjectiveValueWeight(Criterion.WIFI, 0);
 
     LOGGER.info("Begining the Layout.");
 

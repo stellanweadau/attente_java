@@ -197,7 +197,7 @@ public class LinearAVF {
    * @param value the value we want to assign at this criterion
    * @return an object LinearAVF with the modified criterion
    */
-  public LinearAVF setWeight(Criterion criterion, double value) {
+  public LinearAVF withWeight(Criterion criterion, double value) {
     checkArgument(value >= 0, "The given weight cannot be negative");
     LinearAVF avf = cloneLinearAVF();
     avf.setWeightSubjectiveValue(criterion, value);
@@ -341,7 +341,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setWeight(Criterion criterion, double value) {
-      this.toBuild = toBuild.setWeight(criterion, value);
+      this.toBuild = toBuild.withWeight(criterion, value);
       return this;
     }
 

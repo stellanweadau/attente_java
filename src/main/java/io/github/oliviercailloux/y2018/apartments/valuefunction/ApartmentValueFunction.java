@@ -571,8 +571,8 @@ public class ApartmentValueFunction {
     double weightSum =
         avf.getWeightSubjectiveValue(moreImportant) + avf.getWeightSubjectiveValue(lessImportant);
 
-    avf = avf.setSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
-    avf = avf.setSubjectiveValueWeight(lessImportant, weightSum / 10);
+    avf = avf.withSubjectiveValueWeight(moreImportant, 9 * weightSum / 10);
+    avf = avf.withSubjectiveValueWeight(lessImportant, weightSum / 10);
 
     return avf;
   }
@@ -605,7 +605,7 @@ public class ApartmentValueFunction {
    * @param value the value we want to assign at this criterion
    * @return an object ApartmentValueFunction with the modified criterion
    */
-  public ApartmentValueFunction setSubjectiveValueWeight(
+  public ApartmentValueFunction withSubjectiveValueWeight(
       final Criterion criterion, final double value) {
     ApartmentValueFunction avf = cloneAVF();
     avf.getWeightSubjectiveValue(criterion);
