@@ -32,6 +32,10 @@ public class LayoutApartmentGUI {
     this.listApp = getListSorted(linearAVF);
   }
 
+  /**
+   * function permitting to run the GUI
+   * @param lavf LinearAVF to use to sort apartments
+   */
   public static void process(LinearAVF lavf) {
     LayoutApartmentGUI gui = new LayoutApartmentGUI(lavf);
     gui.displayAppart();
@@ -40,7 +44,6 @@ public class LayoutApartmentGUI {
   /**
    * Method that creates a list of random apartments and tries them according to the utility of the
    * user
-   *
    * @param linearAVF a way to rate the apartments
    */
   private static java.util.List<Apartment> getListSorted(LinearAVF linearAVF) {
@@ -75,7 +78,7 @@ public class LayoutApartmentGUI {
 
     // create a list label
     Label label = new Label(shell, SWT.NULL);
-    label.setText("List of availabal apartments :");
+    label.setText("List of available apartments :");
     label.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_CENTER));
 
     // define griddata with a verticalspan : 3 rows
@@ -88,7 +91,7 @@ public class LayoutApartmentGUI {
     listShell.setLayoutData(gridData);
 
     Group appartInfo = new Group(shell, SWT.NULL);
-    appartInfo.setText("Detals on selected apartment :");
+    appartInfo.setText("Details on selected apartment :");
 
     gridLayout = new GridLayout();
     gridLayout.numColumns = 2;
@@ -230,9 +233,9 @@ public class LayoutApartmentGUI {
    * Method that defines the action to execute when clicking on an apartment, here we display some
    * elements of the apartment
    *
-   * @param adresse the address label
-   * @param surface the surface
-   * @param prix the price
+   * @param address the address label
+   * @param floorArea the floorArea
+   * @param price the price
    * @param nbBedrooms the number of bedrooms
    * @param nbBathroom the number of bathrooms
    * @param wifi the label for Wifi
@@ -240,9 +243,9 @@ public class LayoutApartmentGUI {
    * @param terrace the label for Terrace
    */
   private void onClick(
-      Label adresse,
-      Label surface,
-      Label prix,
+      Label address,
+      Label floorArea,
+      Label price,
       Label nbBedrooms,
       Label nbBathroom,
       Label wifi,
@@ -255,13 +258,13 @@ public class LayoutApartmentGUI {
             int[] selectedItems = listShell.getSelectionIndices();
 
             for (int loopIndex = 0; loopIndex < selectedItems.length; loopIndex++) {
-              adresse.setText(
+              address.setText(
                   listApp.get(listShell.getSelectionIndex()).getAddress().replace(", ", "\n"));
-              surface.setText(
+              floorArea.setText(
                   " "
                       + Math.round(listApp.get(listShell.getSelectionIndex()).getFloorArea())
                       + "m²");
-              prix.setText(
+              price.setText(
                   " "
                       + Math.round(listApp.get(listShell.getSelectionIndex()).getPricePerNight())
                       + "€");
@@ -274,5 +277,14 @@ public class LayoutApartmentGUI {
           }
         };
     listShell.addSelectionListener(selectApp);
+  }
+
+  /**
+   * Permit to center the GUI in the screen
+   */
+  private void centerShellInWindow(){
+    int x = (display.getClientArea().width - shell.getSize().x) / 2;
+    int y = (display.getClientArea().height - shell.getSize().y) / 2;
+    shell.setLocation(x, y);
   }
 }

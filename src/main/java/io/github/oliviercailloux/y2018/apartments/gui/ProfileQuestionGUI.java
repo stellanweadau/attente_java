@@ -25,14 +25,15 @@ public class ProfileQuestionGUI {
   Display display;
   Shell shell;
 
+  /**
+   * This constructor initialize constant and create a display centered in the screen
+   *
+   */
   public ProfileQuestionGUI() {
     this.trueQuestionPriceArea = "Yes";
     this.falseQuestionPriceArea = "No";
     this.display = new Display();
     this.shell = new Shell(display);
-    int x = (display.getClientArea().width - shell.getSize().x) / 2;
-    int y = (display.getClientArea().height - shell.getSize().y) / 2;
-    shell.setLocation(x, y);
   }
 
   /**
@@ -153,7 +154,7 @@ public class ProfileQuestionGUI {
     finish.setText("Submit");
     finish.pack();
     finish.addListener(SWT.Selection, finishlistener);
-
+    this.centerShellInWindow();
     // open the window
     shell.open();
     while (!shell.isDisposed()) {
@@ -167,5 +168,14 @@ public class ProfileQuestionGUI {
     LOGGER.info("The screen was closed with success.");
 
     return profileSelected.getLinearAVF();
+  }
+
+  /**
+   * Permit to center the GUI in the screen
+   */
+  private void centerShellInWindow(){
+    int x = (display.getClientArea().width - shell.getSize().x) / 2;
+    int y = (display.getClientArea().height - shell.getSize().y) / 2;
+    shell.setLocation(x, y);
   }
 }
