@@ -34,6 +34,7 @@ public class LayoutApartmentGUI {
 
   /**
    * function permitting to run the GUI
+   *
    * @param lavf LinearAVF to use to sort apartments
    */
   public static void process(LinearAVF lavf) {
@@ -44,6 +45,7 @@ public class LayoutApartmentGUI {
   /**
    * Method that creates a list of random apartments and tries them according to the utility of the
    * user
+   *
    * @param linearAVF a way to rate the apartments
    */
   private static java.util.List<Apartment> getListSorted(LinearAVF linearAVF) {
@@ -280,10 +282,8 @@ public class LayoutApartmentGUI {
     listShell.addSelectionListener(selectApp);
   }
 
-  /**
-   * Permit to center the GUI in the screen
-   */
-  private void centerShellInWindow(){
+  /** Permit to center the GUI in the screen */
+  private void centerShellInWindow() {
     int x = (display.getClientArea().width - shell.getSize().x) / 2;
     int y = (display.getClientArea().height - shell.getSize().y) / 2;
     shell.setLocation(x, y);

@@ -37,9 +37,7 @@ public class ProfileGUI {
   Shell shell;
   private ProfileType selectedProfile = null;
 
-  /**
-   * Constuctor initializing a centered Shell
-   */
+  /** Constuctor initializing a centered Shell */
   public ProfileGUI() {
     this.display = new Display();
     this.shell = new Shell(display);
@@ -49,6 +47,7 @@ public class ProfileGUI {
 
   /**
    * function permitting to run the GUI
+   *
    * @throws IOException if ressources images are not found
    */
   public static void process() throws IOException {
@@ -109,8 +108,8 @@ public class ProfileGUI {
       }
     }
     shell.setBackground(new Color(display, new RGB(180, 180, 180), 0));
-    this.centerShellInWindow();
     shell.pack();
+    this.centerShellInWindow();
     shell.open();
     while (!shell.isDisposed()) {
       if (!display.readAndDispatch()) {
@@ -121,10 +120,8 @@ public class ProfileGUI {
     LOGGER.info("The screen was closed with success.");
   }
 
-  /**
-   * Permit to center the GUI in the screen
-   */
-  private void centerShellInWindow(){
+  /** Permit to center the GUI in the screen */
+  private void centerShellInWindow() {
     int x = (display.getClientArea().width - shell.getSize().x) / 2;
     int y = (display.getClientArea().height - shell.getSize().y) / 2;
     shell.setLocation(x, y);

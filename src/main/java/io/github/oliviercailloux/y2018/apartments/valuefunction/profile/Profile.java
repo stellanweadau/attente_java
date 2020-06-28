@@ -18,7 +18,7 @@ public class Profile {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Profile.class);
   private LinearAVF linearAvf;
-  //TODO UTILISER ET CHANGER LE TYPE POUR QUESTIONPRICEAREA
+  // TODO UTILISER ET CHANGER LE TYPE POUR QUESTIONPRICEAREA
   private Object questionPriceArea = null;
 
   /**
@@ -63,7 +63,8 @@ public class Profile {
   /**
    * Getter for the QuestionPriceArea
    *
-   * @return the Question for the price and the floor area TODO CHANGER LE TYPE DE RETOUR ET UTILISER LA VARIABLE STOCKÉE
+   * @return the Question for the price and the floor area TODO CHANGER LE TYPE DE RETOUR ET
+   *     UTILISER LA VARIABLE STOCKÉE
    */
   public Object getQuestionPriceArea() {
     return null;
