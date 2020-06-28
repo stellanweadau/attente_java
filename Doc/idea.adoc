@@ -14,251 +14,94 @@ Until they are integrated, it stays here. Once integrated, the content is cut in
 
 toc::[]
 
-== Value function
+== To consider
 
-Now that we have described what the link:packages.adoc#valuefunction[`ValueFunction`] package does, we can focus on how to improve it.  
+* Better `null` management.
+* Use `Optional`
 
-=== Creation of profiles
+=== Packages
 
-These profiles could preselect some value in the GUI `AskOpinionForUtilities` but the user is still free to modify and adapt them. +
-This evolution could improve the search for the user by making it quicker. For the moment, we have identified 3 profiles:  
+==== apartment
 
-* Large family 
-* Couple without child 
-* Student 
+===== apartment.xml
 
-=== Criteria
+The `apartment.json` package has been completed. +
+It would be interesting to do the same for `aparment.xml` : Make the same class names (`xmlConverter`) with the same public methods (`xmlToApartments`, `apartmentsToXml` ...) to simplify the use of XML
 
-==== Student predefine option
+==== valuefunction
 
-* Minimum surface: 16 m²
-* Minimum number of bedrooms: 1
-* Number of sleeping: 1
-* Number of bathrooms: 1
-* Minimum number of nights: 5
-* Price per night: 50
-* Wi-Fi: true
-* Terrace: false
-* TV: false 
-* Maximum surface: 70 m2
-* Maximum number of bedrooms: 2
-* Maximum number of nights: 14
+* Offer a feature that allows the user to say whether the list of apartments offered suits him or not. If not, ask him a series of questions to change the different weights and improve the end result.
+* Reflect on the use of inheritance
 
-.Student criteria
-[width="100%",options="header"]
-|====================
-| Major (25% per argument) | Neutral (7,5% per argument) | Minor (5% per argument) 
-| Price +
-Wifi | Terrace +
-TV +
-NbSleeping +
-FloorArea
-| NbBedrooms +
-NbBathrooms +
-NbMinNight +
-FloorAreaTerrace
-|====================
+===== valuefunction.profile
 
-image::it4/it4-chart-student-criteria.png?raw=true[Chart Student criteria]
+* Implement new questions in Profile, it might be useful to go through a QuestionManager
++
+Examples of questions to implement:
++
+- Would you pay X euros more for having Y bedrooms?
+- Would you pay X euros more for having a terrace?
+* Imagine new profiles, including a personalized profile for people who do not fit into any of the three profiles offered. Once this is well implemented, we can imagine a profile backup system so that users can find their lists of apartments.
+* Be able to save and import your profile with JSON and XML
 
-==== Large family predefine option
+==== GUI
 
-* Minimum surface: 60 m² 
-* Minimum number of bedrooms: 3
-* Number of sleeping: 6
-* Number of bathrooms: 2
-* Minimum number of nights: 7
-* Price per night: 300
-* Wi-Fi: true
-* Terrace: true
-* TV: true
-* Maximum surface: 200 m2
-* Maximum number of bedrooms: 6
-* Maximum number of nights: 28
+* Implemented a notion of session &rarr; do not have to start from 0 to start a new search
+* Create a main menu to navigate between the different functionalities of the application
 
-.Family Criterias
-[width="100%",options="header"]
-|====================
-| Major (12,5% per argument) | Neutral (10% per argument) | Minor (5% per argument)
-| NbBedrooms +
-NbBathrooms +
-NbSleeping +
-FloorArea | Wifi  +
-Tele +
-Price +
-Terrace
-| NbMinNight +
-FloorAreaTerrace
-|====================
+=== Main classes
 
-image::it4/it4-chart-family-criteria.png?raw=true[Chart Family Criterias]
-
-==== Couple without child predefine option
-
-* Minimum surface: 30 m²
-* Minimum number of bedrooms: 1
-* Number of sleeping: 2
-* Number of bathrooms: 1
-* Minimum number of nights: 2
-* Price per night: 100
-* Wi-Fi: true
-* Terrace: false
-* TV: true
-* Maximum surface: 100 m2
-* Maximum number of bedrooms: 3
-* Maximum number of nights: 21
-
-.Young Couple Criterias
-[width="100%",options="header"]
-|====================
-| Major (16% per argument) | Neutral (10% per argument) | Minor (5,5% per argument)
-| Price +
-Wifi +
-Terrace | NbBedrooms +
-FloorArea +
-Tele
-| NbSleeping +
-NbBathrooms +
-FloorAreaTerrace +
-NbMinNight
-|====================
-
-image::it4/it4-chart-young-couple-criterias.png?raw=true[Young Couple Criterias]
-
-=== New questions
-
-We also want to improve the way to ask the user its preferences. Currently, it looks like this:  
-
-image::it3/it3-gui-opinion-interests.png?raw=true["Gui opinion interests"]
-
-We think that the field are unclear, and we would like to make it more practical for the user.  
-
-The new interface could look contain these questions: 
-
-.Questions about the new interface
-[width="100%",options="header"]
-|====================
-| Question | Weight impacted | Calcul 
-| Do you prefer paying X€ for Y m² or X+100€ for Y+10m² ? | We need to add an argument pricePerSquareMeters which will be modified. See below tabs for more details. | PricePerSquareMeters = X/Y or X+100/Y+10 (depends on the choice of the user 
-| Do you prefer having X bedrooms and a terrace or X+1 bedrooms and no terrace ? | NbBedroom, terrace | If second choice, +10% on NbBedroom 
-| Do you prefer having X bathrooms and Wifi or X+1 bathroom and no Wifi ? | NbBathroom, wifi | If second choice, +10% on NbBathrooms
-| Do you care most about FloorArea, Price per night or Features ? | FloorArea, PricePerNight, wifi, tele, terrace | If choice 1: +10% on FloorArea +
-If choice 2: + 10% on PricePerNight +
-If choice 3 : +5% on wifi, tele and terrace
-|====================
-
-Here we have further improvement, which need more development of the application
-
-.More improvements
-[width="100%",options="header"]
-|====================
-| Question | Types of answer 
-| Where are you looking to move? | Address field 
-| Where do you work or go to school? +
-We’ll show you how far the apartment is to the places you go to the most.  | Address field 
-| Do you need to park? | Checkboxes: no, garage, parking space 
-| Do you care most about (same question but with more features):  | Air conditioning, garden, dishwasher, washing machine, elevator…
-|====================
-
-Here, X and Y are the default value set in the profile selected.
-The new argument pricePerSquareMeters gives an idea of how much the user is able to pay per square meters. It has no weight, but is a bonus or malus to add in the apartment subjective value. +
-This bonus or malus will be calculated as followed
-
-`pricePerSquareMeters – pricePerNightOfTheApartmentConsidered/surfaceOfTheApartmentConsidered`
-
-Then, it will be add in the method `getSubjectiveValue()` on the class `ApartmentValueFunction`. In the return statement, we will have to add the result of the previous computation in order to modify the subjective value of an apartment. This guarantee that the apartment offer has a good rapport `price/floorArea` knowing the preference of the user.
-
-=== Profile selection interface
-
-image::it4/it4-gui-select-profile.png?raw=true[GUI - Select profile]
-
-The goal of these new interfaces is to allow the user to select a profile that suits him. +
-By choosing such a profil, he will initiate his `ValueFunction`. +
-For the moment, the `ValueFunction` is setted with binary or random values that does not correspond to any user.
-
-When the user has selected his profile, the `ValueFunction` is initiated following the presetted values corresponding to the profile he choosed. +
-The parameters of the `ValueFunction` have their weight tweaked thanks to the user answers to the form. +
-It is important to notice that the questions answered to the user are adapted to its profile with the variables X and Y that you can see on the following picture. +
-We use these variables to get the most relevance from each answer. +
-A student would never need a fourth bedroom and will always chose the terrace over the extra bedroom on the question bellow for example.
-
-image::it4/it4-gui-questions.png?raw=true[GUI - questions]
-
-=== Q-learning
-
-In this part, we will talk about how to improve the value function of the project by using an artificial intelligence. +
-We documented ourselves to know which method could be the best to reach our goal. We found the q-learning method. 
-
-The q-learning method is a method of reinforcement learning. The letter `q` is for quality. The q-learning method consists in creating a function `Q(s,a)` where s is the state of the application at a given moment and a an action that will be made. +
-Most of the time, this function is used to determine the maximum gain a person can have. +
-For example, we have a map and a user. The user needs to move around the map to earn recompenses. The q-learning algorithm will help the user to know how to move around the map in order to earn maximum recompenses. 
-
-In our case, we can adapt this method. The state of the application will be the apartments shown to the users. The action of the user will be to choose an apartment to show to the user. Considering the apartment pick, the application will have to adapt the list of apartments shown to the user. Our goal is that the application will see which characteristics have the apartments picked and try to improve the lists shown by showing to the user similar apartments. We can also see which characteristics have the apartments which are not chosen. +
-This will allow us to determine a pattern of the apartments chosen to offer a better list of apartments. Here, the recompenses will be when the user says he likes the apartment shown. It will allow us to modify the value function according to the taste of the user. This will imply to change the application to allow a user to say if he likes or not an apartment and so create a GUI (or at first using the console).
-
-If we follow strictly the definition of q-learning, we should use the following function `Q`: 
-
-image:https://render.githubusercontent.com/render/math?math=Q(s,a)=(1-\alpha)\:Q(s,a)%2B\alpha(r%2B\beta\:max(Q(s%27,a%27))[Q(s,a) = (1- alpha)Q(s,a) + alpha (r + beta max(Q(s',a')))] +
-(the maximum is according to a’)
-
-Where: 
-
-* `s` is the state of the application at the instant `t` 
-* `a` is the chosen action 
-* `r` the recompense received by the user for doing action `a` +
-`α` a number between 0 and 1 called the learning factor: it determines how important the new information calculated is. After seeing a few implementations of q-learning, it is usually set at 0,1. 
-* `β` a number between 0 and 1 the discount factor a: it determines if the user prefers having a huge reward now or not, considering the fact that having a smaller reward now can allow the user to have a bigger one after. It is not pertinent to use this number here, as we are not following a path here. 
-* `s'` the new state of the application
-* `a'` the action realised 
-
-For us, the idea is not to use strictly this algorithm but to inspire ourselves of it in order to implement a reinforcement learning. Indeed, this algorithm lies on quite complex mathematical theory (as see link:http://researchers.lille.inria.fr/~munos/master-mva/lecture02.pdf[here]) and it might be complicated for us to define correctly all parameters.
-
-But we can think here of implementing a recompense system like in the q-learning. An idea can be to create a score for each apartment. If the characteristics of an apartment match quite well the value function, the algorithm will give a bonus for choosing it. +
-On the contrary, it can give a malus if the apartment chosen doesn’t match the characteristic. At each iteration, the value function is improve considering if the user likes or not the apartment shown. For the first iteration, the apartment will be pick according to the profile of the user.
-
-Using this principle, we can define a Q function as followed:
-
-image:https://render.githubusercontent.com/render/math?math=Q(s,a)%20=%200,9%20\times%20Q(s,a)%20%2B%200,1%20\times%20(bonusMalus%20%2B%20max(Q(s,a%27)))[Q(s,a) = 0,9 * Q(s,a) + 0,1 * (bonusMalus + max(Q(s,a’)))]
-
-Where:
-
-* `Q(s,a)` is the score of the current apartment with weighting (considering that we chose `α = 0,1`).
-* `BonusMalus` is the recompense given if the apartment matches the value function or not (maybe `-1` if the apartment doesn’t match at all the value function and `+1` if it matches exactly. I think we need to define that precisely if this option can be implemented)
-* `Q(s,a')` is the score if we had chosen the apartment `a'`
-
-Before calculating this `Q` function, we need to actualise the value function (by asking if the user likes or not the apartment shown).
-
-The score of an apartment can be computed as followed:  
-
-[source]
-----
-number of criteria matching the value function / total number of criteria 
-----
-
-This computation of a Q function is just an example. It must be thought more if the q-learning solution is chosen.
-
-== Main classes
-
-=== AskOpinionForUtility
+==== AskOpinionForUtility
 
 For the moment, all questions are in French and unwell worded. One objective could be translating these sentences and reformulating them to precisely guide the user.
 
 The preference function must also be improved in order to present the user more pertinent results.
 
-=== LayoutApartmentGUI
+In reality, this GUI will no longer be used. It would be good to delete it
+
+==== LayoutApartmentGUI
 
 The field which displays details is too small to read them completely. A first improvement could be to enlarge them.
 
 We could also add more details such as the number of bathrooms or if the apartment has Wi-Fi or television. In fact, we could add all the information we have on the apartment.
 
-=== CreateApartmentGUI
+==== CreateApartmentGUI
 
 In order to improve and make this window match with our ambitions, we might add or modify the following fields (non-exhaustive list):
 
 * Improve the « design » of some error messages. Actually, some of them are cut and we can only see the beginning of the displayed message. 
 * Add options. For example, we can add a field which indicates if the apartment is furnished or not or if the animals are allowed in the building.
 
-This class belongs to the link:packages.adoc#gui[`apartments.gui`] package and extends the class `FormApartmentGUI`.
+=== Others (given by oliviercailloux)
+
+* Remanufacture `DistanceSubway`, which mixes two features (address and contact request) and duplicates the creation of the request object. Integrate Localizer into this reflection. For example, you would need a `localize(String)` method: LatLng instead of `getGeometryLocation`.
+* Cleaner reading of the Google API key via a file or an environment variable in KeyManager (see link:https://github.com/Dauphine-MIDO/plaquette-MIDO-json[plaquette-MIDO-json])
+* Be able to visualize in a GUI the apartments from the JSON file
+* Generate graphs and statistics of available apartments (average surface, median, number of apartments per surface, ...)
+* Ability to save and read user value function parameters in a JSON file
+* Reflect on the treatment of the value "distance from popular places": the user must be able to specify these places; the calculation must be specified ... (Consider a `TimedApartment` which also contains a "time" value, depending on the user's location.)
+* Display of the comparison of two apartments from the user's point of view: partial values ​​and total value (allowing him to understand why an apartment has a lower value)
+* Visualize the value function of the user: on a criterion, graph of the partial value function on this criterion
+* The `PartialValueFunction` interface should not extend Function. Simplify the creators of `PartialValueFunction` using lambda expressions.
+* Reduce redundancy in `ApartmentValueFunction`, simplify so that you can easily modify the criteria
+* Think about a pleasant and useful display of different apartments of great value for the user, in order to allow him to explore interesting alternatives
+* Allow the user to modify their value function and see the result at the same time on the relative value of two apartments
+* Investigate the possibility and propose a way to merge (parts of) this project with link:https://github.com/oliviercailloux/decision-uta-method/[decision-uta-method], which offers a generic way of dealing with a decision problem with criteria and alternatives (alternatives are the objects among which the user wants to choose, for example apartments, cars…)
+* Use this project to find a value function that suits the user, given apartment comparisons
+* Web server that returns (or displays) the value function of the user, stored in its own directory
+* Generalize other parts of this project so that they run on a server
+* Alerts: the user indicates how useful he is to be alerted when an interesting new advertisement appears.
+* Extracting ads from pap
+* The user can indicate by seeing the list of announcements that he prefers one announcement over another, while it is classified under the second. The system then allows him to correct its usefulness so that the classification in question is restored.
+* Reading and writing an apartment in and from an XML file, in link:https://github.com/xmcda-modular/[xmcda-modular] format. See link:https://github.com/xmcda-modular/schema[example].
+- Reading and writing of a `PartialValueFunction` in xmcda-modular format.
+- Reading and writing of an `ApartmentValueFunction` in xmcda-modular format.
+* GUI which shows the user all the apartments available in a directory given as a parameter, sorted by user utility (provided in a file in the same directory). The user can click on an apartment and see its description.
+
+== Don't consider
+
+* Q-learning (like Tinder) : Too complicated
+* Reinforcement learning : Too compicated
 
 [%hardbreaks]
 link:#toc[⬆ back to top]
