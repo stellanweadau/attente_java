@@ -211,6 +211,7 @@ public class LayoutApartmentGUI {
         });
 
     shell.setSize(1180, 550);
+    this.centerShellInWindow();
     shell.open();
     LOGGER.info("The Shell was opened with success.");
 
