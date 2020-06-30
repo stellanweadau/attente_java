@@ -74,7 +74,7 @@ class LinearAVFTests {
   @Test
   void testLinearAVF() {
     assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.0001);
-    linearAVF.setWeight(Criterion.TELE, 5d);
+    linearAVF.withWeight(Criterion.TELE, 5d);
     assertEquals(10d, linearAVF.getWeight(Criterion.TELE));
     assertEquals(0.5, linearAVF.getSubjectiveValue(a), 0.00001);
   }
@@ -82,9 +82,9 @@ class LinearAVFTests {
   /** Function to test the adaptation to the subjective value weight of a criteria */
   @Test
   void testAdaptWeight() {
-    assertThrows(IllegalArgumentException.class, () -> linearAVF.setWeight(Criterion.TELE, -1d));
+    assertThrows(IllegalArgumentException.class, () -> linearAVF.withWeight(Criterion.TELE, -1d));
 
-    assertEquals(0.5506, linearAVF.setWeight(Criterion.TELE, 0.8).getSubjectiveValue(a), 0.0001);
-    assertEquals(0.5524, linearAVF.setWeight(Criterion.TELE, 0.5).getSubjectiveValue(a), 0.0001);
+    assertEquals(0.5506, linearAVF.withWeight(Criterion.TELE, 0.8).getSubjectiveValue(a), 0.0001);
+    assertEquals(0.5524, linearAVF.withWeight(Criterion.TELE, 0.5).getSubjectiveValue(a), 0.0001);
   }
 }

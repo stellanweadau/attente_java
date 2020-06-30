@@ -197,7 +197,7 @@ public class LinearAVF {
    * @param value the value we want to assign at this criterion
    * @return an object LinearAVF with the modified criterion
    */
-  public LinearAVF setWeight(Criterion criterion, double value) {
+  public LinearAVF withWeight(Criterion criterion, double value) {
     checkArgument(value >= 0, "The given weight cannot be negative");
     LinearAVF avf = cloneLinearAVF();
     avf.setWeightSubjectiveValue(criterion, value);
@@ -273,7 +273,7 @@ public class LinearAVF {
    *     want to obtain
    * @return the <code>BooleanValueFunction</code> associated with <code>criterion</code>
    */
-  private BooleanValueFunction getInternalBooleanValueFunction(Criterion criterion) {
+  public BooleanValueFunction getInternalBooleanValueFunction(Criterion criterion) {
     checkNotNull(criterion);
     checkArgument(criterion.hasBooleanDomain());
     return this.booleanValueFunctions.get(criterion);
@@ -287,7 +287,7 @@ public class LinearAVF {
    *     want to obtain
    * @return the <code>LinearValueFunction</code> associated with <code>criterion</code>
    */
-  private LinearValueFunction getInternalLinearValueFunction(Criterion criterion) {
+  public LinearValueFunction getInternalLinearValueFunction(Criterion criterion) {
     checkNotNull(criterion);
     checkArgument(criterion.isDoubleCrescent());
     return this.linearValueFunctions.get(criterion);
@@ -301,7 +301,7 @@ public class LinearAVF {
    *     that we want to obtain
    * @return the <code>ReversedLinearValueFunction</code> associated with <code>criterion</code>
    */
-  private ReversedLinearValueFunction getInternalReversedLinearValueFunction(Criterion criterion) {
+  public ReversedLinearValueFunction getInternalReversedLinearValueFunction(Criterion criterion) {
     checkNotNull(criterion);
     checkArgument(criterion.isDoubleDecrease());
     return this.reversedValueFunctions.get(criterion);
@@ -341,7 +341,7 @@ public class LinearAVF {
      * @return the current instance of Builder
      */
     public Builder setWeight(Criterion criterion, double value) {
-      this.toBuild = toBuild.setWeight(criterion, value);
+      this.toBuild = toBuild.withWeight(criterion, value);
       return this;
     }
 
