@@ -39,8 +39,7 @@ public class ProfileTests {
     }
 
     profileBuilder.setLinearAVF(lavf);
-    // TODO CHANGER CETTE VERIFICATION
-    profileBuilder.setQuestionPriceArea(null);
+    profileBuilder.setQuestionPriceArea(QuestionPriceArea.create(50, 100));
     profile = profileBuilder.build();
   }
 

@@ -18,8 +18,7 @@ public class Profile {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Profile.class);
   private LinearAVF linearAvf;
-  // TODO UTILISER ET CHANGER LE TYPE POUR QUESTIONPRICEAREA
-  private Object questionPriceArea = null;
+  private QuestionPriceArea questionPriceArea;
 
   /**
    * rangesMap is a map of criterion containing the ranges of all the different range for these
@@ -63,11 +62,10 @@ public class Profile {
   /**
    * Getter for the QuestionPriceArea
    *
-   * @return the Question for the price and the floor area TODO CHANGER LE TYPE DE RETOUR ET
-   *     UTILISER LA VARIABLE STOCKÉE
+   * @return the Question for the price and the floor area
    */
-  public Object getQuestionPriceArea() {
-    return null;
+  public QuestionPriceArea getQuestionPriceArea() {
+    return questionPriceArea;
   }
 
   public static Profile create(EnumMap<Criterion, Range<Double>> rangesMap, LinearAVF linearAvf) {
@@ -192,7 +190,7 @@ public class Profile {
         this.toBuild.checkWeightInRange(c, toBuild.linearAvf);
       }
 
-      // TODO checkNotNull(toBuild.getQuestionPriceArea());
+      checkNotNull(toBuild.getQuestionPriceArea());
       return toBuild;
     }
 
@@ -219,9 +217,8 @@ public class Profile {
       return this;
     }
 
-    // TODO : USE QUESTIONPRICEAREA
-    public Builder setQuestionPriceArea(Object o) {
-      this.toBuild.questionPriceArea = o;
+    public Builder setQuestionPriceArea(QuestionPriceArea q) {
+      this.toBuild.questionPriceArea = q;
       return this;
     }
   }

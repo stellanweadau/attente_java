@@ -98,9 +98,6 @@ public class AskOpinionForUtility {
     avf = avf.withSubjectiveValueWeight(Criterion.WIFI, 0);
 
     LOGGER.info("Begining the Layout.");
-
-    //    LayoutApartmentGUI lay = new LayoutApartmentGUI(avf);
-    //    lay.displayAppart();
   }
 
   /**
