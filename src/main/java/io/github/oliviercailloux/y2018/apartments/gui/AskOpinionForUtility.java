@@ -63,14 +63,13 @@ public class AskOpinionForUtility {
   }
 
   /**
-   * This is the main function, it asks Questions , AdaptAnswers and then displays the list of
-   * Apartments
+   * This is the main function, it asks Questions , AdaptAnswers and then displays the list of Apartments
    *
    * @param args
    * @throws IllegalAccessException for the DisplayApps function
-   * @throws IOException
+   * @throws IOException,IllegalAccessException
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IllegalAccessException, IOException{
 
     AskOpinionForUtility asker = new AskOpinionForUtility();
     ApartmentValueFunction avf = new ApartmentValueFunction();
