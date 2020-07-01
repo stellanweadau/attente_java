@@ -17,8 +17,8 @@ import org.slf4j.LoggerFactory;
 public class Profile {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Profile.class);
-
   private LinearAVF linearAvf;
+  private QuestionPriceArea questionPriceArea;
 
   /**
    * rangesMap is a map of criterion containing the ranges of all the different range for these
@@ -57,6 +57,15 @@ public class Profile {
         rangesMap.keySet().containsAll(Arrays.asList(Criterion.values())),
         "rangesMap must have all Criterion");
     this.rangesMap = rangesMap;
+  }
+
+  /**
+   * Getter for the QuestionPriceArea
+   *
+   * @return the Question for the price and the floor area
+   */
+  public QuestionPriceArea getQuestionPriceArea() {
+    return questionPriceArea;
   }
 
   public static Profile create(EnumMap<Criterion, Range<Double>> rangesMap, LinearAVF linearAvf) {
@@ -180,6 +189,8 @@ public class Profile {
         checkNotNull(toBuild.getWeightRange(c), c.name() + " is null");
         this.toBuild.checkWeightInRange(c, toBuild.linearAvf);
       }
+
+      checkNotNull(toBuild.getQuestionPriceArea());
       return toBuild;
     }
 
@@ -203,6 +214,11 @@ public class Profile {
 
     public Builder setWeightRange(Criterion crit, Range<Double> value) {
       this.toBuild.setWeightRange(crit, value);
+      return this;
+    }
+
+    public Builder setQuestionPriceArea(QuestionPriceArea q) {
+      this.toBuild.questionPriceArea = q;
       return this;
     }
   }

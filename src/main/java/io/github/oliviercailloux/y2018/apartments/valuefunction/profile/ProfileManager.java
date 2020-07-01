@@ -4,7 +4,9 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 import io.github.oliviercailloux.y2018.apartments.valuefunction.Criterion;
 import io.github.oliviercailloux.y2018.apartments.valuefunction.LinearAVF;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ProfileManager {
 
@@ -48,6 +50,7 @@ public class ProfileManager {
             .setWeightRange(Criterion.NB_BATHROOMS, 0d, 10d)
             .setWeightRange(Criterion.NB_MIN_NIGHT, 0d, 10d)
             .setWeightRange(Criterion.FLOOR_AREA_TERRACE, 0d, 10d)
+            .setQuestionPriceArea(QuestionPriceArea.create(15, 5))
             .setLinearAVF(studentLavf)
             .build();
 
@@ -86,6 +89,7 @@ public class ProfileManager {
             .setWeightRange(Criterion.NB_BATHROOMS, 2.5d, 22.5d)
             .setWeightRange(Criterion.NB_MIN_NIGHT, 0d, 10d)
             .setWeightRange(Criterion.FLOOR_AREA_TERRACE, 0d, 10d)
+            .setQuestionPriceArea(QuestionPriceArea.create(100, 10))
             .setLinearAVF(familyLavf)
             .build();
 
@@ -124,6 +128,7 @@ public class ProfileManager {
             .setWeightRange(Criterion.NB_BATHROOMS, 0d, 11d)
             .setWeightRange(Criterion.NB_MIN_NIGHT, 0d, 11d)
             .setWeightRange(Criterion.FLOOR_AREA_TERRACE, 0d, 11d)
+            .setQuestionPriceArea(QuestionPriceArea.create(90, 15))
             .setLinearAVF(coupleLavf)
             .build();
 
@@ -143,5 +148,9 @@ public class ProfileManager {
   public Profile getProfile(ProfileType profType) {
     checkArgument(mapProfile.containsKey(profType));
     return getInstance().mapProfile.get(profType);
+  }
+
+  public List<ProfileType> getAvailableProfileTypes() {
+    return new ArrayList<>(mapProfile.keySet());
   }
 }

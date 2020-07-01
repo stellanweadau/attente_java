@@ -13,10 +13,6 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Shell;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +25,7 @@ import org.slf4j.LoggerFactory;
  */
 public class AskOpinionForUtility {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(CreateApartmentGUI.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(AskOpinionForUtility.class);
 
   /** To move for questions */
   int pointer = 0;
@@ -67,14 +63,13 @@ public class AskOpinionForUtility {
   }
 
   /**
-   * This is the main function, it asks Questions , AdaptAnswers and then displays the list of
-   * Apartements
+   * This is the main function, it asks Questions , AdaptAnswers and then displays the list of Apartments
    *
    * @param args
    * @throws IllegalAccessException for the DisplayApps function
-   * @throws IOException
+   * @throws IOException,IllegalAccessException
    */
-  public static void main(String[] args) throws IllegalAccessException, IOException {
+  public static void main(String[] args) throws IllegalAccessException, IOException{
 
     AskOpinionForUtility asker = new AskOpinionForUtility();
     ApartmentValueFunction avf = new ApartmentValueFunction();
@@ -102,9 +97,6 @@ public class AskOpinionForUtility {
     avf = avf.withSubjectiveValueWeight(Criterion.WIFI, 0);
 
     LOGGER.info("Begining the Layout.");
-
-    LayoutApartmentGUI lay = new LayoutApartmentGUI(avf);
-    lay.displayAppart();
   }
 
   /**
@@ -117,7 +109,7 @@ public class AskOpinionForUtility {
     choix1.add(Criterion.TELE);
     choix2.add(Criterion.PRICE_PER_NIGHT);
 
-    shell.setText("Votre avis nous intéresse ;)");
+    shell.setText("Profile selection - Questions");
     shell.setLayout(new GridLayout());
     shell.setBounds(500, 500, 600, 500);
 
@@ -149,6 +141,7 @@ public class AskOpinionForUtility {
     // the listener when we click on finish
     Listener finishlistener =
         new Listener() {
+          @Override
           public void handleEvent(Event event) {
 
             Preconditions.checkArgument(
@@ -221,6 +214,7 @@ public class AskOpinionForUtility {
     Label boo = new Label(shell, SWT.NULL);
     pressedButton.addSelectionListener(
         new SelectionAdapter() {
+          @Override
           public void widgetSelected(SelectionEvent e) {
             Button source1 = (Button) e.widget;
 
@@ -262,13 +256,13 @@ public class AskOpinionForUtility {
   public ApartmentValueFunction adaptAnswers(ApartmentValueFunction avf) {
 
     // we collect the answers on the minimums and we adapt the utility of the user
-    avf = avf.adaptBounds(Criterion.NB_BEDROOMS, nbBedMin, true);
-    avf = avf.adaptBounds(Criterion.FLOOR_AREA, surfaceMin, true);
+    avf.adaptBounds(Criterion.NB_BEDROOMS, nbBedMin, true);
+    avf.adaptBounds(Criterion.FLOOR_AREA, surfaceMin, true);
 
     // we collect the answer of the first Question and adapt the utility of the user
     if (moreImportantAttributes.get(0).equals("WIFI")
         && lessImportantAttributes.get(0).equals("TERRACE")) {
-      avf = avf.adaptWeight(Criterion.WIFI, Criterion.TERRACE);
+      avf.adaptWeight(Criterion.WIFI, Criterion.TERRACE);
     } else {
       avf.adaptWeight(Criterion.TERRACE, Criterion.WIFI);
     }
@@ -277,9 +271,9 @@ public class AskOpinionForUtility {
     // user
     if (moreImportantAttributes.get(1).equals("TELE")
         && lessImportantAttributes.get(1).equals("PRICE_PER_NIGHT low")) {
-      avf = avf.adaptWeight(Criterion.TELE, Criterion.PRICE_PER_NIGHT);
+      avf.adaptWeight(Criterion.TELE, Criterion.PRICE_PER_NIGHT);
     } else {
-      avf = avf.adaptWeight(Criterion.PRICE_PER_NIGHT, Criterion.TELE);
+      avf.adaptWeight(Criterion.PRICE_PER_NIGHT, Criterion.TELE);
     }
 
     return avf;

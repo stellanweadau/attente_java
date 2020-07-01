@@ -39,7 +39,7 @@ public class ProfileTests {
     }
 
     profileBuilder.setLinearAVF(lavf);
-
+    profileBuilder.setQuestionPriceArea(QuestionPriceArea.create(50, 100));
     profile = profileBuilder.build();
   }
 
