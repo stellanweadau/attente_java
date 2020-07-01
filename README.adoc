@@ -245,6 +245,8 @@ Moreover, you can also use link:https://git-scm.com/book/en/v2/Customizing-Git-G
         <a href="#" title="Ideas">🤔</a>
         <a href="#" title="Design">🎨</a>
         <a href="#" title="Data">🔣</a>
+        <a href="#" title="Project Management">📆</a>
+        <a href="#" title="Answering Questions">💬</a>
         <a href="https://github.com/av1m/apartments/pulls?q=is%3Apr+reviewed-by%3MorganeFt" title="Reviewed Pull Requests">👀</a>
         <a href="#" title="Tests">⚠️</a>
     </td>
@@ -293,6 +295,7 @@ Moreover, you can also use link:https://git-scm.com/book/en/v2/Customizing-Git-G
         <a href="https://github.com/av1m/Apartments/pulls/av1m" title="Bug reports">🐛</a>
         <a href="#" title="Data">🔣</a>
         <a href="https://github.com/av1m/Apartments/commit/fadab79e465f36ad562e7ecec569871ddf0d3452" title="Project Management">📆</a>
+        <a href="#" title="Answering Questions">💬</a>
         <a href="https://github.com/av1m/Apartments/tree/master/.github/workflows" title="Infrastructure">🚇</a>
         <a href="https://github.com/av1m/apartments/pulls?q=is%3Apr+reviewed-by%3av1m" title="Reviewed Pull Requests">👀</a>
         <a href="#" title="Tests">⚠️</a>
