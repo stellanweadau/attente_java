@@ -1,9 +1,0 @@
-cache:
-  directories:
-    - $HOME/.m2
-dist: xenial
-git:
-  depth: 1
-jdk:
-  - openjdk11
-language: java
