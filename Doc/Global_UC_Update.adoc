@@ -10,3 +10,8 @@ For the Tenant :
 * The Tenant does not calculate Public Transportation, it is done by the application so he does not interact with it. Hence why we deleted it.
 * The tenant sees a list of apartments. And this list uses preferences he chose. Hence our changes. The precedent one was incoherent. The main goal of the tenant is to see a list of apartments, not to filter.
 * The Tenant will also be able to compare two apartments (with a Spider Plot) of his choice (cf Seif & Stellan 's work).
+
+For the Manager side :
+
+* Our goal is to regroup the main interaction under "Manage Apartments". From here, the Manager can decide to Create a new apartment, or Modify an existing one, hence the "generalize".
+* This allow us to have a better overall understanding of the Global UC. Informations such as "Generate apartments randomly" seemed unnecessary in this diagram.
