@@ -108,30 +108,19 @@
           </packagedElement>
         </packagedElement>
         <packagedElement xmi:type="uml:Package" xmi:id="_RYNkoGrCEeqG6NsufvOKcA" name="UCD_UseApartmentRentalPlatform">
-          <packagedElement xmi:type="uml:Interaction" xmi:id="_TPRn4GS3EeqTxqp8Bmjtjg" name="GlobalUseCase" useCase="_mgI0kGS3EeqTxqp8Bmjtjg _jJ2OMGS3EeqTxqp8Bmjtjg _gumTwGS3EeqTxqp8Bmjtjg _fIsF4GS3EeqTxqp8Bmjtjg _czcs0GS3EeqTxqp8Bmjtjg _oYvPkIS6EeuzdriENguzmA _rB2xcIS7EeuzdriENguzmA">
+          <packagedElement xmi:type="uml:Interaction" xmi:id="_TPRn4GS3EeqTxqp8Bmjtjg" name="GlobalUseCase" useCase="_fIsF4GS3EeqTxqp8Bmjtjg _czcs0GS3EeqTxqp8Bmjtjg _oYvPkIS6EeuzdriENguzmA _rB2xcIS7EeuzdriENguzmA _C9OZ4ITGEeugKObI8pgoGA _K5JuoITGEeugKObI8pgoGA _Io6xYITGEeugKObI8pgoGA">
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_czcs0GS3EeqTxqp8Bmjtjg" name="See apartments' list" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_fIsF4GS3EeqTxqp8Bmjtjg" name="Set preferences" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_gumTwGS3EeqTxqp8Bmjtjg" name="Modify an apartment" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_jJ2OMGS3EeqTxqp8Bmjtjg" name="Generate apartments randomly" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_mgI0kGS3EeqTxqp8Bmjtjg" name="Create an apartment" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
-              <include xmi:type="uml:Include" xmi:id="_9kIpwGS5EeqTxqp8Bmjtjg" addition="_jJ2OMGS3EeqTxqp8Bmjtjg"/>
-            </ownedUseCase>
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_oYvPkIS6EeuzdriENguzmA" name="Generate database statistics" visibility="public" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_rB2xcIS7EeuzdriENguzmA" name="Compare 2 apartments" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_iUIIcINfEeuKr4GKR77Z1g" name="Modify apartment" memberEnd="_iUJ9ooNfEeuKr4GKR77Z1g _iUKksINfEeuKr4GKR77Z1g">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_iUJ9oINfEeuKr4GKR77Z1g" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_iUJ9oYNfEeuKr4GKR77Z1g" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_iUJ9ooNfEeuKr4GKR77Z1g" name="modify an apartment" type="_gumTwGS3EeqTxqp8Bmjtjg" association="_iUIIcINfEeuKr4GKR77Z1g"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_iUKksINfEeuKr4GKR77Z1g" name="manager" type="_nMIOoINeEeuKr4GKR77Z1g" association="_iUIIcINfEeuKr4GKR77Z1g"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_k8gf8INfEeuKr4GKR77Z1g" name="create apartments" memberEnd="_k8hHAoNfEeuKr4GKR77Z1g _k8huEINfEeuKr4GKR77Z1g">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_k8hHAINfEeuKr4GKR77Z1g" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_k8hHAYNfEeuKr4GKR77Z1g" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_k8hHAoNfEeuKr4GKR77Z1g" name="create an apartment" type="_mgI0kGS3EeqTxqp8Bmjtjg" association="_k8gf8INfEeuKr4GKR77Z1g"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_k8huEINfEeuKr4GKR77Z1g" name="manager" type="_nMIOoINeEeuKr4GKR77Z1g" association="_k8gf8INfEeuKr4GKR77Z1g"/>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_C9OZ4ITGEeugKObI8pgoGA" name="Manage apartments" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
+              <ownedUseCase xmi:type="uml:UseCase" xmi:id="_Io6xYITGEeugKObI8pgoGA" name="Modify an apartment" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
+                <generalization xmi:type="uml:Generalization" xmi:id="_Y38kwITGEeugKObI8pgoGA" general="_C9OZ4ITGEeugKObI8pgoGA"/>
+              </ownedUseCase>
+              <ownedUseCase xmi:type="uml:UseCase" xmi:id="_K5JuoITGEeugKObI8pgoGA" name="Create an apartment" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
+                <generalization xmi:type="uml:Generalization" xmi:id="_VTUAYITGEeugKObI8pgoGA" general="_C9OZ4ITGEeugKObI8pgoGA"/>
+              </ownedUseCase>
+            </ownedUseCase>
           </packagedElement>
           <packagedElement xmi:type="uml:Association" xmi:id="_EXv0QINfEeuKr4GKR77Z1g" name="Filter apartments" memberEnd="_EXyQgINfEeuKr4GKR77Z1g _EXy3kINfEeuKr4GKR77Z1g">
             <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EXxpcINfEeuKr4GKR77Z1g" source="org.eclipse.papyrus">
@@ -146,6 +135,13 @@
             </eAnnotations>
             <ownedEnd xmi:type="uml:Property" xmi:id="_5gch8YS7EeuzdriENguzmA" name="compare 2 apartments" type="_rB2xcIS7EeuzdriENguzmA" association="_5gb64IS7EeuzdriENguzmA"/>
             <ownedEnd xmi:type="uml:Property" xmi:id="_5gch8oS7EeuzdriENguzmA" name="tenant" type="_jkbIIINeEeuKr4GKR77Z1g" association="_5gb64IS7EeuzdriENguzmA"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_do2vAITGEeugKObI8pgoGA" name="Manage apartments" visibility="public" memberEnd="_do5LQITGEeugKObI8pgoGA _do5yUITGEeugKObI8pgoGA">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_do39IITGEeugKObI8pgoGA" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_do4kMITGEeugKObI8pgoGA" key="nature" value="UML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_do5LQITGEeugKObI8pgoGA" name="manager" type="_nMIOoINeEeuKr4GKR77Z1g" association="_do2vAITGEeugKObI8pgoGA"/>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_do5yUITGEeugKObI8pgoGA" name="manage apartments" type="_C9OZ4ITGEeugKObI8pgoGA" association="_do2vAITGEeugKObI8pgoGA"/>
           </packagedElement>
           <packagedElement xmi:type="uml:Association" xmi:id="_TeQkQIS7EeuzdriENguzmA" name="generate statistics" memberEnd="_TeTAgIS7EeuzdriENguzmA _TeTAgYS7EeuzdriENguzmA">
             <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TeRyYIS7EeuzdriENguzmA" source="org.eclipse.papyrus">
@@ -183,8 +179,8 @@
             <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_X-9WEJmcEeq6ILxwStZo1A" name="Message31ReceiveEvent" covered="_kOSU4IP_Eeqm2vrDV_e-Xg" message="_X-8H8JmcEeq6ILxwStZo1A"/>
             <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_eNf78JmcEeq6ILxwStZo1A" name="Message34SendEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_eNfU4JmcEeq6ILxwStZo1A"/>
             <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_eNgjAJmcEeq6ILxwStZo1A" name="Message34ReceiveEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg" message="_eNfU4JmcEeq6ILxwStZo1A"/>
-            <fragment xmi:type="uml:CombinedFragment" xmi:id="_H5WkcJmcEeq6ILxwStZo1A" name="Ask for preferences questions" covered="_YSClUIP_Eeqm2vrDV_e-Xg _i8tzwIQJEeqyTrq5oKlx7g _W2rBQIQEEeqyTrq5oKlx7g _kOSU4IP_Eeqm2vrDV_e-Xg" interactionOperator="loop">
-              <operand xmi:type="uml:InteractionOperand" xmi:id="_H5dSIJmcEeq6ILxwStZo1A" name="InteractionOperand0" covered="_YSClUIP_Eeqm2vrDV_e-Xg _i8tzwIQJEeqyTrq5oKlx7g _W2rBQIQEEeqyTrq5oKlx7g _kOSU4IP_Eeqm2vrDV_e-Xg">
+            <fragment xmi:type="uml:CombinedFragment" xmi:id="_H5WkcJmcEeq6ILxwStZo1A" name="Ask for preferences questions" covered="_YSClUIP_Eeqm2vrDV_e-Xg _W2rBQIQEEeqyTrq5oKlx7g _i8tzwIQJEeqyTrq5oKlx7g _kOSU4IP_Eeqm2vrDV_e-Xg" interactionOperator="loop">
+              <operand xmi:type="uml:InteractionOperand" xmi:id="_H5dSIJmcEeq6ILxwStZo1A" name="InteractionOperand0" covered="_YSClUIP_Eeqm2vrDV_e-Xg _W2rBQIQEEeqyTrq5oKlx7g _i8tzwIQJEeqyTrq5oKlx7g _kOSU4IP_Eeqm2vrDV_e-Xg">
                 <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_k6v3EJmcEeq6ILxwStZo1A" name="Message37SendEvent" covered="_YSClUIP_Eeqm2vrDV_e-Xg" message="_k6vQAJmcEeq6ILxwStZo1A"/>
                 <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_k6weIJmcEeq6ILxwStZo1A" name="Message37ReceiveEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_k6vQAJmcEeq6ILxwStZo1A"/>
                 <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_t222cJmcEeq6ILxwStZo1A" name="Message38SendEvent" covered="_W2rBQIQEEeqyTrq5oKlx7g" message="_t21BQJmcEeq6ILxwStZo1A"/>
