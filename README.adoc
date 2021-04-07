@@ -1,3 +1,8 @@
+= Apartments
+:gitHubUserName: oliviercailloux
+:groupId: io.github.{gitHubUserName}
+:artifactId: apartments
+:repository: Apartments
 A Java project developed by students during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in https://dauphine.psl.eu/formations/licences/informatique-des-organisations/l3-methodes-informatiques-appliquees-pour-la-gestion-des-entreprises[L3 MIAGE Alternance]).
 
 == Iteration 1
@@ -83,4 +88,5 @@ Creating a Spider-Plot class diagram that shows how it's possible to compare two
 
 * Include Spider-plot in existing diagram(s) : Improvement of the current class diagram(s) linked to the use/display of the spider-plot.
 * Create a Use Case diagram AdaptValueFonction : Find new questions (more relevant) and ask them to the potential tenant. Use the answers to recalculate the value fonction to have more relevant score. And a documentation that explains how we will integer the new answers in the calculation of the value fonction.
-* API_key : Search through Internet the API_key.txt that enables to launch the distance class program between two places.
+* Update/Modification of the sequence diagramme IDvaluefonction created in the second iteration. 
+* API_key : Search through Internet and create a documentation on how to create a key.
