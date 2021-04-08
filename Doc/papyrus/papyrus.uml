@@ -109,10 +109,18 @@
         </packagedElement>
         <packagedElement xmi:type="uml:Package" xmi:id="_RYNkoGrCEeqG6NsufvOKcA" name="UCD_UseApartmentRentalPlatform">
           <packagedElement xmi:type="uml:Interaction" xmi:id="_TPRn4GS3EeqTxqp8Bmjtjg" name="GlobalUseCase" useCase="_fIsF4GS3EeqTxqp8Bmjtjg _czcs0GS3EeqTxqp8Bmjtjg _oYvPkIS6EeuzdriENguzmA _rB2xcIS7EeuzdriENguzmA _C9OZ4ITGEeugKObI8pgoGA _K5JuoITGEeugKObI8pgoGA _Io6xYITGEeugKObI8pgoGA">
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_czcs0GS3EeqTxqp8Bmjtjg" name="See apartments' list" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_uAj5cJifEeupk9giDf-csg" name="Constraint" constrainedElement="_fcu5EJieEeupk9giDf-csg _TeQkQIS7EeuzdriENguzmA">
+              <specification xmi:type="uml:LiteralString" xmi:id="__VsuYJihEeupk9giDf-csg" name="XOR" value="XOR"/>
+            </ownedRule>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_czcs0GS3EeqTxqp8Bmjtjg" name="See ordered apartments' list" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
+              <extend xmi:type="uml:Extend" xmi:id="_V-gEEJieEeupk9giDf-csg" extendedCase="_rB2xcIS7EeuzdriENguzmA" extensionLocation="_V-hSMJieEeupk9giDf-csg"/>
+            </ownedUseCase>
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_fIsF4GS3EeqTxqp8Bmjtjg" name="Set preferences" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_oYvPkIS6EeuzdriENguzmA" name="Generate database statistics" visibility="public" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_rB2xcIS7EeuzdriENguzmA" name="Compare 2 apartments" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_rB2xcIS7EeuzdriENguzmA" name="Compare 2 apartments using SpiderPlot" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
+              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_vVR7kJidEeupk9giDf-csg" name="ExtensionPoint1"/>
+              <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_V-hSMJieEeupk9giDf-csg" name="ExtensionPoint2"/>
+            </ownedUseCase>
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_C9OZ4ITGEeugKObI8pgoGA" name="Manage apartments" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
               <ownedUseCase xmi:type="uml:UseCase" xmi:id="_Io6xYITGEeugKObI8pgoGA" name="Modify an apartment" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
                 <generalization xmi:type="uml:Generalization" xmi:id="_Y38kwITGEeugKObI8pgoGA" general="_C9OZ4ITGEeugKObI8pgoGA"/>
@@ -121,36 +129,29 @@
                 <generalization xmi:type="uml:Generalization" xmi:id="_VTUAYITGEeugKObI8pgoGA" general="_C9OZ4ITGEeugKObI8pgoGA"/>
               </ownedUseCase>
             </ownedUseCase>
+            <nestedClassifier xmi:type="uml:Association" xmi:id="_EXv0QINfEeuKr4GKR77Z1g" name="set preferences" memberEnd="_EXyQgINfEeuKr4GKR77Z1g _EXy3kINfEeuKr4GKR77Z1g">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EXxpcINfEeuKr4GKR77Z1g" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_EXxpcYNfEeuKr4GKR77Z1g" key="nature" value="UML_Nature"/>
+              </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_EXyQgINfEeuKr4GKR77Z1g" name="filter the apartments" type="_fIsF4GS3EeqTxqp8Bmjtjg" association="_EXv0QINfEeuKr4GKR77Z1g"/>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_EXy3kINfEeuKr4GKR77Z1g" name="tenant" type="_jkbIIINeEeuKr4GKR77Z1g" association="_EXv0QINfEeuKr4GKR77Z1g"/>
+            </nestedClassifier>
+            <nestedClassifier xmi:type="uml:Association" xmi:id="_do2vAITGEeugKObI8pgoGA" name="Manage apartments" visibility="public" memberEnd="_do5LQITGEeugKObI8pgoGA _do5yUITGEeugKObI8pgoGA">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_do39IITGEeugKObI8pgoGA" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_do4kMITGEeugKObI8pgoGA" key="nature" value="UML_Nature"/>
+              </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_do5LQITGEeugKObI8pgoGA" name="manager" type="_nMIOoINeEeuKr4GKR77Z1g" association="_do2vAITGEeugKObI8pgoGA"/>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_do5yUITGEeugKObI8pgoGA" name="manage apartments" type="_C9OZ4ITGEeugKObI8pgoGA" association="_do2vAITGEeugKObI8pgoGA"/>
+            </nestedClassifier>
+            <nestedClassifier xmi:type="uml:Association" xmi:id="_TeQkQIS7EeuzdriENguzmA" name="generate statistics" memberEnd="_TeTAgIS7EeuzdriENguzmA _TeTAgYS7EeuzdriENguzmA">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TeRyYIS7EeuzdriENguzmA" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TeSZcIS7EeuzdriENguzmA" key="nature" value="UML_Nature"/>
+              </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_TeTAgIS7EeuzdriENguzmA" name="generate database statistics" type="_oYvPkIS6EeuzdriENguzmA" association="_TeQkQIS7EeuzdriENguzmA"/>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_TeTAgYS7EeuzdriENguzmA" name="tenant" type="_jkbIIINeEeuKr4GKR77Z1g" association="_TeQkQIS7EeuzdriENguzmA"/>
+            </nestedClassifier>
           </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_EXv0QINfEeuKr4GKR77Z1g" name="Filter apartments" memberEnd="_EXyQgINfEeuKr4GKR77Z1g _EXy3kINfEeuKr4GKR77Z1g">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EXxpcINfEeuKr4GKR77Z1g" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_EXxpcYNfEeuKr4GKR77Z1g" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_EXyQgINfEeuKr4GKR77Z1g" name="filter the apartments" type="_czcs0GS3EeqTxqp8Bmjtjg" association="_EXv0QINfEeuKr4GKR77Z1g"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_EXy3kINfEeuKr4GKR77Z1g" name="tenant" type="_jkbIIINeEeuKr4GKR77Z1g" association="_EXv0QINfEeuKr4GKR77Z1g"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_5gb64IS7EeuzdriENguzmA" name="compare 2 apartments" memberEnd="_5gch8YS7EeuzdriENguzmA _5gch8oS7EeuzdriENguzmA">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5gb64YS7EeuzdriENguzmA" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5gch8IS7EeuzdriENguzmA" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_5gch8YS7EeuzdriENguzmA" name="compare 2 apartments" type="_rB2xcIS7EeuzdriENguzmA" association="_5gb64IS7EeuzdriENguzmA"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_5gch8oS7EeuzdriENguzmA" name="tenant" type="_jkbIIINeEeuKr4GKR77Z1g" association="_5gb64IS7EeuzdriENguzmA"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_do2vAITGEeugKObI8pgoGA" name="Manage apartments" visibility="public" memberEnd="_do5LQITGEeugKObI8pgoGA _do5yUITGEeugKObI8pgoGA">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_do39IITGEeugKObI8pgoGA" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_do4kMITGEeugKObI8pgoGA" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_do5LQITGEeugKObI8pgoGA" name="manager" type="_nMIOoINeEeuKr4GKR77Z1g" association="_do2vAITGEeugKObI8pgoGA"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_do5yUITGEeugKObI8pgoGA" name="manage apartments" type="_C9OZ4ITGEeugKObI8pgoGA" association="_do2vAITGEeugKObI8pgoGA"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_TeQkQIS7EeuzdriENguzmA" name="generate statistics" memberEnd="_TeTAgIS7EeuzdriENguzmA _TeTAgYS7EeuzdriENguzmA">
-            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TeRyYIS7EeuzdriENguzmA" source="org.eclipse.papyrus">
-              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TeSZcIS7EeuzdriENguzmA" key="nature" value="UML_Nature"/>
-            </eAnnotations>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_TeTAgIS7EeuzdriENguzmA" name="generate database statistics" type="_oYvPkIS6EeuzdriENguzmA" association="_TeQkQIS7EeuzdriENguzmA"/>
-            <ownedEnd xmi:type="uml:Property" xmi:id="_TeTAgYS7EeuzdriENguzmA" name="tenant" type="_jkbIIINeEeuKr4GKR77Z1g" association="_TeQkQIS7EeuzdriENguzmA"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Usage" xmi:id="_xW5LcIS8EeuzdriENguzmA" name="set preferences" client="_fIsF4GS3EeqTxqp8Bmjtjg" supplier="_czcs0GS3EeqTxqp8Bmjtjg"/>
+          <packagedElement xmi:type="uml:Usage" xmi:id="_Q9OikJieEeupk9giDf-csg" name="see apartments" client="_fIsF4GS3EeqTxqp8Bmjtjg" supplier="_czcs0GS3EeqTxqp8Bmjtjg"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Actor" xmi:id="_jkbIIINeEeuKr4GKR77Z1g" name="Tenant"/>
         <packagedElement xmi:type="uml:Actor" xmi:id="_nMIOoINeEeuKr4GKR77Z1g" name="Manager"/>
@@ -5493,6 +5494,13 @@
           </packagedElement>
         </packagedElement>
       </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_fcu5EJieEeupk9giDf-csg" name="GenerateForManager" memberEnd="_fogEMJieEeupk9giDf-csg _fohSUJieEeupk9giDf-csg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_foQMkJieEeupk9giDf-csg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_foRasJieEeupk9giDf-csg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_fogEMJieEeupk9giDf-csg" name="manager" type="_nMIOoINeEeuKr4GKR77Z1g" association="_fcu5EJieEeupk9giDf-csg"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_fohSUJieEeupk9giDf-csg" name="generate database statistics" type="_oYvPkIS6EeuzdriENguzmA" association="_fcu5EJieEeupk9giDf-csg"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_ZAfQAF--EeqAAb4u4HLI7w">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZAkIgF--EeqAAb4u4HLI7w" source="http://www.eclipse.org/uml2/2.0.0/UML">
