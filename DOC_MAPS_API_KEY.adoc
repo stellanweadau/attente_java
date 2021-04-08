@@ -1,0 +1,20 @@
+= Apartments
+:gitHubUserName: oliviercailloux
+:repository: Apartments
+
+== What is the MAPS API KEY :
+
+* It allows you to use the Google MAPS API to calculate the distance between two places. For example, in DistanceSubway Class, you need it.
+
+
+== Create API KEY :
+
+* Go to https://console.cloud.google.com/ and connect to your gmail account (You must have one).
+
+* On the top left, create a new project. Once it is created, click on it.
+
+* Go to Api and Services, and then Credentials. Click on "Create credentials, API Key".
+
+* You now have created a Key. Go to API Library and enable "Distance Matrix API, Geocoding API, Directions API, Maps Elevation API, Maps JavaScript API, Roads API".
+
+* Go back to credentials, click on the key, and restrain it to only those API.
