@@ -1,6 +1,4 @@
-= Apartments
-:gitHubUserName: oliviercailloux
-:repository: Apartments
+
 
 == Global UC Diagram:
 
