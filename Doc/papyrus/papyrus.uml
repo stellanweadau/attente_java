@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:PapyrusJava="http://www.eclipse.org/papyrus/PapyrusJava/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <uml:Model xmi:id="_7UbegF-3EeqrPafii89tnw" name="papyrus">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_7ZRiQF-3EeqrPafii89tnw">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
@@ -5562,75 +5562,32 @@
       <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
     </profileApplication>
   </uml:Model>
-  <PapyrusJava:External xmi:id="_ZC1ZYF--EeqAAb4u4HLI7w" name="org.slf4j.Logger" base_Classifier="_ZCxH8F--EeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_1OD5AF--EeqAAb4u4HLI7w" base_BehavioralFeature="_1OCq4F--EeqAAb4u4HLI7w"/>
-  <PapyrusJava:StaticClassifier xmi:id="_1P6TIF--EeqAAb4u4HLI7w" base_Classifier="_1P324F--EeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_1P_LoF--EeqAAb4u4HLI7w" base_BehavioralFeature="_1P99gF--EeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_1QHugF--EeqAAb4u4HLI7w" name="Builder" base_Classifier="_1P324F--EeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_ESDnMF_AEeqAAb4u4HLI7w" name="com.google.maps.GeoApiContext" base_Classifier="_ESCZE1_AEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_ESH4oF_AEeqAAb4u4HLI7w" name="com.google.maps.model.LatLng" base_Classifier="_ESE1Ul_AEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_ESP0cF_AEeqAAb4u4HLI7w" base_BehavioralFeature="_ESOmUF_AEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_EScowF_AEeqAAb4u4HLI7w" base_BehavioralFeature="_ESZlcF_AEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_VKI-oF_AEeqAAb4u4HLI7w" name="Display" base_Classifier="_VKHJcF_AEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_VKOeMF_AEeqAAb4u4HLI7w" name="Shell" base_Classifier="_VKMpAF_AEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_VKVy8F_AEeqAAb4u4HLI7w" name="List" base_Classifier="_VKT9wF_AEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_VKcgoF_AEeqAAb4u4HLI7w" base_BehavioralFeature="_VKbSgF_AEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_VKoG0F_AEeqAAb4u4HLI7w" base_BehavioralFeature="_VKlqkF_AEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_VK2wUF_AEeqAAb4u4HLI7w" name="Label" base_Classifier="_VK1iMF_AEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_VLBvcF_AEeqAAb4u4HLI7w" name="IllegalAccessException" base_Classifier="_VK_6QV_AEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_VLS1MF_AEeqAAb4u4HLI7w" base_BehavioralFeature="_VLRnEF_AEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_VQQNsF_AEeqAAb4u4HLI7w" base_BehavioralFeature="_VQO_kl_AEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_VQsSkF_AEeqAAb4u4HLI7w" base_BehavioralFeature="_VQqdYF_AEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_tRs0gF_AEeqAAb4u4HLI7w" name="com.google.maps.errors.ApiException" base_Classifier="_tRrmYl_AEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_tRxF8F_AEeqAAb4u4HLI7w" name="InterruptedException" base_Classifier="_tRv30F_AEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_4qcOYF_AEeqAAb4u4HLI7w" base_BehavioralFeature="_4qbAQl_AEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_4qf4wF_AEeqAAb4u4HLI7w" name="NumberFormatException" base_Classifier="_4qfRsF_AEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_G6ksIF_BEeqAAb4u4HLI7w" base_BehavioralFeature="_G6jeAl_BEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_72_0gF_BEeqAAb4u4HLI7w" base_BehavioralFeature="_729_UF_BEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_73HJQF_BEeqAAb4u4HLI7w" name="IllegalArgumentException" base_Classifier="_73FUEF_BEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_74UqMF_BEeqAAb4u4HLI7w" name="Criterion" base_Classifier="__lgUEGVHEeq0U8CyxWHVBA"/>
-  <PapyrusJava:External xmi:id="_74dNEF_BEeqAAb4u4HLI7w" name="LinearValueFunction" base_Classifier="_74b-8F_BEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_8uiggF_BEeqAAb4u4HLI7w" base_BehavioralFeature="_8uhSYl_BEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_MMW5YF_CEeqAAb4u4HLI7w" base_BehavioralFeature="_MMUdIF_CEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_MMZVoF_CEeqAAb4u4HLI7w" name="T" base_Classifier="_MMYHgV_CEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_SVXfAF_CEeqAAb4u4HLI7w" name="com.google.common.collect.ImmutableMap" base_Classifier="_SVWQ4l_CEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_SVZ7QF_CEeqAAb4u4HLI7w" base_BehavioralFeature="_SVYtIl_CEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_SVgB4F_CEeqAAb4u4HLI7w" base_BehavioralFeature="_SVeMsF_CEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_SVmIgF_CEeqAAb4u4HLI7w" base_BehavioralFeature="_SVjsQF_CEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_WnZU4F_CEeqAAb4u4HLI7w" name="com.google.common.collect.Range" base_Classifier="_WnYGwF_CEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_WnbxIF_CEeqAAb4u4HLI7w" base_BehavioralFeature="_WnajAl_CEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_WngCkF_CEeqAAb4u4HLI7w" name="IllegalStateException" base_Classifier="_Wne0cF_CEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="_d1_pkF_CEeqAAb4u4HLI7w" name="com.google.common.collect.ImmutableSortedMap" base_Classifier="_d1-bcV_CEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_d2BewF_CEeqAAb4u4HLI7w" base_BehavioralFeature="_d2A3sl_CEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_oHK-cF_CEeqAAb4u4HLI7w" base_BehavioralFeature="_oHJwUl_CEeqAAb4u4HLI7w"/>
   <standard:Create xmi:id="_pKMhsF_CEeqAAb4u4HLI7w" base_BehavioralFeature="_pKLTkV_CEeqAAb4u4HLI7w"/>
-  <PapyrusJava:External xmi:id="__DwOUHEuEeq9ooUMj2JdaQ" name="java.lang.Object" base_Classifier="__DK_gHEuEeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="__FGSIHEuEeq9ooUMj2JdaQ" name="java.lang.String" base_Classifier="__EuesHEuEeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="_i_xJsHEvEeq9ooUMj2JdaQ" name="java.util.Random" base_Classifier="_i_F0QnEvEeq9ooUMj2JdaQ"/>
   <standard:Create xmi:id="_jAWYgHEvEeq9ooUMj2JdaQ" base_BehavioralFeature="_i_3QUnEvEeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="_Y3GTwHEzEeq9ooUMj2JdaQ" name="org.eclipse.swt.widgets.Display" base_Classifier="_Y29J0HEzEeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="_Y3swsHEzEeq9ooUMj2JdaQ" name="org.eclipse.swt.widgets.Shell" base_Classifier="_Y3Z1wXEzEeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="_Y4OVIHEzEeq9ooUMj2JdaQ" name="org.eclipse.swt.widgets.Text" base_Classifier="_Y316oHEzEeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="_Y6DhIHEzEeq9ooUMj2JdaQ" name="org.eclipse.swt.widgets.Button" base_Classifier="_Y5lnEHEzEeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="_Y7cBMHEzEeq9ooUMj2JdaQ" name="java.io.File" base_Classifier="_Y7Pz8XEzEeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="_Y71p0HEzEeq9ooUMj2JdaQ" name="org.eclipse.swt.widgets.Composite" base_Classifier="_Y7o1gHEzEeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="_Y8yFAHEzEeq9ooUMj2JdaQ" name="org.eclipse.swt.graphics.Color" base_Classifier="_Y8g_QHEzEeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="_jhgykHE0Eeq9ooUMj2JdaQ" name="java.io.IOException" base_Classifier="_jhOesHE0Eeq9ooUMj2JdaQ"/>
-  <PapyrusJava:External xmi:id="_OJDP4Jj3EeqYP-aD6j0wRg" name="java.nio.file.Path" base_Classifier="_OIsDgJj3EeqYP-aD6j0wRg"/>
-  <PapyrusJava:External xmi:id="_UB1WQJj5EeqYP-aD6j0wRg" name="javax.ws.rs.ClientErrorException" base_Classifier="_UBwdwpj5EeqYP-aD6j0wRg"/>
-  <PapyrusJava:External xmi:id="_UCuuIJj5EeqYP-aD6j0wRg" name="javax.ws.rs.client.Client" base_Classifier="_UCsR4Jj5EeqYP-aD6j0wRg"/>
-  <PapyrusJava:External xmi:id="_UCxxcJj5EeqYP-aD6j0wRg" name="java.util.Optional" base_Classifier="_UCvVMJj5EeqYP-aD6j0wRg"/>
-  <PapyrusJava:Final xmi:id="_UC_z4Jj5EeqYP-aD6j0wRg" base_Parameter="_UC0NsZj5EeqYP-aD6j0wRg"/>
-  <PapyrusJava:Final xmi:id="_UDQ5oJj5EeqYP-aD6j0wRg" base_Parameter="_UDBpEJj5EeqYP-aD6j0wRg"/>
-  <PapyrusJava:External xmi:id="_t0W5IJj5EeqYP-aD6j0wRg" name="java.lang.Exception" base_Classifier="_t0QygJj5EeqYP-aD6j0wRg"/>
   <standard:Create xmi:id="_t0ol8Jj5EeqYP-aD6j0wRg" base_BehavioralFeature="_t0gqIJj5EeqYP-aD6j0wRg"/>
-  <PapyrusJava:External xmi:id="_t1I8QJj5EeqYP-aD6j0wRg" name="java.lang.Throwable" base_Classifier="_t0_yUJj5EeqYP-aD6j0wRg"/>
   <standard:Create xmi:id="_t1apEJj5EeqYP-aD6j0wRg" base_BehavioralFeature="_t1TUUJj5EeqYP-aD6j0wRg"/>
-  <PapyrusJava:External xmi:id="_epRg4JwsEeqGkeU796yVmw" name="io.github.oliviercailloux.y2018.apartments.apartment.Apartment.Builder" base_Classifier="_epPEoJwsEeqGkeU796yVmw"/>
   <standard:Create xmi:id="_sCoSMJwtEeqGkeU796yVmw" base_BehavioralFeature="_sCkAwZwtEeqGkeU796yVmw"/>
-  <PapyrusJava:StaticClassifier xmi:id="_sCu_4JwtEeqGkeU796yVmw" base_Classifier="_sCqHYJwtEeqGkeU796yVmw"/>
   <standard:Create xmi:id="_sC0fcJwtEeqGkeU796yVmw" base_BehavioralFeature="_sCyqQJwtEeqGkeU796yVmw"/>
   <standard:Create xmi:id="_yp1HUJw7EeqGkeU796yVmw" base_BehavioralFeature="_yptykJw7EeqGkeU796yVmw"/>
   <standard:Create xmi:id="_q_ZnYJ2dEeq5UMfZ1C8e7g" base_BehavioralFeature="_q_Uu4J2dEeq5UMfZ1C8e7g"/>
-  <PapyrusJava:External xmi:id="_rBX9UJ2dEeq5UMfZ1C8e7g" name="io.github.oliviercailloux.y2018.apartments.apartment.Apartment" base_Classifier="_rBU6AJ2dEeq5UMfZ1C8e7g"/>
 </xmi:XMI>
