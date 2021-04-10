@@ -11,3 +11,28 @@ A Java project developed by students during the https://github.com/oliviercaillo
 The code is hereby published under the MIT License, with the permission of the contributors.
 
 The project documentation is link:Doc/README.adoc[here].
+
+== Iteration 1 Java
+
+[IMPORTANT]
+====
+Deadline : **April the 18th,** 2021.
+This file only explains the distribution of work between the different teams and indicates their realization.
+==== 
+NOTE : The main objective of this interation is to provide the entire spider-plot implementation for the project Apartments. The tasks are very complementary. As a matter of fact, they will collaborate in order to improve the avancement of the group work.
+
+=== Stellan WEA & Ewen MARGUET
+
+* SM/PO for this iteration.
+* Split the work between the two groups.
+* Organize meetings throughout the week to have a better understanding of the project.
+* Made sure everybody is on board and respected the deadline.
+
+=== Seif BOUGUERRA & Samy MEGUENI
+
+* Implement the new package named `Plot` with its first class named `SpiderPlot` that is able to generate a spider-plot and to display it to the tenant.
+
+=== Maïrame NDIAYE & Abla MIKOU
+
+* Add a button able to launch the spider-plot implementation for the two chosen apartments.
+* Find a way to get the criterias' subjective value of the selected apartments once the user has chosen two apartments and has clicked on the button. All subjective values (according to a given criteria) for each apartment are stored in a dataset that will be used as the parameter for the spider-plot implementation.
