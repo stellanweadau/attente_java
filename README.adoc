@@ -4,6 +4,7 @@
 :artifactId: apartments
 :repository: Apartments
 A Java project developed by students during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in https://dauphine.psl.eu/formations/licences/informatique-des-organisations/l3-methodes-informatiques-appliquees-pour-la-gestion-des-entreprises[L3 MIAGE Alternance]).
+image:https://github.com/{gitHubUserName}/{repository}/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master["Build Status", link="https://github.com/{gitHubUserName}/{repository}/actions"]
 
 == Iteration 1
 
@@ -89,3 +90,7 @@ Creating a Spider-Plot class diagram that shows how it's possible to compare two
 * Update GlobalUseCase : integration of the Spider Plot and make changes as mentioned by the prof.
 * Update/Modification of the sequence diagramme IDvaluefonction created in the second iteration. 
 * API_key : Search through Internet and create a documentation on how to create a key.
+
+The project documentation is link:Doc/README.adoc[here].
+
+The code is hereby published under the MIT License, with the permission of the contributors.
