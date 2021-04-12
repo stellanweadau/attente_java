@@ -35,15 +35,10 @@ image::diagram-usecase-global.png?raw=true[Global use case diagram]
 * Orange bubbles mean this is yet to be implemented. 
 +
 
-  Tenant has two main interactions
+  Tenant has two main interactions.
   Firstly, Tenant must set his preferences in order to get an ordered list of apartments.
   Based on the foregoing, he can compare two apartments using the SpiderPlot.
   Secondly, Tenant can generate global database statistics.
-+
-
-  Manager has two interactions
-  First, he manages apartments. This means he either creates a new apartment or modifies an existing one.
-  Second, Manager can also generate global databse statistics
 +
   a XOR constraint is implemented with the Generate database statistics. 
   It means that this use case is used ONLY by one person at the time.
