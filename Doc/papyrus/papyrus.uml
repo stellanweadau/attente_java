@@ -112,9 +112,7 @@
             <ownedRule xmi:type="uml:Constraint" xmi:id="_uAj5cJifEeupk9giDf-csg" name="Constraint" constrainedElement="_fcu5EJieEeupk9giDf-csg _TeQkQIS7EeuzdriENguzmA">
               <specification xmi:type="uml:LiteralString" xmi:id="__VsuYJihEeupk9giDf-csg" name="XOR" value="XOR"/>
             </ownedRule>
-            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_czcs0GS3EeqTxqp8Bmjtjg" name="See ordered apartments' list" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
-              <extend xmi:type="uml:Extend" xmi:id="_V-gEEJieEeupk9giDf-csg" extendedCase="_rB2xcIS7EeuzdriENguzmA" extensionLocation="_V-hSMJieEeupk9giDf-csg"/>
-            </ownedUseCase>
+            <ownedUseCase xmi:type="uml:UseCase" xmi:id="_czcs0GS3EeqTxqp8Bmjtjg" name="See ordered apartments' list" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_fIsF4GS3EeqTxqp8Bmjtjg" name="Set preferences" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_oYvPkIS6EeuzdriENguzmA" name="Generate database statistics" visibility="public" subject="_TPRn4GS3EeqTxqp8Bmjtjg"/>
             <ownedUseCase xmi:type="uml:UseCase" xmi:id="_rB2xcIS7EeuzdriENguzmA" name="Compare 2 apartments using SpiderPlot" subject="_TPRn4GS3EeqTxqp8Bmjtjg">
@@ -129,13 +127,12 @@
                 <generalization xmi:type="uml:Generalization" xmi:id="_VTUAYITGEeugKObI8pgoGA" general="_C9OZ4ITGEeugKObI8pgoGA"/>
               </ownedUseCase>
             </ownedUseCase>
-            <nestedClassifier xmi:type="uml:Association" xmi:id="_EXv0QINfEeuKr4GKR77Z1g" name="set preferences" memberEnd="_EXyQgINfEeuKr4GKR77Z1g _EXy3kINfEeuKr4GKR77Z1g">
-              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EXxpcINfEeuKr4GKR77Z1g" source="org.eclipse.papyrus">
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_EXxpcYNfEeuKr4GKR77Z1g" key="nature" value="UML_Nature"/>
-              </eAnnotations>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_EXyQgINfEeuKr4GKR77Z1g" name="filter the apartments" type="_fIsF4GS3EeqTxqp8Bmjtjg" association="_EXv0QINfEeuKr4GKR77Z1g"/>
-              <ownedEnd xmi:type="uml:Property" xmi:id="_EXy3kINfEeuKr4GKR77Z1g" name="tenant" type="_jkbIIINeEeuKr4GKR77Z1g" association="_EXv0QINfEeuKr4GKR77Z1g"/>
-            </nestedClassifier>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_MeDusJu2Eeuncr8gT3yhGw" name="" type="_rB2xcIS7EeuzdriENguzmA"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_NbCUUJu2Eeuncr8gT3yhGw" name="" type="_rB2xcIS7EeuzdriENguzmA"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_QgGn0Ju2Eeuncr8gT3yhGw" name="" type="_fIsF4GS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SkSGEJu2Eeuncr8gT3yhGw" name="" type="_czcs0GS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_VJf00Ju2Eeuncr8gT3yhGw" name="" type="_czcs0GS3EeqTxqp8Bmjtjg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_ViQTEJu2Eeuncr8gT3yhGw" name="" type="_czcs0GS3EeqTxqp8Bmjtjg"/>
             <nestedClassifier xmi:type="uml:Association" xmi:id="_do2vAITGEeugKObI8pgoGA" name="Manage apartments" visibility="public" memberEnd="_do5LQITGEeugKObI8pgoGA _do5yUITGEeugKObI8pgoGA">
               <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_do39IITGEeugKObI8pgoGA" source="org.eclipse.papyrus">
                 <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_do4kMITGEeugKObI8pgoGA" key="nature" value="UML_Nature"/>
@@ -5501,6 +5498,20 @@
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_fogEMJieEeupk9giDf-csg" name="manager" type="_nMIOoINeEeuKr4GKR77Z1g" association="_fcu5EJieEeupk9giDf-csg"/>
       <ownedEnd xmi:type="uml:Property" xmi:id="_fohSUJieEeupk9giDf-csg" name="generate database statistics" type="_oYvPkIS6EeuzdriENguzmA" association="_fcu5EJieEeupk9giDf-csg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_E7XZUJu2Eeuncr8gT3yhGw" name="compare appartments" memberEnd="_E78oIJu2Eeuncr8gT3yhGw _E792QJu2Eeuncr8gT3yhGw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_E749wJu2Eeuncr8gT3yhGw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_E76L4Ju2Eeuncr8gT3yhGw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_E78oIJu2Eeuncr8gT3yhGw" name="compare 2 apartments using spiderplot" type="_rB2xcIS7EeuzdriENguzmA" association="_E7XZUJu2Eeuncr8gT3yhGw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_E792QJu2Eeuncr8gT3yhGw" name="tenant" type="_jkbIIINeEeuKr4GKR77Z1g" association="_E7XZUJu2Eeuncr8gT3yhGw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_XdBWoJu2Eeuncr8gT3yhGw" name="see apartments'" memberEnd="_XdFBAZu2Eeuncr8gT3yhGw _XdFoEJu2Eeuncr8gT3yhGw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XdEZ8Ju2Eeuncr8gT3yhGw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_XdFBAJu2Eeuncr8gT3yhGw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_XdFBAZu2Eeuncr8gT3yhGw" name="see ordered apartments' list" type="_czcs0GS3EeqTxqp8Bmjtjg" association="_XdBWoJu2Eeuncr8gT3yhGw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_XdFoEJu2Eeuncr8gT3yhGw" name="tenant" type="_jkbIIINeEeuKr4GKR77Z1g" association="_XdBWoJu2Eeuncr8gT3yhGw"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_ZAfQAF--EeqAAb4u4HLI7w">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZAkIgF--EeqAAb4u4HLI7w" source="http://www.eclipse.org/uml2/2.0.0/UML">
