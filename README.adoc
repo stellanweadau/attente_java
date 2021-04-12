@@ -29,10 +29,15 @@ NOTE : The main objective of this interation is to provide the entire spider-plo
 * Made sure everybody is on board and respected the deadline.
 
 === Seif BOUGUERRA & Samy MEGUENI
+ 
+Spider-plot
 
 * Implement the new package named `Plot` with its first class named `SpiderPlot` that is able to generate a spider-plot and to display it to the tenant.
+* Create JUnit tests that can test the efficacy of the methods of the `Spiderplot` class.
 
 === Maïrame NDIAYE & Abla MIKOU
 
-* Add a button able to launch the spider-plot implementation for the two chosen apartments.
-* Find a way to get the criterias' subjective value of the selected apartments once the user has chosen two apartments and has clicked on the button. All subjective values (according to a given criteria) for each apartment are stored in a dataset that will be used as the parameter for the spider-plot implementation.
+Distance between two places
+
+* Ask the user his/her favorite places in order to propose the more appropriate apartments list.
+* Create a subjective value for the distance criteria in order to insert this parameter in the `ValueFunction`.
