@@ -33,7 +33,6 @@ NOTE : The main objective of this interation is to provide the entire spider-plo
 Spider-plot
 
 * Implement the new package named `Plot` with its first class named `SpiderPlot` that is able to generate a spider-plot and to display it to the tenant.
-* Create JUnit tests that can test the efficacy of the methods of the `Spiderplot` class.
 
 === Maïrame NDIAYE & Abla MIKOU
 
