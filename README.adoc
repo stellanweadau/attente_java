@@ -117,7 +117,16 @@ Distance between two places
 * Modify the `ValueDistFunction` class : this value function must be based on the apartments' features instead of the tenant's interested places.
 * Add the distance as a criteria and integrate it in the calculation of the apartement value function.
 
+* Explanation of the Spider-Plot : Creating a Sequence Diagram that explains the interactions between the user, the value function and the GUI. Writing a better version of the spider-plot's documentation provided at iteration two.
+Creating a Spider-Plot class diagram that shows how it's possible to compare two apartments according to the values returned from the ValueFunction.
+* Repair Stereotypes (not really a real task) : Trying to remove this dialogue box with opening the eclipse project.
 
-The code is hereby published under the MIT License, with the permission of the contributors.
+=== Maïrame NDIAYE & Ewen MARGUET
+
+* Update GlobalUseCase : integration of the Spider Plot and make changes as mentioned by the prof.
+* Update/Modification of the sequence diagramme IDvaluefonction created in the second iteration. 
+* API_key : Search through Internet and create a documentation on how to create a key.
 
 The project documentation is link:Doc/README.adoc[here].
+
+The code is hereby published under the MIT License, with the permission of the contributors.
