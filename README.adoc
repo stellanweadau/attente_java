@@ -123,7 +123,7 @@ Spider-plot
 ==== Maïrame NDIAYE & Abla MIKOU
 
 * Modify the `ValueDistFunction` class : this value function must be based on the apartments' features instead of the tenant's interested places.
-* Add the distance as a criteria and integrate it in the calculation of the apartement value function.
+* Add the distance as a criteria and integrate it in the calculation of the apartement value function. **(prerequisites : Modify `ValueDistFunction` class)**
 
 The project documentation is link:Doc/README.adoc[here].
 
