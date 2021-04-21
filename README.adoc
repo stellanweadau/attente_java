@@ -125,6 +125,33 @@ Spider-plot
 * Modify the `ValueDistFunction` class : this value function must be based on the apartments' features instead of the tenant's interested places.
 * Add the distance as a criteria and integrate it in the calculation of the apartement value function. **(prerequisites : Modify `ValueDistFunction` class)**
 
+
+==== Iteration 2 Java 
+
+[IMPORTANT]
+====
+Deadline : **May the 9th,** 2021.
+This file only explains the distribution of work between the different teams and indicates their realization.
+==== 
+
+
+==== Maïrame NDIAYE & Seifeddine BOUGUERRA
+
+* SM/PO for this iteration.
+* Split the work between the two groups.
+* Organize meetings throughout the week to have a better understanding of the project.
+* Made sure everybody is on board and respected the deadline.
+
+==== Ewen MARGUET & Abla MIKOU
+
+* Continue the distance criteria integration according to the profesor's advice.
+* Reduce the redundancies in the `AVF` class to simplify the code.
+
+==== Stellan WEA & Samy MEGUENI
+
+* According the profesor's advice, continue the implementation of the `SpiderPlot` class. 
+
+
 The project documentation is link:Doc/README.adoc[here].
 
 The code is hereby published under the MIT License, with the permission of the contributors.
