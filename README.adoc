@@ -96,6 +96,34 @@ Creating a Spider-Plot class diagram that shows how it's possible to compare two
 * Update/Modification of the sequence diagramme IDvaluefonction created in the second iteration. 
 * API_key : Search through Internet and create a documentation on how to create a key.
 
+=== Itération 4 UML
+
+[IMPORTANT]
+====
+Deadline : **May the 3rd, ** 2021
+This file only explains the distribution of work between the different teams and indicates their realization.
+====
+
+==== Samy MEGUENI & Ewen MARGUET
+
+* SM/PO for this iteration.
+* Have split the work between the two groups.
+* Organized meetings throughout the week to have a better understanding of the project.
+* Made sure everybody was on board and respected the deadline.
+
+==== Abla MIKOU & Seif BOUGUERRA
+
+* Update the `DC_SpiderPlot` by integrating it in the `diagram-package-global`. (PR #20)
+* Integrate the distance criterias (implementation currently in java) in all the diagrams.
+* Explain how the `ValueDistFunction` is used in the `AVF` by modifying existing diagrams.
+
+
+==== Maïrame NDIAYE & Stellan WEA
+
+* Update the `SD_ValueFunction` diagram of the previous iteration according to the professor's advices. (PR #19)
+* Modify the `SD_Distance` diagram from the second iteration according to the professor's advices and our 
+fresh vision of the distance code. (PR #11)
+
 == Iterations Java 2021
 
 ==== Iteration 1 Java 
