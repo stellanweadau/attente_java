@@ -1,3 +1,8 @@
+:toc:
+:toc-placement!:
+:toclevels: 4
+:toclevels: 1
+
 = Apartments
 :gitHubUserName: oliviercailloux
 :groupId: io.github.{gitHubUserName}
@@ -6,7 +11,11 @@
 A Java project developed by students during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in https://dauphine.psl.eu/formations/licences/informatique-des-organisations/l3-methodes-informatiques-appliquees-pour-la-gestion-des-entreprises[L3 MIAGE Alternance]).
 image:https://github.com/{gitHubUserName}/{repository}/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master["Build Status", link="https://github.com/{gitHubUserName}/{repository}/actions"]
 
-== Iteration 1
+toc::[]
+
+== Itérations UML 2021
+
+=== Iteration 1 UML
 
 [IMPORTANT]
 ====
@@ -15,27 +24,25 @@ This file only explains the distribution of work between the different teams and
 ====
 NOTE: The first iteration does not reflect the countless hours we spent understanding the projet. We aim, in the future, to create a global doc in order to explain the main functionalities and how to manage it.
 
-=== Ewen MARGUET & Seif BOUGUERRA
+==== Ewen MARGUET & Seif BOUGUERRA
 
  * SM/PO for this iteration.
  * Have split the work between the two groups.
  * Organized meetings throughout the week to have a better understanding of the projet.
  * Made sure everybody was on board and respected the deadline.
 
-=== Maïrame NDIAYE & Abla MIKOU
+==== Maïrame NDIAYE & Abla MIKOU
 
  * Modifying the global_UC Diagram: Deleting unrelated information, and changing the main interaction with Tenant.
  * Adding a generalized interaction "Manage apartments" with two sub-divisions.
  * Modifying CreateApartmentsUC: Changing the whole diagram. Renaming it ManageApartments, with two main use cases "Modify Apartment" and "Create Apartment". Then, adding "Modify fields" and interactions.
 
-=== Samy MEGUENI & Stellan WEA
+==== Samy MEGUENI & Stellan WEA
 
  * Modifying AskOpinionForUtilityUC: Merge different parameters, modify title to a more efficient name. Transform "extends" in "uses"
  * Create SetPreferencesUC: Adding different interaction with the main user (Tenant)
 
-== Itération 2
-
-
+=== Itération 2 UML
 
 [IMPORTANT]
 ====
@@ -43,28 +50,26 @@ Deadline : **March the 14th,** 2021
 This file only explains the distribution of work between the different teams and indicates their realization.
 ====
 
-=== Maïrame NDIAYE & Samy MEGUENI
+==== Maïrame NDIAYE & Samy MEGUENI
 
 * SM/PO for this iteration.
 * Have split the work between the two groups.
 * Organized meetings throughout the week to have a better understanding of the projet.
 * Made sure everybody was on board and respected the deadline.
 
-=== Ewen MARGUET & Abla MIKOU
+==== Ewen MARGUET & Abla MIKOU
 
 * Creating ID_valuefonction : Creating an Interaction Diagram of valuefunction. As long as the user wants to put criterias, we compute again the appartments' score and show the best appartments corresponding to this criterias. **(prerequisites : correcting conceptual errors in model)**
 * Correcting conceptual errors in model. **(mandatory first step)**
 * Update GlobalUC : adding the possibility to show statistics and to compare 2 apartments chosen by the user, deleting unrelated information, and changing the main interaction with Tenant. **(prerequisites : correcting conceptual errors in model)**
 
-=== Seif BOUGUERRA & Stellan WEA
+==== Seif BOUGUERRA & Stellan WEA
 
 * Creating DC_DistanceApartment : Class diagram to describe attributes' and classes' behaviour implied in distance calculation and interaction between them (DistanceSubway, ValueDistFunction & InterfacePartialValueFunction) and ID_GetDistance : Sequence diagram that allows to obtain a distance value between the flat and any place of interest.**(prerequisites : correcting conceptual errors in model)**
 * Update pictures and contents from Github : Some contents are not updated, for example, pictures of diagrams that didn't exist. **(prerequisites : need the DC_DistanceApartment)**
 * Documentation for a future spider-plot to compare 2 apartments chosen by the user according to several criterias. **(no prerequisites)**
 
-
-
-== Itération 3
+=== Itération 3 UML
 
 [IMPORTANT]
 ====
@@ -72,24 +77,53 @@ Deadline : **April the 12nd, ** 2021
 This file only explains the distribution of work between the different teams and indicates their realization.
 ====
 
-=== Stellan WEA & Abla MIKOU
+==== Stellan WEA & Abla MIKOU
 
 * SM/PO for this iteration.
 * Have split the work between the two groups.
 * Organized meetings throughout the week to have a better understanding of the project.
 * Made sure everybody was on board and respected the deadline.
 
-=== Seif BOUGUERRA & Samy MEGUENI
+==== Seif BOUGUERRA & Samy MEGUENI
 
 * Explanation of the Spider-Plot : Creating a Sequence Diagram that explains the interactions between the user, the value function and the GUI. Writing a better version of the spider-plot's documentation provided at iteration two.
 Creating a Spider-Plot class diagram that shows how it's possible to compare two apartments according to the values returned from the ValueFunction.
 * Repair Stereotypes (not really a real task) : Trying to remove this dialogue box with opening the eclipse project.
 
-=== Maïrame NDIAYE & Ewen MARGUET
+==== Maïrame NDIAYE & Ewen MARGUET
 
 * Update GlobalUseCase : integration of the Spider Plot and make changes as mentioned by the prof.
 * Update/Modification of the sequence diagramme IDvaluefonction created in the second iteration. 
 * API_key : Search through Internet and create a documentation on how to create a key.
+
+== Iterations Java 2021
+
+==== Iteration 1 Java 
+
+[IMPORTANT]
+====
+Deadline : **April the 18th,** 2021.
+This file only explains the distribution of work between the different teams and indicates their realization.
+==== 
+
+
+==== Stellan WEA & Ewen MARGUET
+
+* SM/PO for this iteration.
+* Split the work between the two groups.
+* Organize meetings throughout the week to have a better understanding of the project.
+* Made sure everybody is on board and respected the deadline.
+
+==== Seif BOUGUERRA & Samy MEGUENI
+ 
+Spider-plot
+
+* Implement the new package named `Plot` with its first class named `SpiderPlot` that is able to generate a spider-plot and to display it to the tenant.
+
+==== Maïrame NDIAYE & Abla MIKOU
+
+* Modify the `ValueDistFunction` class : this value function must be based on the apartments' features instead of the tenant's interested places.
+* Add the distance as a criteria and integrate it in the calculation of the apartement value function. **(prerequisites : Modify `ValueDistFunction` class)**
 
 The project documentation is link:Doc/README.adoc[here].
 
