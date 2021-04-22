@@ -144,7 +144,7 @@ This file only explains the distribution of work between the different teams and
 
 ==== Ewen MARGUET & Abla MIKOU
 
-* Continue the distance criteria integration according to the profesor's advice. link:https://github.com/oliviercailloux-org/projet-apartments/pull/26[(PR #26)]
+* Continue the distance criteria integration according to the profesor's advice. link:https://github.com/oliviercailloux-org/projet-apartments/pull/24[(PR #24)]
 * Reduce the redundancies in the `AVF` class to simplify the code.
 
 ==== Stellan WEA & Samy MEGUENI
