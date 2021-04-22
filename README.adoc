@@ -108,21 +108,23 @@ This file only explains the distribution of work between the different teams and
 
 * SM/PO for this iteration.
 * Have split the work between the two groups.
-* Organized meetings throughout the week to have a better understanding of the project.
+* Improvement of previous PRs after the first review.
 * Made sure everybody was on board and respected the deadline.
 
 ==== Abla MIKOU & Seif BOUGUERRA
 
-* Update the `DC_SpiderPlot` by integrating it in the `diagram-package-global`. (PR #20)
+* Update the `DC_SpiderPlot` by integrating it in the `diagram-package-global`. link:https://github.com/oliviercailloux-org/projet-apartments/pull/20[(PR #20)] 
 * Integrate the distance criterias (implementation currently in java) in all the diagrams.
 * Explain how the `ValueDistFunction` is used in the `AVF` by modifying existing diagrams.
 
 
 ==== Maïrame NDIAYE & Stellan WEA
 
-* Update the `SD_ValueFunction` diagram of the previous iteration according to the professor's advices. (PR #19)
+* Update the `SD_ValueFunction` diagram of the previous iteration according to the professor's advices. link:https://github.com/oliviercailloux-org/projet-apartments/pull/19[(PR #19)]
 * Modify the `SD_Distance` diagram from the second iteration according to the professor's advices and our 
-fresh vision of the distance code. (PR #11)
+fresh vision of the distance code. link:https://github.com/oliviercailloux-org/projet-apartments/pull/11[(PR #11)]
+
+All of these tasks are related to the 2nd iteration of java : link:https://github.com/oliviercailloux-org/projet-apartments/pull/27[PR #27]
 
 == Iterations Java 2021
 
