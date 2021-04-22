@@ -144,13 +144,14 @@ This file only explains the distribution of work between the different teams and
 
 ==== Ewen MARGUET & Abla MIKOU
 
-* Continue the distance criteria integration according to the profesor's advice.
+* Continue the distance criteria integration according to the profesor's advice. link:https://github.com/oliviercailloux-org/projet-apartments/pull/26[(PR #26)]
 * Reduce the redundancies in the `AVF` class to simplify the code.
 
 ==== Stellan WEA & Samy MEGUENI
 
-* According the profesor's advice, continue the implementation of the `SpiderPlot` class. 
+* According the profesor's advice, continue the implementation of the `SpiderPlot` class. link:https://github.com/oliviercailloux-org/projet-apartments/pull/22[(PR #22)]
 
+All of these tasks are related to the 4th iteration of UML : link:https://github.com/oliviercailloux-org/projet-apartments/pull/28[PR #28]
 
 The project documentation is link:Doc/README.adoc[here].
 
