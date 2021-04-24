@@ -108,21 +108,19 @@ This file only explains the distribution of work between the different teams and
 
 * SM/PO for this iteration.
 * Have split the work between the two groups.
-* Improvement of previous PRs after the first review.
-* Made sure everybody was on board and respected the deadline.
+* We decided to adopt the professor's suggestions.
+* Make sure everybody is on board and respect the deadline.
 
 ==== Abla MIKOU & Seif BOUGUERRA
 
-* Update the `DC_SpiderPlot` by integrating it in the `diagram-package-global`. link:https://github.com/oliviercailloux-org/projet-apartments/pull/20[(PR #20)] 
-* Integrate the distance criterias (implementation currently in java) in all the diagrams.
-* Explain how the `ValueDistFunction` is used in the `AVF` by modifying existing diagrams.
+* Create DistanceValueFunction which will replace ValueDistFunction : for this, we will create a class diagram and documentation.
+* Document changes the implementation of DistanceValueFunction in the ApartmentValueFunction will make.
 
 
 ==== Maïrame NDIAYE & Stellan WEA
 
-* Update the `SD_ValueFunction` diagram of the previous iteration according to the professor's advices. link:https://github.com/oliviercailloux-org/projet-apartments/pull/19[(PR #19)]
-* Modify the `SD_Distance` diagram from the second iteration according to the professor's advices and our 
-fresh vision of the distance code. link:https://github.com/oliviercailloux-org/projet-apartments/pull/11[(PR #11)]
+* Classe diagram for SpiderPlot in order to show it's interactions with ohter packages.
+* Class diagram of SpiderPlot to display it's internal functionning.
 
 All of these tasks are related to the 2nd iteration of java : link:https://github.com/oliviercailloux-org/projet-apartments/pull/27[PR #27]
 
