@@ -120,8 +120,9 @@ This file only explains the distribution of work between the different teams and
 
 ==== Maïrame NDIAYE & Stellan WEA
 
-* Classe diagram for SpiderPlot in order to show it's interactions with ohter packages.
-* Class diagram of SpiderPlot to display it's internal functionning.
+* Class diagram for SpiderPlot in order to show its interactions with ohter packages.
+* Class diagram of SpiderPlot to display its internal functionning.
+* Update the `SD_ValueFunction` diagram taking into account the professor's comments. It will allow the user to understand how he modifies the sorted list of apartments by answering new questions. link:https://github.com/oliviercailloux-org/projet-apartments/pull/19[(PR #19)]
 
 All of these tasks are related to the 2nd iteration of java : link:https://github.com/oliviercailloux-org/projet-apartments/pull/27[PR #27]
 
