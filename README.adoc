@@ -114,7 +114,7 @@ This file only explains the distribution of work between the different teams and
 
 ==== Abla MIKOU & Seif BOUGUERRA
 
-* Create DistanceValueFunction which will replace ValueDistFunction : for this, we will create a class diagram and documentation.
+* Create DistanceValueFunction which will replace ValueDistFunction : for this, we modify `DC Global Detailed`, `DC Global Simplified`, `DC Package ValueFunction` and the documentation.
 * Document changes the implementation of DistanceValueFunction in the ApartmentValueFunction will make.
 
 
