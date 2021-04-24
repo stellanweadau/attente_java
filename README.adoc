@@ -139,17 +139,20 @@ This file only explains the distribution of work between the different teams and
 
 * SM/PO for this iteration.
 * Split the work between the two groups.
-* Organize meetings throughout the week to have a better understanding of the project.
-* Made sure everybody is on board and respected the deadline.
+* Daily meetings to know where we stand.
+* Make sure everybody is on board and respect the deadline.
 
 ==== Ewen MARGUET & Abla MIKOU
 
-* Continue the distance criteria integration according to the profesor's advice. link:https://github.com/oliviercailloux-org/projet-apartments/pull/24[(PR #24)]
-* Reduce the redundancies in the `AVF` class to simplify the code.
+* Create `DistanceValueFunction` that replace `ValueDistFunction` and implements the interface `PartialValueFunction<LatLng>` according to the UML implementation at iteration 4.
+* Reduce the redundancies in the `AVF` class to simplify the code : Regroup the setters and getters in generic methods. 
+* Try to integrate the distance criteria in the `AVF` class according to the documentation done in the iteration 4 of UML.
 
 ==== Stellan WEA & Samy MEGUENI
 
-* According the profesor's advice, continue the implementation of the `SpiderPlot` class. link:https://github.com/oliviercailloux-org/projet-apartments/pull/22[(PR #22)]
+* Improving the `SpiderPlot` code by following professor's advices : formating, test, fail fast, static factory methods, and the other trails of improvement as requested in the link:https://github.com/oliviercailloux-org/projet-apartments/pull/22[PR #22].
+* Trying to display the plot in another way by generating a picture instead of a swing panel.
+* Working with true apartments from the project (and not generated randomly)
 
 All of these tasks are related to the 4th iteration of UML : link:https://github.com/oliviercailloux-org/projet-apartments/pull/28[PR #28]
 
