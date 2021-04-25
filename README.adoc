@@ -96,6 +96,50 @@ Creating a Spider-Plot class diagram that shows how it's possible to compare two
 * Update/Modification of the sequence diagramme IDvaluefonction created in the second iteration. 
 * API_key : Search through Internet and create a documentation on how to create a key.
 
+=== Itération 4 UML
+
+[IMPORTANT]
+====
+Deadline : **May the 3rd, ** 2021
+This file only explains the distribution of work between the different teams and indicates their realization.
+====
+
+==== Samy MEGUENI & Ewen MARGUET
+
+* SM/PO for this iteration.
+* Have split the work between the two groups.
+* Daily meeting to know where we stand.
+* Make sure everybody is on board and respect the deadline.
+* We decided to adopt the professor's suggestions.
+
+==== Abla MIKOU & Seif BOUGUERRA
+
+* Create DistanceValueFunction which will replace ValueDistFunction : for this, we modify `DC Global Detailed`, `DC Global Simplified`, `DC Package ValueFunction` and the documentation.
+* Document changes the implementation of DistanceValueFunction in the ApartmentValueFunction will make.
+
+* The french detailed version is listed below :
+ * Créer DistanceValueFunction, qui remplacera ValueDistFunction, qui actuellement ne rend pas du tout le service qu’elle est censée rendre.
+ * Doc visée : principalement un diagramme de classe et qqs ajouts textuels ou graphiques (voir ci-dessous).
+ * À l’initialisation, la classe reçoit un ensemble de LatLng représentant les lieux d’intérêts d’un utilisateur et éventuellement une PVF<Double> qui donne la valeur de l’utilisateur d’un temps de trajet exprimé en secondes.
+ * Par défaut, la PVF est la fonction linéaire par morceau utilisée actuellement dans ValueDistFunction.
+ * getSubjectiveValue(LatLng) reçoit la localisation d’un appartement et renvoie la valeur moyenne de la distance en secondes de l’appartement à un lieu d’intérêt (valeurs calculées grâce à la PVF).
+ * Documenter (textuellement + graphiquement avec un plot de la fonction) le rôle et le fonctionnement de la PVF.
+ * Documenter les changements à effectuer pour pouvoir ajouter une DistanceValueFunction (donc un nouveau critère) dans AVF.
+ * Qu’est-ce que ça change en général dans le logiciel ? Revoir toute la doc et indiquer les changements à prévoir à chaque endroit. Par exemple, il est actuellement possible (à vérifier) de sauvegarder les AVFs ; quel sera l’impact de l’ajout de ce critère sur cet aspect ?
+ * S’inspirer du début d’implémentation proposée dans la PR XXX : quels tests unitaires échouent suite à cet ajout, pourquoi, comment résoudre ces problèmes ?
+
+==== Maïrame NDIAYE & Stellan WEA
+
+* Class diagram for SpiderPlot in order to show its interactions with ohter packages.
+* Class diagram of SpiderPlot to display its internal functionning.
+* Update the `SD_ValueFunction` diagram taking into account the professor's comments. It will allow the user to understand how he modifies the sorted list of apartments by answering new questions. link:https://github.com/oliviercailloux-org/projet-apartments/pull/19[(PR #19)]
+
+* The french detailed version is listed below :
+ * Diagramme de classe montrant la place de SpiderPlot dans l’architecture et son interaction avec d’autres packages, mettant à jour les diagrammes existants.
+ * Diagramme de la classe SpiderPlot détaillé, et éventuellement d’autres classes liées, montrant son fonctionnement interne et ce qu’il permet ; en vue d’une implémentation en Java.
+
+All of these tasks are related to the 2nd iteration of java : link:https://github.com/oliviercailloux-org/projet-apartments/pull/27[PR #27]
+
 == Iterations Java 2021
 
 ==== Iteration 1 Java 
