@@ -151,8 +151,8 @@ This file only explains the distribution of work between the different teams and
 ==== Stellan WEA & Samy MEGUENI
 
 * Improving the `SpiderPlot` code by following professor's advices : formating, test, fail fast, static factory methods, and the other trails of improvement as requested in the link:https://github.com/oliviercailloux-org/projet-apartments/pull/22[PR #22].
-* Trying to display the plot in another way by generating a picture instead of a swing panel.
-* Working with true apartments from the project (and not generated randomly)
+* Generating image instead of displaying the plot with a swing panel. Display the result will be in a future iteration.
+* For the spiderplot, taking existing data from apartments of the project instead of generating them by hand. According to your suggestion in the link:https://github.com/oliviercailloux-org/projet-apartments/pull/22[PR #22]
 
 All of these tasks are related to the 4th iteration of UML : link:https://github.com/oliviercailloux-org/projet-apartments/pull/28[PR #28]
 
