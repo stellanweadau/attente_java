@@ -69,19 +69,19 @@ public class AskOpinionForUtility {
    * @throws IllegalAccessException for the DisplayApps function
    * @throws IOException,IllegalAccessException
    */
-  public static void main(String[] args) throws IllegalAccessException, IOException{
+  public static void main(String[] args){
 
     AskOpinionForUtility asker = new AskOpinionForUtility();
     ApartmentValueFunction avf = new ApartmentValueFunction();
     asker.askQuestions();
 
-    avf.setFloorAreaValueFunction(new LinearValueFunction(0d, 300d));
-    avf.setNbBedroomsValueFunction(new LinearValueFunction(0d, 6d));
-    avf.setNbSleepingValueFunction(new LinearValueFunction(0d, 6d));
-    avf.setNbBathroomsValueFunction(new LinearValueFunction(0d, 6d));
-    avf.setFloorAreaTerraceValueFunction(new LinearValueFunction(0d, 100d));
-    avf.setPricePerNightValueFunction(new LinearValueFunction(0d, 80d));
-    avf.setNbMinNightValueFunction(new LinearValueFunction(0d, 6d));
+    avf.setCriterionValueFunction(Criterion.FLOOR_AREA,new LinearValueFunction(0d, 300d));
+    avf.setCriterionValueFunction(Criterion.NB_BEDROOMS,new LinearValueFunction(0d, 6d));
+    avf.setCriterionValueFunction(Criterion.NB_SLEEPING,new LinearValueFunction(0d, 6d));
+    avf.setCriterionValueFunction(Criterion.NB_BATHROOMS,new LinearValueFunction(0d, 6d));
+    avf.setCriterionValueFunction(Criterion.FLOOR_AREA_TERRACE,new LinearValueFunction(0d, 100d));
+    avf.setCriterionValueFunction(Criterion.PRICE_PER_NIGHT,new LinearValueFunction(0d, 80d));
+    avf.setCriterionValueFunction(Criterion.NB_MIN_NIGHT,new LinearValueFunction(0d, 6d));
 
     avf = asker.adaptAnswers(avf);
 
