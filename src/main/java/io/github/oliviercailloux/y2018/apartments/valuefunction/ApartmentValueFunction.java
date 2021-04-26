@@ -123,258 +123,34 @@ public class ApartmentValueFunction {
   }
 
   /**
-   * Set the function which will be used to calculate the subjective value of the floor area.
-   *
-   * @param floorAreaValueFunction
+   * Set the function which will be used to calculate the subjective value of the <code>
+   * criterion</code> given.
+   * 
+   * @param criterion the criterion to set his value function
+   * @param criterionValueFunction <code>PartialValueFunction</code> to set
    */
-  public void setFloorAreaValueFunction(PartialValueFunction<Double> floorAreaValueFunction) {
-    this.setInternalDoubleValueFunction(Criterion.FLOOR_AREA, floorAreaValueFunction);
-    LOGGER.info("The floor area preferencies has been set");
+  public <T> void setCriterionValueFunction(
+      Criterion criterion, PartialValueFunction<T> criterionValueFunction) {
+    if (criterion.hasDoubleDomain())
+      this.setInternalDoubleValueFunction(criterion, (PartialValueFunction<Double>) criterionValueFunction);
+    if (criterion.hasBooleanDomain())
+      this.setInternalBooleanValueFunction(criterion, (PartialValueFunction<Boolean>) criterionValueFunction);
+    LOGGER.info("The {} preferencies has been set", criterion);
   }
 
   /**
-   * Set the function which will be used to calculate the subjective value of the number of
-   * bedrooms.
-   *
-   * @param nbBedroomsValueFunction
+   * Set the weight of the <code>criterion</code> subjective value corresponding to his importance.
+   * 
+   * @param criterion to set the subjective value weight
+   * @param subjectiveValueWeight >= 0
    */
-  public void setNbBedroomsValueFunction(PartialValueFunction<Double> nbBedroomsValueFunction) {
-    this.setInternalDoubleValueFunction(Criterion.NB_BEDROOMS, nbBedroomsValueFunction);
-    LOGGER.info("The number of bedrooms preferencies has been set");
+  public void setCriterionSubjectiveValueWeight(Criterion criterion, double subjectiveValueWeight) {
+    checkArgument(subjectiveValueWeight >= 0,
+        "The weight of the criterion " + criterion + " cannot be negative");
+    this.setWeightSubjectiveValue(criterion, subjectiveValueWeight);
+    LOGGER.info("The {} weight has been set to {}", criterion, subjectiveValueWeight);
   }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the accommodation
-   * capacity.
-   *
-   * @param nbSleepingValueFunction
-   */
-  public void setNbSleepingValueFunction(PartialValueFunction<Double> nbSleepingValueFunction) {
-    this.setInternalDoubleValueFunction(Criterion.NB_SLEEPING, nbSleepingValueFunction);
-    LOGGER.info("The number of sleeping preferencies has been set");
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the number of
-   * bathrooms.
-   *
-   * @param nbBathroomsValueFunction
-   */
-  public void setNbBathroomsValueFunction(PartialValueFunction<Double> nbBathroomsValueFunction) {
-    this.setInternalDoubleValueFunction(Criterion.NB_BATHROOMS, nbBathroomsValueFunction);
-    LOGGER.info("The number of bathrooms preferencies has been set");
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the presence of a
-   * terrace.
-   *
-   * @param terraceValueFunction
-   */
-  public void setTerraceValueFunction(PartialValueFunction<Boolean> terraceValueFunction) {
-    this.setInternalBooleanValueFunction(Criterion.TERRACE, terraceValueFunction);
-    LOGGER.info("The terrace preferencies has been set");
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the floor area of an
-   * existing terrace.
-   *
-   * @param floorAreaTerraceValueFunction
-   */
-  public void setFloorAreaTerraceValueFunction(
-      PartialValueFunction<Double> floorAreaTerraceValueFunction) {
-    this.setInternalDoubleValueFunction(
-        Criterion.FLOOR_AREA_TERRACE, floorAreaTerraceValueFunction);
-    LOGGER.info("The floor area of the terrace preferencies has been set");
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the presence of a
-   * wireless connection.
-   *
-   * @param wifiValueFunction
-   */
-  public void setWifiValueFunction(PartialValueFunction<Boolean> wifiValueFunction) {
-    this.setInternalBooleanValueFunction(Criterion.WIFI, wifiValueFunction);
-    LOGGER.info("The wifi preferencies has been set");
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the price per night.
-   *
-   * @param pricePerNightValueFunction
-   */
-  public void setPricePerNightValueFunction(
-      PartialValueFunction<Double> pricePerNightValueFunction) {
-    this.setInternalDoubleValueFunction(Criterion.PRICE_PER_NIGHT, pricePerNightValueFunction);
-    LOGGER.info("The price per night preferencies has been set");
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the minimum number of
-   * nights.
-   *
-   * @param nbMinNightValueFunction
-   */
-  public void setNbMinNightValueFunction(PartialValueFunction<Double> nbMinNightValueFunction) {
-    this.setInternalDoubleValueFunction(Criterion.NB_MIN_NIGHT, nbMinNightValueFunction);
-    LOGGER.info("The number of minimum night preferencies has been set");
-  }
-
-  /**
-   * Set the function which will be used to calculate the subjective value of the presence of a
-   * television.
-   *
-   * @param teleValueFunction
-   */
-  public void setTeleValueFunction(PartialValueFunction<Boolean> teleValueFunction) {
-    this.setInternalBooleanValueFunction(Criterion.TELE, teleValueFunction);
-    LOGGER.info("The tele preferencies has been set");
-  }
-
-  /**
-   * Set the weight of the floor area subjective value corresponding to the importance of the floor
-   * area criteria.
-   *
-   * @param floorAreaSubjectiveValueWeight >= 0
-   */
-  public void setFloorAreaSubjectiveValueWeight(double floorAreaSubjectiveValueWeight) {
-    checkArgument(
-        floorAreaSubjectiveValueWeight >= 0, "The weight of the floor area cannot be negative");
-    this.setWeightSubjectiveValue(Criterion.FLOOR_AREA, floorAreaSubjectiveValueWeight);
-    LOGGER.info("The floor area weight has been set to {}", floorAreaSubjectiveValueWeight);
-  }
-
-  /**
-   * Set the weight of the number of bedrooms subjective value corresponding to the importance of
-   * the number of bedrooms criteria.
-   *
-   * @param nbBedroomsSubjectiveValueWeight >= 0
-   */
-  public void setNbBedroomsSubjectiveValueWeight(double nbBedroomsSubjectiveValueWeight) {
-    checkArgument(
-        nbBedroomsSubjectiveValueWeight >= 0,
-        "The weight of the number of bedrooms cannot be negative");
-    this.setWeightSubjectiveValue(Criterion.NB_BEDROOMS, nbBedroomsSubjectiveValueWeight);
-    LOGGER.info(
-        "The number of bedrooms weight has been set to {}", nbBedroomsSubjectiveValueWeight);
-  }
-
-  /**
-   * set the weight of the number of sleeping subjective value corresponding to the importance of
-   * the number of sleeping criteria.
-   *
-   * @param nbSleepingSubjectiveValueWeight >= 0
-   */
-  public void setNbSleepingSubjectiveValueWeight(double nbSleepingSubjectiveValueWeight) {
-    checkArgument(
-        nbSleepingSubjectiveValueWeight >= 0, "The weight of the sleeping cannot be negative");
-    this.setWeightSubjectiveValue(Criterion.NB_SLEEPING, nbSleepingSubjectiveValueWeight);
-    LOGGER.info(
-        "The number of sleeping weight has been set to {}", nbSleepingSubjectiveValueWeight);
-  }
-
-  /**
-   * Set the weight of the number of bathrooms subjective value corresponding to the importance of
-   * the number of bathrooms criteria.
-   *
-   * @param nbBathroomsSubjectiveValueWeight >= 0
-   */
-  public void setNbBathroomsSubjectiveValueWeight(double nbBathroomsSubjectiveValueWeight) {
-    checkArgument(
-        nbBathroomsSubjectiveValueWeight >= 0,
-        "The weight of the number of bathrooms cannot be negative");
-    this.setWeightSubjectiveValue(Criterion.NB_BATHROOMS, nbBathroomsSubjectiveValueWeight);
-    LOGGER.info(
-        "The number of bathrooms weight has been set to {}", nbBathroomsSubjectiveValueWeight);
-  }
-
-  /**
-   * Set the weight of the terrace subjective value corresponding to the importance of the terrace
-   * criteria.
-   *
-   * @param terraceSubjectiveValueWeight >= 0
-   */
-  public void setTerraceSubjectiveValueWeight(double terraceSubjectiveValueWeight) {
-    checkArgument(
-        terraceSubjectiveValueWeight >= 0, "The weight of the terrace cannot be negative");
-    this.setWeightSubjectiveValue(Criterion.TERRACE, terraceSubjectiveValueWeight);
-    LOGGER.info("The terrace weight has been set to {}", terraceSubjectiveValueWeight);
-  }
-
-  /**
-   * Set the weight of the terrace floor area subjective value corresponding to the importance of
-   * the terrace floor area criteria.
-   *
-   * @param floorAreaTerraceSubjectiveValueWeight >= 0
-   */
-  public void setFloorAreaTerraceSubjectiveValueWeight(
-      double floorAreaTerraceSubjectiveValueWeight) {
-    checkArgument(
-        floorAreaTerraceSubjectiveValueWeight >= 0,
-        "The weight of the floor area terrace cannot be negative");
-    this.setWeightSubjectiveValue(
-        Criterion.FLOOR_AREA_TERRACE, floorAreaTerraceSubjectiveValueWeight);
-    LOGGER.info(
-        "The floor area of the terrace weight has been set to {}",
-        floorAreaTerraceSubjectiveValueWeight);
-  }
-
-  /**
-   * Set the weight of the WiFi subjective value corresponding to the importance of the WiFi
-   * criteria.
-   *
-   * @param wifiSubjectiveValueWeight >= 0
-   */
-  public void setWifiSubjectiveValueWeight(double wifiSubjectiveValueWeight) {
-    checkArgument(wifiSubjectiveValueWeight >= 0, "The weight of the wifi cannot be negative");
-    this.setWeightSubjectiveValue(Criterion.WIFI, wifiSubjectiveValueWeight);
-    LOGGER.info("The wifi weight has been set to {}", wifiSubjectiveValueWeight);
-  }
-
-  /**
-   * Set the weight of the price per night subjective value corresponding to the importance of the
-   * price per night criteria.
-   *
-   * @param pricePerNightSubjectiveValueWeight >= 0
-   */
-  public void setPricePerNightSubjectiveValueWeight(double pricePerNightSubjectiveValueWeight) {
-    checkArgument(
-        pricePerNightSubjectiveValueWeight >= 0,
-        "The weight of the price per night cannot be negative");
-    this.setWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT, pricePerNightSubjectiveValueWeight);
-    LOGGER.info(
-        "The price per night weight has been set to {}", pricePerNightSubjectiveValueWeight);
-  }
-
-  /**
-   * Set the weight of the minimum number of nights subjective value corresponding to the importance
-   * of the minimum number of nights criteria.
-   *
-   * @param nbMinNightSubjectiveValueWeight >= 0
-   */
-  public void setNbMinNightSubjectiveValueWeight(double nbMinNightSubjectiveValueWeight) {
-    checkArgument(
-        nbMinNightSubjectiveValueWeight >= 0,
-        "The weight of the minimum number of nights cannot be negative");
-    this.setWeightSubjectiveValue(Criterion.NB_MIN_NIGHT, nbMinNightSubjectiveValueWeight);
-    LOGGER.info(
-        "The number of minimum night weight has been set to {}", nbMinNightSubjectiveValueWeight);
-  }
-
-  /**
-   * Set the weight of the television subjective value corresponding to the importance of the
-   * television criteria.
-   *
-   * @param teleSubjectiveValueWeight >= 0
-   */
-  public void setTeleSubjectiveValueWeight(double teleSubjectiveValueWeight) {
-    checkArgument(teleSubjectiveValueWeight >= 0, "The weight of the tele cannot be negative");
-    this.setWeightSubjectiveValue(Criterion.TELE, teleSubjectiveValueWeight);
-    LOGGER.info("The tele weight has been set to {}", teleSubjectiveValueWeight);
-  }
-
+  
   /**
    * This function return the subjective value of the Apartment in parameter. For each valuable
    * attribute of this apartment, the subjective value is computed by the associated
@@ -634,103 +410,26 @@ public class ApartmentValueFunction {
         .forEach(criterion -> avf.weight.put(criterion, this.weight.get(criterion)));
     return avf;
   }
-
+  
   /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the floor Area
-   *
-   * @return the attribute floorAreaValueFunction
+   * Get the PartialValueFunction used to compute the subjective value of the <code>criterion
+   * </code> given in parameter. We assume that the criterion has a double domain when using it.
+   * 
+   * @param criterion
+   * @return the criterion's value function
    */
-  public PartialValueFunction<Double> getFloorAreaValueFunction() {
-    return this.getInternalDoubleValueFunction(Criterion.FLOOR_AREA);
+  public PartialValueFunction<Double> getDoubleValueFunction(Criterion criterion) {
+    return this.getInternalDoubleValueFunction(criterion);
   }
-
+  
   /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the floor Area
-   * Terrace
-   *
-   * @return the attribute floorAreaTerraceValueFunction
+   * Get the PartialValueFunction used to compute the subjective value of the <code>criterion
+   * </code> given in parameter. We assume that the criterion has a boolean domain when using it.
+   * 
+   * @param criterion
+   * @return the criterion's value function
    */
-  public PartialValueFunction<Double> getFloorAreaTerraceValueFunction() {
-    return this.getInternalDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE);
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the number of
-   * bathrooms
-   *
-   * @return the attribute nbBathroomsValueFunction
-   */
-  public PartialValueFunction<Double> getNbBathroomsValueFunction() {
-    return this.getInternalDoubleValueFunction(Criterion.NB_BATHROOMS);
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the number of
-   * bedrooms
-   *
-   * @return the attribute nbBedroomsValueFunction
-   */
-  public PartialValueFunction<Double> getNbBedroomsValueFunction() {
-    return this.getInternalDoubleValueFunction(Criterion.NB_BEDROOMS);
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the minimum number
-   * of nights the user has to stay in
-   *
-   * @return the attribute nbMinNightValueFunction
-   */
-  public PartialValueFunction<Double> getNbMinNightValueFunction() {
-    return this.getInternalDoubleValueFunction(Criterion.NB_MIN_NIGHT);
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the number of
-   * people who can sleep in
-   *
-   * @return the attribute nbSleepingValueFunction
-   */
-  public PartialValueFunction<Double> getNbSleepingValueFunction() {
-    return this.getInternalDoubleValueFunction(Criterion.NB_SLEEPING);
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the price per
-   * night
-   *
-   * @return the attribute pricePerNightValueFunction
-   */
-  public PartialValueFunction<Double> getPricePerNightValueFunction() {
-    return this.getInternalDoubleValueFunction(Criterion.PRICE_PER_NIGHT);
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the presence of a
-   * television
-   *
-   * @return the attribute teleValueFunction
-   */
-  public PartialValueFunction<Boolean> getTeleValueFunction() {
-    return this.getInternalBooleanValueFunction(Criterion.TELE);
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the presence of a
-   * terrace
-   *
-   * @return the attribute terraceValueFunction
-   */
-  public PartialValueFunction<Boolean> getTerraceValueFunction() {
-    return this.getInternalBooleanValueFunction(Criterion.TERRACE);
-  }
-
-  /**
-   * Gets the object PartialValueFunction used to compute the subjective value of the presence of
-   * the wifi
-   *
-   * @return the attribute wifiValueFunction
-   */
-  public PartialValueFunction<Boolean> getWifiValueFunction() {
-    return this.getInternalBooleanValueFunction(Criterion.WIFI);
+  public PartialValueFunction<Boolean> getBooleanValueFunction(Criterion criterion) {
+    return this.getInternalBooleanValueFunction(criterion);
   }
 }

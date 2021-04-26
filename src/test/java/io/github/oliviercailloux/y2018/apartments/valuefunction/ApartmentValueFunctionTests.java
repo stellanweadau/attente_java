@@ -37,45 +37,45 @@ class ApartmentValueFunctionTests {
             .build();
 
     LinearValueFunction floorAreaV = new LinearValueFunction(0d, 200d);
-    valueFunction.setFloorAreaValueFunction(floorAreaV);
+    valueFunction.setCriterionValueFunction(Criterion.FLOOR_AREA,floorAreaV);
 
     LinearValueFunction nbSleepingV = new LinearValueFunction(3d, 5d);
-    valueFunction.setNbSleepingValueFunction(nbSleepingV);
+    valueFunction.setCriterionValueFunction(Criterion.NB_SLEEPING,nbSleepingV);
 
     ReversedLinearValueFunction nbMinNightV = new ReversedLinearValueFunction(7d, 30d);
-    valueFunction.setNbMinNightValueFunction(nbMinNightV);
+    valueFunction.setCriterionValueFunction(Criterion.NB_MIN_NIGHT,nbMinNightV);
 
     BooleanValueFunction terraceV = new BooleanValueFunction(true);
-    valueFunction.setTerraceValueFunction(terraceV);
+    valueFunction.setCriterionValueFunction(Criterion.TERRACE,terraceV);
 
     LinearValueFunction nbBedroomsV = new LinearValueFunction(3d, 4d);
-    valueFunction.setNbBedroomsValueFunction(nbBedroomsV);
+    valueFunction.setCriterionValueFunction(Criterion.NB_BEDROOMS,nbBedroomsV);
 
     ReversedLinearValueFunction pricePerNightV = new ReversedLinearValueFunction(20d, 40d);
-    valueFunction.setPricePerNightValueFunction(pricePerNightV);
+    valueFunction.setCriterionValueFunction(Criterion.PRICE_PER_NIGHT,pricePerNightV);
 
     BooleanValueFunction teleV = new BooleanValueFunction(true);
-    valueFunction.setTeleValueFunction(teleV);
+    valueFunction.setCriterionValueFunction(Criterion.TELE,teleV);
 
     BooleanValueFunction wifiV = new BooleanValueFunction(true);
-    valueFunction.setWifiValueFunction(wifiV);
+    valueFunction.setCriterionValueFunction(Criterion.WIFI,wifiV);
 
     LinearValueFunction nbBathroomsV = new LinearValueFunction(2d, 3d);
-    valueFunction.setNbBathroomsValueFunction(nbBathroomsV);
+    valueFunction.setCriterionValueFunction(Criterion.NB_BATHROOMS,nbBathroomsV);
 
     LinearValueFunction floorAreaTerraceV = new LinearValueFunction(30d, 50d);
-    valueFunction.setFloorAreaTerraceValueFunction(floorAreaTerraceV);
+    valueFunction.setCriterionValueFunction(Criterion.FLOOR_AREA_TERRACE,floorAreaTerraceV);
   }
 
   /** Function to test the some setters */
   @Test
   void testCheckValue() {
 
-    LinearValueFunction lvf = (LinearValueFunction) valueFunction.getNbSleepingValueFunction();
+    LinearValueFunction lvf = (LinearValueFunction) valueFunction.getDoubleValueFunction(Criterion.NB_SLEEPING);
     assertEquals(5d, lvf.getInterval().upperEndpoint());
-    lvf = (LinearValueFunction) valueFunction.getNbBedroomsValueFunction();
+    lvf = (LinearValueFunction) valueFunction.getDoubleValueFunction(Criterion.NB_BEDROOMS);
     assertEquals(4d, lvf.getInterval().upperEndpoint());
-    lvf = (LinearValueFunction) valueFunction.getNbBathroomsValueFunction();
+    lvf = (LinearValueFunction) valueFunction.getDoubleValueFunction(Criterion.NB_BATHROOMS);
     assertEquals(3d, lvf.getInterval().upperEndpoint());
   }
 
@@ -88,15 +88,15 @@ class ApartmentValueFunctionTests {
   void testApartmentValueFunction() {
 
     double subjectiveValueTele =
-        valueFunction.getTeleValueFunction().getSubjectiveValue(a.getTele())
+        valueFunction.getBooleanValueFunction(Criterion.TELE).getSubjectiveValue(a.getTele())
             * valueFunction.getWeightSubjectiveValue(Criterion.TELE);
     assertEquals(0, subjectiveValueTele);
     double subjectiveValueFloorArea =
-        valueFunction.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea())
+        valueFunction.getDoubleValueFunction(Criterion.FLOOR_AREA).getSubjectiveValue(a.getFloorArea())
             * valueFunction.getWeightSubjectiveValue(Criterion.FLOOR_AREA);
     assertEquals(0.1, subjectiveValueFloorArea, 0.0001);
     double subjectiveValuePrice =
-        valueFunction.getPricePerNightValueFunction().getSubjectiveValue(a.getPricePerNight())
+        valueFunction.getDoubleValueFunction(Criterion.PRICE_PER_NIGHT).getSubjectiveValue(a.getPricePerNight())
             * valueFunction.getWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT);
     assertEquals(0.1, subjectiveValuePrice, 0.0001);
 
@@ -120,9 +120,9 @@ class ApartmentValueFunctionTests {
             - valueFunction.getWeightSubjectiveValue(Criterion.TELE)
             - valueFunction.getWeightSubjectiveValue(Criterion.FLOOR_AREA)
             - valueFunction.getWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT);
-    valueFunction.setTeleSubjectiveValueWeight(4.3);
-    valueFunction.setFloorAreaSubjectiveValueWeight(2);
-    valueFunction.setPricePerNightSubjectiveValueWeight(3);
+    valueFunction.setCriterionSubjectiveValueWeight(Criterion.TELE,4.3);
+    valueFunction.setCriterionSubjectiveValueWeight(Criterion.FLOOR_AREA,2);
+    valueFunction.setCriterionSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT,3);
     sumWeight =
         sumWeight
             + valueFunction.getWeightSubjectiveValue(Criterion.TELE)
@@ -131,15 +131,15 @@ class ApartmentValueFunctionTests {
     assertEquals(10, sumWeight, 0.0001);
 
     subjectiveValueTele =
-        valueFunction.getTeleValueFunction().getSubjectiveValue(a.getTele())
+        valueFunction.getBooleanValueFunction(Criterion.TELE).getSubjectiveValue(a.getTele())
             * valueFunction.getWeightSubjectiveValue(Criterion.TELE);
     assertEquals(0, subjectiveValueTele);
     subjectiveValueFloorArea =
-        valueFunction.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea())
+        valueFunction.getDoubleValueFunction(Criterion.FLOOR_AREA).getSubjectiveValue(a.getFloorArea())
             * valueFunction.getWeightSubjectiveValue(Criterion.FLOOR_AREA);
     assertEquals(2, subjectiveValueFloorArea, 0.0001);
     subjectiveValuePrice =
-        valueFunction.getPricePerNightValueFunction().getSubjectiveValue(a.getPricePerNight())
+        valueFunction.getDoubleValueFunction(Criterion.PRICE_PER_NIGHT).getSubjectiveValue(a.getPricePerNight())
             * valueFunction.getWeightSubjectiveValue(Criterion.PRICE_PER_NIGHT);
     assertEquals(3, subjectiveValuePrice, 0.0001);
 
@@ -150,32 +150,26 @@ class ApartmentValueFunctionTests {
   @Test
   void testExceptionIllegalArgWeightSetter() {
 
-    assertThrows(
-        IllegalArgumentException.class, () -> valueFunction.setFloorAreaSubjectiveValueWeight(-1d));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> valueFunction.setNbBedroomsSubjectiveValueWeight(-1d));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> valueFunction.setNbSleepingSubjectiveValueWeight(-1d));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> valueFunction.setNbBathroomsSubjectiveValueWeight(-1d));
-    assertThrows(
-        IllegalArgumentException.class, () -> valueFunction.setTerraceSubjectiveValueWeight(-1d));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> valueFunction.setFloorAreaTerraceSubjectiveValueWeight(-1d));
-    assertThrows(
-        IllegalArgumentException.class, () -> valueFunction.setWifiSubjectiveValueWeight(-1d));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> valueFunction.setPricePerNightSubjectiveValueWeight(-1d));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> valueFunction.setNbMinNightSubjectiveValueWeight(-1d));
-    assertThrows(
-        IllegalArgumentException.class, () -> valueFunction.setTeleSubjectiveValueWeight(-1d));
+    assertThrows(IllegalArgumentException.class,
+        () -> valueFunction.setCriterionSubjectiveValueWeight(Criterion.FLOOR_AREA, -1d));
+    assertThrows(IllegalArgumentException.class,
+        () -> valueFunction.setCriterionSubjectiveValueWeight(Criterion.NB_BEDROOMS, -1d));
+    assertThrows(IllegalArgumentException.class,
+        () -> valueFunction.setCriterionSubjectiveValueWeight(Criterion.NB_SLEEPING, -1d));
+    assertThrows(IllegalArgumentException.class,
+        () -> valueFunction.setCriterionSubjectiveValueWeight(Criterion.NB_BATHROOMS, -1d));
+    assertThrows(IllegalArgumentException.class,
+        () -> valueFunction.setCriterionSubjectiveValueWeight(Criterion.TERRACE, -1d));
+    assertThrows(IllegalArgumentException.class,
+        () -> valueFunction.setCriterionSubjectiveValueWeight(Criterion.FLOOR_AREA_TERRACE, -1d));
+    assertThrows(IllegalArgumentException.class,
+        () -> valueFunction.setCriterionSubjectiveValueWeight(Criterion.WIFI, -1d));
+    assertThrows(IllegalArgumentException.class,
+        () -> valueFunction.setCriterionSubjectiveValueWeight(Criterion.PRICE_PER_NIGHT, -1d));
+    assertThrows(IllegalArgumentException.class,
+        () -> valueFunction.setCriterionSubjectiveValueWeight(Criterion.NB_MIN_NIGHT, -1d));
+    assertThrows(IllegalArgumentException.class,
+        () -> valueFunction.setCriterionSubjectiveValueWeight(Criterion.TELE, -1d));
   }
 
   /** Function to test the adaptation to the subjective value weight of a criteria */
@@ -185,8 +179,8 @@ class ApartmentValueFunctionTests {
     assertThrows(
         IllegalArgumentException.class,
         () -> valueFunction.adaptWeight(Criterion.TELE, Criterion.TELE));
-    valueFunction.setTeleSubjectiveValueWeight(7d);
-    valueFunction.setTerraceSubjectiveValueWeight(3d);
+    valueFunction.setCriterionSubjectiveValueWeight(Criterion.TELE,7d);
+    valueFunction.setCriterionSubjectiveValueWeight(Criterion.TERRACE,3d);
     assertEquals(7d, valueFunction.getWeightSubjectiveValue(Criterion.TELE));
     assertEquals(3d, valueFunction.getWeightSubjectiveValue(Criterion.TERRACE));
     valueFunction = valueFunction.adaptWeight(Criterion.TERRACE, Criterion.TELE);
@@ -202,17 +196,17 @@ class ApartmentValueFunctionTests {
         IllegalArgumentException.class, () -> valueFunction.adaptBounds(Criterion.TELE, 0d, true));
     valueFunction = valueFunction.adaptBounds(Criterion.FLOOR_AREA_TERRACE, 25d, true);
     LinearValueFunction lvf =
-        (LinearValueFunction) valueFunction.getFloorAreaTerraceValueFunction();
+        (LinearValueFunction) valueFunction.getDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE);
     assertEquals(25d, lvf.getInterval().lowerEndpoint());
     assertEquals(
         0.6,
         valueFunction
-            .getFloorAreaTerraceValueFunction()
+            .getDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE)
             .getSubjectiveValue(a.getFloorAreaTerrace()));
     valueFunction = valueFunction.adaptBounds(Criterion.NB_BEDROOMS, 8, false);
     double nbRooms = a.getNbBedrooms();
-    assertEquals(0d, valueFunction.getNbBedroomsValueFunction().getSubjectiveValue(nbRooms));
-    lvf = (LinearValueFunction) valueFunction.getNbBedroomsValueFunction();
+    assertEquals(0d, valueFunction.getDoubleValueFunction(Criterion.NB_BEDROOMS).getSubjectiveValue(nbRooms));
+    lvf = (LinearValueFunction) valueFunction.getDoubleValueFunction(Criterion.NB_BEDROOMS);
     assertEquals(8, lvf.getInterval().upperEndpoint());
   }
 
@@ -221,8 +215,8 @@ class ApartmentValueFunctionTests {
   void testGetRandomApartmentValueFunction() {
 
     ApartmentValueFunction apart = ApartmentValueFunction.getRandomApartmentValueFunction();
-    assertEquals(1d, apart.getFloorAreaValueFunction().getSubjectiveValue(a.getFloorArea()));
-    LinearValueFunction lvf = (LinearValueFunction) apart.getFloorAreaTerraceValueFunction();
+    assertEquals(1d, apart.getDoubleValueFunction(Criterion.FLOOR_AREA).getSubjectiveValue(a.getFloorArea()));
+    LinearValueFunction lvf = (LinearValueFunction) apart.getDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE);
     assertTrue(lvf.getInterval().upperEndpoint() <= 101d);
     assertTrue(apart.getWeightSubjectiveValue(Criterion.TELE) <= 1d);
     double sum =
