@@ -123,18 +123,28 @@ public class ApartmentValueFunction {
   }
 
   /**
-   * Set the function which will be used to calculate the subjective value of the <code>
-   * criterion</code> given.
+   * Set the function which will be used to calculate the subjective value of a boolean
+   * <code> criterion</code> given.
    * 
    * @param criterion the criterion to set his value function
    * @param criterionValueFunction <code>PartialValueFunction</code> to set
    */
-  public <T> void setCriterionValueFunction(
-      Criterion criterion, PartialValueFunction<T> criterionValueFunction) {
-    if (criterion.hasDoubleDomain())
-      this.setInternalDoubleValueFunction(criterion, (PartialValueFunction<Double>) criterionValueFunction);
-    if (criterion.hasBooleanDomain())
-      this.setInternalBooleanValueFunction(criterion, (PartialValueFunction<Boolean>) criterionValueFunction);
+  public void setBooleanValueFunction(Criterion criterion,
+      PartialValueFunction<Boolean> criterionValueFunction) {
+    this.setInternalBooleanValueFunction(criterion, criterionValueFunction);
+    LOGGER.info("The {} preferencies has been set", criterion);
+  }
+
+  /**
+   * Set the function which will be used to calculate the subjective value of a double
+   * <code> criterion</code> given.
+   * 
+   * @param criterion the criterion to set his value function
+   * @param criterionValueFunction <code>PartialValueFunction</code> to set
+   */
+  public void setDoubleValueFunction(Criterion criterion,
+      PartialValueFunction<Double> criterionValueFunction) {
+    this.setInternalDoubleValueFunction(criterion, criterionValueFunction);
     LOGGER.info("The {} preferencies has been set", criterion);
   }
 
