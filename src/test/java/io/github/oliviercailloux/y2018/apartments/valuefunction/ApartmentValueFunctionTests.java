@@ -37,34 +37,34 @@ class ApartmentValueFunctionTests {
             .build();
 
     LinearValueFunction floorAreaV = new LinearValueFunction(0d, 200d);
-    valueFunction.setCriterionValueFunction(Criterion.FLOOR_AREA,floorAreaV);
+    valueFunction.setDoubleValueFunction(Criterion.FLOOR_AREA,floorAreaV);
 
     LinearValueFunction nbSleepingV = new LinearValueFunction(3d, 5d);
-    valueFunction.setCriterionValueFunction(Criterion.NB_SLEEPING,nbSleepingV);
+    valueFunction.setDoubleValueFunction(Criterion.NB_SLEEPING,nbSleepingV);
 
     ReversedLinearValueFunction nbMinNightV = new ReversedLinearValueFunction(7d, 30d);
-    valueFunction.setCriterionValueFunction(Criterion.NB_MIN_NIGHT,nbMinNightV);
+    valueFunction.setDoubleValueFunction(Criterion.NB_MIN_NIGHT,nbMinNightV);
 
     BooleanValueFunction terraceV = new BooleanValueFunction(true);
-    valueFunction.setCriterionValueFunction(Criterion.TERRACE,terraceV);
+    valueFunction.setBooleanValueFunction(Criterion.TERRACE,terraceV);
 
     LinearValueFunction nbBedroomsV = new LinearValueFunction(3d, 4d);
-    valueFunction.setCriterionValueFunction(Criterion.NB_BEDROOMS,nbBedroomsV);
+    valueFunction.setDoubleValueFunction(Criterion.NB_BEDROOMS,nbBedroomsV);
 
     ReversedLinearValueFunction pricePerNightV = new ReversedLinearValueFunction(20d, 40d);
-    valueFunction.setCriterionValueFunction(Criterion.PRICE_PER_NIGHT,pricePerNightV);
+    valueFunction.setDoubleValueFunction(Criterion.PRICE_PER_NIGHT,pricePerNightV);
 
     BooleanValueFunction teleV = new BooleanValueFunction(true);
-    valueFunction.setCriterionValueFunction(Criterion.TELE,teleV);
+    valueFunction.setBooleanValueFunction(Criterion.TELE,teleV);
 
     BooleanValueFunction wifiV = new BooleanValueFunction(true);
-    valueFunction.setCriterionValueFunction(Criterion.WIFI,wifiV);
+    valueFunction.setBooleanValueFunction(Criterion.WIFI,wifiV);
 
     LinearValueFunction nbBathroomsV = new LinearValueFunction(2d, 3d);
-    valueFunction.setCriterionValueFunction(Criterion.NB_BATHROOMS,nbBathroomsV);
+    valueFunction.setDoubleValueFunction(Criterion.NB_BATHROOMS,nbBathroomsV);
 
     LinearValueFunction floorAreaTerraceV = new LinearValueFunction(30d, 50d);
-    valueFunction.setCriterionValueFunction(Criterion.FLOOR_AREA_TERRACE,floorAreaTerraceV);
+    valueFunction.setDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE,floorAreaTerraceV);
   }
 
   /** Function to test the some setters */
