@@ -169,6 +169,36 @@ Spider-plot
 * Modify the `ValueDistFunction` class : this value function must be based on the apartments' features instead of the tenant's interested places.
 * Add the distance as a criteria and integrate it in the calculation of the apartement value function. **(prerequisites : Modify `ValueDistFunction` class)**
 
+
+==== Iteration 2 Java 
+
+[IMPORTANT]
+====
+Deadline : **May the 9th,** 2021.
+This file only explains the distribution of work between the different teams and indicates their realization.
+==== 
+
+
+==== Maïrame NDIAYE & Seifeddine BOUGUERRA
+
+* SM/PO for this iteration.
+* Split the work between the two groups.
+* Daily meetings to know where we stand.
+* Make sure everybody is on board and respect the deadline.
+
+==== Ewen MARGUET & Abla MIKOU
+
+* Reduce the redundancies in the `AVF` class to simplify the code : Regroup the setters and getters in generic methods. 
+* Create `DistanceValueFunction` that replace `ValueDistFunction` and implements the interface `PartialValueFunction<LatLng>` according to the UML implementation at iteration 4.**(prerequisites : Reduce the redundancies)**
+* Try to integrate the distance criteria in the `AVF` class according to the documentation done in the iteration 4 of UML. **(prerequisites : Create `DistanceValueFunction`)**
+
+==== Stellan WEA & Samy MEGUENI
+
+* Improving the `SpiderPlot` code by following professor's advices : formating, test, fail fast, static factory methods, and the other trails of improvement as requested in the link:https://github.com/oliviercailloux-org/projet-apartments/pull/22[PR #22]. And taking existing data from apartments of the project instead of generating them by hand still linked to the same PR. 
+* Generating image instead of displaying the plot with a swing panel. Display the result will be in a future iteration. **(prerequisites : Improving the SpiderPlot code)**
+
+All of these tasks are related to the 4th iteration of UML : link:https://github.com/oliviercailloux-org/projet-apartments/pull/28[PR #28]
+
 The project documentation is link:Doc/README.adoc[here].
 
 The code is hereby published under the MIT License, with the permission of the contributors.
