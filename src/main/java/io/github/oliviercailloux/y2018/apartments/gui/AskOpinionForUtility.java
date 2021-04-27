@@ -75,13 +75,13 @@ public class AskOpinionForUtility {
     ApartmentValueFunction avf = new ApartmentValueFunction();
     asker.askQuestions();
 
-    avf.setCriterionValueFunction(Criterion.FLOOR_AREA,new LinearValueFunction(0d, 300d));
-    avf.setCriterionValueFunction(Criterion.NB_BEDROOMS,new LinearValueFunction(0d, 6d));
-    avf.setCriterionValueFunction(Criterion.NB_SLEEPING,new LinearValueFunction(0d, 6d));
-    avf.setCriterionValueFunction(Criterion.NB_BATHROOMS,new LinearValueFunction(0d, 6d));
-    avf.setCriterionValueFunction(Criterion.FLOOR_AREA_TERRACE,new LinearValueFunction(0d, 100d));
-    avf.setCriterionValueFunction(Criterion.PRICE_PER_NIGHT,new LinearValueFunction(0d, 80d));
-    avf.setCriterionValueFunction(Criterion.NB_MIN_NIGHT,new LinearValueFunction(0d, 6d));
+    avf.setDoubleValueFunction(Criterion.FLOOR_AREA,new LinearValueFunction(0d, 300d));
+    avf.setDoubleValueFunction(Criterion.NB_BEDROOMS,new LinearValueFunction(0d, 6d));
+    avf.setDoubleValueFunction(Criterion.NB_SLEEPING,new LinearValueFunction(0d, 6d));
+    avf.setDoubleValueFunction(Criterion.NB_BATHROOMS,new LinearValueFunction(0d, 6d));
+    avf.setDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE,new LinearValueFunction(0d, 100d));
+    avf.setDoubleValueFunction(Criterion.PRICE_PER_NIGHT,new LinearValueFunction(0d, 80d));
+    avf.setDoubleValueFunction(Criterion.NB_MIN_NIGHT,new LinearValueFunction(0d, 6d));
 
     avf = asker.adaptAnswers(avf);
 
