@@ -34,7 +34,8 @@ It would be interesting to do the same for `aparment.xml` : Make the same class 
 * Reflect on the use of inheritance
 
 ===== Add `distance` criterion
-* The tenant will be able to add as many places of interest as he wants thanks to a button on the interface and put them in a set. After that, it will be integrated into the calculation of the `ApartementValueFunction`. In the package documentation, we added the `DistanceValueFunction` explanation and how we would integrate it in the AVF’s calculation. 
+* The tenant will be able to add as many places of interest as he wants thanks to a button on the interface and put them in a set that will be stocked in `Profil`. After that, it will be integrated into the calculation of the `ApartementValueFunction`. By default, the user's only interest place is the center of Paris.
+In the package documentation, we added the `DistanceValueFunction` link:https://github.com/oliviercailloux-org/projet-apartments/blob/createDVFclass/Doc/packages.adoc#valuefunction[explanation] and how we would integrate it in the AVF’s calculation. 
 
 * To add the distance criteria in the `ApartmentValueFunction`, we should proceed as follows :
 ** A criterion `distance` of type `IS_LATLNG_DECREASE` must be added in the `Criterion` enum class of the `ValueFunction` package.
@@ -44,7 +45,8 @@ It would be interesting to do the same for `aparment.xml` : Make the same class 
 *** `getInternalLatLngValueFunction` : returns the value function of the criterion given in parameter. We will use it with the `distance` criterion.
 *** `setInternalLatLngValueFunction` : allows to set the value function of the `distance` criterion in the map created in the beginning. 
 ** Add the subjective value of the `DISTANCE` criterion in the calculation of the subjective value of the apartment made in the Builder of the `getSubjectiveValue` method.
-** After these changes, the unit tests fail because the calculations are based on 10 criteria. Therefore, the calculations must be modified to take into account the new criteria. We should modify the default weight : incream from 0.1 to 1/11 for each criterion and change the method `adaptWeight` in the `AVF`.
+** Add in the class `Apartment` a method `getAdressLatLng` that returns the coordinates of the apartment location.
+** After these changes, the unit tests fail because the calculations are based on 10 criteria. Therefore, the calculations must be modified to take into account the new criteria. We should modify the default weight : incream from 0.1 to 1/(number of criterion) for each criterion and change the method `adaptWeight` in the `AVF`. Unfortunately, the unit tests can fail because of the API that give the distance in real time and depends on the current traffic circumstances.
 
 
 ===== valuefunction.profile
