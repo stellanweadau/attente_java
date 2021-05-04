@@ -102,15 +102,13 @@
 
 
 	<dependencies>
-		<!-- dependency for Log4j logger 
-		https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<!-- dependency for Log4j logger https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.30</version>
 		</dependency>
-		<!-- dependency used to complete Log4j used 
-		http://logback.qos.ch/ -->
+		<!-- dependency used to complete Log4j used http://logback.qos.ch/ -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
@@ -119,15 +117,13 @@
 			<optional>true</optional>
 		</dependency>
 
-		<!-- dependency used for checkArguments 
-		https://github.com/google/guava -->
+		<!-- dependency used for checkArguments https://github.com/google/guava -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>29.0-jre</version>
 		</dependency>
-		<!-- Used to create MessageDialog in the GUI 
-		https://wiki.eclipse.org/Platform -->
+		<!-- Used to create MessageDialog in the GUI https://wiki.eclipse.org/Platform -->
 		<dependency>
 			<groupId>org.eclipse.platform</groupId>
 			<artifactId>org.eclipse.jface</artifactId>
@@ -140,8 +136,7 @@
 			</exclusions>
 		</dependency>
 
-		<!-- used to get Google Maps' services to get distance or localization
-			  -->
+		<!-- used to get Google Maps' services to get distance or localization -->
 		<dependency>
 			<groupId>com.google.maps</groupId>
 			<artifactId>google-maps-services</artifactId>
@@ -168,13 +163,13 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--  Dependencies used by JSON Convert to manipulate (JSON-B) -->
+		<!-- Dependencies used by JSON Convert to manipulate (JSON-B) -->
 		<dependency>
 			<groupId>javax.json.bind</groupId>
 			<artifactId>javax.json.bind-api</artifactId>
 			<version>1.0</version>
 		</dependency>
-		<!--  https://projects.eclipse.org/projects/ee4j.yasson (JSON-B) -->
+		<!-- https://projects.eclipse.org/projects/ee4j.yasson (JSON-B) -->
 		<dependency>
 			<groupId>org.eclipse</groupId>
 			<artifactId>yasson</artifactId>
@@ -187,14 +182,14 @@
 			<version>1.1.4</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- Dependency used to manipulate JSON format (JSON-P) -->
 		<dependency>
 			<groupId>javax.json</groupId>
 			<artifactId>javax.json-api</artifactId>
 			<version>1.1.4</version>
 		</dependency>
-		
+
 		<!-- JAX-RS dependency for establishing HTTP connections -->
 		<dependency>
 			<groupId>jakarta.ws.rs</groupId>
@@ -212,14 +207,20 @@
 			<artifactId>jakarta.activation-api</artifactId>
 			<version>1.2.2</version>
 			<scope>runtime</scope>
-		</dependency> 
+		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.inject</groupId>
 			<artifactId>jersey-hk2</artifactId>
 			<version>2.30.1</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+		<!-- Dependency used to create Spider-plot -->
+		<dependency>
+			<groupId>org.jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
