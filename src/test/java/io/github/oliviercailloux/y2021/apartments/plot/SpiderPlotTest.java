@@ -26,6 +26,9 @@ class SpiderPlotTest {
 		ApartmentValueFunction avf1 = ApartmentValueFunction.getRandomApartmentValueFunction();
 		ApartmentValueFunction avf2 = ApartmentValueFunction.getRandomApartmentValueFunction();
 
+		if (file.exists())
+			file.delete();
+
 		SpiderPlot.given(apartment1, apartment2, avf1, avf2);
 		assertTrue(file.exists());
 	}
