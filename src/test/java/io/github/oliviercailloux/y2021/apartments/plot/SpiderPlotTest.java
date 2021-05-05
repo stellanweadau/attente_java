@@ -22,14 +22,13 @@ class SpiderPlotTest {
 
 		List<Apartment> listOfApartments = JsonConvert.getDefaultApartments();
 		Apartment apartment1 = listOfApartments.get(0);
-		Apartment apartment2 = listOfApartments.get(1);
-		ApartmentValueFunction avf1 = ApartmentValueFunction.getRandomApartmentValueFunction();
-		ApartmentValueFunction avf2 = ApartmentValueFunction.getRandomApartmentValueFunction();
+		Apartment apartment2 = listOfApartments.get(10);
+		ApartmentValueFunction avf = ApartmentValueFunction.getRandomApartmentValueFunction();
 
 		if (file.exists())
 			file.delete();
 
-		SpiderPlot.given(apartment1, apartment2, avf1, avf2);
+		SpiderPlot.given(apartment1, apartment2, avf);
 		assertTrue(file.exists());
 	}
 

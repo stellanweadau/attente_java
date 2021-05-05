@@ -27,14 +27,12 @@ public class SpiderPlot {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpiderPlot.class);
 
-	public static SpiderPlot given(Apartment apartment1, Apartment apartment2, ApartmentValueFunction avf1,
-			ApartmentValueFunction avf2) {
-		return new SpiderPlot(apartment1, apartment2, avf1, avf2);
+	public static SpiderPlot given(Apartment apartment1, Apartment apartment2, ApartmentValueFunction avf) {
+		return new SpiderPlot(apartment1, apartment2, avf);
 	}
 
-	private SpiderPlot(Apartment apartment1, Apartment apartment2, ApartmentValueFunction avf1,
-			ApartmentValueFunction avf2) {
-		createImgChart(createChart(toCategoryDataset(apartment1, apartment2, avf1, avf2)));
+	private SpiderPlot(Apartment apartment1, Apartment apartment2, ApartmentValueFunction avf) {
+		createImgChart(createChart(toCategoryDataset(apartment1, apartment2, avf)));
 	}
 
 	/*
@@ -65,39 +63,39 @@ public class SpiderPlot {
 	 * @return a dataset of type CategoryDataset
 	 */
 	private static CategoryDataset toCategoryDataset(Apartment apartment1, Apartment apartment2,
-			ApartmentValueFunction avf1, ApartmentValueFunction avf2) {
+			ApartmentValueFunction avf) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-		dataset.addValue(avf1.getDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE)
+		dataset.addValue(avf.getDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE)
 				.getSubjectiveValue(apartment1.getFloorAreaTerrace()), apartment1.getAddress(), "Terrace area");
-		dataset.addValue(
-				avf1.getDoubleValueFunction(Criterion.FLOOR_AREA).getSubjectiveValue(apartment1.getFloorArea()),
+		dataset.addValue(avf.getDoubleValueFunction(Criterion.FLOOR_AREA).getSubjectiveValue(apartment1.getFloorArea()),
 				apartment1.getAddress(), "Floor area");
-		dataset.addValue(avf1.getBooleanValueFunction(Criterion.WIFI).getSubjectiveValue(apartment1.getWifi()),
+		dataset.addValue(avf.getBooleanValueFunction(Criterion.WIFI).getSubjectiveValue(apartment1.getWifi()),
 				apartment1.getAddress(), "WIFI");
-		dataset.addValue(avf1.getBooleanValueFunction(Criterion.TELE).getSubjectiveValue(apartment1.getTele()),
+		dataset.addValue(avf.getBooleanValueFunction(Criterion.TELE).getSubjectiveValue(apartment1.getTele()),
 				apartment1.getAddress(), "Tele");
-		dataset.addValue(avf1.getBooleanValueFunction(Criterion.TERRACE).getSubjectiveValue(apartment1.getTerrace()),
+		dataset.addValue(avf.getBooleanValueFunction(Criterion.TERRACE).getSubjectiveValue(apartment1.getTerrace()),
 				apartment1.getAddress(), "Terrace");
-		dataset.addValue(avf1.getDoubleValueFunction(Criterion.PRICE_PER_NIGHT)
-				.getSubjectiveValue(apartment1.getPricePerNight()), apartment1.getAddress(), "Price");
-		dataset.addValue(avf1.getDoubleValueFunction(Criterion.NB_MIN_NIGHT)
+		dataset.addValue(
+				avf.getDoubleValueFunction(Criterion.PRICE_PER_NIGHT).getSubjectiveValue(apartment1.getPricePerNight()),
+				apartment1.getAddress(), "Price");
+		dataset.addValue(avf.getDoubleValueFunction(Criterion.NB_MIN_NIGHT)
 				.getSubjectiveValue((double) apartment1.getNbMinNight()), apartment1.getAddress(), "Night");
 
-		dataset.addValue(avf2.getDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE)
+		dataset.addValue(avf.getDoubleValueFunction(Criterion.FLOOR_AREA_TERRACE)
 				.getSubjectiveValue(apartment2.getFloorAreaTerrace()), apartment2.getAddress(), "Terrace area");
-		dataset.addValue(
-				avf2.getDoubleValueFunction(Criterion.FLOOR_AREA).getSubjectiveValue(apartment2.getFloorArea()),
+		dataset.addValue(avf.getDoubleValueFunction(Criterion.FLOOR_AREA).getSubjectiveValue(apartment2.getFloorArea()),
 				apartment2.getAddress(), "Floor area");
-		dataset.addValue(avf2.getBooleanValueFunction(Criterion.WIFI).getSubjectiveValue(apartment2.getWifi()),
+		dataset.addValue(avf.getBooleanValueFunction(Criterion.WIFI).getSubjectiveValue(apartment2.getWifi()),
 				apartment2.getAddress(), "WIFI");
-		dataset.addValue(avf2.getBooleanValueFunction(Criterion.TELE).getSubjectiveValue(apartment2.getTele()),
+		dataset.addValue(avf.getBooleanValueFunction(Criterion.TELE).getSubjectiveValue(apartment2.getTele()),
 				apartment2.getAddress(), "Tele");
-		dataset.addValue(avf2.getBooleanValueFunction(Criterion.TERRACE).getSubjectiveValue(apartment2.getTerrace()),
+		dataset.addValue(avf.getBooleanValueFunction(Criterion.TERRACE).getSubjectiveValue(apartment2.getTerrace()),
 				apartment2.getAddress(), "Terrace");
-		dataset.addValue(avf2.getDoubleValueFunction(Criterion.PRICE_PER_NIGHT)
-				.getSubjectiveValue(apartment2.getPricePerNight()), apartment2.getAddress(), "Price");
-		dataset.addValue(avf2.getDoubleValueFunction(Criterion.NB_MIN_NIGHT)
+		dataset.addValue(
+				avf.getDoubleValueFunction(Criterion.PRICE_PER_NIGHT).getSubjectiveValue(apartment2.getPricePerNight()),
+				apartment2.getAddress(), "Price");
+		dataset.addValue(avf.getDoubleValueFunction(Criterion.NB_MIN_NIGHT)
 				.getSubjectiveValue((double) apartment2.getNbMinNight()), apartment2.getAddress(), "Night");
 		LOGGER.info("Successfully converted to CategoryDataset.");
 		return dataset;
