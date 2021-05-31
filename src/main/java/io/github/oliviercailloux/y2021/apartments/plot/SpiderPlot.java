@@ -36,7 +36,7 @@ public class SpiderPlot {
 	}
 
 	/*
-	 * The following createChart is taken from (not the logger infos):
+	 * The following createChart is taken from (not the logger info):
 	 * https://stackoverflow.com/questions/32862913/how-to-draw-a-spiderchart-above-
 	 * a-existing-jfreechart/32885067#32885067
 	 */
@@ -105,7 +105,7 @@ public class SpiderPlot {
 	 * Create a PNG from a JFreeChart plot.
 	 * 
 	 * @param jfreechart : a JFreeChart plot
-	 * @throws IOException
+	 * @throws IOException 
 	 */
 	private static void createImgChart(JFreeChart jfreechart) {
 		BufferedImage imgToDisplay = jfreechart.createBufferedImage(400, 400);
